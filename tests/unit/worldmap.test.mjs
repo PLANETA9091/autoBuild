@@ -142,7 +142,7 @@ test('firstUsableRecord: the WorldMap method delegates the same law', () => {
 
 test('the deeper-record wire: the fallback reads nearestK(k=4) and filters per candidate, the board path untouched (source pins)', () => {
   const miner = fs.readFileSync(new URL('../../src/bots/miner.mjs', import.meta.url), 'utf8')
-  assert.ok(miner.includes("const records = map.nearestK(name, bot.entity.position, { maxDistance, k: 4, verifyWith })"), 'the fallback gathers k=4 per name')
+  assert.ok(miner.includes("const records = map.nearestK(name, bot.entity.position, { maxDistance, k: k ?? 4, verifyWith })"), 'the fallback gathers k=4 per name (the v0.904.0 deepen flag lifts it to TRIP_DEEP_K for the second leg\'s re-selection only)')
   // (v0.902.0) the blocker is the named `blocked` predicate now: the same
   // failedTrips/wetTrip law plus the caller's own extraSkip (the second
   // leg's doomed-goal read) - one predicate feeds both selection paths

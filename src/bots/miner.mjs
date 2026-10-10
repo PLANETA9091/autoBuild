@@ -82,7 +82,7 @@ import { dropTargets, dropGoalRange, dropWalkSkipped, dropGoalAdmission, DROP_AD
 import { chooseTarget } from '../fleet/claims.mjs'
 import { firstUsableRecord } from '../fleet/worldmap.mjs' // (v0.512.0) the fallback's deeper-record law
 import { walkBudgetMs } from '../lib/tripplan.mjs'
-import { secondLegDecision, doomVetoRadius, doomVetoVerdict } from '../lib/maptrip.mjs' // (v0.900.0) THE SECOND LEG - the unreachable first leg no longer spends the trip; (v0.902.0) the re-selection reads the doom ledger
+import { secondLegDecision, doomVetoRadius, doomVetoVerdict, TRIP_DEEP_K } from '../lib/maptrip.mjs' // (v0.900.0) THE SECOND LEG - the unreachable first leg no longer spends the trip; (v0.902.0) the re-selection reads the doom ledger; (v0.904.0) the doom-emptied window's own depth
 import { noteGlobal } from '../lib/blackbox.mjs' // (v0.62.0) freeze forensics at the rescue/climb sites
 import { createLoginReady } from '../lib/loginfence.mjs' // (v0.546.0) THE LOGIN FENCE - the rebuild's login leg settles on every branch
 
@@ -275,7 +275,7 @@ export function createMiner ({
   // own (2) and the stand goal's spread (4) - see maptrip.mjs's radius law.
   const DOOM_VETO_RADIUS = doomVetoRadius(DOOMED_GOAL_RADIUS, 4)
   const doomTrip = pos => doomVetoVerdict(nearDoomedGoal({ x: pos.x, y: pos.y, z: pos.z }, Date.now(), { radius: DOOM_VETO_RADIUS })).veto
-  function mapTargetFor (names, { maxDistance = 96, verify = true, extraSkip = null } = {}) {
+  function mapTargetFor (names, { maxDistance = 96, verify = true, extraSkip = null, deepen = false } = {}) {
     if (!map) return null
     // verify=true deletes entries the current chunks can no longer confirm - good
     // for nearby mining targets, harmful for far ones (blockAt nulls unloaded
@@ -285,6 +285,17 @@ export function createMiner ({
     // leg's doom read) with the standing failedTrips/wetTrip law - the first
     // leg's call passes none, its shape is untouched
     const blocked = pos => failedTrips.has(`${pos.x},${pos.y},${pos.z}`) || wetTrip(pos) || (extraSkip ? extraSkip(pos) === true : false)
+    // (v0.904.0) THE DOOM-EMPTIED WINDOW'S OWN DEPTH: the re-selection's k
+    // deepens once when the caller asks (the second leg's re-selection only -
+    // the first leg's nearest law and the other call sites keep their own k).
+    // Face 184 priced the shallowness: every refused re-selection emptied its
+    // k-nearest window whole while the map held 242 sand records - the storm's
+    // kill clusters write their graves exactly on the shores the trips target,
+    // and a 3-site blast covers a 4-deep window. The depth never manufactures
+    // a candidate: a k=16 read is still the nearest 16, the walk budget still
+    // scales with the distance it chooses, and the deadline's shouldStopNow
+    // still outranks every candidate (see maptrip.mjs's depth law).
+    const k = deepen ? TRIP_DEEP_K : null
     // (v0.15.0) claim-aware choice: with a fleet ClaimBoard, k candidates per name are
     // scored distance + penalty for positions another bot is already walking to - the
     // measured "19 bots -> one beach" convergence (38x unreachable, sand=0 @ sand=110).
@@ -296,6 +307,7 @@ export function createMiner ({
         board,
         owner: username,
         maxDistance,
+        k: k ?? 6,
         verifyWith,
         skip: blocked
       })
@@ -308,7 +320,7 @@ export function createMiner ({
     // across-names nearest law is untouched: nearestK returns nearest-first, the
     // first usable record IS the name's best.
     for (const name of names) {
-      const records = map.nearestK(name, bot.entity.position, { maxDistance, k: 4, verifyWith })
+      const records = map.nearestK(name, bot.entity.position, { maxDistance, k: k ?? 4, verifyWith })
       const pos = firstUsableRecord(records, { isBlocked: blocked })
       if (pos && (!best || pos.distanceTo(bot.entity.position) < best.pos.distanceTo(bot.entity.position))) best = { name, pos }
     }
@@ -6465,10 +6477,14 @@ export function createMiner ({
       // walk: shouldStop() true means the run cannot afford even one more leg.
       // (v0.902.0) the re-selection also reads the doomed-goal ledger (extraSkip:
       // doomTrip) - a live-doomed candidate is a guaranteed consult refusal, and
+      // (v0.904.0) the window deepens once (k 4/6 -> 16): face 184's four honest
+      // refusals emptied their k-nearest windows whole while the map held 242
+      // sand records - the storm's kill clusters sit exactly on the trip shores,
+      // and the WINDOW refused, not the map
       // face 183 priced the blindness at 6 of 9 second legs. All-doomed reads
       // land the honest refused form ('no candidate left'), never a failed leg.
       const stopNow = shouldStop ? !!shouldStop() : false
-      const next = stopNow ? null : mapTargetFor(findNames, { maxDistance, verify: false, extraSkip: doomTrip })
+      const next = stopNow ? null : mapTargetFor(findNames, { maxDistance, verify: false, extraSkip: doomTrip, deepen: true })
       const decision = secondLegDecision({ firstLegError: 'unreachable', shouldStopNow: stopNow, hasCandidate: !!next })
       if (decision.leg !== 'second') return { error: 'unreachable', firstLeg: key, secondLegWhy: decision.why }
       claimTrip(next)

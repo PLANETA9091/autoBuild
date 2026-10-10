@@ -1086,3 +1086,25 @@ export function doomVetoVerdict (consult) {
   if (consult.hit !== true) return { veto: false, why: 'clear' }
   return { veto: true, why: 'doomed' }
 }
+
+// (v0.904.0) THE DOOM-EMPTIED WINDOW'S OWN DEPTH - the second leg's own
+// re-selection deepens once before the honest refusal. Face 184 (the veto's
+// own first face) priced the window's shallowness: the second leg's family
+// spoke 5 lines - delivered 0 (THE ZERO DELIVERY row's debut) / refused 4 /
+// failed 1 (the failed one a genuine 'No path', the doomed-goal consult
+// label GONE from the second leg's book - the v0.902.0 cure held) - and the
+// consult's whole face carried ZERO second-leg labels. But every refused
+// re-selection emptied while the map held 242 sand records: the reads are
+// k-nearest windows (the board-less path k=4, the board path k=6), and the
+// same shores the trips target are where the storm's kill clusters write
+// their fresh graves (face 184's three clustered kill sites sat exactly on
+// the sand shore) - a 3-site blast covers a 4-deep window whole. The
+// emptiness is the veto's own signal: when the deepened-blinded read comes
+// back empty, the WINDOW refused, not the map. The re-selection deepens
+// once (4/6 -> 16): deep enough to escape a clustered kill-site's blast
+// radius, shallow enough to stay honest (a k=16 read is still the nearest
+// 16, the walk budget still scales with the distance it chooses, and the
+// deadline's shouldStopNow still outranks every candidate). The all-doomed
+// refusal keeps its honest form when even the deep window empties - the
+// depth never manufactures a candidate.
+export const TRIP_DEEP_K = 16 // the board-less base 4 and the board base 6 both deepen here before the honest refusal
