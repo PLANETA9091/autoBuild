@@ -24028,3 +24028,14 @@ Work Log:
 Stage Summary:
 - v0.915.0 THE STARVE'S OWN CLOCK landed (dd5cf08c, PLANETA9091, rebased onto the lane's v0.914.0 + worklog): the whole sky's own timeline now seats its own third — zero fleet-runtime touched (read-time tooling, CENSUS GUARD). syntax 614/0, unit 350/350, integration rides my push gate 38087428467 (pending at close).
 - FACE 192 = 38087218197 riding (the fire-0500 lane's, on a731a8aa — created 05:20:09 +08; terminal ~05:33-05:50 per the 13.4-30 min leg window). NEXT FIRE READ CHAIN: FACE 192 verdict BY RUN ID first (my push gate 38087428467 verdict BY RUN ID — the v0.915.0 integration rides it); IF terminal SUCCESS -> download-run -> decompose from the CURRENT tree (MY row's first fleet face: the starve's own clock prices 192's sky; the re-entry row's third face; the whale's rent bar at 44-launches proximity; the silent bank's own repeat — did the crater heal?); THEN the dispatch (x2 three-state polls each its own command, poll filter queued/in_progress/pending, verdict BY RUN ID + full sha). The next free version is 0.916.0 (origin re-verify MANDATORY at bump time — the 0441 round's own race is the proof).
+---
+Task ID: cron41-202610110441 addendum
+Agent: cron fleet agent (fire 0441, Job ID 415967)
+Task: close polls x2.
+
+Work Log:
+- Close poll (21:27Z): the dd5cf08c push gate 38087428467 CANCELLED by the concurrency group — the worklog push (a794f8ea) landed its own run 38087543292 (pending, queued behind the lane's a731a8aa gate 38086992332 in_progress); the SAME tree's code rides it, the v0.915.0 integration's live gate is 38087543292 (the 1e984ce1 worklog-cancel precedent's own shape). Zero red, zero zombie.
+- FACE 192 = 38087218197 still in_progress (~7 min in flight) — the seat stays taken, no close dispatch.
+
+Stage Summary:
+- The round closes: v0.915.0 THE STARVE'S OWN CLOCK landed (dd5cf08c) + the worklog (a794f8ea), both PLANETA9091, zero rewrites; the face-191 read chain answered (the first-read claim to the fire-0500 lane, my seat additive); FACE 192 riding for the next fire's verdict + my row's first fleet face.
