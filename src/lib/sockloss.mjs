@@ -36,8 +36,8 @@
 //
 
 const SOCK_KINDS = 'EPIPE|ECONNRESET|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH|ETIMEDOUT'
-const SOCK_LOSS_RE = new RegExp(`^(F\\d+) \\[\\1\\] error: (?:write |read )?(${SOCK_KINDS})$`)
-const SOCK_TWIN_RE = new RegExp(`^(F\\d+) \\[\\1\\] socket error: (?:write |read )?(${SOCK_KINDS})$`)
+export const SOCK_LOSS_RE = new RegExp(`^(F\\d+) \\[\\1\\] error: (?:write |read )?(${SOCK_KINDS})$`)
+export const SOCK_TWIN_RE = new RegExp(`^(F\\d+) \\[\\1\\] socket error: (?:write |read )?(${SOCK_KINDS})$`)
 const SOCK_RAW_RE = new RegExp(`^Error: (?:write |read )?(${SOCK_KINDS})$`)
 
 /**

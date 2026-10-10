@@ -116,6 +116,7 @@ import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the k
 import { kindlessKickCensus } from '../../src/lib/kindlesskicks.mjs' // (v0.906.0) the kindless kick's own seat - the KICKED lines the kind census refuses (no parsable translate byte; the partition prices the formless class the reads counted by hand)
 import { duplicateRetryRides } from '../../src/lib/retrytiming.mjs' // (v0.907.0) the floor's own retimeter - the duplicate_login kick joined to the bot's NEXT retry line (the delay the loop actually rode: above = the grace's own proof, below = THE MISS, unpriced = the face's own end)
 import { emptyWhyRetries } from '../../src/lib/retrywhy.mjs' // (v0.909.0) the empty why's own seat - the retry lines that rode the '()' skin (the silent end: the kick's kind never reached the catch's own if; the event-side wire's own before/after meter)
+import { bareEndJoin } from '../../src/lib/bareend.mjs' // (v0.910.0) the bare end's own join - the bare '()' skins joined to the socket-loss certificates (the known class's own shadow vs the face's quietest ends; the partition reconciles with the v0.909.0 bare cell by construction)
 import { sockLossCensus, sockChurnJoin, sockJoinSeatRow, sockJoinRidersRow, sockBareSeatRow, sockBareRidersRow } from '../../src/lib/sockloss.mjs' // (v0.806.0) the socket loss's own book - the client-side death certificates (the error/socket-error/raw-stack bursts, the twin + raw reconciles, the log's thirds clock; v0.809.0 the join's own seat; v0.812.0 the bare kick's own seat)
 import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 book's own class - the o2-reset drown form split's own seat (the never lane the arm's own gap, the active lane the arm's own loss; the strict-majority law, a tie owns nothing)
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
@@ -1870,6 +1871,19 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     console.log(`  the empty why's own seat (v0.909.0): ${ew.total} retry line(s) rode the '()' skin - dup-adjacent ${ew.dupAdjacent} (THE MISS's own subclass), other-adjacent ${ew.otherAdjacent}, bare ${ew.bare}${ewTail ? `; by bot: ${ewTail}` : ''} (the silent end: the kind never reached the catch - the seam's own read)`)
   } else if (rr) {
     console.log(`  the empty why's own seat is silent (v0.909.0): every retry line rode a why (${rr.kicks} dup kick(s) in the seat's own scope - the catch never went silent)`)
+  }
+  // (v0.910.0) THE BARE END'S OWN JOIN - the bare '()' skins (no kicked
+  // client in the seat) joined to the bot's own socket-loss certificates:
+  // bareCert = the silent end riding the certificate's shadow (the
+  // v0.806.0 book's own neighbor), bareSilent = the face's quietest ends
+  // (nothing yet names them). The partition reconciles with the v0.909.0
+  // seat's own bare cell BY CONSTRUCTION.
+  const be = bareEndJoin(lines)
+  if (be) {
+    const beTail = Object.entries(be.byBot).sort((a, b) => b[1] - a[1]).map(([b, v]) => `${b} ${v}`).join(' / ')
+    console.log(`  the bare end's own join (v0.910.0): ${be.bare} bare silent end(s) - cert-adjacent ${be.bareCert} (the socket death's own shadow), bare-silent ${be.bareSilent}${beTail ? `; by bot: ${beTail}` : ''} (no kick in the seat - the certificate is the only named ender)`)
+  } else if (ew) {
+    console.log(`  the bare end's own join is silent (v0.910.0): zero bare skins rode this face (${ew.total - ew.bare} skin(s) all kick-adjacent)`)
   }
 }
 // (v0.806.0) THE SOCKET LOSS'S OWN BOOK - the client-side death certificates.

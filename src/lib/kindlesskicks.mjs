@@ -44,7 +44,7 @@ import { KICK_KIND_RE } from './kickkinds.mjs'
 
 // the bot's own anchor - the SAME head the kinds census's regex rides
 // (F<digits> [<the same digits>] 'KICKED: '), without the byte tail.
-const KICKED_ANCHOR_RE = /^(F\d+) \[\1\] KICKED: /
+export const KICKED_ANCHOR_RE = /^(F\d+) \[\1\] KICKED: /
 
 /**
  * kindlessKickCensus(lines) - the KICKED lines the kind census refuses.
