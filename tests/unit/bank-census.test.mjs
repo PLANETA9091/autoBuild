@@ -3,7 +3,8 @@
 // byte. Tests feed the face-19 (36802577873) verbatim lines, the junk
 // battery, and the missing-block tolerance (a FATAL face truncates the end
 // phase - the v0.358.0 lesson).
-import { bankFlowCensus, parseSurplusItems, parseStranded, parseWriteOff, parseDoomWhy, parseDeliverable, parsePrePositionCensus, craterSeatSplit, writeOffBill, writeOffBillRow, writeOffRiders, writeOffRidersRow, budgetAskSeat, budgetAskSeatRow, budgetAskRiders, budgetAskRidersRow } from '../../src/lib/bankcensus.mjs'
+import { bankFlowCensus, parseSurplusItems, parseStranded, parseWriteOff, parseDoomWhy, parseDeliverable, parsePrePositionCensus, craterSeatSplit, writeOffBill, writeOffBillRow, writeOffRiders, writeOffRidersRow, budgetAskSeat, budgetAskSeatRow, budgetAskRiders, budgetAskRidersRow, craterWhyCrowd, craterWhyCrowdRow } from '../../src/lib/bankcensus.mjs'
+import { readFile } from 'node:fs/promises'
 import assert from 'node:assert'
 import { test } from 'node:test'
 
@@ -432,7 +433,6 @@ test('WIRING: the decompose prints the bank yield row beside the visit count', (
 })
 
 import fs from 'node:fs'
-import { readFile } from 'node:fs/promises'
 
 // (v0.758.0) THE CRATER'S OWN SEATS - face 63's own cell: the write-off
 // carried 905u of the 1216u unbanked mass (the 2/3 bar crossed -> the
@@ -663,4 +663,92 @@ test("v0.803.0 the ask book's own seat rides the decompose mine (WIRING)", async
   const row = src.indexOf("if (bankCensus.budgetAgg) console.log(`  flow-priced budgets:")
   assert.ok(row > 0 && row < branch) // the seat rides the budgets' own gate
   assert.ok(!src.includes("THE ASK BOOK'S OWN SEAT:"), 'the prose lives only in the lib')
+})
+
+// ------------------------------------------------------------------
+// (v0.919.0) THE CRATER'S WHY CROWD - the why axis's own riders (the
+// v0.777.0 write-off riders' own mirror on the WHY axis). Face 192's own
+// read is the row's own face: 'no single why owns the failed mass' rode
+// beside a 692u write-off whose classes never printed - the crowd rides
+// unread no more.
+
+const CROWD_SEAT = {
+  unbanked: 887,
+  writeOff: { sum: 692, rows: 7, badRows: 0, whys: { stalled: 260, 'no planks recipe': 190, 'climbed-out-empty': 150, night: 92 } },
+  cls: 'failed-walks',
+  topWhy: null,
+  deadlineSeconds: 40,
+}
+
+test('the crater why crowd: the tie face names the top two (units desc, the byte-asc tie law)', () => {
+  const crowd = craterWhyCrowd(CROWD_SEAT)
+  assert.equal(crowd.leader, 'stalled')
+  assert.equal(crowd.leaderUnits, 260)
+  assert.equal(crowd.runner, 'no planks recipe')
+  assert.equal(crowd.runnerUnits, 190)
+  assert.equal(crowd.total, 692)
+  assert.equal(crowd.pairUnits, 450)
+  assert.equal(crowd.share, 0.65)
+})
+
+test("the why crowd's own row byte-exact (THE WHY DUO'S OWN SEAT)", () => {
+  const row = craterWhyCrowdRow(craterWhyCrowd(CROWD_SEAT))
+  assert.equal(row, "the crater's why crowd (v0.919.0): no single why owns the failed mass - stalled x260u + no planks recipe x190u own 450 of 692u (65.0%) - THE WHY DUO'S OWN SEAT: the v0.758.0 seat's own tie law held, the spread is still real - the pair prices the whys the solo law refused to name")
+})
+
+test('the branch law: a solo-owner face fences the crowd (never both)', () => {
+  const solo = { ...CROWD_SEAT, topWhy: { cls: 'stalled', units: 400, shareOfWriteOff: 0.578 } }
+  assert.equal(craterWhyCrowd(solo), null)
+})
+
+test("the single-class fence: one why is no crowd (the solo law's own face)", () => {
+  const single = { ...CROWD_SEAT, writeOff: { sum: 300, rows: 3, badRows: 0, whys: { stalled: 300 } } }
+  assert.equal(craterWhyCrowd(single), null)
+})
+
+test("the tie law: equal units ride the class's own byte order", () => {
+  const tie = { ...CROWD_SEAT, writeOff: { sum: 15, rows: 3, badRows: 0, whys: { zeta: 5, alpha: 5, mid: 5 } } }
+  const crowd = craterWhyCrowd(tie)
+  assert.equal(crowd.leader, 'alpha')
+  assert.equal(crowd.runner, 'mid')
+  assert.equal(crowd.total, 15)
+})
+
+test('the junk-cell law: non-finite and non-positive cells are skipped, the real cells still tally', () => {
+  const junky = { ...CROWD_SEAT, writeOff: { sum: 12, rows: 4, badRows: 0, whys: { real1: 7, real2: 5, broken: NaN, ghost: 0, negative: -4 } } }
+  const crowd = craterWhyCrowd(junky)
+  assert.ok(crowd)
+  assert.equal(crowd.leader, 'real1')
+  assert.equal(crowd.runner, 'real2')
+  assert.equal(crowd.total, 12)
+})
+
+test('the honest silences: junk shapes, missing whys, zero-sum books', () => {
+  assert.equal(craterWhyCrowd(null), null)
+  assert.equal(craterWhyCrowd(undefined), null)
+  assert.equal(craterWhyCrowd('junk'), null)
+  assert.equal(craterWhyCrowd(42), null)
+  assert.equal(craterWhyCrowd({}), null)
+  assert.equal(craterWhyCrowd({ writeOff: { sum: 5 } }), null)
+  assert.equal(craterWhyCrowd({ writeOff: { whys: {} } }), null)
+  const zero = { ...CROWD_SEAT, writeOff: { sum: 0, rows: 0, badRows: 0, whys: { a: 0, b: 0 } } }
+  assert.equal(craterWhyCrowd(zero), null)
+})
+
+test("the row's junk battery: wrong shapes never print", () => {
+  assert.equal(craterWhyCrowdRow(null), null)
+  assert.equal(craterWhyCrowdRow(undefined), null)
+  assert.equal(craterWhyCrowdRow('junk'), null)
+  assert.equal(craterWhyCrowdRow({}), null)
+  assert.equal(craterWhyCrowdRow({ leader: 'a', leaderUnits: 0, runner: 'b', runnerUnits: 5, total: 5, pairUnits: 5, share: 1 }), null)
+  assert.equal(craterWhyCrowdRow({ leader: 'a', leaderUnits: 3, runner: 'b', runnerUnits: 5, total: 5, pairUnits: 8, share: 1.6 }), null)
+})
+
+test('THE CENSUS GUARD: the why crowd rides the decompose seat beside the v0.758.0 row (WIRING)', async () => {
+  const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.ok(src.includes('craterWhyCrowd, craterWhyCrowdRow')) // the import rides the census's own line
+  const seat = src.indexOf("the crater's own seat (v0.758.0)")
+  const crowd = src.indexOf('craterWhyCrowd(bankCensus.seatSplit)')
+  assert.ok(seat > 0 && crowd > seat) // the crowd rides beside the seat, never before it
+  assert.ok(!src.includes("THE WHY DUO'S OWN SEAT: the v0.758.0"), 'the prose lives only in the lib')
 })

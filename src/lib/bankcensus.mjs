@@ -725,3 +725,53 @@ export function budgetAskRidersRow (r) {
       !Number.isFinite(shareOfAsks)) return null
   return `the ask book's own riders (v0.803.0): no solo bot owns the majority - ${leader} x${leaderOwns}s + ${runner} x${runnerOwns}s own ${pairOwns}s of ${ofAsks}s bank ask (${(shareOfAsks * 100).toFixed(1)}%) - THE ASK BOOK'S OWN MIX: the seat's tie law held, the spread is the shape - the bots' own needs price the ask book the solo law refused to seat`
 }
+
+// (v0.919.0) THE CRATER'S WHY CROWD - the why axis's own riders (the
+// v0.777.0 write-off riders' own mirror on the WHY axis, the v0.803.0 ask
+// riders' own shape): the v0.758.0 crater seat priced the solo why under
+// the strict-majority law - the tie's own silence left the crowd unread
+// (face 192's own read: 'no single why owns the failed mass' rode beside a
+// 692u write-off whose classes never printed). THE BILL LAW (the census's
+// own seatSplit cells only, zero re-parsing - the cast's own precedent):
+// the why classes ride the seatSplit's own whys map verbatim, the top two
+// own the row under the byte law (units desc, then the class's own
+// lexicographic order). THE BRANCH LAW (never both): the crowd speaks only
+// when the solo why rode silent (a truthy topWhy fences the crowd - the
+// v0.758.0 row named the owner, a second seat would recurse the defect).
+// Junk never invents a crowd: a missing seatSplit, a missing or
+// single-class why map, a non-finite or non-positive cell (skipped - the
+// real cells still tally), or a zero-sum book reads the honest silence
+// (null).
+export function craterWhyCrowd (seatSplit) {
+  if (!seatSplit || typeof seatSplit !== 'object') return null
+  if (seatSplit.topWhy) return null // the branch law: the solo row owns the owner's face
+  const whys = seatSplit.writeOff && typeof seatSplit.writeOff === 'object' ? seatSplit.writeOff.whys : null
+  if (!whys || typeof whys !== 'object') return null
+  const cells = []
+  let total = 0
+  for (const [cls, units] of Object.entries(whys)) {
+    if (typeof cls !== 'string' || cls === '' || !Number.isFinite(units) || units <= 0) continue
+    cells.push({ cls, units })
+    total += units
+  }
+  if (cells.length < 2 || total <= 0) return null
+  const ranked = cells.sort((a, b) => b.units - a.units || (a.cls < b.cls ? -1 : 1))
+  const leader = ranked[0]
+  const runner = ranked[1]
+  const pairUnits = leader.units + runner.units
+  return { leader: leader.cls, leaderUnits: leader.units, runner: runner.cls, runnerUnits: runner.units, total, pairUnits, share: +(pairUnits / total).toFixed(3) }
+}
+
+// (v0.919.0) the why crowd's own row - THE WHY DUO'S OWN SEAT: a measure
+// of the crater's own spread, never a named owner (the solo law's tie
+// held); the pair prices the whys the solo law refused to name. Junk never
+// prints a shape (the honest silence's own row law).
+export function craterWhyCrowdRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderUnits, runner, runnerUnits, total, pairUnits, share } = r
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+      !Number.isFinite(leaderUnits) || leaderUnits <= 0 || !Number.isFinite(runnerUnits) || runnerUnits <= 0 ||
+      !Number.isFinite(total) || total <= 0 || !Number.isFinite(pairUnits) || pairUnits > total ||
+      !Number.isFinite(share)) return null
+  return `the crater's why crowd (v0.919.0): no single why owns the failed mass - ${leader} x${leaderUnits}u + ${runner} x${runnerUnits}u own ${pairUnits} of ${total}u (${(share * 100).toFixed(1)}%) - THE WHY DUO'S OWN SEAT: the v0.758.0 seat's own tie law held, the spread is still real - the pair prices the whys the solo law refused to name`
+}
