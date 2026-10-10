@@ -103,6 +103,7 @@ import { planTopCensus } from '../../src/lib/plantop.mjs' // (v0.440.0) the name
 import { sentryCensus, sentrySightSeat, sentrySightSeatRow, sentrySightRiders, sentrySightRidersRow } from '../../src/lib/sentry.mjs' // (v0.422.0) the drowning sentry's per-pass read (the water lane's first census); (v0.797.0) WHICH sight class owns the ground-truth book
 import { rescueClockCensus, rescueBlindSeat, rescueBlindSeatRow, rescueBlindRiders, rescueBlindRidersRow } from '../../src/lib/rescueclock.mjs' // (v0.431.0) the rescue lane's price leg (durations + the frozen blindness); (v0.799.0) WHICH blind class owns the frozen-standdown book
 import { waterClockBook, waterClockVerdict, waterClockRow } from '../../src/lib/waterclock.mjs' // (v0.918.0) THE WATER LANE'S OWN CLOCK - the water arms' own thirds verdict (the rescue starts + the transit launches joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the lanes' own legs)
+import { standdownClockBook, standdownClockVerdict, standdownClockRow } from '../../src/lib/standdownclock.mjs' // (v0.921.0) THE STANDDOWN'S OWN CLOCK - the frozen-standdown end's own thirds verdict (the house's own classifiers verbatim: rescueEndClass + rescueEndSeconds + parseRescueBlind, the heartbeat rail's stamp law, the v0.733.0 point cut, the strict-majority seat + the bots' own legs)
 import { swirlBill, criedWolf } from '../../src/lib/swirlbill.mjs' // (v0.726.0) the instant churn's own bill - the rescue lane's zero-close loop (the trigger's drowning, the lane's surface-safe, the same breath); (v0.736.0) the cried-wolf join - the churn's verdict bot that died the trigger-blind death
 import { skyWalk } from '../../src/lib/skywalk.mjs' // (v0.727.0) the crowded sky's own walk - the decide starve's own hand on the walk refusals (the one-parser join: walkfail + decideweather)
 import { frozenCensus } from '../../src/lib/frozencensus.mjs' // (v0.426.0) the freeze family's census (the F10 frozen-while-head-wet class's read)
@@ -664,6 +665,17 @@ console.log('  per-bot ends:', Object.entries(ledger.perBot).map(([b, r]) => `${
 {
   const wcv = waterClockVerdict(waterClockBook(lines))
   if (wcv) console.log(`  ${waterClockRow(wcv)}`)
+}
+// (v0.921.0) THE STANDDOWN'S OWN CLOCK - the frozen-standdown end's own
+// thirds: every frozen-physics standdown stamped on the heartbeat rail
+// (the water clock's own stamp law), the face's own thirds cut, the
+// strict-majority seat, the bots' own legs, the frozen seconds' own
+// bill, the blind walks' own passes - the freeze's own WHEN finally
+// rides a clock (the arms' WHEN is the water clock's; this prices the
+// saves' own failure to hold).
+{
+  const sdc = standdownClockVerdict(standdownClockBook(lines))
+  if (sdc) console.log(`  ${standdownClockRow(sdc)}`)
 }
 // (v0.726.0) THE INSTANT CHURN - the rescue lane's zero-close loop: a start
 // whose close lands in 0.0s is a trigger arguing with its own lane (the
