@@ -115,6 +115,7 @@ import { kickBill } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's o
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
 import { kindlessKickCensus } from '../../src/lib/kindlesskicks.mjs' // (v0.906.0) the kindless kick's own seat - the KICKED lines the kind census refuses (no parsable translate byte; the partition prices the formless class the reads counted by hand)
 import { duplicateRetryRides } from '../../src/lib/retrytiming.mjs' // (v0.907.0) the floor's own retimeter - the duplicate_login kick joined to the bot's NEXT retry line (the delay the loop actually rode: above = the grace's own proof, below = THE MISS, unpriced = the face's own end)
+import { emptyWhyRetries } from '../../src/lib/retrywhy.mjs' // (v0.909.0) the empty why's own seat - the retry lines that rode the '()' skin (the silent end: the kick's kind never reached the catch's own if; the event-side wire's own before/after meter)
 import { sockLossCensus, sockChurnJoin, sockJoinSeatRow, sockJoinRidersRow, sockBareSeatRow, sockBareRidersRow } from '../../src/lib/sockloss.mjs' // (v0.806.0) the socket loss's own book - the client-side death certificates (the error/socket-error/raw-stack bursts, the twin + raw reconciles, the log's thirds clock; v0.809.0 the join's own seat; v0.812.0 the bare kick's own seat)
 import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 book's own class - the o2-reset drown form split's own seat (the never lane the arm's own gap, the active lane the arm's own loss; the strict-majority law, a tie owns nothing)
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
@@ -1856,6 +1857,19 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     const missTail = Object.entries(rr.byBotMiss).sort((a, b) => b[1] - a[1]).map(([b, v]) => `${b} ${v}`).join(' / ')
     const missPart = rr.below ? `; THE MISS ${rr.below} (${missTail})` : '; the grace held (zero misses)'
     console.log(`  the floor's own retimeter (v0.907.0): ${rr.kicks} dup kick(s), ${rr.rides} ride(s) priced - above ${rr.above}${missPart}; unpriced ${rr.unpriced}${rr.minMs !== null ? `; the rides ${rr.minMs}..${rr.maxMs}ms` : ''} (the floor 6000ms, the v0.904.0 grace)`)
+  }
+  // (v0.909.0) THE EMPTY WHY'S OWN SEAT - the retry lines the lane printed
+  // with NOTHING in the why seat ('F1 retry #1 in 4.5s ()'): the silent
+  // end's own skin, face 187 hand-priced one on a duplicate. The seam
+  // read: '()' reads strictly no catch assignment - the kick's kind never
+  // reached the catch's own if (the vocabulary was never the hole - the
+  // seam was). The event-side wire's own before/after meter.
+  const ew = emptyWhyRetries(lines)
+  if (ew) {
+    const ewTail = Object.entries(ew.byBot).sort((a, b) => b[1] - a[1]).map(([b, v]) => `${b} ${v}`).join(' / ')
+    console.log(`  the empty why's own seat (v0.909.0): ${ew.total} retry line(s) rode the '()' skin - dup-adjacent ${ew.dupAdjacent} (THE MISS's own subclass), other-adjacent ${ew.otherAdjacent}, bare ${ew.bare}${ewTail ? `; by bot: ${ewTail}` : ''} (the silent end: the kind never reached the catch - the seam's own read)`)
+  } else if (rr) {
+    console.log(`  the empty why's own seat is silent (v0.909.0): every retry line rode a why (${rr.kicks} dup kick(s) in the seat's own scope - the catch never went silent)`)
   }
 }
 // (v0.806.0) THE SOCKET LOSS'S OWN BOOK - the client-side death certificates.
