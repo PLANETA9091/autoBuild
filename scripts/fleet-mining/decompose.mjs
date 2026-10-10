@@ -10,6 +10,7 @@ import { routeGateCensus, ROUTE_GATE_RIM_TRAP_REFUSALS } from '../../src/lib/rou
 import { shooterCensus, shooterAttackerBill, shooterAttackerBillRow, shooterAttackerRiders, shooterAttackerRidersRow } from '../../src/lib/shootercensus.mjs' // (v0.390.0) the shooter band's field read; (v0.792.0) WHICH attacker owns the combat pressure
 import { shelterLedger, OUTCOME_CLASSES, shelterOutcomeBill, shelterOutcomeBillRow, shelterOutcomeRiders, shelterOutcomeRidersRow } from '../../src/lib/shelterledger.mjs' // (v0.457.0) the combat verdict's price - the outcome join; (v0.466.0) the class vocabulary for the flee-ground cross-read; (v0.795.0) WHICH verdict owns the shelter book
 import { fleeForkSeatRow, fleeForkRidersRow } from '../../src/lib/fleefork.mjs' // (v0.810.0) the flee fork's own seat - WHICH fork owns the flee death book (the chased-down cells' strict majority + the bands' measure-not-owner riders)
+import { fleeSeat, fleeSeatRow, fleeRiders, fleeRidersRow } from '../../src/lib/fleeseat.mjs' // (v0.921.0) the trap's own seat - the flee bearing histogram's own strict-majority verdict (the v0.375.0 census's own cells, zero re-parsing; the branch law lives in the lib)
 import { deathSweep } from '../../src/lib/deathsweep.mjs' // (v0.389.0) the honest death sweep's field read
 import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read; (v0.920.0) the late third's own cast - WHO owns the closing third's deaths (the census's own deathRows cells, zero re-parsing)
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
@@ -767,6 +768,21 @@ for (const l of lines) {
 }
 console.log('  flee bearings repeated >=2:', Object.entries(fleeBearing).filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k}x${n}`).join(' ') || 'none (every flee chose a fresh bearing)')
 console.log('  flee bearing diversity:', Object.keys(fleeBearing).length, 'distinct bearings over', Object.values(fleeBearing).reduce((a, b) => a + b, 0), 'flee events')
+// (v0.921.0) THE TRAP'S OWN SEAT - the flee bearing histogram joins the
+// seat law family (the census's own cells, zero re-parsing): the top
+// cell owns the flee book only above half - the repeat is the trap (the
+// v0.375.0 cure's own price leg). The tie's silence prints the riders
+// (the measure-not-owner companion, one row never both - the branch law
+// lives in the lib). The empty book's own silence reads the honest
+// silence.
+{
+  const fSeat = fleeSeat(fleeBearing)
+  if (fSeat) console.log(`  ${fleeSeatRow(fSeat)}`)
+  else {
+    const fRiders = fleeRiders(fleeBearing)
+    if (fRiders) console.log(`  ${fleeRidersRow(fRiders)}`)
+  }
+}
 console.log('  drowned-kill per-bot:', fmt(perBot(/death: drowned-kill context/)))
 // (v0.433.0) THE HOUND-PRESENCE LENS - eight faces of 'hound absent' were a
 // blind read, not an honest zero: the rows above count only the WET flee
