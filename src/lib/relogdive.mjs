@@ -86,3 +86,70 @@ export function relogDiveJoinRow (j) {
     : ` - the dive lane's own crowd rides measured, not owned (the relog lane's reach is the measure)`
   return `the relog's own dive join (v0.916.0): ${joined.length} bot(s) relogged AND started a rescue - ${top} own ${joinedStarts} of ${startTotal} start(s) (${pct}%)${seat}`
 }
+
+//
+// THE DIVE JOIN'S OWN RIDERS (v0.917.0) - the cap's own tail named.
+// Face 192 (38087218197) is the row's own face: the join rode 3 bots
+// (F11 start 9 + F6 start 9 + a third), the v0.916.0 row's top-two
+// cap (the v0.790.0 byte law's own riders cap) named two and the
+// third's own cells rode UNREAD - the same defect class the v0.913.0
+// anatomy's cap owned (F9's own depth-4 chain hid behind the top-two;
+// the v0.914.0 chain book named it). THE MEMBERSHIP'S OWN TAIL: the
+// joined roster is the reconnect loop's own census - a hidden member
+// hides the loop's own shape. This row reads the v0.916.0 join's own
+// cells (the bill law, zero re-parsing) and names the bots beyond the
+// cap, their own start mass beside the joined mass. Recorded not
+// rewritten: the v0.916.0 row keeps its byte, the tail names itself
+// in the new row's own light.
+//
+// Fences (the honest fork):
+//   - junk input judges nothing
+//   - joined <= 2 (the cap named everyone) -> null - the honest
+//     silence: the v0.916.0 row is the whole roster
+//   - the riders keep the join's own sort (starts desc, byte asc)
+//     verbatim - no second cap (this row IS the tail; a second cap
+//     would recurse the defect)
+//
+// Pure: reads, never mutates. Zero fleet wiring (mining-surface only,
+// the v0.379/.../v0.754.0 precedent).
+//
+
+/**
+ * relogDiveRiders(j) - the join's own members beyond the top-two cap
+ * (null unless at least one rider rode beyond the cap).
+ *
+ * @param {unknown} [j] the v0.916.0 join's own result
+ *   ({joined, joinedStarts, startTotal})
+ * @returns {null|{riders: Array<{bot: string, relogs: number, starts: number}>,
+ *   riderStarts: number, joinedStarts: number}}
+ */
+export function relogDiveRiders (j) {
+  if (!j || typeof j !== 'object') return null
+  const { joined, joinedStarts } = j
+  if (!Array.isArray(joined) || joined.length <= 2) return null
+  if (!Number.isFinite(joinedStarts) || joinedStarts <= 0) return null
+  const riders = joined.slice(2).filter(e => e && typeof e === 'object' &&
+    typeof e.bot === 'string' && !!e.bot &&
+    Number.isFinite(e.relogs) && e.relogs > 0 &&
+    Number.isFinite(e.starts) && e.starts > 0)
+  if (!riders.length) return null
+  return { riders, riderStarts: riders.reduce((s, r) => s + r.starts, 0), joinedStarts }
+}
+
+/**
+ * relogDiveRidersRow(r) - the tail's own row: the beyond-cap bots
+ * (the join's own sort verbatim, no second cap) and their own start
+ * mass beside the joined mass. Junk never prints.
+ *
+ * @param {unknown} [r]
+ * @returns {null|string}
+ */
+export function relogDiveRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { riders, riderStarts, joinedStarts } = r
+  if (!Array.isArray(riders) || !riders.length) return null
+  if (!Number.isFinite(riderStarts) || riderStarts <= 0) return null
+  if (!Number.isFinite(joinedStarts) || joinedStarts <= 0) return null
+  const named = riders.map(e => `${e.bot} (relog ${e.relogs}, start ${e.starts})`).join(' + ')
+  return `the dive join's own riders (v0.917.0): ${named} - ${riders.length} rider(s) beyond the cap, their own ${riderStarts} of the joined ${joinedStarts} start(s) - the membership's own tail named`
+}

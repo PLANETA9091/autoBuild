@@ -114,7 +114,7 @@ import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) t
 import { bankDocket, doorstepStormCensus } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
-import { relogDiveJoin, relogDiveJoinRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure)
+import { relogDiveJoin, relogDiveJoinRow, relogDiveRiders, relogDiveRidersRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure); (v0.917.0) + the dive join's own riders - the cap's own tail named (the membership's own census)
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
 import { kickBill } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes)
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
@@ -1807,6 +1807,16 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     if (rdj) {
       const rdjr = relogDiveJoinRow(rdj)
       if (rdjr) console.log(`  ${rdjr}`)
+      // (v0.917.0) THE DIVE JOIN'S OWN RIDERS - the cap's own tail
+      // named: the v0.916.0 row's top-two cap (the v0.790.0 byte law's
+      // own riders cap) hides the joined roster's tail - the loop's own
+      // membership is a census, a hidden member hides its shape (the
+      // v0.914.0 chain book's own defect class, the same cure).
+      const rdr = relogDiveRiders(rdj)
+      if (rdr) {
+        const rdrr = relogDiveRidersRow(rdr)
+        if (rdrr) console.log(`  ${rdrr}`)
+      }
     }
   }
 }
