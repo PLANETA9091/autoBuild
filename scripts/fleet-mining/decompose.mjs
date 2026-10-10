@@ -106,6 +106,7 @@ import { rearmCensus } from '../../src/lib/rearm.mjs' // (v0.443.0) the same-tar
 import { transitLoopLedger } from '../../src/lib/transitloop.mjs' // (v0.692.0) the per-bot swim loop's own account (the whale's ledger)
 import { whaleWaterBill } from '../../src/lib/whalewater.mjs' // (v0.698.0) the whale's water bill - the zero-gain loop's rescue-side account
 import { whaleRotationRow } from '../../src/lib/transitloop.mjs' // (v0.754.0) the whale's own rotation - the seat split's verdict (the rotation was the wall's own disguise)
+import { whaleRentRow } from '../../src/lib/whalerent.mjs' // (v0.911.0) the loop's own rent - the give-up's own arm and the launches past it
 import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) the calm paradox - the death-free face's full-speed water lane
 import { bankDocket, doorstepStormCensus } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
@@ -4038,6 +4039,14 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // silence (the rotation was trying a seat that could pay).
     const rot = whaleRotationRow(lines)
     if (rot) console.log(`  the whale's own rotation (v0.754.0): ${rot.slice('the whale\'s own rotation: '.length)}`)
+    // (v0.911.0) THE LOOP'S OWN RENT - the give-up's own arm: the first
+    // launch past the loop's own bar (the whale's gate + the rotation's
+    // seat gate + the running zero-gain totals) is where the carousel
+    // should have armed; every launch after it is the rent the governor
+    // would have kept, with the rescue starts the rent dragged. No whale,
+    // no arm, no rent - no row (the silence law, inherited).
+    const rent = whaleRentRow(lines)
+    if (rent) console.log(`  the loop's own rent (v0.911.0): ${rent.slice("the loop's own rent: ".length)}`)
   }
 }
 
