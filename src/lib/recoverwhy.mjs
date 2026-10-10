@@ -42,6 +42,28 @@
 // are the filter-keys, they already ride.
 //
 
+// THE RE-FAIL CHAIN'S OWN DEPTH (v0.914.0) - the adjacency's missing
+// structure. The re-fail cast COUNTS the repeats (failed after failed)
+// but never reads the CHAIN: the maximal run of consecutive failed
+// terminals per bot, closed only by an OK/spare-ok heal (or the log's
+// own end). One chain of depth 4 (the bootstrap re-asked 3 times
+// unhealed - face 190's F18 shape) prices differently than three
+// spread re-fails: the depth is the loop's own amplitude, the brake
+// lever's own size. The one-parser law holds: RECOVERY_TERMINAL_RE
+// verbatim, zero new regexes; the chain walk mirrors the anatomy's
+// own lastFate law (the same heal classes close the run). Fences:
+//   - junk input (non-array, non-string lines) judges nothing
+//   - zero chains (every fail healed) -> null - the honest silence,
+//     the count row's own re-fails never chained
+//   - the owners read the bots holding a chain AT the max depth
+//     (deduped, the name's own byte asc); a tie owns nothing solo -
+//     the row names the riders (the v0.912.0 tie law)
+//
+// Pure: reads, never mutates. Zero fleet wiring (mining-surface only,
+// the v0.379/.../v0.754.0 precedent) - the fleet's own recovery bytes
+// are the filter-keys, they already ride.
+//
+
 import { RECOVERY_TERMINAL_RE } from './toolrecovery.mjs'
 
 /**
@@ -126,4 +148,65 @@ export function recoveryFailWhyRow (r) {
     }
   }
   return row
+}
+
+/**
+ * recoveryFailChains(lines) - the re-fail's own chain book: the
+ * maximal runs of consecutive failed terminals per bot (an
+ * OK/spare-ok heal closes the run; the log's end closes the tail).
+ * Only runs of depth >= 2 are chains (a solo fail never re-asked).
+ * Null unless a chain rode.
+ *
+ * @param {string[]|string} [lines] the face log (array or raw blob)
+ * @returns {null|{chains: number, maxDepth: number, owners: string[]}}
+ */
+export function recoveryFailChains (lines) {
+  const src = Array.isArray(lines)
+    ? lines
+    : (typeof lines === 'string' ? lines.split('\n') : null)
+  if (!src) return null
+  const open = new Map() // bot -> the current consecutive-fail depth
+  const chains = [] // { bot, depth } - the closed maximal runs, depth >= 2
+  for (const line of src) {
+    if (typeof line !== 'string') continue
+    const m = RECOVERY_TERMINAL_RE.exec(line)
+    if (!m) continue
+    const bot = m[1]
+    if (m[2] === 'OK') {
+      const d = open.get(bot)
+      if (Number.isFinite(d) && d >= 2) chains.push({ bot, depth: d })
+      open.delete(bot) // the heal closes the chain - the v0.913.0 law
+      continue
+    }
+    open.set(bot, (open.get(bot) || 0) + 1)
+  }
+  for (const [bot, d] of open) {
+    if (d >= 2) chains.push({ bot, depth: d }) // the EOF's own honest tail
+  }
+  if (!chains.length) return null
+  const maxDepth = chains.reduce((mx, c) => Math.max(mx, c.depth), 0)
+  const owners = [...new Set(chains.filter(c => c.depth === maxDepth).map(c => c.bot))]
+    .sort((a, b) => a.localeCompare(b))
+  return { chains: chains.length, maxDepth, owners }
+}
+
+/**
+ * recoveryFailChainsRow(c) - the chain book's own row: the count,
+ * the max depth, the deepest chain's own seat (solo owner, else the
+ * tie's riders) and the amplitude spelled (the unhealed re-asks).
+ * Junk never prints (the honest silence's row law).
+ *
+ * @param {unknown} [c]
+ * @returns {null|string}
+ */
+export function recoveryFailChainsRow (c) {
+  if (!c || typeof c !== 'object') return null
+  const { chains, maxDepth, owners } = c
+  if (!Number.isFinite(chains) || chains <= 0) return null
+  if (!Number.isFinite(maxDepth) || maxDepth < 2) return null
+  if (!Array.isArray(owners) || !owners.length) return null
+  const seat = owners.length === 1
+    ? `${owners[0]} owns the deepest`
+    : `no solo bot owns the deepest (${owners.join(' + ')})`
+  return `the re-fail chain's own book (v0.914.0): ${chains} chain(s), max depth ${maxDepth} - ${seat}: the bootstrap re-asked ${maxDepth - 1} time(s) unhealed - the loop's own amplitude, the brake's own size`
 }

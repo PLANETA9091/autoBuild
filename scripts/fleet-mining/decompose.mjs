@@ -81,7 +81,7 @@ import { smeltVerdict } from '../../src/lib/smeltverdict.mjs' // (v0.490.0) the 
 import { ringAfter } from '../../src/lib/ringafter.mjs' // (v0.493.0) the ring aftermath - what the ring landing bought (the shield ladder's book joined forward: the sieve, the siege, the hold)
 import { smeltHold, smeltRefusalAnatomy, smeltRefusalSeat, smeltRefusalSeatRow, smeltRefusalRiders, smeltRefusalRidersRow } from '../../src/lib/smelthold.mjs' // (v0.491.0) the smelt hold ledger - the reserve decision's own fate (the hold joined to what the leg then did); (v0.753.0) the refusal's own anatomy; (v0.789.0) WHICH segment owns the anatomy book
 import { toolRecovery } from '../../src/lib/toolrecovery.mjs' // (v0.492.0) the recovery book - the pick-less bootstrap's own report card
-import { recoveryFailWhy, recoveryFailWhyRow } from '../../src/lib/recoverwhy.mjs' // (v0.913.0) the failed why's own anatomy - the verbatim whys the book's classes collapsed + the re-fail cast (the loop's own rent shape)
+import { recoveryFailWhy, recoveryFailWhyRow, recoveryFailChains, recoveryFailChainsRow } from '../../src/lib/recoverwhy.mjs' // (v0.913.0) the failed why's own anatomy - the verbatim whys the book's classes collapsed + the re-fail cast (the loop's own rent shape); (v0.914.0) + the re-fail chain's own book - the maximal unhealed run per bot (the loop's own amplitude, the brake lever's own size)
 import { stickBill } from '../../src/lib/stickbill.mjs' // (v0.711.0) the stick economy's own bill - the four lanes' stick cells folded into one toll
 import { chaseBill } from '../../src/lib/chasebill.mjs' // (v0.712.0) the chase's own geometry - the chased deaths' killDelta bill (the speed gap vs the trade lost)
 import { crossfireBill } from '../../src/lib/crossfirebill.mjs' // (v0.714.0) the crossfire's own bill - the second hostile's kill folded (the killer's, the fled threat's, the crowd sensor's reads)
@@ -4242,6 +4242,15 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     if (rfw) {
       const rfwr = recoveryFailWhyRow(rfw)
       if (rfwr) console.log(`  ${rfwr}`)
+      // (v0.914.0) THE RE-FAIL CHAIN'S OWN BOOK - the adjacency's
+      // missing structure: the cast counts the repeats, the chain
+      // reads the AMPLITUDE (the maximal unhealed run per bot - the
+      // same walk's own input, zero re-parsing, one parser by import).
+      const rfc = recoveryFailChains(lines)
+      if (rfc) {
+        const rfcr = recoveryFailChainsRow(rfc)
+        if (rfcr) console.log(`  ${rfcr}`)
+      }
     }
   }
 }
