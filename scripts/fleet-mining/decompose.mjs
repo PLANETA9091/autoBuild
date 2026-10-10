@@ -18,6 +18,7 @@ import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/ho
 import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
+import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
 import { sensorWindowsBook, sensorWindowsRow } from '../../src/lib/sensorwindow.mjs' // (v0.881.0) THE SENSOR WINDOW'S OWN BOOK - the blind reads' own windows: a maximal run of consecutive reset(-1) pass reads in one bot's line-order stream (the reuse law: parseSentryPass is the one parser, the blind skin is the o2 kind 'reset' - the parser's own word, never re-spelled); the run's read count is the price, the pass span (from..to) is the clock - the sensor-health front's own next byte (the toll owns the rides, the windows own the DURATION)
@@ -835,6 +836,17 @@ if (o2g && o2g.deaths > 0) {
     const imm = rg.immediate.map(r => `${r.bot}@${r.ago}s (${r.leg ?? 'the leg unread'})`).join(' ')
     const del = rg.delayed.map(r => `${r.bot}@${r.ago}s`).join(' ')
     console.log(`  the re-entry's own gap (v0.746.0): immediate (<${REENTRY_IMMEDIATE_MAX}s - the release's own edge: the walk-out never got traction) x${rg.immediate.length}${imm ? `: ${imm}` : ''} / delayed (the bot's own return) x${rg.delayed.length}${del ? `: ${del}` : ''}`)
+  }
+  // (v0.912.0) THE RE-ENTRY'S OWN LEG - the stale class's own seat off the
+  // v0.746.0 rows' captured-but-unread leg field (the bill law: the
+  // ledger's own cells only, zero re-parsing - the skywalk law's own
+  // shape). WHICH WALK owns the returns to the water: the
+  // strict-majority seat, or the riders' concentration when the spread
+  // owns nothing; the unread class rides its own honest count.
+  const relb = reentryLegBill(rg)
+  if (relb) {
+    const relr = reentryLegRow(relb)
+    if (relr) console.log(`  ${relr}`)
   }
   // (v0.736.0) THE CRIED-WOLF DEATH - the churn's own aftermath join (the
   // skywalk law: two lenses, one read, no re-parsing). A bot whose trigger
