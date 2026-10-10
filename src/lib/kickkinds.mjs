@@ -24,7 +24,10 @@
 // face reads the honest silence (null).
 //
 
-const KICK_KIND_RE = /^(F\d+) \[\1\] KICKED: .*"translate":\{"type":"string","value":"([^"]+)"\}\}\}$/
+// (v0.906.0) exported for the bare seat's partition (barekicks.mjs reads
+// the SAME regex - one truth for what a kind is; the bare census's meter
+// is the partition itself, a drift here would split the seat's count)
+export const KICK_KIND_RE = /^(F\d+) \[\1\] KICKED: .*"translate":\{"type":"string","value":"([^"]+)"\}\}\}$/
 
 /**
  * kickKindCensus(lines) - the kicked clients' own reason census.

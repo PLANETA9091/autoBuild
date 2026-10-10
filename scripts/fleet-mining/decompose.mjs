@@ -113,6 +113,7 @@ import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog'
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
 import { kickBill } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes)
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
+import { kindlessKickCensus } from '../../src/lib/kindlesskicks.mjs' // (v0.906.0) the kindless kick's own seat - the KICKED lines the kind census refuses (no parsable translate byte; the partition prices the formless class the reads counted by hand)
 import { sockLossCensus, sockChurnJoin, sockJoinSeatRow, sockJoinRidersRow, sockBareSeatRow, sockBareRidersRow } from '../../src/lib/sockloss.mjs' // (v0.806.0) the socket loss's own book - the client-side death certificates (the error/socket-error/raw-stack bursts, the twin + raw reconciles, the log's thirds clock; v0.809.0 the join's own seat; v0.812.0 the bare kick's own seat)
 import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 book's own class - the o2-reset drown form split's own seat (the never lane the arm's own gap, the active lane the arm's own loss; the strict-majority law, a tie owns nothing)
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
@@ -1830,6 +1831,19 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     } else if (kk.verdict) {
       console.log('  the kick kinds\' own verdict (v0.763.0): no single kind owns the kicks (the storm has no seat)')
     }
+  }
+  // (v0.906.0) THE KINDLESS KICK'S OWN SEAT - the KICKED lines the kind
+  // census refuses (no parsable translate byte). Face 185 carried 4 of
+  // them beside its 5 duplicate_login kinds and the read counted them by
+  // hand; the partition prices the formless class per face (NOT the
+  // socket join's bare side v0.812.0 - that seat reads the kick whose
+  // socket never died, this seat reads the kick whose byte never rode).
+  const ks = kindlessKickCensus(lines)
+  if (ks) {
+    const kindlessTail = Object.entries(ks.byBot).sort((a, b) => b[1] - a[1]).map(([b, v]) => `${b} ${v}`).join(' / ')
+    console.log(`  the kindless kicks' own seat (v0.906.0): ${ks.n} kicked line(s) carried NO parsable kind byte - ${kindlessTail}${kk ? ` (beside the kinds row's ${kk.n} - the partition owns ${kk.n + ks.n} kicked clients)` : ' - the kinds row read silence'}`)
+  } else if (kk) {
+    console.log(`  the kindless seat is silent (v0.906.0): the kind byte owned every kicked client (${kk.n})`)
   }
 }
 // (v0.806.0) THE SOCKET LOSS'S OWN BOOK - the client-side death certificates.
