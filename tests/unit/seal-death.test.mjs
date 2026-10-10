@@ -14,7 +14,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import { parseSealDeathDrop, sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, SEAL_DEATH_LOSS_RE, SEAL_DEATH_EMPTY_RE, DEATH_END_PHASE_WINDOW_S, DEATH_BURST_WINDOW_S, DEATH_BURST_MIN } from '../../src/lib/sealdeath.mjs'
+import { parseSealDeathDrop, sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, SEAL_DEATH_LOSS_RE, SEAL_DEATH_EMPTY_RE, DEATH_END_PHASE_WINDOW_S, DEATH_BURST_WINDOW_S, DEATH_BURST_MIN, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs'
 import { SEAL_PRIORITY } from '../../src/lib/shelter.mjs'
 
 const CLOCK_ZERO = { timed: 0, untimed: 0, clockEnd: null, firstTs: null, lastTs: null, endPhase: 0, endPhaseWindowS: 60, maxBurst: 0, burstWindowS: 30, burstMin: 3, burstDeaths: 0, burstClusters: 0, burstEndPhase: 0, pace: null, spanS: 0, thirds: null } // (v0.733.0) the siege's own thirds ride the zero shape as null (the calm paradox owns the zero-death face)
@@ -868,7 +868,10 @@ test('WIRING: the decompose rides the reloot price beside the stranded seat (v0.
   // (v0.850.0) THE BAND'S OWN RE-PIN AGAIN: the armed rescue's own price
   // twin (rescueDeadPrice + rescueDeadPriceRow) joined the band - the same
   // law, every earlier token still rides.
-  assert.ok(src.includes("import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict } from '../../src/lib/sealdeath.mjs'"), 'the price joins the sealdeath import band')
+  // (v0.920.0) THE BAND'S OWN RE-PIN THE THIRD: the late third's own cast
+  // twin (deathThirdCast + deathThirdCastRow) joined the band - the same
+  // law, every earlier token still rides.
+  assert.ok(src.includes("import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs'"), 'the price joins the sealdeath import band')
   assert.ok(src.includes('relootRecovery, relootRecoveryRow'), 'the v0.843.0 tokens keep their band seats')
   const strandedAt = src.indexOf('stranded piles (v0.476.0)')
   const priceAt = src.indexOf('relootRecoveryRow(rr)')
@@ -1023,4 +1026,110 @@ test('WIRING: the decompose rides the rescue price beside the ledger\u0027s own 
   const deadCountAt = src.indexOf('dead-in-rescue: ${ledger.totals.dead}')
   const priceAt = src.indexOf('rescueDeadPriceRow(rdp)')
   assert.ok(deadCountAt > 0 && priceAt > deadCountAt, 'the price row prints beside the ledger\u0027s own dead count (the events and the mass adjacent)')
+})
+
+// ------------------------------------------------------------------
+// (v0.920.0) THE LATE THIRD'S OWN CAST - WHO owns the closing third's
+// deaths (the census's own deathRows cells: bot + ts + the drop's own u,
+// zero re-parsing). Face 192's own read is the motive: 7 of 10 timed
+// deaths drained the closing third, the face-193 arc read named 'F7 the
+// late diver' by hand - the cast's roster never rode a row.
+
+const CAST_ROWS = [
+  { bot: 'F5', lost: 20, ts: 40 },   // early (thirdS 100)
+  { bot: 'F6', lost: 10, ts: 150 },  // mid (thirdS 100..200)
+  { bot: 'F7', lost: 100, ts: 250 }, // late
+  { bot: 'F7', lost: 50, ts: 280 },  // late
+  { bot: 'F14', lost: 30, ts: 260 }, // late
+  { bot: 'F9', lost: 5, ts: null },  // unplaced (outside the seat)
+]
+
+test('the late cast: the strict-majority seat names the deadline\'s own diver', () => {
+  const cast = deathThirdCast(CAST_ROWS, 300)
+  assert.equal(cast.cls, 'seat')
+  assert.equal(cast.bot, 'F7')
+  assert.equal(cast.n, 2)
+  assert.equal(cast.late, 3)
+  assert.equal(cast.lateU, 180)
+  assert.equal(cast.share, 0.667)
+  assert.equal(cast.unplaced, 1)
+})
+
+test('the seat\'s own row byte-exact (THE DEADLINE\'S OWN DIVER)', () => {
+  const row = deathThirdCastRow(deathThirdCast(CAST_ROWS, 300))
+  assert.equal(row, "the late third's own cast (v0.920.0): the closing third took 3 death(s) / ~180u - F7 owns 2 of 3 (66.7%) - THE DEADLINE'S OWN DIVER: one bot's own loop rides the drain (1 unplaced)")
+})
+
+test('the riders row byte-exact (the tie\'s own measure)', () => {
+  const riders = deathThirdCast([
+    { bot: 'F14', lost: 60, ts: 220 },
+    { bot: 'F7', lost: 40, ts: 250 },
+    { bot: 'F2', lost: 10, ts: 270 },
+  ], 300)
+  assert.equal(riders.cls, 'riders')
+  const row = deathThirdCastRow(riders)
+  assert.equal(row, "the late third's own cast (v0.920.0): the closing third took 3 death(s) / ~110u - no solo bot owns the drain - F14 x1 + F2 x1 own 2 of 3 (66.7%) - the late crowd rides measured, not owned")
+})
+
+test('the v0.733.0 cut verbatim: the boundary second belongs to the LATER third', () => {
+  assert.equal(deathThirdCast([{ bot: 'F3', lost: 1, ts: 200 }], 300).late, 1) // ts=2*thirdS rides late
+  assert.equal(deathThirdCast([{ bot: 'F3', lost: 1, ts: 100 }], 300), null) // ts=thirdS rides mid - the late stays silent
+  assert.equal(deathThirdCast([{ bot: 'F3', lost: 1, ts: 99 }], 300), null) // strict early
+})
+
+test('the strict-majority fence: 1 of 2 is no seat (a tie owns nothing)', () => {
+  const cast = deathThirdCast([
+    { bot: 'F7', lost: 10, ts: 250 },
+    { bot: 'F14', lost: 20, ts: 260 },
+  ], 300)
+  assert.equal(cast.cls, 'riders')
+  assert.equal(cast.pairN, 2)
+})
+
+test('the solo face: one late death is a 100% seat (the cast speaks)', () => {
+  const cast = deathThirdCast([{ bot: 'F7', lost: 10, ts: 250 }], 300)
+  assert.equal(cast.cls, 'seat')
+  assert.equal(cast.n, 1)
+  assert.equal(cast.share, 1)
+})
+
+test('the honest silences: zero late, junk books, zero clock, the tagless fence', () => {
+  assert.equal(deathThirdCast([{ bot: 'F3', lost: 1, ts: 50 }], 300), null) // the drain's own silence
+  assert.equal(deathThirdCast(null, 300), null)
+  assert.equal(deathThirdCast(undefined, 300), null)
+  assert.equal(deathThirdCast([], 300), null)
+  assert.equal(deathThirdCast('junk', 300), null)
+  assert.equal(deathThirdCast(CAST_ROWS, null), null)
+  assert.equal(deathThirdCast(CAST_ROWS, 0), null)
+  assert.equal(deathThirdCast(CAST_ROWS, -5), null)
+  assert.equal(deathThirdCast([{ bot: '', lost: 5, ts: 250 }], 300), null) // the tagless fence
+  assert.equal(deathThirdCast([{ bot: 42, lost: 5, ts: 250 }], 300), null)
+})
+
+test('the junk-row law: non-object rows are skipped, the real cells still tally', () => {
+  const cast = deathThirdCast([null, 'junk', { bot: 'F7', lost: 10, ts: 250 }], 300)
+  assert.equal(cast.cls, 'seat')
+  assert.equal(cast.late, 1)
+  assert.equal(cast.lateU, 10)
+})
+
+test('the row\'s junk battery: wrong shapes never print', () => {
+  assert.equal(deathThirdCastRow(null), null)
+  assert.equal(deathThirdCastRow(undefined), null)
+  assert.equal(deathThirdCastRow('junk'), null)
+  assert.equal(deathThirdCastRow({}), null)
+  assert.equal(deathThirdCastRow({ cls: 'seat', late: 0, lateU: 0 }), null)
+  assert.equal(deathThirdCastRow({ cls: 'seat', late: 3, lateU: 10, bot: 'F7', n: 4, share: 1.34 }), null)
+  assert.equal(deathThirdCastRow({ cls: 'riders', late: 3, lateU: 10, leader: 'F7', leaderN: 1, runner: 'F14', runnerN: 1, pairN: 5, share: 1.67 }), null)
+  assert.equal(deathThirdCastRow({ cls: 'unknown', late: 3, lateU: 10 }), null)
+})
+
+test('WIRING: the late cast rides decompose beside the v0.854.0 kind row (v0.920.0)', () => {
+  const src = fs.readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.ok(src.includes('deathThirdCast, deathThirdCastRow'), 'the cast joins the sealdeath import band')
+  const kindAt = src.indexOf('thirdKindSplit(lines)')
+  const castAt = src.indexOf('deathThirdCast(sealDeath.deathRows, c.clockEnd)')
+  assert.ok(kindAt > 0 && castAt > kindAt, 'the cast rides beside the kind row, never before it')
+  const thirdsAt = src.indexOf('if (c.thirds) {')
+  assert.ok(castAt > thirdsAt, 'the cast rides inside the thirds block (the cut\'s own scope)')
 })

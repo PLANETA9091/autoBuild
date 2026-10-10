@@ -621,3 +621,79 @@ export function thirdsVerdict (thirds, timed) {
   if (!dominant) return { cls: 'spread', dom, dominant: false, share, counts, total }
   return { cls: dom === l ? 'late' : (dom === m ? 'mid' : 'early'), dom, dominant: true, share, counts, total }
 }
+
+// (v0.920.0) THE LATE DEATHS' OWN CAST - WHO owns the closing third's
+// deaths. The thirds priced the WHEN (the siege thirds v0.733.0: the
+// death COUNTS by the clock's thirds), the drain priced the HOW MUCH u
+// (the drain book v0.883.0), the kind join priced the WHAT (the v0.854.0
+// third kind) - the BOT axis rode raw: the late third's cast kept no
+// roster (face 192's own read: 7 of 10 timed deaths drained the closing
+// third, the face-193 arc read named 'F7 the late diver' by hand - no row
+// ever priced the cast). THE JOIN rides the census's own deathRows cells
+// (bot + ts + the drop's own u - zero re-parsing, the bill law's own
+// precedent): the thirds cut rides the v0.733.0 law VERBATIM (thirdS =
+// clockEnd/3, t < thirdS strict - the boundary second belongs to the
+// LATER third, the zero clock's own cut). THE SEAT rides the COUNTS (a
+// death is a death - the siege thirds' own currency; the drop's u rides
+// the tail as the drain's own confirmation, never the seat's currency):
+// the strict-majority law (a bot owns the drain only above half - a tie
+// owns nothing, the storm-has-no-seat precedent), the riders measure
+// beside the seat's silence (the top two under the byte law: counts desc,
+// then the bot's own byte asc - the riders cap). Junk never invents a
+// cast: a non-array or empty book, a non-finite or non-positive clockEnd,
+// a zero late third (the drain's own silence - the cast only speaks when
+// the closing third took deaths), or a cast with zero named bots (the
+// tagless fence) reads the honest silence (null). The untimed deaths stay
+// out of the seat and ride the tail honestly (the pre-first-hb class).
+export function deathThirdCast (deathRows, clockEnd) {
+  if (!Array.isArray(deathRows) || deathRows.length === 0) return null
+  if (!Number.isFinite(clockEnd) || clockEnd <= 0) return null
+  const thirdS = clockEnd / 3
+  let late = 0
+  let lateU = 0
+  let unplaced = 0
+  const bots = {}
+  for (const r of deathRows) {
+    if (!r || typeof r !== 'object') continue
+    const t = r.ts
+    if (t === null || t === undefined || !Number.isFinite(t)) { unplaced++; continue }
+    if (t < thirdS) continue
+    if (t < 2 * thirdS) continue
+    late++
+    lateU += Number.isFinite(r.lost) && r.lost > 0 ? r.lost : 0
+    if (typeof r.bot === 'string' && r.bot) bots[r.bot] = (bots[r.bot] || 0) + 1
+  }
+  if (late === 0) return null
+  const ranked = Object.entries(bots).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length === 0) return null
+  const [leader, leaderN] = ranked[0]
+  if (leaderN > late / 2) {
+    return { cls: 'seat', late, lateU, unplaced, thirdS, bot: leader, n: leaderN, share: +(leaderN / late).toFixed(3) }
+  }
+  const [runner, runnerN] = ranked.length > 1 ? ranked[1] : [null, 0]
+  const pairN = leaderN + runnerN
+  return { cls: 'riders', late, lateU, unplaced, thirdS, leader, leaderN, runner, runnerN, pairN, share: +(pairN / late).toFixed(3) }
+}
+
+// (v0.920.0) the cast's own row - one voice per class, never both (the
+// branch law): the seat names THE DEADLINE'S OWN DIVER (the arc read's
+// own coin), the riders keep the measure-not-owner voice. Junk never
+// prints a shape (the honest silence's own row law).
+export function deathThirdCastRow (cast) {
+  if (!cast || typeof cast !== 'object') return null
+  const { cls, late, lateU, unplaced, bot, n, share, leader, leaderN, runner, runnerN, pairN } = cast
+  if (!Number.isFinite(late) || late <= 0 || !Number.isFinite(lateU) || lateU < 0) return null
+  const tail = unplaced > 0 ? ` (${unplaced} unplaced)` : ''
+  if (cls === 'seat') {
+    if (typeof bot !== 'string' || !bot || !Number.isFinite(n) || n <= 0 || n > late ||
+        !Number.isFinite(share)) return null
+    return `the late third's own cast (v0.920.0): the closing third took ${late} death(s) / ~${lateU}u - ${bot} owns ${n} of ${late} (${(share * 100).toFixed(1)}%) - THE DEADLINE'S OWN DIVER: one bot's own loop rides the drain${tail}`
+  }
+  if (cls === 'riders') {
+    if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+        !Number.isFinite(leaderN) || leaderN <= 0 || !Number.isFinite(runnerN) || runnerN <= 0 ||
+        !Number.isFinite(pairN) || pairN > late || !Number.isFinite(share)) return null
+    return `the late third's own cast (v0.920.0): the closing third took ${late} death(s) / ~${lateU}u - no solo bot owns the drain - ${leader} x${leaderN} + ${runner} x${runnerN} own ${pairN} of ${late} (${(share * 100).toFixed(1)}%) - the late crowd rides measured, not owned${tail}`
+  }
+  return null
+}

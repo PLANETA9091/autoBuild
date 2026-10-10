@@ -11,7 +11,7 @@ import { shooterCensus, shooterAttackerBill, shooterAttackerBillRow, shooterAtta
 import { shelterLedger, OUTCOME_CLASSES, shelterOutcomeBill, shelterOutcomeBillRow, shelterOutcomeRiders, shelterOutcomeRidersRow } from '../../src/lib/shelterledger.mjs' // (v0.457.0) the combat verdict's price - the outcome join; (v0.466.0) the class vocabulary for the flee-ground cross-read; (v0.795.0) WHICH verdict owns the shelter book
 import { fleeForkSeatRow, fleeForkRidersRow } from '../../src/lib/fleefork.mjs' // (v0.810.0) the flee fork's own seat - WHICH fork owns the flee death book (the chased-down cells' strict majority + the bands' measure-not-owner riders)
 import { deathSweep } from '../../src/lib/deathsweep.mjs' // (v0.389.0) the honest death sweep's field read
-import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read
+import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read; (v0.920.0) the late third's own cast - WHO owns the closing third's deaths (the census's own deathRows cells, zero re-parsing)
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
 import { sealCensus, SEAL_FAMILIES } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
@@ -431,6 +431,17 @@ if (sweep.keywordOnly.length) {
         if (tk) {
           const tkRow = thirdKindRow(tk)
           if (tkRow) console.log(`  ${tkRow}`)
+        }
+        // (v0.920.0) THE LATE THIRD'S OWN CAST - the thirds join the census's
+        // own deathRows cells (bot + ts, zero re-parsing): WHO owns the
+        // closing third's deaths - the seat names the deadline's own diver,
+        // the tie's silence prints the riders (the measure-not-owner
+        // companion, one row never both). The late third's own silence (the
+        // drain's own fence) reads the honest silence.
+        const dtCast = deathThirdCast(sealDeath.deathRows, c.clockEnd)
+        if (dtCast) {
+          const dtcRow = deathThirdCastRow(dtCast)
+          if (dtcRow) console.log(`  ${dtcRow}`)
         }
       }
     }
