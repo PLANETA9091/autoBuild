@@ -114,6 +114,7 @@ import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) t
 import { bankDocket, doorstepStormCensus } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
+import { relogDiveJoin, relogDiveJoinRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure)
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
 import { kickBill } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes)
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
@@ -1789,6 +1790,24 @@ console.log('  hazard memorized:', count(/hazard memorized/))
       ? `; the loop's skin: ${rb.repeats} bot(s) relogged 2+ (${rbs}) owning ${rb.repeatRelogs}/${rb.relogs} relogs (${pct(rb.repeatRelogs / rb.relogs)}%)${rb.repeatRelogs / rb.relogs >= 0.5 ? ' - THE RELOG FEEDS THE LOOP' : ''}`
       : '; no repeats - the saver did its job, the loop never opened'
     console.log(`  the relog's own bill (v0.715.0): ${rb.relogs} relog(s) -> ${rb.stalls} stalled walk-out(s) (${pct(rb.stallRate)}%), the ladder r1 ${rb.rungs.r1} / r2 ${rb.rungs.r2} / r3 ${rb.rungs.r3}${loopTail}`)
+  }
+  // (v0.916.0) THE RELOG'S OWN DIVE JOIN - the loop bill's own missing
+  // half: the v0.715.0 meter priced the relogs' own stalls, the
+  // CLOSURE rode unread - the relog bots joined to the rescue lane's
+  // own spenders (the bill law: the two books' own cells only, zero
+  // re-parsing - frozenCensus's relogs.byBot verbatim + the ledger's
+  // own perBot starts; the seat law: above half owns).
+  {
+    const relogByBot = (frozenCensus(lines).relogs && frozenCensus(lines).relogs.byBot) || null
+    const startByBot = {}
+    for (const [bot, cell] of Object.entries(ledger.perBot)) {
+      if (cell && typeof cell === 'object') startByBot[bot] = cell.starts
+    }
+    const rdj = relogDiveJoin(relogByBot, startByBot)
+    if (rdj) {
+      const rdjr = relogDiveJoinRow(rdj)
+      if (rdjr) console.log(`  ${rdjr}`)
+    }
   }
 }
 
