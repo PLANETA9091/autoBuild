@@ -40,7 +40,7 @@ import {
   SEAL_PLACE_TIMEOUT_MS // (v0.544.0) THE SEAL PLACE FENCE - the PILLAR lesson reaches the miner's own seal legs
 } from '../lib/surface.mjs'
 import { isHostileEntity, pickWeapon, pickMeleeWeapon, threatVerdict, threatVerdictLane, effectiveHp, isPoisoned, witchFightStep, meleeFightStep, meleeReturnPlan, driftReturnPlan, cooldownTicksForWeapon, foughtEntityGone, FIGHT_DEADLINE_MS, MELEE_RETURN_WAIT_TICKS, DRIFT_RETURN_TICKS, DETECT_RANGE, ENGAGE_RANGE, FLEE_HP, fleeResponse, kiteHopTarget, RANGED_HOSTILES, RANGED_COOLDOWN_MS, rangedCooldownUntil, rangedCooldownLive, MELEE_COOLDOWN_MS, meleeCooldownUntil, meleeCooldownLive, fightDeathVerdict, ringRangedClass, OPEN_FIELD_FLEE_HP, LENS_FOE_RANGE } from '../lib/combat.mjs'
-import { parseDeathMessage, inferenceVerdict } from '../lib/deathcause.mjs'
+import { parseDeathMessage, inferenceVerdict, lastHarmName } from '../lib/deathcause.mjs'
 import { deathDropLine, deathDropTotal, drownContextLine, drownedKillContextLine, suffocateContextLine, voidContextLine, wetRescueWindowLive } from '../lib/statcarry.mjs' // (v0.357.0) the wet-rescue window classifier - the storm verdict's exclusion feed
 import { bestPickaxe, bestPickTier, oreTierGuardLine, oreTierRequired, tierDebtOf } from '../lib/toolupgrade.mjs' // (v0.251.0) the ore-tier guard: the pocket's best pick decides which ores may break; (v0.503.0) the tier debt rides the verdict
 import { isNight } from '../lib/nightsafety.mjs'
@@ -428,8 +428,25 @@ export function createMiner ({
         // map that drives the whole water program. Only a REAL bar 0 counts.
         const o2 = bot.oxygenLevel
         const drowning = oxygenInDomain(o2) && o2 <= 0
+        // (v0.903.0) THE WATER CONTEXT'S OWN JOIN: the stale sentinel (-1) leaves
+        // the oxygen domain right after a rescue/respawn (the v0.64.0 gate holds)
+        // - and the fallback then dropped a SUBMERGED bot to the gravity fallback.
+        // Face 183 priced it: 3 of 3 drown->fall confusions rode the dead sensor
+        // (F11/F14 with the rescue leg RUNNING, the context holding 'feet water,
+        // head water' the inferrer never read). The head cell discriminates: head
+        // water = the drowning read (water breaks every fall), head air = the
+        // v0.64.0 air-fall wound stays closed. The probe rides only the ambiguous
+        // branch (a hostile name wins first, a real bar-zero drowns upstream).
+        let headWater = null
+        if (!h && !drowning) {
+          try {
+            const wr = waterRead()
+            headWater = isWaterName(wr.head) || wr.headWaterlogged === true
+          } catch { /* the probe must never break the sentry - junk judges nothing */ }
+        }
+        const lh = lastHarmName({ hostile: h ? h.name : null, drowning, headWater })
         lastHarm = {
-          name: h ? h.name : (drowning ? 'drowning' : 'fall/env'),
+          name: lh.name,
           dist: h ? h.dist : 0,
           at: Date.now(),
           pos: bot.entity.position.floored()

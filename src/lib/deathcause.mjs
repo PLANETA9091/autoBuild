@@ -205,3 +205,36 @@ export function inferenceVerdict (server, inferredName) {
   }
   return 'unknown'
 }
+
+// (v0.903.0) THE WATER CONTEXT'S OWN JOIN - the blind sensor's own cure. The
+// v0.844.0 direction row named the front ('the direction's own front prices
+// the blind sensor the raw split rode unnamed') and face 183 priced it in the
+// field: drown->fall owned 3 of 3 sensor-blind confusions (100.0%), all three
+// with the context holding the proof the inferrer never read - F11 'o2
+// reset(-1), feet water, head water, rescue 40s ago' (the rescue leg RUNNING),
+// F14 'o2 reset(-1), feet water, head water, rescue 4s ago', F13 'rescue
+// never'. The lastHarm write site reads the oxygen bar at the hp drop; the
+// v0.64.0 gate (the -1 reset sentinel arriving right after a rescue/respawn)
+// correctly refuses a stale bar as the drowning read - and the fallback then
+// dropped a SUBMERGED bot to the gravity fallback. The head cell is the
+// discriminator both laws share: head water = the drowning read (a submerged
+// bot with dropping hp is not a gravity death - water breaks every fall), head
+// air = the v0.64.0 air-fall wound stays closed (a fall death needs air).
+//
+// The verdict composer, pure and junk-safe: the hostile name wins first (the
+// nearest-hostile scan's own seat), a REAL bar-zero drowns second (the
+// v0.64.0 domain gate upstream), a submerged head with a stale bar drowns
+// third (this join - the face-183 shape), and everything else stays the
+// honest gravity fallback. A junk/missing probe never drowns: the join needs
+// the boolean the water read owns, and garbage judges nothing (the v0.104.0
+// waterlog law).
+/**
+ * @param {{hostile?: string|null, drowning?: boolean, headWater?: boolean|null}} [r]
+ * @returns {{name: string, why: 'hostile'|'oxygen'|'submerged-stale-o2'|'gravity-fallback'}}
+ */
+export function lastHarmName ({ hostile = null, drowning = false, headWater = null } = {}) {
+  if (hostile && typeof hostile === 'string' && hostile.length) return { name: hostile, why: 'hostile' }
+  if (drowning === true) return { name: 'drowning', why: 'oxygen' }
+  if (headWater === true) return { name: 'drowning', why: 'submerged-stale-o2' }
+  return { name: 'fall/env', why: 'gravity-fallback' }
+}
