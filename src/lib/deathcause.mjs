@@ -238,3 +238,34 @@ export function lastHarmName ({ hostile = null, drowning = false, headWater = nu
   if (headWater === true) return { name: 'drowning', why: 'submerged-stale-o2' }
   return { name: 'fall/env', why: 'gravity-fallback' }
 }
+
+// ---------------------------------------------------------------------------
+// (v0.905.0) THE SUBMERGED HOSTILE'S OWN DEMOTION - the face-185 read's own
+// cure. Face 185 (38069268290, the v0.903.0 join's first field read) priced
+// the hole in the priority law: drown->mob owned 1 of 1 sensor-blind
+// confusions (100.0%) - F6's context held 'o2 reset(-1), feet water, head
+// water, rescue never' (the EXACT ambiguous shape the v0.903.0 join cures)
+// while the inferred tail read 'creeper@15.7' and the bracket read
+// CONTRADICTS against the server's own 'drowned'. The hostile seat won
+// first and the water context never got its say - a creeper cannot even
+// detonate submerged (vanilla defuses it), so a dead-sensor hostile is a
+// PROXIMITY witness, not a verdict. THE DEMOTION LAW: the hostile name
+// defers ONLY on the exact ambiguous shape - the o2 bar OUT of its domain
+// (the stale sentinel, the dead sensor), the head SUBMERGED, and NOT a
+// real bar-zero (a real drowning keeps its upstream oxygen seat, and a
+// live-bar submerged bot keeps the hostile - a real underwater mob kill
+// with a breathing sensor is not this class). The demotion is silent: the
+// row corroborates through the v0.136.0 verdict law the census always had
+// (agree instead of disagree), zero new log lines, zero new why vocabulary
+// (the demoted read lands in the existing 'submerged-stale-o2' class).
+// Junk judges nothing: any non-boolean probe reads false (the legacy shape).
+/**
+ * @param {{hostile?: string|null, drowning?: boolean, o2InDomain?: boolean|null, headWater?: boolean|null}} [r]
+ * @returns {boolean} true = the hostile name must defer to the water context
+ */
+export function submergedHostileDemotes ({ hostile = null, drowning = false, o2InDomain = null, headWater = null } = {}) {
+  if (drowning === true) return false
+  if (o2InDomain !== false) return false
+  if (headWater !== true) return false
+  return typeof hostile === 'string' && hostile.length > 0
+}

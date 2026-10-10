@@ -40,7 +40,7 @@ import {
   SEAL_PLACE_TIMEOUT_MS // (v0.544.0) THE SEAL PLACE FENCE - the PILLAR lesson reaches the miner's own seal legs
 } from '../lib/surface.mjs'
 import { isHostileEntity, pickWeapon, pickMeleeWeapon, threatVerdict, threatVerdictLane, effectiveHp, isPoisoned, witchFightStep, meleeFightStep, meleeReturnPlan, driftReturnPlan, cooldownTicksForWeapon, foughtEntityGone, FIGHT_DEADLINE_MS, MELEE_RETURN_WAIT_TICKS, DRIFT_RETURN_TICKS, DETECT_RANGE, ENGAGE_RANGE, FLEE_HP, fleeResponse, kiteHopTarget, RANGED_HOSTILES, RANGED_COOLDOWN_MS, rangedCooldownUntil, rangedCooldownLive, MELEE_COOLDOWN_MS, meleeCooldownUntil, meleeCooldownLive, fightDeathVerdict, ringRangedClass, OPEN_FIELD_FLEE_HP, LENS_FOE_RANGE } from '../lib/combat.mjs'
-import { parseDeathMessage, inferenceVerdict, lastHarmName } from '../lib/deathcause.mjs'
+import { parseDeathMessage, inferenceVerdict, lastHarmName, submergedHostileDemotes } from '../lib/deathcause.mjs'
 import { deathDropLine, deathDropTotal, drownContextLine, drownedKillContextLine, suffocateContextLine, voidContextLine, wetRescueWindowLive } from '../lib/statcarry.mjs' // (v0.357.0) the wet-rescue window classifier - the storm verdict's exclusion feed
 import { bestPickaxe, bestPickTier, oreTierGuardLine, oreTierRequired, tierDebtOf } from '../lib/toolupgrade.mjs' // (v0.251.0) the ore-tier guard: the pocket's best pick decides which ores may break; (v0.503.0) the tier debt rides the verdict
 import { isNight } from '../lib/nightsafety.mjs'
@@ -450,13 +450,23 @@ export function createMiner ({
         // v0.64.0 air-fall wound stays closed. The probe rides only the ambiguous
         // branch (a hostile name wins first, a real bar-zero drowns upstream).
         let headWater = null
-        if (!h && !drowning) {
+        if (!drowning) {
           try {
             const wr = waterRead()
             headWater = isWaterName(wr.head) || wr.headWaterlogged === true
           } catch { /* the probe must never break the sentry - junk judges nothing */ }
         }
-        const lh = lastHarmName({ hostile: h ? h.name : null, drowning, headWater })
+        // (v0.905.0) THE SUBMERGED HOSTILE'S OWN DEMOTION: the face-185 read's
+        // own cure (drown->mob owned 1 of 1 sensor-blind confusions 100.0% - F6's
+        // 'creeper@15.7' read CONTRADICTS against the server's own 'drowned' on
+        // the EXACT stale+submerged shape the v0.903.0 join cures). The dead
+        // sensor's hostile is a proximity witness, not a verdict (a creeper
+        // cannot even detonate submerged) - the name defers to the water context
+        // on the ambiguous branch only: a real bar-zero drowns upstream, a
+        // live-bar submerged bot keeps the hostile (a real underwater mob kill).
+        let hostileName = h ? h.name : null
+        if (hostileName && submergedHostileDemotes({ hostile: hostileName, drowning, o2InDomain: oxygenInDomain(o2), headWater })) hostileName = null
+        const lh = lastHarmName({ hostile: hostileName, drowning, headWater })
         lastHarm = {
           name: lh.name,
           dist: h ? h.dist : 0,
