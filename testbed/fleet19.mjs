@@ -1202,6 +1202,7 @@ async function runBot (name, target, index) {
   // over a window instead of hitting the stalling server as one herd again.
   let failStreak = 0
   let lastWhy = '' // (v0.16.3) why the last session ended - printed on the retry line
+  let kickKind = null // (v0.904.0) THE DUPLICATE'S OWN FLOOR: the kick's own kind rides the error text; null keeps the legacy floor byte for byte
   let yardGoal = null // (v0.16.4) first-login position = the yard (world spawn): the bank fallback target
   // (v0.18.9) per-bot stat survival: the old miner dies with its counters on every
   // reconnect, so two server-tick storms rewrote history (fleet #129: mined 854 ->
@@ -3792,8 +3793,13 @@ async function runBot (name, target, index) {
     } catch (e) {
       // (v0.16.3) count kicks ONCE here; the retry itself is counted below - the old
       // loop incremented `reconnects` in both places, so every kick was reported twice
-      if (/kicked|end|disconnect/i.test(e.message)) { kicks++; lastWhy = 'kick/disconnect' }
-      else lastWhy = String(e.message || 'unknown error').slice(0, 120)
+      if (/kicked|end|disconnect/i.test(e.message)) {
+        kicks++; lastWhy = 'kick/disconnect'
+        // (v0.904.0) the duplicate's own kind, read off the error's own text
+        // (both vocabularies: the server's translate value 'disconnect.duplicate_login'
+        // and mineflayer's 'already logged in' phrasing); any other kick rides null.
+        if (/duplicate_login|already logged in/i.test(e.message)) kickKind = 'multiplayer.disconnect.duplicate_login'
+      } else lastWhy = String(e.message || 'unknown error').slice(0, 120)
     }
     // (v0.18.9) totals survive into the next attempt's miner; a failed LOGIN leaves
     // no stats object - keep the previous carry instead of resetting to zero
@@ -3819,9 +3825,12 @@ async function runBot (name, target, index) {
     // seat, one increment; the bot is known AT the re-link)
     reconnectCensus.set(name, (reconnectCensus.get(name) || 0) + 1)
     // (v0.16.3) jittered exponential backoff with a per-bot phase: see src/lib/backoff.mjs
-    const delay = reconnectDelayMs({ attempt: failStreak, index, rand: Math.random })
+    // (v0.904.0) a duplicate_login kick rides the duplicate's own floor (6000ms grace
+    // for the old session) - the kind is null on every other path (the legacy shape).
+    const delay = reconnectDelayMs({ attempt: failStreak, index, rand: Math.random, kickKind })
     console.log(`${name} retry #${failStreak} in ${(delay / 1000).toFixed(1)}s (${lastWhy})`)
     lastWhy = ''
+    kickKind = null // (v0.904.0) the kind is per-attempt - the next session classifies its own
     await new Promise(r => setTimeout(r, delay))
   }
 }

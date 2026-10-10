@@ -33,6 +33,10 @@ const GOLDEN = 0.6180339887498949
  * @param {number} [opts.phaseSpanMs=4000] width of the per-bot phase window
  * @param {number} [opts.floorMs=750]  never below this (a retry must make progress)
  * @param {() => number} [opts.rand]   RNG in [0,1); injectable for tests
+ * @param {string|null} [opts.kickKind=null] the kick's own kind (the translate value word
+ *   or any string containing it; null/absent/junk = the legacy shape byte for byte)
+ * @param {number} [opts.dupFloorMs=6000] the duplicate_login floor - the OLD session's
+ *   server-side grace; 0/NaN/negative disables it (the legacy floor rides again)
  * @returns {number} delay in ms (integer)
  */
 export function reconnectDelayMs ({
@@ -43,7 +47,9 @@ export function reconnectDelayMs ({
   jitter = 0.5,
   phaseSpanMs = 4000,
   floorMs = 750,
-  rand = Math.random
+  rand = Math.random,
+  kickKind = null,
+  dupFloorMs = 6000
 } = {}) {
   const n = Number.isFinite(attempt) ? Math.max(0, Math.floor(attempt)) : 0
   const base = Number.isFinite(baseMs) && baseMs > 0 ? baseMs : 2000
@@ -58,9 +64,23 @@ export function reconnectDelayMs ({
   // 2. +/- jitter/2 around it -> [exp - half, exp + half]
   const half = (exp * jit) / 2
   let delay = exp - half + rng() * half * 2
+  // 2.5 (v0.904.0) THE DUPLICATE'S OWN FLOOR - lifts the PRE-PHASE delay so
+  // the per-bot phase still spreads the herd ABOVE the floor (6000 + each
+  // bot's own 0..4000 slice - the anti-herd law survives the grace). A
+  // duplicate_login kick means the server still holds the OLD session: the
+  // generic floor's prompt retry races that session's own death and feeds
+  // the loop (the kick bill: duplicate_login owned 10 of 10 kicks - 100% -
+  // and 5 bots with 2+ events own 94% of the churn; the relog IS the loop's
+  // food). Every other kick - and every junk kind (non-string, wrong word) -
+  // reads kindFloor 0 and keeps the legacy shape byte for byte.
+  const kindStr = typeof kickKind === 'string' ? kickKind : ''
+  const kindFloor = kindStr.includes('duplicate_login') && Number.isFinite(dupFloorMs) && dupFloorMs > 0
+    ? dupFloorMs
+    : 0
+  if (kindFloor > 0) delay = Math.max(kindFloor, delay)
   // 3. deterministic per-bot phase: slot i lands at i*golden mod 1 of the window
   if (span > 0 && index > 0) delay += ((index * GOLDEN) % 1) * span
-  // 4. clamp
+  // 4. clamp (the legacy byte - the generic floor, the cap + phase ceiling)
   return Math.max(floor, Math.min(cap + span, Math.round(delay)))
 }
 
