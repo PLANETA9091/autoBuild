@@ -50,6 +50,7 @@ import { dragonZoneAnchor, inDragonZone, dragonZoneExit, DRAGON_ZONE_EXIT_MS } f
 import { duskBankPlan } from '../src/lib/duskbank.mjs' // (v0.229.0) the heavy pocket's priced dusk delivery: the plan landed v0.226.0, the wiring rides this lane
 import { shedTripDue } from '../src/lib/bankshed.mjs' // (v0.566.0) THE SHED CONSULT SEAT - the whale cure's fourth leg joins the arming ladder's last rung: the plan (v0.558.0), the pricer (v0.561.0), the gate (v0.564.0), the wiring (this lane)
 import { reconnectDelayMs, LOGIN_SPAWN_TIMEOUT_MS } from '../src/lib/backoff.mjs'
+import { kickWitnessFill } from '../src/lib/kickwitness.mjs' // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - the kicked event's byte fills the seats the catch never hears
 import { writeFileAtomic } from '../src/lib/atomicsave.mjs'
 import { snapshotStats, seedStats, sentryAttributionRow, rescueEconomyDecode, rescueHoleRow, stormDietRow, stormVerdictRow, airBarLedgerRow, sensorLiarRow, scoutReportRow, mapCoverageRow, snapshotScoutStats, seedScoutStats } from '../src/lib/statcarry.mjs'
 import { createServerGuard, isSocketLossLine, isTimeoutKickLine, probeServerPort, PROBE_INTERVAL_MS } from '../src/lib/serverguard.mjs'
@@ -1231,6 +1232,10 @@ async function runBot (name, target, index) {
     let miner
     let claimSync = null // (v0.15.0) cross-process PVB2 claim hearing, attached after login
     let hazardSync = null // (v0.62.0) cross-process PVB2|hazard hearing, attached after login
+    // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - the kicked event's own byte, captured
+    // per attempt (a fresh bot object per attempt - no stale carry, no reset law needed);
+    // the catch's e.message never carries it on the silent path (see the fill site below)
+    let kickWitness = null
     try {
       miner = createMiner({
         host: '127.0.0.1',
@@ -1361,6 +1366,15 @@ async function runBot (name, target, index) {
         })
       })
       bots.set(name, { miner, target })
+      // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - capture the kicked event's own byte:
+      // the server's own reason (the same JSON the KICKED line prints) is the kick's own
+      // class, and the catch's e.message never carries it on the silent-death path (the
+      // entity dies, no throw surfaces - the face-187 '()' skin's own seam). One listener
+      // per attempt, attached BEFORE the login fence (a duplicate login-reject is captured
+      // too - the relog loop's own food); zero new log lines (the byte rides no print).
+      try {
+        miner.bot.on('kicked', r => { kickWitness = typeof r === 'string' ? r : JSON.stringify(r) })
+      } catch { /* a bot without events holds no witness - the legacy shape byte for byte */ }
       seedStats(miner.stats, carry) // (v0.18.9) the reconnect must not erase what the bot already mined
       // (v0.545.0) THE STALLED-LOGIN FENCE: a naked ready never settles on a half-open
       // login (see backoff.mjs) - the 12-attempt budget and the deadline never walk again
@@ -3800,6 +3814,19 @@ async function runBot (name, target, index) {
         // and mineflayer's 'already logged in' phrasing); any other kick rides null.
         if (/duplicate_login|already logged in/i.test(e.message)) kickKind = 'multiplayer.disconnect.duplicate_login'
       } else lastWhy = String(e.message || 'unknown error').slice(0, 120)
+    }
+    // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - the fill law (src/lib/kickwitness.mjs):
+    // the empty why fills 'kick/disconnect' (the '()' skin's own seat - the KICKED byte IS
+    // the kick/disconnect class), the null kind fills the duplicate's own kind off the
+    // witness byte (the SAME two-vocabulary regex the catch reads - one law, both seats);
+    // a SET seat NEVER overwrites (the catch's own verdict stands), a missing/junk byte
+    // fills NOTHING (the legacy shape byte for byte). The kind rides the delay below (the
+    // floor lifts - the face-187 miss's own cure), the why rides the retry line (the skin
+    // starves); the retimeter (v0.907.0) prices the field effect on the next faces.
+    {
+      const filled = kickWitnessFill({ lastWhy, kickKind, reason: kickWitness })
+      lastWhy = filled.lastWhy
+      kickKind = filled.kickKind
     }
     // (v0.18.9) totals survive into the next attempt's miner; a failed LOGIN leaves
     // no stats object - keep the previous carry instead of resetting to zero
