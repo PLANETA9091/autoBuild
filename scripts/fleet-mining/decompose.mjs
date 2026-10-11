@@ -135,7 +135,7 @@ import { whaleWaterBill } from '../../src/lib/whalewater.mjs' // (v0.698.0) the 
 import { whaleRotationRow } from '../../src/lib/transitloop.mjs' // (v0.754.0) the whale's own rotation - the seat split's verdict (the rotation was the wall's own disguise)
 import { whaleRentRow } from '../../src/lib/whalerent.mjs' // (v0.911.0) the loop's own rent - the give-up's own arm and the launches past it
 import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) the calm paradox - the death-free face's full-speed water lane
-import { bankDocket, doorstepStormCensus } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll)
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
 import { relogDiveJoin, relogDiveJoinRow, relogDiveRiders, relogDiveRidersRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure); (v0.917.0) + the dive join's own riders - the cap's own tail named (the membership's own census)
@@ -2570,6 +2570,12 @@ if (bd && (bd.door.total > 0 || bd.pocket.total > 0)) {
       ? ' - THE CHEST DOOR NEVER OPENED: the walk\'s own failures own the silence'
       : ' - THE DOCKET SPLITS: the door and the empty pocket share the silence'
   console.log(`  the bank's docket (v0.700.0): the door leg ${bd.door.total} (chest unreachable ${bd.door.unreachable}, decide timeouts ${bd.door.decideTimeouts}, no chest ${bd.door.noChest}, lid timeouts ${bd.door.lidTimeout}, beyond radius ${bd.door.beyondRadius}), the empty-pocket leg ${bd.pocket.total} (zero probes ${bd.pocket.zeroProbes}, deposit zeros ${bd.pocket.depositZeros}), the why-phrase ${bd.pocket.nothingToDeposit}, views ${bd.views}, fallbacks ${bd.fallbacks}${bd.depositPositives > 0 ? `, deposit positives ${bd.depositPositives}` : ''}${fork}${bd.rate ? `, the door's rate ${bd.rate.doorPct}% of ${bd.rate.visits} visit-lines` : ''}`)
+  // (v0.963.0) THE BANK DOOR'S OWN CLOCK - the door leg's own WHEN (the
+  // docket priced the anatomy; the 2:1 dominance law prices the phase -
+  // the early bank's own lever reads live); no dominance reads the
+  // honest silence
+  const bdcv = bankDoorClockVerdict(bd)
+  if (bdcv) console.log(`  ${bankDoorClockRow(bdcv)}`)
 }
 // (v0.704.0) THE FUEL LANE'S OWN DOOR - the nudge walk's own verdict in
 // the fuel lane's skin, the bank's legs' sibling across the lane fence.

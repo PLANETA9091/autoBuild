@@ -151,6 +151,9 @@
 // filter-key.
 //
 
+import { parsePulseAnchor } from './opendeaf.mjs' // (v0.963.0) the pulse rail's own anchor - the door leg's clock brackets against it (opendeaf imports only hopcensus - no cycle)
+import { phaseBookOf } from './phasebook.mjs' // (v0.963.0) the shared lattice - the door book's seats ride the same court the smelt ledger's clips ride (the one-lattice law, zero re-spelling)
+
 /**
  * bankDocket(lines) - the bank lane's outcome docket.
  *
@@ -170,6 +173,9 @@
  *          rescueRefused: number},
  *   views: number, fallbacks: number, plans: number,
  *   depositPositives: number,
+ *   doorClock: {anchors: number, clockEnd: number|null, thirdS: number|null,
+ *               n: number, byPhase: {early: number, mid: number, late: number,
+ *               unplaced: number}, wide: number},
  *   rate?: {visits: number, doorPct: number, pocketPct: number}}}
  */
 export function bankDocket (lines, visits) {
@@ -186,27 +192,40 @@ export function bankDocket (lines, visits) {
     views: 0,
     fallbacks: 0,
     plans: 0,
-    depositPositives: 0
+    depositPositives: 0,
+    doorClock: null // (v0.963.0) the door leg's own phase book - assigned after the walk (the pulse rail's own bracket; the one-lattice law)
   }
+  // (v0.963.0) THE BANK DOOR'S OWN CLOCK's rail: the pulse anchors and
+  // the door leg's own line indexes ride the SAME walk (one scan - the
+  // smelt ledger's own two-phase structure, the zeroclock's own law)
+  const anchors = []
+  const doorIdx = []
+  let li = -1
   for (const line of src) {
+    li++
     if (typeof line !== 'string') continue
+    const pa = parsePulseAnchor(line)
+    if (pa) anchors.push({ i: li, ts: pa.ts })
     if (/\bbank\b|\bbanked\b/.test(line)) d.bankLines++
     // the why-phrase rides independently (the probe's, the deposit byte's
     // and the fallback's own why - counted wherever it appears)
     if (/nothing to deposit/.test(line)) d.pocket.nothingToDeposit++
     // the door leg, four skins (checked before the pocket leg - the
-    // probe-wrapped door failures ride the probe's own skin)
-    if (/zero: cannot open chest/.test(line)) { d.door.lidTimeout++; d.door.total++; continue }
-    if (/zero: chest beyond/.test(line)) { d.door.beyondRadius++; d.door.total++; continue }
+    // probe-wrapped door failures ride the probe's own skin); every
+    // door-leg seat joins its own line index (the v0.963.0 clock's
+    // family - the same rail the smelt ledger's clips ride)
+    if (/zero: cannot open chest/.test(line)) { d.door.lidTimeout++; d.door.total++; doorIdx.push(li); continue }
+    if (/zero: chest beyond/.test(line)) { d.door.beyondRadius++; d.door.total++; doorIdx.push(li); continue }
     if (/chest unreachable/.test(line)) {
       d.door.unreachable++
       // (v0.703.0) the decide skin's own count - the A* family's share of
       // the unreachable leg (the doorstep starvation's standing input)
       if (/Took to long to decide path to goal/.test(line)) d.door.decideTimeouts++
       d.door.total++
+      doorIdx.push(li)
       continue
     }
-    if (/no chest reached/.test(line)) { d.door.noChest++; d.door.total++; continue }
+    if (/no chest reached/.test(line)) { d.door.noChest++; d.door.total++; doorIdx.push(li); continue }
     // (v0.705.0) THE IRON COMMUNE'S OWN DOOR - anchored on the family's
     // own prefix (the double-prefix nudge skin included) and checked
     // BEFORE the fuel cell: the fuel refused-tail can MENTION an iron
@@ -267,6 +286,16 @@ export function bankDocket (lines, visits) {
     if (/bank fallback:/.test(line)) d.fallbacks++
     if (/\bbank trip: /.test(line)) d.plans++
   }
+  // (v0.963.0) THE BANK DOOR'S OWN CLOCK - the door leg's phase book
+  // against the pulse rail (the shared lattice's own law byte for byte,
+  // phasebook.mjs the one definition): the smelt ledger's own two-phase
+  // structure - the anchors bracket each door seat after the walk, the
+  // midpoint classifies into the clock's thirds, a missing end reads
+  // 'unplaced' (counted, never assumed), a wide bracket counts wide.
+  const clockEnd = anchors.length ? anchors[anchors.length - 1].ts : null
+  const thirdS = clockEnd !== null ? clockEnd / 3 : null
+  const doorBook = phaseBookOf(doorIdx, anchors, thirdS)
+  d.doorClock = { anchors: anchors.length, clockEnd, thirdS, n: doorIdx.length, byPhase: doorBook.byPhase, wide: doorBook.wide }
   // (v0.702.0) THE DOOR'S RATE DIAL - the legs' share of the visit lane,
   // the bankYield rounding (x1000 round / 10 - one honest decimal). The
   // rate rides only on a positive finite count AND legs that read: a
@@ -279,6 +308,54 @@ export function bankDocket (lines, visits) {
     }
   }
   return d
+}
+
+// (v0.963.0) THE BANK DOOR'S OWN CLOCK - the verdict. The v0.700.0
+// docket priced the door's own anatomy (the five skins' WHO leg), the
+// v0.913.0 starve clock priced the decide family's face-wide thirds,
+// but the DOOR LEG's own WHEN never rode a seat: the face-230 storm's
+// own read named the crater's shape (92 unreachable / 67 decide / the
+// door's rate 95%) while the deaths rode the late third - whether the
+// door's own failures rode the same closing churn (the early bank's
+// own evidence - BANK EARLY, the door's storms live in the closing
+// thirds) or the opening's own geometry (the yard's placement is the
+// front) stayed unpriced. The door leg's phase book rides the shared
+// lattice's own 2:1 dominance law (the v0.775.0 court byte-shared):
+// LATE dominance = the door rode the closing churn - the early bank's
+// own evidence; EARLY = the opening's own geometry owns the door (the
+// yard's placement is the front, not the clock); MID = the mid-run
+// churn's pace prices the trips' own spread. No dominance (the mixed
+// spread) or an empty book -> the honest silence (null - the storm has
+// no seat). One-parser law: the verdict reads the docket's own
+// doorClock field (the same walk's own cells) - zero re-parsing, zero
+// new regexes. Mining surface only: zero fleet wiring, zero new log
+// lines - CENSUS GUARD.
+export function bankDoorClockVerdict (d) {
+  const c = d && d.doorClock ? d.doorClock : null
+  if (!c || !c.n) return null
+  const p = c.byPhase
+  if (p.late * 2 > c.n) return { verdict: 'late', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.mid * 2 > c.n) return { verdict: 'mid', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.early * 2 > c.n) return { verdict: 'early', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  return null
+}
+
+// (v0.963.0) the bank door's own row - the lever's own clause names the
+// early bank's own reading; the anchor density rides so the reader
+// judges the midpoint law (the zeroclock's own honesty). Junk never
+// prints a clock (the honest silence's own row law).
+export function bankDoorClockRow (v) {
+  if (!v || typeof v !== 'object') return null
+  const { verdict, n, byPhase, anchors, wide } = v
+  if ((verdict !== 'late' && verdict !== 'mid' && verdict !== 'early') ||
+      !Number.isFinite(n) || n <= 0 || !byPhase || typeof byPhase !== 'object' ||
+      !Number.isFinite(anchors) || anchors < 0 || !Number.isFinite(wide) || wide < 0) return null
+  const { early, mid, late, unplaced } = byPhase
+  for (const x of [early, mid, late, unplaced]) if (!Number.isFinite(x) || x < 0) return null
+  const book = `early ${early} / mid ${mid} / late ${late} / unplaced ${unplaced}, ${wide} wide of ${anchors} anchor(s)`
+  if (verdict === 'late') return `the bank door's own clock (v0.963.0): the door leg rode LATE-dominant (${late} of ${n}; ${book}) - the door's failures rode the closing churn: BANK EARLY (the early bank's own evidence)`
+  if (verdict === 'mid') return `the bank door's own clock (v0.963.0): the door leg rode MID-dominant (${mid} of ${n}; ${book}) - the mid-run churn's pace prices the door - the trips' own spread is the front`
+  return `the bank door's own clock (v0.963.0): the door leg rode EARLY-dominant (${early} of ${n}; ${book}) - the opening's own geometry owns the door: the yard's placement is the front, not the clock`
 }
 
 /**

@@ -142,6 +142,7 @@ export const SMELT_TOOK_RE = /^\[(F\d+)\] took (\d+) x ([a-z_]+) \((\d+)\/(\d+)\
 
 import { fuelYieldOf, SMELT_SECONDS_PER_ITEM } from './smelting.mjs' // (v0.747.0) the vanilla yield table's own voice - the diet row's capacity bar, never a made constant (the fueldiet.mjs precedent; smelting never imports smeltledger - no cycle); (v0.748.0) SMELT_SECONDS_PER_ITEM - the clock window's own vanilla bar (200 ticks / 20 tps)
 import { parsePulseAnchor } from './opendeaf.mjs' // (v0.775.0) the pulse rail's own anchor - the fuel clip's clock brackets against it (opendeaf imports only hopcensus - no cycle)
+import { phaseBookOf } from './phasebook.mjs' // (v0.963.0) THE PHASE BRACKET'S OWN SHARED LATTICE - the v0.775.0 law lifted to its own home (the one-lattice law: one definition, the fuel book's and the clock book's seats ride the same court zero re-spelled)
 
 /**
  * Read the smelt lane's own words into a ledger.
@@ -305,34 +306,13 @@ export function smeltLedger (lines) {
   // sparse-anchor honesty the row prints so the reader judges it).
   const clockEnd = anchors.length ? anchors[anchors.length - 1].ts : null
   const thirdS = clockEnd !== null ? clockEnd / 3 : null
-  // (v0.962.0) THE PHASE BRACKET'S OWN SHARED LATTICE - the v0.775.0 law
-  // byte-identical for BOTH clip classes (the one-parser law: one rail,
-  // one bracket law, one 2:1 court - the fuel book's own reading stays
-  // byte for byte, the clock book rides beside it zero re-spelled)
-  const phaseBookOf = (idx) => {
-    const byPhase = { early: 0, mid: 0, late: 0, unplaced: 0 }
-    let wide = 0
-    for (const i of idx) {
-      let lo = null; let hi = null
-      for (const a of anchors) {
-        if (a.i < i) lo = a.ts
-        else { hi = a.ts; break }
-      }
-      const mid = lo !== null && hi !== null ? (lo + hi) / 2 : null
-      let phase = 'unplaced'
-      if (mid !== null && thirdS !== null) {
-        if (mid <= thirdS) phase = 'early'
-        else if (mid <= thirdS * 2) phase = 'mid'
-        else phase = 'late'
-        if (hi - lo > thirdS) wide++
-      }
-      byPhase[phase]++
-    }
-    return { byPhase, wide }
-  }
-  const fcBook = phaseBookOf(fuelClipIdx)
+  // (v0.963.0) the phase books ride the SHARED LATTICE's own law (the
+  // v0.775.0 bracket byte for byte, phasebook.mjs the one definition -
+  // the fuel book's own reading stays byte for byte, the clock book
+  // rides beside it)
+  const fcBook = phaseBookOf(fuelClipIdx, anchors, thirdS)
   ledger.fuelClipClock = { anchors: anchors.length, clockEnd, thirdS, n: fuelClipIdx.length, byPhase: fcBook.byPhase, wide: fcBook.wide }
-  const ccBook = phaseBookOf(clockClipIdx)
+  const ccBook = phaseBookOf(clockClipIdx, anchors, thirdS)
   ledger.clockClipClock = { anchors: anchors.length, clockEnd, thirdS, n: clockClipIdx.length, byPhase: ccBook.byPhase, wide: ccBook.wide }
   return ledger
 }

@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { bankDocket, doorstepStormCensus } from '../../src/lib/bankdocket.mjs'
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow } from '../../src/lib/bankdocket.mjs'
 
 // Face 32's live shapes verbatim (run 37457243091, the silent-bank face:
 // 143 bank-ish lines, 0u banked) - the docket's two legs ride the bank
@@ -69,7 +69,9 @@ test('bankDocket honest zeros and the junk battery', () => {
     pocket: { zeroProbes: 0, depositZeros: 0, total: 0, nothingToDeposit: 0 },
     fuel: { total: 0, decide: 0, noPath: 0, retryTimeout: 0, other: 0, goalBrake: 0, rescueRefused: 0 },
     iron: { total: 0, decide: 0, noPath: 0, retryTimeout: 0, other: 0, goalBrake: 0, rescueRefused: 0 },
-    views: 0, fallbacks: 0, plans: 0, depositPositives: 0
+    views: 0, fallbacks: 0, plans: 0, depositPositives: 0,
+    // (v0.963.0) the door clock rides the honest empty book on a doorless face (the additive law - the old cells byte-stable beside it)
+    doorClock: { anchors: 0, clockEnd: null, thirdS: null, n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, wide: 0 }
   })
   // junk-safe: non-input reads null (the smeltledger convention)
   assert.equal(bankDocket(42), null)
@@ -298,4 +300,72 @@ test("the fuel's other skin: the governor's two voices and the rescue's refusal 
   assert.equal(mixed.fuel.other, 2)
   assert.equal(mixed.fuel.goalBrake, 1)
   assert.equal(mixed.fuel.rescueRefused, 1)
+})
+
+// (v0.963.0) THE BANK DOOR'S OWN CLOCK - the door leg's phase book rides
+// the pulse rail (the shared lattice, phasebook.mjs the one definition);
+// the door leg's own cells stay byte-stable beside the new field (the
+// additive law).
+test('v0.963.0 the bank door\u2019s own clock rides the pulse rail (the shared lattice)', () => {
+  const lines = [
+    'F7 bank: chest unreachable', // idx0: before any anchor -> unplaced
+    'b] n=1 ts=30s rss=300M', // anchor ts=30
+    'F4 [F4] hop: chest at [-115,79,415] d=28 zero: chest unreachable (Took to long to decide path to goal!)', // idx2: lo=30 hi=300 mid=165 <= 320 -> early (the decide skin)
+    'b] n=2 ts=300s rss=300M', // anchor ts=300
+    'F2 [F2] hop: chest at [-120,79,413] d=14 zero: cannot open chest (open chest: timeout after 10000ms)', // idx4: lo=300 hi=600 mid=450 -> mid (the lid skin)
+    'b] n=3 ts=600s rss=300M', // anchor ts=600
+    'F3 [F3] hop: chest at [-105,79,413] d=51 zero: chest beyond the hop search radius 48 - walking home instead', // idx6: lo=600 hi=960 mid=780 -> late; hi-lo=360 > 320 -> wide (the beyond skin)
+    'b] n=4 ts=960s rss=300M', // anchor ts=960 (clockEnd, thirdS=320)
+    'F11 food trip: 0 (no chest reached) - walking home instead', // idx8: no hi -> unplaced (the noChest skin)
+    'F16 [F16] hop: chest at [-141,79,389] d=20 zero: nothing to deposit' // idx9: the POCKET leg - never joins the door family
+  ]
+  const d = bankDocket(lines)
+  assert.equal(d.door.total, 5)
+  assert.deepEqual(d.doorClock, { anchors: 4, clockEnd: 960, thirdS: 320, n: 5, byPhase: { early: 1, mid: 1, late: 1, unplaced: 2 }, wide: 1 })
+  // the pocket probe never joined the door family (the legs' own fence)
+  assert.equal(d.pocket.zeroProbes, 1)
+  // a 1/1/1 spread owns nothing (the 2:1 law reads the honest silence)
+  assert.equal(bankDoorClockVerdict(d), null)
+  // the doorless face rides the honest empty book
+  const doorless = bankDocket(['F1 bank: 12'])
+  assert.deepEqual(doorless.doorClock, { anchors: 0, clockEnd: null, thirdS: null, n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, wide: 0 })
+  assert.equal(bankDoorClockVerdict(doorless), null)
+})
+
+test('v0.963.0 the bank door clock verdict reads the three shapes (the 2:1 dominance law)', () => {
+  // the late shape: 5 of 5 late (the storm's own shape - the closing churn)
+  const late = bankDoorClockVerdict({ doorClock: { anchors: 38, clockEnd: 761, thirdS: 253.66666666666666, n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 }, wide: 0 } })
+  assert.equal(late.verdict, 'late')
+  assert.equal(late.n, 5)
+  // the mid shape: 2 of 2 mid
+  assert.equal(bankDoorClockVerdict({ doorClock: { anchors: 31, clockEnd: 621, thirdS: 207, n: 2, byPhase: { early: 0, mid: 2, late: 0, unplaced: 0 }, wide: 0 } }).verdict, 'mid')
+  // the early shape: 3 of 4 (the opening's own geometry shape)
+  assert.equal(bankDoorClockVerdict({ doorClock: { anchors: 30, clockEnd: 900, thirdS: 300, n: 4, byPhase: { early: 3, mid: 0, late: 0, unplaced: 1 }, wide: 0 } }).verdict, 'early')
+  // the split owns nothing
+  assert.equal(bankDoorClockVerdict({ doorClock: { anchors: 46, clockEnd: 921, thirdS: 307, n: 8, byPhase: { early: 0, mid: 4, late: 4, unplaced: 0 }, wide: 0 } }), null)
+  // the honest silences: no doors, no docket, no field
+  assert.equal(bankDoorClockVerdict({ doorClock: { anchors: 10, clockEnd: 300, thirdS: 100, n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, wide: 0 } }), null)
+  assert.equal(bankDoorClockVerdict(null), null)
+  assert.equal(bankDoorClockVerdict({}), null)
+})
+
+test('v0.963.0 the bank door clock rows speak byte-exact and junk never prints', () => {
+  const late = bankDoorClockRow({ verdict: 'late', n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 }, anchors: 38, wide: 0, thirdS: 253.66666666666666 })
+  assert.equal(late, `the bank door's own clock (v0.963.0): the door leg rode LATE-dominant (5 of 5; early 0 / mid 0 / late 5 / unplaced 0, 0 wide of 38 anchor(s)) - the door's failures rode the closing churn: BANK EARLY (the early bank's own evidence)`)
+  const mid = bankDoorClockRow({ verdict: 'mid', n: 2, byPhase: { early: 0, mid: 2, late: 0, unplaced: 0 }, anchors: 31, wide: 0, thirdS: 207 })
+  assert.equal(mid, `the bank door's own clock (v0.963.0): the door leg rode MID-dominant (2 of 2; early 0 / mid 2 / late 0 / unplaced 0, 0 wide of 31 anchor(s)) - the mid-run churn's pace prices the door - the trips' own spread is the front`)
+  const early = bankDoorClockRow({ verdict: 'early', n: 4, byPhase: { early: 3, mid: 0, late: 0, unplaced: 1 }, anchors: 30, wide: 0, thirdS: 300 })
+  assert.equal(early, `the bank door's own clock (v0.963.0): the door leg rode EARLY-dominant (3 of 4; early 3 / mid 0 / late 0 / unplaced 1, 0 wide of 30 anchor(s)) - the opening's own geometry owns the door: the yard's placement is the front, not the clock`)
+  for (const junk of [undefined, null, 42, 'str', {}, { verdict: 'mixed', n: 4, byPhase: { early: 2, mid: 2, late: 0, unplaced: 0 }, anchors: 5, wide: 0 }, { verdict: 'late', n: -1, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, anchors: 5, wide: 0 }, { verdict: 'late', n: 3, byPhase: null, anchors: 5, wide: 0 }]) {
+    assert.equal(bankDoorClockRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.963.0 the bank door clock rides the decompose mine (WIRING)', async () => {
+  const { readFileSync } = await import('node:fs')
+  const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.equal(src.includes('bankDoorClockVerdict(bd)'), true)
+  assert.equal(src.includes('bankDoorClockRow(bdcv)'), true)
+  assert.equal(src.includes("the bank door's own clock"), false) // the prose lives in the lib, never duplicated in the mine
+  assert.equal(src.includes('the door leg rode LATE-dominant'), false)
 })
