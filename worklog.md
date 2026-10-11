@@ -25214,3 +25214,22 @@ Stage Summary:
 - FACE 216 = 38143628698 dispatched on the v0.955.0 tree.
 - Next free version 0.956.0 (origin re-verify MANDATORY).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261011-2200
+Agent: main agent (cron fire 2200, Job ID 414125)
+Task: fire 2200 A-G loop (FACE 216 FIRST READ + the dispatch)
+
+Work Log:
+- A: synced /home/z/privateB-repo (tip 9fdbc189 = the lane's v0.956.0 THE DROWN KIND'S OWN SPOT BOOK - the water spot [-121,398] front priced WHERE-side; 0.956.0 TAKEN, next free 0.957.0 origin re-verify MANDATORY). Verdicts BY RUN ID: FACE 216 = 38143628698 (5abc6cd8, the v0.955.0 tree, my fire-2130 dispatch) SUCCESS terminal - the craft-storm fix HELD its first fleet ride (integration green).
+- FACE 216 FIRST READ (artifact 11704791058, decomposed on the v0.956.0 tree; solo claim; saved to scripts/face216/): THE v0.956.0 DROWN-SITE BOOK'S FIRST LIVE FACE - THE HONEST NULL: 'drowns 2 - drowned 2, underground 1/surface 1 - the sites' own silence: every drown rode its own water this face - THE WATER'S OWN SPREAD, not one pool's repeat' - face-215's one-pool gate ([-121,398] x3) did NOT repeat (F15 [-138,58,391], F9 [-129,48,412]); deaths 3 (drown 2 + mob 1, the Skeleton owns the face's end - the water toll receded 5 -> 3). THE BANK'S NINTH FACE - the hold BROKE: mined 2215, banked 1031 = 46.5% (215: 61.7%, 213: 64.5% - two faces above 60%, the third slipped below half), yield 6.2u/visit over 165 visit-lines, surplus 0u, conversion 98.5%. THE MATERIAL BALANCE CLOSED for the first time: leaks +33u (+1.6% of mined, within 5% - the counters closed the loop, the unit-count trap did not distort this face). THE UNPAID ASK'S SEAT SPOKE: F9 owns 2987s of 5546s (53.9% SOLO - THE CLAMP'S OWN VICTIM; face-213: F2, face-215: the riders' crowd). The casts' rotation: combat F10 x11 + F9 x11 22 of 52 (42.3%); torch F12 x40 + F13 x30 70 of 316 (22.2%); vein F19 x24 + F16 x16 40 of 138 (29.0%).
+- F: dispatch law: pre-poll THE SEAT FREE (FACE 216 terminal, zero active dispatches) -> POST ci.yml 204 -> FACE 217 = 38145587355 materialized on 9fdbc189 (the v0.956.0 tree - the drown-site book's own tree + the casts' next rotation), in_progress verified BY RUN ID + sha.
+- No version this fire (the read + the dispatch is the fire's shape; 0.956.0 landed mid-fire by the lane); next free 0.957.0 (origin re-verify MANDATORY).
+- NEXT FIRE READ CHAIN: FACE 217 = 38145587355 verdict BY RUN ID, then artifact FIRST READ if unclaimed (the v0.956.0 tree's own face: the drown-site book's second face + the casts' third on-tree faces + the bank's tenth face (46.5% - flood or recover) + the unpaid seat's next name); carried: the bank front (the hold broke - the crater's cycle: 49.1 -> 43.4 -> 20.1 -> 64.5 -> 61.7 -> 46.5), the water front (the spread priced), the fuel tithe's clock, the o2-low constant, F2's churn, the legacy list. THEN dispatch (x2 polls).
+- OPEN FRONTS: the bank's cycle read (46.5%); the fuel supply's live read; the o2-low trigger's constant; F2's churn; the legacy list (every front PRICED); the sandbox mortality (the reclone debt paid fire 2130).
+
+Stage Summary:
+- FACE 216 = 38143628698 SUCCESS FIRST READ (solo claim): the v0.956.0 drown-site book's FIRST LIVE face priced the honest null (the water spread, not the pool's repeat); the bank's hold BROKE to 46.5%; the material balance closed for the first time (+1.6%); the unpaid seat spoke (F9 solo 53.9%).
+- FACE 217 = 38145587355 dispatched on the v0.956.0 tree.
+- Next free version 0.957.0 (origin re-verify MANDATORY).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
