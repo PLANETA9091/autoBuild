@@ -124,6 +124,7 @@ import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog'
 import { relogDiveJoin, relogDiveJoinRow, relogDiveRiders, relogDiveRidersRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure); (v0.917.0) + the dive join's own riders - the cap's own tail named (the membership's own census)
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
 import { kickBill, loginChurnCast, loginChurnCastRow, loginChurnRiders, loginChurnRidersRow } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes); (v0.936.0) + the login churn's own cast - the bill's bot-level seat (the bill's own cells, zero re-parsing)
+import { sweepCast, sweepCastRow, sweepRiders, sweepRidersRow } from '../../src/lib/sweepcast.mjs' // (v0.937.0) the sweep census's own cast - the census line's bot-level seat (the census's own per-bot cells, zero re-parsing)
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
 import { kindlessKickCensus } from '../../src/lib/kindlesskicks.mjs' // (v0.906.0) the kindless kick's own seat - the KICKED lines the kind census refuses (no parsable translate byte; the partition prices the formless class the reads counted by hand)
 import { duplicateRetryRides } from '../../src/lib/retrytiming.mjs' // (v0.907.0) the floor's own retimeter - the duplicate_login kick joined to the bot's NEXT retry line (the delay the loop actually rode: above = the grace's own proof, below = THE MISS, unpriced = the face's own end)
@@ -3212,6 +3213,19 @@ console.log('  zone entries:', count(/dragonzone: bot inside the kill zone/), 'p
 const occurrences = (re) => lines.reduce((a, l) => a + (l.match(re) ?? []).length, 0)
 console.log('=== SWEEP CENSUS (the harvest, v0.139.0+; the v0.228.0 defer) ===')
 console.log('  census lines:', count(/ sweep: /), 'per-bot:', fmt(perBot(/ sweep: /)))
+// (v0.937.0) THE SWEEP'S OWN CAST - the census line's bot-level seat (the
+// count-seat precedent): each sweep census line is one vote, the seat reads
+// the census's OWN per-bot cells (zero re-parsing), rides beside the raw
+// line - never before it. Zero fleet log lines, read-time tooling only.
+{
+  const swCells = perBot(/ sweep: /)
+  const swSeat = sweepCast(swCells)
+  if (swSeat) console.log(`  ${sweepCastRow(swSeat)}`)
+  else {
+    const swr = sweepRiders(swCells)
+    if (swr) console.log(`  ${sweepRidersRow(swr)}`)
+  }
+}
 console.log('  harvests:', count(/sweep: collected \d+/))
 console.log('  zero-histogram lines:', count(/sweep: 0 collected - /))
 console.log('  unreachable buckets:', occurrences(/machine unreachable/g))
