@@ -95,7 +95,7 @@ export function starveClockBook (lines) {
     if (hb) { lastT = hb.tsS; clockEnd = hb.tsS }
     const wf = parseWalkFail(l)
     if (wf) {
-      if (wf.why === 'decide-timeout') { stamps.push({ lane: LANE_WALK, ts: lastT }); lanes[LANE_WALK] = (lanes[LANE_WALK] || 0) + 1 }
+      if (wf.why === 'decide-timeout') { stamps.push({ lane: LANE_WALK, ts: lastT, bot: wf.bot }); lanes[LANE_WALK] = (lanes[LANE_WALK] || 0) + 1 }
       continue
     }
     const sv = parseSweepVerdict(l)
@@ -103,24 +103,24 @@ export function starveClockBook (lines) {
       for (const p of sv.pairs) {
         const cls = classifySweepReason(p.reason)
         if (cls && cls.why === 'machine-unreachable-decide-timeout') {
-          for (let i = 0; i < p.n; i++) { stamps.push({ lane: LANE_SWEEP, ts: lastT }); lanes[LANE_SWEEP] = (lanes[LANE_SWEEP] || 0) + 1 }
+          for (let i = 0; i < p.n; i++) { stamps.push({ lane: LANE_SWEEP, ts: lastT, bot: sv.bot }); lanes[LANE_SWEEP] = (lanes[LANE_SWEEP] || 0) + 1 }
         }
       }
       continue
     }
     const hz = parseHopZero(l)
     if (hz && hz.klass && hz.klass.why === 'decide-timeout') {
-      stamps.push({ lane: LANE_HOP, ts: lastT }); lanes[LANE_HOP] = (lanes[LANE_HOP] || 0) + 1
+      stamps.push({ lane: LANE_HOP, ts: lastT, bot: hz.bot }); lanes[LANE_HOP] = (lanes[LANE_HOP] || 0) + 1
       continue
     }
     const wb = parseBankWalkBack(l)
     if (wb) {
-      if (wb.why === 'chest-unreachable-decide-timeout') { stamps.push({ lane: LANE_BANK, ts: lastT }); lanes[LANE_BANK] = (lanes[LANE_BANK] || 0) + 1 }
+      if (wb.why === 'chest-unreachable-decide-timeout') { stamps.push({ lane: LANE_BANK, ts: lastT, bot: wb.bot }); lanes[LANE_BANK] = (lanes[LANE_BANK] || 0) + 1 }
       continue
     }
     const bz = parseBankZero(l)
     if (bz) {
-      if (bz.why === 'chest-unreachable-decide-timeout') { stamps.push({ lane: LANE_BANK, ts: lastT }); lanes[LANE_BANK] = (lanes[LANE_BANK] || 0) + 1 }
+      if (bz.why === 'chest-unreachable-decide-timeout') { stamps.push({ lane: LANE_BANK, ts: lastT, bot: bz.bot }); lanes[LANE_BANK] = (lanes[LANE_BANK] || 0) + 1 }
       continue
     }
   }
@@ -234,4 +234,113 @@ export function starveClockRow (verdict) {
     : ` - ${lever}`
   const burstBit = ` - the burst's own share: ${burst} of ${timed} (${Math.round(burstShare * 100)}%)${burstShare >= 0.5 ? ' - one window priced the mass' : ''}`
   return `${head}${seatBit}${burstBit}`
+}
+
+//
+// THE STARVE'S OWN BOT (v0.932.0) - the starve book's own WHO axis. The
+// v0.913.0 clock seated the SKY axis (which third owns the starves) and
+// the face 200 read named the mass as a sky note ('starves mid 71 of
+// 133, 53%'), but no row ever said WHOSE A* starves own the book - the
+// WHO axis rode raw since v0.913.0 (the v0.931.0 standdown bot seat's
+// own sibling). THE BILL LAW (the book's own stamps verbatim - the
+// stamp's own bot byte the atom, zero re-parsing, one book, the v0.926.0
+// prey fold's own precedent; the book's fold now carries the bot byte
+// additively - the {lane, ts} shape never moved, the verdict reads
+// untouched): the bot axis is ts-independent - an untimed stamp still
+// names its bot (the tail law's own honesty, the v0.931.0 own law); a
+// stamp without a well-formed bot byte never seats (the real stamps
+// still tally - the junk fences' own law).
+//
+// THE STRICT-MAJORITY LAW (the v0.931.0 own precedent): a bot owns the
+// sky only above half the bot-keyed starves - a tie owns nothing (the
+// storm-has-no-seat precedent). The riders measure beside the seat's
+// silence (the top two under the byte law: count desc, the bot's own
+// byte asc). THE BRANCH LAW FENCED IN THE LIB (the riders read null
+// whenever the seat's owner exists - the v0.930.0 stakes' own fence
+// shape). Junk never invents a seat: a non-object book without stamps,
+// a non-array stamps leg, a zero-sum bot book - the honest silence.
+// Pure: reads, never mutates. Zero fleet wiring (mining-surface only,
+// the v0.913.0 own precedent).
+//
+
+const STARVE_BOT_RE = /^F\d+$/
+
+// The bot-keyed tally over the book's own stamps (or a bare stamps
+// array - the census-or-bare acceptance, the v0.930.0 own shape). The
+// key IS the atom: a junk bot byte stakes nothing.
+const starveBotTally = (book) => {
+  const stamps = book && typeof book === 'object' && !Array.isArray(book)
+    ? book.stamps
+    : (Array.isArray(book) ? book : null)
+  if (!Array.isArray(stamps)) return null
+  const byBot = {}
+  let total = 0
+  for (const s of stamps) {
+    if (!s || typeof s !== 'object' || Array.isArray(s)) continue
+    if (typeof s.bot !== 'string' || !STARVE_BOT_RE.test(s.bot)) continue
+    byBot[s.bot] = (byBot[s.bot] || 0) + 1
+    total += 1
+  }
+  if (total <= 0) return null
+  return { byBot, total }
+}
+
+// (v0.932.0) THE STARVE'S OWN BOT SEAT - the strict-majority law over
+// the bot-keyed starve mass (a tie owns nothing).
+export function starveBotSeat (book) {
+  const t = starveBotTally(book)
+  if (!t) return null
+  const half = t.total / 2
+  for (const [bot, owns] of Object.entries(t.byBot)) {
+    if (owns > half) return { bot, owns, ofStarves: t.total, shareOfStarves: +(owns / t.total).toFixed(3) }
+  }
+  return null
+}
+
+// (v0.932.0) THE STARVE'S OWN RIDERS - the seat's silence's own
+// companion (the byte law: count desc, the bot's own byte asc). A
+// MEASURE, never a verdict-owner; the branch law fenced in the lib.
+export function starveBotRiders (book) {
+  const t = starveBotTally(book)
+  if (!t) return null
+  const ranked = Object.entries(t.byBot).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length < 2) return null
+  const half = t.total / 2
+  if (ranked[0][1] > half) return null // the branch law: the seat's owner exists - the mix never prints
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofStarves: t.total, pairOwns, shareOfStarves: +(pairOwns / t.total).toFixed(3), duet: leaderOwns === runnerOwns }
+}
+
+// (v0.932.0) the starve's own bot row - THE STARVE'S OWN BOT: the seat
+// names WHICH bot's own A* starves own the sky; the spawn's own geometry
+// and the crowded entity sky price the front the thirds rode unnamed.
+// Junk never prints a seat (the honest silence's own row law).
+export function starveBotSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { bot, owns, ofStarves, shareOfStarves } = seat
+  if (typeof bot !== 'string' || !STARVE_BOT_RE.test(bot) ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofStarves) || ofStarves <= 0 || owns > ofStarves ||
+      !Number.isFinite(shareOfStarves)) return null
+  const unit = ofStarves === 1 ? 'starve' : 'starves'
+  return `the starve's own bot (v0.932.0): ${bot} owns ${owns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN BOT: one bot's own A* starves own the sky - the pathfinder's own WHO axis prices the crowd the thirds rode unnamed`
+}
+
+// (v0.932.0) the starve's own riders row - THE STARVE'S OWN MIX: a
+// measure of the shape, never a named owner (the seat's tie law holds).
+// Junk never prints a shape (the honest silence's own row law).
+export function starveBotRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofStarves, pairOwns, shareOfStarves } = r
+  if (typeof leader !== 'string' || !STARVE_BOT_RE.test(leader) ||
+      typeof runner !== 'string' || !STARVE_BOT_RE.test(runner) ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 ||
+      !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofStarves) || ofStarves <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofStarves ||
+      !Number.isFinite(shareOfStarves)) return null
+  const unit = ofStarves === 1 ? 'starve' : 'starves'
+  return `the starve's own riders (v0.932.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN MIX: the seat's tie law held, the mix is the shape - the starves' own spread prices the sky the solo law refused to seat`
 }

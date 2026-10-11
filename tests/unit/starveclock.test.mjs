@@ -174,8 +174,11 @@ test('THE SPREAD LAW: the burst share names a diffuse face honestly (no one-wind
 
 test('THE CENSUS GUARD: the row rides the walk-fail lens beside the decide weather (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow } from '../../src/lib/starveclock.mjs'")) // the import
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.932.0 band's own growth - the intents held)
   const wx = src.indexOf('const dw = decideWeather(lines)')
-  const sv = src.indexOf('const svc = starveClockVerdict(starveClockBook(lines))')
-  assert.ok(wx > 0 && sv > wx) // the seat rides beside the weather row, never before it
+  const sb = src.indexOf('const svb = starveClockBook(lines)')
+  const sv = src.indexOf('const svc = starveClockVerdict(svb)')
+  assert.ok(wx > 0 && sb > wx && sv > sb) // one parse - the book computed once, the clock rides beside the weather row, never before it
+  const st = src.indexOf('const svt = starveBotSeat(svb)')
+  assert.ok(st > sv) // the seat rides beside the clock row, never before it (the v0.932.0 growth)
 })
