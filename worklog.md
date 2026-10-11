@@ -25193,3 +25193,24 @@ Stage Summary:
 - v0.955.0 landed: the craft storm's own voice seats the environment skip - the log's give-up line is the class's own signature, the state read's under-read priced shut.
 - FACE 214 closed as the honest flake (two-lane corroborated); FACE 215 the retry in flight on the v0.954.0 tree.
 - Next free version 0.956.0 (origin re-verify MANDATORY).
+
+---
+Task ID: cron30-20261011-2130
+Agent: main agent (cron fire 2130, Job ID 414125)
+Task: fire 2130 A-G loop (the sandbox reclone + FACE 215 FIRST READ + the dispatch)
+
+Work Log:
+- THE SANDBOX DIED between fires: /home/z/privateB-repo and two helper scripts (run-status.mjs, artifact-fetch.mjs) were lost - THE RECLONE DEBT PAID this fire: the repo recloned + synced (tip 5abc6cd8 = the lane's v0.955.0 THE CRAFT STORM'S OWN VOICE - the lane fixed the smelt test's storm-skip boundary test-side, independently corroborating fire-2100's flake verdict; 0.955.0 TAKEN, next free 0.956.0 origin re-verify MANDATORY); run-status.mjs + artifact-fetch.mjs rebuilt to the same interfaces; npm install 98 packages (the cache survived).
+- Verdicts BY RUN ID: FACE 215 = 38141561770 (5f364ff6, the v0.954.0 tree, my fire-2100 retry) **SUCCESS terminal** - the smelt storm did not strike again (the flake verdict holds); the lane's push gate 38141536996 cancelled by concurrency (no-loss).
+- FACE 215 FIRST READ (artifact 11703239184, 4140 rows decomposed on the v0.955.0 tree; solo claim): THE ON-TREE PREMIERES - the v0.954.0 combat cast's FIRST ON-TREE FLEET face (pool 71, F19 x22 + F6 x16 own 38 of 71 53.5% - THE GLADIATORS' OWN CROWD); the v0.951.0 unpaid ask's ON-TREE face - the RIDERS this time (F9 x3134s + F8 x3024s own 6156s of 11200s 55.0% - THE VICTIMS' OWN CROWD; face-213 was F2 SOLO 64.3% - the tie law held, the refusal is the shape); the v0.952.0 vein cast's ON-TREE face (F4 x43 + F15 x34 77 of 180 42.8% - THE PROSPECTORS' OWN CROWD); the v0.949.0 table cast's ON-TREE face - THE SEAT SPOKE (F8 owns 3 of 4 75.0% - THE TOOL CHAIN'S OWN CARPENTER); the torch cast's next face (F14 x36 + F18 x28 64 of 333 19.2%). THE BANK'S EIGHTH FACE - the recovery HELD: mined 2495, banked 1540 = 61.7% (face-213: 64.5% - two faces above 60% after the 20.1% crater), yield 8.6u/visit over 180 visit-lines, pocket 63->1194u (peak 1895u at t-216s), leaks -283u (-11.7%). THE FUEL TITHE'S CLOCK TICKS: 2 firings 22u (F4 10u @68%, F19 12u @74%) - the second consecutive voiced face (213: 2 firings 17u), the answer 22u vs 94u asked (23.4%). DEATHS 5 (456u dropped) - ALL DROWN, and THREE bots (F16, F1, F9) drowned at the SAME spot [-121,48,398] - the water hazard board's own spot took three bots one face after the water kind owned 100% on face-213; the water front is the face's own story (the o2/rescue lane's next read).
+- F: dispatch law: pre-poll agreed THE SEAT FREE (FACE 215 terminal SUCCESS, zero active dispatches) -> POST ci.yml 204 -> FACE 216 = 38143628698 materialized on 5abc6cd8 (the v0.955.0 tree - the craft-storm fix's FIRST fleet face + every cast's next rotation), in_progress verified BY RUN ID + sha.
+- No version this fire (the reclone + the read + the dispatch is the fire's shape); next free 0.956.0 (origin re-verify MANDATORY).
+- NEXT FIRE READ CHAIN: FACE 216 = 38143628698 verdict BY RUN ID, then artifact FIRST READ if unclaimed (the v0.955.0 tree's own face: the craft-storm fix's first fleet ride + the combat/vein/unpaid/table casts' second on-tree faces + the bank's ninth face (61.7% hold) + the tithe's third clock + THE WATER SPOT [-121,48,398]'s next toll); carried: the water front (three bodies one spot), the dusk bank's live read, the fuel supply's clock, the o2-low trigger's constant, F2's churn front, the legacy list, the reclone debt (paid this fire - monitor the sandbox).
+- OPEN FRONTS: the water spot's own toll ([-121,48,398] x3); the dusk bank's live read (61.7% hold); the fuel supply's live read (the clock ticks); the o2-low trigger's constant; F2's churn; the legacy list (every front PRICED); the sandbox mortality (the reclone debt).
+
+Stage Summary:
+- The reclone debt PAID: the repo + run-status.mjs + artifact-fetch.mjs restored; the lane's v0.955.0 craft-storm fix on record (corroborates fire-2100's flake verdict).
+- FACE 215 = 38141561770 SUCCESS FIRST READ (solo claim): the combat cast's first ON-TREE face (53.5%), the table cast's SEAT SPOKE (F8 75.0%), the bank HELD 61.7%, the tithe's clock ticks, 5 drown deaths - three bots one spot [-121,48,398].
+- FACE 216 = 38143628698 dispatched on the v0.955.0 tree.
+- Next free version 0.956.0 (origin re-verify MANDATORY).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
