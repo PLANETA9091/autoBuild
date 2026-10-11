@@ -95,6 +95,7 @@ import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table 
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
+import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
 import { torchBook } from '../../src/lib/torchbook.mjs' // (v0.500.0) the torch ledger - the light supply's floors, rungs, asks and yield
 import { veinLedger, tierGuardBill } from '../../src/lib/veinledger.mjs' // (v0.501.0) the vein ledger - the sweep's terminals, walk yield, gallery digs, refusals and the tier guard; (v0.768.0) the tier guard's own bill - the repeat rider's own seat
@@ -4633,6 +4634,29 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     else {
       const pcRiders = pounceRiders(pb.bots)
       if (pcRiders) console.log(`  ${pounceRidersRow(pcRiders)}`)
+    }
+  }
+}
+
+// (v0.942.0) THE WATER-LOCK BOOK - the seal-and-cross frontier's own
+// field book: the water-lock preflight's census lines (the emitter's
+// exact byte shape since v0.242.0, nine face-206 rides, no reader) and
+// the lines' own bot seat (the v0.940.0 pounce cast's own sibling).
+{
+  const wlBook = waterLockBook(lines)
+  if (wlBook.totals.total > 0) {
+    const t = wlBook.totals
+    console.log(`--- WATER-LOCK BOOK (v0.942.0: the seal-and-cross frontier's own census, the bare/ARMED verdicts) ---`)
+    const wlRows = Object.entries(wlBook.bots).sort((a, b) => b[1].total - a[1].total || (a[0] < b[0] ? -1 : 1))
+    if (wlRows.length) console.log(`  frontier: ${t.total} census line(s) (bare ${t.bare} / ARMED ${t.armed}, ${t.blocks} sealable block(s) in pocket) - per-bot: ${wlRows.map(([b, r]) => `${b}=${r.total}`).join(' ')}`)
+    // (v0.942.0) the cast rides beside the book's own raw row - never before
+    // it (the order law): the seat's solo owner fires the cast, the book's
+    // silence or crowd prints the riders (the measure-not-owner companion).
+    const wlSeat = waterLockCast(wlBook.bots)
+    if (wlSeat) console.log(`  ${waterLockCastRow(wlSeat)}`)
+    else {
+      const wlRiders = waterLockRiders(wlBook.bots)
+      if (wlRiders) console.log(`  ${waterLockRidersRow(wlRiders)}`)
     }
   }
 }
