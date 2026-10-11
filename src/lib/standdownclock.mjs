@@ -253,7 +253,11 @@ export function standdownClockRow (verdict) {
 // Read-time tooling, zero fleet log lines - CENSUS GUARD.
 const STANDDOWN_BOT_RE = /^F\d+$/
 
-const standdownBotTally = (book) => {
+// (v0.961.0) exported for the cross-lane joins (the churn throne's own
+// join consumes the standdown book's own tally - the lib's own cells,
+// never re-spelled; the one-parser law). The seat's own reading of the
+// stamps, byte for byte - the export adds no behavior.
+export const standdownBotTally = (book) => {
   const stamps = book && typeof book === 'object' && !Array.isArray(book) ? book.stamps : book
   if (!Array.isArray(stamps)) return null
   const byBot = {}

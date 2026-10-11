@@ -13,6 +13,7 @@ import { shelterLedger, OUTCOME_CLASSES, shelterOutcomeBill, shelterOutcomeBillR
 import { fleeForkSeatRow, fleeForkRidersRow } from '../../src/lib/fleefork.mjs' // (v0.810.0) the flee fork's own seat - WHICH fork owns the flee death book (the chased-down cells' strict majority + the bands' measure-not-owner riders)
 import { fleeSeat, fleeSeatRow, fleeRiders, fleeRidersRow } from '../../src/lib/fleeseat.mjs' // (v0.921.0) the trap's own seat - the flee bearing histogram's own strict-majority verdict (the v0.375.0 census's own cells, zero re-parsing; the branch law lives in the lib)
 import { deathSweep } from '../../src/lib/deathsweep.mjs' // (v0.389.0) the honest death sweep's field read
+import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow } from '../../src/lib/churnthrone.mjs' // (v0.961.0) THE CHURN BOT'S THRONE - the three instability lanes' own join (the rescue starts' cast v0.774.0 + the frozen standdown's bot v0.931.0 + the relog census's own cells): one bot holding every non-empty lane's strict majority at once - the cross-lane read the faces kept assembling by hand (face 226's own throne birth)
 import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read; (v0.920.0) the late third's own cast - WHO owns the closing third's deaths (the census's own deathRows cells, zero re-parsing)
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
 import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, depositDuoRow } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read; (v0.937.0) + the deposit's own cast - the family's own bot-level seat (the v0.827.0 lane seat's own sibling)
@@ -733,6 +734,21 @@ else {
   else {
     const sdbr = standdownBotRiders(sdb)
     if (sdbr) console.log(`  ${standdownBotRidersRow(sdbr)}`)
+  }
+  // (v0.961.0) THE CHURN BOT'S THRONE - the three instability lanes' own
+  // join: the starts' cast's own cells (the rescue ledger's perBot/totals),
+  // the standdown clock's own book (the seat's own input above), and the
+  // frozen census's own relogs walk - one bot holding every non-empty
+  // lane's strict majority at once. The seats above stay (the branch law
+  // lives in the lib); the join prices the CROSS-lane ownership the faces
+  // kept assembling by hand (face 226's own throne birth).
+  const fcThrone = frozenCensus(lines)
+  const throneCells = { rescuePerBot: ledger.perBot, rescueTotals: ledger.totals, standdownBook: sdb, relogsByBot: (fcThrone.relogs && fcThrone.relogs.byBot) || null, relogsTotal: (fcThrone.relogs && fcThrone.relogs.n) || null }
+  const throne = churnThrone(throneCells)
+  if (throne) console.log(`  ${churnThroneRow(throne)}`)
+  else {
+    const throneRiders = churnThroneRiders(throneCells)
+    if (throneRiders) console.log(`  ${churnThroneRidersRow(throneRiders)}`)
   }
 }
 // (v0.726.0) THE INSTANT CHURN - the rescue lane's zero-close loop: a start
