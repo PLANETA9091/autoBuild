@@ -25385,3 +25385,22 @@ Stage Summary:
 - Next free version 0.959.0 (origin re-verify MANDATORY).
 - Carried fronts: the band arm's own read (FACE 222 - the o2-low window's next shape), the bank's rhythm (33.7% - the cycle's floor and recover), the water front (the spread held), the night front (the weather cycle: clean after the site repeat), the unit-count trap, F2's churn, the legacy list, the sandbox mortality (survived four times).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261012-0100
+Agent: main agent (cron fire 0100, Job ID 414125)
+Task: fire 0100 A-G loop (FACE 222 FIRST READ; the dispatch rides fire 0130 - the box consumed by the ~33-min face)
+
+Work Log:
+- Sandbox survived (fifth consecutive). Synced /home/z/privateB-repo (tip f2771661 = my fire-0030 worklog; code 8dc429f6 = v0.958.0; next free 0.959.0 origin re-verify MANDATORY; the lane silent since 2341). Pull --rebase clean at open and at close; syntax 672/0.
+- Verdict BY RUN ID: FACE 222 = 38156210659 SUCCESS terminal (~33 min, five poll cycles - the longest envelope ride; all jobs green).
+- FACE 222 FIRST READ (artifact 11708722919, decomposed on the v0.958.0 tree; solo claim; saved to scripts/face222/): THE BAND'S OWN ARM'S FIRST FLEET FACE (the v0.958.0 lever's on-tree premiere) - the o2 books: 58 arms, o2 0..20 avg 10.1, arm seat headroom 51.7%; the fatal arms blind 1 / critical 1 / **band 0** (the in-band depth '10..10 avg 10.0' - the lever's own price: NO in-band fatal this face); the blind arm prices nothing - 'the sensor's health is the front, the trigger's constant is moot while the arm rides blind'; the o2-low window: crossed 3 of 11 deaths, the kind join's miss-predator 'drowned 4 (last o2 20..20)' - the cadence gap front. THE NIGHT'S SITE REPEAT CONFIRMED AS A CLASS: mobs 7 slain 7 all surface, clustered 2 of 7 (1 site: F12+F12) - THE NIGHT'S OWN GATE (the second consecutive face with a mob site repeat). THE WATER MAP'S FOURTH LIVE FACE - THE FIRST SEAT ROW: 'contexts 2 - deploy 2 - leg deploy owns 2 of 2 (100.0%) (the lanes: live 2) - THE WATER'S OWN MAP: the walk's own levy' (after three spread/tie rows the seat SPOKE); the drown book's spread held (2 drowns underground 2). THE BANK'S FIFTEENTH FACE: mined 2843 banked 503 = 17.7% (33.7 -> 17.7 - slipping). THE FLEE FORK NAMED: 5 flee deaths, chase 5, bands close 4/blind 1 - 'THE CHASE WINS - the flee never opens distance; the cure is a disengage that GAINS ground, not a better wall' (the combat lane's own lever). Deaths 11 (mob 7 / drown 2 / fall 1 / explosion 1), siege 0.97/min.
+- NO dispatch this fire: the ~33-min face + the read consumed the box; FACE 223 dispatch rides fire 0130 (x2 pre-polls).
+- No version this fire (the read shape); next free 0.959.0.
+
+Stage Summary:
+- FACE 222 = 38156210659 SUCCESS FIRST READ (solo claim): the band's arm's first fleet face (band-fatal 0 - the lever's own price; the blind-arm sensor front named), the night's site repeat confirmed as a class, the water map's first seat row, the bank 17.7%, the flee fork's chase front named.
+- NEXT FIRE READ CHAIN: FACE 223 dispatch FIRST (x2 pre-polls), then the carried reads; the flee fork (the disengage that gains ground) is THE combat code candidate; the blind-arm sensor is the o2 lane's front.
+- Next free version 0.959.0 (origin re-verify MANDATORY).
+- Carried fronts: the flee fork, the blind-arm sensor, the night's site class, the bank's rhythm (17.7%), the water map's seat rows, the unit-count trap, F2's churn, the legacy list, the sandbox mortality (survived five times).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
