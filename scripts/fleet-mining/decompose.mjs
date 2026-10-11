@@ -137,7 +137,7 @@ import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrai
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
 import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.425.0) the vertical-death front's mechanical leg; (v0.784.0) WHICH kind owns the death book; (v0.788.0) WHICH server-named killer owns the mob book; (v0.844.0) WHICH direction owns the sensor-blind misread book; (v0.897.0) WHERE the fall kind's own deaths own (the band + the site's own repeat); (v0.898.0) WHERE and HOW the mob kind's own kills own (the verb + the band + the site's own repeat); (v0.899.0) WHEN the fall's own relay rode (the time leg the anatomy does not price)
-import { houndCensus, houndArenaSeat, houndArenaSeatRow, houndArenaRiders, houndArenaRidersRow } from '../../src/lib/houndcensus.mjs' // (v0.433.0) the hound presence's field read; (v0.791.0) WHICH arena owns the hound kill book
+import { houndCensus, houndArenaSeat, houndArenaSeatRow, houndArenaRiders, houndArenaRidersRow, houndAnswerSeat, houndAnswerSeatRow, houndAnswerRiders, houndAnswerRidersRow } from '../../src/lib/houndcensus.mjs' // (v0.433.0) the hound presence's field read; (v0.791.0) WHICH arena owns the hound kill book; (v0.925.0) WHICH answer class owns the presence book
 import { faceFate } from '../../src/lib/facefate.mjs' // (v0.546.0) the frozen book's READER side - the face's own fate named before the censuses speak
 
 const file = process.argv[2]
@@ -825,6 +825,18 @@ console.log('  drowned-kill per-bot:', fmt(perBot(/death: drowned-kill context/)
 // wiring, zero new log lines.
 const hound = houndCensus(lines)
 console.log(`  hound presence (any form): ${hound.presence} answer moment(s) - fight ${hound.fight} / flee-dry ${hound.fleeDry} / shelter ${hound.shelter} / flee-shore ${hound.fleeShore} (legacy-plain ${hound.fleeShorePlain}) / shore-no-cell ${hound.shoreNoCell} / other ${hound.other}`, 'per-bot:', fmt(hound.presenceByBot))
+// (v0.925.0) THE ANSWER'S OWN SEAT - WHICH answer class owns the hound
+// presence book (the v0.791.0 arena's own sibling on the ANSWER axis: the
+// presence book priced the moments raw since v0.433.0, the kill book rode
+// the arena seat - the answers never rode a seat; the seat + the riders,
+// one row never both - the branch law; the owner case leaves the
+// companion unprinted).
+const has = houndAnswerSeat(hound)
+if (has) console.log(`  ${houndAnswerSeatRow(has)}`)
+else {
+  const har = houndAnswerRiders(hound)
+  if (har) console.log(`  ${houndAnswerRidersRow(har)}`)
+}
 console.log(`  hound defeats (the fleet won - mob down): ${hound.fightsWon}`, 'per-bot:', fmt(hound.fightsWonByBot), `| other fight exits: ${hound.fightEndsOther}`)
 console.log(`  hound episode detail: flee hops ${hound.fleeHops} / verdict flips ${hound.verdictFlips} / re-verdicts ${hound.reVerdicts}`)
 console.log(`  hound kills (the hound won): ${hound.kills} (dry-shore ${hound.killsDryShore} / in-water ${hound.killsInWater} / waterline ${hound.killsWaterline}) | drown contexts (the water did it): ${hound.drownContexts}`)

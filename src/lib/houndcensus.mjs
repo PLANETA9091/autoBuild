@@ -308,3 +308,135 @@ export function houndArenaRidersRow (r) {
       !Number.isFinite(shareOfKills)) return null
   return `the hound kill's own arena riders (v0.791.0): no solo arena owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofKills} hound kill(s) (${(shareOfKills * 100).toFixed(1)}%) - THE ARENA'S OWN MIX: the seat's tie law held, the mix is the shape - the hound's own grounds price the arenas the solo law refused to name`
 }
+
+// (v0.925.0) THE ANSWER'S OWN SEAT - WHICH answer class owns the hound
+// presence book. The hound book's own seats: the v0.791.0 arena named
+// WHICH arena owns the KILL book - the presence book (the ANSWER moments:
+// the pressure's own touches priced raw since v0.433.0) never rode a
+// seat. Face 195's own split rode raw beside the arena's seat: 'fight 15 /
+// flee-dry 3 / shelter 5 / flee-shore 1 / other 15' - the answer's own
+// front sat unnamed (the fleet split its book evenly between real fights
+// and the escape hatch's unclassified answers - the "other"'s own anatomy
+// rides the verbatim samples).
+//
+// THE BILL LAW (the census's own presence cells, zero re-parsing - the
+// v0.791.0 arena's own precedent, the class instead of the arena): the
+// fold reads ONLY the six presence classes - fight, fleeDry, shelter,
+// fleeShore, shoreNoCell, other (the census's own keys, the v0.433.0
+// emitter's own vocabulary, never forked). fleeShorePlain never joins:
+// it is fleeShore's own skin detail (the legacy-plain subset), not a
+// class - a second count would recurse the defect. The episode's other
+// books (fightsWon, fightEndsOther, fleeHops, verdictFlips, reVerdicts)
+// carry their own rows and never enter presence (the census's own
+// population law).
+//
+// THE STRICT-MAJORITY LAW: the top class owns the answer book only above
+// half; a tie owns nothing (the honest null - the spread needs the
+// riders, not a named owner; the storm-has-no-seat precedent; face 195's
+// own book was the tie's field witness: fight 15 = other 15 of 39). The
+// byte order decides the scan (the class's own bytes).
+//
+// THE RIDERS - the seat's own silence's companion (the v0.791.0 riders'
+// own shape, the v0.919.0 branch law's own fence): a MEASURE, never a
+// verdict-owner - the top two classes' own concentration prices the shape
+// the solo law refused to name. THE BRANCH LAW (never both): the riders
+// speak only when the solo class rode silent (the fence lives in the lib
+// - the seat's own law re-judged here, a second seat would recurse the
+// defect). THE BYTE LAW: counts desc, then the class's own byte asc.
+//
+// Junk never invents a book: a non-object census, a non-finite or
+// non-positive cell (skipped - the real cells still tally), or a
+// zero-sum book reads the honest silence (null).
+//
+// Pure: reads, never mutates. Zero fleet wiring, zero new log lines -
+// the row rides decompose beside the v0.433.0 presence print (read-time
+// tooling only, the CENSUS GUARD law).
+
+// The six presence classes - the ANSWER moments (the census's own keys
+// and the decompose print's own display bytes, zero re-parsing).
+const ANSWER_CLASSES = [
+  { key: 'fight', label: 'fight' },
+  { key: 'fleeDry', label: 'flee-dry' },
+  { key: 'shelter', label: 'shelter' },
+  { key: 'fleeShore', label: 'flee-shore' },
+  { key: 'shoreNoCell', label: 'shore-no-cell' },
+  { key: 'other', label: 'other' }
+]
+
+const answerTally = (census) => {
+  if (!census || typeof census !== 'object' || Array.isArray(census)) return null
+  const tallies = {}
+  let total = 0
+  for (const { key, label } of ANSWER_CLASSES) {
+    const n = census[key]
+    if (!Number.isFinite(n) || n <= 0) continue
+    tallies[key] = { n, label }
+    total += n
+  }
+  if (total <= 0) return null
+  return { tallies, total }
+}
+
+// (v0.925.0) the answer book's own seat - the strict-majority law's
+// verdict: the top class owns the answer book only above half; a tie
+// owns nothing. The byte order decides the scan (the class's own bytes).
+export function houndAnswerSeat (census) {
+  const t = answerTally(census)
+  if (!t) return null
+  let topOwns = 0
+  let topKey = null
+  for (const key of Object.keys(t.tallies).sort()) {
+    const n = t.tallies[key].n
+    if (n > topOwns) { topOwns = n; topKey = key }
+  }
+  if (topKey === null || topOwns <= t.total - topOwns) return null
+  return { cls: t.tallies[topKey].label, owns: topOwns, ofMoments: t.total, shareOfMoments: +(topOwns / t.total).toFixed(3) }
+}
+
+// (v0.925.0) the answer book's own riders - the seat's own silence's
+// companion: a measure, never a verdict-owner. THE BRANCH LAW (never
+// both): the riders speak only when the solo class rode silent - the
+// seat's own law re-judged here (the v0.919.0 crowd's own fence shape).
+// Fewer than two counted classes reads the honest silence (the solo face
+// is the seat's own).
+export function houndAnswerRiders (census) {
+  const t = answerTally(census)
+  if (!t) return null
+  const ranked = Object.entries(t.tallies)
+    .map(([key, cell]) => ({ key, label: cell.label, n: cell.n }))
+    .sort((a, b) => b.n - a.n || (a.key < b.key ? -1 : 1))
+  const leader = ranked[0]
+  if (leader.n > t.total - leader.n) return null // the branch law: the solo row owns the owner's face
+  if (ranked.length < 2) return null // the solo face is the seat's own (the belt-and-suspenders fence)
+  const runner = ranked[1]
+  const pairOwns = leader.n + runner.n
+  return { leader: leader.label, leaderOwns: leader.n, runner: runner.label, runnerOwns: runner.n, pairOwns, ofMoments: t.total, shareOfMoments: +(pairOwns / t.total).toFixed(3), duet: leader.n === runner.n }
+}
+
+// (v0.925.0) the answer seat's own row - THE ANSWER'S OWN SEAT: one
+// answer's own moments own the hound book. Junk never prints a row (the
+// honest silence's own row law): every field is guarded before the
+// template speaks.
+export function houndAnswerSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { cls, owns, ofMoments, shareOfMoments } = seat
+  if (typeof cls !== 'string' || !cls ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofMoments) || ofMoments <= 0 || owns > ofMoments ||
+      !Number.isFinite(shareOfMoments)) return null
+  return `the answer book's own class (v0.925.0): ${cls} owns ${owns} of ${ofMoments} answer moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE ANSWER'S OWN SEAT: one answer's own moments own the hound book - the class's own front prices the pressure the raw split rode unnamed`
+}
+
+// (v0.925.0) the answer riders' own row - THE ANSWER'S OWN MIX: a measure
+// of the answers' own shape, never a named owner (the seat's tie law
+// holds). Junk never prints a shape (the honest silence's own row law).
+export function houndAnswerRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, pairOwns, ofMoments, shareOfMoments } = r
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 || !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofMoments) || ofMoments <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofMoments ||
+      !Number.isFinite(shareOfMoments)) return null
+  return `the answer book's own riders (v0.925.0): no solo answer owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofMoments} answer moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE ANSWER'S OWN MIX: the seat's tie law held, the answers are the shape - the classes' own spread prices the pressure the solo law refused to seat`
+}
