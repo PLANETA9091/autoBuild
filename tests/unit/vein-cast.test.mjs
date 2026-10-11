@@ -1,5 +1,5 @@
 //
-// vein-cast.test.mjs - THE VEIN BOOK'S OWN CAST (v0.951.0)
+// vein-cast.test.mjs - THE VEIN BOOK'S OWN CAST (v0.952.0)
 //
 // The count-seat family's own sibling on the v0.501.0 vein book's own
 // WHO axis. The count law: the book's own line buckets sum to the
@@ -155,12 +155,12 @@ test('the junk fences: the missing book, the array, the junk cells, the zero-sum
 
 test('the cast row byte-exact + the plural law', () => {
   const row = veinCastRow({ bot: 'F19', owns: 33, ofLines: 64, share: 0.516 })
-  assert.equal(row, "the vein book's own cast (v0.951.0): F19 owns 33 of 64 vein lane lines (51.6%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector")
+  assert.equal(row, "the vein book's own cast (v0.952.0): F19 owns 33 of 64 vein lane lines (51.6%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector")
 })
 
 test('the singular law: one line reads the singular', () => {
   const row = veinCastRow({ bot: 'F1', owns: 1, ofLines: 1, share: 1 })
-  assert.equal(row, "the vein book's own cast (v0.951.0): F1 owns 1 of 1 vein lane line (100.0%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector")
+  assert.equal(row, "the vein book's own cast (v0.952.0): F1 owns 1 of 1 vein lane line (100.0%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector")
 })
 
 test("the cast row's own guards: the junk shapes read null", () => {
@@ -210,7 +210,7 @@ test("the riders' own fences: the solo pocket, the junk, the missing book", () =
 
 test('the riders row byte-exact + the guards', () => {
   const row = veinRidersRow({ leader: 'F19', leaderOwns: 22, runner: 'F5', runnerOwns: 10, ofLines: 64, pairOwns: 32, share: 0.5 })
-  assert.equal(row, "the vein book's own riders (v0.951.0): no solo prospector owns the majority - F19 x22 + F5 x10 own 32 of 64 vein lane lines (50.0%) - THE PROSPECTORS' OWN CROWD: the cast's tie law held, the vein's crowd is still real - the pair prices the gallery the solo law refused to name")
+  assert.equal(row, "the vein book's own riders (v0.952.0): no solo prospector owns the majority - F19 x22 + F5 x10 own 32 of 64 vein lane lines (50.0%) - THE PROSPECTORS' OWN CROWD: the cast's tie law held, the vein's crowd is still real - the pair prices the gallery the solo law refused to name")
   assert.equal(veinRidersRow(null), null)
   assert.equal(veinRidersRow('junk'), null)
   assert.equal(veinRidersRow({}), null)

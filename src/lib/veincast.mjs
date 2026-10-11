@@ -1,5 +1,5 @@
 //
-// veincast.mjs - THE VEIN BOOK'S OWN CAST (v0.951.0)
+// veincast.mjs - THE VEIN BOOK'S OWN CAST (v0.952.0)
 //
 // The v0.501.0 vein ledger priced the vein sweep's own field anatomy
 // (the terminals, the walk yields, the gallery digs, the dig refusals,
@@ -50,7 +50,7 @@
 // v0.501.0 book's own census-guard lane. Junk-safe end to end.
 //
 
-// (v0.951.0) THE LINE BUCKETS - the vein book's own line-counting
+// (v0.952.0) THE LINE BUCKETS - the vein book's own line-counting
 // cells (each is bumped exactly once per matched emitter line; the
 // measure cells and the sub-slices are excluded: the measures price
 // lines, they are not lines, and the sub-slices are the same lines'
@@ -102,7 +102,7 @@ export function veinCast (bots) {
   return { bot: top.bot, owns: top.owns, ofLines: total, share: +(top.owns / total).toFixed(3) }
 }
 
-// (v0.951.0) the cast's own row - THE VEIN'S OWN PROSPECTOR: one bot's
+// (v0.952.0) the cast's own row - THE VEIN'S OWN PROSPECTOR: one bot's
 // own sweep keeps the mining engine's voice. Junk never prints a seat
 // (the honest silence's own row law).
 export function veinCastRow (cast) {
@@ -111,10 +111,10 @@ export function veinCastRow (cast) {
   if (typeof bot !== 'string' || !bot || !Number.isInteger(owns) || owns <= 0 ||
       !Number.isInteger(ofLines) || ofLines <= 0 || owns > ofLines || !Number.isFinite(share)) return null
   const s = ofLines === 1 ? 'line' : 'lines'
-  return `the vein book's own cast (v0.951.0): ${bot} owns ${owns} of ${ofLines} vein lane ${s} (${(share * 100).toFixed(1)}%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector`
+  return `the vein book's own cast (v0.952.0): ${bot} owns ${owns} of ${ofLines} vein lane ${s} (${(share * 100).toFixed(1)}%) - THE VEIN'S OWN PROSPECTOR: one bot's own sweep keeps the mining engine's voice - the v0.501.0 book priced the anatomy, the cast names its prospector`
 }
 
-// (v0.951.0) THE VEIN BOOK'S OWN RIDERS - the cast's silence's own
+// (v0.952.0) THE VEIN BOOK'S OWN RIDERS - the cast's silence's own
 // companion (the riders precedent, zero re-parsing): a MEASURE, never
 // a verdict-owner - the top two pockets' concentration prices the
 // shape the solo law refused to name (the cast's owner case leaves the
@@ -139,7 +139,7 @@ export function veinRiders (bots) {
   return { leader: leader.bot, leaderOwns: leader.owns, runner: runner.bot, runnerOwns: runner.owns, ofLines: total, pairOwns, share: +(pairOwns / total).toFixed(3) }
 }
 
-// (v0.951.0) the riders' own row - THE PROSPECTORS' OWN CROWD (the
+// (v0.952.0) the riders' own row - THE PROSPECTORS' OWN CROWD (the
 // family's own tail): a measure of the shape, never a named owner.
 // Junk never prints a shape (the honest silence's own row law).
 export function veinRidersRow (r) {
@@ -150,5 +150,5 @@ export function veinRidersRow (r) {
       !Number.isInteger(ofLines) || ofLines <= 0 || !Number.isInteger(pairOwns) || pairOwns > ofLines ||
       !Number.isFinite(share)) return null
   const s = ofLines === 1 ? 'line' : 'lines'
-  return `the vein book's own riders (v0.951.0): no solo prospector owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofLines} vein lane ${s} (${(share * 100).toFixed(1)}%) - THE PROSPECTORS' OWN CROWD: the cast's tie law held, the vein's crowd is still real - the pair prices the gallery the solo law refused to name`
+  return `the vein book's own riders (v0.952.0): no solo prospector owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofLines} vein lane ${s} (${(share * 100).toFixed(1)}%) - THE PROSPECTORS' OWN CROWD: the cast's tie law held, the vein's crowd is still real - the pair prices the gallery the solo law refused to name`
 }
