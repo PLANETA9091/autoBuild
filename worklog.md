@@ -24844,3 +24844,25 @@ Stage Summary:
 - Next free version 0.945.0 (origin re-verify MANDATORY at bump time - the 0.943.0 collision is the freshest lesson).
 - Artifacts kept: /home/z/my-project/scripts/face208/ (fleet19.log, decomp208.txt 695 rows, live rows). Tooling intact: fetch_art_193.sh + the house decomposer.
 - Discipline held: identity law, RACE law (rebase before push), dispatch law (verdict BY RUN ID, x2 pre-polls, string input, seat honored, verified by run id + full sha), one-parser law (house decomposer only), no force-push, no history rewrite, no local server/fleet/tests (single-file node --test + syntax checks + read-time decompose only).
+
+---
+Task ID: cron30-20261011-1700
+Agent: main agent (cron fire 1700, Job ID 414125)
+Task: fire 1700 A-G loop (ONE atomic improvement, zero-conflict protocol)
+
+Work Log:
+- A: synced (tip a000a64a, 0.944.0; the fire-1641 lane's rise assist cast + the 0.943.0 collision's rebump landed clean, their FACE 208 read + FACE 209 dispatch on record - double-claim honesty: both reads stand, the rows agree).
+- Verdicts BY RUN ID: FACE 209 = 38126110702 (58fef02e, workflow_dispatch) IN_PROGRESS at open AND at close (30+ min - at the envelope's own edge, the CI queue congested; verdict BY RUN ID next fire); my camp-cast gate 38126320305 (a200ddfa) SUCCESS = the v0.943.0 integration GREEN (claimed); my fire-1630 worklog gate 38126701502 (f331648d) CANCELLED by concurrency - no-loss (worklog only); the 1641 lane's gates 38126594360 (d18a8c6f) + 38126640907 (83e1bbd2) BOTH CANCELLED - no-loss (their code rides FACE 209 + their a000a64a gate 38126744806 in_progress).
+- C: v0.945.0 THE SWORD DUE'S OWN BOOK + CAST (src/lib/sworddue.mjs NEW + tests/unit/sword-due.test.mjs 14 + decompose.mjs NEW SWORD DUE BOOK block beside the armory census): the v0.67.0 sword replace lane's own field book + WHO axis - the legacy list's tool repair/replace front priced at its origin; THE BILL LAW: the emitter's exact byte shapes (the due ask's three tier skins, the verdict's four voices, the rung's side voice, the bare exits), one parser per emitter; THE LANE'S OWN POOL: each sword lane line one vote (the v0.942.0/v0.943.0 pool precedent); strict-majority, byte-law riders, branch law fenced, junk fences, sword-free silence. Zero fleet log lines - CENSUS GUARD. Version 0.945.0 (origin raw read verified at bump time: 0.944.0 = the fire-1641 lane's rebump, 0.945.0 unclaimed).
+- D: syntax 656/0, unit 377/377 (sword-due 14/14; one arithmetic slip in the bill-law expectations fixed in place - the FROZEN pool's own counts are the truth). Live-verified on the face-208 log: 63 lane lines (due 18 planks / ok 36 / rung 9), F1 x5 + F11 x5 own 10/63 (15.9%) - THE ARMORERS' OWN CROWD, under-half (the rung's side voice prices the heavy builders F1/F11/F18 x5). Push b4c4bb87 on a000a64a, clean rebase (up to date), zero conflicts.
+- E: my sword-cast gate 38127525925 (b4c4bb8) PENDING 8+ min at close (the CI queue congested behind FACE 209 + the lane's gates - honest-close; verdict BY RUN ID next fire).
+- F: dispatch law: the seat TAKEN - FACE 209 = 38126110702 (workflow_dispatch) IN_PROGRESS. NO POST (zero duplicates, zero cancels). FACE 209's verdict + artifact read handed to the next fire.
+- NEXT FIRE READ CHAIN: FACE 209 = 38126110702 verdict BY RUN ID, then artifact FIRST READ if SUCCESS+unclaimed (the shaft cast's AND the waterlock cast's own FIRST LIVE faces on the v0.942.0 tree + the pounce cast's second live face + the deposit cast's third live face + the bank's crater-or-hold + the tithe's clock + the sword lane's retrospective second face off my v0.945.0 book); my gate 38127525925 verdict BY RUN ID (the v0.945.0 integration); carried: the magnet's eighth rotation (the emitter never spoke), the standdown bot's seventh face, THE DUSK BANK FRONT (the crater 40.9%), THE FUEL SUPPLY FRONT (the tithe's dry primes). THEN dispatch (x2 three-state polls, MIND THE MID-POLL MATERIALIZATION - the CI queue is congested, expect pending gates).
+- OPEN FRONTS: the dusk bank's live read; the fuel supply's live read; the legacy candidate list stands (WorldMap target assignment - the map trip lane's WHO axis, blaze rods/chorus - thin emitters this face, night/mob survivability - the deaths' axis deeply priced; the tool repair/replace front NOW PRICED by the v0.945.0 sword cast); the reclone debt stands.
+
+Stage Summary:
+- v0.945.0 THE SWORD DUE'S OWN BOOK + CAST landed (b4c4bb87): the sword replace lane's own field book + WHO axis priced - the count-seat family's own sibling; zero fold changes, zero fleet log lines, zero runtime machinery touched.
+- Verdicts BY RUN ID: the v0.943.0 camp-cast integration GREEN (my gate 38126320305 SUCCESS); FACE 209 riding at close (honest-close, 30+ min); the lane's two gates cancelled by concurrency (no-loss).
+- Next free version 0.946.0 (origin re-verify MANDATORY at bump time).
+- NO dispatch this fire (the seat honored: FACE 209 = 38126110702 flying); my gate 38127525925 honest-close pending.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
