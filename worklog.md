@@ -25010,3 +25010,24 @@ Stage Summary:
 - Next free version 0.949.0 (origin re-verify MANDATORY at bump time).
 - NO dispatch (the seat honored); my gate 38133320083 honest-close pending. Zero conflicts, zero zombies, zero cancels.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite.
+
+---
+Task ID: cron30-20261011-1900
+Agent: main agent (cron fire 1900, Job ID 414125, PLANETA9091 identity)
+Task: fire 1900 — v0.949.0 THE TABLE GATE'S OWN CAST (the count-seat family's own sibling at the tool chain's zero-point), worklog commit+push.
+
+Work Log:
+- A: synced (tip eb723362, 0.948.0 at open; the lane quiet). Verdicts BY RUN ID: FACE 212 = 38133009342 (07d2236e) IN_PROGRESS all fire (~26 min at close - inside the envelope); my fire-1830 gate 38133320083 (db94ec05) CANCELLED - lossless supersedes (the v0.948.0 code rides the next fleet face); 38133314884 (082233f9) SUCCESS; my worklog gate 38133445968 (eb723362) in_progress at close.
+- ONE ATOMIC IMPROVEMENT: v0.949.0 THE TABLE GATE'S OWN CAST (src/lib/tablecast.mjs NEW + 15 tests + decompose wiring beside the TABLE GATE block) - the v0.495.0 book's own WHO axis: the spare-table bootstrap's field voice rode read only as class totals ('gates: opened 1 / refused 0 | droughts 1...'), the per-bot cells rode silent - THIS prices WHICH bot's own pocket keeps the tool chain's zero-point. THE COUNT LAW (the book's own cells only, zero re-parsing): the line buckets ok + failed + droughts + rungs + sticks + attempts + allFails sum to the bot's own vote; the measures (rungPlanks/stickHolds/timeoutMs) never vote; THE DOUBLE-COUNT TRAP pinned: the otherAttempts sub-slice is the attempts' own no-timeout class of the SAME lines - it never votes again. Strict-majority (a tie owns nothing), byte-law riders, the branch law fenced in the lib, the junk fences, the honest silences. Wiring: the cast rides beside the book's class totals - never before (the order law), one row never both. Zero fleet log lines - CENSUS GUARD. Version 0.949.0 (origin raw read verified at bump time: 0.948.0 = the camp skip's claim, 0.949.0 unclaimed). Name dedup: 'the tool chain's own carpenter' + 'the carpenters' own crowd' lived nowhere.
+- D: syntax 662/0, unit 380/380 (table-cast 15/15). LIVE-VERIFIED on the face-210 log: the cast's FIRST LIVE face - F12 owns 3 of 3 table gate lines (100.0%) - THE TOOL CHAIN'S OWN CARPENTER (one drought, one rung, one gate - all F12's own pocket). Push 56eae195 on eb723362, clean, zero conflicts.
+- E: my table-cast gate 38134688141 (56eae195) PENDING at close behind FACE 212 (the queue) - honest-close; verdict BY RUN ID next fire.
+- F: dispatch law: the seat TAKEN (FACE 212 = 38133009342 in_progress all fire) - NO POST.
+- NEXT FIRE READ CHAIN: FACE 212 = 38133009342 verdict BY RUN ID, then FIRST READ if unclaimed (the shelter skip cast's + the map trip cast's own SECOND live faces + every cast's rotation + the bank's flood-or-crater + the standdown's next face + the starve walk solo's repeat + the magnet's third seat + the table gate cast's second live face); my gate 38134688141 verdict BY RUN ID (the v0.949.0 integration); my worklog gate 38133445968 verdict BY RUN ID; carried: the dusk bank (43.4% receding), the fuel supply (one F15 firing does not retire the silence), the o2-low band edge. THEN dispatch (x2 three-state polls).
+- OPEN FRONTS: the dusk bank's live read; the fuel supply's live read; the legacy list (blaze rods/chorus thin emitters; the tool chain's zero-point NOW PRICED at its own origin); the reclone debt.
+
+Stage Summary:
+- v0.949.0 THE TABLE GATE'S OWN CAST landed (56eae195): the count-seat family's own sibling - WHOSE pocket keeps the spare table alive; zero fold changes, zero fleet log lines.
+- The cast's FIRST LIVE face off the stored face-210 log: F12 solo 100.0%.
+- Next free version 0.950.0 (origin re-verify MANDATORY at bump time).
+- NO dispatch (the seat honored); my gate 38134688141 honest-close pending. Zero conflicts, zero zombies, zero cancels.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite.
