@@ -25273,3 +25273,22 @@ Stage Summary:
 - Next free version 0.957.0 (origin re-verify MANDATORY).
 - Carried fronts: the night survivability (NOW the hot front - the ambient spread, the end-phase tax), the bank's cycle (the flood), the water front (the spread priced twice), the fuel tithe's clock, the o2-low constant, F2's churn, the legacy list, the sandbox mortality (the debt #2 paid).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261011-2300
+Agent: main agent (cron fire 2300, Job ID 414125)
+Task: fire 2300 A-G loop (FACE 218 FIRST READ + the dispatch)
+
+Work Log:
+- Sandbox survived (first fire in three). Synced /home/z/privateB-repo (tip 799480ec = my fire-2230 worklog; code at 9fdbc189 = v0.956.0; 0.956.0 TAKEN, next free 0.957.0 origin re-verify MANDATORY). The lane pushed nothing since 2230. Syntax 670/0.
+- Verdicts BY RUN ID: FACE 218 = 38147790036 SUCCESS terminal (~32.5 min, three poll cycles; Integration + Unit + Big fleet run all green); my fire-2230 worklog push gate 38147921176 SUCCESS.
+- FACE 218 FIRST READ (artifact 11706112741, 3330 rows, decomposed on the v0.956.0 tree; solo claim; saved to scripts/face218/): THE RECOVERY FACE - deaths 2 (fall 1 F17 [-151,18,424], mob 1 F14 Zombie [-158,64,448]; siege pace 0.19/min vs face-217's 1.71 - the night storm DIED DOWN, the ambient spread's own weather corroborated: no fixed gate); ZERO drowns - the v0.956.0 drown-site book rode the honest silence branch (the water toll receded 5 -> 3 -> 2 -> 0; rescue starts 8, F16 x4, blind-live 7 of 12 mid-episode). THE BANK'S ELEVENTH FACE - THE RECOVERY: mined 2815 banked 1726 = 61.4% (the cycle 49.1 -> 43.4 -> 20.1 -> 64.5 -> 61.7 -> 46.5 -> 5.9 -> 61.4), surplus 340u, conversion 112.1%. MATERIAL BALANCE: leaks NEGATIVE -384u (-14.2%) - crafting's unit inflation outran the losses (the unit-count trap seen from the counters' side - a first). THE UNPAID ASK'S SEAT SPOKE: F8 owns 1363s of 2350s (58.0% - the seat's fifth name: F2 -> riders -> F9 -> F10 -> F8; granted 18% share, 7 clamped, F8's need 1663s -> 300s).
+- F: x2 pre-polls seat FREE -> POST 204 -> FACE 219 = 38149831045 on 799480ec (the v0.956.0 tree), in_progress verified BY RUN ID + event.
+- No version this fire (the read + the dispatch shape); the night front's own lever stays the next code candidate (0.957.0).
+
+Stage Summary:
+- FACE 218 = 38147790036 SUCCESS FIRST READ (solo claim): the recovery face - 2 deaths, the bank back to 61.4%, zero drowns (the book's honest silence), the negative-leak material balance (a first), the unpaid seat's fifth name F8.
+- FACE 219 = 38149831045 dispatched on the v0.956.0 tree.
+- Next free version 0.957.0 (origin re-verify MANDATORY).
+- Carried fronts: the night front's own lever (the storm's weather cycle priced - the shelter-before-the-third lane is the code candidate), the bank's cycle (61.4% recovered - the crater's rhythm), the water front (the toll receded to 0), the fuel tithe's clock, F2's churn, the legacy list, the sandbox mortality (survived this fire).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
