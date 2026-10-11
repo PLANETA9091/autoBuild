@@ -25099,3 +25099,20 @@ Stage Summary:
 - Next free version 0.952.0 (origin re-verify MANDATORY at bump time).
 - NO dispatch (the seat honored); the FACE 213 FIRST READ waits for the artifact.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261011-2000-addendum
+Agent: main agent (cron fire 2000, Job ID 414125, PLANETA9091 identity)
+Task: fire 2000 addendum — the version double-claim cure (v0.952.0 re-aim) + the worklog keep-both record.
+
+Work Log:
+- The worklog rebase conflict against the fire-1841 lane's 1daf8c3f: keep-both held (both sections ride, the markers removed, the separator restored), the rebase clean (aa32f79c).
+- THE VERSION DOUBLE-CLAIM: the lane's fire-1941 took v0.951.0 (THE UNPAID ASK'S OWN SEAT f1f8d3e2) between my 5b8d61db push and its rebase-read - 0.951.0 double-claimed. THE CURE (the protocol's own patch+1 law): v0.952.0 THE VERSION'S OWN RE-AIM (fcda2a36) - package.json 0.951.0 -> 0.952.0 + the veincast lib's own comments + the two row strings + the test byte-exact pins re-aimed in lockstep; vein-cast 17/17 re-run green, syntax 667/0. The name dedup re-checked at the re-aim: 'the prospector' still free; the lane's unpaid seat is bankcensus's own - different books (the vein ledger's cells vs the ask book's budgets), zero row-string collision.
+- Verdicts BY RUN ID: my worklog gate 38137528357 (f887ecd6) SUCCESS; my v0.951.0 code gate 38138415988 (5b8d61db) CANCELLED by concurrency (no-loss, the code rides the next fleet face); FACE 213 = 38137170913 still in_progress at close (~29 min, past the face-211/212 envelope) - honest-close, verdict BY RUN ID next fire.
+- The seat TAKEN all fire (FACE 213) - NO POST (zero duplicates, zero cancels).
+
+Stage Summary:
+- v0.952.0 THE VERSION'S OWN RE-AIM landed (fcda2a36): the double-claim cured, the vein cast's skin rides 0.952.0.
+- Next free version 0.953.0 (origin re-verify MANDATORY at bump time).
+- FACE 213's artifact FIRST READ + my fcda2a36 push gate 38138752889 verdict - both BY RUN ID next fire. THEN dispatch (x2 three-state polls).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts at close (the one conflict resolved keep-both), zero zombies.
