@@ -123,7 +123,7 @@ import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.43
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
 import { relogDiveJoin, relogDiveJoinRow, relogDiveRiders, relogDiveRidersRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure); (v0.917.0) + the dive join's own riders - the cap's own tail named (the membership's own census)
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
-import { kickBill } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes)
+import { kickBill, loginChurnCast, loginChurnCastRow, loginChurnRiders, loginChurnRidersRow } from '../../src/lib/kickbill.mjs' // (v0.717.0) the kick's own churn - the kick cells joined to the relog cells (the pair, the split, the repeats over both lanes); (v0.936.0) + the login churn's own cast - the bill's bot-level seat (the bill's own cells, zero re-parsing)
 import { kickKindCensus } from '../../src/lib/kickkinds.mjs' // (v0.730.0) the kick's own kinds - the kicked clients' reason census (the translate byte per kind; the dup class reconciles with the frozen census's dupKicks)
 import { kindlessKickCensus } from '../../src/lib/kindlesskicks.mjs' // (v0.906.0) the kindless kick's own seat - the KICKED lines the kind census refuses (no parsable translate byte; the partition prices the formless class the reads counted by hand)
 import { duplicateRetryRides } from '../../src/lib/retrytiming.mjs' // (v0.907.0) the floor's own retimeter - the duplicate_login kick joined to the bot's NEXT retry line (the delay the loop actually rode: above = the grace's own proof, below = THE MISS, unpriced = the face's own end)
@@ -2028,6 +2028,16 @@ console.log('  hazard memorized:', count(/hazard memorized/))
       ? Object.entries(kb.paired.byBot).map(([k, v]) => `${k} kicks ${v.kicks}/relogs ${v.relogs}`).join(', ')
       : 'none - the churn split clean'
     console.log(`  the kick's own churn (v0.717.0): ${kb.kicks} kick(s) across ${Object.keys(kb.kickBots).length} bot(s) + ${kb.relogs} relog(s) = ${kb.churn} churn event(s); the pair: ${kb.paired.n} bot(s) rode BOTH lanes (${pairTail}); the split: kick-only ${kb.kickOnly.n} (${kbSort(kb.kickOnly.bots)}), relog-only ${kb.relogOnly.n} (${kbSort(kb.relogOnly.bots)}); the churn's repeats: ${kb.repeats.n} bot(s) 2+ events owning ${kb.repeats.owned}/${kb.churn} (${kbpct(kb.repeats.share)}%)`)
+    // (v0.936.0) THE LOGIN CHURN'S OWN CAST - the bill's bot-level seat beside
+    // the v0.717.0 row (the bill's own cells, zero re-parsing). One additive
+    // row, never both - the branch law: the cast's solo owner fires the seat,
+    // the cast's silence prints the riders (the measure-not-owner companion).
+    const lcSeat = loginChurnCast(kb)
+    if (lcSeat) console.log(`  ${loginChurnCastRow(lcSeat)}`)
+    else {
+      const lcRiders = loginChurnRiders(kb)
+      if (lcRiders) console.log(`  ${loginChurnRidersRow(lcRiders)}`)
+    }
   }
 }
 // (v0.730.0) THE KICK'S OWN KINDS - the kicked clients' reason census. The
