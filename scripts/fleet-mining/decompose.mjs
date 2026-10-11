@@ -32,7 +32,7 @@ import { sensorWindowsBook, sensorWindowsRow } from '../../src/lib/sensorwindow.
 import { ascendStall } from '../../src/lib/ascendstall.mjs' // (v0.708.0) the ascend's live fence - the stall lane's own mass (the live side the toll fences out)
 import { entryWindow, saveableDeaths } from '../../src/lib/entrywindow.mjs' // (v0.480.0) the effective window - the live trigger's real reaction window (lead - the stale floor) priced against the lane's own saves; (v0.743.0) the saveable death - the window's own verdict joined with the lane's own relation
 import { pageLeadBook, pageLeadBookRow, pageLeadBookRidersRow } from '../../src/lib/pagelead.mjs' // (v0.875.0) THE PAGE LEAD'S OWN BOOK - the rescue-ran mirror's own lead byte ('(paged Ns before death)' - unread since v0.477.0: the cue join read only the controls-blind 'sight died Ns' prose, so every rescue-ran death rode 'sight died ?s' and the effective window priced 3 of 4 unpriced on face 142) folded per death, with the mirror kind's own seat (the strict-majority law) and the page window priced against the lane's own saves (rescue-ledger's classifier - the one classifier, entrywindow's own filter; the page IS the arm event - no stale floor, the floor taxes the snapshot age and the page fires on the o2 event itself)
-import { o2ArmBook, o2ArmBookRow, o2ArmBookRidersRow } from '../../src/lib/o2arm.mjs'
+import { o2ArmBook, o2ArmBookRow, o2ArmBookRidersRow, o2ArmClockVerdict, o2ArmClockRow } from '../../src/lib/o2arm.mjs'
 import { blindArmWindowBook, blindArmWindowRow, blindArmWindowRidersRow } from '../../src/lib/blindarmwindow.mjs' // (v0.959.0) THE BLIND ARM'S OWN WINDOW SEAT - the two books' own join (the arm book's blind verdict + the window book's own run law): every blind arm's own window class at the start line - open (the window already owned the sensor's death), spoke (the stream's last word alive - the cadence gap's own arm, the start is the death's first witness), unspoken (the stream cannot judge) - with the fatal blind arm's own split (the loss seat); the fence: the two walks agree or nothing prices (the arm book's own fold is the second witness)
 import { o2TriggerBook, o2TriggerRow } from '../../src/lib/o2trigger.mjs' // (v0.884.0) THE O2-LOW TRIGGER'S OWN WINDOW - the page lead's own row named the front twice (the trigger must fire at o2 low, not at the reset - fits 0 / misses 2 on face 145): the span from the bot's last re-crossing into the census's own rescueBand edge (<=10) to the death line itself - the window the trigger would have owned, priced per death (the reuse law: parseSentryPass + HB_RE + the anchored death token, never re-spelled; the blind skins judge nothing and clear nothing; the death resets the state - the v0.880.0 law's own idiom) // (v0.880.0) THE ARM-O2'S OWN BOOK - the rescue start's own oxygen byte ('drowning rescue start (drowning, oxygen N)' - unread since v0.368.0 counted the start classes: the o2 census (v0.422.0) counted the PASSES' o2, the starts' own air never rode a book) folded per start with the sentry census's own band edges (critical <=4 / band 5..9 / headroom >=10) and per death the latest start's own arm (line order is the truth, the latest start wins whole, an arm never survives the death it joined) - the o2-low front's own price read (the v0.473.0 law)
 import { o2TriggerKindBook, o2TriggerKindRow } from '../../src/lib/o2trigger.mjs' // (v0.885.0) THE TRIGGER'S OWN KIND JOIN - the false-positive split the fire-0000 fold's own row named (the crossings whose death rode a non-o2 kind - the kind join prices the trigger's own cost; the no-crossing deaths' own kinds - the misses' own families; the reuse law: parseDeathKind by import - the census's own RE read once, never re-spelled; the fence law: an inconsistent book prices nothing)
@@ -1108,6 +1108,14 @@ if (oab) {
   console.log(`  ${o2ArmBookRow(oab)}`)
   const oar = o2ArmBookRidersRow(oab)
   if (oar) console.log(`  ${oar}`)
+  // (v0.965.0) THE O2 ARM'S OWN CLOCK - the arms' own WHEN (the shared
+  // lattice's third book): the verdict reads the fold's own armClock
+  // cells (zero re-parsing - the one-parser law), the row rides beside
+  // the arm book's own (the askRow side-line idiom). Silent on no
+  // dominance (the 2:1 law - the storm has no seat) and on junk (the
+  // honest silence's own row law).
+  const oacv = o2ArmClockVerdict(oab)
+  if (oacv) console.log(`  ${o2ArmClockRow(oacv)}`)
 }
 // (v0.959.0) THE BLIND ARM'S OWN WINDOW SEAT - the blind arm prices
 // nothing (the arm book's own byte) until the stream speaks for it:

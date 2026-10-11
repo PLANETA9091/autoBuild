@@ -14,7 +14,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { o2Gap } from '../../src/lib/o2gap.mjs'
-import { ARM_O2_RE, ARM_CRITICAL_MAX, ARM_HEADROOM_MIN, armBand, o2ArmBook, o2ArmBookConsistent, o2ArmBookRow, o2ArmBookRidersRow } from '../../src/lib/o2arm.mjs'
+import { ARM_O2_RE, ARM_CRITICAL_MAX, ARM_HEADROOM_MIN, armBand, o2ArmBook, o2ArmBookConsistent, o2ArmBookRow, o2ArmBookRidersRow, o2ArmClockVerdict, o2ArmClockRow } from '../../src/lib/o2arm.mjs'
 
 const start = (bot, o2) => `${bot} [${bot}] water: drowning rescue start (drowning, oxygen ${o2})`
 const death = (bot, o2, rescue, wet) =>
@@ -49,6 +49,79 @@ const FACE143 = [
   start('F1', -1),
   died('F1'),
   death('F1', 'reset(-1)', 'active', 2)
+]
+
+// the heartbeat anchor - the pulse rail's own line (the truncated skin
+// rides the same grammar the opendeaf tests pin; the arms' clock
+// brackets against these)
+const hb = (n, ts) => `b] n=${n} ts=${ts}s rss=300M late=5ms`
+
+// (v0.965.0) THE O2 ARM'S OWN CLOCK - the late face: 6 arms (1 early
+// tight pair + 5 late tight pairs), clockEnd 360 / thirdS 120 - LATE
+// dominance (5 of 6), zero wide (every bracket tight), 9 anchors.
+const CLOCK_LATE = [
+  hb(1, 100),
+  start('F2', 6), // early: lo=100 hi=130 mid=115 (span 30)
+  hb(2, 130),
+  hb(3, 250), // consecutive anchors - no arm rides the gap
+  start('F3', 6), // late: lo=250 hi=260 mid=255
+  hb(4, 260),
+  start('F4', 6), // late: 265
+  hb(5, 270),
+  start('F5', 6), // late: 275
+  hb(6, 280),
+  start('F6', 6), // late: 285
+  hb(7, 290),
+  start('F1', 6), // late: 295 - the fatal arm (the death joins it)
+  hb(8, 300),
+  hb(9, 360), // the clock's own end
+  died('F1'),
+  death('F1', 'reset(-1)', 'active', 2)
+]
+
+// (v0.965.0) the mid face: 2 mid of 3 (the 2:1 law seats MID)
+const CLOCK_MID = [
+  hb(1, 130),
+  start('F2', 6), // mid: lo=130 hi=170 mid=150
+  hb(2, 170),
+  hb(3, 200),
+  start('F3', 6), // mid: lo=200 hi=240 mid=220
+  hb(4, 240),
+  hb(5, 340),
+  start('F1', 6), // late: lo=340 hi=360 mid=350 - the fatal arm
+  hb(6, 360),
+  died('F1'),
+  death('F1', 'reset(-1)', 'active', 2)
+]
+
+// (v0.965.0) the early face: 2 early of 3
+const CLOCK_EARLY = [
+  hb(1, 20),
+  start('F1', 6), // early: lo=20 hi=60 mid=40 - the fatal arm
+  hb(2, 60),
+  hb(3, 90),
+  start('F2', 6), // early: lo=90 hi=110 mid=100
+  hb(4, 110),
+  hb(5, 200),
+  start('F3', 6), // late: lo=200 hi=320 mid=260 (span 120 - not wide)
+  hb(6, 320),
+  hb(7, 360),
+  died('F1'),
+  death('F1', 'reset(-1)', 'active', 2)
+]
+
+// (v0.965.0) the mixed face: mid + late + unplaced (n=3, no dominance)
+// - the wide bracket rides (span 160 > thirdS 120)
+const CLOCK_MIXED = [
+  hb(1, 100),
+  start('F2', 6), // mid: lo=100 hi=260 mid=180; span 160 -> wide 1
+  hb(2, 260),
+  hb(3, 300),
+  start('F3', 6), // late: lo=300 hi=360 mid=330
+  hb(4, 360),
+  start('F4', 6), // unplaced: the rail ended before the arm
+  died('F4'),
+  death('F4', 'reset(-1)', 'active', 2)
 ]
 
 test('the grammar pin - the emitter\'s own line, whole-anchored, both skins', () => {
@@ -351,15 +424,126 @@ test('the fence battery - a book that cannot prove itself prices nothing', () =>
   assert.equal(o2ArmBookRidersRow(lie({ starts: 40 })), null, 'the riders read null on the lying book')
 })
 
+// (v0.965.0) THE O2 ARM'S OWN CLOCK - the shared lattice's third book:
+// the arms' own WHEN, seated against the pulse rail's own thirds (the
+// same court the smelt ledger's clips and the bank door's leg ride -
+// the one-lattice law, zero re-spelling)
+test('the arm clock cells - the one-walk law, the late face byte-exact', () => {
+  const b = o2ArmBook(o2Gap(CLOCK_LATE), CLOCK_LATE)
+  assert.ok(b, 'the book folded')
+  assert.equal(b.starts, 6)
+  // the one-walk law: the family's own count agrees two ways
+  assert.equal(b.armClock.n, b.starts, 'the clock\'s family count is the starts census')
+  assert.deepEqual(b.armClock, {
+    anchors: 9,
+    clockEnd: 360,
+    thirdS: 120,
+    n: 6,
+    byPhase: { early: 1, mid: 0, late: 5, unplaced: 0 },
+    wide: 0
+  })
+  // the verdict rides the 2:1 dominance law
+  assert.deepEqual(o2ArmClockVerdict(b), {
+    verdict: 'late', n: 6, byPhase: { early: 1, mid: 0, late: 5, unplaced: 0 }, anchors: 9, wide: 0, thirdS: 120
+  })
+})
+
+test('the arm clock rows - the three seats byte-exact, the lever\'s own clause', () => {
+  const late = o2ArmClockRow(o2ArmClockVerdict(o2ArmBook(o2Gap(CLOCK_LATE), CLOCK_LATE)))
+  assert.equal(
+    late,
+    'the o2 arm\'s own clock (v0.965.0): the rescue starts rode LATE-dominant (5 of 6; early 1 / mid 0 / late 5 / unplaced 0, 0 wide of 9 anchor(s)) - the closing thirds own the lane\'s arming: the drain\'s late legs strike the water - the end-phase\'s own tax is the front'
+  )
+  const mid = o2ArmClockRow(o2ArmClockVerdict(o2ArmBook(o2Gap(CLOCK_MID), CLOCK_MID)))
+  assert.equal(
+    mid,
+    'the o2 arm\'s own clock (v0.965.0): the rescue starts rode MID-dominant (2 of 3; early 0 / mid 2 / late 1 / unplaced 0, 0 wide of 6 anchor(s)) - the mid-run churn\'s pace prices the lane - the middle\'s own storm is the front'
+  )
+  const early = o2ArmClockRow(o2ArmClockVerdict(o2ArmBook(o2Gap(CLOCK_EARLY), CLOCK_EARLY)))
+  assert.equal(
+    early,
+    'the o2 arm\'s own clock (v0.965.0): the rescue starts rode EARLY-dominant (2 of 3; early 2 / mid 0 / late 1 / unplaced 0, 0 wide of 7 anchor(s)) - the water\'s own geography owns the opening: the launch window\'s geometry is the front'
+  )
+})
+
+test('the arm clock honesty - the mixed spread, the wide bracket, the silent faces', () => {
+  // the mixed spread: no 2:1 dominance - the storm has no seat
+  const bm = o2ArmBook(o2Gap(CLOCK_MIXED), CLOCK_MIXED)
+  assert.deepEqual(bm.armClock, {
+    anchors: 4,
+    clockEnd: 360,
+    thirdS: 120,
+    n: 3,
+    byPhase: { early: 0, mid: 1, late: 1, unplaced: 1 },
+    wide: 1
+  }, 'the wide bracket counts wide (span 160 > thirdS 120)')
+  assert.equal(o2ArmClockVerdict(bm), null, 'no dominance - the honest silence')
+  assert.equal(o2ArmClockRow(o2ArmClockVerdict(bm)), null, 'the silence never prints a row')
+  // the rail-less face: every seat unplaced, the clock null (FACE143's
+  // own shape - no heartbeat lines ride it)
+  const b143 = o2ArmBook(o2Gap(FACE143), FACE143)
+  assert.deepEqual(b143.armClock, {
+    anchors: 0,
+    clockEnd: null,
+    thirdS: null,
+    n: 41,
+    byPhase: { early: 0, mid: 0, late: 0, unplaced: 41 },
+    wide: 0
+  }, 'no rail - every seat unplaced (counted, never assumed)')
+  assert.equal(o2ArmClockVerdict(b143), null, 'the unplaced book owns no verdict')
+  // the armless face: the empty book reads null
+  const ba = o2ArmBook(o2Gap([died('F7'), death('F7', 'reset(-1)', 'never', 3)]), [died('F7'), death('F7', 'reset(-1)', 'never', 3)])
+  assert.equal(ba.armClock.n, 0)
+  assert.equal(o2ArmClockVerdict(ba), null, 'the empty book prices nothing')
+})
+
+test('the arm clock fence - a fold that cannot prove its own clock prices nothing', () => {
+  const good = o2ArmBook(o2Gap(CLOCK_LATE), CLOCK_LATE)
+  assert.ok(o2ArmBookConsistent(good))
+  const lie = (patch) => o2ArmBookConsistent({ ...good, ...patch })
+  assert.equal(lie({ armClock: { ...good.armClock, n: 5 } }), false, 'the clock\'s family count must agree with the starts census')
+  assert.equal(lie({ armClock: { ...good.armClock, byPhase: { early: 1, mid: 0, late: 6, unplaced: 0 } } }), false, 'the phases must sum to the family')
+  assert.equal(lie({ armClock: { ...good.armClock, byPhase: { early: 0.5, mid: 0, late: 5, unplaced: 0.5 } } }), false, 'a fractional seat prices nothing')
+  assert.equal(lie({ armClock: { ...good.armClock, wide: 7 } }), false, 'the wide must ride within the family')
+  assert.equal(lie({ armClock: { ...good.armClock, wide: -1 } }), false, 'a negative wide prices nothing')
+  assert.equal(lie({ armClock: { ...good.armClock, anchors: -1 } }), false, 'a negative rail prices nothing')
+  assert.equal(lie({ armClock: { ...good.armClock, anchors: 0 } }), false, 'a rail-less fold must read every seat unplaced and the clock null')
+  assert.equal(lie({ armClock: { ...good.armClock, thirdS: 121 } }), false, 'the third rides the clock\'s own third (clockEnd / 3)')
+  assert.equal(lie({ armClock: { ...good.armClock, clockEnd: -5 } }), false, 'a negative clock prices nothing')
+  assert.equal(lie({ armClock: null }), false)
+  const { armClock, ...naked } = good
+  assert.equal(o2ArmBookConsistent(naked), false, 'the v0.965.0 cells are mandatory - a naked fold prices nothing')
+  // the rows stay silent on the lying books
+  assert.equal(o2ArmBookRow({ ...good, armClock: { ...good.armClock, n: 5 } }), null)
+  assert.equal(o2ArmBookRidersRow({ ...good, armClock: null }), null)
+})
+
+test('the arm clock junk battery - the verdict and the row never print junk', () => {
+  assert.equal(o2ArmClockVerdict(null), null)
+  assert.equal(o2ArmClockVerdict({}), null)
+  assert.equal(o2ArmClockVerdict({ armClock: { n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 } } }), null)
+  assert.equal(o2ArmClockVerdict({ armClock: { n: 3 } }), null, 'a clock with no phase book prices nothing')
+  assert.equal(o2ArmClockRow(null), null)
+  assert.equal(o2ArmClockRow('junk'), null)
+  assert.equal(o2ArmClockRow({ verdict: 'nope', n: 3, byPhase: { early: 1, mid: 1, late: 1, unplaced: 0 }, anchors: 2, wide: 0 }), null, 'a stranger verdict prints nothing')
+  assert.equal(o2ArmClockRow({ verdict: 'late', n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, anchors: 2, wide: 0 }), null)
+  assert.equal(o2ArmClockRow({ verdict: 'late', n: 3, byPhase: { early: -1, mid: 1, late: 3, unplaced: 0 }, anchors: 2, wide: 0 }), null, 'a negative seat prints nothing')
+  assert.equal(o2ArmClockRow({ verdict: 'mid', n: 3, byPhase: { early: 0, mid: 2, late: 1, unplaced: 0 }, anchors: -2, wide: 0 }), null, 'a negative rail prints nothing')
+})
+
 test('the decompose WIRING pins - the import band, the print site beside the page lead\'s own, the lib bytes', () => {
   const dec = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(dec.includes("import { o2ArmBook, o2ArmBookRow, o2ArmBookRidersRow } from '../../src/lib/o2arm.mjs'"), 'the import band grew')
+  assert.ok(dec.includes("import { o2ArmBook, o2ArmBookRow, o2ArmBookRidersRow, o2ArmClockVerdict, o2ArmClockRow } from '../../src/lib/o2arm.mjs'"), 'the import band grew')
   const site = dec.indexOf('const oab = o2ArmBook(o2g, lines)')
   const plb = dec.indexOf('const plb = pageLeadBook(o2g, lines)')
   assert.ok(site > 0, 'the print site rides')
   assert.ok(plb > 0 && site > plb, 'the arm book prints beside the page lead\'s own (after it)')
+  // (v0.965.0) the clock's own print site rides beside the arm book's own
+  const oacv = dec.indexOf('const oacv = o2ArmClockVerdict(oab)')
+  assert.ok(oacv > 0 && oacv > site, 'the clock\'s verdict rides the arm book\'s own block (after it)')
+  assert.ok(dec.includes('if (oacv) console.log(`  ${o2ArmClockRow(oacv)}`)'), 'the clock\'s row prints silent-on-no-dominance')
   const lib = readFileSync(new URL('../../src/lib/o2arm.mjs', import.meta.url), 'utf8')
-  for (const byte of ['ARM_O2_RE', 'o2ArmBook', 'o2ArmBookConsistent', 'o2ArmBookRow', 'o2ArmBookRidersRow', 'armBand']) {
+  for (const byte of ['ARM_O2_RE', 'o2ArmBook', 'o2ArmBookConsistent', 'o2ArmBookRow', 'o2ArmBookRidersRow', 'armBand', 'o2ArmClockVerdict', 'o2ArmClockRow', 'armClock', "from './phasebook.mjs'", "from './opendeaf.mjs'"]) {
     assert.ok(lib.includes(byte), `the lib byte ${byte} rides`)
   }
 })

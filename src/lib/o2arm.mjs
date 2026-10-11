@@ -58,6 +58,32 @@
 // depth rides the census's own bounds (1..ARM_HEADROOM_MIN - the o2
 // byte's own floor to the band's own edge).
 //
+// (v0.965.0) THE O2 ARM'S OWN CLOCK - the arms' own WHEN (the shared
+// lattice's third book). The v0.880.0 book priced the arm's own o2 (the
+// VALUE at the firing point) and the v0.894.0 depth priced HOW MUCH a
+// higher constant buys, but the arms' own clock never rode a seat:
+// whether the rescue starts ride the opening (the water's own geography
+// - the launch window's geometry is the front), the middle (the churn's
+// own pace) or the closing thirds (the end-phase's own water tax - the
+// drain's late legs strike the water) stayed unpriced. The clock rides
+// the shared phase lattice (phasebook.mjs - the one-lattice law, the
+// same court the smelt ledger's clips and the bank door's leg ride) at
+// the pulse rail's own anchors (opendeaf's parsePulseAnchor - the one
+// rail parser, never forked): the start lines' own indexes and the
+// pulse anchors ride the SAME walk (one scan - the bankdocket door
+// clock's own law, the smelt ledger's two-phase structure), the
+// midpoint classifies into the clock's thirds, a missing end reads
+// 'unplaced' (counted, never assumed), a wide bracket counts wide. The
+// verdict rides the 2:1 dominance law (a tie owns nothing - the honest
+// silence: the storm has no seat). The fold's own fence grows the
+// clock's cells (the v0.894.0 precedent: the new cells mandatory - a
+// fold that cannot prove its own clock prices nothing): the family's
+// count agrees two ways (armClock.n === starts), the phases sum to the
+// family, the wide rides within, the rail's own honesty (no anchors =
+// every seat unplaced, the third rides the clock's own third -
+// thirdS === clockEnd / 3). Mining-surface only: zero fleet wiring,
+// zero new log lines, zero census shape change - CENSUS GUARD.
+//
 // Reuse law: the death grammar is o2gap's DROWN_CONTEXT_RE (one parser
 // per emitter - never forked); the ONLY new byte is ARM_O2_RE - the
 // start line's own oxygen, read whole-anchored (junk-safe: a caller
@@ -69,6 +95,8 @@
 // mutates.
 //
 import { DROWN_CONTEXT_RE } from './o2gap.mjs'
+import { parsePulseAnchor } from './opendeaf.mjs' // (v0.965.0) the pulse rail's own anchor - the arms' clock brackets against it (opendeaf imports only hopcensus - no cycle)
+import { phaseBookOf } from './phasebook.mjs' // (v0.965.0) the shared lattice - the arms' seats ride the same court the smelt ledger's clips and the bank door's leg ride (the one-lattice law, zero re-spelling)
 
 /** The rescue start's own oxygen byte - the emitter's exact line, read
  * whole-anchored. The blind skin rides -1 (the sensor's own death
@@ -112,6 +140,9 @@ export function armBand (o2) {
  *   verdicts: {blind: number, critical: number, band: number,
  *   headroom: number, unarmed: number},
  *   fatalDepth: {count: number, min: number|null, max: number|null, sum: number},
+ *   armClock: {anchors: number, clockEnd: number|null, thirdS: number|null,
+ *   n: number, byPhase: {early: number, mid: number, late: number,
+ *   unplaced: number}, wide: number},
  *   perDeath: Object<string, {o2: number|null, band: string}>}|null}
  */
 export function o2ArmBook (o2g, lines) {
@@ -133,9 +164,19 @@ export function o2ArmBook (o2g, lines) {
   // minus the arm's own firing point (the o2-units a higher constant
   // would have bought)
   const fatalDepth = { count: 0, min: null, max: null, sum: 0 }
+  // (v0.965.0) THE O2 ARM'S OWN CLOCK's rail: the pulse anchors and the
+  // start lines' own indexes ride the SAME walk (one scan - the
+  // bankdocket door clock's own law, the smelt ledger's two-phase
+  // structure)
+  const anchors = []
+  const startIdx = []
   let deaths = 0
+  let li = -1
   for (const l of lines) {
+    li++
     if (typeof l !== 'string') continue
+    const pa = parsePulseAnchor(l)
+    if (pa) anchors.push({ i: li, ts: pa.ts })
     const sm = ARM_O2_RE.exec(l)
     if (sm) {
       const bot = sm[1]
@@ -148,6 +189,9 @@ export function o2ArmBook (o2g, lines) {
       bands[band]++
       if (o2 !== null) o2Vals.push(o2)
       if (blind) blindArms++
+      // the arm joins its own line index (the v0.965.0 clock's family -
+      // the same rail the smelt ledger's clips ride)
+      startIdx.push(li)
       continue
     }
     const dm = DROWN_CONTEXT_RE.exec(l)
@@ -175,6 +219,13 @@ export function o2ArmBook (o2g, lines) {
   // the one-grammar law: two walks of one grammar must agree - a
   // mismatch names a forked reader and prices nothing (the fence law)
   if (deaths !== o2g.deaths) return null
+  // (v0.965.0) the clock cells - the shared lattice's own law byte for
+  // byte (phasebook.mjs the one definition; the bankdocket door clock's
+  // own shape)
+  const clockEnd = anchors.length ? anchors[anchors.length - 1].ts : null
+  const thirdS = clockEnd !== null ? clockEnd / 3 : null
+  const acBook = phaseBookOf(startIdx, anchors, thirdS)
+  const armClock = { anchors: anchors.length, clockEnd, thirdS, n: startIdx.length, byPhase: acBook.byPhase, wide: acBook.wide }
   const spread = o2Vals.length
     ? {
         min: Math.min(...o2Vals),
@@ -199,6 +250,7 @@ export function o2ArmBook (o2g, lines) {
     deaths,
     verdicts,
     fatalDepth,
+    armClock,
     perDeath
   }
 }
@@ -255,6 +307,27 @@ export function o2ArmBookConsistent (b) {
   if (dc !== b.verdicts.critical + b.verdicts.band) return false
   if (dc !== fd.count || ds !== fd.sum || dmin !== fd.min || dmax !== fd.max) return false
   if (fd.count > 0 && (fd.min < 1 || fd.max > ARM_HEADROOM_MIN)) return false
+  // (v0.965.0) the arm clock's own cells: the family's own count agrees
+  // two ways (armClock.n === starts), the phases sum to the family, the
+  // wide rides within, the rail's own honesty (no anchors = every seat
+  // unplaced, the third rides the clock's own third)
+  const ac = b.armClock
+  if (!ac || typeof ac !== 'object' || Array.isArray(ac)) return false
+  if (!Number.isInteger(ac.n) || ac.n !== b.starts) return false
+  const bp = ac.byPhase
+  if (!bp || typeof bp !== 'object') return false
+  const ph = [bp.early, bp.mid, bp.late, bp.unplaced]
+  for (const x of ph) { if (!Number.isInteger(x) || x < 0) return false }
+  if (ph.reduce((a, v) => a + v, 0) !== ac.n) return false
+  if (!Number.isInteger(ac.wide) || ac.wide < 0 || ac.wide > ac.n) return false
+  if (!Number.isInteger(ac.anchors) || ac.anchors < 0) return false
+  if (ac.anchors === 0) {
+    if (bp.unplaced !== ac.n) return false
+    if (ac.clockEnd !== null || ac.thirdS !== null) return false
+  } else {
+    if (!Number.isFinite(ac.clockEnd) || ac.clockEnd < 0) return false
+    if (ac.thirdS === null || !(ac.thirdS === ac.clockEnd / 3)) return false
+  }
   return true
 }
 
@@ -311,4 +384,46 @@ export function o2ArmBookRidersRow (b) {
     return `${bot} [arm o2 ${v.o2 === null ? -1 : v.o2} - ${v.band}]`
   })
   return bits.length ? bits.join(' ') : null
+}
+
+// (v0.965.0) THE O2 ARM'S OWN CLOCK - the verdict. The v0.880.0 book
+// priced the arms' own o2 (the VALUE at the firing point), the v0.894.0
+// depth priced HOW MUCH a higher constant buys - the WHEN never rode a
+// seat. The verdict reads the fold's own armClock cells (the same
+// walk's own readings - zero re-parsing, zero new regexes, the
+// one-parser law) and seats the lane's own arming spread against the
+// clock's thirds: LATE dominance = the closing thirds own the lane's
+// arming (the drain's late legs strike the water - the end-phase's own
+// tax is the front); MID = the mid-run churn's pace prices the lane
+// (the middle's own storm is the front); EARLY = the water's own
+// geography owns the opening (the launch window's geometry is the
+// front). No dominance (the mixed spread) or an empty book -> the
+// honest silence (null - the storm has no seat, the 2:1 law).
+export function o2ArmClockVerdict (b) {
+  const c = b && b.armClock ? b.armClock : null
+  if (!c || !c.n) return null
+  const p = c.byPhase
+  if (!p || typeof p !== 'object') return null
+  if (p.late * 2 > c.n) return { verdict: 'late', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.mid * 2 > c.n) return { verdict: 'mid', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.early * 2 > c.n) return { verdict: 'early', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  return null
+}
+
+// (v0.965.0) the arms' own row - the lever's own clause names the
+// front's own reading; the anchor density rides so the reader judges
+// the midpoint law (the zeroclock's own honesty). Junk never prints a
+// clock (the honest silence's own row law).
+export function o2ArmClockRow (v) {
+  if (!v || typeof v !== 'object') return null
+  const { verdict, n, byPhase, anchors, wide } = v
+  if ((verdict !== 'late' && verdict !== 'mid' && verdict !== 'early') ||
+      !Number.isFinite(n) || n <= 0 || !byPhase || typeof byPhase !== 'object' ||
+      !Number.isFinite(anchors) || anchors < 0 || !Number.isFinite(wide) || wide < 0) return null
+  const { early, mid, late, unplaced } = byPhase
+  for (const x of [early, mid, late, unplaced]) if (!Number.isFinite(x) || x < 0) return null
+  const book = `early ${early} / mid ${mid} / late ${late} / unplaced ${unplaced}, ${wide} wide of ${anchors} anchor(s)`
+  if (verdict === 'late') return `the o2 arm's own clock (v0.965.0): the rescue starts rode LATE-dominant (${late} of ${n}; ${book}) - the closing thirds own the lane's arming: the drain's late legs strike the water - the end-phase's own tax is the front`
+  if (verdict === 'mid') return `the o2 arm's own clock (v0.965.0): the rescue starts rode MID-dominant (${mid} of ${n}; ${book}) - the mid-run churn's pace prices the lane - the middle's own storm is the front`
+  return `the o2 arm's own clock (v0.965.0): the rescue starts rode EARLY-dominant (${early} of ${n}; ${book}) - the water's own geography owns the opening: the launch window's geometry is the front`
 }
