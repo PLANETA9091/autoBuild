@@ -23,6 +23,7 @@ import { shaftLockBook, shaftCast, shaftCastRow, shaftDuo, shaftDuoRow } from '.
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
+import { waterLegBook, waterLegConsistent, waterLegRow } from '../../src/lib/waterleg.mjs' // (v0.957.0) the water's own leg - the drown context's own leg axis across EVERY rescue relation (the live lane's walk, the trigger-blind's walk, the returns' walk - the map the stale-only seat never drew)
 import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
@@ -1008,6 +1009,22 @@ if (o2g && o2g.deaths > 0) {
   if (relb) {
     const relr = reentryLegRow(relb)
     if (relr) console.log(`  ${relr}`)
+  }
+  // (v0.957.0) THE WATER'S OWN LEG - the drown context's own leg axis
+  // across EVERY rescue relation (the v0.912.0 seat prices the RETURNS'
+  // walk alone; the live lane's walk and the trigger-blind's walk rode
+  // unnamed). The book reads the LOG LINES directly (the v0.898.0 /
+  // v0.956.0 book-only precedent - o2Gap's perBot fold is last-wins per
+  // bot, a twice-drowned bot's first leg never reaches any cell), the
+  // seat rides the strict-majority law byte-true (a tie owns nothing,
+  // the unread class counts and judges nothing), the class join
+  // (live/never/stale) rides the owner's lanes cell. A context-less
+  // face prices nothing; an inconsistent book prices nothing (the
+  // fence rides the print).
+  const wlb = waterLegBook(lines)
+  if (wlb && waterLegConsistent(wlb)) {
+    const wlr = waterLegRow(wlb)
+    if (wlr) console.log(`  ${wlr}`)
   }
   // (v0.736.0) THE CRIED-WOLF DEATH - the churn's own aftermath join (the
   // skywalk law: two lenses, one read, no re-parsing). A bot whose trigger
