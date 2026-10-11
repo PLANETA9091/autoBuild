@@ -24476,3 +24476,35 @@ Stage Summary:
 - Next free version 0.934.0 (origin re-verify MANDATORY at bump time).
 - FACE 201 read claimed; FACE 202 = 38111285756 riding (the starve bot seat's OWN FIRST LIVE face); gate 38112295078 pending (honest-close); gate 38111076991 SUCCESS = the v0.932.0 integration GREEN.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
+
+---
+Task ID: fire-1241
+Agent: Super Z (main agent, cron lane fire 1241)
+Task: Fire 1241 — FACE 202 FIRST READ (the starve bot seat's first live face), dispatch FACE 203, CI sweep, worklog commit+push.
+
+Work Log:
+- Sandbox dead again -> reclone + npm install + identity pinned local+global PLANETA9091. Clone point d0af59b5 (the fire-1230 lane's worklog push; tree v0.933.0 THE STARVE'S OWN LANE). pull --rebase clean.
+- Verdicts BY RUN ID: FACE 202 = 38111285756 TERMINAL SUCCESS (27.9-min leg, on b2abfacd = v0.932.0 tree, terminal 12:48:36 +08) -> FIRST READ claimed (fire-1230 closed 12:39 pre-terminal honest, fire-1200 POSTed and closed pre-terminal — both left the read chain). Gate 38112295078 (8094b268 v0.933.0) CANCELLED = superseded by d0af59b5's push gate 38112490148 (normal churn; the v0.933.0 tree's verdict rides it). Gate 38111374165 (a566dd7a) SUCCESS.
+- FACE 202 FIRST READ (artifact 11692222888 fleet19-log via fetch_art_193.sh two-step redirect; decomposed from the CURRENT v0.933.0 tree d0af59b5, 639-row decomp — so the v0.933.0 lane row reads its first face off this same log):
+  * THE STARVE'S OWN MIX (v0.932.0) FIRST LIVE FACE: no solo bot — F13 x18 + F1 x14 own 32 of 84 starves (38.1%), the seat's tie law held live; the WHO axis rotates (201 retrospective F14+F7 35.7% -> 202 live F13+F1 38.1%, the mix is the shape). THE STARVE'S OWN CLOCK 3rd face: early 3 / mid 16 / late 65 of 84 — late 77% THE CLOSING SKY held (201: 79%); burst share 45%.
+  * THE STARVE'S OWN LANE MIX (v0.933.0) FIRST FACE (retrospective): no solo lane — hop x34 + sweep x18 own 52 of 84 (61.9%), tie law held; the hop lane's sky: median ents 3220, 32/34 at or past half the ceiling.
+  * THE STANDDOWN'S OWN BOT (v0.931.0) SECOND FACE: F10 x1 + F8 x1 own 2 of 2 frozen standdowns — the mix again (F9's 7/11 solo from 201 rotated out; the freeze collapsed 11 -> 2); standdown clock 0/1/1; frozen seconds 27.4s; burst share 50%.
+  * THE STAKES' OWN SEAT (v0.930.0) THIRD FACE: F16 owns 170 of 170 dropped u (100.0%) — solo again (rotation: F16 solo 199 -> F13+F6 mix 200 -> F5 solo 201 -> F16 solo 202); 3 deaths, 2 empty-pocket reads.
+  * THE BANE'S OWN MIX (v0.929.0) FIRST LIVE VOICE: after three faces of honest silence the bane row SPOKE — 2 hound defeats (F14 x1 + F17 x1, mix); the hound won 2 (both in-water; prey F12 x1 + F16 x1 mix) — the arena closed 2-2; THE ARENA'S OWN SEAT: in-water 100%.
+  * THE MAGNET'S OWN MIX: F12 x5 + F16 x3 own 8 of 10 hound moments (80%, F12 exactly half -> no strict majority) — the magnet's fourth rotation lands MIX (F3 solo 198 -> F16 solo 199 -> F5 200 -> F12+F16 202); the tie law held.
+  * THE TITHE'S PRIME NEVER RODE — SIXTH FACE: fuel/cobble/smelt tithe named firings 0, units 0 — the pump never spoke ("the pump's silence owns it").
+  * THE BANK'S THIRD CRATER — the three-peat CONFIRMED: banked 0 of 2068u (200: 0/1532 -> 201: 111/1524 7.3% -> 202: 0/2068); write-off carried 1827u (88.3% of the unbanked mass); the why duo: stalled-s0 x355u + night x326u own 681 of 1827u (37.3%); 18 pocket holders, top F17 279u (13.5%).
+  * THE DRAIN'S OWN THIRD BOOK: ~170u lost at 3 deaths — early 0 / mid 170 (2) / late 0 — THE MIDDLE'S OWN DRAIN (the late law's third shape: 88% late 193 -> spread 198 -> mid 202); the late third's own cast: F3 owns 1 of 1 (THE DEADLINE'S OWN DIVER, the fall at [-97,57,404]); the siege's own thirds mid 2/3 — THE MIDDLE'S OWN STORM; the attacker's own seat: Drowned 100%.
+  * THE SAVED FACE: 37 starts, 0 drown-kind deaths — the water lane landed every rider again; duo seat F10 x8 + F14 x6 (37.8%); orphan end F10 rescue timeout 26.7s; sticky mix F10 x2 + F17 x1 own 3 of 4.
+  * NOON WATER held: early 12 / mid 55 / late 20 of 87 timed arms — mid 63%; legs start 3/17/17, launch 9/38/3.
+  * Churn: 19 dup kicks (F14 x8) + 1 relog (F10) = 20 events; dup class 100%; NO EPIPE/ECONNRESET this face (the socket split silent); F10 = the wet-churn bot (8 starts + frozen + relog + 5 kicks + 2 timeouts).
+  * FLEET RESULT normal end (deadline 600s); clock end ts=681s; mined 2367u / banked 0 / pocket 2068u / conversion 87.8%.
+- Dispatch law: post-read x2 polls agreed the seat fully free (FACE 202 terminal, no fleet run in flight; the push gate 38112490148 does not fence the dispatch — the fire-0600 precedent) -> POST ci.yml 204 at 12:55 +08 -> FACE 203 = 38113063065 materialized on d0af59b518abd9967ef210055f06e03d1ac1949e (the origin tip — clean attribution, no race), x2 post-polls in_progress clean = the v0.933.0 tree's first fleet face (the starve lane mix's own first LIVE face rides it). DISPATCH LESSON (recorded not rewritten): the first POST 422'd — ci.yml's run_fleet input is an untyped STRING (default 'false'), the body must send "run_fleet":"true" (string), a JSON boolean 422s ('Invalid value for input').
+- Repo worklog appended (this entry's own commit — author verified pre+post per commit) -> pull --rebase -> push clean, no conflicts, no force-push. At append: 38112490148 (d0af59b5 v0.933.0 gate) in flight — verdict BY RUN ID next fire; FACE 203 riding (honest-close). Identity verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
+
+Stage Summary:
+- FACE 202 FIRST READ archived: the starve bot seat's first LIVE face (tie law held, F13+F1 38.1%), the starve lane mix's first face (hop+sweep 61.9%), the bane's first live voice (2-2 arena), the stakes' third face (F16 solo 100%), the standdown bot's second face (mix), the bank's three-peat CONFIRMED (0/2068u), the tithe's prime never rode (SIXTH face), the drain's mid shape.
+- Pushed tip: this entry's own commit on d0af59b5 (v0.933.0). No version bump this round — read-time work only (the fire-1041 precedent).
+- FACE 203 = 38113063065 riding on d0af59b5 -> NEXT FIRE: verdict BY RUN ID first; if terminal SUCCESS + unclaimed -> FIRST READ = the starve LANE mix's own first LIVE face + the stakes' fourth face (F16 twice in a row?) + the bank's four-peat? + the tithe's SEVENTH dead prime; carried gates: 38112490148 (d0af59b5 v0.933.0 tree) + this push's own gate — both verdict BY RUN ID.
+- Artifacts kept: /home/z/my-project/scripts/face202/ (fleet19.log, fleet20.zip, face202_decomp.txt, key rows). Tooling intact: fetch_art_193.sh + the house decomposer.
+- Discipline held: identity law, RACE law (rebase before push), dispatch law (x2 polls, verdict BY RUN ID, full sha recorded), one-parser law (house decomposer only), no force-push, no history rewrite, no local server/fleet/tests.
