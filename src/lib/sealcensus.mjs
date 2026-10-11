@@ -185,3 +185,114 @@ export function sealCensus (lines) {
   }
   return out
 }
+
+// (v0.937.0) THE DEPOSIT'S OWN CAST - the deposit family's own WHO axis.
+// The v0.827.0 titheFamilySeat priced the LANE axis (WHICH lane owns the
+// family's voice: fuel vs cobble vs smelt vs reserve) but no row ever
+// said WHICH BOT's own pocket keeps paying the family's own tithe -
+// face 204's read rode raw beside the census ('cobble-tithe: named
+// firings 7, units 304, riders 0, bots F4,F3,F11,F14,F18') with no seat
+// naming the keeper. sealcensus.mjs extends pure-additive (THE BILL LAW:
+// the census's own events cells only - sealCensus's own named firings,
+// bot-family-moved-name-kept, zero re-parsing, one book; THE COUNT LAW:
+// each named firing one vote - the event-seating precedent, the v0.935.0
+// firings and the v0.936.0 churn events; the atom is the bot's own
+// firing COUNT, never the moved mass - the mass rode the census's own
+// units column since v0.397.0; THE STRICT-MAJORITY LAW - a bot owns the
+// cast only above half the named firings, a tie owns nothing; the duo
+// beside the seat's silence, byte law count desc + bot byte asc; THE
+// BRANCH LAW FENCED IN THE LIB - a leader already holding the majority
+// reads the honest null; the junk fences - a bad cell is skipped, a
+// good cell still tallies; the honest silences - the firing-free family
+// stays the census's own subject). The family label rides the wiring's
+// own map (the dash key's space form - the census's own lane names):
+// junk labels read the honest null row, never an invented name.
+// ROWS: the seat 'the <family>'s own cast (v0.937.0)' - THE DEPOSIT'S
+// OWN REPEAT KEEPER; the duo 'the <family>'s own duo (v0.937.0)' - THE
+// KEEPERS' OWN CROWD. Both after the family's own raw row, never
+// before it (the order law). Zero fleet log lines - CENSUS GUARD.
+
+/**
+ * depositCast(events) - the family's own bot-level seat (the count law
+ * on the named firings).
+ * @param {Array<{bot: string}>} [events] sealCensus's own events cells (one family's)
+ * @returns {null|{bot: string, owns: number, ofFirings: number, share: number}}
+ *   the seat (null on junk, an empty book, or an under-half leader)
+ */
+export function depositCast (events) {
+  if (!Array.isArray(events)) return null
+  const byBot = new Map()
+  for (const e of events) {
+    if (!e || typeof e !== 'object' || Array.isArray(e)) continue
+    if (typeof e.bot !== 'string' || !e.bot) continue
+    byBot.set(e.bot, (byBot.get(e.bot) || 0) + 1)
+  }
+  if (!byBot.size) return null
+  const book = [...byBot.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))
+  const total = book.reduce((s, [, v]) => s + v, 0)
+  const [top, topOwns] = book[0]
+  if (topOwns <= total - topOwns) return null
+  return { bot: top, owns: topOwns, ofFirings: total, share: +((topOwns / total) * 100).toFixed(3) }
+}
+
+/**
+ * depositCastRow(cast, family) - the seat's own row (the prose lives
+ * only in the lib; the family label is the wiring's own space form).
+ * @param {null|{bot: string, owns: number, ofFirings: number, share: number}} [cast] depositCast's own read
+ * @param {string} [family] the census's own lane name ('cobble tithe')
+ * @returns {null|string} the row (null on junk)
+ */
+export function depositCastRow (cast, family) {
+  if (!cast || typeof cast !== 'object' || Array.isArray(cast)) return null
+  if (typeof family !== 'string' || !family) return null
+  const { bot, owns, ofFirings, share } = cast
+  if (typeof bot !== 'string' || !bot) return null
+  if (!Number.isFinite(owns) || owns <= 0 || !Number.isFinite(ofFirings) || ofFirings <= 0 || owns > ofFirings) return null
+  if (!Number.isFinite(share)) return null
+  const firingsWord = ofFirings === 1 ? 'firing' : 'firings'
+  return `the ${family}'s own cast (v0.937.0): ${bot} owns ${owns} of ${ofFirings} named ${firingsWord} (${share}%) - THE DEPOSIT'S OWN REPEAT KEEPER: one bot's own pocket keeps paying the family's own voice - the v0.827.0 seat priced the lane, the cast names the lane's own keeper`
+}
+
+/**
+ * depositDuo(events) - the duo beside the seat's silence (book >= 2,
+ * byte law count desc + bot byte asc).
+ * @param {Array<{bot: string}>} [events] sealCensus's own events cells (one family's)
+ * @returns {null|{leader: string, leaderOwns: number, runner: string, runnerOwns: number, ofFirings: number, pairOwns: number, share: number}}
+ *   the duo (null on junk, a thin book, or a leader the seat's law owns)
+ */
+export function depositDuo (events) {
+  if (!Array.isArray(events)) return null
+  const byBot = new Map()
+  for (const e of events) {
+    if (!e || typeof e !== 'object' || Array.isArray(e)) continue
+    if (typeof e.bot !== 'string' || !e.bot) continue
+    byBot.set(e.bot, (byBot.get(e.bot) || 0) + 1)
+  }
+  if (byBot.size < 2) return null
+  const book = [...byBot.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))
+  const total = book.reduce((s, [, v]) => s + v, 0)
+  const [leader, leaderOwns] = book[0]
+  if (leaderOwns > total - leaderOwns) return null
+  const [runner, runnerOwns] = book[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofFirings: total, pairOwns, share: +((pairOwns / total) * 100).toFixed(3) }
+}
+
+/**
+ * depositDuoRow(duo, family) - the duo's own row (the prose lives only
+ * in the lib).
+ * @param {null|{leader: string, leaderOwns: number, runner: string, runnerOwns: number, ofFirings: number, pairOwns: number, share: number}} [duo] depositDuo's own read
+ * @param {string} [family] the census's own lane name ('cobble tithe')
+ * @returns {null|string} the row (null on junk)
+ */
+export function depositDuoRow (duo, family) {
+  if (!duo || typeof duo !== 'object' || Array.isArray(duo)) return null
+  if (typeof family !== 'string' || !family) return null
+  const { leader, leaderOwns, runner, runnerOwns, ofFirings, pairOwns, share } = duo
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner) return null
+  if (!Number.isFinite(leaderOwns) || leaderOwns <= 0 || !Number.isFinite(runnerOwns) || runnerOwns <= 0) return null
+  if (!Number.isFinite(ofFirings) || ofFirings <= 0 || !Number.isFinite(pairOwns) || pairOwns > ofFirings) return null
+  if (!Number.isFinite(share)) return null
+  const firingsWord = ofFirings === 1 ? 'firing' : 'firings'
+  return `the ${family}'s own duo (v0.937.0): no solo keeper owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofFirings} named ${firingsWord} (${share}%) - THE KEEPERS' OWN CROWD: the cast's tie law held, the crowd is still real - the duo prices the pockets the solo law refused to name`
+}

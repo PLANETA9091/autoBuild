@@ -15,7 +15,7 @@ import { fleeSeat, fleeSeatRow, fleeRiders, fleeRidersRow } from '../../src/lib/
 import { deathSweep } from '../../src/lib/deathsweep.mjs' // (v0.389.0) the honest death sweep's field read
 import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read; (v0.920.0) the late third's own cast - WHO owns the closing third's deaths (the census's own deathRows cells, zero re-parsing)
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
-import { sealCensus, SEAL_FAMILIES } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read
+import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, depositDuoRow } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read; (v0.937.0) + the deposit's own cast - the family's own bot-level seat (the v0.827.0 lane seat's own sibling)
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
 import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
@@ -2608,6 +2608,18 @@ for (const fam of SEAL_FAMILIES) {
   const items = Object.entries(f.byItem).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}=${v}`).join(' ') || 'none'
   const kept = Object.entries(f.kept).sort((a, b) => b[1] - a[1]).map(([k, v]) => `keep${k}x${v}`).join(' ') || '-'
   console.log(`  ${fam}: named firings ${f.banked}, units ${f.units}, riders ${f.riders} (each = a 3rd+ silent firing), bots ${f.bots.join(',') || 'none'}`)
+  // (v0.937.0) THE DEPOSIT'S OWN CAST - the family's own WHO axis: the
+  // v0.827.0 seat priced WHICH lane owns the family's voice, no row ever
+  // said WHICH bot's own pocket keeps paying the tithe. The cast rides
+  // beside the family's own raw row - never before it (the order law);
+  // zero fleet log lines - CENSUS GUARD. The firing-free family reads
+  // the honest silence (no row - the raw zero already spoke).
+  const dcFamLabel = fam.replaceAll('-', ' ')
+  if (f.events && f.events.length) {
+    const dcSeat = depositCast(f.events)
+    const dcRow = dcSeat ? depositCastRow(dcSeat, dcFamLabel) : depositDuoRow(depositDuo(f.events), dcFamLabel)
+    if (dcRow) console.log(`  ${dcRow}`)
+  }
   // (v0.405.0) THE KEEP ARM's row: the reserve's silent branch now
   // self-names (deposit.mjs) and the census reads it - a family that
   // never kept prints the honest zero (faces 23/24's read would have
