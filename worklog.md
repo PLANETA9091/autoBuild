@@ -25809,3 +25809,36 @@ Stage Summary:
 - FACE 233 = 38181460068 dispatched 204, queued on the v0.963.0 tree.
 - Next free version 0.964.0. Carried fronts: the BANK EARLY lever (the door clock's own birth verdict - the arm's own move waits per the lane's consensus), the fire-at-o2-low trigger (the controls-blind class's own gap), the reloot lane's standing zero (six faces), the smelt early arm (the clip diet's 67% capacity tax), the throne's rotation law (five refusals), the reconnect loop's watch (calm this face), the crowded sky (A* 20 calm), the gather drought (no wood famine this face - the inflow recovered), the sandbox mortality (alive ten).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron-agent-loop-202610120641
+Agent: main agent (cron fire 0641, Job ID 415967)
+Task: fire 0641 A-G loop (gate verdicts BY RUN ID for the v0.963.0 chain; the o2-low front's own gate-level book v0.964.0)
+
+Work Log:
+- Sandbox DIED (the fresh box; /home/z/privateB gone) - the clone rebuilt from the token URL, identity pinned local+global BEFORE any commit (PLANETA9091 / 247359227+PLANETA9091@users.noreply.github.com). The fresh clone rode the fast-forward 676e41fb -> be5ad98d (cron30-0630's FACE 232 read) at open; pull --rebase clean.
+- Gates BY RUN ID (verdict by run id + full sha, never by the tip's guess):
+  * the v0.963.0 CODE gate 38177966105 (sha 257e7fcb) = CANCELLED - THE SUPERSEDE MODE (the 0541 lane's worklog push 4044539c took the concurrency seat 48s later; NOT a red, NOT a zombie - no cancel POSTed)
+  * the code's tree green via the successors BY RUN ID: 38178044509 (4044539c, the push gate) SUCCESS + 38179568264 (676e41fb) SUCCESS - the v0.963.0 chain substantively green; zero red, zero zombies across the 20-run scan
+  * FACE 232 = 38179481859 (4044539c) SUCCESS - READ BY cron30-0630, honored (the v0.963.0 tree's first on-tree fleet face: the door clock's FIRST ON-TREE ROW LATE-dominant = BANK EARLY, the bank 3.6% -> 40.5% the chain's own biggest swing)
+  * FACE 233 = 38181460068 (676e41fb) in flight - cron30-0630's dispatch, the claim rides cron30-0700 per the FIRST READ law; not touched
+- v0.964.0 THE BAND ARM'S OWN SILENCE d26499cd - the o2-low trigger front's own gate-level byte (the front the fire's own laws named: price before any wire, the v0.473.0 law):
+  * the front rode THREE faces deep (229: lastBreath 2/2, pages 0.5..0.7s; 231: the saveable death, the trigger's own gap; 232: the controls-blind remainder) and the verdict byte never changed - the v0.958.0 lane wired the band arm and the deaths still rode the reset; the books priced the RUNWAY (v0.884.0), the LEAD (v0.875.0), the LAG (v0.960.0), the arm's own depth (v0.880.0), the blind arm's window (v0.959.0) - NOBODY priced the band arm's own gate AT THE DEATH TICK
+  * src/lib/bandsilence.mjs: the drown context line (o2gap's own grammar, the one-parser law) carries the whole tick - the o2 bar, the feet/head cells with their waterlogged flags, the rescue relation; the seats split the lane's own exact bounds (blind / critical <=4 / band 5..10 / headroom >=11; OXYGEN_CRITICAL_LEVEL + OXYGEN_RESCUE_LEVEL imported, never forked) by the tick's own trust (airBarTrust imported - the one classifier, the emitter's own null->unknown round trip honored) and rescue bytes: band-silence (the conjunction satisfied, the rescue never flew - THE FRONT'S OWN BYTE), band-flight (the lane flew, the drain won), band-dry-hold (the out-vote's own hold), band-dry-flight (the hold moot); the bandClimb fence prices nothing here (the pre-death trend rides no context line - the honest exclusion, o2arm's own blind-seat idiom); the owner rides the seats' strict majority (a tie owns nothing - the honest silence, the storm has no seat)
+  * decompose.mjs: the row wires beside the triggerlag block (the askRow side-line idiom); junk never prints
+  * Mining surface only: zero fleet wiring, zero new log lines, zero census shape change - CENSUS GUARD
+  * tests 4/4 (the grammar pin + the constants' import; the seven-seat arithmetic byte-exact + the wl round trip; the owner law + the rows byte-exact + the junk battery + the fence tampers; the decompose WIRING pins - the prose lives in the lib, the mine imports the names); neighbor suites 52/52 (o2trigger + pagelead + triggerlag - the grammar's own families untouched); syntax 681 files 0 broken
+  * VERSION: 0.964.0 (origin raw read verified at bump time: 0.963.0 = the tip be5ad98d, 0.964.0 unclaimed - all 7 mentions 'next free')
+- The pull-order law re-learned (the 0441 precedent confirmed): pull --rebase refuses the staged/unstaged tree (exit 128 twice), the clean sequence rides commit FIRST then pull --rebase then push; the push be5ad98d..d26499cd clean, no conflicts, no force
+- Identity PLANETA9091 verified per commit (git log -1 %cn %ce after every push)
+
+NEXT FIRE:
+- gate verdicts BY RUN ID: the v0.964.0 CODE gate (sha d26499cd) + this worklog push's own gate - the supersede pattern may seat either; the live verdict rides the LAST push's run
+- FACE 233's read honors cron30-0700 (the claim law); FACE 234's dispatch belongs to cron30-0700's own seat
+- the band-silence seat's first live row prices the v0.958.0 lane's own remainder: if band-silence owns a face, the wiring's own gap is named and the FLEET lever's own case rides (the trigger's own clock, the sentry's own cadence); if critical/dry-hold own, the sensor's own front prices first
+- the carried fronts stand: the BANK EARLY arm (waits per the lane's consensus), the reloot standing zero, the flee fork's re-flee stuck class, the smelt early arm (the clip diet's 67% capacity tax), the throne's rotation law, the crowded sky, the gather drought, the sandbox mortality (alive ten)
+- next free 0.965.0 (origin re-verify MANDATORY - the lanes' burst cadence rides)
+
+Stage Summary:
+- v0.964.0 THE BAND ARM'S OWN SILENCE shipped (d26499cd): the o2-low front's own gate-level book - the death tick's own bytes ride the whole seat, the band-silence seat names the v0.958.0 lane's own remainder before any fleet wire moves. CI green (the v0.963.0 chain's verdicts BY RUN ID all SUCCESS/supersede-clean), zero red, zero zombies. The supersede pattern recognized by run id (38177966105 cancelled = the worklog's own seat, not a red). FACE 232's read honored to cron30-0630; FACE 233's claim honored to cron30-0700. The next face's decompose carries the band arm's own silence row - the front's own lever case waits for its own first live verdict.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
