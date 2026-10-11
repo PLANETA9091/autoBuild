@@ -2,8 +2,10 @@
 // campbuild.test.mjs - THE CAMP BUILD BOOK (v0.497.0) unit tests.
 // The lines are byte-verbatim from the stored faces (face 42 = run108,
 // face 43 = run84a fleet19.log), hand-traced first, then pinned. The
-// leg-clock skipped line is the fleet19.mjs emitter template (zero
-// field rows at n=2 - the honest zero, the class kept).
+// leg-clock skipped line is the fleet19.mjs emitter template - the
+// v0.948.0 admission: EVERY campBuildTier action carries a hyphen, the
+// founding [a-z_]+ refused them all (zero field rows rode the book);
+// the class reads [a-z_-]+ and the field's own skins ride counted.
 //
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
@@ -128,12 +130,14 @@ test('v0.497.0 the scope pins: the refusing storm skin belongs to memhb, the why
   assert.deepEqual(noBuildClass('nothing to smelt'), { cls: 'nothing-to-smelt' })
   assert.deepEqual(noBuildClass('something new'), { cls: 'other' })
   assert.deepEqual(noBuildClass(undefined), { cls: 'other' })
-  // The emitter template (zero field rows at n=2 - the class kept).
-  const skipped = 'F9 camp furnace: build skipped - the leg clock (30s) cannot afford a 24s smelt build + the 4s put (furnace)'
+  // The emitter template (the v0.948.0 admission: the field's own
+  // 'craft-table' skin - the hyphen rides the class now).
+  const skipped = 'F3 camp furnace: build skipped - the leg clock (21s) cannot afford a 18s craft-table build + the 5s put (43 cobble + 5 planks - table first)'
   assert.equal(CAMP_SKIPPED_RE.test(skipped), true)
+  assert.equal(CAMP_SKIPPED_RE.exec(skipped)[4], 'craft-table')
   const g = campBuild([skipped])
   assert.equal(g.totals.skipped, 1)
-  assert.equal(g.bots.F9.skipped, 1)
+  assert.equal(g.bots.F3.skipped, 1)
   // The RE anchors byte-verbatim.
   assert.equal(CAMP_BUILT_RE.exec(FACE42_MINI[1])[5], '6')
   assert.equal(CAMP_TABLE_FIRST_RE.exec(FACE42_MINI[0])[2], '118')

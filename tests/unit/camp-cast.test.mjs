@@ -54,7 +54,11 @@ test('the measures never vote: the line buckets sum, the prices stay out', () =>
 test('END-TO-END: campBuild(frozen) feeds the cast - the face-208 crowd reads the silence', () => {
   const book = campBuild(FROZEN)
   assert.equal(book.totals.built, 3)
-  assert.equal(book.totals.total, 10)
+  // (the v0.948.0 admission: the F3 leg-clock skip's 'craft-table' skin
+  // JOINED the book - the founding [a-z_]+ refused every real tier
+  // action's hyphen, the counted population is the truth)
+  assert.equal(book.totals.skipped, 1)
+  assert.equal(book.totals.total, 11)
   assert.equal(campCast(book.bots), null)
 })
 
@@ -102,16 +106,17 @@ test('the byte law + the duet: counts equal, the name sorts first', () => {
 
 test('END-TO-END riders: the face-208 crowd shape - the pair prices the builds', () => {
   const book = campBuild(FROZEN)
-  // (the book's own count law: the F3 leg-clock skip's 'craft-table' skin
-  // rides the hyphen the CAMP_SKIPPED_RE's [a-z_]+ refuses - the book's
-  // own counted population is 10, the cast never re-parses)
+  // (the v0.948.0 admission: the F3 leg-clock skip's 'craft-table' skin
+  // rides the book now - the founding [a-z_]+ refused every real tier
+  // action's hyphen, the counted population is 11, the cast never
+  // re-parses)
   assert.deepEqual(campRiders(book.bots), {
     leader: 'F4', leaderOwns: 3, runner: 'F7', runnerOwns: 2,
-    ofLines: 10, pairOwns: 5, share: 0.5,
+    ofLines: 11, pairOwns: 5, share: 0.455,
   })
   assert.equal(
     campRidersRow(campRiders(book.bots)),
-    "the camp build's own riders (v0.943.0): no solo builder owns the majority - F4 x3 + F7 x2 own 5 of 10 camp furnace lines (50.0%) - THE BUILDERS' OWN CROWD: the cast's tie law held, the crowd is still real - the pair prices the builds the solo law refused to name")
+    "the camp build's own riders (v0.943.0): no solo builder owns the majority - F4 x3 + F7 x2 own 5 of 11 camp furnace lines (45.5%) - THE BUILDERS' OWN CROWD: the cast's tie law held, the crowd is still real - the pair prices the builds the solo law refused to name")
 })
 
 test('the riders row byte-exact', () => {

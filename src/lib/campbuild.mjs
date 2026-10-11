@@ -74,10 +74,14 @@ export const CAMP_TABLE_FIRST_RE =
 // 'F15 camp furnace: craft-planks (3 log(s) in pocket - craft planks (largest same-type stack 1/4))'
 export const CAMP_PLANKS_RE =
   /^(F\d+) camp furnace: craft-planks \((\d+) log\(s\) in pocket - craft planks \(largest same-type stack (\d+)\/(\d+)\)\)$/
-// 'F9 camp furnace: build skipped - the leg clock (30s) cannot afford a 24s smelt build + the 4s put (furnace)'
-// (the fleet19.mjs leg-clock template; zero field rows at n=2)
+// 'F3 camp furnace: build skipped - the leg clock (21s) cannot afford a 18s craft-table build + the 5s put (43 cobble + 5 planks - table first)'
+// (the fleet19.mjs leg-clock template; the v0.948.0 admission: EVERY
+// campBuildTier action carries a hyphen - 'place-furnace'/'craft-furnace'/
+// 'place-table'/'craft-table'/'craft-planks' - the founding [a-z_]+
+// refused them all and the lane's own field lines rode dropped from the
+// book; the class admits the hyphen, the counted population is the truth)
 export const CAMP_SKIPPED_RE =
-  /^(F\d+) camp furnace: build skipped - the leg clock \((\d+)s\) cannot afford a (\d+)s ([a-z_]+) build \+ the (\d+)s put \((.+)\)$/
+  /^(F\d+) camp furnace: build skipped - the leg clock \((\d+)s\) cannot afford a (\d+)s ([a-z_-]+) build \+ the (\d+)s put \((.+)\)$/
 // The [upgrade] machinery's attempt anatomy.
 export const CAMP_ATTEMPT_RE =
   /^(F\d+) camp furnace: craft ([a-z_]+): variant#(\d+) attempt(\d+) failed: (.+)$/
