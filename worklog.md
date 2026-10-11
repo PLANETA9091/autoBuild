@@ -25176,3 +25176,20 @@ Stage Summary:
 - FACE 215 = 38141561770 dispatched as the retry (rides 5f364ff6, the v0.954.0 tree) - the combat cast's first on-tree fleet face armed.
 - No version this fire (the failure path is the fire's work); next free 0.955.0 (origin re-verify MANDATORY).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+Task ID: fire-2041-addendum
+Agent: main agent (cron-agent-loop-202610112041, Job ID 415967)
+Task: fire 2041 addendum - FACE 214 red fix: v0.955.0 THE CRAFT STORM'S OWN VOICE.
+
+Work Log:
+- FACE 214 = 38139708078 FAILURE diagnosed (independently beside fire-2100's own read - two lanes, one verdict): the smelt test's tool bootstrap hit the craft storm ('craft storm: 3 consecutive craft timeouts - cooldown 4000ms (server stall?)' at 12:46:18), sticks starved, the tool phase died at the 280s hard cap ('the storm owns the surface?'), and the v0.171.0 boundary skip did NOT fire - the assert burned on the environment class the skip exists for. The same runtime passed integration on the FACE 213 gate hours earlier - a flake, not a regression.
+- THE GAP PRICED: the boundary's live-state read (craftStormVerdict(bot).consecutive) under-read the fence weather - the storm rode the log loudly (the give-up line + the refusal lines) but the state at the boundary read < 3 (a later probe success or reset owns the under-read; the stdout alone cannot pin the reset site - the honest fix prices the VOICE, not the state).
+- v0.955.0 THE CRAFT STORM'S OWN VOICE (tests/integration/smelting.test.mjs, test-side only, zero runtime machinery touched): the log sink counts the give-up lines (/craft storm: N consecutive craft timeouts/ - the line only ever prints at >= 3 consecutive fence timeouts by CRAFT_STORM_GIVE_UP's own law) beside the v0.752.0 mob tally's own precedent; the boundary skip gains the OR arm (state >= 3 OR the voice >= 1 give-up line). A real recipe/inventory bug prints 'missing ingredient'/'no craftable recipe' and never a storm line - the assert keeps guarding the genuine break.
+- VERIFIED: node --check clean; the regex fires on FACE 214's own storm line (the stored job log's exact bytes); unit suite untouched (read-time test-side change only).
+- FACE 215 = 38141561770 (fire-2100's retry, riding 5f364ff6) honored in flight - it runs the pre-fix tree; the fix rides 0.955.0 for FACE 216+.
+- VERSION: 0.955.0 (origin API raw read verified at bump time: 0.954.0 = the combat cast's own claim 5f364ff6, 0.955.0 unclaimed - fire-2100's own read agrees).
+- NO force-push, NO history rewrite. Identity PLANETA9091.
+
+Stage Summary:
+- v0.955.0 landed: the craft storm's own voice seats the environment skip - the log's give-up line is the class's own signature, the state read's under-read priced shut.
+- FACE 214 closed as the honest flake (two-lane corroborated); FACE 215 the retry in flight on the v0.954.0 tree.
+- Next free version 0.956.0 (origin re-verify MANDATORY).
