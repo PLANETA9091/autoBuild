@@ -20,7 +20,7 @@ import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // 
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
-import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky
+import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
 import { sensorWindowsBook, sensorWindowsRow } from '../../src/lib/sensorwindow.mjs' // (v0.881.0) THE SENSOR WINDOW'S OWN BOOK - the blind reads' own windows: a maximal run of consecutive reset(-1) pass reads in one bot's line-order stream (the reuse law: parseSentryPass is the one parser, the blind skin is the o2 kind 'reset' - the parser's own word, never re-spelled); the run's read count is the price, the pass span (from..to) is the clock - the sensor-health front's own next byte (the toll owns the rides, the windows own the DURATION)
@@ -2873,6 +2873,12 @@ if (openDeaf.openDeaf.length > 0) {
     else {
       const svr = starveBotRiders(svb)
       if (svr) console.log(`  ${starveBotRidersRow(svr)}`)
+    }
+    const svs = starveLaneSeat(svb)
+    if (svs) console.log(`  ${starveLaneSeatRow(svs)}`)
+    else {
+      const svm = starveLaneRiders(svb)
+      if (svm) console.log(`  ${starveLaneRidersRow(svm)}`)
     }
     // (v0.727.0) THE CROWDED SKY'S OWN WALK - the join the two rows above
     // sat beside: the walk refusals' heaviest class is the decide timeout,

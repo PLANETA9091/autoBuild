@@ -344,3 +344,109 @@ export function starveBotRidersRow (r) {
   const unit = ofStarves === 1 ? 'starve' : 'starves'
   return `the starve's own riders (v0.932.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN MIX: the seat's tie law held, the mix is the shape - the starves' own spread prices the sky the solo law refused to seat`
 }
+
+//
+// THE STARVE'S OWN LANE (v0.933.0) - the starve book's own LANE axis.
+// The v0.913.0 clock seated the SKY axis (which third), the v0.932.0
+// bot seat seated the WHO axis (which bot) - the lane axis rode raw
+// since v0.913.0 (the face 201 read: the four lanes' starves spread
+// across the sky with no row naming WHICH lane owns the book). THE
+// BILL LAW (the book's own stamps verbatim - the stamp's own lane byte
+// the atom, zero re-parsing, one book, zero fold changes - the lane
+// byte has ridden the stamps since v0.913.0): the lane axis is
+// ts-independent and bot-independent - an untimed stamp still names
+// its lane (the tail law's own honesty, the v0.932.0 own law); a
+// stamp without a well-formed lane byte never seats (the real stamps
+// still tally - the junk fences' own law).
+//
+// THE STRICT-MAJORITY LAW (the v0.932.0 own precedent): a lane owns
+// the sky only above half the lane-keyed starves - a tie owns nothing
+// (the storm-has-no-seat precedent). The riders measure beside the
+// seat's silence (the top two under the byte law: count desc, the
+// lane's own byte asc). THE BRANCH LAW FENCED IN THE LIB (the riders
+// read null whenever the seat's owner exists - the v0.930.0 stakes'
+// own fence shape). Junk never invents a seat: a non-object book
+// without stamps, a non-array stamps leg, a zero-sum lane book - the
+// honest silence. Pure: reads, never mutates. Zero fleet wiring
+// (mining-surface only, the v0.913.0 own precedent).
+//
+
+// The lane-keyed tally over the book's own stamps (or a bare stamps
+// array - the census-or-bare acceptance, the v0.932.0 own shape). The
+// key IS the atom: a junk lane byte stakes nothing.
+const starveLaneTally = (book) => {
+  const stamps = book && typeof book === 'object' && !Array.isArray(book)
+    ? book.stamps
+    : (Array.isArray(book) ? book : null)
+  if (!Array.isArray(stamps)) return null
+  const byLane = {}
+  let total = 0
+  for (const s of stamps) {
+    if (!s || typeof s !== 'object' || Array.isArray(s)) continue
+    if (typeof s.lane !== 'string' || s.lane === '') continue
+    byLane[s.lane] = (byLane[s.lane] || 0) + 1
+    total += 1
+  }
+  if (total <= 0) return null
+  return { byLane, total }
+}
+
+// (v0.933.0) THE STARVE'S OWN LANE SEAT - the strict-majority law over
+// the lane-keyed starve mass (a tie owns nothing).
+export function starveLaneSeat (book) {
+  const t = starveLaneTally(book)
+  if (!t) return null
+  const half = t.total / 2
+  for (const [lane, owns] of Object.entries(t.byLane)) {
+    if (owns > half) return { lane, owns, ofStarves: t.total, shareOfStarves: +(owns / t.total).toFixed(3) }
+  }
+  return null
+}
+
+// (v0.933.0) THE STARVE'S OWN LANE RIDERS - the seat's silence's own
+// companion (the byte law: count desc, the lane's own byte asc). A
+// MEASURE, never a verdict-owner; the branch law fenced in the lib.
+export function starveLaneRiders (book) {
+  const t = starveLaneTally(book)
+  if (!t) return null
+  const ranked = Object.entries(t.byLane).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length < 2) return null
+  const half = t.total / 2
+  if (ranked[0][1] > half) return null // the branch law: the seat's owner exists - the mix never prints
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofStarves: t.total, pairOwns, shareOfStarves: +(pairOwns / t.total).toFixed(3), duet: leaderOwns === runnerOwns }
+}
+
+// (v0.933.0) the starve's own lane row - THE STARVE'S OWN LANE: the
+// seat names WHICH lane's own decide-timeouts own the sky; the lane's
+// own front aims the cure the thirds rode unnamed. Junk never prints
+// a seat (the honest silence's own row law).
+export function starveLaneSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { lane, owns, ofStarves, shareOfStarves } = seat
+  if (typeof lane !== 'string' || lane === '' ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofStarves) || ofStarves <= 0 || owns > ofStarves ||
+      !Number.isFinite(shareOfStarves)) return null
+  const unit = ofStarves === 1 ? 'starve' : 'starves'
+  return `the starve's own lane (v0.933.0): ${lane} owns ${owns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN LANE: one lane's own decide-timeouts own the sky - the lane's own front prices the cure the thirds rode unnamed`
+}
+
+// (v0.933.0) the starve's own lane-mix row - THE STARVE'S OWN LANE MIX:
+// a measure of the shape, never a named owner (the seat's tie law
+// holds). Junk never prints a shape (the honest silence's own row law).
+export function starveLaneRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofStarves, pairOwns, shareOfStarves } = r
+  if (typeof leader !== 'string' || leader === '' ||
+      typeof runner !== 'string' || runner === '' ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 ||
+      !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofStarves) || ofStarves <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofStarves ||
+      !Number.isFinite(shareOfStarves)) return null
+  const unit = ofStarves === 1 ? 'starve' : 'starves'
+  return `the starve's own lane mix (v0.933.0): no solo lane owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN LANE MIX: the seat's tie law held, the mix is the shape - the lanes' own spread prices the sky the solo law refused to seat`
+}
