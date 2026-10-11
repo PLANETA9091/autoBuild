@@ -98,6 +98,7 @@ import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../
 import { campCast, campCastRow, campRiders, campRidersRow } from '../../src/lib/campcast.mjs' // (v0.943.0) the camp build's own cast - the build book's bot-level seat (the count-seat family's own sibling)
 import { swordDueBook, swordCast, swordCastRow, swordRiders, swordRidersRow } from '../../src/lib/sworddue.mjs' // (v0.945.0) the sword due's own cast - the replace lane's bot-level seat (the count-seat family's own sibling)
 import { mapTripCastBook, mapTripCast, mapTripCastRow, mapTripRiders, mapTripRidersRow } from '../../src/lib/maptripcast.mjs' // (v0.946.0) the map trip's own cast - the trip lane's bot-level seat (the count-seat family's own sibling)
+import { shelterSkipBook, shelterSkipCast, shelterSkipCastRow, shelterSkipRiders, shelterSkipRidersRow } from '../../src/lib/sheltercast.mjs' // (v0.947.0) the shelter skip's own cast - the refuser lane's bot-level seat (the count-seat family's own sibling)
 import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
 import { riseAssistBook, riseAssistCast, riseAssistCastRow, riseAssistDuo, riseAssistDuoRow } from '../../src/lib/assistcast.mjs' // (v0.943.0) the rise assist's own cast - the assist lane's bot-level seat (the count-seat family's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
@@ -1668,6 +1669,28 @@ if (shooter.total > 0) {
     if (sl.prose) console.log(`  the ladder prose: min ${sl.prose.min} / median ${sl.prose.median} / max ${sl.prose.max} lines per episode`)
     for (const r of sl.rows.filter(x => x.outcome === 'ringed')) {
       console.log(`   ringed: ${r.bot} vs ${r.mob} (ring tries ${r.ringTries}) - the ring door opened`)
+    }
+  }
+}
+
+// (v0.947.0) THE SHELTER SKIP'S OWN CAST - the refuser lane's own WHO
+// axis: the shield ladder above priced the attempts (the episode book),
+// THIS prices WHICH bot's own nights keep refusing the shelter (the
+// count-seat family's own sibling; the verb grammar rides by import -
+// the one-parser law, the skip-class grammar stays the ladder's own
+// subject, zero re-classification). The pool's own raw row rides FIRST
+// - the cast never leads (the order law); one row never both (the
+// branch law, fenced in the lib).
+{
+  const sk = shelterSkipBook(lines)
+  if (sk && sk.totals.total > 0) {
+    const skBots = Object.entries(sk.totals.totalBots).sort((a, b) => b[1] - a[1]).map(([b, n]) => `${b}=${n}`).join(' ')
+    console.log(`  shelter skip pool: ${sk.totals.total} line(s) across ${Object.keys(sk.totals.totalBots).length} bot(s) - per bot: ${skBots || 'none'}${sk.totals.ownerless ? ` - ownerless ${sk.totals.ownerless}` : ''}`)
+    const skSeat = shelterSkipCast(sk.bots)
+    if (skSeat) console.log(`  ${shelterSkipCastRow(skSeat)}`)
+    else {
+      const skRiders = shelterSkipRiders(sk.bots)
+      if (skRiders) console.log(`  ${shelterSkipRidersRow(skRiders)}`)
     }
   }
 }
