@@ -96,6 +96,7 @@ import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp b
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
 import { campCast, campCastRow, campRiders, campRidersRow } from '../../src/lib/campcast.mjs' // (v0.943.0) the camp build's own cast - the build book's bot-level seat (the count-seat family's own sibling)
+import { swordDueBook, swordCast, swordCastRow, swordRiders, swordRidersRow } from '../../src/lib/sworddue.mjs' // (v0.945.0) the sword due's own cast - the replace lane's bot-level seat (the count-seat family's own sibling)
 import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
 import { riseAssistBook, riseAssistCast, riseAssistCastRow, riseAssistDuo, riseAssistDuoRow } from '../../src/lib/assistcast.mjs' // (v0.943.0) the rise assist's own cast - the assist lane's bot-level seat (the count-seat family's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
@@ -4592,6 +4593,33 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     for (const [tier, n] of Object.entries(sp.okTiers)) pbits.push(`${tier} ${n}`)
     console.log(`  spare pick: armed ${sp.ok} (${pbits.join(' / ')}) | craft-miss ${sp.craftMisses}${sp.craftHolds ? ` (${sp.craftHolds}u pocket at the misses)` : ''} - stick-miss ${sp.stickMisses}, table-refused ${sp.tableRefusals}, skips ${sp.skips} (stick-drought ${sp.skipClasses['stick-drought'] || 0} / materials ${sp.skipClasses.materials || 0} / other ${sp.skips - (sp.skipClasses['stick-drought'] || 0) - (sp.skipClasses.materials || 0)})`)
     if (s.stormRefusals || s.ingredientsRefusals || s.prose) console.log(`  legs: storm ${s.stormRefusals} / ingredients ${s.ingredientsRefusals} / prose ${s.prose}`)
+  }
+}
+
+// (v0.945.0) THE SWORD DUE BOOK - the tool replace front's own lane: the
+// v0.67.0 emitter's due ask (the tier skins), the craft verdict's double
+// speak, the table rung's side voice, the honest exits. The lane's field
+// voice rode unread - the armory census owns the yield side, THIS owns
+// the lane's own BOOK and BOT axis.
+{
+  const swd = swordDueBook(lines)
+  if (swd && swd.totals.total > 0) {
+    const t = swd.totals
+    console.log(`--- SWORD DUE BOOK (v0.945.0: the sword replace lane's own field book - the due ask, the craft verdict, the rung's side voice) ---`)
+    console.log(`  due: ${t.due} (iron ${t.iron} / cobble ${t.cobble} / planks ${t.planks})`)
+    console.log(`  verdicts: ok ${t.ok} / did-not-land ${t.didNotLand} / failed ${t.failed} / skip ${t.skip} - stick-miss ${t.stickMiss}, no-table ${t.noTable}`)
+    console.log(`  rung: table-crafted ${t.tableCrafted} / planks-converted ${t.converted}`)
+    const rows = Object.entries(swd.bots).sort((a, b) => b[1].total - a[1].total).slice(0, 6)
+    if (rows.length) console.log(`  bots heaviest-first: ${rows.map(([b, r]) => `${b} ${r.total}`).join(' ')}`)
+    // (v0.945.0) the cast rides beside the book's own raw row - never before
+    // it (the order law): the seat's solo owner fires the cast, the lane's
+    // silence or crowd prints the riders (the measure-not-owner companion).
+    const swSeat = swordCast(swd.bots)
+    if (swSeat) console.log(`  ${swordCastRow(swSeat)}`)
+    else {
+      const swRiders = swordRiders(swd.bots)
+      if (swRiders) console.log(`  ${swordRidersRow(swRiders)}`)
+    }
   }
 }
 
