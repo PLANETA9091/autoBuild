@@ -25588,3 +25588,33 @@ Stage Summary:
 - v0.961.0 = b4579d95 on origin: the churn bot's throne priced whole - the cross-lane read the faces kept assembling by hand now rides its own book; the throne seats only a bot that owns EVERY instability lane at once (face 226's F5 shape is the birth verdict awaiting its first on-tree face), the one-vote-short and the split-owner shapes ride the riders honestly.
 - NEXT FIRE: my gates' verdicts BY RUN ID (the v0.961.0 code gate + the worklog gate); FACE 227 = 38168602243's read honors cron30-0400's claim (their dispatch) - FIRST READ only if released; the throne's first fleet face = the next dispatch's read (F5's churn 9/14 + standdown 10/17 + relog 7/8 was the hand-assembled birth - the book now prices it live); the carried fronts stand (the o2-low trigger's higher constant, the flee fork's re-flee cure, the smelt's early arm 54.9% clock debt, the wood gather drought); next free version 0.962.0 (origin re-verify MANDATORY - the lane is mid-burst).
 - Discipline: identity, RACE, dispatch (NO POST - the seat taken), one-parser, census-guard, FIRST READ honesty, no force-push, no history rewrite, no local server/fleet/tests (light node unit suite only, the established lane practice).
+---
+Task ID: cron30-20261012-0400
+Agent: main agent (cron fire 0400, Job ID 414125)
+Task: fire 0400 A-G loop (FACE 227 read FIRST - the calmest face, the healthy sensor; FACE 228 dispatch)
+
+Work Log:
+- Sandbox survived (fifth consecutive). Synced /home/z/privateB-repo (tip eed8ac48 = my fire-0330 worklog at open; code v0.960.0; next free 0.961.0). Pull --rebase clean at open.
+- Gates BY RUN ID: my fire-0330 worklog push gate 38168725369 SUCCESS (the addendum's verdict landed green).
+- FACE 227 = 38168602243 SUCCESS read (sha 8a8d5ea2, THE v0.960.0 TREE'S FIRST FLEET FACE), two poll rounds (the fleet job ran past the first 300s window), artifacts mined to face227/ (fleet19.log 2305 lines + decomp227.txt):
+  * THE CALMEST FACE OF THE OBSERVED CHAIN: deaths 1 (fall=1 - F19, ts=561s late, THE DEADLINE'S OWN DIVER, the empty pocket's own 0u stake, end-phase 0, max burst 1 in 30s) - the chain 8 -> 4 -> 1; NO drowns, NO mob kills, NO o2 reset(-1) deaths
+  * the window book's FOURTH fleet face = THE HEALTHY SENSOR: 0 blind arms (2 -> 1 -> 0); the sensor window's own book: 51 reads, blind 0 (0%); o2 min 4, at0 0; the lag book's (v0.960.0) second fleet face = THE HONEST ZERO (0 drown deaths to join - its first row stays face 226's F19 late page); the o2/kind join: no-crossing fall 1 (the trigger's own cost priced honestly)
+  * the bank's recovery HOLDS: 58.8% (970 of 1650) after 65.7% - TWO CONSECUTIVE HIGH-BAND FACES; the bank absorbed the drain end-to-end; final write-offs only 201u (F16 134u/16s owns 66.7% + F3 67u) vs 788u; the material balance CLOSED (leaks -44u = -2.8% of mined, within the 5% bar - the unit-count trap gone); pocket peak 1314u rode LATE (t-153s, 71.3% in)
+  * THE CROWDED SKY RETURNED: A* starvation GRAND TOTAL 65 (hop 13 + walk-fail lanes 51 + bank 1) vs 8 -> 12; 51/51 starves at ents median 2474 (>= half the ceiling), max burst 20 in 30s; the starves spread across the clock (early 14 / mid 32 / late 19 - no third owns the sky); the band signature [-109,414..424] x7
+  * the rescue churn: 16 starts, F1 owns 12 (75.0% - THE CHURN'S OWN SOLO SPENDER, the relog bill's own loop); F5's throne EMPTY this face (0 relogs, the kicks split clean F4/F1/F18 x1 each, 4 bare silent ends); shore-pin owns 14 of 20 mid-episode events (70.0%)
+  * the smelt clip debt: clock owns 121 of 135u (89.6%) - the clock's own debt ballooned (54.9% -> 89.6%); fuel clips MID-dominant 3 of 5; the re-smelt shadow paid 22 of 135u back
+  * combat quiet: 4 lines (drowned 4/4 - the pressure's own seat), fights 2 (F12 mob down 2/2 - the hound's defeat book 2/2), flee 0 (the honest zero), critical bars 0
+  * the map's ZERO DELIVERY: the second leg delivered 0/5 (the depth answered, the pocket did not move); the worst slot stuck all face (pct 0% -> 0%, THE STUCK SIGNATURE); launches 5 / skips 7
+  * the tithe's answer 20u vs 56u (35.7%); the dry reads late-crowded (13/24 - THE CLOSING DROUGHT); wood famine 3 of 5 (logs 3/3 - the gather drought rides); dry trips: the shelf owns 8 of 9
+  * F4 the clamp's own victim: the ask 2089s -> 300s granted (the 14% granted share), owns 1789s of the unpaid bank ask (55.1%); the duo F4+F18 own 77.7% of the whole ask
+  * ents max 3234, rss max 402M, storm margin 92M (max +8M), no main freeze
+- The lane shipped v0.961.0 THE CHURN BOT'S THRONE (b4579d95, their fire-0341) while this fire ran - the throne book cites face 226's own hand-assembled read as its seed; their fire-0341 worklog honored the FACE 227 claim (the solo claim respected). FACE 228 becomes the throne book's first on-tree fleet face.
+- F: x2 pre-polls seat FREE (zero active dispatch runs; the lane's two push runs in flight - the coexistence precedent) -> POST 204 -> FACE 228 = 38170891594 in_progress VERIFIED BY RUN ID + event, riding 5f3a936b (THE v0.961.0 TREE)
+- No code this fire (the read+dispatch shape, the eleventh consecutive); next free 0.962.0 (origin re-verify MANDATORY - the lane mid-burst)
+- The box ends before FACE 228's ~33-min clock - the read rides fire 0430
+
+Stage Summary:
+- FACE 227 = 38168602243 SUCCESS read: the calmest face (deaths 1, the healthy sensor 0 blind arms, the bank 58.8% holds a second face, the balance closed -2.8%), the crowded sky returned (A* 65), F1 the churn's own solo spender, the map's zero delivery, the smelt's clock debt 89.6%.
+- FACE 228 = 38170891594 dispatched 204, in_progress on the v0.961.0 tree (the throne book's first on-tree fleet face).
+- Next free version 0.962.0. Carried fronts: the crowded sky's return (the ents ceiling vs the A* burst), the smelt's early arm (the clock debt 89.6%), the map's zero delivery (the stuck worst slot), the closing drought (the tithe's late crowding), the o2-low trigger's higher constant (the lag book's own face-226 price), the flee fork's re-flee cure, the sandbox mortality (alive five).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
