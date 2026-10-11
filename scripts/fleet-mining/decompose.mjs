@@ -97,6 +97,7 @@ import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the poun
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
 import { campCast, campCastRow, campRiders, campRidersRow } from '../../src/lib/campcast.mjs' // (v0.943.0) the camp build's own cast - the build book's bot-level seat (the count-seat family's own sibling)
 import { swordDueBook, swordCast, swordCastRow, swordRiders, swordRidersRow } from '../../src/lib/sworddue.mjs' // (v0.945.0) the sword due's own cast - the replace lane's bot-level seat (the count-seat family's own sibling)
+import { mapTripCastBook, mapTripCast, mapTripCastRow, mapTripRiders, mapTripRidersRow } from '../../src/lib/maptripcast.mjs' // (v0.946.0) the map trip's own cast - the trip lane's bot-level seat (the count-seat family's own sibling)
 import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
 import { riseAssistBook, riseAssistCast, riseAssistCastRow, riseAssistDuo, riseAssistDuoRow } from '../../src/lib/assistcast.mjs' // (v0.943.0) the rise assist's own cast - the assist lane's bot-level seat (the count-seat family's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
@@ -3311,6 +3312,26 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
         const tar = tripAskRiders(mt)
         if (tar) console.log(`  ${tripAskRidersRow(tar)}`)
       }
+    }
+  }
+}
+
+// (v0.946.0) THE MAP TRIP'S OWN CAST - the lane's own WHO axis: the
+// v0.801.0 seat priced the ASK's own WHY axis, THIS prices the lane's
+// own bot pool (the count-seat family's own sibling). The whole-voice
+// pool (launch + skips + second leg + night defer + catch exit) rides
+// its raw row FIRST - the cast never leads (the order law); one row
+// never both (the branch law, fenced in the lib).
+{
+  const mtc = mapTripCastBook(lines)
+  if (mtc && mtc.totals.total > 0) {
+    const t = mtc.totals
+    console.log(`  map trip pool: ${t.total} line(s) across ${Object.keys(t.totalBots).length} bot(s) - launches ${t.launch} / skips ${t.skipShaft + t.skipUnreachable + t.skipOther} (shaft-locked ${t.skipShaft}, unreachable ${t.skipUnreachable}, other ${t.skipOther}) / second leg ${t.secondDelivered + t.secondDeferred + t.secondRefused + t.secondFailed} (delivered ${t.secondDelivered}, deferred ${t.secondDeferred}, refused ${t.secondRefused}, failed ${t.secondFailed}) / night defers ${t.nightDefer} / catch fails ${t.catchFail}`)
+    const mSeat = mapTripCast(mtc.bots)
+    if (mSeat) console.log(`  ${mapTripCastRow(mSeat)}`)
+    else {
+      const mRiders = mapTripRiders(mtc.bots)
+      if (mRiders) console.log(`  ${mapTripRidersRow(mRiders)}`)
     }
   }
 }
