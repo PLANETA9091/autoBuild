@@ -95,6 +95,7 @@ import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table 
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
+import { campCast, campCastRow, campRiders, campRidersRow } from '../../src/lib/campcast.mjs' // (v0.943.0) the camp build's own cast - the build book's bot-level seat (the count-seat family's own sibling)
 import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
 import { torchBook } from '../../src/lib/torchbook.mjs' // (v0.500.0) the torch ledger - the light supply's floors, rungs, asks and yield
@@ -4608,6 +4609,16 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     console.log(`  supply: built ${t.built} (${t.buildSecs}s${t.tableFirst ? `, table-first orders ${t.tableFirst}` : ''}) vs reused ${t.reuse} - the foundry is already built`)
     console.log(`  refused: cobble-floor ${t.cobbleFloor} / plank-death ${t.plankDeath}${t.nothingToSmelt ? ` / nothing-to-smelt ${t.nothingToSmelt}` : ''}${t.otherRefusals ? ` / other ${t.otherRefusals}` : ''}${t.skipped ? ` / leg-clock-skipped ${t.skipped}` : ''}`)
     if (t.planksDecisions) console.log(`  plank death anatomy: ${t.planksDecisions} craft-planks decisions (${t.planksLogs} logs, same-type floor short ${t.sameTypeShort}) - ${t.attempts} attempts ${(t.timeoutMs / 1000).toFixed(0)}s, all-failed ${t.allFails}, craft storms ${t.storms} (${t.stormCooldownMs}ms), stale windows ${t.grid}`)
+    // (v0.943.0) the cast rides beside the book's own class totals - never
+    // before them (the order law): the seat's solo owner fires the cast, the
+    // book's silence or crowd prints the riders (the measure-not-owner
+    // companion). The WHO axis of where furnaces come from.
+    const ccSeat = campCast(cb.bots)
+    if (ccSeat) console.log(`  ${campCastRow(ccSeat)}`)
+    else {
+      const ccRiders = campRiders(cb.bots)
+      if (ccRiders) console.log(`  ${campRidersRow(ccRiders)}`)
+    }
   }
 }
 
