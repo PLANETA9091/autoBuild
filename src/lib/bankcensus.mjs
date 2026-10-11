@@ -845,3 +845,113 @@ export function strandedRidersRow (r) {
       !Number.isFinite(share)) return null
   return `the strand's own riders (v0.934.0): no solo walk owns the majority - ${leader} x${leaderUnits}u + ${runner} x${runnerUnits}u own ${pairUnits} of ${total}u (${(share * 100).toFixed(1)}%) - THE STRAND'S OWN DUO: the cast's tie law held, the concentration is still real - the pair prices the walks the solo law refused to name`
 }
+
+// (v0.951.0) THE UNPAID ASK'S OWN SEAT - the granted side's own WHO axis
+// (the v0.803.0 ask book's own sibling, the count-seat family's own
+// precedent: the v0.934.0 strand cast, the v0.943.0 camp build cast, the
+// v0.945.0 sword due cast, the v0.946.0 map trip cast, the v0.947.0
+// shelter skip cast, the v0.949.0 table gate cast, the v0.950.0 torch
+// cast). THE BILL LAW (the
+// census's own budget cells only, zero re-parsing): a clamped budget's
+// own unpaid seconds = its need minus its granted clock (the kill
+// margin's own deficit - the walk received grantedS, the flow asked
+// needsS); an unclamped budget's own granted clock IS its flow-priced
+// window, so its unpaid = max(0, need - flowPricedS); a granted above
+// the need never invents a deficit (the negative clamp's own fence -
+// the honest zero). The free-clock face (no clamp, no gap) stays
+// silent - an empty unpaid book prices nothing (the honest null). THE
+// STRICT-MAJORITY LAW: a bot owns the unpaid book only above half the
+// unpaid mass - a tie owns nothing (the family's own shape). The byte
+// order decides the scan (unpaid desc, then the name's own bytes).
+// Junk never invents a seat: a missing or empty book reads the honest
+// silence. Pure read-time tooling: zero fleet wiring, zero new log
+// lines - the census-guard lane.
+export function budgetUnpaidOf (cell) {
+  if (!cell || typeof cell !== 'object' || Array.isArray(cell)) return 0
+  const need = cell.needsS
+  if (!Number.isFinite(need) || need <= 0) return 0
+  const granted = cell.grantedS != null ? cell.grantedS : cell.flowPricedS
+  if (!Number.isFinite(granted) || granted < 0) return 0
+  return Math.max(0, need - granted)
+}
+
+export function budgetUnpaidSeat (budgets) {
+  if (!Array.isArray(budgets)) return null
+  const tallies = {}
+  let book = 0
+  for (const b of budgets) {
+    const cell = b && typeof b === 'object' ? b : null
+    if (!cell) continue
+    const bot = cell.bot
+    if (typeof bot !== 'string' || bot.length === 0) continue
+    const unpaid = budgetUnpaidOf(cell)
+    if (unpaid <= 0) continue
+    book += unpaid
+    tallies[bot] = (tallies[bot] || 0) + unpaid
+  }
+  if (book <= 0) return null
+  let topOwns = 0
+  let topBot = null
+  for (const [bot, n] of Object.entries(tallies).sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)) {
+    if (n > topOwns) { topOwns = n; topBot = bot }
+  }
+  if (topBot === null || topOwns <= book - topOwns) return null
+  return { bot: topBot, owns: topOwns, ofUnpaid: book, shareOfUnpaid: +(topOwns / book).toFixed(3) }
+}
+
+// (v0.951.0) the unpaid seat's own row - THE CLAMP'S OWN VICTIM: one
+// bot's own deficit owns the unpaid bank ask. Junk never prints a row
+// (the honest silence's own row law).
+export function budgetUnpaidSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { bot, owns, ofUnpaid, shareOfUnpaid } = seat
+  if (typeof bot !== 'string' || !bot ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofUnpaid) || ofUnpaid <= 0 || owns > ofUnpaid ||
+      !Number.isFinite(shareOfUnpaid)) return null
+  return `the unpaid ask's own seat (v0.951.0): ${bot} owns ${owns}s of ${ofUnpaid}s unpaid bank ask (${(shareOfUnpaid * 100).toFixed(1)}%) - THE CLAMP'S OWN VICTIM: one bot's own deficit owns the unpaid book - the v0.803.0 ask book priced the need, the unpaid book names the refusal`
+}
+
+// (v0.951.0) THE UNPAID ASK'S OWN RIDERS - the seat's own silence's
+// companion (the v0.803.0 riders precedent, zero re-parsing): a MEASURE,
+// never a verdict-owner - the top two deficits' concentration prices the
+// shape the solo law refused to name (the seat's owner case leaves the
+// companion unprinted - the decompose's own branch law). The order is
+// deterministic (unpaid desc, then the name's own bytes). Junk never
+// invents a shape: a missing or empty book or fewer than two counted
+// bots reads the honest silence (null).
+export function budgetUnpaidRiders (budgets) {
+  if (!Array.isArray(budgets)) return null
+  const tallies = {}
+  let book = 0
+  for (const b of budgets) {
+    const cell = b && typeof b === 'object' ? b : null
+    if (!cell) continue
+    const bot = cell.bot
+    if (typeof bot !== 'string' || bot.length === 0) continue
+    const unpaid = budgetUnpaidOf(cell)
+    if (unpaid <= 0) continue
+    book += unpaid
+    tallies[bot] = (tallies[bot] || 0) + unpaid
+  }
+  if (book <= 0) return null
+  const ranked = Object.entries(tallies).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length < 2) return null
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofUnpaid: book, pairOwns, shareOfUnpaid: +(pairOwns / book).toFixed(3) }
+}
+
+// (v0.951.0) the unpaid riders' own row - THE VICTIMS' OWN CROWD (the
+// family's own tail): a measure of the shape, never a named owner. Junk
+// never prints a shape (the honest silence's own row law).
+export function budgetUnpaidRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofUnpaid, pairOwns, shareOfUnpaid } = r
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 || !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofUnpaid) || ofUnpaid <= 0 || !Number.isFinite(pairOwns) || pairOwns > ofUnpaid ||
+      !Number.isFinite(shareOfUnpaid)) return null
+  return `the unpaid ask's own riders (v0.951.0): no solo victim owns the majority - ${leader} x${leaderOwns}s + ${runner} x${runnerOwns}s own ${pairOwns}s of ${ofUnpaid}s unpaid bank ask (${(shareOfUnpaid * 100).toFixed(1)}%) - THE VICTIMS' OWN CROWD: the seat's tie law held, the refusal is the shape - the bots' own deficits price the clamp the solo law refused to seat`
+}
