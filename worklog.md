@@ -24988,3 +24988,25 @@ Stage Summary:
 - Next free version 0.948.0 (origin re-verify MANDATORY at bump time).
 - Artifacts kept: /home/z/my-project/scripts/face210/ (fleet210_unz/fleet19.log 594 rows, fleet211_unz/fleet19.log 657 rows, decomps, poll logs). Tooling intact: fetch_art_193.sh + the house decomposer.
 - Discipline held: identity law, RACE law (rebase before push), dispatch law (BY RUN ID, x2 pre+post polls, string input, verified by run id + full sha), one-parser law (house decomposer only), FIRST READ claim honored (double-claim honesty), no force-push, no history rewrite, no local server/fleet/tests.
+
+---
+Task ID: cron30-20261011-1830
+Agent: main agent (cron fire 1830, Job ID 414125, PLANETA9091 identity)
+Task: fire 1830 — FACE 210 FIRST READ (the sword due cast's first live ride + the bank's fifth face + the tithe's clock), v0.948.0 THE CAMP SKIP'S OWN ADMISSION, worklog commit+push.
+
+Work Log:
+- A: synced (tip 07d2236e, 0.947.0 at open). Verdicts BY RUN ID: FACE 210 = 38129485416 SUCCESS terminal; my v0.946.0 gate 38129893659 (cb53ad63) CANCELLED - lossless supersedes; FACE 211 = 38131263420 IN_PROGRESS at open, SUCCESS by mid-fire (the fire-1841 lane claimed its read - honored).
+- FACE 210 FIRST READ (artifact 11699540111, decompose 594 rows offline on the v0.947.0 tree; the double-claim honesty: the fire-1841 lane read the same artifact mid-fire - BOTH READS STAND, the rows agree line for line): the sword due book's FIRST LIVE ride - 66 lane lines, riders F17 x7 + F18 x6 own 13/66 (19.7%), ok 36 / failed 0 / no-table 0; THE BANK'S FIFTH FACE - the crater 43.4% (1052/2422u, from 49.1% - RECEDED), write-off 994u, night owns the failed mass 589u (59.3%), yield 7u/visit over 150; THE FUEL TITHE'S VOICE RETURNED - F15 solo 1/1 (100%, 4u) after the two-face silence; cobble 5 firings 109u; map trip pool 28/14 bots, F7 x4 + F12 x3 7/28 (25.0%); shaft duo F12+F16 50%; pounce F17 x4 + F12 x3 20.0%; assist F16 x4 + F7 x4 42.1%; camp F8 x5 + F13 x2 7/18 (38.9%); deaths 1 (F18 drown); kick 1 dup-login; o2-low window 20..20s (the band edge).
+- ONE ATOMIC IMPROVEMENT: v0.948.0 THE CAMP SKIP'S OWN ADMISSION (868103de, rebased to db94ec05 on 082233f9) - CAMP_SKIPPED_RE's founding [a-z_]+ refused EVERY real campBuildTier action ('place-furnace'/'craft-furnace'/'place-table'/'craft-table'/'craft-planks' ALL hyphenated - CAMP_BUILD_TIER_SECS's own keys): the emitter's leg-clock skip lines matched NOTHING and rode dropped from the v0.497.0 book's counted population; the class reads [a-z_-]+ now; the doc's fictional '24s smelt build' retired for the field's own byte shape. LIVE-VERIFIED on the face-209 log: the camp block prints 'leg-clock-skipped 2' (dropped through every prior read), the crowd re-priced F5 x5 + F1 x2 7/18 (38.9%; fire-1730: 6/16 37.5%). Tests re-aimed: the campbuild scope pin rides the real craft-table skin + the m[4] capture; the camp-cast FROZEN pins (the F3 line JOINS: totals 10 -> 11, skipped 0 -> 1; the cast's silence holds F4 3/11; the riders 5/11 45.5%). Version bump verified against origin raw (0.947.0 at bump time, 0.948.0 unclaimed).
+- D: syntax 660/0, unit 379/379. Push db94ec05 on 082233f9 (the fire-1841 lane's worklog commit landed mid-fire) - clean rebase, zero conflicts.
+- E: my v0.948.0 gate 38133320083 (db94ec05) PENDING at close behind FACE 212 - honest-close; verdict BY RUN ID next fire.
+- F: dispatch law: the seat TAKEN (FACE 212 = 38133009342, dispatched by the fire-1841 lane) - NO POST.
+- NEXT FIRE READ CHAIN: my gate 38133320083 verdict BY RUN ID (the v0.948.0 integration); FACE 212 = 38133009342 verdict BY RUN ID, then FIRST READ if unclaimed (the shelter skip cast's second live face + the map trip cast's second live face + the flood-or-crater bank + the starve walk solo's repeat + the magnet's third seat); carried: the fuel supply (the tithe spoke once - one firing does not retire the front), the o2-low band edge, the dusk bank.
+- OPEN FRONTS: the dusk bank's live read (43.4% receding - the night owns the failed walks); the fuel supply's live read; the legacy list (blaze rods/chorus thin emitters; all other fronts PRICED); the reclone debt; the CAMP_SKIPPED_RE hyphen gap CLOSED this fire.
+
+Stage Summary:
+- v0.948.0 THE CAMP SKIP'S OWN ADMISSION landed (db94ec05): a real parser bug priced shut - the skip lane's own field lines join the book; zero fold changes, zero fleet log lines.
+- FACE 210 FIRST READ archived (double-claim, both reads stand, the rows agree).
+- Next free version 0.949.0 (origin re-verify MANDATORY at bump time).
+- NO dispatch (the seat honored); my gate 38133320083 honest-close pending. Zero conflicts, zero zombies, zero cancels.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite.
