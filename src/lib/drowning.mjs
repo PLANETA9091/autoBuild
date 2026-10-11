@@ -263,6 +263,33 @@ export function airBarTrust ({ feet = null, head = null, feetWaterlogged = false
 }
 
 /**
+ * (v0.958.0) THE CLIMB GUARD (pure): is the bar CLIMBING INTO the band -
+ * the refill's own signature? The LAST in-domain read sits strictly BELOW
+ * the current bar: vanilla refills the tank fast on a dry head (the whole
+ * climb 5 -> 20 rides ~1-2 sentry reads), so a bar that just ROSE is a bot
+ * surfacing, not a bot sinking - the v0.129.0 float lesson's own fence at
+ * the band lane's own door. The drain's signature is the opposite (the last
+ * read at-or-above the current bar). Junk-safe: a non-finite current or an
+ * array with no in-domain entry judges NOTHING (false = the page is not
+ * held - the descent may predate the stream's sight, the o2trigger crossing
+ * idiom); an empty/absent history never holds.
+ * @param {number} [o2] the current in-domain oxygen reading
+ * @param {number[]|null|undefined} [reads] recent in-domain oxygen readings,
+ *   oldest first (the caller pushes only oxygenInDomain values)
+ * @returns {boolean} true = the bar climbed into the band - hold the page
+ */
+export function bandClimb (o2, reads) {
+  const cur = Number(o2)
+  if (!oxygenInDomain(cur)) return false
+  if (!Array.isArray(reads)) return false
+  for (let i = reads.length - 1; i >= 0; i--) {
+    const r = Number(reads[i])
+    if (oxygenInDomain(r)) return r < cur
+  }
+  return false
+}
+
+/**
  * (v0.119.0) Is the air bar genuinely DRAINING? Pure: the last readings
  * (oldest first, junk already skipped by the caller's push rule) lost at
  * least AIR_FALL_MIN_DROP levels from the window's start to its end. The
@@ -448,6 +475,29 @@ export function waterVerdict ({ feet = null, head = null, feetWaterlogged = fals
   // the critical lane above and ABOVE the block-trust gates below on
   // purpose - fresh evidence outranks stale cells.
   if (o2 <= OXYGEN_RESCUE_LEVEL && airBarFalling(airHistory)) return 'drowning'
+  // (v0.958.0) THE BAND'S OWN ARM: the level lane the books named - the
+  // rescue arm's own o2 book (v0.894.0) seats 76.6% of all arms at CRITICAL
+  // (o2 avg 2.8) and prices the fatal arms' depth below the rescueBand's
+  // edge at 6..10 avg 8.0 o2-unit(s) - "the trigger's constant must ride
+  // higher"; the page-lead's own book (v0.875.0) names the o2-low threshold
+  // the lever; the o2-low trigger's own window (v0.884.0) prices the span
+  // the band-edge trigger would have owned at 40..300s (avg 167s). The gap
+  // this lane closes: the bar is LIVE inside the band (5..9 - strictly
+  // above the critical lane's own byte, at-or-under the census's own
+  // rescueBand edge), the water is WITNESSED by a real cell (feet or head
+  // water-named or waterlogged-flagged - the same trust the critical lane
+  // rides, never the 'dry' out-vote's own lie), and the bar is NOT climbing
+  // (bandClimb - the refill's own signature holds the page, the v0.129.0
+  // float lesson's fence at the lane's own door). The falling lane above
+  // keeps its priority (the trend outranks the level, the v0.119.0 law);
+  // this lane catches the descent the trend window misses - the sparse
+  // history, the flat stuck bar on witnessed wet, the kelp-over-the-eyes
+  // head cell the headWet lane below never sees. The dry out-vote stays
+  // ABSOLUTE (the v0.16.0 law byte for byte), the sentinel bar reads FULL
+  // here (the domain gate converted it), the critical lane keeps its byte.
+  if (o2 > OXYGEN_CRITICAL_LEVEL && o2 <= OXYGEN_RESCUE_LEVEL &&
+    airBarTrust({ feet, head, feetWaterlogged, headWaterlogged }) !== 'dry' &&
+    !bandClimb(o2, airHistory)) return 'drowning'
   // (v0.859.0) THE SENTINEL'S OWN WET ARM: an UNREADABLE bar (the -1 reset
   // sentinel, NaN, junk) at a WITNESSED wet head with no fresh rescue or
   // release to explain the reset is the never lane's own shape (face 132's

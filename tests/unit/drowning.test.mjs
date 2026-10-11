@@ -20,6 +20,7 @@ import {
   isWaterName, waterVerdict, airBarTrust, shoreDirection, rescueDone, fleePlan,
   shoreCandidates, firstVerifiedShore, AQUATIC_SHORE_CANDIDATES,
   airBarFalling, AIR_FALL_MIN_DROP, AIR_FALL_MIN_READS,
+  bandClimb,
   recordWaterHazard, nearWaterHazard, verifyShoreCell, HazardLedger,
   SURFACE_SAFE_DRY_MS, TRANSIT_RESCAN_TICKS, TRANSIT_MAP_RANGE,
   surfaceSafeRelease, transitBearing,
@@ -1546,6 +1547,107 @@ test('waterVerdict: the falling-bar lane pages a real drain through dry block re
   assert.equal(waterVerdict({ feet: 'air', head: 'air', oxygen: 9, airHistory: 'junk' }), 'none')
   assert.equal(waterVerdict({ feet: 'air', head: 'air', oxygen: 9, airHistory: [-1, -1, -1] }), 'none',
     'a history of reset sentinels is not drain evidence')
+})
+
+// ---------------------------------------------------------------------------
+// (v0.958.0) THE BAND'S OWN ARM - the level lane the books named. The rescue
+// arm's own o2 book (v0.894.0, face 209) seats 76.6% of all arms at CRITICAL
+// (o2 avg 2.8) and prices the fatal arms' depth below the rescueBand's edge
+// at 6..10 avg 8.0 o2-unit(s) - "the trigger's constant must ride higher";
+// the page-lead's own book (v0.875.0) names the o2-low threshold the lever;
+// the o2-low trigger's own window (v0.884.0) prices the span the band-edge
+// trigger would have owned at 40..300s (avg 167s). The lane: a LIVE bar
+// inside the band (5..9) on witnessed non-dry contact that is NOT climbing
+// pages NOW - the descent the trend window misses (the sparse history, the
+// flat stuck bar, the kelp-over-the-eyes head cell).
+// ---------------------------------------------------------------------------
+test('waterVerdict: the band lane pages a live in-band bar on witnessed wet contact', () => {
+  // THE LANE'S OWN SHAPE: feet witness the water, the head cell lies
+  // (air/unloaded - the kelp-over-the-eyes class the headWet lane misses)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 9 }), 'drowning',
+    'feet wet + in-band bar: the band lane arms at the edge the books named')
+  assert.equal(waterVerdict({ feet: 'water', head: null, oxygen: 6 }), 'drowning',
+    'unloaded head cell + feet wet: the band lane still arms')
+  assert.equal(waterVerdict({ feet: 'kelp', head: 'air', oxygen: 7 }), 'drowning',
+    'water-content feet are wet contact (the kelp floor class)')
+  // the band's own edges: the floor is the critical lane's own byte, the
+  // ceiling is the census's own rescueBand edge (<=10) - 11 stays 'wet'
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 5 }), 'drowning', 'the band floor arms')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 10 }), 'drowning', 'the band edge arms (the census <=10)')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 11 }), 'wet', 'one tick above the edge stays wet (the line-50 byte)')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: OXYGEN_CRITICAL_LEVEL }), 'drowning', 'the critical lane keeps its byte at the boundary')
+  // the waterlogged state rides through (the v0.104.0 law: the state does not lie)
+  assert.equal(waterVerdict({ feet: 'stone', head: 'oak_slab', headWaterlogged: true, oxygen: 8 }), 'drowning',
+    'a waterlogged head-height block is submersion - the band lane arms')
+})
+
+test('waterVerdict: the band lane fences - the dry out-vote, the climb guard, the sentinel', () => {
+  // THE DRY OUT-VOTE STAYS ABSOLUTE (the v0.16.0 law byte for byte)
+  assert.equal(waterVerdict({ feet: 'air', head: 'air', oxygen: 8 }), 'none',
+    'definite dry contact out-votes an in-band bar (the glitch class)')
+  assert.equal(waterVerdict({ feet: 'sand', head: 'cave_air', oxygen: 5 }), 'none', 'dry feet + dry head: nothing')
+  // THE CLIMB GUARD: the refill signature holds the page (the last in-domain
+  // read sits strictly BELOW the current bar - the bot is surfacing)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 7, airHistory: [4, 5, 6] }), 'wet',
+    'a climbing bar is the refill signature - the float lesson holds the page (a pure climb window: the falling lane reads no drain)')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 9, airHistory: [3, 4, 8] }), 'wet',
+    'climbing from deep critical: the refill wins')
+  // the drain's own signature (flat or falling in-band) pages through the lane
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 7, airHistory: [7, 7, 7, 7] }), 'drowning',
+    'a flat in-band bar on witnessed wet is the honest page (the stuck bar owns the churn, the surface machinery owns the cost)')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 7, airHistory: [10, 9, 8] }), 'drowning',
+    'a falling in-band bar pages (the falling lane owns it first, the verdict is one)')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 7, airHistory: [20, 17, 14, 11, 7] }), 'drowning',
+    'a long descent through the band pages')
+  // no history = the descent may predate the stream's sight (the crossing idiom)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 8, airHistory: [] }), 'drowning', 'empty history never holds')
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 8, airHistory: 'junk' }), 'drowning', 'junk history never holds')
+  // THE SENTINEL READS FULL here (the domain gate converted it - the -1 byte stays)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: OXYGEN_RESET_SENTINEL }), 'wet',
+    'the reset sentinel over wet feet stays monitor-never-rescue (the line-477 byte)')
+  // junk oxygen is a full bar (the v0.64.0 law) - the band lane never fires
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: NaN }), 'wet', 'NaN never pages through the band lane')
+})
+
+test('bandClimb: the climb guard is the refill signature, junk-safe', () => {
+  // the drain's own shapes never hold
+  assert.equal(bandClimb(7, [10, 9, 8]), false, 'the last read above the bar = descending, no hold')
+  assert.equal(bandClimb(7, [7, 7, 7]), false, 'a flat bar is not a climb')
+  assert.equal(bandClimb(9, [20, 17, 14, 11, 9]), false, 'the long descent never holds')
+  // the refill's own signature holds
+  assert.equal(bandClimb(7, [20, 4, 5, 6]), true, 'the last read below the bar = climbing')
+  assert.equal(bandClimb(9, [3, 4, 8]), true, 'climbing from critical holds')
+  assert.equal(bandClimb(6, [5]), true, 'one read below is enough')
+  assert.equal(bandClimb(6, [6]), false, 'the equal read is not a climb')
+  // junk-safe: no array, no in-domain entry, junk current - never hold
+  assert.equal(bandClimb(7, null), false)
+  assert.equal(bandClimb(7, undefined), false)
+  assert.equal(bandClimb(7, 'junk'), false)
+  assert.equal(bandClimb(7, []), false, 'empty history never holds')
+  assert.equal(bandClimb(7, [-1, -1]), false, 'a history of sentinels is not climb evidence')
+  assert.equal(bandClimb(7, [NaN, NaN]), false, 'NaN entries judge nothing')
+  assert.equal(bandClimb(NaN, [3, 4]), false, 'junk current never holds')
+  assert.equal(bandClimb(OXYGEN_RESET_SENTINEL, [3, 4]), false, 'the sentinel current never holds')
+  // the mixed tail: the LAST in-domain entry wins (the line-order law)
+  assert.equal(bandClimb(7, [-1, 5, NaN, 6]), true, 'the last in-domain read (6) sits below 7 - climbing')
+  assert.equal(bandClimb(7, [-1, 9, NaN, 8]), false, 'the last in-domain read (8) sits above 7 - descending')
+})
+
+test('waterVerdict: the band lane keeps every neighbor lane byte-true', () => {
+  // the falling lane keeps its priority byte (the dry stale-flood class)
+  assert.equal(waterVerdict({ feet: 'air', head: 'air', oxygen: 9, airHistory: [20, 17, 14, 11, 9] }), 'drowning',
+    'the falling lane outranks the dry cells (the run104 F3 byte)')
+  // the critical lane outranks the climb guard (the drain-to-death clock
+  // outruns the refill window - the v0.129.0 law)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 3, airHistory: [1, 2, 3] }), 'drowning',
+    'critical bar climbing: the critical lane never holds')
+  // above the band a feet-only contact stays monitor (the line-48/49 bytes)
+  assert.equal(waterVerdict({ feet: 'water', head: 'air', oxygen: 20 }), 'wet', 'full bar feet-only: wet')
+  assert.equal(waterVerdict({ feet: 'water', head: null, oxygen: 15 }), 'wet', 'above the band: wet')
+  // the headWet lane fires the same verdict it always did (the branch-5 byte)
+  assert.equal(waterVerdict({ feet: 'water', head: 'water', oxygen: 9 }), 'drowning', 'head wet + in-band: drowning')
+  // the streak ladder byte untouched (the dry glitch class)
+  assert.equal(waterVerdict({ feet: 'stone', head: 'air', oxygen: 0, dryGlitchStreak: 0 }), 'none', 'critical on dry, streak 0: the glitch class')
 })
 
 // ---------------------------------------------------------------------------
