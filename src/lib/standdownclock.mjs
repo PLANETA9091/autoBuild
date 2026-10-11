@@ -230,3 +230,98 @@ export function standdownClockRow (verdict) {
   const burstBit = ` - the burst's own share: ${burst} of ${timed} (${Math.round(burstShare * 100)}%)${burstShare >= 0.5 ? ' - one window priced the mass' : ''}`
   return `${head}${seatBit}${legsBit}${frozenBit}${blindBit}${burstBit}`
 }
+
+// (v0.931.0) THE STANDDOWN'S OWN BOT - WHICH bot owns the frozen-standdown
+// book. The v0.921.0 clock seated the THIRD axis (which slice of the clock
+// owns the freeze) and priced the bots' own legs beside it, but the bot
+// axis itself rode raw: the face 198 read named the shape as a membership
+// note ('7 of 8 frozen standdowns mid, 88%, all F6+F16') - no row ever
+// said WHOSE freezes own the book. THE BILL LAW: the book's own stamps
+// verbatim - the key IS the atom ('F6', the stamp's own bot byte), the
+// stamp the mass - zero re-parsing, one book, the v0.926.0 prey fold's
+// own precedent. The bot axis is ts-independent: an untimed stamp still
+// names its bot (the tail law's own honesty - the totals stay whole, the
+// thirds' own placed-book law never leaks here). THE STRICT-MAJORITY LAW:
+// a bot owns the freeze only above half the standdowns - a tie owns
+// nothing (the storm-has-no-seat precedent). The riders measure beside
+// the seat's silence (the top two under the byte law: count desc, the
+// bot's own byte asc). THE BRANCH LAW (one row never both) lives in the
+// lib: the riders read null whenever the seat's owner exists (the
+// v0.930.0 stakes' own fence shape). The junk fences: a non-object book,
+// a non-array stamps leg, a stamp without a well-formed bot byte - the
+// real stamps still tally; a zero-sum book reads the honest silence.
+// Read-time tooling, zero fleet log lines - CENSUS GUARD.
+const STANDDOWN_BOT_RE = /^F\d+$/
+
+const standdownBotTally = (book) => {
+  const stamps = book && typeof book === 'object' && !Array.isArray(book) ? book.stamps : book
+  if (!Array.isArray(stamps)) return null
+  const byBot = {}
+  let total = 0
+  for (const s of stamps) {
+    if (!s || typeof s !== 'object' || Array.isArray(s)) continue
+    if (typeof s.bot !== 'string' || !STANDDOWN_BOT_RE.test(s.bot)) continue
+    byBot[s.bot] = (byBot[s.bot] || 0) + 1
+    total += 1
+  }
+  if (total <= 0) return null
+  return { byBot, total }
+}
+
+const standdownBookOf = (book) =>
+  (book && typeof book === 'object' && !Array.isArray(book)) ? book : null
+
+export function standdownBotSeat (book) {
+  const t = standdownBotTally(standdownBookOf(book) || book)
+  if (!t) return null
+  const half = t.total / 2
+  for (const [bot, owns] of Object.entries(t.byBot)) {
+    if (owns > half) return { bot, owns, ofStanddowns: t.total, shareOfStanddowns: +(owns / t.total).toFixed(3) }
+  }
+  return null
+}
+
+export function standdownBotRiders (book) {
+  const t = standdownBotTally(standdownBookOf(book) || book)
+  if (!t) return null
+  const ranked = Object.entries(t.byBot).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length < 2) return null
+  const half = t.total / 2
+  if (ranked[0][1] > half) return null // the branch law: the seat's owner exists - the mix never prints
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofStanddowns: t.total, pairOwns, shareOfStanddowns: +(pairOwns / t.total).toFixed(3), duet: leaderOwns === runnerOwns }
+}
+
+// (v0.931.0) the standdown's own bot row - THE STANDDOWN'S OWN BOT: the
+// seat names WHICH bot's own freezes own the standdown book; the churn's
+// own front prices the freeze the thirds rode unnamed. Junk never prints
+// a seat (the honest silence's own row law).
+export function standdownBotSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { bot, owns, ofStanddowns, shareOfStanddowns } = seat
+  if (typeof bot !== 'string' || !STANDDOWN_BOT_RE.test(bot) ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofStanddowns) || ofStanddowns <= 0 || owns > ofStanddowns ||
+      !Number.isFinite(shareOfStanddowns)) return null
+  const unit = ofStanddowns === 1 ? 'frozen standdown' : 'frozen standdowns'
+  return `the freeze's own bot (v0.931.0): ${bot} owns ${owns} of ${ofStanddowns} ${unit} (${(shareOfStanddowns * 100).toFixed(1)}%) - THE STANDDOWN'S OWN BOT: one bot's own freezes own the standdown book - the churn's own front prices the freeze the thirds rode unnamed`
+}
+
+// (v0.931.0) the standdown's own riders row - THE STANDDOWN'S OWN MIX: a
+// measure of the shape, never a named owner (the seat's tie law holds).
+// Junk never prints a shape (the honest silence's own row law).
+export function standdownBotRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofStanddowns, pairOwns, shareOfStanddowns } = r
+  if (typeof leader !== 'string' || !STANDDOWN_BOT_RE.test(leader) ||
+      typeof runner !== 'string' || !STANDDOWN_BOT_RE.test(runner) ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 ||
+      !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofStanddowns) || ofStanddowns <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofStanddowns ||
+      !Number.isFinite(shareOfStanddowns)) return null
+  const unit = ofStanddowns === 1 ? 'frozen standdown' : 'frozen standdowns'
+  return `the freeze's own riders (v0.931.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofStanddowns} ${unit} (${(shareOfStanddowns * 100).toFixed(1)}%) - THE STANDDOWN'S OWN MIX: the seat's tie law held, the mix is the shape - the freeze's own bots rode raw beside the thirds' own seat`
+}

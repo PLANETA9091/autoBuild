@@ -213,8 +213,8 @@ test('THE BYTE LAW: the legs\' tie reads byte-asc, and the burst tail names a co
 
 test('THE CENSUS GUARD: the row rides beside the water clock, never before it (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { standdownClockBook, standdownClockVerdict, standdownClockRow } from '../../src/lib/standdownclock.mjs'")) // the import
+  assert.ok(src.includes("import { standdownClockBook, standdownClockVerdict, standdownClockRow, standdownBotSeat, standdownBotSeatRow, standdownBotRiders, standdownBotRidersRow } from '../../src/lib/standdownclock.mjs'")) // the import (the band grew - the v0.931.0 bot seat rides the same line, the pin's own intent held)
   const wcv = src.indexOf('const wcv = waterClockVerdict(waterClockBook(lines))')
-  const sdc = src.indexOf('const sdc = standdownClockVerdict(standdownClockBook(lines))')
+  const sdc = src.indexOf('const sdc = standdownClockVerdict(sdb)')
   assert.ok(wcv > 0 && sdc > wcv) // the standdown clock rides beside the water clock, never before it
 })
