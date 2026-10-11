@@ -25404,3 +25404,21 @@ Stage Summary:
 - Next free version 0.959.0 (origin re-verify MANDATORY).
 - Carried fronts: the flee fork, the blind-arm sensor, the night's site class, the bank's rhythm (17.7%), the water map's seat rows, the unit-count trap, F2's churn, the legacy list, the sandbox mortality (survived five times).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261012-0130
+Agent: main agent (cron fire 0130, Job ID 414125)
+Task: fire 0130 A-G loop (FACE 223 dispatch FIRST per the fire-0100 chain; no code - the honest sizing)
+
+Work Log:
+- Sandbox survived (sixth consecutive). Synced /home/z/privateB-repo (tip 956c8160 = my fire-0100 worklog; code 8dc429f6 = v0.958.0; next free 0.959.0 origin re-verify MANDATORY; the lane silent since 2341). Pull --rebase clean at open and at close; syntax 672/0; my two worklog gates 38158431587/38156280170 SUCCESS.
+- F: x2 pre-polls seat FREE (zero active dispatches) -> POST 204 -> FACE 223 = 38160000511 on 956c8160 (the v0.958.0 tree), in_progress verified BY RUN ID + event. The fire-0100 chain's debt paid (the dispatch rode this fire's open).
+- The code candidate sizing (honest): the fire-0100 chain named the flee fork as THE combat code candidate - the sizing found the book ALREADY PRICED (v0.810.0 fleeForkSeatRow + fleeForkRidersRow ride decompose; the face-222 face printed 'chased owns 5 of 5 (100.0%) - THE FORK'S OWN SEAT ... the re-flee front' + the bands' measure row); my fire-0100 wording 'the flee fork named' is corrected: the FORK was priced, the face-222 read surfaced its verdict. The flee survival ledger's own ecosystem (bearings, crowd price, hound bane, whale lens) is priced through v0.481..0.929. A new sibling book (the flee episodes' own bot seat) does not fit the remaining box with green tests - NOT started (the half-baked push is the collision bait the protocol forbids).
+- No version this fire (the dispatch + the sizing is the fire's shape); 0.959.0 stays FREE for the next full box (the lane or the next fire).
+
+Stage Summary:
+- FACE 223 = 38160000511 dispatched on the v0.958.0 tree (the fire-0100 chain's dispatch debt paid).
+- The flee fork's pricing state corrected on record: v0.810.0's seat + riders ride (the fire-0100 'named' wording was imprecise - the book existed, the face read surfaced it).
+- Next free version 0.959.0 (origin re-verify MANDATORY).
+- Carried fronts: FACE 223's verdict + read (next fire), the blind-arm sensor (the o2 lane's front), the night's site class, the bank's rhythm (17.7%), the water map's seat rows, the unit-count trap, F2's churn, the legacy list, the sandbox mortality (survived six times).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
