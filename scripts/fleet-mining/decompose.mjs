@@ -97,6 +97,7 @@ import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the poun
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
 import { campCast, campCastRow, campRiders, campRidersRow } from '../../src/lib/campcast.mjs' // (v0.943.0) the camp build's own cast - the build book's bot-level seat (the count-seat family's own sibling)
 import { waterLockBook, waterLockCast, waterLockCastRow, waterLockRiders, waterLockRidersRow } from '../../src/lib/waterlockbook.mjs' // (v0.942.0) the seal-and-cross's own cast - the water-lock census's bot-level seat (the v0.940.0 pounce cast's own sibling)
+import { riseAssistBook, riseAssistCast, riseAssistCastRow, riseAssistDuo, riseAssistDuoRow } from '../../src/lib/assistcast.mjs' // (v0.943.0) the rise assist's own cast - the assist lane's bot-level seat (the count-seat family's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
 import { torchBook } from '../../src/lib/torchbook.mjs' // (v0.500.0) the torch ledger - the light supply's floors, rungs, asks and yield
 import { veinLedger, tierGuardBill } from '../../src/lib/veinledger.mjs' // (v0.501.0) the vein ledger - the sweep's terminals, walk yield, gallery digs, refusals and the tier guard; (v0.768.0) the tier guard's own bill - the repeat rider's own seat
@@ -2330,6 +2331,22 @@ console.log('  freeze storm FATAL lines:', count(/freeze storm/))
 console.log('  last-pulse chain lines (pf:):', count(/pf:(goal|queue|done)/))
 console.log('  climb rise assist lines:', count(/climb rise assist/), 'per-bot:', fmt(perBot(/climb rise assist/)))
 console.log('  assist timeouts (the 4.5s class):', count(/climb rise assist: .*timeout/))
+// (v0.943.0) the rise assist's own cast rides beside the raw per-bot row
+// above - never before it (the order law): the emitter's two skins (the
+// did-not-complete bill + the repositioned voice) one vote each (the
+// v0.942.0 bare/ARMED precedent), the seat's solo owner fires the cast,
+// the lane's crowd prints the duo (the measure-not-owner companion).
+{
+  const raBook = riseAssistBook(lines)
+  if (raBook && raBook.total > 0) {
+    const raSeat = riseAssistCast(raBook.events)
+    if (raSeat) console.log(`  ${riseAssistCastRow(raSeat)}`)
+    else {
+      const raDuo = riseAssistDuo(raBook.events)
+      if (raDuo) console.log(`  ${riseAssistDuoRow(raDuo)}`)
+    }
+  }
+}
 
 console.log('=== GOAL BRAKE / DUCK / VALVE ===')
 console.log('  brake refuse lines:', count(/goal brake:.*refus/), 'per-bot:', fmt(perBot(/goal brake:.*refus/)))
