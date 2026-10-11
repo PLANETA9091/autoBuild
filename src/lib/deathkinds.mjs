@@ -1034,6 +1034,236 @@ export function mobAnatomyRow (book) {
   return `the mob book's own anatomy (v0.898.0): mobs ${mobs} - ${verdict.join('/')}, ${band.join('/')}${siteTail}`
 }
 
+// (v0.956.0) THE DROWN KIND'S OWN SPOT BOOK - WHERE the drown kind's own
+// deaths own. The water front's own geography the raw bucket rode
+// unnamed: face 215's five drowns put THREE bots (F16, F1, F9) at the
+// SAME spot [-121,48,398] - one pool's own levy - and the water hazard
+// board's walk-back (v0.828.0) reads the board's own named waters, not
+// the death book's own repeat. The book reads the LOG LINES directly
+// (the v0.898.0 book-only precedent - zero census shape change),
+// server-verdict drown rows only (DEATH_KIND_RE never matches the
+// inferred-only shape - the v0.117.0 doctrine rides the grammar); the
+// verb's own split (the server's canonical 'drowned' - any other
+// phrasing rides the otherVerbs cell); the band's own split rides the
+// same surface edge the falls and the mob kills priced (FALL_SURFACE_Y
+// - the family's own fence); the site's own repeat rides the anatomy's
+// own geometry (the anchor = the first member's x/z in line order,
+// Chebyshev <= 8 against DROWN_SITE_CHEBYSHEV, no transitive drift -
+// the pool's own span; the observed repeats sit at Chebyshev 0). A
+// blind row (the pos-less drown - the tail's own honest absence) counts
+// in the book and judges nothing in the bands or the sites (the
+// blind-skin idiom - the v0.897.0 law). Junk never invents a site: a
+// drown-less face prices nothing (null); an inconsistent book prices
+// nothing (the fence rides the print - the v0.898.0 fence family,
+// byte-true).
+const DROWN_SITE_CHEBYSHEV = 8
+const DROWN_VERB = 'drowned'
+
+function drownAnatomyRows (lines) {
+  const rows = Array.isArray(lines) ? lines : []
+  const out = []
+  for (const l of rows) {
+    if (typeof l !== 'string' || !l.length) continue
+    const m = DEATH_KIND_RE.exec(l)
+    if (!m) continue // the inferred-only and junk shapes stay OUTSIDE (the server verdict is the authority)
+    const [, verb, rawKind, attacker, tail] = m
+    if (rawKind !== 'drown') continue // the drown kind alone is the subject (the fall and the mob ride their own books)
+    const bot = (l.match(/^(F\d+)\b/) || [])[1] || null
+    const pm = tail ? POS_RE.exec(tail) : null
+    out.push({
+      bot,
+      verb,
+      attacker: attacker || null,
+      pos: pm ? [Number(pm[1]), Number(pm[2]), Number(pm[3])] : null,
+      corroboration: corroborationOf(tail)
+    })
+  }
+  return out
+}
+
+const drownPosOf = (r) => Array.isArray(r.pos) && r.pos.length === 3 && r.pos.every(Number.isFinite)
+  ? r.pos
+  : null
+
+export function drownAnatomyBook (lines) {
+  const rows = drownAnatomyRows(lines)
+  if (!rows.length) return null
+  let drowned = 0
+  const otherVerbs = {}
+  let underground = 0
+  let surface = 0
+  let blind = 0
+  const sites = []
+  for (const r of rows) {
+    const verb = typeof r.verb === 'string' && r.verb ? r.verb : 'unknown'
+    // the verb's own head rides the split (the server's canonical word
+    // 'drowned' EXACT - the escape variant ('drowned while trying to
+    // escape ...' - the mob pressure's own drown) is another story and
+    // rides the otherVerbs cell with its full phrase visible - the
+    // census's own image)
+    if (verb === DROWN_VERB) drowned++
+    else otherVerbs[verb] = (otherVerbs[verb] || 0) + 1
+    const pos = drownPosOf(r)
+    if (!pos) { blind++; continue }
+    if (pos[1] < FALL_SURFACE_Y) underground++
+    else surface++
+    const site = sites.find((s) =>
+      Math.max(Math.abs(s.anchor[0] - pos[0]), Math.abs(s.anchor[1] - pos[2])) <= DROWN_SITE_CHEBYSHEV)
+    if (site) site.members.push(r.bot)
+    else sites.push({ anchor: [pos[0], pos[2]], members: [r.bot] })
+  }
+  const live = sites
+    .filter((s) => s.members.length > 1)
+    .sort((a, b) => a.anchor[0] - b.anchor[0] || a.anchor[1] - b.anchor[1])
+  const clustered = live.reduce((n, s) => n + s.members.length, 0)
+  return {
+    drowns: rows.length, drowned, otherVerbs,
+    underground, surface, blind,
+    clustered, unclustered: rows.length - blind - clustered,
+    sites: live,
+    rows
+  }
+}
+
+/** The drown anatomy's own fence - the v0.898.0 fence family byte-true:
+ * every cell integer and non-negative, the verdicts' own sum rides the
+ * drowns, the bands' own sum rides the drowns, the seats' own sum rides
+ * the cluster, the seated bots a sub-multiset of the positioned rows'
+ * own bots, the unseated rows OUTSIDE every live radius. The verdict
+ * and band cells byte-verified against the parse's own image (the
+ * book's own rows - the fold's own recount, never the book's word). An
+ * inconsistent book prices nothing. */
+export function drownAnatomyConsistent (book) {
+  if (!book || typeof book !== 'object' || Array.isArray(book)) return false
+  const rows = Array.isArray(book.rows) ? book.rows : []
+  for (const r of rows) {
+    if (!r || typeof r !== 'object' || Array.isArray(r)) return false
+    if (r.bot !== null && typeof r.bot !== 'string') return false
+    if (typeof r.verb !== 'string' || !r.verb) return false
+    if (r.attacker !== null && typeof r.attacker !== 'string') return false
+    if (r.pos !== null && !(Array.isArray(r.pos) && r.pos.length === 3 && r.pos.every(Number.isFinite))) return false
+    if (typeof r.corroboration !== 'string' || !r.corroboration) return false
+  }
+  if (!rows.length) return false
+  const cells = [book.drowns, book.drowned, book.underground, book.surface, book.blind, book.clustered, book.unclustered]
+  if (!cells.every((v) => Number.isInteger(v) && v >= 0)) return false
+  if (book.drowns !== rows.length) return false
+  // the parse's own image: the verdicts' and bands' own recount
+  let drowned = 0
+  const otherVerbs = {}
+  let underground = 0
+  let surface = 0
+  let blind = 0
+  for (const r of rows) {
+    const verb = typeof r.verb === 'string' && r.verb ? r.verb : 'unknown'
+    if (verb === DROWN_VERB) drowned++
+    else otherVerbs[verb] = (otherVerbs[verb] || 0) + 1
+    const pos = drownPosOf(r)
+    if (!pos) blind++
+    else if (pos[1] < FALL_SURFACE_Y) underground++
+    else surface++
+  }
+  if (book.drowned !== drowned) return false
+  const ov = book.otherVerbs
+  if (!ov || typeof ov !== 'object' || Array.isArray(ov)) return false
+  const ovKeys = Object.keys(ov)
+  const ovImage = Object.keys(otherVerbs)
+  if (ovKeys.length !== ovImage.length) return false
+  for (const verb of ovImage) {
+    if (ov[verb] !== otherVerbs[verb]) return false
+  }
+  if (book.underground !== underground || book.surface !== surface || book.blind !== blind) return false
+  if (book.drowned + ovImage.reduce((n, v) => n + otherVerbs[v], 0) !== book.drowns) return false
+  if (book.underground + book.surface + book.blind !== book.drowns) return false
+  if (book.clustered + book.unclustered + book.blind !== book.drowns) return false
+  if (!Array.isArray(book.sites)) return false
+  let members = 0
+  const seated = []
+  for (const s of book.sites) {
+    if (!s || typeof s !== 'object' || Array.isArray(s)) return false
+    if (!Array.isArray(s.anchor) || s.anchor.length !== 2 || !s.anchor.every(Number.isFinite)) return false
+    if (!Array.isArray(s.members) || !s.members.length) return false
+    if (!s.members.every((b) => typeof b === 'string' && b.length)) return false
+    members += s.members.length
+    for (const b of s.members) seated.push(b)
+  }
+  if (members !== book.clustered) return false
+  const positioned = []
+  for (const r of rows) {
+    if (drownPosOf(r)) positioned.push(typeof r.bot === 'string' ? r.bot : '')
+  }
+  if (positioned.length !== book.clustered + book.unclustered) return false
+  const pool = rows.map((r) => ({ bot: typeof r.bot === 'string' ? r.bot : '', pos: drownPosOf(r) })).filter((r) => r.pos)
+  for (const s of book.sites) {
+    for (const b of s.members) {
+      const idx = pool.findIndex((r) => r.bot === b &&
+        Math.max(Math.abs(s.anchor[0] - r.pos[0]), Math.abs(s.anchor[1] - r.pos[2])) <= DROWN_SITE_CHEBYSHEV)
+      if (idx < 0) return false
+      pool.splice(idx, 1)
+    }
+  }
+  for (const r of pool) {
+    for (const s of book.sites) {
+      if (Math.max(Math.abs(s.anchor[0] - r.pos[0]), Math.abs(s.anchor[1] - r.pos[2])) <= DROWN_SITE_CHEBYSHEV) return false
+    }
+  }
+  const bytewise = (a, b) => (a < b ? -1 : a > b ? 1 : 0)
+  const seatedSorted = [...seated].sort(bytewise)
+  const positionedSorted = [...positioned].sort(bytewise)
+  let pi = 0
+  for (const b of seatedSorted) {
+    while (pi < positionedSorted.length && positionedSorted[pi] !== b) pi++
+    if (pi >= positionedSorted.length) return false
+    pi++
+  }
+  return true
+}
+
+// (v0.956.0) the drown anatomy's own row - THE WATER'S OWN GATE: WHERE
+// the drown deaths own (the band's own split + the site's own repeat).
+// The zero-class silence: only the live classes ride; the site's own
+// tail prints only on a live cluster - a cluster-free face reads the
+// site's own silence branch (the branch law: one row never both). Junk
+// never prints a row.
+export function drownAnatomyRow (book) {
+  if (!book || typeof book !== 'object' || Array.isArray(book)) return null
+  const { drowns, drowned, underground, surface, blind, clustered, sites } = book
+  if (![drowns, drowned, underground, surface, blind, clustered].every((v) => Number.isInteger(v) && v >= 0)) return null
+  if (drowns <= 0 || drowned > drowns) return null
+  const ov = book.otherVerbs
+  if (!ov || typeof ov !== 'object' || Array.isArray(ov)) return null
+  let otherSum = 0
+  for (const n of Object.values(ov)) {
+    if (!Number.isInteger(n) || n <= 0) return null
+    otherSum += n
+  }
+  if (drowned + otherSum !== drowns) return null
+  if (underground + surface + blind !== drowns) return null
+  const verdict = []
+  if (drowned) verdict.push(`drowned ${drowned}`)
+  if (otherSum) verdict.push(`other ${otherSum}`)
+  const band = []
+  if (underground) band.push(`underground ${underground}`)
+  if (surface) band.push(`surface ${surface}`)
+  if (blind) band.push(`blind ${blind}`)
+  let siteTail
+  if (clustered > 0) {
+    if (!Array.isArray(sites) || !sites.length) return null
+    const named = sites
+      .map((s) => (s && typeof s === 'object' && !Array.isArray(s) && Array.isArray(s.members)
+        ? s.members.filter((b) => typeof b === 'string' && b.length).join('+')
+        : ''))
+      .filter(Boolean)
+      .join(', ')
+    if (!named) return null
+    siteTail = `, clustered ${clustered} of ${drowns} (${sites.length} site${sites.length === 1 ? '' : 's'}: ${named}) - THE WATER'S OWN GATE: the drown deaths' own spot prices the water the raw bucket rode unnamed - the pool's own levy`
+  } else {
+    if (Array.isArray(sites) && sites.length) return null
+    siteTail = ' - the sites\' own silence: every drown rode its own water this face - THE WATER\'S OWN SPREAD, not one pool\'s repeat'
+  }
+  return `the drown book's own anatomy (v0.956.0): drowns ${drowns} - ${verdict.join('/')}, ${band.join('/')}${siteTail}`
+}
+
 // (v0.899.0) THE FALL'S OWN RELAY - the TIME leg the v0.897.0 anatomy
 // does not price: the first fall named the shaft and the walkers behind
 // still fell into it (face 172's own cluster: 3 falls, ONE block

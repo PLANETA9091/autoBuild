@@ -152,7 +152,7 @@ import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the st
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
-import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.425.0) the vertical-death front's mechanical leg; (v0.784.0) WHICH kind owns the death book; (v0.788.0) WHICH server-named killer owns the mob book; (v0.844.0) WHICH direction owns the sensor-blind misread book; (v0.897.0) WHERE the fall kind's own deaths own (the band + the site's own repeat); (v0.898.0) WHERE and HOW the mob kind's own kills own (the verb + the band + the site's own repeat); (v0.899.0) WHEN the fall's own relay rode (the time leg the anatomy does not price)
+import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.425.0) the vertical-death front's mechanical leg; (v0.784.0) WHICH kind owns the death book; (v0.788.0) WHICH server-named killer owns the mob book; (v0.844.0) WHICH direction owns the sensor-blind misread book; (v0.897.0) WHERE the fall kind's own deaths own (the band + the site's own repeat); (v0.898.0) WHERE and HOW the mob kind's own kills own (the verb + the band + the site's own repeat); (v0.899.0) WHEN the fall's own relay rode (the time leg the anatomy does not price); (v0.956.0) WHERE the drown kind's own deaths own (the water's own spot book)
 import { houndCensus, houndArenaSeat, houndArenaSeatRow, houndArenaRiders, houndArenaRidersRow, houndAnswerSeat, houndAnswerSeatRow, houndAnswerRiders, houndAnswerRidersRow, houndPreySeat, houndPreySeatRow, houndPreyRiders, houndPreyRidersRow, houndPressureSeat, houndPressureSeatRow, houndPressureRiders, houndPressureRidersRow, houndBaneSeat, houndBaneSeatRow, houndBaneRiders, houndBaneRidersRow } from '../../src/lib/houndcensus.mjs' // (v0.433.0) the hound presence's field read; (v0.791.0) WHICH arena owns the hound kill book; (v0.925.0) WHICH answer class owns the presence book; (v0.926.0) WHICH bot owns the kill book; (v0.928.0) WHICH bot owns the presence book; (v0.929.0) WHICH bot owns the defeat book
 import { faceFate } from '../../src/lib/facefate.mjs' // (v0.546.0) the frozen book's READER side - the face's own fate named before the censuses speak
 
@@ -289,6 +289,19 @@ if (sweep.keywordOnly.length) {
   if (frb && fallRelayConsistent(lines, frb)) {
     const frr = fallRelayRow(frb)
     if (frr) console.log(`  ${frr}`)
+  }
+  // (v0.956.0) THE DROWN KIND'S OWN SPOT BOOK - WHERE the drown kind's
+  // own deaths own: the verb's own split (the server's canonical
+  // 'drowned') + the band's own split (the same surface edge the falls
+  // and the mob kills priced) + the site's own repeat (the water's own
+  // gate vs the water's own spread - face 215's five drowns put THREE
+  // bots at the SAME spot [-121,48,398], the pool's own levy the raw
+  // bucket rode unnamed). A drown-less face reads the honest silence;
+  // an inconsistent book prices nothing (the fence rides the print).
+  const drab = drownAnatomyBook(lines)
+  if (drab && drownAnatomyConsistent(drab)) {
+    const drar = drownAnatomyRow(drab)
+    if (drar) console.log(`  ${drar}`)
   }
   // (v0.713.0) THE INFERENCE'S OWN BILL - the two-way read of the
   // inference's tails across the whole face (the server kind stays the
