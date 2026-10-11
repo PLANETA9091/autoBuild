@@ -25866,3 +25866,28 @@ Stage Summary:
 - FACE 234 = 38182947883 dispatched 204, in_progress on the v0.964.0 tree (the lane's band silence ride).
 - Next free version 0.965.0. Carried fronts: THE SANDBOX MORTALITY'S OWN EVIDENCE STACK (the OOM's own window, the causal stack, the transit-loop association - the mortality front now owns a full FATAL row + a heartbeat's own rss explosion + a causal stack, the arm's own move waits for the arm's own consensus), the BANK EARLY lever (the door clock's birth verdict), the fire-at-o2-low trigger (the lane's v0.964.0 = the band arm's silence - THE FRONT IS NOW THEIRS), the reloot zero (six faces), the throne's rotation law (five refusals), the smelt clip diet (the 67% capacity tax), the sandbox mortality (THE FACE ITSELF - eleven).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261012-0730
+Agent: main agent (cron fire 0730, Job ID 414125)
+Task: fire 0730 A-G loop (FACE 234 read FIRST - the v0.964.0 tree's first on-tree fleet face, the band silence's first live row, the mortality watch; FACE 235 dispatch)
+
+Work Log:
+- Sandbox survived (twelfth consecutive). Synced /home/z/privateB-repo (tip 63684ee4 = my fire-0700 worklog, no lane pushes since; code v0.964.0 THE BAND ARM'S OWN SILENCE = d26499cd; next free 0.965.0). Pull --rebase clean at open.
+- Gates BY RUN ID: my fire-0700 worklog push gate 38183001795 (sha 63684ee4) SUCCESS; the lane's v0.964.0 code gate 38182430630 (d26499cd) SUCCESS (checked at this fire's open); their worklog gate 38182485535 cancelled (the supersede class).
+- FACE 234 = 38182947883 SUCCESS read (sha 529f7df1, the v0.964.0 tree's FIRST on-tree fleet face), three poll rounds (~36 min), artifacts mined to face234/ (fleet19.log 3115 lines + decomp234.txt 716 rows):
+  * THE MORTALITY DID NOT REPEAT: the full 600s face, rss peak 417M (vs face 233's 1384M explosion), heartbeat distress n=41 max late 194ms mainLate 1232ms - the sandbox held, the face-233 OOM stays the chain's own singular (the watch's first row: calm)
+  * THE BAND ARM'S OWN SILENCE READ ITS FIRST LIVE ROW (v0.964.0, the lane's own lever on its own birth tree): 2 drown tick(s) - blind 2 / critical 0 / band-silence 0 / band-flight 0 / band-dry-hold 0 / band-dry-flight 0 / headroom 0 - THE BLIND FAMILY'S OWN SEAT OWNS THE LANE (the sensor's own death prices nothing, the band classes all rode the honest silence); the o2 book beside it: 36 arms, headroom owns 23/36, the fatal arms critical 1 + headroom 1 - THE TRIGGER'S CONSTANT MUST RIDE HIGHER (the o2-low front's own price, now the lane's v0.964.0's own sibling row)
+  * THE BANK HELD THE RECOVERY: banked 1167u, yield 11.3u/visit (1167 over 103 visit-lines - THE CHAIN'S OWN HIGHEST YIELD), conversion 101.8% (surplus 36u - the pricing's own margin rides small this face); pocket 855u top F4 182u
+  * THE DOOR CLOCK'S SECOND LIVE ROW (v0.963.0): MID-dominant (16 of 28) - the mid-run churn's pace prices the door AGAIN (face 232's LATE row was a different face's cast - the lever reads per-face honestly, two faces two verdicts)
+  * DEATHS 3: drown 2 (underground 1 / surface 1, the water's own spread) + Spider 1 (the late third's own kind); thirds mid 2 / late 1 (the middle's own storm); 36 rescue starts, not saved; the throne refused a SIXTH on-tree face (F18 x12 + F10 x8 own 20 of 48 = 41.7%, the cast rotated AGAIN)
+  * THE CALM BOOKS: churn 8 (3 kicks + 5 relogs, the ladder r1 3 / 60% stalled, F10's repeats 2), A* 58 grand total (decide 40 + hop 15 + bank 3 - up from 20), famines tie 2+2 (logs 2/2 - the gather drought rides), the reloot zero stands SEVEN faces (arms 0, arrivals 0, refusals 1, 3 piles ~267u, biggest 184u F18)
+- F: x1 pre-poll seat FREE (FACE 234 closed, no active dispatch) -> POST 204 -> FACE 235 = 38184855962 queued VERIFIED BY RUN ID + event, riding 63684ee4 (the v0.964.0 tree at the tip)
+- No code this fire (the read+dispatch shape, the eighteenth consecutive); next free 0.965.0 (origin re-verify MANDATORY - the lane's burst cadence rides)
+- The box ends before FACE 235's ~35-min clock - the read rides fire 0800
+
+Stage Summary:
+- FACE 234 = 38182947883 SUCCESS read: the mortality did NOT repeat (the full face, rss 417M calm), the band arm's own silence read its first live row (blind 2 owns the lane, the band classes honest silence), the trigger's constant must ride higher (the o2 book's own price), the bank held the recovery (yield 11.3u/visit the chain's highest), the door clock's second row MID again (the lever reads per-face), deaths 3 (the middle's own storm), the reloot zero stands seven faces, the throne refused a sixth face.
+- FACE 235 = 38184855962 dispatched 204, queued on the v0.964.0 tree.
+- Next free version 0.965.0. Carried fronts: the sandbox mortality's watch (the face-233 OOM stays singular, the face-234 calm is the watch's first row), the BANK EARLY lever (the door clock's two rows: LATE then MID - the per-face law holds), the trigger's constant (the o2 book's higher-constant price - the lane's own v0.964.0 sibling row), the reloot zero (seven faces), the throne's rotation law (six refusals), the gather drought (logs 2/2), the smelt clip diet (the 67% capacity tax), the sandbox mortality (alive twelve).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
