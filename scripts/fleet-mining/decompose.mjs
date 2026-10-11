@@ -17,6 +17,7 @@ import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relo
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
 import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, depositDuoRow } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read; (v0.937.0) + the deposit's own cast - the family's own bot-level seat (the v0.827.0 lane seat's own sibling)
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
+import { nudgeApproachBook, nudgeCast, nudgeCastRow, nudgeDuo, nudgeDuoRow } from '../../src/lib/nudgebook.mjs' // (v0.939.0) the nudge approach's own cast - the verdicts' own bot-level seat (the raw per-bot row's own sibling)
 import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
@@ -2266,6 +2267,17 @@ console.log('  hazard memorized:', count(/hazard memorized/))
 }
 console.log('--- NUDGE FAMILY FIELD LEGS ---')
 console.log('  nudge approach verdicts:', count(/path nudge approach:/), 'per-bot:', fmt(perBot(/path nudge approach:/)))
+// (v0.939.0) THE NUDGE APPROACH'S OWN CAST - the verdicts' own WHO axis:
+// the raw per-bot row counted the askers, no row ever said WHICH bot's
+// own stalls keep asking the nudge. The cast rides beside the family's
+// own raw row - never before it (the order law); zero fleet log lines -
+// CENSUS GUARD. The approach-free face reads the honest silence.
+const nab = nudgeApproachBook(lines)
+if (nab && nab.events.length) {
+  const naSeat = nudgeCast(nab.events)
+  const naRow = naSeat ? nudgeCastRow(naSeat) : nudgeDuoRow(nudgeDuo(nab.events))
+  if (naRow) console.log(`  ${naRow}`)
+}
 console.log('  nudge inside envelope:', count(/inside the direct envelope\)/), ' still outside:', count(/still outside/))
 console.log('  stall side-step lines:', count(/stall side-step/), 'per-bot:', fmt(perBot(/stall side-step/)))
 console.log('  envelope re-segment lines:', count(/envelope re-segment/))
