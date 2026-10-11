@@ -560,7 +560,7 @@ export function houndPreyRidersRow (r) {
   return `the kill book's own prey (v0.926.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofKills} hound kill(s) (${(shareOfKills * 100).toFixed(1)}%) - THE PREY'S OWN MIX: the seat's tie law held, the hunted are the shape - the bots' own deaths price the prey the solo law refused to seat`
 }
 
-// (v0.927.0) THE MAGNET'S OWN SEAT - WHICH bot owns the hound's
+// (v0.928.0) THE MAGNET'S OWN SEAT - WHICH bot owns the hound's
 // presence book. The presence book's own seats: the v0.925.0 answer seat
 // named WHICH CLASS owns the book - the WHO axis rode raw since v0.433.0
 // ('... per-bot: F15=23 F18=17 ...' - face 196's own print: ninety answer
@@ -602,7 +602,7 @@ export function houndPreyRidersRow (r) {
 // the row rides decompose beside the answer seat's own block (read-time
 // tooling only, the CENSUS GUARD law).
 
-// (v0.927.0) the pressure book's own tally - the presenceByBot map's own
+// (v0.928.0) the pressure book's own tally - the presenceByBot map's own
 // fold (the census's own emitter law: the key IS the bot atom, never
 // forked; the same atom shape the prey fold reads - one emitter, two
 // books, zero re-parsing).
@@ -620,7 +620,7 @@ const pressureTally = (presenceByBot) => {
   return { bots, total }
 }
 
-// (v0.927.0) the pressure book's own seat - the strict-majority law's
+// (v0.928.0) the pressure book's own seat - the strict-majority law's
 // verdict: the top bot owns the pressure book only above half; a tie owns
 // nothing. The byte order decides the scan (the bot's own bytes).
 export function houndPressureSeat (census) {
@@ -636,7 +636,7 @@ export function houndPressureSeat (census) {
   return { bot: topBot, owns: topOwns, ofMoments: t.total, shareOfMoments: +(topOwns / t.total).toFixed(3) }
 }
 
-// (v0.927.0) the pressure book's own riders - the seat's own silence's
+// (v0.928.0) the pressure book's own riders - the seat's own silence's
 // companion: a measure, never a verdict-owner. THE BRANCH LAW (never
 // both): the riders speak only when the solo bot rode silent - the seat's
 // own law re-judged here (the v0.919.0 crowd's own fence shape). Fewer
@@ -655,7 +655,7 @@ export function houndPressureRiders (census) {
   return { leader: leader.bot, leaderOwns: leader.n, runner: runner.bot, runnerOwns: runner.n, pairOwns, ofMoments: t.total, shareOfMoments: +(pairOwns / t.total).toFixed(3), duet: leader.n === runner.n }
 }
 
-// (v0.927.0) the pressure seat's own row - THE MAGNET'S OWN SEAT: one
+// (v0.928.0) the pressure seat's own row - THE MAGNET'S OWN SEAT: one
 // bot's own touches own the hound's presence book. Junk never prints a
 // row (the honest silence's own row law): every field is guarded before
 // the template speaks.
@@ -666,10 +666,10 @@ export function houndPressureSeatRow (seat) {
       !Number.isFinite(owns) || owns <= 0 ||
       !Number.isFinite(ofMoments) || ofMoments <= 0 || owns > ofMoments ||
       !Number.isFinite(shareOfMoments)) return null
-  return `the pressure book's own bot (v0.927.0): ${bot} owns ${owns} of ${ofMoments} hound moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE MAGNET'S OWN SEAT: one bot's own touches own the hound book - the magnet's own front prices the pressure the raw split rode unnamed`
+  return `the pressure book's own bot (v0.928.0): ${bot} owns ${owns} of ${ofMoments} hound moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE MAGNET'S OWN SEAT: one bot's own touches own the hound book - the magnet's own front prices the pressure the raw split rode unnamed`
 }
 
-// (v0.927.0) the pressure riders' own row - THE MAGNET'S OWN MIX: a
+// (v0.928.0) the pressure riders' own row - THE MAGNET'S OWN MIX: a
 // measure of the magnets' own shape, never a named owner (the seat's tie
 // law holds). Junk never prints a shape (the honest silence's own row
 // law).
@@ -681,5 +681,5 @@ export function houndPressureRidersRow (r) {
       !Number.isFinite(ofMoments) || ofMoments <= 0 ||
       !Number.isFinite(pairOwns) || pairOwns > ofMoments ||
       !Number.isFinite(shareOfMoments)) return null
-  return `the pressure book's own riders (v0.927.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofMoments} hound moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE MAGNET'S OWN MIX: the seat's tie law held, the magnets are the shape - the bots' own touches price the pressure the solo law refused to seat`
+  return `the pressure book's own riders (v0.928.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofMoments} hound moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE MAGNET'S OWN MIX: the seat's tie law held, the magnets are the shape - the bots' own touches price the pressure the solo law refused to seat`
 }

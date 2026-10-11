@@ -1,4 +1,4 @@
-// (v0.927.0) THE MAGNET'S OWN SEAT - the hound presence book's bot axis
+// (v0.928.0) THE MAGNET'S OWN SEAT - the hound presence book's bot axis
 // joins the seat law family. Tests feed the face-196 (38099550811)
 // verbatim per-bot presence cells, the boundary law, the junk battery,
 // and the decompose wiring pin (the CENSUS GUARD law).
@@ -21,7 +21,7 @@ test("the strict-majority seat shape (the fold reads the census's own cells)", (
 test('the seat row byte-exact', () => {
   assert.equal(
     houndPressureSeatRow(houndPressureSeat({ presenceByBot: { F15: 23, F18: 17 } })),
-    "the pressure book's own bot (v0.927.0): F15 owns 23 of 40 hound moment(s) (57.5%) - THE MAGNET'S OWN SEAT: one bot's own touches own the hound book - the magnet's own front prices the pressure the raw split rode unnamed"
+    "the pressure book's own bot (v0.928.0): F15 owns 23 of 40 hound moment(s) (57.5%) - THE MAGNET'S OWN SEAT: one bot's own touches own the hound book - the magnet's own front prices the pressure the raw split rode unnamed"
   )
 })
 
@@ -79,7 +79,7 @@ test('the branch law: the riders speak only when the seat rode silent', () => {
 test("the riders' row byte-exact on face 196's own verbatim spread", () => {
   assert.equal(
     houndPressureRidersRow(houndPressureRiders({ presenceByBot: FACE196 })),
-    "the pressure book's own riders (v0.927.0): no solo bot owns the majority - F15 x23 + F13 x17 own 40 of 90 hound moment(s) (44.4%) - THE MAGNET'S OWN MIX: the seat's tie law held, the magnets are the shape - the bots' own touches price the pressure the solo law refused to seat"
+    "the pressure book's own riders (v0.928.0): no solo bot owns the majority - F15 x23 + F13 x17 own 40 of 90 hound moment(s) (44.4%) - THE MAGNET'S OWN MIX: the seat's tie law held, the magnets are the shape - the bots' own touches price the pressure the solo law refused to seat"
   )
 })
 
@@ -99,7 +99,7 @@ test("the rows' junk battery: wrong shapes never print", () => {
   assert.equal(houndPressureRidersRow({ leader: 'F15', leaderOwns: 23, runner: 'F13', runnerOwns: 17, pairOwns: 91, ofMoments: 90, shareOfMoments: 1.011 }), null) // pairOwns > ofMoments
 })
 
-test("WIRING: the pressure book's seat rides decompose beside the answer seat's own block (v0.927.0)", () => {
+test("WIRING: the pressure book's seat rides decompose beside the answer seat's own block (v0.928.0)", () => {
   const src = fs.readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
   assert.ok(src.includes('houndPressureSeat, houndPressureSeatRow, houndPressureRiders, houndPressureRidersRow'), 'the seat joins the decompose import band')
   const answerAt = src.indexOf('houndAnswerSeat(hound)')
