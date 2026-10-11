@@ -35,6 +35,7 @@ import { o2ArmBook, o2ArmBookRow, o2ArmBookRidersRow } from '../../src/lib/o2arm
 import { blindArmWindowBook, blindArmWindowRow, blindArmWindowRidersRow } from '../../src/lib/blindarmwindow.mjs' // (v0.959.0) THE BLIND ARM'S OWN WINDOW SEAT - the two books' own join (the arm book's blind verdict + the window book's own run law): every blind arm's own window class at the start line - open (the window already owned the sensor's death), spoke (the stream's last word alive - the cadence gap's own arm, the start is the death's first witness), unspoken (the stream cannot judge) - with the fatal blind arm's own split (the loss seat); the fence: the two walks agree or nothing prices (the arm book's own fold is the second witness)
 import { o2TriggerBook, o2TriggerRow } from '../../src/lib/o2trigger.mjs' // (v0.884.0) THE O2-LOW TRIGGER'S OWN WINDOW - the page lead's own row named the front twice (the trigger must fire at o2 low, not at the reset - fits 0 / misses 2 on face 145): the span from the bot's last re-crossing into the census's own rescueBand edge (<=10) to the death line itself - the window the trigger would have owned, priced per death (the reuse law: parseSentryPass + HB_RE + the anchored death token, never re-spelled; the blind skins judge nothing and clear nothing; the death resets the state - the v0.880.0 law's own idiom) // (v0.880.0) THE ARM-O2'S OWN BOOK - the rescue start's own oxygen byte ('drowning rescue start (drowning, oxygen N)' - unread since v0.368.0 counted the start classes: the o2 census (v0.422.0) counted the PASSES' o2, the starts' own air never rode a book) folded per start with the sentry census's own band edges (critical <=4 / band 5..9 / headroom >=10) and per death the latest start's own arm (line order is the truth, the latest start wins whole, an arm never survives the death it joined) - the o2-low front's own price read (the v0.473.0 law)
 import { o2TriggerKindBook, o2TriggerKindRow } from '../../src/lib/o2trigger.mjs' // (v0.885.0) THE TRIGGER'S OWN KIND JOIN - the false-positive split the fire-0000 fold's own row named (the crossings whose death rode a non-o2 kind - the kind join prices the trigger's own cost; the no-crossing deaths' own kinds - the misses' own families; the reuse law: parseDeathKind by import - the census's own RE read once, never re-spelled; the fence law: an inconsistent book prices nothing)
+import { triggerLagBook, triggerLagRow, triggerLagRidersRow } from '../../src/lib/triggerlag.mjs' // (v0.960.0) THE TRIGGER'S OWN LAG - the o2-low trigger front's own missing join: the window book (v0.884.0) prices the RUNWAY, the page lead book (v0.875.0) prices the LEAD, nobody priced the span between the two books' own bytes - the lag = window - lead per death, with the classes the front's own story rides (the early page - the o2-low page WITNESSED, the front's own cure; the last-breath page - the reset's own page, the front's own disease; the late page - the burned runway, the lever's own price: the late lags' own sum over the joined windows' own sum); the population is the drown contexts (the lead side's own grammar), the window side rides the window book's OWN perDeath rows (the alignment law - the same anchored death token, index for index, the two walks agree or nothing prices); the map wart rides honest (a bot that drowns twice: the last context joins the map's lead byte-true, the earlier deaths read the unjoined class - never forged); the fences: both books' own consistency cells + the announce walks' agreement + the context population's agreement + the map's own image (o2TriggerConsistent + pageLeadBookConsistent imported, never forked)
 import { walkFailCensus, walkFailBotBill, walkFailBotBillRow, walkFailRiders, walkFailRidersRow, walkFailLaneBill, walkFailLaneBillRow, walkFailLaneRiders, walkFailLaneRidersRow } from '../../src/lib/walkfail.mjs' // (v0.410.0) the A* starvation's fleet-wide leg (beyond the hop lane); (v0.773.0) WHICH walker owns the chest-walk book; (v0.776.0) WHICH lane owns it
 import { decideWeather } from '../../src/lib/decideweather.mjs' // (v0.689.0) THE DECIDE WEATHER - the A* starvation's own sky read (the starve's ents/rss at its own anchor)
 import { hotspotCensus, hotspotBands, hotSpotSeat, hotSpotSeatRow, hotSpotRiders, hotSpotRidersRow } from '../../src/lib/hotspot.mjs' // (v0.419.0 + the v0.421.0 band read) the failure geometry's cross-lane read; (v0.794.0) WHICH spot owns the starvation book
@@ -1120,6 +1121,21 @@ if (o2tRow) console.log(`  ${o2tRow}`)
 const o2tk = o2TriggerKindBook(lines)
 const o2tkRow = o2TriggerKindRow(o2tk)
 if (o2tkRow) console.log(`  ${o2tkRow}`)
+// (v0.960.0) THE TRIGGER'S OWN LAG - the two books' own per-death join
+// (the window book's runway + the page lead book's lead): the lag =
+// window - lead, the classes ride the front's own story (the early
+// page - the cure witnessed; the last-breath page - the reset's own
+// page; the late page - the burned runway, the lever's own price).
+// Rides ONLY when both books priced (the fence law: the two walks
+// agree or nothing prices).
+if (plb && o2tRow) {
+  const tlb = triggerLagBook(o2t, plb, lines)
+  if (tlb) {
+    console.log(`  ${triggerLagRow(tlb)}`)
+    const tlr = triggerLagRidersRow(tlb)
+    if (tlr) console.log(`  ${tlr}`)
+  }
+}
 // (v0.707.0) THE SENSOR'S OWN TOLL - the reset(-1) skin's full mass across
 // the family's three skins: the death contexts the v0.379.0 census owns,
 // the breath mirrors the v0.479.0 cue lens owns, and the deep-pocket
