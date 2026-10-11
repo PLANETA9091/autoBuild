@@ -19,6 +19,7 @@ import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, dep
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
 import { nudgeApproachBook, nudgeCast, nudgeCastRow, nudgeDuo, nudgeDuoRow } from '../../src/lib/nudgebook.mjs' // (v0.939.0) the nudge approach's own cast - the verdicts' own bot-level seat (the raw per-bot row's own sibling)
 import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests
+import { shaftLockBook, shaftCast, shaftCastRow, shaftDuo, shaftDuoRow } from '../../src/lib/shaftcast.mjs' // (v0.940.0) the shaft lock's own cast - the locks' own bot-level seat (the roster's own sibling)
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
@@ -3789,6 +3790,17 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
       console.log(`  ${r.bot}: launches ${r.launches}, skips ${r.skips}${whys ? ` (${whys})` : ''} - ${r.voice}`)
     }
     console.log(`  shaft-lock cast: ${v.shaftRoster.length ? `${v.shaftRoster.join(' ')} (${v.shaftRoster.length} bot(s) the shaft gate held)` : 'none - the underground economy took no trip tax this face'}`)
+    // (v0.940.0) THE SHAFT LOCK'S OWN CAST - the locks' own WHO axis: the
+    // roster counted the held bots, no row ever said WHICH bot's own trips
+    // the gate keeps underground. The cast rides beside the roster's own
+    // raw row - never before it (the order law); zero fleet log lines -
+    // CENSUS GUARD. The lock-free face reads the honest silence.
+    const slb = shaftLockBook(lines)
+    if (slb && slb.events.length) {
+      const slSeat = shaftCast(slb.events)
+      const slRow = slSeat ? shaftCastRow(slSeat) : shaftDuoRow(shaftDuo(slb.events))
+      if (slRow) console.log(`  ${slRow}`)
+    }
   }
 }
 
