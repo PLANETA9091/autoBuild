@@ -25618,3 +25618,31 @@ Stage Summary:
 - FACE 228 = 38170891594 dispatched 204, in_progress on the v0.961.0 tree (the throne book's first on-tree fleet face).
 - Next free version 0.962.0. Carried fronts: the crowded sky's return (the ents ceiling vs the A* burst), the smelt's early arm (the clock debt 89.6%), the map's zero delivery (the stuck worst slot), the closing drought (the tithe's late crowding), the o2-low trigger's higher constant (the lag book's own face-226 price), the flee fork's re-flee cure, the sandbox mortality (alive five).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+---
+Task ID: cron30-20261012-0430
+Agent: main agent (cron fire 0430, Job ID 414125)
+Task: fire 0430 A-G loop (FACE 228 read FIRST - the throne book's first on-tree face, the saved face; FACE 229 dispatch)
+
+Work Log:
+- Sandbox survived (sixth consecutive). Synced /home/z/privateB-repo (tip e2352ad8 = my fire-0400 worklog; origin code v0.961.0 THE CHURN BOT'S THRONE = b4579d95; next free 0.962.0). Pull --rebase clean at open.
+- Gates BY RUN ID: my fire-0400 worklog push gate 38170978427 SUCCESS (long queue - the fleet run and the lane's burst shared the runners, the verdict landed green anyway); the lane's v0.961.0 code gate 38170667090 SUCCESS; their cancelled worklog push 38170711281 = no-loss (the established class).
+- FACE 228 = 38170891594 SUCCESS read (sha 5f3a936b, THE v0.961.0 TREE'S FIRST ON-TREE FLEET FACE), two poll rounds (~29 min to completion), artifacts mined to face228/ (fleet19.log 3737 lines + decomp228.txt):
+  * THE THRONE BOOK'S FIRST ON-TREE VERDICT (v0.961.0): "no bot owns every lane's majority - F6 x36 + F5 x19 own 55 of 80 event(s) (68.8%) - THE INSTABILITY'S OWN CROWD" - THE THRONE REFUSED on its birth face: F6 held the standdown seat (8/13) and the relog crown (8/13) but not the starts' strict majority (20/54 = 37%) - the throne's law held byte for byte (face 226's hand-assembled F5 throne stays the only seat, and it was a different face's cast); F6+F5 own 25 of 31 churn events (80.6%), the kicks 18 (all duplicate_login, 100%)
+  * THE SAVED FACE - the water lane's FIRST PERFECT FACE: 54 drowning rescue starts, 0 drown-kind death(s) - the water lane landed every rider; o2 reset(-1) 0, rescue never 0, rescue active 0; the sensor window: 259 reads, blind 1 (0.4%); drowns 0 SECOND FACE RUNNING (the chain 8 -> 4 -> 1 -> 3)
+  * deaths 3 (mob 2 / fall 1 - the ambient night's own spread, every kill rode its own ground); end-phase tax 100% (~190u of ~190u lost died in the final 60s - both drops in the deadline's own window); the stakes: F5 owns 180 of 190u (94.7%), the stranded pile 180u @[-91,66,438] = 95% of the face's stranded mass - the reloot lane never walked AGAIN (arms 0)
+  * the o2-low trigger's FIRST FALSE-POSITIVE ROW: crossed 1 non-o2 (the wrong-door class born), no-crossing 2 (fall 1 / mob 1), window 300..300s
+  * the bank's recovery HOLDS A THIRD FACE: 53.4% (1432 of 2684) after 65.7 -> 58.8; pocket peak 2017u rode LATE (t-143s, 73.3% in); write-offs 770u (F17 248 + F2 172 own 54.5%); the flow-priced clamp's own victims: F5 5796s -> 300s, F17 5798s -> 300s (the 5% granted share)
+  * the material balance flagged honestly: leaks +194u = +7.5% of mined (the emitters outran the sinks - outside the 5% bar; the reconcile covered: the legs 311u = deaths 190u + placed 121u, slack +117u)
+  * the flee book's RICHEST FACE: 10 episodes (reflee 2 / stood 3 / open 5, book 10/10), 0 died mid-flee - the escape lane held; the re-flee fork's stuck class born: F18 skeleton 6.5 -> 6.6 (+0.1 STUCK), F5 skeleton 4.7 -> 6.5 (+1.8 gained)
+  * A* starvation 23 (vs 65 -> 8): the crowded sky rides (20/21 at or past half the ents ceiling, median 2841) but the burst shrank (max 7 in 30s vs 20); THE NOON SKY: mid owns 15/23 (65%); the starve's own lane: walk owns 16/23
+  * the freeze gate's FULL LADDER: F6 climbed to #4@60s (the gate doubled twice and the freeze still came); relog walk-outs 4/13 (31%); EPIPE owns 5 of 5 socket losses (F5=4 F6=1), joined 4/5; the relog gate: holds 13, bypasses 5 (critical 5) - THE LOOP FUEL: every void is a relog that fed the column
+  * the smelt clip debt: clock owns 141 of 177u (79.7%); the re-smelt shadow paid 27 of 177; the map: launches 8 / skips 15 (shaft-locked 11), the second leg delivered 1/5 (20% - first delivery after face 227's 0/5), the worst slot STUCK two faces running; the tithe's answer 16u vs 72u (22.2%); the dry reads EARLY-crowded this face (27/50 - THE OPENING DROUGHT, vs 227's CLOSING DROUGHT); the famine TIE (wood 2 + food 2 of 4); water transit launches 42 (vs 0), 259 passes
+- F: x2 pre-polls seat FREE (zero active runs at all - the lane silent, all their pushes completed) -> POST 204 -> FACE 229 = 38172967034 in_progress VERIFIED BY RUN ID + event, riding e2352ad8 (the v0.961.0 tree at my tip)
+- No code this fire (the read+dispatch shape, the twelfth consecutive); next free 0.962.0 (origin re-verify MANDATORY - the lane's burst cadence rides)
+- The box ends before FACE 229's ~33-min clock - the read rides fire 0500
+
+Stage Summary:
+- FACE 228 = 38170891594 SUCCESS read: the throne book's first on-tree verdict REFUSED the throne (the law held), the water lane's first perfect face (54 starts / 0 drown deaths), the bank 53.4% holds a third face, the end-phase tax 100%, the flee book's richest face (10 episodes, 0 died), the re-flee stuck class born.
+- FACE 229 = 38172967034 dispatched 204, in_progress on the v0.961.0 tree.
+- Next free version 0.962.0. Carried fronts: the throne's seed face (F6's churn magnet row), the reloot lane's standing zero (the 180u pile), the end-phase tax (100% - the deadline's own drops), the smelt's early arm (the clock debt 79.7%), the map's stuck worst slot (two faces), the dry lane's early/closing drought swing, the crowded sky (the noon class), the o2 trigger's wrong-door price, the sandbox mortality (alive six).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
