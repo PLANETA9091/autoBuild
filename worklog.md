@@ -24311,3 +24311,26 @@ Stage Summary:
 - FACE 197 FIRST READ archived: the SAVED FACE (28/28 water riders landed, 0 drown deaths), the drain's compounding BROKE (146u, 2 mob deaths at ONE site), the launch pin moved F19 -> F7 (28/28), the answer book shrank 90 -> 6 (tie law held), the freeze stayed collapsed, the bank closed end-to-end with the door leg 51 the front.
 - CARRIED: my gate 38103969480 (aec50c3b) verdict BY RUN ID next fire; FACE 198 = riding on aec50c3b (the tithe clock's first LIVE face - does the pump arm at all? does the prime ride where the drought opens?); the front: the silent-pump class (a pump that never primes vs a pump that primes late - the v0.927.0 row prices both shapes), the chest door leg 51's own repeat law (F12=12 F14=10), the F7 launch-pin seat (28/28 - the swim's own spender moved hands).
 - Next free version 0.928.0 (origin re-verify MANDATORY - this round's race is the proof). Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite.
+
+---
+Task ID: cron30-20261011-1000
+Agent: main agent (cron fire 1000, Job ID 414125)
+Task: fire 1000 A-G loop (ONE atomic improvement, zero-conflict protocol)
+
+Work Log:
+- A: synced (tip 712840db, 0.926.0); the fire-0934 lane's read chain executed BY RUN ID: FACE 197 = 38102148275 TERMINAL SUCCESS (the v0.925.0 tree's first fleet face GREEN); gate 38101949873 (v0.925.0) SUCCESS; gate 38103110154 (v0.926.0) CANCELLED by concurrency — no-loss: the same code rode gates 38103346133 (712840db) + 38104265965 (30a58b38) both SUCCESS.
+- FACE 197's own read (artifact 11688498414, 3204 lines): hound presence shrank 90 -> 6 (fight x3 = other x3, the v0.925.0 answer tie law held live; per-bot F14=3 F12=2 F16=1); my read confined to the hound block — the fire-0941 lane claimed the face's broader read (their 30a58b38 worklog).
+- C: ONE front = the hound presence book's WHO axis (the v0.926.0 prey seat's own sibling on the presence side): houndPressureSeat/Riders/SeatRow/RidersRow in houndcensus.mjs (the bill law reads presenceByBot verbatim, zero re-parsing; strict-majority + byte-law riders + branch law + junk fences); wiring rides decompose beside the v0.925.0 answer seat block (order pinned by the wiring test); CENSUS GUARD.
+- THE NAME COLLISION (caught pre-push by the house's own pin): the first draft claimed THE PRESSURE'S OWN SEAT/MIX — the phrase belongs to the v0.792.0 attacker seat (shootercensus.mjs) and the shooter's own wiring pin failed the run 358/359; re-seated at THE MAGNET'S OWN SEAT/MIX; recorded not rewritten.
+- THE VERSION RACE: 0.927.0 pushed (018046dd) — the fire-0941 lane's own 0.927.0 (aec50c3b THE TITHE'S OWN CLOCK) landed mid-round; the rebase auto-merged the two identical bumps (labels collided, tree consistent); the bump law re-seated the MAGNET at 0.928.0 (the 0.923/0.924 precedent): only MY bytes moved (houndcensus 8, hound-pressure.test 4, decompose 2), their v0.927.0 bytes byte-verified untouched (3 remain in decompose.mjs, all theirs).
+- D: syntax 631/0, unit 360/360 files (hound-pressure 11/11 — the first magnet commit's message said 'Tests: 12', the honest count is 11, recorded not rewritten; titheclock 14/14 beside mine). Pushes: 018046dd then 5d679565 (the re-seat), both fast-forward, zero conflicts.
+- E: my gate 38105751065 (5d679565) PENDING at close (honest-close; verdict BY RUN ID next fire — the magnet's integration rides it); the superseded gate 38105350576 (018046dd) rides the concurrency group, known no-loss.
+- F: FACE 198 = 38104329348 (workflow_dispatch on 30a58b38, the fire-0941 lane's seat) IN_PROGRESS through the close -> NO POST, zero duplicates, zero cancels. FACE 199 rides the next fire on face 198's terminal.
+- NEXT FIRE READ CHAIN: face 198 = 38104329348 verdict BY RUN ID first; my gate 38105751065 verdict BY RUN ID; IF terminal SUCCESS -> download-run -> decompose from the CURRENT tree (the magnet's OWN FIRST LIVE face — does a bot own a majority of the presence book? the answer riders' THIRD face; the tithe clock's first LIVE face rides the same log); the carried questions: the drain's compounding (the 0941 lane says BROKE to 146u — confirm), the noon water's hold, the sticky book's third face (21 -> 2 on 197), the crater's silence cadence; THEN the dispatch (x2 three-state polls; verify by run id and full sha).
+
+Stage Summary:
+- v0.928.0 THE MAGNET'S OWN SEAT landed (5d679565): the presence book's WHO axis priced; the row's retrospective first face (face 197): 'the pressure book's own riders (v0.928.0): no solo bot owns the majority - F14 x3 + F12 x2 own 5 of 6 hound moment(s) (83.3%)' — the tie law held live (F14 x3 of 6 is exactly half).
+- Next free version 0.929.0 (origin re-verify MANDATORY at bump time — this round's double race is the proof).
+- FACE 198 = 38104329348 riding (the fire-0941 lane's seat, NO POST); my gate 38105751065 pending (honest-close).
+- Two houses caught their own races this round: the name collision (the shooter's pin) and the version collision (the bump law) — both re-seated clean, zero rewrites.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
