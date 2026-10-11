@@ -86,6 +86,19 @@ export function parseFuelGrain (line) {
   }
 }
 
+// (v0.927.0) THE TITHE CLOCK'S OWN TAG READER: the inflow's own bot
+// tag beside the house's own cells. The grammar is the house's own -
+// parseTitheInflow prices the cells verbatim (zero re-implementation)
+// and the tag is the line's own optional F-head (TITHE_TAG_OPT's own
+// atom, the v0.600.0 prefix law: the tag is optional, the grammar
+// strict). A bare fleet-level line reads bot null honestly.
+export function parseTitheInflowTagged (line) {
+  const inf = parseTitheInflow(line)
+  if (!inf) return null
+  const m = /^F\d+/.exec(line)
+  return { bot: m ? m[0] : null, ...inf }
+}
+
 export function titheCensus (lines) {
   const c = {
     inflow: { n: 0, attempted: 0, delivered: 0, units: 0, dry: 0, far: 0, near: 0, split: 0, bare: 0, maxAttempted: 0 },
