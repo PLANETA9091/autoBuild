@@ -283,3 +283,97 @@ export function deathDropCensus(lines) {
     }
   }
 }
+
+// (v0.930.0) THE STAKES' OWN SEAT - WHICH bot's own deaths own the stakes'
+// own u. The drain thirds (v0.882.0) priced WHEN the drops' u died - the
+// early/mid/late split - and the face 198 read named the spread ('early 0u
+// / mid 325u / late 303u of 628u - NO third owns the drops' own u'), but no
+// row ever said WHOSE deaths own the book: the WHO axis rode raw since
+// v0.647.0. THE BILL LAW: the census's own drops rows verbatim - the key
+// IS the atom ('F3', the row's own bot byte), the row's own u the mass -
+// zero re-parsing, one census, the v0.926.0 prey fold's own precedent. The
+// census-or-bare-array acceptance (the v0.928.0 magnet's own shape): the
+// seat reads a deathDropCensus result's drops leg or the bare rows array.
+// The empty form stakes nothing (u = 0 by shape - the empty-pocket read
+// never joins the mass book) and a non-finite or non-positive cell is
+// junk - skipped, the real rows still tally (the junk fences). THE
+// STRICT-MAJORITY LAW: a bot owns the stakes' own book only above half the
+// dropped u - a tie owns nothing (the storm-has-no-seat precedent). The
+// riders measure beside the seat's silence (the top two under the byte
+// law: u desc, the bot's own byte asc - the census's own insertion order
+// never owns the ranking). THE BRANCH LAW (one row never both) lives in
+// the lib: the riders read null whenever the seat's owner exists - the
+// decompose's own branch never has to guess (the v0.928.0 magnet's own
+// fence shape). Read-time tooling, zero fleet log lines - CENSUS GUARD.
+const STAKE_BOT_RE = /^F\d+$/
+
+const stakeTally = (drops) => {
+  if (!Array.isArray(drops)) return null
+  const byBot = {}
+  let total = 0
+  for (const d of drops) {
+    if (!d || typeof d !== 'object' || Array.isArray(d)) continue
+    if (typeof d.bot !== 'string' || !STAKE_BOT_RE.test(d.bot)) continue
+    if (!Number.isFinite(d.u) || d.u <= 0) continue
+    byBot[d.bot] = (byBot[d.bot] || 0) + d.u
+    total += d.u
+  }
+  if (total <= 0) return null
+  return { byBot, total }
+}
+
+const stakeDropsOf = (census) =>
+  (census && typeof census === 'object' && !Array.isArray(census)) ? census.drops : census
+
+export function stakeSeat (census) {
+  const t = stakeTally(stakeDropsOf(census))
+  if (!t) return null
+  const half = t.total / 2
+  for (const [bot, owns] of Object.entries(t.byBot)) {
+    if (owns > half) return { bot, owns, ofU: t.total, shareOfU: +(owns / t.total).toFixed(3) }
+  }
+  return null
+}
+
+export function stakeRiders (census) {
+  const t = stakeTally(stakeDropsOf(census))
+  if (!t) return null
+  const ranked = Object.entries(t.byBot).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (ranked.length < 2) return null
+  const half = t.total / 2
+  if (ranked[0][1] > half) return null // the branch law: the seat's owner exists - the mix never prints
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofU: t.total, pairOwns, shareOfU: +(pairOwns / t.total).toFixed(3), duet: leaderOwns === runnerOwns }
+}
+
+// (v0.930.0) the stakes' own seat row - THE STAKES' OWN SEAT: the seat
+// names WHICH bot's own deaths own the drops' own u; the drain's own WHO
+// axis prices the spread the thirds rode unnamed. Junk never prints a
+// seat (the honest silence's own row law).
+export function stakeSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { bot, owns, ofU, shareOfU } = seat
+  if (typeof bot !== 'string' || !STAKE_BOT_RE.test(bot) ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofU) || ofU <= 0 || owns > ofU ||
+      !Number.isFinite(shareOfU)) return null
+  return `the stakes' own bot (v0.930.0): ${bot} owns ${owns} of ${ofU} dropped u (${(shareOfU * 100).toFixed(1)}%) - THE STAKES' OWN SEAT: one bot's own deaths own the death drops' own u - the drain's WHO axis prices the spread the thirds rode unnamed`
+}
+
+// (v0.930.0) the stakes' own riders row - THE STAKES' OWN MIX: a measure
+// of the shape, never a named owner (the seat's tie law holds). Junk never
+// prints a shape (the honest silence's own row law).
+export function stakeRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofU, pairOwns, shareOfU } = r
+  if (typeof leader !== 'string' || !STAKE_BOT_RE.test(leader) ||
+      typeof runner !== 'string' || !STAKE_BOT_RE.test(runner) ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 ||
+      !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofU) || ofU <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofU ||
+      !Number.isFinite(shareOfU)) return null
+  return `the stakes' own riders (v0.930.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofU} dropped u (${(shareOfU * 100).toFixed(1)}%) - THE STAKES' OWN MIX: the seat's tie law held, the mix is the shape - the drops' own u spread the thirds priced, the WHO rode unnamed`
+}

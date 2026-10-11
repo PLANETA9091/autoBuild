@@ -61,7 +61,7 @@ import { deepPocketCensus, deepPocketCensusRow } from '../../src/lib/deeppocket.
 import { wetCeilingCensus, wetCeilingCensusRow, wetColumnCompletion, wetColumnCompletionRow, wetColumnShortfall, wetColumnShortfallRow, wetColumnWaste, wetColumnWasteRow } from '../../src/lib/climbwet.mjs' // (v0.836.0) the water column's own dig - the climb lane's wet-ceiling ascend family, the deep-pocket lens' sibling priced on its own seat: the ceiling spread (the no-guard writer lets water dominate), the spot census, the y-blind column map (the bot's own descent between climbs), the within-episode dig vs the budget print; (v0.840.0) + the wet column's kept promise - the family's own completion read on the same parser: the whole-budget spend vs the early abandonment (the real faces so far read kept=0 - the budget always outran the climb); (v0.842.0) + the shortfall's own shape - the reach read: the deficit histogram (budget - dig, the kept class rides 0) + the nearest miss (how far the budget outran the climb); (v0.845.0) + the wasted dig - the shortfall's own why leg: the water class (a water cell buys no headroom - the dig's own purpose defeated) vs the solid digs
 import { columnToll, columnTollRow } from '../../src/lib/columntoll.mjs' // (v0.838.0) the column's own toll - the wet lane's digs joined to the death book (line order + Chebyshev 2, y-blind): did the dig SAVE the bot or did the bot die in the band it was digging (face 109: F13 dug [-135,410] three times, then drowned at [-135,49,409] with the sensor dead and the rescue never); the join is the toll's CANDIDATE - the lens names no cause
 import { aquiferCensus, aquiferCensusRow } from '../../src/lib/aquifer.mjs' // (v0.832.0) the aquifer's own book - the water table program's two voices (the strike writes + the lid readbacks) and the carousel's terminals priced per face // (v0.826.0) the water hazard board's own read - the memorize line's own census (the repeats, the 240s TTL's own work, the foreign records); (v0.828.0) + the board's own walk-back - the deaths that landed on water an earlier death had already named; (v0.831.0) + the refusals' own read - the veto's own voice priced per face (the wide share past the 4b spot ceiling; the tier law: the line alone cannot name the tier - the zone tier rides past 4b on every tree, the v0.829.0 body veto on its own)
-import { deathDropCensus } from '../../src/lib/deathdropcensus.mjs' // (v0.647.0) the death-drop stakes' own census - the silent-arm join; (v0.663.0) the stakes' own clock rides the same shape
+import { deathDropCensus, stakeSeat, stakeSeatRow, stakeRiders, stakeRidersRow } from '../../src/lib/deathdropcensus.mjs' // (v0.647.0) the death-drop stakes' own census - the silent-arm join; (v0.663.0) the stakes' own clock rides the same shape; (v0.930.0) WHICH bot's own deaths own the stakes' own u
 import { RELOOT_DESPAWN_MS } from '../../src/lib/reloot.mjs' // (v0.663.0) the despawn one-truth - the arm-lag row's own inversion base
 import { upgradeCensus, deferPromise, upgradeVerdicts, verdictSpread, promisePersistence } from '../../src/lib/upgradecensus.mjs' // (v0.465.0) the tool ladder's own harvest - the rung's delivered tools counted; (v0.467.0) the defer promise's order-aware join; (v0.468.0) the verdict census - the counter-vs-words window named; (v0.470.0) the verdict spread - the worn class's per-bot spread; (v0.471.0) the promise persistence - the kept bots' cross-face fate
 import { counterGap, upgradeJoin } from '../../src/lib/countergap.mjs' // (v0.469.0) the counter-words gap - the tally join that closes the book the verdict census named (SLOT COLLISION #5: 0.468.0 taken mid-fire); (v0.474.0) the words-verdict join - the residual's name
@@ -1816,6 +1816,19 @@ if (shooter.total > 0) {
   if (dc && dc.drops.length > 0) {
     console.log(`--- DEATH DROP CENSUS (v0.647.0: the stakes' own arm join - the lane's voice vs the silent six) ---`)
     console.log(`  stakes: ${dc.drops.length} death drop(s) across ${dc.deaths} death(s), ${dc.lostU}u at stake (${dc.emptyReads} empty-pocket read(s))`)
+    // (v0.930.0) THE STAKES' OWN SEAT - WHICH bot's own deaths own the
+    // stakes' own u (the drain thirds' own sibling on the WHO axis: the
+    // thirds priced WHEN the drops' u died, the seat names WHOSE deaths
+    // own the book; the seat + the riders, one row never both - the
+    // branch law, fenced in the lib; the owner case leaves the companion
+    // unprinted; the row reads the same census the stakes' own prints
+    // read - one census, zero re-parsing).
+    const sst = stakeSeat(dc)
+    if (sst) console.log(`  ${stakeSeatRow(sst)}`)
+    else {
+      const srd = stakeRiders(dc)
+      if (srd) console.log(`  ${stakeRidersRow(srd)}`)
+    }
     const armed = dc.armed.bots.map((b) => `${b}`).join('+') || '-'
     const silent = dc.silent.bots.map((b) => `${b}`).join('+') || '-'
     console.log(`  arm join: armed ${dc.armed.n} (${dc.armed.u}u: ${armed}) / SILENT ${dc.silent.n} (${dc.silent.u}u: ${silent})${dc.silent.u > 0 ? ' - THE SILENT CLASS: the recovery never spoke for these stakes' : ''}`)
