@@ -683,3 +683,131 @@ export function houndPressureRidersRow (r) {
       !Number.isFinite(shareOfMoments)) return null
   return `the pressure book's own riders (v0.928.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofMoments} hound moment(s) (${(shareOfMoments * 100).toFixed(1)}%) - THE MAGNET'S OWN MIX: the seat's tie law held, the magnets are the shape - the bots' own touches price the pressure the solo law refused to seat`
 }
+
+// (v0.929.0) THE BANE'S OWN SEAT - WHICH bot owns the hound's defeat
+// book. The defeat book's own seats: the v0.926.0 prey seat named WHICH
+// bot owns the KILL book (the hound's own wins) - the defeat book (the
+// fleet's own answer: 'hound defeats (the fleet won - mob down)' priced
+// raw since v0.433.0 - face 196's own print: one defeat, F16=1; face
+// 197's own print: two, F12=1 F16=1) never rode a seat; the bane is the
+// prey's own mirror - the fleet's own answer axis on the same war.
+//
+// THE BILL LAW (the census's own fightsWonByBot cells, zero re-parsing
+// - the v0.926.0 prey fold's own precedent, the defeat book instead of
+// the kill book): the fold reads the census's own fightsWonByBot map
+// verbatim - the key IS the atom ('F16', the decompose perBot idiom's
+// own shape, the census's own emitter law, never forked; the tagless
+// wins never enter the book - the bump's own guard).
+//
+// THE POPULATION LAW: the other-exit book (fightEndsOther - the fights
+// that ended otherwise) never enters the defeat book - a win is a win,
+// an other-exit is its own census cell with its own print; a second
+// count would recurse the defect (the v0.925.0 fleeShorePlain fence's
+// own shape).
+//
+// THE STRICT-MAJORITY LAW: the top bot owns the defeat book only above
+// half; a tie owns nothing (the honest null - the spread needs the
+// riders, not a named owner; the storm-has-no-seat precedent; face
+// 197's own book was the tie's field witness: F12 x1 + F16 x1 of 2 -
+// exactly half each). The byte order decides the scan (the bot's own
+// bytes).
+//
+// THE RIDERS - the seat's own silence's companion (the v0.791.0 riders'
+// own shape, the v0.919.0 branch law's own fence): a MEASURE, never a
+// verdict-owner - the top two banes' own concentration prices the shape
+// the solo law refused to name. THE BRANCH LAW (never both): the riders
+// speak only when the solo bot rode silent (the fence lives in the lib
+// - the seat's own law re-judged here, a second seat would recurse the
+// defect). THE BYTE LAW: counts desc, then the bot's own byte asc - the
+// census's own insertion order never owns the ranking.
+//
+// Junk never invents a book: a non-object census, a malformed bot key
+// (the census's own emitter law - the tagless wins never enter the
+// book, the bump's own guard), a non-finite or non-positive cell
+// (skipped - the real cells still tally), or a zero-sum book reads the
+// honest silence (null).
+//
+// Pure: reads, never mutates. Zero fleet wiring, zero new log lines -
+// the row rides decompose beside the hound defeats per-bot print
+// (read-time tooling only, the CENSUS GUARD law).
+
+// (v0.929.0) the defeat book's own tally - the fightsWonByBot map's own
+// fold (the census's own emitter law: the key IS the bot atom, never
+// forked; the same atom shape the prey and magnet folds read - one
+// emitter, three books, zero re-parsing).
+const baneTally = (fightsWonByBot) => {
+  if (!fightsWonByBot || typeof fightsWonByBot !== 'object' || Array.isArray(fightsWonByBot)) return null
+  const bots = []
+  let total = 0
+  for (const [bot, n] of Object.entries(fightsWonByBot)) {
+    if (typeof bot !== 'string' || !PREY_BOT_RE.test(bot)) continue
+    if (!Number.isFinite(n) || n <= 0) continue
+    bots.push({ bot, n })
+    total += n
+  }
+  if (bots.length === 0 || total <= 0) return null
+  return { bots, total }
+}
+
+// (v0.929.0) the defeat book's own bane seat - the strict-majority law's
+// verdict: the top bot owns the defeat book only above half; a tie owns
+// nothing. The byte order decides the scan (the bot's own bytes).
+export function houndBaneSeat (census) {
+  const fightsWonByBot = census && typeof census === 'object' && !Array.isArray(census) ? census.fightsWonByBot : census
+  const t = baneTally(fightsWonByBot)
+  if (!t) return null
+  let topOwns = 0
+  let topBot = null
+  for (const { bot, n } of t.bots.slice().sort((a, b) => (a.bot < b.bot ? -1 : a.bot > b.bot ? 1 : 0))) {
+    if (n > topOwns) { topOwns = n; topBot = bot }
+  }
+  if (topBot === null || topOwns <= t.total - topOwns) return null
+  return { bot: topBot, owns: topOwns, ofDefeats: t.total, shareOfDefeats: +(topOwns / t.total).toFixed(3) }
+}
+
+// (v0.929.0) the defeat book's own bane riders - the seat's own
+// silence's companion: a measure, never a verdict-owner. THE BRANCH LAW
+// (never both): the riders speak only when the solo bot rode silent -
+// the seat's own law re-judged here (the v0.919.0 crowd's own fence
+// shape). Fewer than two banes reads the honest silence (the solo face
+// is the seat's own).
+export function houndBaneRiders (census) {
+  const fightsWonByBot = census && typeof census === 'object' && !Array.isArray(census) ? census.fightsWonByBot : census
+  const t = baneTally(fightsWonByBot)
+  if (!t) return null
+  const ranked = t.bots.slice().sort((a, b) => b.n - a.n || (a.bot < b.bot ? -1 : 1))
+  const leader = ranked[0]
+  if (leader.n > t.total - leader.n) return null // the branch law: the solo row owns the owner's face
+  if (ranked.length < 2) return null // the solo face is the seat's own (the belt-and-suspenders fence)
+  const runner = ranked[1]
+  const pairOwns = leader.n + runner.n
+  return { leader: leader.bot, leaderOwns: leader.n, runner: runner.bot, runnerOwns: runner.n, pairOwns, ofDefeats: t.total, shareOfDefeats: +(pairOwns / t.total).toFixed(3), duet: leader.n === runner.n }
+}
+
+// (v0.929.0) the bane seat's own row - THE BANE'S OWN SEAT: one bot's
+// own wins own the hound's defeat book. Junk never prints a row (the
+// honest silence's own row law): every field is guarded before the
+// template speaks.
+export function houndBaneSeatRow (seat) {
+  if (!seat || typeof seat !== 'object') return null
+  const { bot, owns, ofDefeats, shareOfDefeats } = seat
+  if (typeof bot !== 'string' || !bot ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofDefeats) || ofDefeats <= 0 || owns > ofDefeats ||
+      !Number.isFinite(shareOfDefeats)) return null
+  return `the defeat book's own bane (v0.929.0): ${bot} owns ${owns} of ${ofDefeats} hound defeat(s) (${(shareOfDefeats * 100).toFixed(1)}%) - THE BANE'S OWN SEAT: one bot's own wins own the hound's defeat book - the fleet's own answer prices the hound the raw split rode unnamed`
+}
+
+// (v0.929.0) the bane riders' own row - THE BANE'S OWN MIX: a measure of
+// the banes' own shape, never a named owner (the seat's tie law holds).
+// Junk never prints a shape (the honest silence's own row law).
+export function houndBaneRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, pairOwns, ofDefeats, shareOfDefeats } = r
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 || !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofDefeats) || ofDefeats <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofDefeats ||
+      !Number.isFinite(shareOfDefeats)) return null
+  return `the defeat book's own bane (v0.929.0): no solo bot owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofDefeats} hound defeat(s) (${(shareOfDefeats * 100).toFixed(1)}%) - THE BANE'S OWN MIX: the seat's tie law held, the banes are the shape - the bots' own wins price the hound the solo law refused to seat`
+}
