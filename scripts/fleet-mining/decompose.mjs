@@ -92,6 +92,7 @@ import { chaseBill } from '../../src/lib/chasebill.mjs' // (v0.712.0) the chase'
 import { crossfireBill } from '../../src/lib/crossfirebill.mjs' // (v0.714.0) the crossfire's own bill - the second hostile's kill folded (the killer's, the fled threat's, the crowd sensor's reads)
 import { armoryCensus } from '../../src/lib/armorycensus.mjs' // (v0.494.0) the armory census - the weapon supply chain's own book (the sword + spare-pick lanes' verdicts and failure anatomy)
 import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table gate - the tool chain's zero-point (the spare-table bootstrap's own book)
+import { tableCast, tableCastRow, tableRiders, tableRidersRow } from '../../src/lib/tablecast.mjs' // (v0.949.0) THE TABLE GATE'S OWN CAST - the book's own BOT axis (the count-seat family's own sibling)
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
@@ -4682,6 +4683,16 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     const refused = Object.entries(tg.bots).filter(([, b]) => b.failed > 0)
     if (refused.length) {
       console.log(`  refused: ${refused.map(([b, v]) => `${b} (rungs ${v.rungs}, sticks ${v.sticks})`).join(' / ')} - the woodless read: zero rungs, the flow terminal's 'cannot make a spare table' whys (the recovery book's table echoes)`)
+    }
+    // (v0.949.0) the cast rides beside the book's own class totals - never
+    // before them (the order law): the seat's solo owner fires the cast, the
+    // book's silence or crowd prints the riders (the measure-not-owner
+    // companion). The WHO axis of the tool chain's zero-point.
+    const tcSeat = tableCast(tg.bots)
+    if (tcSeat) console.log(`  ${tableCastRow(tcSeat)}`)
+    else {
+      const tcRiders = tableRiders(tg.bots)
+      if (tcRiders) console.log(`  ${tableRidersRow(tcRiders)}`)
     }
   }
 }
