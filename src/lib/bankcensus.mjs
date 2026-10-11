@@ -775,3 +775,73 @@ export function craterWhyCrowdRow (r) {
       !Number.isFinite(share)) return null
   return `the crater's why crowd (v0.919.0): no single why owns the failed mass - ${leader} x${leaderUnits}u + ${runner} x${runnerUnits}u own ${pairUnits} of ${total}u (${(share * 100).toFixed(1)}%) - THE WHY DUO'S OWN SEAT: the v0.758.0 seat's own tie law held, the spread is still real - the pair prices the whys the solo law refused to name`
 }
+
+// (v0.934.0) THE STRAND'S OWN CAST - the stranded book's bot-level seat (the
+// v0.777.0 write-off cast's own sibling). The v0.758.0 crater seat priced the
+// share leg, the v0.777.0 cast priced the write-off's bot axis, the v0.919.0
+// crowd priced the why axis - but the STRANDED cells (the walk never
+// delivered: 'F1 0u/102u pocket' - the bot kept the pocket, the walk
+// delivered nothing) rode raw beside the write-off line with no row naming
+// whose walk failed. THE BILL LAW (the census's own attribution.stranded
+// cells only, zero re-parsing - the cast's own precedent): the mass axis is
+// the POCKET leg (the never-delivered units - the delivered leg is the walk's
+// own score, not the strand's atom, so it is read but never fenced); the top
+// holder owns the book under the strict-majority law (a tie owns nothing -
+// the storm-has-no-seat precedent). Junk never invents a cast: a missing or
+// empty book, a non-finite or non-positive pocket cell, or a minority top
+// reads the honest silence (null).
+export function strandedCast (cells) {
+  const book = (Array.isArray(cells) ? cells : []).filter((c) => c && typeof c === 'object' &&
+    typeof c.bot === 'string' && c.bot && Number.isFinite(c.pocketU) && c.pocketU > 0)
+  if (!book.length) return null
+  const total = book.reduce((a, c) => a + c.pocketU, 0)
+  const ranked = book.slice().sort((a, b) => b.pocketU - a.pocketU || (a.bot < b.bot ? -1 : 1))
+  const top = ranked[0]
+  if (top.pocketU <= total - top.pocketU) return null
+  return { bot: top.bot, units: top.pocketU, total, share: +(top.pocketU / total).toFixed(3) }
+}
+
+// (v0.934.0) the strand's own row - THE WALK'S OWN SOLO DEFICIT: one bot's
+// own walk never delivered its pocket; the v0.777.0 cast names the
+// deadline's collection, the strand's cast names the walk that never came.
+// Junk never prints a seat (the honest silence's own row law).
+export function strandedCastRow (cast) {
+  if (!cast || typeof cast !== 'object') return null
+  const { bot, units, total, share } = cast
+  if (typeof bot !== 'string' || !bot || !Number.isFinite(units) || units <= 0 ||
+      !Number.isFinite(total) || total <= 0 || units > total || !Number.isFinite(share)) return null
+  return `the strand's own cast (v0.934.0): ${bot} owns ${units} of ${total}u (${(share * 100).toFixed(1)}%) - THE WALK'S OWN SOLO DEFICIT: one bot's own walk never delivered its pocket - the write-off's own cast (v0.777.0) names the deadline's collection, the strand's cast names the walk that never came`
+}
+
+// (v0.934.0) THE STRAND'S OWN RIDERS - the cast's silence's own companion
+// (the v0.777.0 riders precedent, zero re-parsing): a MEASURE, never a
+// verdict-owner - the top two walks' concentration prices the shape the
+// solo law refused to name (the cast's owner case leaves the companion
+// unprinted - the decompose's own branch law). The order is deterministic
+// (units desc, then the name's own - 'F16' < 'F6' byte-wise). Junk never
+// invents a shape: a missing or empty book or fewer than two holders reads
+// the honest silence (null).
+export function strandedRiders (cells) {
+  const book = (Array.isArray(cells) ? cells : []).filter((c) => c && typeof c === 'object' &&
+    typeof c.bot === 'string' && c.bot && Number.isFinite(c.pocketU) && c.pocketU > 0)
+  if (book.length < 2) return null
+  const ranked = book.slice().sort((a, b) => b.pocketU - a.pocketU || (a.bot < b.bot ? -1 : 1))
+  const leader = ranked[0]
+  const runner = ranked[1]
+  const pairUnits = leader.pocketU + runner.pocketU
+  const total = book.reduce((a, c) => a + c.pocketU, 0)
+  return { leader: leader.bot, leaderUnits: leader.pocketU, runner: runner.bot, runnerUnits: runner.pocketU, total, pairUnits, share: +(pairUnits / total).toFixed(3) }
+}
+
+// (v0.934.0) the riders' own row - THE STRAND'S OWN DUO (the family's own
+// tail): a measure of the shape, never a named owner. Junk never prints a
+// shape (the honest silence's own row law).
+export function strandedRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderUnits, runner, runnerUnits, total, pairUnits, share } = r
+  if (typeof leader !== 'string' || !leader || typeof runner !== 'string' || !runner ||
+      !Number.isFinite(leaderUnits) || leaderUnits <= 0 || !Number.isFinite(runnerUnits) || runnerUnits <= 0 ||
+      !Number.isFinite(total) || total <= 0 || !Number.isFinite(pairUnits) || pairUnits > total ||
+      !Number.isFinite(share)) return null
+  return `the strand's own riders (v0.934.0): no solo walk owns the majority - ${leader} x${leaderUnits}u + ${runner} x${runnerUnits}u own ${pairUnits} of ${total}u (${(share * 100).toFixed(1)}%) - THE STRAND'S OWN DUO: the cast's tie law held, the concentration is still real - the pair prices the walks the solo law refused to name`
+}

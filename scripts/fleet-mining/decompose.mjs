@@ -5,7 +5,7 @@ import { rescueLedger, rescueEndSeconds, RESCUE_END_CLASSES, rescueStartBill, re
 import { orphanOwnerCensus } from '../../src/lib/orphanowner.mjs' // (v0.679.0) the orphan end's per-bot owner (the dead-client class names its bot)
 import { orphanBookSeat, orphanBookSeatRow, orphanBookRiders, orphanBookRidersRow } from '../../src/lib/orphanowner.mjs' // (v0.802.0) the orphan book's own seat (the byClass cell's own majority)
 import { askWhyCensus, dryAskVerdict, dryAskVerdictRow, dryAskBotBill, dryAskBotBillRow, dryAskRiders, dryAskRidersRow } from '../../src/lib/askwhycensus.mjs' // (v0.652.0) THE ASK'S OWN WHY BOOK - the ask ladder's walk-failure whys joined to the dry terminals (the delivery side's v0.612.0 why-book law, the ask side's own seat); (v0.769.0) WHICH class owns the dry ask; (v0.772.0) WHICH walker owns the class's rows
-import { bankFlowCensus, bankYield, writeOffBill, writeOffBillRow, writeOffRiders, writeOffRidersRow, budgetAskSeat, budgetAskSeatRow, budgetAskRiders, budgetAskRidersRow, parsePrePositionCensus, prePositionWhySeat, prePositionWhySeatRow, prePositionWhyRiders, prePositionWhyRidersRow, prePositionClimbSeat, prePositionClimbSeatRow, prePositionClimbRiders, prePositionClimbRidersRow, craterWhyCrowd, craterWhyCrowdRow } from '../../src/lib/bankcensus.mjs' // (v0.686.0) + the yield dial - the banked mass over the visit lane's own line count; (v0.777.0) + the write-off's own cast - the book's bot-level seat; (v0.803.0) + the ask book's own seat - the budgets' needsS cells' own majority; (v0.811.0) + the walk-home's own why - the pre-position census's seat and the climb-out anatomy's own seat; (v0.919.0) + the crater's why crowd - the why axis's own riders beside the v0.758.0 seat
+import { bankFlowCensus, bankYield, writeOffBill, writeOffBillRow, writeOffRiders, writeOffRidersRow, budgetAskSeat, budgetAskSeatRow, budgetAskRiders, budgetAskRidersRow, parsePrePositionCensus, prePositionWhySeat, prePositionWhySeatRow, prePositionWhyRiders, prePositionWhyRidersRow, prePositionClimbSeat, prePositionClimbSeatRow, prePositionClimbRiders, prePositionClimbRidersRow, craterWhyCrowd, craterWhyCrowdRow, strandedCast, strandedCastRow, strandedRiders, strandedRidersRow } from '../../src/lib/bankcensus.mjs' // (v0.686.0) + the yield dial - the banked mass over the visit lane's own line count; (v0.777.0) + the write-off's own cast - the book's bot-level seat; (v0.803.0) + the ask book's own seat - the budgets' needsS cells' own majority; (v0.811.0) + the walk-home's own why - the pre-position census's seat and the climb-out anatomy's own seat; (v0.919.0) + the crater's why crowd - the why axis's own riders beside the v0.758.0 seat; (v0.934.0) + the strand's own cast - the stranded book's bot-level seat (the v0.777.0 write-off cast's own sibling)
 import { routeGateCensus, ROUTE_GATE_RIM_TRAP_REFUSALS } from '../../src/lib/routecensus.mjs' // (v0.388.0) the route gate's field read
 import { shooterCensus, shooterAttackerBill, shooterAttackerBillRow, shooterAttackerRiders, shooterAttackerRidersRow } from '../../src/lib/shootercensus.mjs' // (v0.390.0) the shooter band's field read; (v0.792.0) WHICH attacker owns the combat pressure
 import { shelterLedger, OUTCOME_CLASSES, shelterOutcomeBill, shelterOutcomeBillRow, shelterOutcomeRiders, shelterOutcomeRidersRow } from '../../src/lib/shelterledger.mjs' // (v0.457.0) the combat verdict's price - the outcome join; (v0.466.0) the class vocabulary for the flee-ground cross-read; (v0.795.0) WHICH verdict owns the shelter book
@@ -1138,6 +1138,16 @@ else {
   if (baRiders) console.log(`  ${budgetAskRidersRow(baRiders)}`)
 }
 if (bankCensus.attribution) console.log(`  stranded pockets (the walk never delivered): ${bankCensus.attribution.stranded.map((s) => `${s.bot} ${s.deliveredU}u/${s.pocketU}u`).join(', ') || 'none'} - zero-delivered: ${bankCensus.attribution.strandedZeroDelivered}`)
+// (v0.934.0) THE STRAND'S OWN CAST - the stranded book's bot-level seat beside
+// the raw line (the census's own attribution.stranded cells, zero re-parsing
+// - the v0.777.0 cast's own precedent). One additive row, never both - the
+// branch law: the cast's solo owner fires the seat, the cast's silence
+// prints the riders (the measure-not-owner companion).
+if (bankCensus.attribution && bankCensus.attribution.stranded.length) {
+  const scSeat = strandedCast(bankCensus.attribution.stranded)
+  const scRow = scSeat ? strandedCastRow(scSeat) : strandedRidersRow(strandedRiders(bankCensus.attribution.stranded))
+  if (scRow) console.log(`  ${scRow}`)
+}
 if (bankCensus.writeOff.length) console.log(`  final write-off: ${bankCensus.writeOff.map((w) => `${w.bot} ${w.units}u/${w.seconds}s`).join(', ')}`)
 // (v0.777.0) THE WRITE-OFF'S OWN CAST - the book's bot-level seat beside the
 // v0.583.0 why row + the v0.758.0 crater seat (the census's own writeOff
