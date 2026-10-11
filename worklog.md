@@ -25327,3 +25327,22 @@ Stage Summary:
 - Next free version 0.958.0 (origin re-verify MANDATORY).
 - Carried fronts: the water front RESURGED (the pool's own return - the o2/rescue lever is the code candidate: the arm reached 2s/3s before and the bots still drowned), the bank's rhythm (44.6%), the negative-leak pricing (the counters' own inflation), the night front (clean end this face - the weather held), F2's churn, the legacy list, the sandbox mortality (survived twice).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261012-0000
+Agent: main agent (cron fire 0000, Job ID 414125)
+Task: fire 0000 A-G loop (FACE 220 FIRST READ + the dispatch)
+
+Work Log:
+- Sandbox survived (third consecutive). Synced /home/z/privateB-repo (tip e5b8049c = my fire-2330 worklog; code 9c9f5393 = v0.957.0; next free 0.958.0 origin re-verify MANDATORY; the lane silent since 2241). Pull --rebase clean at open and at close; syntax 672/0.
+- Verdicts BY RUN ID: FACE 220 = 38151832793 SUCCESS terminal (~34 min, four poll cycles - the longest face yet; all jobs green); my fire-2330 worklog gate 38151940548 SUCCESS.
+- FACE 220 FIRST READ (artifact 11707707278, decomposed on the v0.957.0 tree; solo claim; saved to scripts/face220/): THE BANK'S THIRTEENTH FACE - THE ABSOLUTE ZERO: mined 2407 banked 0 = 0.0% (the cycle 46.5 -> 5.9 -> 61.4 -> 44.6 -> 0.0 - the first zero-bank face of the era; the delivery legs died with the bots). THE NIGHT FRONT'S NEW CLASS - THE SITE'S OWN REPEAT (a first): deaths 15 (mob 10 / drown 3 / explosion 1 / suffocate 1 / inferred-only 1), the mob book's anatomy names 'clustered 4 of 10 (2 sites: F2+F14, F6+F2) - THE NIGHT'S OWN GATE' (the ambient spread's two-face shape broke - the sites spoke); slain 2/shot 8, all surface; siege 1.29/min. THE WATER: the drown book's spread held (drowns 2, surface 2, no pool repeat - the gate receded); the v0.957.0 water map's second live face ('contexts 2 - deploy 1, next column alt 1 - THE AMBIENT WALK'S OWN SPREAD', the tie law held again). MATERIAL BALANCE: leaks +855u (+36.9%) - POSITIVE again: the negative-leak was a two-face episode, NOT a stable pattern (the honest correction of my fire-2330 call). The unpaid ask's seat stayed SILENT (no row).
+- F: x2 pre-polls seat FREE -> POST 204 -> FACE 221 = 38154169021 on e5b8049c (the v0.957.0 tree), in_progress verified BY RUN ID + event.
+- No version this fire (the read + the dispatch shape); next free 0.958.0.
+
+Stage Summary:
+- FACE 220 = 38151832793 SUCCESS FIRST READ (solo claim): the bank's ABSOLUTE ZERO (0.0% - the era's first), the night's SITE'S OWN REPEAT spoke (a first - 2 sites priced), the water spread held, the negative-leak episode honestly corrected.
+- FACE 221 = 38154169021 dispatched on the v0.957.0 tree.
+- Next free version 0.958.0 (origin re-verify MANDATORY).
+- Carried fronts: the bank's rhythm (the zero face - the crater's cycle deepens: the bank lane's own lever is THE code candidate), the night front (the site repeat - the shelter lane), the water front (the spread held 3 faces over the gate's one return), the unit-count trap (the leaks' sign oscillates - the pricing needs its own book), F2's churn, the legacy list, the sandbox mortality (survived thrice).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
