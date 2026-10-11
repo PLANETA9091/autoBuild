@@ -4837,7 +4837,8 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     console.log(`--- VEIN LEDGER (v0.501.0: the sweep's own book - terminals, walk yield, gallery, refusals, tier guard) ---`)
     console.log(`  harvest: ${t.terminals} terminals (${t.terminalDrops} drops in reach, ${t.terminalDug} dug), ${t.yields} walk yields (+${t.yieldU}u), gallery ${t.galleryOres} ores (floor lock ${t.galleryFloorLock} / ore detour ${t.galleryOreDetour})`)
     console.log(`  refusals: lip ${t.lipRefusals} / support ${t.supportRefusals} (seals kept ${t.supportSeal}) / ledge cut ${t.ledgeRefusals}; spares: deep ${t.deepSkips} (${t.deepSkippedDrops} drops), zero-disp ${t.spared} (${t.sparedDrops}), pre-goto ${t.goalRefusals} (${t.goalRefusedDrops})`)
-    console.log(`  walk triage: above-plane ${t.aboveTimeouts} (${t.aboveWalks} walks) / below-plane ${t.belowFails} (${t.belowWalks}); picked-nothing ${t.pickedNothings} (delta ${t.pickedDelta}); dig-downs ${t.digDowns}; stance ${t.stanceArmed} armed / ${t.stanceLanded} landed (+${t.stanceWalked}u)`)
+    // (v0.953.0) the walked u and the picked delta ride the cents round - the binary float's own tail (0.9 + 1.5 rode +2.4000000000000004u on the face-213 read) never prints again
+    console.log(`  walk triage: above-plane ${t.aboveTimeouts} (${t.aboveWalks} walks) / below-plane ${t.belowFails} (${t.belowWalks}); picked-nothing ${t.pickedNothings} (delta ${Math.round(t.pickedDelta * 100) / 100}); dig-downs ${t.digDowns}; stance ${t.stanceArmed} armed / ${t.stanceLanded} landed (+${Math.round(t.stanceWalked * 100) / 100}u)`)
     const tg = Object.entries(t.tierGuardNames).map(([o, n]) => `${o} ${n}`).join(' + ') || 'none'
     console.log(`  tier guard: ${t.tierGuards} rows refusing ${t.tierGuardOres} ore units (${tg})`)
     const bill = tierGuardBill(lines) // (v0.768.0) the guard's tax names its repeat rider
