@@ -103,6 +103,7 @@ import { planTopCensus } from '../../src/lib/plantop.mjs' // (v0.440.0) the name
 import { sentryCensus, sentrySightSeat, sentrySightSeatRow, sentrySightRiders, sentrySightRidersRow } from '../../src/lib/sentry.mjs' // (v0.422.0) the drowning sentry's per-pass read (the water lane's first census); (v0.797.0) WHICH sight class owns the ground-truth book
 import { rescueClockCensus, rescueBlindSeat, rescueBlindSeatRow, rescueBlindRiders, rescueBlindRidersRow } from '../../src/lib/rescueclock.mjs' // (v0.431.0) the rescue lane's price leg (durations + the frozen blindness); (v0.799.0) WHICH blind class owns the frozen-standdown book
 import { waterClockBook, waterClockVerdict, waterClockRow } from '../../src/lib/waterclock.mjs' // (v0.918.0) THE WATER LANE'S OWN CLOCK - the water arms' own thirds verdict (the rescue starts + the transit launches joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the lanes' own legs)
+import { stickySeat, stickySeatRow, stickyRiders, stickyRidersRow } from '../../src/lib/stickyseat.mjs' // (v0.923.0) THE STICKY BOOK'S OWN SEAT - WHICH bot owns the ends the lane did not close cleanly (the v0.780.0 ends bill's own bot-axis mirror, the five sticky classes' own fold)
 import { standdownClockBook, standdownClockVerdict, standdownClockRow } from '../../src/lib/standdownclock.mjs' // (v0.921.0) THE STANDDOWN'S OWN CLOCK - the frozen-standdown end's own thirds verdict (the house's own classifiers verbatim: rescueEndClass + rescueEndSeconds + parseRescueBlind, the heartbeat rail's stamp law, the v0.733.0 point cut, the strict-majority seat + the bots' own legs)
 import { swirlBill, criedWolf } from '../../src/lib/swirlbill.mjs' // (v0.726.0) the instant churn's own bill - the rescue lane's zero-close loop (the trigger's drowning, the lane's surface-safe, the same breath); (v0.736.0) the cried-wolf join - the churn's verdict bot that died the trigger-blind death
 import { skyWalk } from '../../src/lib/skywalk.mjs' // (v0.727.0) the crowded sky's own walk - the decide starve's own hand on the walk refusals (the one-parser join: walkfail + decideweather)
@@ -625,6 +626,17 @@ else {
   if (rmr) console.log(`  ${rescueMidRidersRow(rmr)}`)
 }
 console.log('  per-bot ends:', Object.entries(ledger.perBot).map(([b, r]) => `${b}{${Object.entries(r).filter(([, v]) => v > 0).map(([k, v]) => `${k}=${v}`).join(',')}}`).join(' ') || 'none')
+// (v0.923.0) THE STICKY BOOK'S OWN SEAT - WHICH bot owns the ends the
+// lane did not close cleanly (the frozen, the timeout, the dead - the
+// v0.780.0 ends bill's own bot-axis mirror; the seat + the riders, one
+// row never both - the branch law; the owner case leaves the companion
+// unprinted).
+const stb = stickySeat(ledger.perBot)
+if (stb) console.log(`  ${stickySeatRow(stb)}`)
+else {
+  const str = stickyRiders(ledger.perBot)
+  if (str) console.log(`  ${stickyRidersRow(str)}`)
+}
 // (v0.431.0) THE RESCUE CLOCK - the rescue lane's price leg: every end's
 // 'in Ns' duration (the ledger prices only the timeout class) + the frozen
 // standdown's blind bracket - the three counters of the self-diagnosis the
