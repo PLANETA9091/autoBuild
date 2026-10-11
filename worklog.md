@@ -24866,3 +24866,40 @@ Stage Summary:
 - Next free version 0.946.0 (origin re-verify MANDATORY at bump time).
 - NO dispatch this fire (the seat honored: FACE 209 = 38126110702 flying); my gate 38127525925 honest-close pending.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
+
+---
+Task ID: cron-agent-loop-202610111741
+Agent: main agent (cron fire 1741, Job ID 415967, PLANETA9091 identity)
+Task: fire 1741 — sandbox reclone, FACE 209 FIRST READ (the shaft + waterlock + assist + sword-due casts' own FIRST LIVE faces), FACE 210 dispatch, worklog commit+push.
+
+Work Log:
+- Sandbox DEAD at open -> reclone (clone point 35f590d5 = the fire-1700 lane's own append, the v0.945.0 tree), identity pinned local+global (verified), npm install + setup-26.2 clean, pull --rebase clean (already up to date at 35f590d5).
+- Verdicts BY RUN ID: FACE 209 = 38126110702 (58fef02e, v0.942.0 tree) TERMINAL SUCCESS (31.6 min, in envelope) -> FIRST READ claimed (the fire-1700 lane handed the read at their close; unclaimed at my open); gate 38126744806 (a000a64a, the merged tree) SUCCESS = the carried chain debt closed; 38127774705 (35f590d5, their push) SUCCESS = the v0.945.0 integration GREEN; 38127525925 (b4c4bb87) CANCELLED = lossless supersede by 35f590d5. Zero red, zero zombies.
+- FACE 209 FIRST READ (artifact 11697404883, decompose 694 rows from the v0.945.0 tree):
+  * THE SHAFT LOCK CAST'S OWN FIRST LIVE FACE (v0.941.0): shaft-lock cast 7 bots (F3 F6 F9 F10 F11 F14 F19), 8 locks; F3 x2 + F10 x1 own 3/8 (37.5%) - THE HOSTAGES' OWN CROWD; the tie law held live.
+  * THE WATER-LOCK CAST'S OWN FIRST LIVE FACE (v0.942.0): frontier 12 census lines (bare 2 / ARMED 10, 321 sealable blocks); F18 x4 + F1 x2 own 6/12 (50.0%) - THE KEEPERS' OWN CROWD; refusals lip 7 / support 12 (seals kept 18) / ledge cut 5.
+  * THE RISE ASSIST CAST'S OWN FIRST LIVE FACE (v0.943.0): 4 assists, 1 timeout; F11 x1 + F16 x1 own 2/4 (50%) - THE ASSISTANTS' OWN CROWD.
+  * THE SWORD DUE CAST'S OWN FIRST LIVE FACE (v0.945.0): 81 lane lines; F1 x14 + F18 x9 own 23 (28.4%) - THE ARMORERS' OWN CROWD; due 25 (planks), verdicts ok 32 / failed 7 (no-table 7), rung table-crafted 6 / planks-converted 2.
+  * THE POUNCE CAST'S SECOND LIVE FACE: F5 x3 + F11 x2 own 5/13 (38.5%); pounce stalled 0 / landed 0 - the decline probe never lands.
+  * THE CAMP CAST'S SECOND LIVE FACE: F5 x4 + F1 x2 own 6/16 (37.5%); built 2 vs reused 10.
+  * THE SWEEP CAST'S SECOND LIVE FACE: F11 x18 + F7 x17 own 35/113 (31.0%).
+  * THE DEPOSIT CAST'S THIRD LIVE FACE: cobble duo F5 x4 + F16 x2 own 6/12 (50%); smelt duo F14 x1 + F8 x1 own 2/2 (100%); seal-reserve F18 x2 + F5 x2 own 4/11 (36.4%); THE FUEL TITHE'S SILENCE (0 firings - the prime never rode again; the family's voice prices the drought's inflow gap as the fuel lane's own trigger); the closing tithe late 1/1 (10u, first delivery t=1001s).
+  * THE STANDDOWN'S OWN BOT SECOND FACE (v0.931.0): F19 solo 11/17 (64.7%); THE NOON FREEZE mid 16/17 (94%); frozen seconds 98.2s; the full ladder F19 #4@60s (the gate doubled twice, the client still froze).
+  * THE CHURN EXPLODED AGAIN: 16 events - 7 dup-kicks + 9 relogs, ALL F19's own loop (F19 owns 14/16 87.5% - THE SESSION'S OWN REPEAT CUSTOMER); EPIPE 3 (all F19, joined 3/3); the relog dive join F6+F19 own 211/278 starts (75.9%) - THE RECONNECT LOOP'S OWN CLOSURE.
+  * THE STAKES' OWN MIX: 5 deaths / 340u - F9 x151 + F16 x77 own 228/340 (67.1%); silent class 3 (228u) vs armed 2 (112u); exoneration: the wiring seat F9 151u / the deadline's own F16 77u / the honest silence F5 0u.
+  * THE DEATHS: F18 drown (o2 reset, controls-blind, no page) + F6 drown (paged 1.6s tight) + F9 suffocate (head sand) + F5 fall (the zombie inference CONTRADICTS the server) + F16 slain by Zombie; o2-reset lane: rescue active 2/2, arm critical 213/278 (76.6%).
+  * THE HOUND'S SILENT ARENA: 7 answer moments (F14=4 F9=3), defeats 0 / kills 0 - no arena this face (the water did it x2); answer mix other x3 + fight x1 (57.1%); THE MAGNET'S OWN SEAT: F14 SOLO 4/7 (57.1%) - the magnet's rotation LANDED after the eighth postponement.
+  * THE BANK'S HALF-CRATER: mined 2479 / banked 1279 / pocket 1328u (conversion 107%); banked crater 49.1% of 2607u endgame loot; the why crowd exhausted x439u + timeout x272u own 711/1085u (65.5%); door rate 16.3% (THE CHEST DOOR NEVER OPENED); the pocket's peak 2007u at t-1s (99.8% LATE - the drain never got its window); flow 2.1u/s, the pocket needs 624s past the deadline.
+  * THE SKY CALMED: 87 -> 17 timed starves; THE NOON SKY mid 9/17 (53%); mix F2 x4 + F5 x4 (47.1%); lane mix hop x8 + walk x6 (82.4%); the hop lane's sky median ents 2743 (6/8 at/past half ceiling, 2/8 under the drained sky - the entity climb cannot explain those).
+  * THE FAMINE'S OWN SEAT WOOD AGAIN: wood 4/5 (80%), logs 4/4 (the gather drought); THE CHEST'S OWN CLOSE: empty 147/150 (98% - the yard's drought arrived first).
+  * Recovery: F13 re-failed x3 of 3 (the loop's own rent, deepest chain 4); trip lane: 7 launches (6 delivered windows, F8 flat), skips 14 (shaft-locked 8 / unreachable 6); the second leg delivered 1/6 failed (14.3%); sand pocket 2 -> 45 (peak 108).
+  * Memory: rss max 435M, ents max 3163 (jump DRIVER x16), evicted max 1838, GC pinned 71%; FLEET RESULT normal end (deadline 600s), clock end 981s.
+- Dispatch law: x2 pre-polls agreed THE SEAT FREE (ACTIVE=[] at both polls) -> POST ci.yml 204 (string "run_fleet":"true") at 17:45 +08 -> FACE 210 = 38129485416 materialized on 35f590d5fe784bf24736746d8c25cb655f380c57 (the origin tip = the v0.945.0 tree - ALL five casts' live faces ride it), x2 post-polls in_progress clean, verified BY RUN ID + full sha.
+- Repo worklog appended (this entry's own commit - author verified) -> pull --rebase -> push clean, no conflicts, no force-push.
+
+Stage Summary:
+- FACE 209 FIRST READ archived: the shaft cast's AND the waterlock cast's own FIRST LIVE faces (both crowds, the tie law held live), the assist cast's + the sword due cast's own FIRST LIVE faces (both crowds), the pounce's second face, the magnet's rotation LANDED (F14 solo 57.1%), the standdown's bot F19 solo again, the churn's F19 loop, the half-crater 49.1%, the sky calmed 87 -> 17, the fuel tithe's silence.
+- FACE 210 = 38129485416 riding 35f590d5 (the v0.945.0 tree) -> NEXT FIRE: verdict BY RUN ID first; if terminal SUCCESS + unclaimed -> FIRST READ = the sword due cast's own second live face + every cast's rotation (shaft/waterlock/assist/sweep/camp/pounce/deposit) + the standdown's third face (F19 three-peat?) + the bank's crater-or-hold + the tithe's clock + the magnet's second seat; carried: the strand's next silence? + the noon sky's next third.
+- Next free version 0.946.0 (origin re-verify MANDATORY at bump time).
+- Artifacts kept: /home/z/my-project/scripts/face209/ (fleet19.log, decomp209.txt 694 rows, poll logs). Tooling intact: fetch_art_193.sh + the house decomposer.
+- Discipline held: identity law, RACE law (rebase before push), dispatch law (BY RUN ID, x2 pre+post polls, string input, verified by run id + full sha), one-parser law (house decomposer only), no force-push, no history rewrite, no local server/fleet/tests.
