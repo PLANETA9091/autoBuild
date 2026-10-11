@@ -25031,3 +25031,26 @@ Stage Summary:
 - Next free version 0.950.0 (origin re-verify MANDATORY at bump time).
 - NO dispatch (the seat honored); my gate 38134688141 honest-close pending. Zero conflicts, zero zombies, zero cancels.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite.
+
+---
+Task ID: cron30-20261011-1930
+Agent: main agent (cron fire 1930, Job ID 414125, PLANETA9091 identity)
+Task: fire 1930 — v0.950.0 THE TORCH LANE'S OWN CAST (the count-seat family's own sibling at the light supply's WHO axis), FACE 212 FIRST READ, FACE 213 dispatch.
+
+Work Log:
+- A: synced (tip 9b89f47d, 0.949.0 at open; the lane quiet). Verdicts BY RUN ID: FACE 212 = 38133009342 (07d2236e) SUCCESS terminal -> artifact FIRST READ; my v0.949.0 gate 38134688141 (56eae195) SUCCESS; worklog gate 38133445968 (eb723362) SUCCESS; fire-1900 push gate 38134847565 (9b89f47d) SUCCESS.
+- FACE 212 FIRST READ (artifact 11700033556, 2868 log rows, solo claim): THE BANK'S SIXTH FACE - the crater FLOODED to 20.1% (360 of 1788u; 210: 43.4%, 209: 49.1% - receding two faces straight), write-off 1098u (76.9%), night owns 782u (71.2%), the chest door's rate 23.8% of 105, the opening drought 33 of 36 dry reads early (92%); deaths 3 (drown F9 F2 F8, the kind owns 100%), drops 127u, F2's stakes 52.8% solo, F11's strand 93u 100% solo; the shelter skip cast's second face (F12+F9 pair 2 of 2, the tie law held); the map trip cast's second face (F1+F11 4 of 22 18.2%); the sword due's second face (F15+F6 10 of 66 15.2%); the water-lock cast F14 SOLO 10 of 12 (83.3%); the fuel tithe SILENT again (0 firings), cobble-tithe 2/57u (F6), seal-reserve 4/71u (F1+F13); hound F12+F7 9 of 13, the bane F7 solo; o2-low window widened 40..200s; kicks 1 dup (F1), relogs 6, sockets 18 ECONNRESET mid.
+- ONE ATOMIC IMPROVEMENT: v0.950.0 THE TORCH LANE'S OWN CAST (src/lib/torchcast.mjs NEW + 17 tests + decompose wiring beside the TORCH LEDGER block) - the v0.500.0 book's own WHO axis: the per-bot cells rode silent (the decompose printed only the raw top-6, no law-priced verdict); the v0.711.0 stick bill names the torch lane the stick chain's own biggest spender (60 of 64 stick voices). THE COUNT LAW (the book's own cells only, zero re-parsing): the eleven line buckets sum to the bot's own vote; the twelve measure cells never vote (the sticks/coals counters, the planks, the ask-coal, the batches/torches/metal, the held torches, the xN multiplier - they price lines, they are not lines); THE DOUBLE-COUNT TRAP pinned: every measure is the same line's own count - it never votes again. Strict-majority (a tie owns nothing), byte-law riders, the branch law fenced in the lib, the junk fences, the honest silences. Wiring: the cast rides beside the book's own top-6 print - never before (the order law), one row never both. Zero fleet log lines - CENSUS GUARD. Version 0.950.0 (origin raw read verified at bump time: 0.949.0 = the table gate's claim, 0.950.0 unclaimed). Name dedup: 'the lamplighter' + 'the lamplighters' own crowd' lived nowhere.
+- D: syntax 664/0, unit 381/381 (torch-cast 17/17). LIVE-VERIFIED: face-212's first live read - F19 x24 + F8 x23 own 47 of 271 torch lane lines (17.3%) - THE LAMPLIGHTERS' OWN CROWD (271 lines across 19 bots); face-210's second live read - F14 x45 + F17 x37 own 82 of 304 (27.0%). Push 0d2a48a0 on 9b89f47d, clean, zero conflicts.
+- E: my push gate 38137152725 (0d2a48a0) in_progress at close - honest-close; verdict BY RUN ID next fire.
+- F: dispatch law: x2 pre-polls agreed THE SEAT FREE -> POST ci.yml 204 -> FACE 213 = 38137170913 materialized on 0d2a48a0 (the v0.950.0 tree - the torch cast's FIRST LIVE FLEET face + the v0.948.0 admission's first fleet face + the v0.949.0 cast's first fleet face), in_progress clean.
+- NEXT FIRE READ CHAIN: my push gate 38137152725 verdict BY RUN ID; FACE 213 = 38137170913 verdict BY RUN ID, then artifact FIRST READ if SUCCESS+unclaimed (the torch cast's first live fleet face + the camp skip admission's first fleet face + the table cast's first fleet face + every cast's rotation + the bank's flood-or-recovery + the tithe's clock + the o2-low window's next face); carried: the dusk bank (20.1% flood, the opening drought 92%), the fuel supply (the tithe silent again), the o2-low widened band (40..200s), the legacy list (blaze rods/chorus - the emitters never fired, MINABLE_OF excludes the nether/end drops on purpose), the reclone debt. THEN dispatch (x2 three-state polls).
+- OPEN FRONTS: the dusk bank's live read (the flood); the fuel supply's live read; the legacy list (blaze rods/chorus priced by design's absence; every other front PRICED); the reclone debt.
+
+Stage Summary:
+- v0.950.0 THE TORCH LANE'S OWN CAST landed (0d2a48a0): the count-seat family's own sibling - WHOSE pocket keeps the dark lit; zero fold changes, zero fleet log lines.
+- FACE 212 FIRST READ archived (solo claim): the crater FLOODED to 20.1%, 3 drown deaths, F14's water-lock solo seat, the tithe silent again.
+- The cast's FIRST LIVE faces: face-212 F19+F8 47/271 (17.3%), face-210 F14+F17 82/304 (27.0%).
+- FACE 213 = 38137170913 dispatched on 0d2a48a0 - the seat's own dispatch this fire.
+- Next free version 0.951.0 (origin re-verify MANDATORY at bump time).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
