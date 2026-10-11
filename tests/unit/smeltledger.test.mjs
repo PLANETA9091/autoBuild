@@ -6,7 +6,7 @@
 // split avoids). Junk judges nothing, non-array is null.
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { smeltLedger, clipDebtRow, clipDebtSeat, clipDebtSeatRow, clipPaybackRow, clipDietRow, clockWindowRow, clockAskRow, fuelClipClockVerdict, fuelClipClockRow, SMELT_START_RE, SMELT_FUEL_CLIP_RE, SMELT_CLOCK_CLIP_RE, SMELT_REFUSAL_RE, SMELT_TOOK_RE } from '../../src/lib/smeltledger.mjs'
+import { smeltLedger, clipDebtRow, clipDebtSeat, clipDebtSeatRow, clipPaybackRow, clipDietRow, clockWindowRow, clockAskRow, fuelClipClockVerdict, fuelClipClockRow, clockClipClockVerdict, clockClipClockRow, SMELT_START_RE, SMELT_FUEL_CLIP_RE, SMELT_CLOCK_CLIP_RE, SMELT_REFUSAL_RE, SMELT_TOOK_RE } from '../../src/lib/smeltledger.mjs'
 
 test('smelt-ledger: the batches, the fuel and the per-bot/per-item split (live face 36/39 shapes)', () => {
   const lines = [
@@ -595,4 +595,73 @@ test('v0.775.0 the clock rides the decompose mine (WIRING)', async () => {
   assert.equal(src.includes('fuelClipClockRow(fccv)'), true)
   assert.equal(src.includes("the fuel clip's own clock"), false) // the prose lives in the lib, never duplicated in the mine
   assert.equal(src.includes('the fuel clips rode LATE-dominant'), false)
+})
+
+// (v0.962.0) THE CLOCK CLIP'S OWN CLOCK - the debt's own WHEN. The clock
+// clips' phase book rides the v0.775.0 lattice's own law byte-shared
+// (the same pulse rail, the same thirds, the same bracket); the fuel
+// book's own cells stay byte-stable beside the new one (the additive law).
+test('v0.962.0 the clock clips\u2019 phase book rides the same rail (the shared lattice)', () => {
+  const lines = [
+    '[F8] the clock clips the batch: the 21s window completes ~1 of 14 x raw_copper', // idx0: before any anchor -> unplaced
+    'b] n=1 ts=30s rss=300M', // anchor ts=30
+    '[F8] the clock clips the batch: the 21s window completes ~1 of 14 x raw_copper', // idx2: lo=30 hi=300 mid=165 <= 320 -> early
+    'b] n=2 ts=300s rss=300M', // anchor ts=300
+    '[F8] fuel clips the batch: 2 x coal completes 3 of 10 x raw_copper', // idx4: the fuel book's own seat rides beside (mid=450 -> mid)
+    'b] n=3 ts=600s rss=300M', // anchor ts=600
+    '[F8] the clock clips the batch: the 21s window completes ~1 of 14 x raw_copper', // idx6: lo=600 hi=960 mid=780 -> late; hi-lo=360 > 320 -> wide
+    'b] n=4 ts=960s rss=300M', // anchor ts=960 (clockEnd, thirdS=320)
+    '[F8] the clock clips the batch: the 21s window completes ~1 of 14 x raw_copper', // idx8: no hi -> unplaced
+    '[F8] the clock clips the batch: the 21s window completes ~1 of 14 x raw_copper' // idx9: no hi -> unplaced
+  ]
+  const l = smeltLedger(lines)
+  assert.equal(l.clockClips, 5)
+  assert.equal(l.fuelClips, 1)
+  assert.deepEqual(l.clockClipClock, { anchors: 4, clockEnd: 960, thirdS: 320, n: 5, byPhase: { early: 1, mid: 0, late: 1, unplaced: 3 }, wide: 1 })
+  // the fuel book's own reading stays byte for byte beside the new one
+  assert.deepEqual(l.fuelClipClock, { anchors: 4, clockEnd: 960, thirdS: 320, n: 1, byPhase: { early: 0, mid: 1, late: 0, unplaced: 0 }, wide: 0 })
+  // a 1/1 spread owns nothing (the 2:1 law reads the honest silence)
+  assert.equal(clockClipClockVerdict(l), null)
+  // no clock clips -> the honest null book, the verdict silent
+  const empty = smeltLedger(['[F8] smelting 6 x cobblestone in a furnace (fuel: 4 x oak_log)'])
+  assert.deepEqual(empty.clockClipClock, { anchors: 0, clockEnd: null, thirdS: null, n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, wide: 0 })
+  assert.equal(clockClipClockVerdict(empty), null)
+})
+
+test('v0.962.0 the clock clip verdict reads the three shapes (the 2:1 dominance law)', () => {
+  // the late shape: 3 of 3 late (the early arm's own evidence shape)
+  const late = clockClipClockVerdict({ clockClipClock: { anchors: 38, clockEnd: 761, thirdS: 253.66666666666666, n: 3, byPhase: { early: 0, mid: 0, late: 3, unplaced: 0 }, wide: 0 } })
+  assert.equal(late.verdict, 'late')
+  assert.equal(late.n, 3)
+  // the mid shape: 2 of 2 mid
+  assert.equal(clockClipClockVerdict({ clockClipClock: { anchors: 31, clockEnd: 621, thirdS: 207, n: 2, byPhase: { early: 0, mid: 2, late: 0, unplaced: 0 }, wide: 0 } }).verdict, 'mid')
+  // the early shape: 3 of 4 (the plan's own scale shape)
+  assert.equal(clockClipClockVerdict({ clockClipClock: { anchors: 30, clockEnd: 900, thirdS: 300, n: 4, byPhase: { early: 3, mid: 0, late: 0, unplaced: 1 }, wide: 0 } }).verdict, 'early')
+  // the split owns nothing
+  assert.equal(clockClipClockVerdict({ clockClipClock: { anchors: 46, clockEnd: 921, thirdS: 307, n: 8, byPhase: { early: 0, mid: 4, late: 4, unplaced: 0 }, wide: 0 } }), null)
+  // the honest silences: no clips, no ledger, no field
+  assert.equal(clockClipClockVerdict({ clockClipClock: { anchors: 10, clockEnd: 300, thirdS: 100, n: 0, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, wide: 0 } }), null)
+  assert.equal(clockClipClockVerdict(null), null)
+  assert.equal(clockClipClockVerdict({}), null)
+})
+
+test('v0.962.0 the clock clip rows speak byte-exact and junk never prints', () => {
+  const late = clockClipClockRow({ verdict: 'late', n: 3, byPhase: { early: 0, mid: 0, late: 3, unplaced: 0 }, anchors: 38, wide: 0, thirdS: 253.66666666666666 })
+  assert.equal(late, `the clock clip's own clock (v0.962.0): the clock clips rode LATE-dominant (3 of 3; early 0 / mid 0 / late 3 / unplaced 0, 0 wide of 38 anchor(s)) - the debt rode the closing walks: the chains armed late - the early arm's own evidence`)
+  const mid = clockClipClockRow({ verdict: 'mid', n: 2, byPhase: { early: 0, mid: 2, late: 0, unplaced: 0 }, anchors: 31, wide: 0, thirdS: 207 })
+  assert.equal(mid, `the clock clip's own clock (v0.962.0): the clock clips rode MID-dominant (2 of 2; early 0 / mid 2 / late 0 / unplaced 0, 0 wide of 31 anchor(s)) - the mid-run churn's pace prices the arm - the batch's own size is the front`)
+  const early = clockClipClockRow({ verdict: 'early', n: 4, byPhase: { early: 3, mid: 0, late: 0, unplaced: 1 }, anchors: 30, wide: 0, thirdS: 300 })
+  assert.equal(early, `the clock clip's own clock (v0.962.0): the clock clips rode EARLY-dominant (3 of 4; early 3 / mid 0 / late 0 / unplaced 1, 0 wide of 30 anchor(s)) - the opening's own ask was oversized: the plan's own scale is the front, the arm is innocent`)
+  for (const junk of [undefined, null, 42, 'str', {}, { verdict: 'mixed', n: 4, byPhase: { early: 2, mid: 2, late: 0, unplaced: 0 }, anchors: 5, wide: 0 }, { verdict: 'late', n: -1, byPhase: { early: 0, mid: 0, late: 0, unplaced: 0 }, anchors: 5, wide: 0 }, { verdict: 'late', n: 3, byPhase: null, anchors: 5, wide: 0 }]) {
+    assert.equal(clockClipClockRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.962.0 the clock clip clock rides the decompose mine (WIRING)', async () => {
+  const { readFileSync } = await import('node:fs')
+  const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.equal(src.includes('clockClipClockVerdict(sl)'), true)
+  assert.equal(src.includes('clockClipClockRow(cccv)'), true)
+  assert.equal(src.includes("the clock clip's own clock"), false) // the prose lives in the lib, never duplicated in the mine
+  assert.equal(src.includes('the clock clips rode LATE-dominant'), false)
 })

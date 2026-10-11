@@ -146,7 +146,7 @@ import { parsePulseAnchor } from './opendeaf.mjs' // (v0.775.0) the pulse rail's
 /**
  * Read the smelt lane's own words into a ledger.
  * @param {string[]} lines one fleet-log, all lines
- * @returns {null|{batches: number, announced: number, items: Object<string,number>, furnaces: Object<string,number>, fuel: number, fuelItems: Object<string,number>, fuelClips: number, fuelClipCompleted: number, fuelClipAsked: number, clockClips: number, clockClipCompleted: number, clockClipAsked: number, refusals: number, refusalWhys: Object<string,number>, byBot: Object<string,{batches: number, announced: number, fuel: number, refusals: number, clips: number}>}}
+ * @returns {null|{batches: number, announced: number, items: Object<string,number>, furnaces: Object<string,number>, fuel: number, fuelItems: Object<string,number>, fuelClips: number, fuelClipCompleted: number, fuelClipAsked: number, clockClips: number, clockClipCompleted: number, clockClipAsked: number, refusals: number, refusalWhys: Object<string,number>, byBot: Object<string,{batches: number, announced: number, fuel: number, refusals: number, clips: number}>, clockClipClock: null|{anchors: number, clockEnd: number|null, thirdS: number|null, n: number, byPhase: {early: number, mid: number, late: number, unplaced: number}, wide: number}}}
  */
 export function smeltLedger (lines) {
   if (!Array.isArray(lines)) return null
@@ -182,6 +182,7 @@ export function smeltLedger (lines) {
     clockClipWindowSec: 0, // (v0.748.0) the window seconds the clock clip lines carried verbatim (cc[2] - matched and dropped before); kept INTEGER here, the capacity's division lives once at the row (the accumulation's own float drift is the trap)
     clockClipIdleSec: 0, // (v0.750.0) the machine's own unpaid seconds inside the plan's windows (per clip max(0, W - 10 x cap); the plan's own 11s bar is the cause, never a fuel/input gap - the emitter caps the put at floor(W/11) BEFORE the put)
     fuelClipClock: null, // (v0.775.0) the fuel clips' own phase book - assigned after the walk (the pulse rail's own anchors bracket each clip; the zeroclock's own law)
+    clockClipClock: null, // (v0.962.0) the clock clips' own phase book - the debt's own WHEN, the same rail byte-shared (the one-parser law)
     byBot: {}
   }
   // (v0.745.0) the outstanding clip debt per bot|item, in walk order
@@ -195,6 +196,7 @@ export function smeltLedger (lines) {
   // the anchors after the walk, the zeroclock's own two-phase structure)
   const anchors = []
   const fuelClipIdx = []
+  const clockClipIdx = [] // (v0.962.0) the clock clips ride the SAME walk's own rail
   let li = -1
   for (const line of lines) {
     li++
@@ -251,6 +253,7 @@ export function smeltLedger (lines) {
     const cc = line.match(SMELT_CLOCK_CLIP_RE)
     if (cc) {
       ledger.clockClips++
+      clockClipIdx.push(li)
       ledger.clockClipCompleted += Number(cc[3])
       ledger.clockClipAsked += Number(cc[4])
       // (v0.748.0) the clock's own window - the seconds the line carried
@@ -302,25 +305,35 @@ export function smeltLedger (lines) {
   // sparse-anchor honesty the row prints so the reader judges it).
   const clockEnd = anchors.length ? anchors[anchors.length - 1].ts : null
   const thirdS = clockEnd !== null ? clockEnd / 3 : null
-  const fcPhases = { early: 0, mid: 0, late: 0, unplaced: 0 }
-  let fcWide = 0
-  for (const i of fuelClipIdx) {
-    let lo = null; let hi = null
-    for (const a of anchors) {
-      if (a.i < i) lo = a.ts
-      else { hi = a.ts; break }
+  // (v0.962.0) THE PHASE BRACKET'S OWN SHARED LATTICE - the v0.775.0 law
+  // byte-identical for BOTH clip classes (the one-parser law: one rail,
+  // one bracket law, one 2:1 court - the fuel book's own reading stays
+  // byte for byte, the clock book rides beside it zero re-spelled)
+  const phaseBookOf = (idx) => {
+    const byPhase = { early: 0, mid: 0, late: 0, unplaced: 0 }
+    let wide = 0
+    for (const i of idx) {
+      let lo = null; let hi = null
+      for (const a of anchors) {
+        if (a.i < i) lo = a.ts
+        else { hi = a.ts; break }
+      }
+      const mid = lo !== null && hi !== null ? (lo + hi) / 2 : null
+      let phase = 'unplaced'
+      if (mid !== null && thirdS !== null) {
+        if (mid <= thirdS) phase = 'early'
+        else if (mid <= thirdS * 2) phase = 'mid'
+        else phase = 'late'
+        if (hi - lo > thirdS) wide++
+      }
+      byPhase[phase]++
     }
-    const mid = lo !== null && hi !== null ? (lo + hi) / 2 : null
-    let phase = 'unplaced'
-    if (mid !== null && thirdS !== null) {
-      if (mid <= thirdS) phase = 'early'
-      else if (mid <= thirdS * 2) phase = 'mid'
-      else phase = 'late'
-      if (hi - lo > thirdS) fcWide++
-    }
-    fcPhases[phase]++
+    return { byPhase, wide }
   }
-  ledger.fuelClipClock = { anchors: anchors.length, clockEnd, thirdS, n: fuelClipIdx.length, byPhase: fcPhases, wide: fcWide }
+  const fcBook = phaseBookOf(fuelClipIdx)
+  ledger.fuelClipClock = { anchors: anchors.length, clockEnd, thirdS, n: fuelClipIdx.length, byPhase: fcBook.byPhase, wide: fcBook.wide }
+  const ccBook = phaseBookOf(clockClipIdx)
+  ledger.clockClipClock = { anchors: anchors.length, clockEnd, thirdS, n: clockClipIdx.length, byPhase: ccBook.byPhase, wide: ccBook.wide }
   return ledger
 }
 
@@ -475,4 +488,49 @@ export function fuelClipClockRow (v) {
   if (verdict === 'late') return `the fuel clip's own clock (v0.775.0): the fuel clips rode LATE-dominant (${late} of ${n}; ${book}) - the deadline's own signature: the furnace starves on the closing walks - re-prime the fuel before the walk`
   if (verdict === 'mid') return `the fuel clip's own clock (v0.775.0): the fuel clips rode MID-dominant (${mid} of ${n}; ${book}) - the mid-run churn is the lever - the batch's own pace prices the priming`
   return `the fuel clip's own clock (v0.775.0): the fuel clips rode EARLY-dominant (${early} of ${n}; ${book}) - the opening's own defect: the priming is the front - the first chains starve the batch`
+}
+
+// (v0.962.0) THE CLOCK CLIP'S OWN CLOCK - the debt's own WHEN. The
+// v0.749.0 ask row priced the batch's own scale (the windows' whole
+// worth fell to 54.9% / 89.6% / 79.7% across faces 213/227/228 - the
+// debt was the plan's own size before the furnace ever idled), but the
+// early arm's own standing claim ('arm the chains early') stayed
+// untested in the field because no row read WHEN the over-asked puts
+// themselves rode. The clock clips' phase book rides the v0.775.0
+// lattice's own law byte-shared (the same pulse rail, the same thirds,
+// the same 2:1 dominance): LATE dominance = the early arm's own
+// evidence - the debt rode the closing walks, the chains armed late;
+// EARLY = the opening's own ask was oversized (the plan's own scale is
+// the front, the arm is innocent); MID = the mid-run churn's pace
+// prices the arm. No dominance (the mixed spread) or an empty book ->
+// the honest silence (null - the storm has no seat). One-parser law:
+// the verdict reads the smeltLedger's own clockClipClock field (the
+// same walk's own cells) - zero re-parsing, zero new regexes. Mining
+// surface only: zero fleet wiring, zero new log lines - CENSUS GUARD.
+export function clockClipClockVerdict (ledger) {
+  const c = ledger && ledger.clockClipClock ? ledger.clockClipClock : null
+  if (!c || !c.n) return null
+  const p = c.byPhase
+  if (p.late * 2 > c.n) return { verdict: 'late', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.mid * 2 > c.n) return { verdict: 'mid', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  if (p.early * 2 > c.n) return { verdict: 'early', n: c.n, byPhase: p, anchors: c.anchors, wide: c.wide, thirdS: c.thirdS }
+  return null
+}
+
+// (v0.962.0) the clock clip's own row - the lever's own clause names
+// the early arm's own reading; the anchor density rides so the reader
+// judges the midpoint law (the zeroclock's own honesty). Junk never
+// prints a clock (the honest silence's own row law).
+export function clockClipClockRow (v) {
+  if (!v || typeof v !== 'object') return null
+  const { verdict, n, byPhase, anchors, wide } = v
+  if ((verdict !== 'late' && verdict !== 'mid' && verdict !== 'early') ||
+      !Number.isFinite(n) || n <= 0 || !byPhase || typeof byPhase !== 'object' ||
+      !Number.isFinite(anchors) || anchors < 0 || !Number.isFinite(wide) || wide < 0) return null
+  const { early, mid, late, unplaced } = byPhase
+  for (const x of [early, mid, late, unplaced]) if (!Number.isFinite(x) || x < 0) return null
+  const book = `early ${early} / mid ${mid} / late ${late} / unplaced ${unplaced}, ${wide} wide of ${anchors} anchor(s)`
+  if (verdict === 'late') return `the clock clip's own clock (v0.962.0): the clock clips rode LATE-dominant (${late} of ${n}; ${book}) - the debt rode the closing walks: the chains armed late - the early arm's own evidence`
+  if (verdict === 'mid') return `the clock clip's own clock (v0.962.0): the clock clips rode MID-dominant (${mid} of ${n}; ${book}) - the mid-run churn's pace prices the arm - the batch's own size is the front`
+  return `the clock clip's own clock (v0.962.0): the clock clips rode EARLY-dominant (${early} of ${n}; ${book}) - the opening's own ask was oversized: the plan's own scale is the front, the arm is innocent`
 }
