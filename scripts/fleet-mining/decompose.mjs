@@ -95,6 +95,7 @@ import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table 
 import { tableCast, tableCastRow, tableRiders, tableRidersRow } from '../../src/lib/tablecast.mjs' // (v0.949.0) THE TABLE GATE'S OWN CAST - the book's own BOT axis (the count-seat family's own sibling)
 import { torchCast, torchCastRow, torchRiders, torchRidersRow } from '../../src/lib/torchcast.mjs' // (v0.950.0) THE TORCH LANE'S OWN CAST - the torch book's own BOT axis (the count-seat family's own sibling)
 import { veinCast, veinCastRow, veinRiders, veinRidersRow } from '../../src/lib/veincast.mjs' // (v0.952.0) THE VEIN BOOK'S OWN CAST - the vein ledger's own BOT axis (the count-seat family's own sibling)
+import { combatCast, combatCastRow, combatRiders, combatRidersRow } from '../../src/lib/combatcast.mjs' // (v0.954.0) THE COMBAT BOOK'S OWN BOT SEAT - the shooter census's own WHO axis (the count-seat family's own sibling)
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
@@ -1288,6 +1289,15 @@ if (shooter.total > 0) {
   }
   const botRow = Object.entries(shooter.byBot).map(([b, n]) => `${b}=${n}`).join(' ')
   if (botRow) console.log(`  per-bot: ${botRow}`)
+  // (v0.954.0) THE COMBAT BOOK'S OWN BOT SEAT - the census's own byBot
+  // cells, zero re-parsing (the count-seat family's own sibling). One
+  // row never both - the branch law.
+  const ccSeat = combatCast(shooter.byBot)
+  if (ccSeat) console.log(`  ${combatCastRow(ccSeat)}`)
+  else {
+    const ccRiders = combatRiders(shooter.byBot)
+    if (ccRiders) console.log(`  ${combatRidersRow(ccRiders)}`)
+  }
   // (v0.393.0) THE COMBAT-WHALE LENS - the top bots' verb splits (byBot says
   // WHO carries the lines, byVerb says WHAT the face did; only the cross
   // says what the WHALE was doing)
