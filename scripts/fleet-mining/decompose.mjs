@@ -93,6 +93,7 @@ import { crossfireBill } from '../../src/lib/crossfirebill.mjs' // (v0.714.0) th
 import { armoryCensus } from '../../src/lib/armorycensus.mjs' // (v0.494.0) the armory census - the weapon supply chain's own book (the sword + spare-pick lanes' verdicts and failure anatomy)
 import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table gate - the tool chain's zero-point (the spare-table bootstrap's own book)
 import { tableCast, tableCastRow, tableRiders, tableRidersRow } from '../../src/lib/tablecast.mjs' // (v0.949.0) THE TABLE GATE'S OWN CAST - the book's own BOT axis (the count-seat family's own sibling)
+import { torchCast, torchCastRow, torchRiders, torchRidersRow } from '../../src/lib/torchcast.mjs' // (v0.950.0) THE TORCH LANE'S OWN CAST - the torch book's own BOT axis (the count-seat family's own sibling)
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
 import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
@@ -4802,6 +4803,12 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     console.log(`  yield: ${t.terminals} terminals, ${t.terminalBatches} batches -> ${t.terminalTorches} torches (the metal reserve kept ${t.terminalMetalKept}) - no-lands ${t.noLands}, errors ${t.errors}, streak lines ${t.streaks} (x${t.streakX})`)
     const rows = Object.entries(tb.bots).sort((a, b) => b[1].total - a[1].total).slice(0, 6)
     if (rows.length) console.log(`  bots heaviest-first: ${rows.map(([b, r]) => `${b} ${r.total}`).join(' ')}`)
+    const tlSeat = torchCast(tb.bots)
+    if (tlSeat) console.log(`  ${torchCastRow(tlSeat)}`)
+    else {
+      const tlRiders = torchRiders(tb.bots)
+      if (tlRiders) console.log(`  ${torchRidersRow(tlRiders)}`)
+    }
   }
 }
 
