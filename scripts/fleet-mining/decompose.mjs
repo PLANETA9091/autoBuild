@@ -93,6 +93,7 @@ import { armoryCensus } from '../../src/lib/armorycensus.mjs' // (v0.494.0) the 
 import { tableGate } from '../../src/lib/tablegate.mjs' // (v0.495.0) the table gate - the tool chain's zero-point (the spare-table bootstrap's own book)
 import { campBuild } from '../../src/lib/campbuild.mjs' // (v0.497.0) the camp build book - where furnaces come from (the camp ladder's field fate)
 import { pounceBook } from '../../src/lib/pouncebook.mjs' // (v0.498.0) the pounce book - the well pounce's decline probe anatomy and the attempt verdicts
+import { pounceCast, pounceCastRow, pounceRiders, pounceRidersRow } from '../../src/lib/pouncecast.mjs' // (v0.940.0) the pounce's own cast - the book's bot-level seat (the v0.938.0 sweep cast's own sibling)
 import { assistLedger } from '../../src/lib/assistledger.mjs' // (v0.499.0) the assist ledger - the pounce handoff's aftermath (the ownership claim priced: rose vs died at the climb boundary)
 import { torchBook } from '../../src/lib/torchbook.mjs' // (v0.500.0) the torch ledger - the light supply's floors, rungs, asks and yield
 import { veinLedger, tierGuardBill } from '../../src/lib/veinledger.mjs' // (v0.501.0) the vein ledger - the sweep's terminals, walk yield, gallery digs, refusals and the tier guard; (v0.768.0) the tier guard's own bill - the repeat rider's own seat
@@ -4612,6 +4613,15 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     console.log(`  guard: wet feet ${t.guardWet} / cap spent ${t.guardCap} - attempts: stalled ${t.stalls}, landed ${t.landed}${t.stallOtherTicks || t.landedOtherTicks ? `, off-plan ticks ${t.stallOtherTicks + t.landedOtherTicks}` : ''}`)
     const rows = Object.entries(pb.bots).sort((a, b) => b[1].total - a[1].total).slice(0, 6)
     if (rows.length) console.log(`  bots heaviest-first: ${rows.map(([b, r]) => `${b} ${r.total}`).join(' ')}`)
+    // (v0.940.0) the cast rides beside the book's own raw row - never before
+    // it (the order law): the seat's solo owner fires the cast, the book's
+    // silence or crowd prints the riders (the measure-not-owner companion).
+    const pcSeat = pounceCast(pb.bots)
+    if (pcSeat) console.log(`  ${pounceCastRow(pcSeat)}`)
+    else {
+      const pcRiders = pounceRiders(pb.bots)
+      if (pcRiders) console.log(`  ${pounceRidersRow(pcRiders)}`)
+    }
   }
 }
 
