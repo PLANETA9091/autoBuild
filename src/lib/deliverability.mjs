@@ -58,3 +58,78 @@ export function deliverableNow ({ needS = null, grantedS = null, timeLeftS = nul
   if (clockDue) return { go: true, term: 'clock', limitS: left, needS: need }
   return { go: false, term: null, limitS: null, needS: need }
 }
+
+// (v0.935.0) THE EARLY TRIPS' OWN CAST - the deliverability arm's bot-level
+// seat. The v0.385.0 arm priced the split (clamp vs clock - the structural
+// vs temporal term) and the census prints every firing raw ('F3 clamp:
+// pocket 495u at 0.3u/s needs 1470s vs 900s') - but no row ever said WHICH
+// bot's own pocket keeps firing the early trips (the repeat offender the
+// clamp's own cure should aim at). THE COUNT LAW (the census's own events
+// cells only, zero re-parsing - the count-seat precedent): each firing is
+// one vote; a bot owns the cast only above half the firings (a tie owns
+// nothing - the storm-has-no-seat precedent). Junk never invents a cast: a
+// missing or empty book, a cell without a well-formed bot byte, or a
+// minority top reads the honest silence (null) - the true cells still tally.
+export function deliverableCast (events) {
+  const book = (Array.isArray(events) ? events : []).filter((e) => e && typeof e === 'object' &&
+    typeof e.bot === 'string' && e.bot)
+  if (!book.length) return null
+  const byBot = new Map()
+  for (const e of book) byBot.set(e.bot, (byBot.get(e.bot) || 0) + 1)
+  const ranked = [...byBot.entries()].map(([bot, owns]) => ({ bot, owns }))
+    .sort((a, b) => b.owns - a.owns || (a.bot < b.bot ? -1 : 1))
+  const total = book.length
+  const top = ranked[0]
+  if (top.owns <= total - top.owns) return null
+  return { bot: top.bot, owns: top.owns, ofTrips: total, share: +(top.owns / total).toFixed(3) }
+}
+
+// (v0.935.0) the cast's own row - THE POCKET'S OWN REPEAT OFFENDER: one bot's
+// own pocket keeps firing the arm; the v0.385.0 arm priced the split, the
+// cast names its repeater. Junk never prints a seat (the honest silence's
+// own row law).
+export function deliverableCastRow (cast) {
+  if (!cast || typeof cast !== 'object') return null
+  const { bot, owns, ofTrips, share } = cast
+  if (typeof bot !== 'string' || !bot || !Number.isInteger(owns) || owns <= 0 ||
+      !Number.isInteger(ofTrips) || ofTrips <= 0 || owns > ofTrips || !Number.isFinite(share)) return null
+  const s = ofTrips === 1 ? 'trip' : 'trips'
+  return `the early trips' own cast (v0.935.0): ${bot} owns ${owns} of ${ofTrips} early ${s} (${(share * 100).toFixed(1)}%) - THE POCKET'S OWN REPEAT OFFENDER: one bot's own pocket keeps firing the arm - the v0.385.0 arm priced the split, the cast names its repeater`
+}
+
+// (v0.935.0) THE EARLY TRIPS' OWN RIDERS - the cast's silence's own companion
+// (the riders precedent, zero re-parsing): a MEASURE, never a verdict-owner -
+// the top two firers' concentration prices the shape the solo law refused to
+// name (the cast's owner case leaves the companion unprinted - the
+// decompose's own branch law). The order is deterministic (count desc, then
+// the name's own - 'F16' < 'F6' byte-wise). Junk never invents a shape: a
+// missing or empty book, fewer than two firers, or a leader already holding
+// the majority reads the honest silence (null).
+export function deliverableRiders (events) {
+  const book = (Array.isArray(events) ? events : []).filter((e) => e && typeof e === 'object' &&
+    typeof e.bot === 'string' && e.bot)
+  if (book.length < 2) return null
+  const byBot = new Map()
+  for (const e of book) byBot.set(e.bot, (byBot.get(e.bot) || 0) + 1)
+  const ranked = [...byBot.entries()].map(([bot, owns]) => ({ bot, owns }))
+    .sort((a, b) => b.owns - a.owns || (a.bot < b.bot ? -1 : 1))
+  const top = ranked[0]
+  if (top.owns > book.length - top.owns) return null
+  const leader = ranked[0]
+  const runner = ranked[1]
+  const pairOwns = leader.owns + runner.owns
+  return { leader: leader.bot, leaderOwns: leader.owns, runner: runner.bot, runnerOwns: runner.owns, ofTrips: book.length, pairOwns, share: +(pairOwns / book.length).toFixed(3) }
+}
+
+// (v0.935.0) the riders' own row - THE REPEAT OFFENDERS' OWN CROWD (the
+// family's own tail): a measure of the shape, never a named owner. Junk
+// never prints a shape (the honest silence's own row law).
+export function deliverableRidersRow (r) {
+  if (!r || typeof r !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofTrips, pairOwns, share } = r
+  if (typeof leader !== 'string' || !leader || !Number.isInteger(leaderOwns) || leaderOwns <= 0 ||
+      typeof runner !== 'string' || !runner || !Number.isInteger(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isInteger(ofTrips) || ofTrips <= 0 || !Number.isInteger(pairOwns) || pairOwns > ofTrips ||
+      !Number.isFinite(share)) return null
+  return `the early trips' own riders (v0.935.0): no solo pocket owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofTrips} early trips (${(share * 100).toFixed(1)}%) - THE REPEAT OFFENDERS' OWN CROWD: the cast's tie law held, the crowd is still real - the pair prices the pockets the solo law refused to name`
+}

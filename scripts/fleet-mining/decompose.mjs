@@ -7,6 +7,7 @@ import { orphanBookSeat, orphanBookSeatRow, orphanBookRiders, orphanBookRidersRo
 import { askWhyCensus, dryAskVerdict, dryAskVerdictRow, dryAskBotBill, dryAskBotBillRow, dryAskRiders, dryAskRidersRow } from '../../src/lib/askwhycensus.mjs' // (v0.652.0) THE ASK'S OWN WHY BOOK - the ask ladder's walk-failure whys joined to the dry terminals (the delivery side's v0.612.0 why-book law, the ask side's own seat); (v0.769.0) WHICH class owns the dry ask; (v0.772.0) WHICH walker owns the class's rows
 import { bankFlowCensus, bankYield, writeOffBill, writeOffBillRow, writeOffRiders, writeOffRidersRow, budgetAskSeat, budgetAskSeatRow, budgetAskRiders, budgetAskRidersRow, parsePrePositionCensus, prePositionWhySeat, prePositionWhySeatRow, prePositionWhyRiders, prePositionWhyRidersRow, prePositionClimbSeat, prePositionClimbSeatRow, prePositionClimbRiders, prePositionClimbRidersRow, craterWhyCrowd, craterWhyCrowdRow, strandedCast, strandedCastRow, strandedRiders, strandedRidersRow } from '../../src/lib/bankcensus.mjs' // (v0.686.0) + the yield dial - the banked mass over the visit lane's own line count; (v0.777.0) + the write-off's own cast - the book's bot-level seat; (v0.803.0) + the ask book's own seat - the budgets' needsS cells' own majority; (v0.811.0) + the walk-home's own why - the pre-position census's seat and the climb-out anatomy's own seat; (v0.919.0) + the crater's why crowd - the why axis's own riders beside the v0.758.0 seat; (v0.934.0) + the strand's own cast - the stranded book's bot-level seat (the v0.777.0 write-off cast's own sibling)
 import { routeGateCensus, ROUTE_GATE_RIM_TRAP_REFUSALS } from '../../src/lib/routecensus.mjs' // (v0.388.0) the route gate's field read
+import { deliverableCast, deliverableCastRow, deliverableRiders, deliverableRidersRow } from '../../src/lib/deliverability.mjs' // (v0.935.0) the early trips' own cast - the deliverability arm's bot-level seat (the events' own count majority)
 import { shooterCensus, shooterAttackerBill, shooterAttackerBillRow, shooterAttackerRiders, shooterAttackerRidersRow } from '../../src/lib/shootercensus.mjs' // (v0.390.0) the shooter band's field read; (v0.792.0) WHICH attacker owns the combat pressure
 import { shelterLedger, OUTCOME_CLASSES, shelterOutcomeBill, shelterOutcomeBillRow, shelterOutcomeRiders, shelterOutcomeRidersRow } from '../../src/lib/shelterledger.mjs' // (v0.457.0) the combat verdict's price - the outcome join; (v0.466.0) the class vocabulary for the flee-ground cross-read; (v0.795.0) WHICH verdict owns the shelter book
 import { fleeForkSeatRow, fleeForkRidersRow } from '../../src/lib/fleefork.mjs' // (v0.810.0) the flee fork's own seat - WHICH fork owns the flee death book (the chased-down cells' strict majority + the bands' measure-not-owner riders)
@@ -1198,6 +1199,16 @@ if (bankCensus.doom?.why) console.log(`  bank doom why: ${bankCensus.doom.why.wh
 if (bankCensus.deliverable) {
   console.log(`  deliverability arm (v0.385.0): ${bankCensus.deliverable.fires} firings (clamp ${bankCensus.deliverable.clampFires} / clock ${bankCensus.deliverable.clockFires}), bots ${bankCensus.deliverable.bots.join(',') || 'none'} - worst priced deficit ${bankCensus.deliverable.worstDeficitS}s (max need ${bankCensus.deliverable.maxNeedS}s vs min granted/left ${bankCensus.deliverable.minLimitS ?? 'n/a'}s)`)
   for (const e of bankCensus.deliverable.events) console.log(`    ${e.bot} ${e.term}: pocket ${e.pocketU}u at ${e.rateUPerS ?? '?'}u/s needs ${e.needS ?? '?'}s vs ${e.limitS ?? '?'}s`)
+  // (v0.935.0) THE EARLY TRIPS' OWN CAST - the arm's bot-level seat beside the
+  // v0.385.0 census (the events' own cells, zero re-parsing). One additive
+  // row, never both - the branch law: the cast's solo owner fires the seat,
+  // the cast's silence prints the riders (the measure-not-owner companion).
+  const dcSeat = deliverableCast(bankCensus.deliverable.events)
+  if (dcSeat) console.log(`  ${deliverableCastRow(dcSeat)}`)
+  else {
+    const dcRiders = deliverableRiders(bankCensus.deliverable.events)
+    if (dcRiders) console.log(`  ${deliverableRidersRow(dcRiders)}`)
+  }
 }
 if (!bankCensus.loot && !bankCensus.budgetAgg) console.log('  (no end-phase bank block - a FATAL face truncates it)')
 
