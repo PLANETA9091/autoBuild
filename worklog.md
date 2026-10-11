@@ -25078,3 +25078,24 @@ Stage Summary:
 - FACE 213 = 38137170913 honored (the seat was taken; NO POST).
 - Next free version 0.952.0 (origin re-verify MANDATORY at bump time).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts at close, zero zombies, zero cancels.
+---
+Task ID: cron30-20261011-2000
+Agent: main agent (cron fire 2000, Job ID 414125, PLANETA9091 identity)
+Task: fire 2000 — v0.951.0 THE VEIN BOOK'S OWN CAST (the count-seat family's own sibling at the mining engine's WHO axis), the v0.950.0 gate verdict.
+
+Work Log:
+- A: synced (tip f887ecd6, 0.950.0 at open; the lane quiet). Verdicts BY RUN ID: my v0.950.0 push gate 38137152725 (0d2a48a0) SUCCESS; FACE 213 = 38137170913 (0d2a48a0, my fire-1930 dispatch) IN_PROGRESS all fire (~21+ min at close); my worklog gate 38137528357 (f887ecd6) in_progress at close.
+- ONE ATOMIC IMPROVEMENT: v0.951.0 THE VEIN BOOK'S OWN CAST (src/lib/veincast.mjs NEW + 17 tests + decompose wiring beside the VEIN LEDGER block) - the v0.501.0 vein ledger's own WHO axis: the fleet's core mining engine's own pockets rode silent (the raw top-6 print carries no law-priced verdict; the v0.938.0 sweep cast prices the SWEEP CENSUS lines - a DIFFERENT pool). THE COUNT LAW (the book's own cells only, zero re-parsing): the sixteen line buckets sum to the bot's own vote; the measures never vote (the drops/dug/u/walks/delta counters, the ore units, the seal keeps, the walked u); THE DOUBLE-COUNT TRAP pinned TWICE: the gallery's own floor-lock/ore-detour classes AND the dig-down's own support/lip classes are the SAME lines' own splits - each gallery line bumped gallery++ AND exactly one sub-slice, each dig-down line bumped digDowns++ AND exactly one sub-slice - the sub-slices never vote again. Strict-majority (a tie owns nothing), byte-law riders, the branch law fenced in the lib, the junk fences, the honest silences. Wiring: the cast rides beside the book's own top-6 print - never before (the order law), one row never both. Zero fleet log lines - CENSUS GUARD. Version 0.951.0 (origin raw read verified at bump time: 0.950.0 = the torch lane's claim, 0.951.0 unclaimed). Name dedup: 'the prospector' + 'the prospectors' own crowd' lived nowhere.
+- D: syntax 666/0, unit 382/382 (vein-cast 17/17; the FROZEN fixtures ride the byte-exact emitter forms - the first draft's invented skins were re-aimed against the book's own regexes before the run). LIVE-VERIFIED: face-212's first live read - F19 x22 + F5 x10 own 32 of 64 vein lane lines (50.0% - the pair sits EXACTLY at the tie line, the measure reads it honestly); face-210's second live read - F7 x21 + F8 x17 own 38 of 104 (36.5%). Push 5b8d61db on f887ecd6, clean, zero conflicts.
+- E: my push gate 38138415988 (5b8d61db) CANCELLED by concurrency while pending (behind FACE 213 + the f887ecd6 run) - no-loss, the v0.951.0 code rides the next fleet face (the v0.946.0/v0.948.0 precedent).
+- F: dispatch law: the seat TAKEN (FACE 213 = 38137170913 in_progress all fire) - NO POST.
+- NEXT FIRE READ CHAIN: FACE 213 = 38137170913 verdict BY RUN ID, then artifact FIRST READ if unclaimed (the torch cast's FIRST LIVE FLEET face + the v0.948.0 admission's first fleet face (the leg-clock-skipped cells finally ride) + the v0.949.0 cast's first fleet face + every cast's rotation + the bank's flood-or-recovery + the tithe's clock + the o2-low window's next face); my worklog gate 38137528357 verdict BY RUN ID; carried: the dusk bank (20.1% flood), the fuel supply (the tithe silent), the o2-low widened band (40..200s), the legacy list (blaze rods/chorus priced by design's absence), the reclone debt. THEN dispatch (x2 three-state polls).
+- OPEN FRONTS: the dusk bank's live read; the fuel supply's live read; the legacy list (blaze rods/chorus - the emitters never fired; every other front PRICED incl. the mining engine's own WHO axis); the reclone debt.
+
+Stage Summary:
+- v0.951.0 THE VEIN BOOK'S OWN CAST landed (5b8d61db): the count-seat family's own sibling - WHOSE pocket keeps the gallery's own voice; zero fold changes, zero fleet log lines.
+- The cast's FIRST LIVE faces: face-212 F19+F5 32/64 (50.0% - the exact tie), face-210 F7+F8 38/104 (36.5%).
+- My v0.950.0 push gate 38137152725 SUCCESS (the integration green); my v0.951.0 gate cancelled by concurrency (no-loss).
+- Next free version 0.952.0 (origin re-verify MANDATORY at bump time).
+- NO dispatch (the seat honored); the FACE 213 FIRST READ waits for the artifact.
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
