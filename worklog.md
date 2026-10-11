@@ -25253,3 +25253,23 @@ Stage Summary:
 - FACE 217 = 38145587355 rides the v0.956.0 tree - the book's ON-TREE fleet face next fire.
 - Next free version 0.957.0 (origin re-verify MANDATORY).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies (the cancelled runs are the gates' own concurrency, no-loss).
+
+---
+Task ID: cron30-20261011-2230
+Agent: main agent (cron fire 2230, Job ID 414125)
+Task: fire 2230 A-G loop (FACE 217 FIRST READ + the dispatch; the reclone debt #2)
+
+Work Log:
+- Sandbox dead AGAIN (second consecutive fire) -> reclone + npm install (cache survived); run-status.mjs / artifact-fetch.mjs survived in /home/z/my-project/scripts. Pull --rebase clean at open and at close (tip e1bbd745 = the lane's worklog; code at 9fdbc189 = v0.956.0; 0.956.0 TAKEN by the lane's fire 2141, next free 0.957.0 origin re-verify MANDATORY).
+- Verdicts BY RUN ID: FACE 216 = 38143628698 SUCCESS (the lane's fire-2200 read honored - their solo claim stands, NOT re-claimed); the lane's v0.956.0 push gate 38145278002 SUCCESS; the lane's worklog gate 38145637624 cancelled by concurrency (no-loss).
+- FACE 217 = 38145587355 SUCCESS terminal (~33 min, fleet-job-poll to terminal; Integration + Unit green, Big fleet run success).
+- FACE 217 FIRST READ (artifact 11705408288, 3694 rows, decomposed on the v0.956.0 tree; solo claim per the 22:00 lane's own read chain; saved to scripts/face217/): the v0.956.0 drown-site book's ON-TREE face - THE SECOND CONSECUTIVE HONEST NULL (drowns 3 - drowned 3, underground 1/surface 2 - THE WATER'S OWN SPREAD: F11 [-132,52,380], F8 [-143,61,394], F15 [-117,48,402] - face-215's pool [-121,398] did not repeat twice over); rescue arm EXERCISED: 53 drowning starts (F8=14, F16=14), instant closes 3. THE NIGHT FRONT EXPLODED: 16 deaths (mob 8 / drown 3 / explosion 3 / fall 2), the mob book's anatomy names THE AMBIENT NIGHT'S OWN SPREAD (8 kills ALL surface, Zombie 5 of 8); the late third owns 12 of 16 (75%), the end-phase tax ~910u of ~1655u lost (55% in the final 60s), siege pace 1.71/min, max burst 4 in 30s. THE BANK'S TENTH FACE - THE FLOOD COMPLETED: banked 144 of mined 2429 = 5.9% (the cycle 49.1 -> 43.4 -> 20.1 -> 64.5 -> 61.7 -> 46.5 -> 5.9 - the worst of the era); the failed walks own the crater (write-off 494u = 84.7% of the unbanked mass), the chains asked 3561s past the deadline; material balance leaks 63.7% of mined (the emitters' words cover it: deaths 1655u + placed 229u, slack +363u). THE UNPAID ASK'S SEAT SPOKE: F10 SOLO 100% (4043s of 4043s unpaid bank ask; granted 300s vs need 4343s = 7% granted share - THE CLAMP'S OWN VICTIM; the seat's fourth name: F2 -> riders -> F9 -> F10).
+- F: x2 pre-polls seat FREE (FACE 217 terminal, zero active dispatches) -> POST 204 -> FACE 218 = 38147790036 on e1bbd745 (the v0.956.0 tree), in_progress verified BY RUN ID + event.
+- No version this fire (the read + the dispatch is the fire's shape - the fire-2100/2200 precedent); the reclone debt #2 paid.
+
+Stage Summary:
+- FACE 217 = 38145587355 SUCCESS FIRST READ (solo claim): the drown book's second null (the spread held), the NIGHT front is the new crisis (16 deaths, the late third's storm, 55% of the loss in the final 60s), the bank's total flood 5.9%, the unpaid seat spoke F10 solo 100%.
+- FACE 218 = 38147790036 dispatched on the v0.956.0 tree.
+- Next free version 0.957.0 (origin re-verify MANDATORY).
+- Carried fronts: the night survivability (NOW the hot front - the ambient spread, the end-phase tax), the bank's cycle (the flood), the water front (the spread priced twice), the fuel tithe's clock, the o2-low constant, F2's churn, the legacy list, the sandbox mortality (the debt #2 paid).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
