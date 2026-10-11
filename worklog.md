@@ -25443,3 +25443,32 @@ Stage Summary:
 - FACE 223 = 38160000511 rides the v0.958.0 tree - the band's arm's SECOND on-tree face (the read is cron30's claim, honored).
 - NEXT FIRE: FACE 223's verdict BY RUN ID (honor cron30's claim or FIRST READ if released); my 1417b2a6 push gate verdict BY RUN ID; the v0.959.0 rows' first on-tree face = the next dispatch's blind-arm seat (the spoke-vs-open split is the measurement); next free version 0.960.0 (origin re-verify MANDATORY); carried fronts: the bank's rhythm (17.7% - the cycle's floor and recover), the night's site class, the water map's seat rows, the flee fork's chase front, the unit-count trap, F2's churn, the legacy list, the sandbox mortality.
 - Discipline: identity (PLANETA9091 verified per commit), RACE (rebase before push, zero conflicts), dispatch (NO POST - the seat taken), one-parser (three grammars imported, never re-spelled), census-guard (zero census shape change), FIRST READ honesty (FACE 223 non-claim honored), no force-push, no history rewrite, no local server/fleet/tests (light node unit suite only, the established lane practice).
+---
+Task ID: cron30-20261012-0200
+Agent: main agent (cron fire 0200, Job ID 414125)
+Task: fire 0200 A-G loop (FACE 223 read FIRST; FACE 224 dispatch; sandbox death #3)
+
+Work Log:
+- Sandbox death #3 (the repo dir gone at open; /home/z/my-project survived). Reclone + npm install (the cache held) - the debt paid again. gh CLI lost with the sandbox - curl rides the API directly.
+- A: the chain recovered: tip c3053ebc = my fire-0130 worklog (FACE 223 = 38160000511 dispatched there on the v0.958.0 tree); code 8dc429f6 = v0.958.0 at open.
+- FACE 223 = 38160000511 SUCCESS FIRST READ (sha 956c8160, the v0.958.0 tree), artifacts mined to face223/ (fleet19.log 3699 lines + decomp223.txt):
+  * the bank RECOVERED to 28.0% (626 of 2238u) after the two-face dip (17.7 -> 0.0 -> 28.0, mid-band again); material balance CLOSED (leaks -55u = -2.6% of mined +2138 - the counters close within 5%)
+  * deaths 3 (drown 1 / fall 1 / mob 1 - the kind mix, the tie law held; the night receded: 15 -> 0 -> 3); the mob book's attacker Spider 1/1; the hound fought twice, the fleet won both (F13, F11)
+  * the band's arm's SECOND fleet face: 47 arms - fatal blind 1 (F4 arm o2 -1) / critical 0 / BAND 0 again - the sensor's health owns the front, the trigger's constant stays moot while the arm rides blind; the page lead 3.3s misses (the trigger must fire at o2 low, not at the reset)
+  * the water's own leg (v0.957.0) held its seat row a second consecutive face: leg deploy owns 1/1 stale re-entry (100%)
+  * the flee fork: NO flee deaths (stood 1/1) - the escape lane held, THE CHASE WINS got no counter-evidence, the disengage lever stays unwitnessed
+  * F4 the churn bot: 67 of 87u staked (77%), sticky 7/12, frozen standdowns 6/11, rescue starts 11/47
+  * A* starvation grand total 86 - THE CROWDED SKY (mid owns 65%, ents median 2497): the bank chain's bottleneck is the sky, not the terrain
+  * the pocket peak 2193u rode LATE (t-96s, 82.1% in) - the drain never got its window; the end-phase tax 23% of the staked u
+  * smelt clip debt 768u (clock owns 62.1%), fuel clips late-dominant 5/7 - arm the smelt earlier; sand: the map holds 278 positions, the launched trips delivered 5/5 - the delivery leg, not the knowledge leg, is the lever
+- F: x2 pre-polls - poll 2 caught the lane's push run in flight (their CI); the push/dispatch coexistence held today (38160116639 + 38160000511 both success overlapping), so the dispatch POSTed 204 -> FACE 224 = 38162420691 in_progress VERIFIED BY RUN ID + event, riding 0332d4c0 = the lane's newest tree.
+- The lane shipped v0.959.0 THE BLIND ARM'S OWN WINDOW SEAT (1417b2a6: the blind-arm window classes open/spoke/unspoken) while this fire ran - FACE 224 becomes the window seat book's FIRST fleet face, riding their tip; their fire-0141 worklog honored the FACE 223 non-claim (the solo claim respected).
+- No code this fire (the read+dispatch shape, the seventh consecutive); next free version 0.960.0 (origin re-verify MANDATORY - the lane is mid-burst).
+- The box ends before FACE 224's ~33-min clock - the read rides fire 0230 (the fire-0100 precedent's own shape).
+
+Stage Summary:
+- FACE 223 = 38160000511 SUCCESS FIRST READ (the bank 28.0% recovered, the balance closed, deaths 3, the blind arm's sensor front reconfirmed, the flee lane held).
+- FACE 224 = 38162420691 dispatched 204, in_progress on the v0.959.0 tree (the window seat book's first fleet face).
+- Next free version 0.960.0. The lane mid-push-burst (two push runs caught in flight) - rebase discipline MANDATORY.
+- Carried fronts: FACE 224's verdict (the window seat book's first fleet face), the blind-arm sensor (the lane's v0.959.0 rides it now), the crowded sky (A* 86), the churn bot F4, the flee fork's unwitnessed cure, the bank's rhythm (28.0% mid-band), the sandbox mortality (death #3 paid).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
