@@ -1,5 +1,5 @@
 //
-// dryclock.mjs - THE DRY READ'S OWN CLOCK (v0.923.0)
+// dryclock.mjs - THE DRY READ'S OWN CLOCK (v0.924.0)
 //
 // Face 196's own read named the front in the house's own words: the
 // dry read's own side row (v0.816.0) split the drought's book on the
@@ -204,7 +204,7 @@ export function dryClockRow (verdict) {
   const unit = timed === 1 ? 'located dry read' : 'located dry reads'
   const unplacedTail = unplaced > 0 ? ` (unplaced ${unplaced})` : ''
   const bareBit = bareForm > 0 ? ` - the bare form's own rides: ${bareForm}` : ''
-  const head = `the dry read's own clock (v0.923.0): early ${thirds.early} / mid ${thirds.mid} / late ${thirds.late} of ${timed} ${unit}${unplacedTail}`
+  const head = `the dry read's own clock (v0.924.0): early ${thirds.early} / mid ${thirds.mid} / late ${thirds.late} of ${timed} ${unit}${unplacedTail}`
   const lever = seat ? DRY_CLOCK_LEVERS[seat.cls] || 'the third\'s own detail is the front' : 'no third owns the drought - the dry reads spread across the clock'
   const seatBit = seat
     ? ` - ${seat.cls} owns ${seat.owns} of ${timed} (${Math.round((seat.owns / timed) * 100)}%) - ${lever}`

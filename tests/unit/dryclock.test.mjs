@@ -1,5 +1,5 @@
 //
-// dryclock.test.mjs - THE DRY READ'S OWN CLOCK (v0.923.0)
+// dryclock.test.mjs - THE DRY READ'S OWN CLOCK (v0.924.0)
 //
 // Face 196's own read named the front in the house's own words: "the
 // tithe's own clock is the front (the dry reads queued before the
@@ -59,7 +59,7 @@ test('the face-196 shape: the opening third owns the drought (the row byte-exact
   })
   assert.equal(
     dryClockRow(v),
-    "the dry read's own clock (v0.923.0): early 7 / mid 0 / late 1 of 8 located dry reads - early owns 7 of 8 (88%) - THE OPENING DROUGHT: the dry reads crowd the face's first third - the pump's own prime is the front - the bots' own legs: F7 2/0/1 + F17 1/0/0 - the chests' own spread: 3 chest(s) - the burst's own share: 7 of 8 (88%) - one window priced the mass"
+    "the dry read's own clock (v0.924.0): early 7 / mid 0 / late 1 of 8 located dry reads - early owns 7 of 8 (88%) - THE OPENING DROUGHT: the dry reads crowd the face's first third - the pump's own prime is the front - the bots' own legs: F7 2/0/1 + F17 1/0/0 - the chests' own spread: 3 chest(s) - the burst's own share: 7 of 8 (88%) - one window priced the mass"
   )
 })
 
