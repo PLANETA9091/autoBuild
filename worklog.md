@@ -24925,3 +24925,24 @@ Stage Summary:
 - Next free version 0.947.0 (origin re-verify MANDATORY at bump time).
 - NO dispatch this fire (the seat honored: FACE 210 = 38129485416 flying); my gate 38129893659 honest-close pending.
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
+
+---
+Task ID: cron30-20261011-1800
+Agent: main agent (cron fire 1800, Job ID 414125)
+Task: fire 1800 A-G loop (ONE atomic improvement, zero-conflict protocol)
+
+Work Log:
+- A: synced (tip 237e3282 = my fire-1730 worklog, 0.946.0 at open; the lane quiet on master). Verdicts BY RUN ID: my map-trip-cast gate 38129893659 (cb53ad63) CANCELLED by concurrency - no-loss (the v0.946.0 code rides the next fleet face); the lane's worklog gate 38129882448 (9c8922d) SUCCESS; FACE 210 = 38129485416 (35f590d5) IN_PROGRESS at open, SUCCESS by close (terminal, artifact ready).
+- C: v0.947.0 THE SHELTER SKIP'S OWN CAST (src/lib/sheltercast.mjs NEW + tests/unit/shelter-cast.test.mjs 15 + decompose.mjs wiring beside the SHIELD LADDER): the night/mob survivability front's own refuser WHO axis - the bot SEES the threat and REFUSES the shelter walk (the gate skin 'night=true armed=true hp=... attackers=... threat=...', the no-seal-material skins, the open-field skins); the shield ladder owns the attempts (the episode book), the shooter census owns the verb grammar (parseCombatLine by import - THE ONE-PARSER LAW: the shelter-skip/shelter-wall-miss prefixes never collide), the skip-class grammar stays the ladder's own subject - zero re-classification, all skins one vote, the ownerless orphan counted never a vote; strict-majority, byte-law riders, branch law fenced, junk fences. Zero fleet log lines - CENSUS GUARD. Version 0.947.0 (origin raw read verified at bump time: 0.946.0 unclaimed-next). Name dedup: 'the shelter skip's own' lived only in criticalprelude's test prose (a lane note, not a seat) - the BOT axis is THIS lib (the ladder, the census, the ledger all untouched).
+- D: syntax 660/0, unit 379/379 (shelter-cast 15/15; one expectation arithmetic held - the FROZEN pool's 5 bots + F5/F6 synthetics = 7 totalBots). Live-verified on the face-209 log: pool 15 lines across 5 bots (F4=6 F16=5 F9=2 F15=1 F14=1), F4 x6 + F16 x5 own 11 of 15 (73.3%) - THE SKIPPERS' OWN CROWD, under-half solo (the night gate's own crowd: the creeper@2.7..6.2 ring refused six times by one bot). Push 3854a166 on 237e3282, clean rebase (up to date), zero conflicts.
+- E: my shelter-cast gate 38131078399 (3854a16) PENDING at close (the CI queue - honest-close; verdict BY RUN ID next fire).
+- F: dispatch law: x2 pre-polls agreed THE SEAT FREE (zero active dispatch runs; FACE 210 terminal SUCCESS) -> POST ci.yml 204 -> FACE 211 = 38131263420 materialized on 3854a166 (the v0.947.0 tree: the shelter skip cast's own FIRST LIVE face + the map trip cast's FIRST LIVE fleet ride + the sword/assist/camp/waterlock/shaft/pounce casts' next faces), in_progress clean, verified BY RUN ID + full sha.
+- NEXT FIRE READ CHAIN: FACE 210 = 38129485416 artifact FIRST READ if unclaimed (the v0.945.0 tree's face: the sword due cast's first live ride + the pounce/waterlock/shaft/assist casts' next faces + the bank's fifth face + the tithe's clock); FACE 211 = 38131263420 verdict BY RUN ID, then artifact FIRST READ if SUCCESS+unclaimed (the shelter skip cast's + the map trip cast's own FIRST LIVE fleet rides on the v0.947.0 tree); my gate 38131078399 verdict BY RUN ID (the v0.947.0 integration); carried: the dusk bank front (the crater 49.1%), the fuel supply front (the fuel tithe's two-face silence), the magnet's rotation LANDED (F14 solo 57.1%). THEN dispatch (x2 three-state polls, MIND THE MID-POLL MATERIALIZATION).
+- OPEN FRONTS: the dusk bank's live read; the fuel supply's live read; the legacy list (blaze rods/chorus - thin emitters; night/mob survivability NOW PRICED by the v0.947.0 shelter skip cast; WorldMap NOW PRICED by the v0.946.0 map trip cast; the furnace/smelt WHO axis and the tool repair/replace front priced earlier); the reclone debt; the CAMP_SKIPPED_RE hyphen gap (recorded not rewritten).
+
+Stage Summary:
+- v0.947.0 THE SHELTER SKIP'S OWN CAST landed (3854a166): the night/mob survivability front's own refuser WHO axis priced - the count-seat family's own sibling; zero fold changes, zero fleet log lines, zero runtime machinery touched.
+- Verdicts BY RUN ID: FACE 210 = 38129485416 SUCCESS (artifact ready, unclaimed at close); my v0.946.0 gate cancelled (no-loss).
+- FACE 211 = 38131263420 dispatched on 3854a166 (the v0.947.0 tree) - this fire's own dispatch, the seat was free.
+- Next free version 0.948.0 (origin re-verify MANDATORY at bump time).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies, zero cancels.
