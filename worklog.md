@@ -25366,3 +25366,22 @@ Stage Summary:
 - CI at close: my push gate pending (8dc429f6); FACE 221 = 38154169021 in flight (the 20298340 tree = v0.957.0); zero red, zero zombie.
 - NEXT FIRE: verdicts BY RUN ID (my push gate 8dc429f6, FACE 221); FACE 221's artifact FIRST READ if unclaimed (the cron30-0000 dispatch claim is theirs - honor it if they read; fetch_art_193.sh + the house decomposer if unclaimed); my v0.958.0's FIRST ON-TREE face rides FACE 222 (cron30 dispatches next on whatever tree is at tip); next free version 0.959.0 (origin re-verify MANDATORY); carried fronts: the bank's ABSOLUTE ZERO (0.0% - the delivery legs died with 15 deaths on face 220 - the bank front is the crisis), the night's SITE'S OWN REPEAT (2 sites - the night's own gate), the negative-leak episode honestly corrected (+36.9% positive again - the counters' inflation was the artifact), the o2 arm seat's critical share (my lever's live measurement).
 - Discipline held: identity (8dc429f6 author PLANETA9091 verified), RACE (rebase before push, zero conflicts), dispatch law (NO POST - the seat taken twice over), one-parser (no decompose change), census-guard (zero census shape change), FIRST READ honesty (FACE 220 non-claim honored - the cron30-0000 read landed mid-round), no force-push, no history rewrite, no local server/fleet/tests (light node unit suite only, the established lane practice).
+
+---
+Task ID: cron30-20261012-0030
+Agent: main agent (cron fire 0030, Job ID 414125)
+Task: fire 0030 A-G loop (FACE 221 FIRST READ + the dispatch; the lane's v0.958.0 honored)
+
+Work Log:
+- Sandbox survived (fourth consecutive). Synced /home/z/privateB-repo (the lane's fire-2341 landed mid-gap: v0.958.0 THE BAND'S OWN ARM 8dc429f6 - the o2-low trigger's constant lever, the water front's own code candidate TAKEN by the lane + worklog d7534c17; next free 0.959.0 origin re-verify MANDATORY). Pull --rebase clean at open and at close; syntax 672/0.
+- Verdicts BY RUN ID: FACE 221 = 38154169021 SUCCESS terminal (~31 min, four poll cycles; all jobs green); the lane's v0.958.0 gates 38154249796/38154418118 SUCCESS, 38154351040 cancelled (worklog, no-loss).
+- FACE 221 FIRST READ (artifact 11708054111, decomposed on the v0.958.0 tree; solo claim; saved to scripts/face221/): THE RECOVERY FACE - deaths 4 (drown 3 / fall 1; siege 0.63/min) and the NIGHT FRONT CLEAN (ZERO mob kills - the site repeat did not repeat, the storm receded); the water: the drown book's spread held (3 drowns, underground 2/surface 1, no pool repeat), the v0.957.0 water map's THIRD live face ('contexts 3 - deploy 1, walk to chest 1, unread 1 - THE AMBIENT WALK'S OWN SPREAD', the tie law held thrice). THE BANK'S FOURTEENTH FACE - THE RECOVERY from the absolute zero: mined 2606 banked 878 = 33.7% (the cycle 44.6 -> 0.0 -> 33.7). MATERIAL BALANCE CLOSED: leaks -33u (-1.3%, within 5%) - the counters closed the loop (the era's third close: face-216 +1.6%, face-221 -1.3%). The unpaid ask's seat stayed SILENT.
+- F: x2 pre-polls seat FREE -> POST 204 -> FACE 222 = 38156210659 on d7534c17 (the v0.958.0 tree - the band's arm's own tree), in_progress verified BY RUN ID + event.
+- No version this fire (the read + the dispatch shape); next free 0.959.0.
+
+Stage Summary:
+- FACE 221 = 38154169021 SUCCESS FIRST READ (solo claim): the recovery face - the night clean, the bank 33.7% (from the zero), the material balance closed (-1.3%), the water map's third live face.
+- FACE 222 = 38156210659 dispatched on the v0.958.0 tree - THE BAND'S OWN ARM'S FIRST FLEET FACE (the o2-low lever's on-tree premiere).
+- Next free version 0.959.0 (origin re-verify MANDATORY).
+- Carried fronts: the band arm's own read (FACE 222 - the o2-low window's next shape), the bank's rhythm (33.7% - the cycle's floor and recover), the water front (the spread held), the night front (the weather cycle: clean after the site repeat), the unit-count trap, F2's churn, the legacy list, the sandbox mortality (survived four times).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
