@@ -132,3 +132,19 @@ export function stickyRidersRow (r) {
       !Number.isFinite(shareOfSticky)) return null
   return `the sticky book's own riders (v0.923.0): no solo bot owns the majority - ${leader} x${leaderN} + ${runner} x${runnerN} own ${pairN} of ${ofSticky} sticky end(s) (${(shareOfSticky * 100).toFixed(1)}%) - THE STICKY'S OWN MIX: the seat's tie law held, the bots are the shape - the sticky ends' own spread prices the churn the solo law refused to seat`
 }
+
+// (v0.974.11) the sticky lane's own cells - the shadow fold's fourth
+// lane's own inputs: the book's own fold re-shaped as the lane cells
+// (the byBot map + the fleet total) the churn shadow reads. One fold,
+// never re-spelled: the counts ride foldSticky's own walk (the v0.923.0
+// law byte for byte - the five sticky classes, the BOT_RE emitter law,
+// the zero-sum silence). The lane joins the shadow's plurality fold only
+// - the throne's own three-lane strict-majority join stays byte-stable
+// (the v0.961.0 law untouched).
+export function stickyLaneCells (perBot) {
+  const fold = foldSticky(perBot)
+  if (!fold) return null
+  const byBot = {}
+  for (const { bot, n } of fold.bots) byBot[bot] = n
+  return { byBot, total: fold.total }
+}

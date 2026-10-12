@@ -12,8 +12,9 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow } from '../../src/lib/churnthrone.mjs'
+import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow } from '../../src/lib/churnthrone.mjs'
 import { standdownBotTally } from '../../src/lib/standdownclock.mjs'
+import { stickyLaneCells } from '../../src/lib/stickyseat.mjs'
 
 // face 226's own cells (the lane's own read, byte for byte)
 const FACE226 = {
@@ -224,4 +225,78 @@ test('WIRING: decompose imports the book and prints it beside the standdown seat
   const sdbAt = src.indexOf('const sdb = standdownClockBook(lines)')
   const throneAt = src.indexOf('const throne = churnThrone(')
   assert.ok(sdbAt > 0 && throneAt > sdbAt, 'the throne prints after the standdown book reads')
+})
+
+// === (v0.974.11) THE THRONE'S OWN SHADOW - the plurality fold beside the
+// throne's silence. Face 272's own cells (the four lanes' own reads):
+// churn F14 19 / F6 15 of 62, standdown F14 13 of 22, relog F14=3 F15=2
+// F11=1 F12=1 of 7, sticky F14 15 of 26 - the hand-assembled face the
+// throne's strict-majority law refused to seat.
+const FACE272 = {
+  rescuePerBot: {
+    F14: { starts: 19 }, F6: { starts: 15 }, F15: { starts: 10 },
+    F17: { starts: 8 }, F12: { starts: 6 }, F11: { starts: 2 }, F13: { starts: 2 }
+  },
+  rescueTotals: { starts: 62 },
+  relogsByBot: { F14: 3, F15: 2, F11: 1, F12: 1 },
+  relogsTotal: 7,
+  standdownBook: { stamps: [...Array(13).fill({ bot: 'F14' }), ...Array(9).fill({ bot: 'F6' })] },
+  stickyByBot: { F14: 15, F6: 4, F12: 4, F13: 3 },
+  stickyTotal: 26
+}
+
+test('SHADOW: the unanimous plurality fold names the face the throne refused (face 272 real layout)', () => {
+  assert.equal(churnThrone(FACE272), null, 'the throne stays dark (the churn lane rides spread - no strict majority)')
+  const s = churnShadow(FACE272)
+  assert.ok(s, 'the shadow seats')
+  assert.equal(s.bot, 'F14')
+  assert.equal(s.nonEmpty, 4)
+  assert.deepEqual(s.lanes, [
+    { lane: 'churn', owns: 19, of: 62 },
+    { lane: 'standdown', owns: 13, of: 22 },
+    { lane: 'relog', owns: 3, of: 7 },
+    { lane: 'sticky', owns: 15, of: 26 }
+  ])
+  const row = churnShadowRow(s)
+  assert.match(row, /the throne's own shadow \(v0\.974\.11\): F14 led every non-empty lane's own plurality at once - the churn 19 of 62, the standdown 13 of 22, the relog 3 of 7, the sticky 15 of 26 \(4 lane\(s\)\)/)
+  assert.match(row, /THE SHADOW'S OWN FACE/)
+})
+
+test('SHADOW: the branch law - a seated throne reads the shadow\'s own silence', () => {
+  // face 226's own throne + a sticky lane F5 also leads: the throne seats,
+  // the shadow never double-prints the owner's face
+  const cells = { ...FACE226, stickyByBot: { F5: 5, F13: 3 }, stickyTotal: 8 }
+  assert.ok(churnThrone(cells), 'the throne seats (the strict-majority law)')
+  assert.equal(churnShadow(cells), null, 'the shadow rides silent beside the throne')
+})
+
+test('SHADOW: a partial lead reads the honest silence (the riders\' own words own the spread)', () => {
+  const cells = { ...FACE272, relogsByBot: { F15: 4, F14: 3 } }
+  const s = churnShadow(cells)
+  assert.equal(s, null, 'F15 leads the relog lane - the unanimity fails')
+})
+
+test('SHADOW: a leaderless tie blocks the unanimity (the tie law\'s own byte)', () => {
+  const cells = { ...FACE272, relogsByBot: { F14: 3, F15: 3, F11: 1 } }
+  assert.equal(churnShadow(cells), null, 'the relog lane rides leaderless (3 = 3)')
+})
+
+test('SHADOW: the absent lane votes never (the honest silence cannot block)', () => {
+  const { stickyByBot, stickyTotal, ...three } = FACE272
+  const s = churnShadow(three)
+  assert.ok(s, 'the three-lane fold still seats')
+  assert.equal(s.nonEmpty, 3)
+  assert.equal(s.bot, 'F14')
+  assert.equal(churnShadowRow(s).includes('(3 lane(s))'), true, 'the row names the lanes it read')
+})
+
+test('SHADOW: the sticky lane rides stickyseat\'s own fold (one read per emitter)', () => {
+  const perBot = {
+    F14: { starts: 3, frozenStanddown: 10, timeout: 5, dead: 1, complete: 99 },
+    F6: { starts: 2, complete: 7, released: 4 }
+  }
+  const lane = stickyLaneCells(perBot)
+  assert.deepEqual(lane, { byBot: { F14: 16 }, total: 16 }, 'the five sticky classes fold, the clean closes stay out')
+  assert.equal(stickyLaneCells(null), null, 'the junk perBot reads the honest silence')
+  assert.equal(stickyLaneCells({ F14: { complete: 5 } }), null, 'the clean-only book reads the honest silence')
 })

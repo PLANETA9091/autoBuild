@@ -37,6 +37,8 @@ import { standdownBotTally } from './standdownclock.mjs' // (v0.931.0) the stand
 const CHURN = 'churn'
 const STANDDOWN = 'standdown'
 const RELOG = 'relog'
+// (v0.974.11) the shadow's fourth lane's own key (the sticky book's own).
+const STICKY = 'sticky'
 
 /**
  * Build one lane's cells from the book's own per-bot map + total.
@@ -222,4 +224,125 @@ export function churnThroneRidersRow (r) {
       !Number.isFinite(ofEvents) || ofEvents <= 0 || !Number.isFinite(pairOwns) || pairOwns > ofEvents ||
       !Number.isFinite(share)) return null
   return `the throne's own riders (v0.961.0): no bot owns every lane's majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofEvents} event(s) (${(share * 100).toFixed(1)}%) - THE INSTABILITY'S OWN CROWD: the throne's law held, the concentration is still real - the pair prices the sessions the throne refused to name`
+}
+
+// (v0.974.11) THE THRONE'S OWN SHADOW - the plurality fold the faces kept
+// assembling by hand beside the throne's silence. WHAT PRICED IT: face
+// 272's own read - the throne row refused to seat (the churn lane rode
+// spread: F14 x19 + F6 x15 of 62 - no strict majority) and the hand still
+// named the face from the books' own plurality seats ('F14 also owns the
+// sticky book 15/26, the standdown book 13/22, 19 rescue starts - THE
+// CHURN THRONE'S OWN FACE') - a cross-lane read NO book owned. THE
+// SHADOW'S LAW: the same three lanes the throne reads PLUS the sticky
+// book's own lane (the v0.924.0 seat's own cells, imported never
+// re-spelled via the sticky lane's own cells) - each lane seats its
+// PLURALITY leader (the top count; a tie at the top leads nobody - the
+// tie law's own byte), and the shadow seats only when ONE bot leads
+// EVERY non-empty lane's plurality at once (non-empty >= 2 - the join
+// fence byte for byte). The shadow is NOT the throne: the throne's
+// strict-majority law stays byte-stable (the branch law - the shadow
+// returns null beside a seated throne; the throne row owns the owner's
+// face, the shadow never double-prints it). A partial lead (the leader
+// missing any lane) rides the honest silence - the riders row's own
+// words own the spread. Junk never invents a shadow: a missing or junky
+// lane rides absent and votes never (an absent lane cannot block - the
+// honest silence), a zero-lane fold is the silence itself. Pure,
+// read-time tooling, zero fleet wiring, zero new log lines, zero census
+// shape change - CENSUS GUARD.
+
+/**
+ * The one lane's own plurality leader (the shadow's own seat byte: the
+ * top count owns the lead; a tie at the top leads nobody - the lane
+ * still rides, leaderless, and blocks the unanimity).
+ * @param {{byBot: Object<string, number>, total: number}} [lane] the lane's cells
+ * @returns {{bot: string, owns: number}|null} the leader (null = leaderless/tie)
+ */
+const laneLeader = (lane) => {
+  if (!lane) return null
+  let topBot = null
+  let topOwns = 0
+  let tie = false
+  for (const [bot, owns] of Object.entries(lane.byBot)) {
+    const v = Number(owns)
+    if (!Number.isFinite(v) || v <= 0) continue
+    if (v > topOwns) { topOwns = v; topBot = bot; tie = false } else if (v === topOwns && bot !== topBot) tie = true
+  }
+  if (topBot === null || tie) return null
+  return { bot: topBot, owns: topOwns }
+}
+
+/**
+ * churnShadow(cells) - the throne's own shadow: the four instability
+ * lanes' plurality fold (churn / standdown / relog + the sticky lane).
+ * @param {{rescuePerBot?: Object<string, {starts?: number}>|null,
+ *          rescueTotals?: {starts?: number}|null,
+ *          standdownBook?: Object|null,
+ *          relogsByBot?: Object<string, number>|null,
+ *          relogsTotal?: number|null,
+ *          stickyByBot?: Object<string, number>|null,
+ *          stickyTotal?: number|null}} [cells]
+ *   the books' own cells (the throne's three + the sticky lane's own)
+ * @returns {null|{bot: string, lanes: Array<{lane: string, owns: number, of: number}>, nonEmpty: number}}
+ *   the unanimous shadow (null = the throne seated, a partial lead, a
+ *   leaderless tie, a single-lane fold, or junk - the honest silences)
+ */
+export function churnShadow (cells) {
+  if (churnThrone(cells)) return null // the branch law: the throne's own row owns the owner's face
+  const c = cells && typeof cells === 'object' ? cells : {}
+  // the same three lanes the throne reads (the same walks, zero re-parsing)
+  const churnByBot = {}
+  if (c.rescuePerBot && typeof c.rescuePerBot === 'object' && !Array.isArray(c.rescuePerBot)) {
+    for (const [bot, row] of Object.entries(c.rescuePerBot)) {
+      const s = row && typeof row === 'object' && !Array.isArray(row) ? Number(row.starts) : NaN
+      if (typeof bot === 'string' && bot && Number.isFinite(s) && s > 0) churnByBot[bot] = s
+    }
+  }
+  const churnTotal = c.rescueTotals && typeof c.rescueTotals === 'object' && !Array.isArray(c.rescueTotals)
+    ? Number(c.rescueTotals.starts)
+    : NaN
+  const sdTally = standdownBotTally(c.standdownBook)
+  const relogLane = laneCells(c.relogsByBot, c.relogsTotal)
+  const churnLane = laneCells(churnByBot, churnTotal)
+  // the shadow's fourth lane: the sticky book's own cells (v0.924.0's
+  // own fold re-shaped, never re-spelled)
+  const stickyLane = laneCells(c.stickyByBot, c.stickyTotal)
+
+  const lanes = []
+  if (churnLane) lanes.push({ lane: CHURN, cells: churnLane, leader: laneLeader(churnLane) })
+  if (sdTally) lanes.push({ lane: STANDDOWN, cells: sdTally, leader: laneLeader(sdTally) })
+  if (relogLane) lanes.push({ lane: RELOG, cells: relogLane, leader: laneLeader(relogLane) })
+  if (stickyLane) lanes.push({ lane: STICKY, cells: stickyLane, leader: laneLeader(stickyLane) })
+
+  // THE JOIN FENCE byte for byte: at least two non-empty lanes ride.
+  if (lanes.length < 2) return null
+  // THE UNANIMITY LAW: every non-empty lane has a leader AND one bot
+  // leads them all - a leaderless tie or a partial lead reads the
+  // honest silence (the riders row's own words own the spread).
+  if (lanes.some((l) => !l.leader)) return null
+  const first = lanes[0].leader.bot
+  if (!lanes.every((l) => l.leader.bot === first)) return null
+
+  const lanesOut = lanes.map((l) => ({ lane: l.lane, owns: l.leader.owns, of: l.cells.total }))
+  return { bot: first, lanes: lanesOut, nonEmpty: lanesOut.length }
+}
+
+/**
+ * churnShadowRow(s) - the shadow's own row (THE SHADOW'S OWN FACE).
+ * Junk never prints a row (the honest silence's own row law): every
+ * field is guarded before the template speaks.
+ * @param {Object|null} [s] the churnShadow result
+ * @returns {string|null} the row (null on junk)
+ */
+export function churnShadowRow (s) {
+  if (!s || typeof s !== 'object' || Array.isArray(s)) return null
+  const { bot, lanes, nonEmpty } = s
+  if (typeof bot !== 'string' || !bot) return null
+  if (!Array.isArray(lanes) || lanes.length < 2 || lanes.length !== nonEmpty) return null
+  for (const l of lanes) {
+    if (!l || typeof l !== 'object' || Array.isArray(l)) return null
+    if (typeof l.lane !== 'string' || !l.lane) return null
+    if (!Number.isFinite(l.owns) || l.owns <= 0 || !Number.isFinite(l.of) || l.of <= 0 || l.owns > l.of) return null
+  }
+  const laneBits = lanes.map((l) => `the ${l.lane} ${l.owns} of ${l.of}`).join(', ')
+  return `the throne's own shadow (v0.974.11): ${bot} led every non-empty lane's own plurality at once - ${laneBits} (${nonEmpty} lane(s)) - THE SHADOW'S OWN FACE: the strict-majority law refused the throne, the pluralities' own fold named the face the throne refused - the sticky lane (v0.924.0's own book) joins the fold`
 }
