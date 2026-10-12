@@ -26039,3 +26039,32 @@ Stage Summary:
 - Next free version 0.967.0. Carried fronts: the silent bank's own door (the decide ring's far walk - the yard's own geometry), the churn's storm watch (F9's 11 kicks - the duplicate's own cadence), the relog clock's second-row watch, the gather drought (logs 3/3), the reloot zero (eleven faces, 994u big piles), the smelt clip debt (285 units), the throne's rotation law (nine refusals), the sandbox mortality (alive sixteen).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
 - Repo push: pending (worklog fire-0930 append). NEXT SESSION READ LIST: FACE 239 = 38192522229 (the v0.966.0 tree's second on-tree fleet face - the relog clock's second-row watch + the silent bank's repeat watch: does the bank stay silent), gate verdict for the fire-0930 push BY RUN ID, next free 0.967.0.
+
+---
+Task ID: cron30-20261012-1000
+Agent: main agent (cron fire 1000, Job ID 414125)
+Task: fire 1000 A-G loop (FACE 239 read FIRST - the v0.966.0 tree's second on-tree face, the relog clock's second-row watch, the silent bank's repeat watch; FACE 240 dispatch)
+
+Work Log:
+- Sandbox survived (seventeenth consecutive). Synced /home/z/privateB-repo (tip 2ea2e319 = my fire-0930 worklog; code v0.966.0 THE RELOG'S OWN CLOCK = 0489eba6; next free 0.967.0). Pull --rebase clean.
+- Gates BY RUN ID: my fire-0930 push gate 38192591934 (2ea2e319) SUCCESS (landed this fire's open).
+- FACE 239 = 38192522229 SUCCESS read (sha f7819707, the v0.966.0 tree's second on-tree face), six poll rounds (~43 min - THE CHAIN'S NEW LONGEST), artifacts mined to face239/ (fleet19.log 3325 lines + decomp239.txt 760 rows):
+  * THE 76-SECOND PULSE (the mortality's own shadow, survived): mainLate max 76095ms rode one heartbeat (n=25 ts=500s rss=457M) - the biggest freeze since face 233's OOM, but NO FATAL (GRACE HOLD/VOID: 0, STORM PROBE: 0, FATAL: 0), the full face completed, rss peak 575M calm, heartbeat n=50 - the stormguard held its first 60s-class freeze
+  * THE RELOG CLOCK'S SECOND ROW RODE EARLY-dominant (3 of 4; early 3 / mid 1) - the entry window's own churn owns the opening: the launch window's geometry is the front (the clock reads per-face: 238 MID / 239 EARLY - the per-face law extends to the v0.966.0 clock)
+  * THE OPENING FREEZE: the standdown's clock early owns 7 of 9 (78%) - the spawn's own water froze the first rescues; the freeze's own bot: F8 owns 5 of 9 (55.6%); the frozen standdowns full-blind 9 of 9
+  * THE KICK'S OWN KIND ROTATED: disconnect.timeout x2 (100%) - the dup class's first zero (the duplicate_login's own cadence lost its seat, the client's own stall is the front)
+  * THE RELOG FEEDS THE LOOP: 4 relogs -> 4 stalled walk-outs (100% - the ladder's own ceiling), r1 3 / r2 1; the dive join's closure: F8 (relog 1, start 10) + F10 (relog 2, start 9) own 25 of 44 starts (56.8%) - the reconnect loop returns to the water
+  * DEATHS 11: mob 10 (90.9% - Zombie 5 leads the late third's 8, Drowned 3, Skeleton 1, Spider 1) + drown 1; the late third owns 8/11 (73%) - THE DEADLINE'S DARK THIRD FACE RUNNING (237 80% / 238 67% / 239 73%)
+  * THE BANK MOVED AGAIN (the zero's recovery): 383u banked, yield 3.6u/visit over 107 visits, conversion 62.6%; the door leg 21, the door clock (v0.963.0) MID-dominant (12 of 21) - the FOURTH on-tree row (232 LATE / 234 MID / 236 silence / 237 LATE / 238 MID / 239 MID)
+  * THE CALM BOOKS: A* decide-timeout 3 + no-path 5 (the calmest); the reloot zero stands TWELVE faces (arms 0, 10 piles ~831u, big 4 carrying 631u, biggest 169u F10); famines 3 (wood 1 logs 1/1 + food 2); fights 48 kills 7; map launches 4 (gravel 2 + sand 2), land 24 (F8 16 + F10 8); smelted 3; storm CALM 14 glitches
+  * THE THRONE REFUSED A TENTH ON-TREE FACE: F8 x16 + F10 x14 own 30/57 (52.6%), the cast rotated AGAIN
+- F: x1 pre-poll seat FREE (38192522229 completed) -> POST 204 -> FACE 240 = 38194668891 in_progress VERIFIED BY RUN ID + event, riding 2ea2e319 (the v0.966.0 tree at the tip)
+- No code this fire (the read+dispatch shape, the twenty-third consecutive); next free 0.967.0
+- The box ends before FACE 240's ~35-min clock - the read rides fire 1030
+
+Stage Summary:
+- FACE 239 = 38192522229 SUCCESS read: the 76-second pulse survived (no FATAL, the stormguard's first 60s-class freeze held), the relog clock's second row EARLY (the per-face law extends), the opening freeze (F8 owns the standdown book), the kick kind rotated (disconnect.timeout), the relog ladder 100% stalled, the deadline's dark third face running (73%), the bank moved again (383u), the door clock's fourth row MID, the reloot zero twelve faces, the throne refused a tenth face.
+- FACE 240 = 38194668891 dispatched 204, in_progress on the v0.966.0 tree.
+- Next free version 0.967.0. Carried fronts: the freeze watch (the 76s pulse - did the stormguard's hold teach anything), the relog ladder's own ceiling (100% stalled - the saver's own law), the deadline's dark third (three faces running), the relog clock's third-row watch, the gather drought (logs 1/1 thin), the reloot zero (twelve faces, 831u), the smelt clip debt, the throne's rotation law (ten refusals), the sandbox mortality (alive seventeen).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+- Repo push: pending (worklog fire-1000 append). NEXT SESSION READ LIST: FACE 240 = 38194668891 (the v0.966.0 tree's third on-tree fleet face - the relog clock's third-row watch + the freeze watch: does the 76s pulse repeat), gate verdict for the fire-1000 push BY RUN ID, next free 0.967.0.
