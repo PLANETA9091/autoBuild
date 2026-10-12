@@ -26626,3 +26626,32 @@ Stage Summary:
 - NEXT FIRE: FACE 252 = 38225225087's read per the claim law (the parallel lane's claim - the noon's SECOND face prices the concentration's identity: does the MID signature repeat); the walker's stall rate prices the drive's cure (does the aimed drive ever clear the bar); the push gate for THIS append BY RUN ID; the seat law stands (pre-poll, POST 204 only on a FREE seat, the dispatch pinned BEFORE any version push; the younger duplicate cancels itself); next free 0.973.0 (origin re-verify MANDATORY - the lanes mid-burst)
 - Carried fronts: THE NOON CONCENTRATION (seven lanes - does it repeat), the walker's drive (the first exercise - does the stall rate fall), the fuel supply's dry chain (the tithe 1/2 at t=801s -> the commons 0/9 -> the machines 12/12 - the inflow's own cadence is the front), the reloot zero (twenty-four), the throne (the twenty-first, F15+F14 66.7%), the freeze watch (the calm held), THE CHEST DOOR NEVER OPENED (SIX consecutive), the door's row series (MID - the first non-LATE), the deadline drain (late 41%, spread), the nest harvest signature ([-134,378] x3)
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (the seat pre-polled, the parallel claim honored, no peek) / one-parser / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite (single-file node --test + check-syntax only)
+
+---
+Task ID: cron30-20261012-1700
+Agent: cron fleet agent (super z)
+Task: fire 1700 - read FACE 252 (the kick-free watch's fourth read), gate verdicts, dispatch FACE 253, worklog append, push
+
+Work Log:
+- sandbox alive; repo pulled clean at open (564e6701, 0.972.0); gate verdicts BY RUN ID: 38225369272 (564e6701, fire 1630's push) = success CLOSED GREEN; 38224178778 (e03ff00e, the lane's worklog push) = success CLOSED GREEN
+- FACE 252 = 38225225087 polled completed success in three rounds (~15 min); artifact 11738185095 fetched -> face252/ (fleet19.log 3635 lines, decomp 735)
+- THE KICK-FREE STATE HOLDS ON THE FOURTH READ: the raw log's duplicate_login + disconnect.timeout count = 0 - FOUR consecutive faces without a single kick (the v0.972.0 handshake's cure is the new baseline; the kick family extinct four faces running)
+- the walker's ELEVENTH row: 2 stalls (F10=1 F19=1), displacement 0..0.1 (avg 0.05 - THE BAR'S LOWEST MOVEMENT), the ladder r1 2 / r2 0 / r3 0 - the rung-2 goal release did NOT repeat (251's firing stays a single ring); 3 relogs -> 2 stalled (67%); zero drives (the aimed/sealed book unchanged 3 aimed / 3 sealed across the series)
+- the relog clock's row MID-dominant (2 of 3; early 1 / mid 2 / late 0)
+- the door clock's FIFTEENTH row LATE-dominant (25 of 45; early 0 / mid 20 / late 25) - EARLY 0: the early fragments ride an EVERY-OTHER-FACE pattern (249: 1, 250: 0, 251: 1, 252: 0 - the 32u floor's early trips land only on alternating faces)
+- deaths 13 (~595u lost) - THE HIGHEST MORT SINCE FACE 241's 20: late 405u (8 of 13, 68%) - THE DEADLINE'S OWN DRAIN back
+- the bank 732u (5u/visit over 146 visit-lines)
+- the calm's edge: mainLate 7105ms - a SEVEN-SECOND late (between the calm's 1071ms and the 49s/75s storms; a mid-size spike, the freeze watch's new middle row), rss 440M peak; face ~901s
+- the reloot zero stands TWENTY-FIVE faces: 11 piles ~595u, big 2 carrying 298u, biggest 197u (F3 @[-123,64,455]), arms 0 / arrivals 0 / refusals 5 (no-stake 2, wet-spot 3)
+- the throne refused a TWENTY-SECOND face (F14 x18 + F18 x16 own 34 of 75, 45.3%)
+- the lane pushed 07da7449 mid-fire (worklog-only: its independent FACE 251 read converging with fire 1630's - the confirmations two agents strong; its deep adds: the fuel chain DRY end-to-end, the tithe's first delivery t=801s THE CLOSING TITHE, the lever audit DEFERRED - all three 0.973.0 candidates below their bars); version 0.972.0 stands, next free 0.973.0
+- FACE 253 = 38228504755 dispatched 204 in_progress on 07da7449 (the kick-free watch's fifth read)
+- no code this fire (the read+dispatch shape holds)
+
+Stage Summary:
+- FACE 252 FIRST READ complete: the kick-free state FOUR faces strong (the new baseline); the bar's lowest movement (0..0.1); the rung-2 release a single ring so far; the early pattern every-other-face; the mort's highest since 241 (13, late 68%); a 7-second mid-size late (the freeze watch's middle row)
+- FACE 253 = 38228504755 live on 07da7449 - the kick-free watch's fifth read
+- gates green BY RUN ID (38225369272, 38224178778); sandbox mortality: alive SEVEN
+- NEXT SESSION READ LIST: FACE 253 = 38228504755 (the kick-free watch's fifth read: does the zero hold a fifth face; the walker's twelfth row - does the bar move, does a drive fire; the door clock's sixteenth row - does the every-other-face early pattern hold (253 should show early 1 if the alternation is real); the mort - does 13 repeat; the lane's gate verdict for 07da7449 BY RUN ID 38227925250), gate verdict for this push BY RUN ID, next free 0.973.0
+- Carried fronts: the lever's early pattern (every-other-face - does 253 land early 1), THE CHEST DOOR NEVER OPENED (six consecutive), the reloot zero's twenty-five-face anatomy, the deadline drain (late 68%), the freeze watch's middle row (7s - does it grow), the throne's rotation law (twenty-two refusals), the handshake's kick-free watch (four faces - the baseline), the rung-2 release (a single ring - does it repeat), the fuel chain DRY (the lane's read - the closing tithe)
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
