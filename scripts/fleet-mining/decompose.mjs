@@ -151,6 +151,7 @@ import { duplicateRetryRides } from '../../src/lib/retrytiming.mjs' // (v0.907.0
 import { emptyWhyRetries } from '../../src/lib/retrywhy.mjs' // (v0.909.0) the empty why's own seat - the retry lines that rode the '()' skin (the silent end: the kick's kind never reached the catch's own if; the event-side wire's own before/after meter)
 import { bareEndJoin } from '../../src/lib/bareend.mjs' // (v0.910.0) the bare end's own join - the bare '()' skins joined to the socket-loss certificates (the known class's own shadow vs the face's quietest ends; the partition reconciles with the v0.909.0 bare cell by construction)
 import { sockLossCensus, sockChurnJoin, sockJoinSeatRow, sockJoinRidersRow, sockBareSeatRow, sockBareRidersRow } from '../../src/lib/sockloss.mjs' // (v0.806.0) the socket loss's own book - the client-side death certificates (the error/socket-error/raw-stack bursts, the twin + raw reconciles, the log's thirds clock; v0.809.0 the join's own seat; v0.812.0 the bare kick's own seat)
+import { stormDriverJoin } from '../../src/lib/stormdriver.mjs' // (v0.974.5) the storm driver's own join - the loss ↔ mainLate stall lens (the 0200 fire's driver hypothesis priced)
 import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 book's own class - the o2-reset drown form split's own seat (the never lane the arm's own gap, the active lane the arm's own loss; the strict-majority law, a tie owns nothing)
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
@@ -2353,6 +2354,16 @@ console.log('  hazard memorized:', count(/hazard memorized/))
       if (sbs) console.log(`  the socket join's bare seat (v0.812.0): ${sbs}`)
       const sbr = sockBareRidersRow(sj)
       if (sbr) console.log(`  the socket join's bare riders (v0.812.0): ${sbr}`)
+    }
+    // (v0.974.5) THE STORM DRIVER'S OWN JOIN - the 0200 fire's hand-read
+    // hypothesis (FACE 268's max mainLate 24750ms as the socket storm's own
+    // candidate driver) priced by the face's own bytes: every loss reads the
+    // pulse gauges in its 20-line past (the churn join's own window), a
+    // mainLate at/over the 5s fence (the blackbox dump's own threshold)
+    // calls the loss stall-adjacent. One additive row beside the book.
+    const sdj = stormDriverJoin(lines)
+    if (sdj) {
+      console.log(`  the storm driver's own join (v0.974.5): ${sdj.n} loss(es) - stall-adjacent ${sdj.stall} (peak mainLate ${sdj.maxStallLate}ms in the ${sdj.window}-line window) / calm ${sdj.calm} / ungauged ${sdj.ungauged}${sdj.verdict ? ` - ${sdj.verdict}` : ''}`)
     }
   }
 }
