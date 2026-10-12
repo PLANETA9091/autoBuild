@@ -70,6 +70,7 @@ import {
   lidScanPlan, ASCEND_LID_SCAN, // (v0.343.0) the lid scan - dig the roof, never the fluid
   dryTailTimeoutProof, DRY_TAIL_PROOF_DEPTH,
   rescueBlindness, RESCUE_BLIND_FLOOR_PASSES, // (v0.314.0) the blind rescue decode
+  blindWetPage, BLIND_WET_PAGE_MS, BLIND_WET_VERDICT, // (v0.974.4) THE BLIND-WET ESCALATION - the sentinel's own persistence made a page (face 265's 3 fatal blind arms; the existing emitter rides, zero new line families)
   WATER_DEATH_TTL_MS
 } from '../lib/drowning.mjs'
 import { noteTransitStall, rearmVerdict } from '../lib/rearm.mjs' // (v0.443.0) THE SAME-TARGET RE-ARM BRAKE - the zero-gain loop's cross-episode gate
@@ -2061,6 +2062,7 @@ export function createMiner ({
   let headWetSince = 0
   let headWetLastMs = 0 // (v0.279.0) the most recent COMPLETED wet episode's duration - the death context's fallback when the live tracker reads reset
   let headWetEndedAt = 0 // (v0.357.0) the epoch ms that episode ended - the wet-rescue window's tail anchor
+  let blindWetSince = 0 // (v0.974.4) the blind+wet window's open epoch - the sensor speaking or the head drying closes it (the escalation's persistence tracker)
   let dryGlitchStreak = 0 // (v0.95.0) consecutive critical-on-dry readings - the escalation ladder's fuel
   let noOpRescueGateUntil = 0 // (v0.104.0) the dry-land proof's re-fire gate (the glitch-class backoff)
   // (v0.117.0) THE CHRONIC-LIAR LADDER state: glitchConfirmed counts the
@@ -2975,11 +2977,18 @@ export function createMiner ({
       // re-arm the class. The telemetry above keeps counting - the storm
       // metric stays honest, only the page dies.
       const abandoned = !witnessed && criticalOnDry && glitchAbandoned(glitchConfirmed)
+      // (v0.974.4) THE BLIND-WET TRACK - a blind read under a wet head opens the
+      // window, the sensor speaking or the head drying closes it; past the
+      // threshold the persistence pages (the fatal blind arm's own cure).
+      if (!oxygenInDomain(o2raw) && headWet) { if (!blindWetSince) blindWetSince = now } else { blindWetSince = 0 }
+      const blindWetVerdict = blindWetPage({ o2InDomain: oxygenInDomain(o2raw), headWet, blindWetMs: blindWetSince ? now - blindWetSince : 0 })
+        ? `${BLIND_WET_VERDICT} (${Math.round((now - blindWetSince) / 1000)}s)`
+        : null
       const verdict = witnessed
         ? 'drowning'
         : abandoned
           ? 'none'
-          : waterVerdict({ ...read, headWetMs: headWet ? now - headWetSince : 0, dryGlitchStreak, dryGlitchCap: glitchStreakCap(glitchConfirmed), airHistory: o2History.slice(), lastRescueAgoMs: lastRescueAt > 0 ? now - lastRescueAt : null, releasedAgoMs: surfaceReleaseAt > 0 ? now - surfaceReleaseAt : null }) // (v0.859.0) the sentinel's wet arm reads the fresh water events - the never lane's own arm gap (face 132's F11)
+          : blindWetVerdict ?? waterVerdict({ ...read, headWetMs: headWet ? now - headWetSince : 0, dryGlitchStreak, dryGlitchCap: glitchStreakCap(glitchConfirmed), airHistory: o2History.slice(), lastRescueAgoMs: lastRescueAt > 0 ? now - lastRescueAt : null, releasedAgoMs: surfaceReleaseAt > 0 ? now - surfaceReleaseAt : null }) // (v0.859.0) the sentinel's wet arm reads the fresh water events - the never lane's own arm gap (face 132's F11)
       sentryLast = { at: now, verdict, criticalOnDry, witnessed, o2: o2raw, headWet } // (v0.248.0) the mirror's snapshot
       // (v0.356.0) THE HONEST HOLE - the ignored reads counter. The glitch
       // counter counts EVERY critical-on-dry read, but the reads whose
@@ -3001,7 +3010,7 @@ export function createMiner ({
         lastWitnessVetoLogAt = now
         log(`${tag} water: witness stands down - a ${witnessHostile.name} at ${witnessHostile.dist?.toFixed?.(1) ?? '?'}b owns the decline (combat, not a drain)`)
       }
-      if (verdict === 'drowning') {
+      if (verdict === 'drowning' || blindWetVerdict) {
         // (v0.104.0) THE DRY-LAND BACKOFF - the glitch class only. A bot the
         // dry-land proof just cleared re-fires its critical-on-dry page
         // DRY_PROOF_BACKOFF_MS later, not every RESCUE_COOLDOWN_MS: run93's
@@ -3129,7 +3138,7 @@ export function createMiner ({
           log(`${tag} water: frozen-return gate bypassed (critical read o2=${o2SensorLabel(o2raw)}) - the armed hold voids on arrival, the rescue owns the clock (relog streak ${frozenRelogStreaks.get(username)})`)
         }
         rescuePageWasGlitch = criticalOnDry // (v0.117.0) the completion handler ratchets only on the glitch class
-        rescueFromWater(verdict).catch(() => { /* next tick re-checks */ })
+        rescueFromWater(blindWetVerdict || verdict).catch(() => { /* next tick re-checks */ })
       }
     } catch { /* never kill the interval */ }
   }, 600)

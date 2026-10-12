@@ -145,6 +145,46 @@ export function surfaceRearmHolds ({ releasedAgoMs = null, oxygen = 20, critical
   if (oxygenInDomain(o2) && o2 <= crit) return false
   return true
 }
+// (v0.974.4) THE BLIND-WET ESCALATION - the arm book's own fatal blind verdict
+// made operational (face 265's bill: 6 fatal arms, 3 rode the blind reset(-1)
+// skin to the death line - a bot whose head sits in water while its air_supply
+// metadata rides the -1 sentinel NEVER pages: v0.64.0 reads a missing bar FULL,
+// the drowning clock runs unwitnessed). The escalation is the sentinel's own
+// persistence made honest: a sensor that stayed BLIND while the head stayed
+// WET past the threshold is not safety evidence - the page rides the existing
+// 'drowning rescue start (...)' emitter (zero new line families, zero new
+// filter keys, the arm book's own verdict fold sees the class word). Guards:
+// an in-domain read closes the window (the sensor spoke - the verdict lanes
+// own the next word), a dry head closes it (the surface-bob's own intermittent
+// sight re-arms per descent), the witnessed/abandoned classes are disjoint by
+// construction (both demand an in-domain critical bar), and the pre-threshold
+// window judges nothing (the honest blind idiom).
+/** (v0.974.4) The blind-wet persistence threshold: ~20 s of continuous
+ * head-wet blindness. A real bar drains to death in ~35 s from critical and a
+ * refill cycle is ~12 s - shorter rides the post-rescue burst's own shape, the
+ * page lead's own row priced the save window at ~3.5 s median. */
+export const BLIND_WET_PAGE_MS = 20000
+/** (v0.974.4) The blind-wet verdict word - rides the existing rescue start
+ * emitter, named so the arm book's blind verdict fold recognizes its own kind. */
+export const BLIND_WET_VERDICT = 'blind sentinel wet'
+
+/**
+ * (v0.974.4) Should the blind-wet escalation page the rescue?
+ * @param {object} [p]
+ * @param {boolean} [p.o2InDomain] true = the sensor spoke (never escalate)
+ * @param {boolean} [p.headWet] true = the head block reads water NOW
+ * @param {number} [p.blindWetMs] the continuous blind+wet persistence (ms)
+ * @param {number} [p.thresholdMs] the persistence threshold (default BLIND_WET_PAGE_MS)
+ * @returns {boolean} true = page (the sentinel's own persistence is evidence)
+ */
+export function blindWetPage ({ o2InDomain = false, headWet = false, blindWetMs = 0, thresholdMs = BLIND_WET_PAGE_MS } = {}) {
+  if (o2InDomain) return false
+  if (!headWet) return false
+  const ms = Number(blindWetMs)
+  if (!Number.isFinite(ms) || ms < 0) return false
+  const th = Number.isFinite(thresholdMs) && thresholdMs > 0 ? thresholdMs : BLIND_WET_PAGE_MS
+  return ms >= th
+}
 /** (v0.64.0) The 26.2 metadata RESET sentinel, measured live in run60 (fleet
  * 35668657935): immediately after 'rescue complete' AND after 'died - respawning'
  * the air_supply metadata arrives as -1 - a value OUTSIDE the 0..20 sensor domain.
