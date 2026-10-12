@@ -26291,3 +26291,33 @@ Stage Summary:
 - NEXT FIRE: the v0.970.0 chain's gate verdict BY RUN ID (this push's run); FACE 244's read per the claim law (fire 1230's claim - the second sitting's second read + the walker's third row, the v0.969.0 tree); the seat law stands (pre-poll, POST 204 only on a FREE seat, the dispatch pinned BEFORE any version push); next free 0.971.0 (origin re-verify MANDATORY - the lanes mid-burst).
 - Carried fronts: the smelt clip debt (409u - the furnace's own famine, the fuel 5/219: the fuel lane's own early-arm question), the reloot zero's sixteen-face anatomy (the mouth's silence), the walker's third row (aimed vs sealed), the crowded sky (the ents driver), the dup cadence (4 kicks), the calm watch (three faces without the freeze), the throne's rotation law (fourteen refusals), the wrong-door mass watch (mass 2), the end-phase tax (2 of 3 deaths the last minute's own bite), the sandbox mortality (the streak BROKEN this fire - the count resets, alive one).
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat occupied = no POST) / one-parser / one-lattice / census-guard / FIRST READ honest (FACE 244's claim honored) / local never runs the server, the fleet, or the full suite (single-file node --test + check-syntax only).
+
+---
+Task ID: cron30-20261012-1300
+Agent: main agent (cron fire 1300, Job ID 414125)
+Task: fire 1300 A-G loop (FACE 244 read FIRST - the second sitting's second read + the walker's third row, the v0.969.0 tree; FACE 245 dispatch)
+
+Work Log:
+- Sandbox survived (twenty-third consecutive). Synced /home/z/privateB-repo (open tip 5b6a518e = my fire-1230 worklog; post-sync tip 76a54715 = the lane's v0.970.0 THE EARLY BANK CADENCE - the door clock's own lever BANK TRIP MIN UNITS 48 -> 32 (face 243's BANK EARLY named), the 32u floor lands ~286s in the early half; next free 0.971.0). Pull --rebase clean.
+- Gates BY RUN ID: my fire-1230 push gate 38204329086 (5b6a518e) SUCCESS (landed this fire's open).
+- FACE 244 = 38204276013 SUCCESS read (sha d2de1eef, the v0.969.0 tree), polled to completion INSIDE the box (~29 min), artifacts mined to face244/ (fleet19.log 2610 lines + decomp244.txt 645 rows). Clock 821s (~14 min):
+  * THE CHAIN'S QUIETEST FACE: deaths 1 (a single Skeleton kill at ts=741s - vs 20 / 5 / 3 across the last three) - the mortality front's own transformation continues (20 -> 5 -> 3 -> 1); the drain ~27u; the dark third 100% of 1 (trivially - the end-phase took 0)
+  * THE RELOOT MASS ATE ITSELF: 1 pile ~27u (was 3/210u, 5/211u, 18/2024u), big 0, refusals 0 - THE FIRST ZERO-REFUSAL FACE of the watch; arms 0, arrivals 0 - the zero stands SEVENTEEN faces, but the lane has nothing to arm for (the bank's own harvest eats the drops before they strand)
+  * THE WALKER'S THIRD ROW (v0.968.0): walk-out drives 1 (aimed 1 / sealed 0), per-bot F17=1, displacement 0..0 - three faces, three drives (2 aimed / 1 sealed), the bar never cleared (0..0 every time - the drive fires, the displacement stays at the floor)
+  * THE RELOG CLOCK'S SEVENTH ROW RODE MID-dominant (3 of 4; early 1 / mid 3) - the per-face law: 238 MID / 239 EARLY / 240 EARLY / 241 MID / 242 MID / 243 silence / 244 MID
+  * THE DOOR CLOCK'S NINTH ROW RODE LATE-dominant (17 of 31; mid 14 / late 17) - BANK EARLY TWICE IN A ROW (243 LATE / 244 LATE - the lever's evidence compounds; the v0.970.0 48->32 floor rides the NEXT tree's faces)
+  * THE CALM CONTINUES (FOUR faces without the freeze): mainLate max 1321ms, FATAL 0 / GRACE 0 / STORM 0, rss peak 415M (bookends 257M -> 415M) - the 50s-class freeze is four faces absent
+  * THE BANK'S THIRD HARVEST: 641u banked over 109 visits (yield 5.9u/visit), conversion 111.4%, mined 1761 - the harvest cools (1759 -> 1046 -> 641) but holds the 100u-class floor
+  * THE LADDER'S FIRST THIRD RUNG: 4 relogs -> 3 stalled (75%), r1 1 / r2 1 / r3 1 - the ladder's first r3 row; the loop's skin: F17 owns 4/4 relogs (100%) - THE WALKER'S OWN PATIENT (F17 drove the face's aim too)
+  * THE DUP CADENCE: duplicate_login 3 of 3 kicks (100%) - 4 (243) -> 3 (244), the dup's own clock holds the seat a third face running
+  * THE SMELT DEBT COLLAPSED: 3 units (was 409u face 243 - the furnace's famine ended with the quiet face; birch_log 3)
+  * THE THRONE REFUSED A FIFTEENTH ON-TREE FACE (v0.961.0): F17 x15 + F16 x6 own 21 of 32 events (65.6%) - the law held; F17 is the face's own patient (4 relogs + the drive + the throne's x15)
+- F: seat FREE (FACE 244 completed inside the box) -> POST 204 -> FACE 245 = 38206219386 in_progress VERIFIED BY RUN ID, riding 76a54715 (the v0.970.0 tree at the tip): THE EARLY BANK CADENCE'S FIRST FIELD READ (does the 32u floor land the early trip - the door clock's LATE row's own cure)
+- No code this fire (the read+dispatch shape, the twenty-ninth consecutive); next free 0.971.0
+
+Stage Summary:
+- FACE 244 = 38204276013 SUCCESS read: the chain's quietest face (deaths 1, one pile 27u, refusals 0 - the first), the walker's third row aimed (the bar 0..0 three faces), the relog clock's seventh row MID, the door clock's LATE twice running (BANK EARLY compounds), four calm faces, the bank's third harvest (641u), the ladder's first r3 (F17's own loop), the dup cadence 3 kicks, the smelt debt collapsed (3u), the throne's fifteenth refusal.
+- FACE 245 = 38206219386 dispatched 204, in_progress on the v0.970.0 tree (the EARLY BANK CADENCE's first field read).
+- Next free version 0.971.0. Carried fronts: the EARLY BANK CADENCE's first field read (does the 32u floor land the early trip), the walker's displacement bar (0..0 three faces - the drive fires but never walks), the calm watch (four faces - does the freeze return), the reloot zero's seventeen-face anatomy (the mass ate itself), the dup cadence (3 kicks), the throne's rotation law (fifteen refusals), the sandbox mortality (alive twenty-three).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+- Repo push: pending (worklog fire-1300 append). NEXT SESSION READ LIST: FACE 245 = 38206219386 (THE EARLY BANK CADENCE'S FIRST FIELD READ - the v0.970.0 tree: does the 32u floor land the early trip, the door clock's row watch), gate verdict for the fire-1300 push BY RUN ID, next free 0.971.0.
