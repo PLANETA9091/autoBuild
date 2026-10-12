@@ -30,7 +30,12 @@ test('REGRESSION PIN: the fleet imports the pure plan, the retry classifier, the
 })
 
 test('REGRESSION PIN: the re-loot call carries every scalar (the run195 dead-wire class)', () => {
-  const call = fleetSrc.match(/relootPlan\(\{[\s\S]*?\}\)/)
+  // (v0.967.0) the lane slice: the loop-top lane is pinned HERE - the mouth
+  // (the rebuild's own seat, earlier in the file) owns its own pins below;
+  // the slice starts at the loop-top's record read so the mouth's call
+  // cannot shadow the loop-top's scalars
+  const lane = fleetSrc.slice(fleetSrc.indexOf('const relootDeath = miner.lastDeath?.() ?? null'))
+  const call = lane.match(/relootPlan\(\{[\s\S]*?\}\)/)
   assert.ok(call, 'the call site exists in the work loop')
   assert.match(call[0], /spot:\s*relootDeath\.spot/, 'the spot rides the call')
   assert.match(call[0], /deathAt:\s*relootDeath\.at/, 'the death clock rides the call (the despawn window prices from it)')
@@ -50,8 +55,11 @@ test('REGRESSION PIN: the wet-spot read is the LIVE world read (the v0.854.0 fen
   assert.match(read[0], /RELOOT_SPOT_FLUID_RE\.test\(b\.name\)/, 'the fluid class rides the module export (one read, two consumers, zero drift)')
   assert.match(read[0], /return false/, 'junk reads false - a junk world never invents a refusal')
   // the fence order: the read fires BEFORE the plan call (the plan consumes it)
-  const readIdx = fleetSrc.indexOf('const relootSpotWet')
-  const callIdx = fleetSrc.indexOf('relootPlan({')
+  // (v0.967.0) both seats scoped to the loop-top lane - the mouth's pairing
+  // is pinned in its own block below
+  const lane = fleetSrc.slice(fleetSrc.indexOf('const relootDeath = miner.lastDeath?.() ?? null'))
+  const readIdx = lane.indexOf('const relootSpotWet')
+  const callIdx = lane.indexOf('relootPlan({')
   assert.ok(readIdx > -1 && callIdx > readIdx && callIdx - readIdx < 1200, 'the wet read precedes the plan call it feeds')
 })
 
@@ -407,15 +415,19 @@ test('v0.484.0: the pile arm rides the delay condition and the walking line (the
   assert.ok(fleetSrc.includes('reloot: no walk (unarmed) - the empty pocket bootstraps first, the read re-arms (a delay, not a verdict)'),
     'the defer shape survives byte for byte')
   // the night fence keeps its branch and its flip (the bypass leads INTO the night check, never around it)
-  const nightArm = fleetSrc.match(/else if \(walkForbidden[\s\S]*?\n          \} else \{/)
+  // (v0.967.0) scoped to the loop-top lane - the mouth's night branch is pinned in its own block
+  const lane = fleetSrc.slice(fleetSrc.indexOf('const relootDeath = miner.lastDeath?.() ?? null'))
+  const nightArm = lane.match(/else if \(walkForbidden[\s\S]*?\n          \} else \{/)
   assert.ok(nightArm && nightArm[0].includes('relootDeath.attempted = true'),
     'the night fence still owns the surface (the bypass never skips the night gate)')
 })
 
 test('v0.865.0: the no-stake fence rides the call and the zero survives the seed (the dead-wire class)', async () => {
   // the call site: the stake rides the plan call (the run195 precedent: the
-  // fence is only as real as its wire)
-  const call = fleetSrc.match(/relootPlan\(\{[\s\S]*?\}\)/)
+  // fence is only as real as its wire) - scoped to the loop-top lane (the
+  // mouth's call is pinned in its own block below, v0.967.0)
+  const lane = fleetSrc.slice(fleetSrc.indexOf('const relootDeath = miner.lastDeath?.() ?? null'))
+  const call = lane.match(/relootPlan\(\{[\s\S]*?\}\)/)
   assert.ok(call, 'the call site exists')
   assert.match(call[0], /pocketU:\s*relootDeath\.pocketU/, 'the stake rides the call - the no-stake fence reads the read-empty death (the face-137 class)')
   // the seed: the ZERO stake survives the rebuild (>= 0 - the v0.649.0 guard grows)
@@ -425,4 +437,77 @@ test('v0.865.0: the no-stake fence rides the call and the zero survives the seed
   const { relootCarry } = await import('../../src/lib/reloot.mjs')
   const zero = relootCarry({ spot: { x: 1, y: 2, z: 3 }, at: 1000, attempted: false, pocketU: 0 })
   assert.equal(zero && zero.pocketU, 0, 'the carry keeps the zero (the two-hop shape, both hops honest)')
+})
+
+// ---- (v0.967.0) THE CARRY'S OWN WALK - the rebuild mouth's own pins ----
+// MEASURED (face 238 = 38190534303, the v0.966.0 tree): 12 deaths -> ONE
+// reloot evaluation in the whole face while 10 piles ~1074u stranded (big 6
+// carrying 994u) - the ELEVENTH consecutive zero-arm face. The anatomy is a
+// SEAT problem: the evaluation rode the mining loop's top, and the post-death
+// bot never reached it (the woodless re-bootstrap ate the attempt, the late
+// deaths landed inside the closed end-phase, the night rebuild dug in until
+// the window died). The mouth evaluates the plan BEFORE gatherWood, under
+// the SAME fences - these pins read the mouth's source (the dead-wire class
+// is only catchable at the call site).
+const mouthBlock = () => {
+  const m = fleetSrc.match(/const mouthDeath = miner\.lastDeath\?\.\(\) \?\? null[\s\S]*?\/\/ spawn -> walk to a tree/)
+  assert.ok(m, 'the mouth block exists between the carry voice and the gatherWood')
+  return m[0]
+}
+
+test('v0.967.0: the mouth sits before gatherWood and asks the plan with every scalar', () => {
+  const mouthIdx = fleetSrc.indexOf('const mouthDeath = miner.lastDeath?.() ?? null')
+  const woodIdx = fleetSrc.indexOf('await miner.gatherWood(')
+  assert.ok(mouthIdx > -1 && woodIdx > mouthIdx, 'the mouth precedes the bootstrap wood leg (the walk IS the bootstrap - the v0.484.0 law, one seat earlier)')
+  const mouth = mouthBlock()
+  assert.match(mouth, /spot:\s*mouthDeath\.spot/, 'the spot rides the mouth call')
+  assert.match(mouth, /deathAt:\s*mouthDeath\.at/, 'the death clock rides the mouth call (the despawn window prices from it)')
+  assert.match(mouth, /now:\s*Date\.now\(\)/, "the caller's clock rides the mouth call")
+  assert.match(mouth, /botPos:\s*miner\.bot\.entity/, 'the respawned position rides the mouth call (the distance needs it)')
+  assert.match(mouth, /spotWet:\s*mouthSpotWet/, 'the live wet read rides the mouth call (the v0.854.0 fence is only as real as its wire)')
+  assert.match(mouth, /pocketU:\s*mouthDeath\.pocketU/, 'the stake rides the mouth call (the no-stake fence reads it)')
+})
+
+test('v0.967.0: one walk per death at the mouth - attempted marks BEFORE the goto, the loop top stays silent', () => {
+  const mouth = mouthBlock()
+  // the walk branch: the mark precedes the goto (the v0.203.0 law byte for byte)
+  const walk = mouth.match(/mouthDeath\.attempted = true[\s\S]*?await gotoSafe\(/)
+  assert.ok(walk, 'the mouth marks the record before its own goto')
+  // every terminal verdict marks: the plan refusal and the night flip carry the mark
+  assert.match(mouth, /if \(!mp\.go\) \{\s*mouthDeath\.attempted = true/, 'the plan refusal marks the record (the loop top then sees the resolved record)')
+  assert.ok(mouth.includes('else if (walkForbidden(miner.bot.time?.timeOfDay)) {\n            mouthDeath.attempted = true'),
+    'the mouth night fence marks the record (the walk-forbidden window owns the surface - the v0.185.0 law)')
+  // the TDZ guard: the mouth is pre-helper in this file's flow - the pick read is inline
+  assert.ok(!mouth.includes('hasPickNow('), 'the mouth never names the loop-top helper (hasPickNow is born below the mouth - the TDZ class)')
+  assert.match(mouth, /const mouthPick = \(\(\) => \{ try \{ return miner\.bot\.inventory\.items\(\)\.some\(i => i\.name\.includes\('pickaxe'\)\) \} catch \{ return false \} \}\)\(\)/,
+    'the escalation reads the pocket inline (the same junk-safe shape, one seat earlier)')
+})
+
+test('v0.967.0: the mouth fence order - plan, night, the silent delay, the pile-arm bypass', () => {
+  const mouth = mouthBlock()
+  const refuseIdx = mouth.indexOf('if (!mp.go) {')
+  const nightIdx = mouth.indexOf('else if (walkForbidden(miner.bot.time?.timeOfDay)) {')
+  const deferIdx = mouth.indexOf('else if (!mouthPileArm && mouthUnarmed.defer) {')
+  const walkIdx = mouth.indexOf('} else {\n            mouthDeath.attempted = true')
+  assert.ok(refuseIdx > -1 && nightIdx > refuseIdx && deferIdx > nightIdx && walkIdx > deferIdx,
+    'the fences chain in the loop-top order: plan -> night -> delay -> walk (zero drift)')
+  assert.match(mouth, /const mouthPileArm = relootPileVerdict\(\{ pileU: mouthDeath\.pocketU \}\)\.bypass/,
+    'the pile bypass reads the record stake (one truth, the v0.484.0 verdict)')
+  assert.match(mouth, /const mouthUnarmed = relootUnarmedVerdict\(\{ deathAt: mouthDeath\.at, now: Date\.now\(\) \}\)/,
+    'the grace reads the SAME verdict it reads at the loop top (the v0.261.0 window, one truth)')
+  assert.match(mouth, /a DELAY, not/, 'the delay branch names its law (a delay, not a verdict - the record stays un-attempted)')
+  assert.ok(!/else if \(!mouthPileArm && mouthUnarmed\.defer\) \{[\s\S]*?mouthDeath\.attempted = true/.test(mouth.slice(deferIdx, walkIdx)),
+    'the delay branch marks NOTHING (silence is the delay\u0027s honest shape - the loop top re-arms when the grace expires)')
+})
+
+test('v0.967.0: the census rides the counted families - zero new filter keys (the census guard)', () => {
+  const mouth = mouthBlock()
+  assert.ok(mouth.includes('reloot: no walk ('), 'the mouth refusals ride the counted why family')
+  assert.ok(mouth.includes('reloot: walking to the own death spot ['), 'the mouth arms ride the counted walking family')
+  assert.ok(mouth.includes('reloot: arrived in '), 'the mouth arrivals ride the counted family')
+  assert.ok(mouth.includes('reloot: walk failed ('), 'the mouth failures ride the counted family')
+  assert.ok(mouth.includes(', the rebuild mouth)'), 'the seat marker names the mouth for the anatomy (the arms split by seat on the next faces)')
+  assert.match(mouth, /mouthPileArm && mouthEscalation \? ', the pile arm' : ''/, 'the pile-arm marker rides the mouth walking line (only for the unarmed walk)')
+  // the fleet filter already carries the family key - the mouth needed NO new filter work
+  assert.ok(fleetSrc.includes('death drop|reloot|'), 'the filter\u0027s reloot key passes the mouth lines untouched (zero new keys)')
 })

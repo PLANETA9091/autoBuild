@@ -1509,6 +1509,101 @@ async function runBot (name, target, index) {
           console.log(`${name} death carry: the un-attempted stake rides the rebuild (stake ${carryStake}, age ${carryAge}s) - the lane re-arms on the fresh pass`)
         }
         if (attempt > 0) console.log(`${name} respawned without tools - re-bootstrapping (attempt ${attempt})`)
+        // (v0.967.0) THE CARRY'S OWN WALK - the rebuild's mouth arms the
+        // salvage. MEASURED (face 238 = 38190534303, the v0.966.0 tree): 12
+        // deaths -> ONE reloot evaluation in the whole face (F4's no-stake)
+        // while 10 piles ~1074u stranded, big 6 carrying 994u - the ELEVENTH
+        // consecutive zero-arm face. The anatomy is a SEAT problem, not a
+        // fence problem: the evaluation rides the MINING loop's top, and the
+        // post-death bot never reaches it - the woodless re-bootstrap eats
+        // the attempt (F1: 196u; its bootstrap ran to t-55s and the loop
+        // never opened), the late deaths land INSIDE the end-phase where the
+        // loop is already closed (F5: 222u died direct deposit -> final bank
+        // -> the fleet result), and the night rebuild digs in until the
+        // window dies (F17: 163u; F8's carried record even announced here at
+        // the mouth and still never evaluated - the hold ate the pass). The
+        // v0.649.0 carry voice promised 'the lane re-arms on the fresh
+        // pass' - the fresh pass never came. THE CURE: the mouth evaluates
+        // the plan RIGHT HERE, before gatherWood - the v0.484.0 pile arm's
+        // own law (the walk IS the bootstrap: it fills the pocket the delay
+        // waits for, from the drops that carry the very planks/sticks/cobble
+        // the woodless bootstrap cannot fund). The fences inherit verbatim:
+        // the plan's own eight (no-spot/attempted/expired/no-bot/too-far/
+        // no-time/no-stake/wet-spot), the night fence (the walk-forbidden
+        // window owns the surface - the v0.185.0 law), and ONE walk per
+        // death (the record is marked attempted BEFORE the mouth's goto -
+        // the loop top then sees the resolved record and stays silent; the
+        // v0.203.0 law byte for byte). The unarmed grace reads the SAME
+        // verdict it reads at the loop top: a fresh death defers (the
+        // bootstrap owns the grace's first window; silence is the delay's
+        // honest shape here - the loop top's lane prints its own line when
+        // the grace expires), a big pile bypasses (the pile arm), an aged
+        // record (the backoff's own rebuild delay) escalates. The census
+        // rides the SAME line families the decomposer already counts
+        // (walking/arrived/no walk/walk failed) - zero new families, zero
+        // new filter keys; the seat marker names the mouth for the anatomy.
+        const mouthDeath = miner.lastDeath?.() ?? null
+        if (attempt > 0 && mouthDeath && !mouthDeath.attempted) {
+          const mouthPileArm = relootPileVerdict({ pileU: mouthDeath.pocketU }).bypass
+          const mouthUnarmed = relootUnarmedVerdict({ deathAt: mouthDeath.at, now: Date.now() })
+          const mouthSpotWet = (() => {
+            try {
+              const s = mouthDeath.spot
+              if (!s || !Number.isFinite(s.x) || !Number.isFinite(s.y) || !Number.isFinite(s.z)) return false
+              const b = miner.bot.blockAt(new Vec3(Math.floor(s.x), Math.floor(s.y), Math.floor(s.z)))
+              return !!(b && typeof b.name === 'string' && RELOOT_SPOT_FLUID_RE.test(b.name))
+            } catch { return false }
+          })()
+          let mp = null
+          try {
+            mp = relootPlan({
+              spot: mouthDeath.spot,
+              deathAt: mouthDeath.at,
+              now: Date.now(),
+              botPos: miner.bot.entity
+                ? { x: miner.bot.entity.position.x, y: miner.bot.entity.position.y, z: miner.bot.entity.position.z }
+                : null,
+              spotWet: mouthSpotWet,
+              pocketU: mouthDeath.pocketU
+            })
+          } catch { mp = { go: false, why: 'no-spot' } }
+          if (!mp.go) {
+            mouthDeath.attempted = true
+            console.log(`${name} reloot: no walk (${mp.why}) - the mouth's verdict, the loop top stays silent`)
+          } else if (walkForbidden(miner.bot.time?.timeOfDay)) {
+            mouthDeath.attempted = true
+            console.log(`${name} reloot: no walk (night) - the walk-forbidden window owns the surface, the drops ride out their clock (the mouth's verdict)`)
+          } else if (!mouthPileArm && mouthUnarmed.defer) {
+            // (v0.967.0) the v0.203.0 delay law, byte for byte: a DELAY, not
+            // a verdict - the record stays un-attempted, the loop top's lane
+            // re-arms it when the grace expires (the bootstrap owns the
+            // window; the mouth invents no verdict the plan did not give).
+          } else {
+            mouthDeath.attempted = true
+            // (v0.967.0) the mouth is pre-helper in this file's flow
+            // (hasPickNow is born below, at the loop's own antechamber), so
+            // the escalation reads the pocket inline - the same junk-safe
+            // shape, one seat earlier.
+            const mouthPick = (() => { try { return miner.bot.inventory.items().some(i => i.name.includes('pickaxe')) } catch { return false } })()
+            const mouthEscalation = !mouthPick
+            console.log(`${name} reloot: walking to the own death spot [${mp.goal.x},${mp.goal.y},${mp.goal.z}] (${Math.round(mp.dist)}b, budget ${(mp.budgetMs / 1000).toFixed(0)}s, window ${(mp.windowMs / 1000).toFixed(0)}s${mouthEscalation ? ', the unarmed escalation' : ''}${mouthPileArm && mouthEscalation ? ', the pile arm' : ''}, the rebuild mouth)`)
+            const mouthT0 = Date.now()
+            try {
+              await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, mp.goal.x, mp.goal.y, mp.goal.z, { range: mp.range }), { timeoutMs: mp.budgetMs, label: 'reloot' })
+              let stacks = 0
+              try {
+                const me = miner.bot.entity.position
+                for (const e of Object.values(miner.bot.entities)) {
+                  if (!e || e.name !== 'item' || !e.position || e.isValid === false) continue
+                  if (e.position.distanceTo(me) <= 2.5) stacks++
+                }
+              } catch { /* a junk entity read reads zero stacks */ }
+              console.log(`${name} reloot: arrived in ${((Date.now() - mouthT0) / 1000).toFixed(0)}s - ${stacks} item stack(s) in reach${stacks ? '' : ' - nothing left (picked up or despawned)'}`)
+            } catch (e) {
+              console.log(`${name} reloot: walk failed (${e.message}) - the drops stay lost (the mouth's one walk; the ladder stays the loop's own)`)
+            }
+          }
+        }
         // spawn -> walk to a tree -> chop -> craft (no op, no gifts). 60s: the stall
         // escape (src/lib/woodplan.mjs) returns craftable bots early, and a bot that
         // finds NOTHING in 60s will not find it in 120s either - the v0.6.9 fleet had
