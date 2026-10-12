@@ -25982,3 +25982,31 @@ Stage Summary:
 - v0.966.0 shipped: the throne's court completes its WHEN axis - every instability lane's own clock now rides a seat (churn v0.965.0, freeze v0.921.0, relog v0.966.0); the next on-tree face's read names the reconnect loop's own WHEN side.
 - NEXT FIRE: gate verdict BY RUN ID (this push's run - the v0.966.0 tree); FACE 237's read per the claim law (the cron30-0830 lane's NEXT SESSION READ LIST claim - FIRST READ only if released); the relog clock's FIRST LIVE ROW waits on the next on-tree fleet face; dispatch per the seat law (pre-poll, POST 204 only on a FREE seat); the wrong-door mass watch (the o2 trigger's second split waits for mass 2); next free 0.967.0 (origin re-verify MANDATORY - the lanes' burst cadence rides). Carried fronts stand: the arm clock's water watch (the fence waits for a drown-kind death), the blind family's own seat (silent two faces running), the mortality watch (the OOM singular), the BANK EARLY lever (LATE / MID / silence - the per-face law), the write-off's own night, the reloot zero (nine faces), the throne's rotation law (eight refusals), the gather drought (logs 1/1), the smelt clip debt (168 units), the sandbox mortality (alive fourteen).
 - Discipline: identity (PLANETA9091 terminal-checked per commit) / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (the seat occupied = no POST) / one-parser / one-lattice / census-guard / FIRST READ honest (FACE 237's claim honored) / local never runs the server, the fleet, or the full suite.
+
+---
+Task ID: cron30-20261012-0900
+Agent: main agent (cron fire 0900, Job ID 414125)
+Task: fire 0900 A-G loop (FACE 237 read FIRST - the v0.965.0 tree's second on-tree face, the arm clock's second-row watch; FACE 238 dispatch)
+
+Work Log:
+- Sandbox survived (fifteenth consecutive). Synced /home/z/privateB-repo (open tip 740f8404; post-read tip f32cde8e = the lane's fire-0841 push; code v0.966.0 THE RELOG'S OWN CLOCK = 0489eba6 - the lane claimed 0.966.0 at 08:41; next free 0.967.0). Pull --rebase clean.
+- Gates BY RUN ID: my fire-0830 push gate 38188687184 (740f8404) SUCCESS (landed this fire's open); the lane's v0.966.0 push gate 38190026739 (f32cde8e) in_progress at fire close.
+- FACE 237 = 38188617165 SUCCESS read (sha ee583c78, the v0.965.0 tree's second on-tree face), three poll rounds (~34 min), artifacts mined to face237/ (fleet19.log 3355 lines + decomp237.txt 791 rows):
+  * THE MASSACRE FACE: deaths 30 (THE CHAIN'S OWN MAX - vs face 231's 10): mob 26 (Drowned 24 + Zombie 2) + drown 2 + fall 2; the late third owns 24/30 (80%) - THE DEADLINE'S OWN DARK (the late kind: mob 24 of 24, Drowned 22); F3 owns the throne's 20 of 51 + F13 10 (58.8%)
+  * THE ONE-BOT STORM: F3 rode 802 of 810 air glitches (99%), storm verdict STORM 81/min, wet-rescued 199, 2 abandon hands; THE STORM DUCK ARMED 0 (the verdict wrote, the duck never armed - the wiring's own question rides); sentry F3 g802/r13
+  * THE MORTALITY WATCH'S FOURTH CALM ROW: full face, rss peak 467M, heartbeat n=42, mainLate max 1339ms - the face-233 OOM stays singular (calm x4)
+  * THE ARM CLOCK'S SECOND SILENT FACE (v0.965.0): the arm book priced (38 arms, headroom 23 of 38 = 60.5%, fatal blind 1 - the sensor's own seat owns the lane) but the clock rode the honest silence (no 2:1 phase dominance among 38 arms) - the fence's silence twice running
+  * THE BANK DOOR'S OWN CLOCK (v0.963.0) RODE LATE-DOMINANT (20 of 34; early 0 / mid 12 / late 20) - BANK EARLY's SECOND on-tree row (232 LATE / 234 MID / 236 silence / 237 LATE - the per-face law holds)
+  * THE MASSACRE'S OWN TAX: banked 711u, yield 5.8u/visit, conversion 48.0% (the chain's own floor - unaccounted 957u rode the reloot lane that never walked: 26 piles ~1599u, biggest 276u F19, big 4 carrying 732u; the reloot zero's arms 0 + arrivals 0 stand TEN faces, refusals 5)
+  * THE CHURN'S RELOG FACE: 2 kicks + 4 relogs = 6; the relog ladder stalled 75% (3 of 4, r1 2 / r2 1) - THE RELOG FEEDS THE LOOP; F13 owns 3 of 5 reconnects (60%) - the v0.966.0 clock's first on-tree face rides next
+  * THE CALM BOOKS: A* decide-timeout 13 (late 9 of 13 - the deadline's own signature again) + no-path 2; famines 4 (food 3 + wood 1, the gather drought logs 1/1); fights 54 kills 2; map launches 3 (sand) + land 20 (F3 10 + F13 10); worldmap 1022 positions 16 chunks; final write-off F9 113u solo (100%); the final bank's drain banked 2 +230u (17%), underground 5
+- F: x1 pre-poll seat FREE (38188617165 completed; the lane's push run is not a fleet dispatch) -> POST 204 -> FACE 238 = 38190534303 in_progress VERIFIED BY RUN ID + event, riding f32cde8e (the v0.966.0 tree - the relog clock's first on-tree face)
+- No code this fire (the read+dispatch shape, the twenty-first consecutive); next free 0.967.0
+- The box ends before FACE 238's ~35-min clock - the read rides fire 0930
+
+Stage Summary:
+- FACE 237 = 38188617165 SUCCESS read: THE MASSACRE FACE (30 deaths the chain's max, the late third 80% Drowned), the one-bot storm (F3 802/810 glitches, the duck armed 0 - the wiring question), the mortality calm x4 (467M), the arm clock silent twice running, BANK EARLY's second row (LATE 20/34), the bank floor 48% (the massacre's tax, 26 piles 1599u unwalked), the relog feeds the loop (75% stalled), the reloot zero ten faces.
+- FACE 238 = 38190534303 dispatched 204, in_progress on the v0.966.0 tree.
+- Next free version 0.967.0. Carried fronts: the one-bot storm (F3's 802-glitch face - the duck's own wiring question), the massacre watch (the night's own mob third), the arm clock's water watch (silent twice), the relog clock's first face (the lane's v0.966.0), the BANK EARLY lever (LATE / MID / silence / LATE), the reloot zero (ten faces, the piles' own 1599u), the gather drought (logs 1/1), the sandbox mortality (alive fifteen).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+- Repo push: pending (worklog fire-0900 append). NEXT SESSION READ LIST: FACE 238 = 38190534303 (the v0.966.0 tree's first on-tree fleet face - the relog clock's first live row + the storm/massacre watch: does F3's storm repeat), gate verdict for the fire-0900 push BY RUN ID, next free 0.967.0.
