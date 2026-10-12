@@ -26010,3 +26010,32 @@ Stage Summary:
 - Next free version 0.967.0. Carried fronts: the one-bot storm (F3's 802-glitch face - the duck's own wiring question), the massacre watch (the night's own mob third), the arm clock's water watch (silent twice), the relog clock's first face (the lane's v0.966.0), the BANK EARLY lever (LATE / MID / silence / LATE), the reloot zero (ten faces, the piles' own 1599u), the gather drought (logs 1/1), the sandbox mortality (alive fifteen).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
 - Repo push: pending (worklog fire-0900 append). NEXT SESSION READ LIST: FACE 238 = 38190534303 (the v0.966.0 tree's first on-tree fleet face - the relog clock's first live row + the storm/massacre watch: does F3's storm repeat), gate verdict for the fire-0900 push BY RUN ID, next free 0.967.0.
+
+---
+Task ID: cron30-20261012-0930
+Agent: main agent (cron fire 0930, Job ID 414125)
+Task: fire 0930 A-G loop (FACE 238 read FIRST - the v0.966.0 tree's first on-tree face, the relog clock's first live row; FACE 239 dispatch)
+
+Work Log:
+- Sandbox survived (sixteenth consecutive). Synced /home/z/privateB-repo (tip f7819707 = my fire-0900 worklog; code v0.966.0 THE RELOG'S OWN CLOCK = 0489eba6; next free 0.967.0). Pull --rebase clean.
+- Gates BY RUN ID: my fire-0900 push gate 38190617678 (f7819707) SUCCESS; the lane's v0.966.0 push gate 38190026739 (f32cde8e) SUCCESS.
+- FACE 238 = 38190534303 SUCCESS read (sha f32cde8e, the v0.966.0 tree's first on-tree fleet face), four poll rounds (~38 min), artifacts mined to face238/ (fleet19.log 4029 lines + decomp238.txt 735 rows):
+  * THE RELOG CLOCK'S FIRST ON-TREE ROW LANDED (v0.966.0): the frozen relogs rode MID-dominant (5 of 7; early 0 / mid 5 / late 2) - the reconnect cadence is the front (the churn's own pace prices the reconnects)
+  * THE SILENT BANK (the chain's own first zero-bank face): 0u banked over 141 visit-lines - the lane walked, the mass never moved; the door leg 71 (chest unreachable 55, decide timeouts 45), the rate 50.4%; the decide door's own distance d 13..38 avg 20.6 (the chest ring walked FAR); the lid died 8 (open timeout x8, repeats F14=4); conversion 58.8% (unaccounted 997u)
+  * THE CHURN'S OWN STORM: 21 kicks + 7 relogs = 28 churn events (vs face 237's 6); F9 kick-only 11; the repeats 5 bots own 25/28 (89%); the relog ladder 43% stalled; F9 owns 12 of 27 reconnects (44.4%) - the churn is fleet-wide; F6 sentry r21
+  * THE RELOG CLOCK'S FIRST ROW RODE MID (5 of 7) - the fence counted two ways against the census's own relogs (the v0.966.0 law held)
+  * THE BANK DOOR'S CLOCK (v0.963.0) MID-dominant (51 of 71; early 0 / mid 51 / late 20) - the THIRD on-tree row (232 LATE / 234 MID / 236 silence / 237 LATE / 238 MID - the per-face law holds)
+  * THE STORM DID NOT REPEAT: CALM - 0 air glitches (vs face 237's F3 802); F3's storm stays the singular face
+  * THE MORTALITY WATCH'S FIFTH CALM ROW: rss peak 447M, heartbeat n=44, mainLate max 2070ms (a spike rode, no OOM - the face-233 singular stands)
+  * DEATHS 12 (vs 30): mob 7 (Zombie 4 + Skeleton 2 + Spider 1) + fall 2 + drown 2 + explosion 1; the late third owns 8/12 (67%), mob 7 of 8 - the deadline's dark again but softer
+  * THE CALM BOOKS: A* decide-timeout 33 (mid 24 of 33 - the MID face's own signature) + no-path 5; the reloot zero stands ELEVEN faces (arms 0, 10 piles ~1074u, big 6 carrying 994u, biggest 222u F5); famines 5 (wood 3 logs 3/3 - the gather drought worsens + food 2); fights 38 kills 10 (the fleet's own kills rode); smelt: batches 7, the debt 285 units smelting; map launches 8 (coal 5 + sand 3), worldmap 1064 positions 17 chunks; the throne refused a NINTH on-tree face (F6 x23 + F1 x15 own 38/82 = 46.3%)
+- F: x1 pre-poll seat FREE (38190534303 completed) -> POST 204 -> FACE 239 = 38192522229 in_progress VERIFIED BY RUN ID + event, riding f7819707 (the v0.966.0 tree at the tip)
+- No code this fire (the read+dispatch shape, the twenty-second consecutive); next free 0.967.0
+- The box ends before FACE 239's ~35-min clock - the read rides fire 1000
+
+Stage Summary:
+- FACE 238 = 38190534303 SUCCESS read: the relog clock's first on-tree row MID (5 of 7 - the cadence is the front), THE SILENT BANK (0u banked, the chain's first zero-bank face - the door's 71 legs, the decide ring far, the lid died 8), the churn's own storm (28 events, F9 kick-only 11, fleet-wide), the bank door's clock MID (third row), the storm did not repeat (CALM 0), the mortality calm x5 (447M), deaths 12 soft, the reloot zero eleven faces, the throne refused a ninth face.
+- FACE 239 = 38192522229 dispatched 204, in_progress on the v0.966.0 tree.
+- Next free version 0.967.0. Carried fronts: the silent bank's own door (the decide ring's far walk - the yard's own geometry), the churn's storm watch (F9's 11 kicks - the duplicate's own cadence), the relog clock's second-row watch, the gather drought (logs 3/3), the reloot zero (eleven faces, 994u big piles), the smelt clip debt (285 units), the throne's rotation law (nine refusals), the sandbox mortality (alive sixteen).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+- Repo push: pending (worklog fire-0930 append). NEXT SESSION READ LIST: FACE 239 = 38192522229 (the v0.966.0 tree's second on-tree fleet face - the relog clock's second-row watch + the silent bank's repeat watch: does the bank stay silent), gate verdict for the fire-0930 push BY RUN ID, next free 0.967.0.
