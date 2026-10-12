@@ -2369,20 +2369,24 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     if (sdj) {
       console.log(`  the storm driver's own join (v0.974.6): ${sdj.n} loss(es) - stall-adjacent ${sdj.stall} (peak mainLate ${sdj.maxStallLate}ms at the freshest gauge) / calm ${sdj.calm} / ungauged ${sdj.ungauged}${sdj.verdict ? ` - ${sdj.verdict}` : ''}`)
     }
-    // (v0.974.7) THE BURST'S OWN ARROW - the burst -> freeze precedence lens.
-    // The v0.974.6 fire's direction fork flipped BY HAND on FACE 268's bytes
-    // (the burst rode ts 521-541 calm-bookended; the ~25s freeze sat at
-    // ts=561, TWENTY SECONDS after) - this row prices the arrow per face:
-    // every gauge at/over the 5s fence is a freeze seat with a ts, every
-    // loss anchors to its freshest preceding gauge's ts (the same cell the
-    // driver join prices), and the 30s tail fence splits the freezes into
-    // tail / late / alone. One additive row beside the driver join.
+    // (v0.974.7, window-honest v0.974.8) THE BURST'S OWN ARROW - the burst
+    // -> freeze precedence lens. The v0.974.6 fire's direction fork flipped
+    // BY HAND on FACE 268's bytes (the burst rode ts 521-541
+    // calm-bookended; the ~25s freeze sat at ts=561, TWENTY SECONDS after)
+    // - this row prices the arrow per face: every gauge at/over the 5s
+    // fence is a freeze seat with a ts, every loss anchors to its freshest
+    // preceding gauge's ts (the gap's UPPER bound) and bounds to its first
+    // following gauge (the end bookend, the LOWER bound, valid only before
+    // the freeze line); the 30s tail fence reads each freeze's whole
+    // WINDOW - inside -> tail, beyond -> late, STRADDLING -> edge (the
+    // honest indeterminate: FACE 268's own read is 20s..40s across the
+    // fence). One additive row beside the driver join.
     const bfj = burstFreezeJoin(lines)
     if (bfj) {
       const gaps = bfj.minGap != null
         ? ` (nearest gap ${bfj.minGap}s${bfj.maxGap !== bfj.minGap ? ` / widest ${bfj.maxGap}s` : ''})`
         : ''
-      console.log(`  the burst's own arrow (v0.974.7): ${bfj.n} loss(es) - freeze(s) ${bfj.freezes} - tail ${bfj.tail} / late ${bfj.late} / alone ${bfj.alone}${gaps} - ${bfj.verdict}`)
+      console.log(`  the burst's own arrow (v0.974.8): ${bfj.n} loss(es) - freeze(s) ${bfj.freezes} - tail ${bfj.tail} / late ${bfj.late} / edge ${bfj.edge} / alone ${bfj.alone}${gaps} - ${bfj.verdict}`)
     }
   }
 }

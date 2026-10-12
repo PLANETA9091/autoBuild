@@ -27,14 +27,17 @@ test('a burst with no freeze behind it reads the alone-words (freezes 0)', () =>
   assert.equal(r.freezes, 0)
   assert.equal(r.tail, 0)
   assert.equal(r.late, 0)
+  assert.equal(r.edge, 0)
   assert.equal(r.alone, 0)
   assert.equal(r.minGap, null)
   assert.equal(r.verdict, 'the burst rode alone - no freeze followed it')
 })
 
-test('the FACE 268 REAL layout: every loss before the 541 gauge line anchors ts=521 - the gap reads 40s and the arrow stretches', () => {
-  // the first-read lesson: the hand's 20s rode the burst's END bookend
-  // (unprovable); the anchor law prices the freshest PRECEDING gauge.
+test('the FACE 268 REAL layout: every loss before the 541 gauge line - the window rides 20s..40s across the fence, the tail reads INDETERMINATE', () => {
+  // the first-read lesson reconciled: the hand's 20s rode the end bookend
+  // (the gap's LOWER bound), the anchor law's 40s is the UPPER bound -
+  // neither number is provable alone; the honest cell is the window and
+  // it straddles the 30s fence.
   const lines = []
   lines.push(gauge(26, 521, 300, 9, 784))
   for (let k = 0; k < 15; k++) lines.push(loss(`F${k + 1}`, k % 4 === 0 ? 'EPIPE' : 'ECONNRESET'))
@@ -44,10 +47,14 @@ test('the FACE 268 REAL layout: every loss before the 541 gauge line anchors ts=
   assert.equal(r.n, 15)
   assert.equal(r.freezes, 1)
   assert.equal(r.tail, 0)
-  assert.equal(r.late, 1)
+  assert.equal(r.late, 0)
+  assert.equal(r.edge, 1)
   assert.equal(r.alone, 0)
   assert.equal(r.minGap, 40)
-  assert.equal(r.verdict, 'the freeze rode behind the burst but beyond the tail (gap 40s) - the arrow stretches')
+  assert.equal(r.maxGap, 40)
+  assert.equal(r.minLower, 20)
+  assert.equal(r.maxUpper, 40)
+  assert.equal(r.verdict, 'the tail reads indeterminate - the gap rides 20s..40s across the fence - the fork stays open')
 })
 
 test('the FACE 268 compact: the burst spanning both bookends, the freeze 20s after the last anchor rides the tail', () => {
@@ -64,6 +71,7 @@ test('the FACE 268 compact: the burst spanning both bookends, the freeze 20s aft
   assert.equal(r.freezes, 1)
   assert.equal(r.tail, 1)
   assert.equal(r.late, 0)
+  assert.equal(r.edge, 0)
   assert.equal(r.alone, 0)
   assert.equal(r.minGap, 20)
   assert.equal(r.maxGap, 20)
@@ -81,15 +89,20 @@ test('a freeze with no preceding loss stands alone', () => {
   assert.equal(r.verdict, 'the freeze stood alone - no burst rode ahead of it (freeze(s) 1)')
 })
 
-test('a preceded freeze beyond the tail reads the stretch-words', () => {
-  const lines = [gauge(1, 100, 200, 5, 100), loss('F3', 'ECONNRESET'), gauge(2, 180, 210, 6, 9000)]
+test('a freeze whose whole window rides beyond the tail reads the stretch-words', () => {
+  // the bookend gauge between the loss and the freeze pins the gap's
+  // LOWER bound at 60s - the whole window [60..100] sits beyond the 30s fence
+  const lines = [gauge(1, 100, 200, 5, 100), loss('F3', 'ECONNRESET'), gauge(2, 140, 210, 6, 100), gauge(3, 200, 220, 7, 9000)]
   const r = burstFreezeJoin(lines)
   assert.equal(r.freezes, 1)
   assert.equal(r.tail, 0)
   assert.equal(r.late, 1)
+  assert.equal(r.edge, 0)
   assert.equal(r.alone, 0)
-  assert.equal(r.minGap, 80)
-  assert.equal(r.verdict, 'the freeze rode behind the burst but beyond the tail (gap 80s) - the arrow stretches')
+  assert.equal(r.minGap, 100)
+  assert.equal(r.minLower, 60)
+  assert.equal(r.maxUpper, 100)
+  assert.equal(r.verdict, 'the freeze rode behind the burst but beyond the tail (gap 100s) - the arrow stretches')
 })
 
 test('the arrow splits when the freezes take different seats', () => {
@@ -97,14 +110,14 @@ test('the arrow splits when the freezes take different seats', () => {
     gauge(1, 10, 200, 5, 9000), // alone: no loss ahead of it
     loss('F3', 'ECONNRESET'),
     gauge(2, 30, 210, 6, 100),
-    gauge(3, 50, 220, 7, 9000) // tail: anchor ts=10, gap 40... no - anchor is the FRESHEST gauge before the loss
+    gauge(3, 50, 220, 7, 9000) // F3's anchor ts=10 (upper 40), bookend ts=30 (lower 20) - the window straddles
   ]
-  // F3's freshest preceding gauge is n=1 ts=10 (n=2 is AFTER the loss) -> gap 50-10=40 > 30 = late, not tail
   const r = burstFreezeJoin(lines)
   assert.equal(r.tail, 0)
-  assert.equal(r.late, 1)
+  assert.equal(r.late, 0)
+  assert.equal(r.edge, 1)
   assert.equal(r.alone, 1)
-  assert.equal(r.verdict, 'the arrow splits - tail 0 / late 1 / alone 1')
+  assert.equal(r.verdict, 'the arrow splits - tail 0 / late 0 / edge 1 / alone 1')
 })
 
 test('the split rider: a second loss after the middle gauge re-anchors the second freeze', () => {
@@ -130,11 +143,14 @@ test('the 5s fence: mainLate 4999 is no freeze, 5000 is', () => {
   assert.equal(burstFreezeJoin(at).tail, 1)
 })
 
-test('the tail fence: gap 30s rides the tail, gap 31s stretches', () => {
+test('the tail fence: window [0..30] rides the tail, window [0..31] straddles into edge', () => {
   const at = [gauge(1, 10, 200, 5, 120), loss('F3', 'ECONNRESET'), gauge(2, 40, 210, 6, 9000)]
   assert.equal(burstFreezeJoin(at).tail, 1)
   const past = [gauge(1, 10, 200, 5, 120), loss('F3', 'ECONNRESET'), gauge(2, 41, 210, 6, 9000)]
-  assert.equal(burstFreezeJoin(past).late, 1)
+  const rp = burstFreezeJoin(past)
+  assert.equal(rp.tail, 0)
+  assert.equal(rp.late, 0)
+  assert.equal(rp.edge, 1) // no bookend before the freeze - the gap's floor is unknown, late is unprovable
 })
 
 test('junk fences fall back to the defaults', () => {
@@ -164,16 +180,19 @@ test('multiple freezes fold the gap spread into nearest/widest', () => {
   const lines = [
     gauge(1, 10, 200, 5, 120),
     loss('F3', 'ECONNRESET'),
-    gauge(2, 25, 210, 6, 9000), // gap 15
-    gauge(3, 50, 220, 7, 9000) // gap 40 -> late
+    gauge(2, 25, 210, 6, 9000), // upper 15 <= 30 -> tail
+    gauge(3, 50, 220, 7, 9000) // anchor ts=10 (upper 40), bookend ts=25 (lower 25) - straddles -> edge
   ]
   const r = burstFreezeJoin(lines)
   assert.equal(r.freezes, 2)
   assert.equal(r.tail, 1)
-  assert.equal(r.late, 1)
+  assert.equal(r.edge, 1)
+  assert.equal(r.late, 0)
   assert.equal(r.minGap, 15)
   assert.equal(r.maxGap, 40)
-  assert.equal(r.verdict, 'the arrow splits - tail 1 / late 1 / alone 0')
+  assert.equal(r.minLower, 0)
+  assert.equal(r.maxUpper, 40)
+  assert.equal(r.verdict, 'the arrow splits - tail 1 / late 0 / edge 1 / alone 0')
 })
 
 test('the constants pin: the tail fence stays 30000 (the FACE 268 anatomy\'s own ruler)', () => {
@@ -187,10 +206,12 @@ test('one parser one truth: the gauge cells ride stormdriver\'s own regex, the l
 })
 
 test('the seat law: junk arithmetic reads null (the counts must fold)', () => {
-  assert.equal(burstFreezeSeat({ freezes: 3, tail: 1, late: 1, alone: 0 }), null)
-  assert.equal(burstFreezeSeat({ freezes: 0, tail: 0, late: 0, alone: 0 }), 'the burst rode alone - no freeze followed it')
-  assert.equal(burstFreezeSeat({ freezes: 2, tail: 2, late: 0, alone: 0, minGap: 7, maxGap: 7 }),
+  assert.equal(burstFreezeSeat({ freezes: 3, tail: 1, edge: 1, alone: 0, late: 0 }), null)
+  assert.equal(burstFreezeSeat({ freezes: 0, tail: 0, late: 0, edge: 0, alone: 0 }), 'the burst rode alone - no freeze followed it')
+  assert.equal(burstFreezeSeat({ freezes: 2, tail: 2, late: 0, edge: 0, alone: 0, minGap: 7, maxGap: 7 }),
     'the freeze rode behind the burst (gap 7s) - the arrow reads burst -> freeze')
-  assert.equal(burstFreezeSeat({ freezes: 2, tail: 2, late: 0, alone: 0, minGap: 7, maxGap: 19 }),
+  assert.equal(burstFreezeSeat({ freezes: 2, tail: 2, late: 0, edge: 0, alone: 0, minGap: 7, maxGap: 19 }),
     'the freeze rode behind the burst (nearest gap 7s / widest 19s) - the arrow reads burst -> freeze')
+  assert.equal(burstFreezeSeat({ freezes: 1, tail: 0, late: 0, edge: 1, alone: 0, minLower: 20, maxUpper: 40 }),
+    'the tail reads indeterminate - the gap rides 20s..40s across the fence - the fork stays open')
 })
