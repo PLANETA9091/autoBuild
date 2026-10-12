@@ -10,7 +10,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.897.0) the falls' own anatomy joins the battery; (v0.898.0) the mob book's own anatomy joins too; (v0.899.0) the fall's own relay joins (the time leg); (v0.956.0) the drown kind's own spot book joins too
+import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, kindAttackerBill, kindAttackerBillRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.897.0) the falls' own anatomy joins the battery; (v0.898.0) the mob book's own anatomy joins too; (v0.899.0) the fall's own relay joins (the time leg); (v0.956.0) the drown kind's own spot book joins too
 
 // the face-27 verbatims (36870593766), byte for byte from the artifact
 const FACE27_FALL = 'F14 [F14] died - respawning (cause: server: fell from a high place [kind=fall] | inferred: fall/env (0s before death at [-132,45,405]) [the inference corroborates the server verdict])'
@@ -114,7 +114,7 @@ test('a non-array input judges nothing (junk-safe by contract)', () => {
 
 test('WIRING: the decompose prints the causes row and the vertical rows (the DEATHS block)', () => {
   const src = fs.readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.match(src, /import \{ deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow \} from '\.\.\/\.\.\/src\/lib\/deathkinds\.mjs'/, 'the census import rides the decompose head (v0.784.0: the kind seat rides too; v0.788.0: the attacker seat rides too; v0.844.0: the direction seat rides too; v0.897.0: the falls\' own anatomy rides too; v0.898.0: the mob book\'s own anatomy rides too; v0.899.0: the fall\'s own relay rides too; v0.956.0: the drown kind\'s own spot book rides too)')
+  assert.match(src, /import \{ deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, kindAttackerBill, kindAttackerBillRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow \} from '\.\.\/\.\.\/src\/lib\/deathkinds\.mjs'/, 'the census import rides the decompose head (v0.784.0: the kind seat rides too; v0.788.0: the attacker seat rides too; v0.844.0: the direction seat rides too; v0.897.0: the falls\' own anatomy rides too; v0.898.0: the mob book\'s own anatomy rides too; v0.899.0: the fall\'s own relay rides too; v0.956.0: the drown kind\'s own spot book rides too)')
   assert.match(src, /death causes: \$\{causeRow\}\$\{inferredNote\}\$\{unparsedNote\}/, 'the mechanical causes row prints on every face (v0.672.0: the inferred-only note rides too)')
   assert.match(src, /vertical death: \$\{v\.bot\}/, 'the vertical row names the front\'s witness')
 })
@@ -1119,4 +1119,68 @@ test('WIRING: the fall relay rides the decompose print beside the fall anatomy (
   assert.match(src, /fallRelayConsistent\(lines, frb\)/, 'the fence rides the print')
   assert.match(src, /fallRelayRow\(frb\)/, 'the row rides the print site')
   assert.ok(!src.includes("the walkers fell into a shaft a death had named"), 'the prose stays in the lib')
+})
+
+// (v0.974.12) THE KINDED ATTACKER SEAT - the grammar's own ' by ' tail
+// measured past the mob family (FACE 273's kind=explosion by Creeper x4).
+// The seat law byte-true with the v0.788.0 mob seat, the mob kind excluded.
+const FACE273_EXPLOSION = 'F14 [F14] died - respawning (cause: server: was blown up by Creeper [kind=explosion by Creeper] | inferred: fall/env (0s before death at [-122,64,428]) [the inference is blind to this kind - the hint is noise by construction (the server kind stays the authority)])'
+const FACE273_EXPLOSION_F6 = 'F6 [F6] died - respawning (cause: server: was blown up by Creeper [kind=explosion by Creeper] | inferred: fall/env (0s before death at [-130,64,430]) [the inference is blind to this kind - the hint is noise by construction (the server kind stays the authority)])'
+
+test('the kinded seat pins the FACE 273 explosion book byte for byte (Creeper 4 of 4)', () => {
+  const lines = Array(4).fill(FACE273_EXPLOSION)
+  const census = deathKindCensus(lines)
+  // the additive cell: the grammar's own per-kind tally
+  assert.deepEqual(census.byAttackerByKind, { explosion: { Creeper: 4 } })
+  // the mob book's own cell stays byte-true (the explosion rows never leak in)
+  assert.deepEqual(census.byAttacker, {})
+  const bill = kindAttackerBill(census, 'explosion')
+  assert.deepEqual(bill, { attacker: 'Creeper', owns: 4, ofKills: 4, shareOfKills: 1 })
+  assert.equal(kindAttackerBillRow('explosion', bill), "the explosion book's own attacker (v0.974.12): Creeper owns 4 of 4 explosion kill(s) (100.0%) - THE EXPLOSION'S OWN SEAT: one server-named killer owns the kind's own book - the attacker's own front prices the kills the raw split rode unnamed")
+})
+
+test('the kinded tally prices mixed kind books independently (mob rows keep their own cell)', () => {
+  const lines = [
+    FACE273_EXPLOSION,
+    FACE273_EXPLOSION_F6,
+    FACE27_MOB
+  ]
+  const census = deathKindCensus(lines)
+  assert.deepEqual(census.byAttackerByKind, { explosion: { Creeper: 2 }, mob: { Zombie: 1 } })
+  // the mob kind is OUT of the kinded seat's jurisdiction (the mob book's own seat above)
+  assert.equal(kindAttackerBill(census, 'mob'), null)
+  // the mob book's own seat still reads its own cell (1 of 1 - the sole kill seats)
+  assert.deepEqual(mobAttackerBill(census), { attacker: 'Zombie', owns: 1, ofKills: 1, shareOfKills: 1 })
+})
+
+test('the tie owns nothing (the storm-has-no-seat precedent, the honest silence)', () => {
+  const census = deathKindCensus([
+    'F3 [F3] died - respawning (cause: server: was blown up by Creeper [kind=explosion by Creeper] | inferred: none)',
+    'F4 [F4] died - respawning (cause: server: was blown up by Ghast [kind=explosion by Ghast] | inferred: none)'
+  ])
+  assert.equal(kindAttackerBill(census, 'explosion'), null)
+})
+
+test('the absent kind book and the junk census read the honest silence', () => {
+  assert.equal(kindAttackerBill(null, 'explosion'), null)
+  assert.equal(kindAttackerBill({}, 'explosion'), null)
+  assert.equal(kindAttackerBill({ byAttackerByKind: {} }, 'explosion'), null)
+  assert.equal(kindAttackerBill({ byAttackerByKind: { explosion: {} } }, 'explosion'), null)
+  assert.equal(kindAttackerBill({ byAttackerByKind: { explosion: { Creeper: 0 } } }, 'explosion'), null)
+  assert.equal(kindAttackerBill({ byAttackerByKind: { explosion: { Creeper: 'junk' } } }, 'explosion'), null)
+})
+
+test('the mob kind byte never seats through the kinded law (one subject, one seat)', () => {
+  const census = deathKindCensus([FACE27_MOB])
+  assert.equal(kindAttackerBill(census, 'mob'), null)
+  assert.equal(kindAttackerBill(census, ''), null)
+  assert.equal(kindAttackerBill(census, null), null)
+})
+
+test('the row law junks the impossible bills (the honest silence row law)', () => {
+  assert.equal(kindAttackerBillRow('explosion', null), null)
+  assert.equal(kindAttackerBillRow(null, { attacker: 'Creeper', owns: 1, ofKills: 1, shareOfKills: 1 }), null)
+  assert.equal(kindAttackerBillRow('explosion', { attacker: '', owns: 1, ofKills: 1, shareOfKills: 1 }), null)
+  assert.equal(kindAttackerBillRow('explosion', { attacker: 'Creeper', owns: 2, ofKills: 1, shareOfKills: 2 }), null)
+  assert.equal(kindAttackerBillRow('explosion', { attacker: 'Creeper', owns: 'junk', ofKills: 1, shareOfKills: 1 }), null)
 })

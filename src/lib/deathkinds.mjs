@@ -136,6 +136,7 @@ function isVertical (kind, verb) {
  * @param {string[]} lines the full fleet19.log lines
  * @returns {{total: number, byKind: Object<string, number>, byBot: Object<string, number>,
  *   byAttacker: Object<string, number>,
+ *   byAttackerByKind: Object<string, Object<string, number>>,
  *   vertical: Array<{bot: string, verb: string, kind: string, attacker: string|null,
  *   pos: number[]|null, corroboration: string}>, verticalCount: number, unparsed: string[],
  *   inference: {total: number, corroborates: number, blind: number, contradicts: number,
@@ -162,6 +163,7 @@ export function deathKindCensus (lines) {
   // own lowercase - the other capture depth; the v0.117.0 doctrine: the
   // server verdict stays the authority, the inference stays the fallback).
   const byAttacker = {}
+  const byAttackerByKind = {} // (v0.974.12) the grammar's own per-kind attacker tally
   // (v0.713.0) THE INFERENCE'S OWN BILL - the two-way read of every
   // server-verdict row's inferred tail: the verdict bracket's own word
   // (corroborates / blind / contradicts / bystander / unknown / absent)
@@ -254,6 +256,18 @@ export function deathKindCensus (lines) {
     // other kinds carry no 'by' tail - the group only exists for the mob
     // family, the grammar's own fence)
     if (kind === 'mob' && attacker) byAttacker[attacker] = (byAttacker[attacker] || 0) + 1
+    // (v0.974.12) THE KINDED ATTACKER TALLY - the grammar's own ' by ' tail
+    // tallied PER KIND. The v0.788.0 fence read 'the group only exists for
+    // the mob family' as a grammar claim; FACE 273 (read 2026-10-13, the
+    // 0600 fire) measured it false: 'kind=explosion by Creeper' x4 - the
+    // server names a killer for the explosion kind too. The mob book's own
+    // byAttacker cell stays byte-true above (its rows are pinned); this
+    // cell is the grammar's own group, additive, every kind that carries
+    // the tail tallied under its own kind byte.
+    if (attacker) {
+      const kindBook = (byAttackerByKind[kind] = byAttackerByKind[kind] || {})
+      kindBook[attacker] = (kindBook[attacker] || 0) + 1
+    }
     if (bot) byBot[bot] = (byBot[bot] || 0) + 1
     // (v0.713.0) the inference's own bill rides every server-verdict row
     const bracket = corroborationOf(tail)
@@ -285,7 +299,7 @@ export function deathKindCensus (lines) {
       })
     }
   }
-  return { total, byKind, byBot, vertical, verticalCount: vertical.length, unparsed, inferredOnly, inferredOnlyCount: inferredOnly.length, otherVerbs, byAttacker, inference }
+  return { total, byKind, byBot, vertical, verticalCount: vertical.length, unparsed, inferredOnly, inferredOnlyCount: inferredOnly.length, otherVerbs, byAttacker, byAttackerByKind, inference }
 }
 
 // (v0.784.0) THE DEATHS' OWN KIND - the death book's own kind seat. The
@@ -480,6 +494,74 @@ export function mobAttackerRidersRow (r) {
       !Number.isFinite(ofKills) || ofKills <= 0 || !Number.isFinite(pairOwns) || pairOwns > ofKills ||
       !Number.isFinite(shareOfKills)) return null
   return `the mob book's own attacker riders (v0.788.0): no solo killer owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofKills} mob kill(s) (${(shareOfKills * 100).toFixed(1)}%) - THE ATTACKER'S OWN MIX: the seat's tie law held, the mix is the shape - the mob's own crowd prices the killers the solo law refused to name`
+}
+
+// (v0.974.12) THE KINDED ATTACKER SEAT - every kind's own killer under the
+// v0.788.0 law by reuse. The mob book's own seat priced WHICH server-named
+// killer owns the MOB book; the grammar's own ' by ' tail measured past the
+// mob family (FACE 273: 'kind=explosion by Creeper' x4 - the whole
+// explosion kind's own killer rode the causes split unnamed), so the same
+// seat law now reads the census's own byAttackerByKind cell (zero
+// re-parsing - the v0.784.0 seat's own cell precedent): the
+// strict-majority law, one killer owns the kind's own book only above half
+// (a tie owns nothing - the storm-has-no-seat precedent); the mob kind
+// stays OUT of this seat's jurisdiction (the mob book's own rows above are
+// pinned - one subject, one seat). Junk never invents a seat: a missing or
+// non-object cell, an absent kind book, a non-finite or non-positive
+// count, or a tied spread reads the honest silence (null - the
+// decompose's own guard skips the row). The labels are the server's own
+// entity-name bytes byte-true ('Creeper', ...).
+function kindAttackerTally (census, kind) {
+  if (!census || typeof census !== 'object' || Array.isArray(census)) return null
+  if (typeof kind !== 'string' || !kind || kind === 'mob') return null
+  const books = census.byAttackerByKind
+  if (!books || typeof books !== 'object' || Array.isArray(books)) return null
+  const book = books[kind]
+  if (!book || typeof book !== 'object' || Array.isArray(book)) return null
+  const tallies = {}
+  let total = 0
+  for (const [attacker, n] of Object.entries(book)) {
+    if (!Number.isFinite(n) || n <= 0) continue
+    total += n
+    tallies[attacker] = (tallies[attacker] || 0) + n
+  }
+  return total > 0 ? { tallies, total } : null
+}
+
+/**
+ * The kinded attacker seat: WHICH server-named killer owns ONE kind's own
+ * book (the strict-majority law byte-true with mobAttackerBill - the mob
+ * kind itself excluded, the mob book's own seat keeps its jurisdiction).
+ *
+ * @param {object|null} [census] the classifyFleetDeaths census
+ * @param {string} [kind] the server's own kind byte ('explosion', ...)
+ * @returns {null|{attacker: string, owns: number, ofKills: number, shareOfKills: number}}
+ *   null = the honest silence (no book, no positive tally, or a tie)
+ */
+export function kindAttackerBill (census, kind) {
+  const t = kindAttackerTally(census, kind)
+  if (!t) return null
+  let topUnits = 0
+  let topAttacker = null
+  for (const [attacker, n] of Object.entries(t.tallies)) {
+    if (n > topUnits) { topUnits = n; topAttacker = attacker }
+  }
+  if (topAttacker === null || topUnits <= t.total - topUnits) return null
+  return { attacker: topAttacker, owns: topUnits, ofKills: t.total, shareOfKills: +(topUnits / t.total).toFixed(3) }
+}
+
+// (v0.974.12) the kinded seat's own row - the mobAttackerBillRow's own
+// words re-shaped for the kind's own subject (the kind's own bytes ride
+// the row's noun and the seat's shout; the law's words byte-true). Junk
+// never prints a seat (the honest silence's own row law).
+export function kindAttackerBillRow (kind, bill) {
+  if (typeof kind !== 'string' || !kind || !bill || typeof bill !== 'object') return null
+  const { attacker, owns, ofKills, shareOfKills } = bill
+  if (typeof attacker !== 'string' || !attacker ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofKills) || ofKills <= 0 || owns > ofKills ||
+      !Number.isFinite(shareOfKills)) return null
+  return `the ${kind} book's own attacker (v0.974.12): ${attacker} owns ${owns} of ${ofKills} ${kind} kill(s) (${(shareOfKills * 100).toFixed(1)}%) - THE ${kind.toUpperCase()}'S OWN SEAT: one server-named killer owns the kind's own book - the attacker's own front prices the kills the raw split rode unnamed`
 }
 
 // (v0.844.0) THE MISREAD'S OWN DIRECTION - the sensor-blind confusion's
