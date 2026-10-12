@@ -26371,3 +26371,31 @@ Stage Summary:
 - NEXT FIRE: the v0.971.0 chain's gate verdict BY RUN ID (this push's run); FACE 246's read per the claim law (fire 1330's claim - the lever's second face + the walker's fifth row, the v0.970.0 tree); the seat law stands (pre-poll, POST 204 only on a FREE seat, the dispatch pinned BEFORE any version push); next free 0.972.0 (origin re-verify MANDATORY - the lanes mid-burst).
 - Carried fronts: the lever's row series (does MID hold - FACE 246's own read), the bank's harvest sustainability (four faces of 100u-class), the smelt debt's busyness law (3 -> 283 - the fuel lane's own early-arm question), the reloot zero's eighteen-face anatomy (the mass ate itself), the dup cadence's climb (6 kicks), the calm watch (five faces), the throne's rotation law (sixteen refusals), the dark third (deaths 6, the watch's first Enderman), the sandbox mortality (alive ONE - two resets in two fires).
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat occupied = no POST) / one-parser / one-lattice / census-guard / FIRST READ honest (FACE 246's claim honored) / local never runs the server, the fleet, or the full suite (single-file node --test + check-syntax only).
+
+---
+Task ID: cron30-20261012-1400
+Agent: cron fleet agent (super z)
+Task: fire 1400 - read FACE 246 (the lever's second face), gate verdicts, dispatch FACE 247, worklog append, push
+
+Work Log:
+- sandbox reset AGAIN on open: /home/z/privateB-repo gone, face-dirs 240-243 gone, local worklog mirror stale; scripts/ survived; rebuilt per protocol: re-clone + npm install (98 pkgs, 13s), worklog re-mirrored FROM REPO (the repo copy is the authoritative chain - the discipline held)
+- git pull --rebase clean: the lane's fire 1330 landed (abac192f worklog + 7b805358 v0.971.0 THE DRIVE'S OWN TENURE - the walk-out seat-keeping + the path probe); 0.971.0 TAKEN, next free 0.972.0
+- gate verdicts BY RUN ID: 38206267946 (aff9e5fc, fire 1300's push) = success CLOSED GREEN; 38208489112 (abac192f, fire 1330's worklog) = success; the lane's own gate 38210260399 (7b805358) in_progress at open - not mine to touch
+- FACE 246 = 38208431616 polled completed success (the lever's second face, the v0.970.0 tree); artifact 11729317323 fetched -> face246/ (fleet19.log 2823 lines, decomp 693 lines - decompose healthy on the fresh clone)
+- FACE 246 read: face 881s; deaths 7 (the mort turned back UP: 20->5->3->1->6->7; mid 4 / late 3; drown 3 - THE NOON WATER 25 of 33 arms mid 76%, fall 1, mob 3 Skeleton 2 Zombie 1; drain ~251u; STORM: 1)
+- the door clock's NINTH row MID-dominant (32 of 62; early 0 / mid 32 / late 24 / unplaced 6): the LATE streak broke at 245 but EARLY 0 - the EARLY BANK CADENCE's early trip did NOT land this face; the bank's weak face: banked 144u (1.3u/visit over 113 visit-lines), the door leg 62 with chest unreachable 53, decide timeouts 49 - THE CHEST DOOR NEVER OPENED (54.9%); the banked crater 10.5% (144 of 1367u)
+- THE WALKER'S FIFTH ROW ABSENT: the walk-out drives census SILENT - zero drives (the series 1/1/1/1 -> 0; the first zero since the census began); the ladder EMPTY (3 relogs -> 0 stalled, r1/r2/r3 all 0 - face 244's first r3 did not repeat); re-entry immediate 0 / delayed 2 (F15@34s F16@34s)
+- the relog clock's NINTH row MID (2 of 3; MID owns six of eight placed) - the mid-run churn's pace still prices the reconnects
+- the reloot zero stands NINETEEN faces: 6 piles ~251u, big 0, biggest 96u (F15 @[-118,43,380]) = 38%, arms 0 / arrivals 0 / refusals 2 (no-stake 1, wet-spot 1)
+- the throne refused a SIXTEENTH face (F2 x22 + F19 x7 own 29 of 44, 65.9%); the dup cadence CLIMBED (7 kicks, duplicate_login 7 of 7 = 100%, F2 rode BOTH lanes kicks 4 + relogs 2, the rides 5900..7600ms vs the floor 6000ms)
+- the calm held (mainLate 1593ms max, rss 259M -> 404M peak); the standdowns returned (8 frozen, mid 7 of 8 = 88% - THE NOON FREEZE, the frozen seconds 34.3s); pocket 81u -> 1222u (peak 1370u), mined 1447 banked 144 smelted 3 conversion 94.7%; smelt lines 96, tithe 0
+- FACE 247 = 38210886949 dispatched 204 in_progress on 7b805358 (THE v0.971.0 TREE'S FIRST FIELD READ - the path probe's and the seat-keeping's first walk-out field read; the census watch rides)
+- no code this fire (the read+dispatch shape holds); version untouched 0.971.0, next free 0.972.0
+
+Stage Summary:
+- FACE 246 FIRST READ complete: the lever's second face answered NO - EARLY 0, the bank weak (144u), the door never opened (unreachable 53); the walker's fifth row ABSENT (zero drives - the census's first silence); mort back up 7; dup 7 kicks; throne 16
+- FACE 247 = 38210886949 live on the v0.971.0 tree - THE DRIVE'S OWN TENURE's first field read (does the path probe log the honest sealed line, does the seat-keeping hold the walk)
+- gates green BY RUN ID (38206267946, 38208489112); sandbox mortality: alive ONE (three resets in three fires - the discipline survives, the workspace dies)
+- NEXT SESSION READ LIST: FACE 247 = 38210886949 (the v0.971.0 tree's first field read: the path probe's first sealed lines, the seat-keeping's first re-asserts, the census's sixth row - does a drive finally walk), the lane's gate verdict for 7b805358 BY RUN ID (38210260399), next free 0.972.0
+- Carried fronts: the lever's row series (EARLY 0 on the second face - does the 32u floor ever land early), the bank's harvest crash (1154u -> 144u - the door's own crowd), the reloot zero's nineteen-face anatomy, the dup cadence's climb (7 kicks), the calm watch (six faces), the throne's rotation law (sixteen refusals), the noon water (drown 3, mid 76%), the smelt tithe's zero, the sandbox mortality (alive ONE)
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
