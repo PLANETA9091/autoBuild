@@ -13,7 +13,7 @@ import {
   bankTripDue, bankRefusalDue, bankTripBudgetMs, finalBankBudgetMs, fuelTripWanted, FUEL_TRIP_MIN_OVERAGE,
   BANK_TRIP_EVERY_MS, BANK_TRIP_MIN_UNITS, BANK_TRIP_MIN_REMAINING_MS,
   BANK_TRIP_FLOOR_MS, BANK_TRIP_CAP_MS, CHEST_WALK_PER_BLOCK_MS,
-  BANK_CLIMB_PER_LEVEL_MS
+  BANK_CLIMB_PER_LEVEL_MS, DUSK_BANK_MIN_UNITS, MID_BANK_RETURN_MARGIN_MS
 } from '../../src/lib/deposit.mjs'
 
 // The doomed-goal ledger (v0.72.0) is a module-level singleton in jobqueue.mjs
@@ -66,10 +66,12 @@ test('bankTripDue: the 600s planned window fits at least one mining-loop iterati
   const windowMs = RUN_MS - BANK_TRIP_MIN_REMAINING_MS - BANK_TRIP_EVERY_MS
   assert.ok(windowMs >= LOOP_ITERATION_MS,
     `the window (${windowMs / 1000}s) must fit one loop iteration (${LOOP_ITERATION_MS / 1000}s) - fleet 36125422448: 0 planned trips when it did not`)
-  // and the boundary itself stays honest: 240s remaining fires, one tick below does not
+  // and the boundary itself stays honest: exactly at the fence fires, one
+  // tick below does not (the fence rides the constant - the v0.973.0 turn
+  // moved it 240s -> 210s, the hardcoded 239999 pin retired with it)
   assert.equal(bankTripDue({ units: 100, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: RUN_MS - 360000 }), true,
     'a check landed at the 360s mark (4 min left) fires the trip')
-  assert.equal(bankTripDue({ units: 100, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: 239999 }), false)
+  assert.equal(bankTripDue({ units: 100, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: BANK_TRIP_MIN_REMAINING_MS - 1 }), false)
 })
 
 test('bankTripBudgetMs: a near-yard trip keeps the v0.28.0 mid-run floor', () => {
@@ -492,4 +494,46 @@ test('REGRESSION PIN: the fleet call site rides the constant (no explicit minUni
   assert.ok(call, 'the planned-trip call exists in the work loop')
   assert.ok(!/minUnits/.test(call[0]),
     "the units floor stays the constant's own - the v0.970.0 cure reaches the field (the v0.198.0 dead-wire lesson)")
+})
+
+// ---------------------------------------------------------------------------
+// (v0.973.0) THE EARLY BANK CADENCE'S SECOND TURN (the floor 32 -> 24, the
+// fence 240s -> 210s) - the dedicated round's own wiring (the fire-2041
+// audit's first bar-pass). Face 260 (38252536424): 49 of 62 dry ask-chest
+// reads BEFORE the first bank (the pump primed late) with the noon drought
+// mid 65%; face 258: the door leg LATE 68 of 105 + the decide-timeouts late
+// 37 of 56 + the starve's closing sky 69%. The pins: the floor lands in the
+// opening half, the SECOND planned trip fits a 600s run (the 240s fence made
+// it impossible by 4s), the floor stands at the dusk lane's own parity, the
+// fence stands at the mid-bank guard's own scale (the planned window and the
+// flat-floor clamp zone never overlap), and the end-phase ordering law keeps
+// its bytes.
+// ---------------------------------------------------------------------------
+test('the second-turn floor lands in the opening half and the second trip fits a 600s run (the v0.973.0 arithmetic)', () => {
+  const rate = 67 / 600 // units per second, the measured fleet rate
+  const landS = BANK_TRIP_MIN_UNITS / rate
+  assert.ok(landS < 300,
+    `the first trip arms at ~${Math.round(landS)}s - the opening half's own middle (the pump must not prime late)`)
+  // the dusk lane's own parity: one floor, two lanes (the v0.973.0 design)
+  assert.equal(BANK_TRIP_MIN_UNITS, DUSK_BANK_MIN_UNITS,
+    'the planned floor stands at the dusk lane\'s own parity (DUSK_BANK_MIN_UNITS)')
+  // the second planned trip: the cadence's second arm must fit before the
+  // window closes (the 240s fence closed at 360s - the arm landed 364s)
+  const secondArmS = landS + BANK_TRIP_EVERY_MS / 1000
+  const windowCloseS = (600000 - BANK_TRIP_MIN_REMAINING_MS) / 1000
+  assert.ok(secondArmS < windowCloseS,
+    `the second trip arms at ~${Math.round(secondArmS)}s, the window closes at ${windowCloseS}s - a 600s run fits two planned trips`)
+  // the fence = the mid-bank guard's own scale: a planned trip only arms
+  // while the dist-scaled chain is priceable (no flat-floor-clamp arms)
+  assert.equal(BANK_TRIP_MIN_REMAINING_MS, BANK_TRIP_FLOOR_MS + MID_BANK_RETURN_MARGIN_MS,
+    'the fence stands at the guard\'s own scale (120s floor + 90s return)')
+  // the ordering law: the planned fence prices the worst case ABOVE the
+  // pockets-full viability fence (the end-phase doctrine keeps its bytes)
+  assert.ok(BANK_TRIP_MIN_REMAINING_MS > NEEDS_BANKING_MIN_REMAINING_MS,
+    'the planned fence stays above the pockets-full viability (210s > 150s)')
+  // the boundary itself stays honest at the second-turn line
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: BANK_TRIP_MIN_REMAINING_MS }), true,
+    'exactly at the second-turn line fires')
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: BANK_TRIP_MIN_REMAINING_MS - 1 }), false,
+    'one tick inside the fence refuses')
 })

@@ -635,7 +635,24 @@ export const BANK_TRIP_EVERY_MS = 150000 // a planned bank trip at most every 2.
 // reaches the yard before the closing churn, and the late third carries
 // lighter pockets. The dusk lane's own 24u floor, the fuel-tithe bypass and
 // the end-phase fences keep their bytes (the lever is the floor alone).
-export const BANK_TRIP_MIN_UNITS = 32 // ...but only when the pockets hold real loot (measured: ~67 units/bot/600s; the v0.970.0 early-bank arithmetic)
+// (v0.973.0) 32 -> 24: THE EARLY BANK CADENCE'S SECOND TURN - the dedicated
+// round's own wiring (the fire-2041 audit's first bar-pass: five rows across
+// three faces named BANK EARLY). The 32u floor's own arithmetic still primed
+// the pump late: face 260 (38252536424) read 49 of 62 dry ask-chest reads
+// BEFORE the first bank (the pump primed late) with the noon drought mid 65%,
+// face 258 rode the door leg LATE 68 of 105 + the decide-timeouts late 37 of
+// 56 + the starve's closing sky 69%, and the tithe rode LATE two faces
+// running. At the measured ~0.112 u/s the 32u floor landed the first trip at
+// ~286s - the 600s window's own edge ([150s, 360s]: one trip, no second) -
+// and the walks then rode the stall axis into the closing churn. At 24u the
+// floor lands ~214s: the opening half's own middle, the drought before the
+// first bank shortens by ~72s, the tithe's consolidation rides the earlier
+// trip, and the walks arm into the calmer thirds (the stall axis' own tax
+// shrinks with them). The floor now stands at the dusk lane's own parity
+// (DUSK_BANK_MIN_UNITS = 24): one floor, two lanes. The cadence and the
+// fences keep their bytes (the lever is the floor alone - the v0.970.0
+// shape; the fence's own turn is the sibling constant below).
+export const BANK_TRIP_MIN_UNITS = 24 // ...but only when the pockets hold real loot (measured: ~67 units/bot/600s; the v0.973.0 second-turn arithmetic, the dusk floor's own parity)
 // (v0.176.0) 330s -> 240s: THE 600s-RUN WINDOW ARITHMETIC. The planned trip's
 // eligible window in a 600s run is [BANK_TRIP_EVERY_MS (150s since the last
 // attempt), 600s - minRemainingMs]. At 330s that window was [150s, 270s] =
@@ -651,7 +668,20 @@ export const BANK_TRIP_MIN_UNITS = 32 // ...but only when the pockets hold real 
 // the pocket exactly where never-trying left it - while a trip that lands
 // converts 100-190u into banked stock. The end-phase pre-position (the last
 // ~90s) and the final bank keep their margins untouched.
-export const BANK_TRIP_MIN_REMAINING_MS = 240000 // never START a trip inside the last 4 min
+// (v0.973.0) 240s -> 210s: THE SECOND TRIP'S OWN ROOM - the cadence turn's
+// sibling. At the 24u floor the first trip arms ~214s and the cadence's
+// second arm lands 214s + 150s = ~364s - past the 240s fence's close
+// (600-240 = 360s) by 4s, so a second planned trip could NEVER fit a 600s
+// run. At 210s the window closes at 390s: the second trip fits (remaining
+// 236s), and the fence now stands exactly at the mid-bank guard's own scale
+// (BANK_TRIP_FLOOR_MS 120s + MID_BANK_RETURN_MARGIN_MS 90s = 210s) - a
+// planned trip can only arm while the run can still price the dist-scaled
+// chain (the flat-floor clamp zone and the planned window never overlap).
+// The end-phase doctrine keeps its bytes: NEEDS_BANKING_MIN_REMAINING_MS
+// (150s), the pre-position (~90s) and the final bank stay the deadline's
+// owners; the fence still prices the WORST case above the pockets-full
+// viability (210s > 150s, the ordering law).
+export const BANK_TRIP_MIN_REMAINING_MS = 210000 // never START a trip inside the last 3.5 min (the v0.973.0 second-trip room; was 4 min)
 export const BANK_TRIP_FLOOR_MS = 120000 // (v0.28.0) a late bank keeps the 120s mid-run cap as the floor
 export const BANK_TRIP_CAP_MS = 300000 // hard ceiling - the 420s hard-kill margin is sacred
 
