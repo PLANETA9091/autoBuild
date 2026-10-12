@@ -8,6 +8,7 @@ import { PATH_PRIO_BANK } from './pathsemaphore.mjs'
 import { walkBudgetMs } from './tripplan.mjs'
 import { approachWalk, APPROACH_THRESHOLD, APPROACH_SEGMENT_MS } from './approach.mjs'
 import { recordNoPath, nearNoPath, isDeadChestVerdict, NOPATH_REPEAT_TTL_MS } from './nopath.mjs' // (v0.62.0) the fleet no-path ledger (v0.65.0: reused for the full-chest ledger; v0.70.0: the timeout verdict joins the ledger; v0.113.0: every chest verdict rides the 15s CHEST_DOOM_TTL_MS; v0.863.0: the repeat's own half-life - a twice-refused cell rides NOPATH_REPEAT_TTL_MS)
+import { recordWalkIntent, nearWalkIntent, clearWalkIntent, WALK_INTENT_TTL_MS } from './walkintent.mjs' // (v0.974.0) the walk's own intent board - the decision-concurrency's own cure: the walk speaks BEFORE it starts, the other bots' scans skip a chest whose walk is already in flight (the rent the verdict ledger cannot price: 12 of FACE 262's 13 repeats were walks whose decision predated the verdict)
 import { chestVerticalDoom } from './surface.mjs' // (v0.188.0) the hop vertical doom gate - the strict arithmetic the bank climbs (v0.158.0), the yard chest walks (v0.159.0) and the machine walks (v0.170.0) already ride
 import { NIGHT_WALK_START, TICKS_PER_SEC, forecastForbidden } from './nightsafety.mjs' // (v0.193.0) the dusk-forecast bank escalation reads the vanilla clock the night hold enforces
 import { finalBankDelayMs } from './endphase.mjs' // (v0.193.0) the forecast prices the bot's OWN end-phase stagger slot
@@ -1571,6 +1572,7 @@ export async function depositToChest (bot, {
   exclude = [], // (v0.23.1) chest positions already dead-ended ('No path') - skipped in the scan
   noPathLedger = null, // (v0.62.0) a SHARED array across the fleet: 'No path' verdicts skip the A* for everyone
   fullChestLedger = null, // (v0.65.0) a SHARED array across the fleet: 'chest full' verdicts skip the paid walk
+  walkIntents = null, // (v0.974.0) a SHARED array across the fleet: walks IN FLIGHT skip each other - the decision-concurrency cure the verdict ledgers cannot price
   yardGraceHolder = null, // (v0.303.0) the chain's one-shot yard-grace holder { used: boolean }; null = a per-call one
   depositClickTimeoutMs = 5000, // (v0.70.0) per-click wall; tests inject a small value instead of sleeping 5s
   netProgressMs // (v0.149.0) the raw hop's net-progress floor; undefined = RAW_HOP_NETPROGRESS_MS (walkRawToward's default)
@@ -1635,7 +1637,7 @@ export async function depositToChest (bot, {
     log(`${tag} yard grace: the d=${Math.round(dGrace)} walk rides the one-shot ${Math.round(g.budgetMs / 1000)}s grace (${site}; the floor refused - ${g.why})`)
     return g.budgetMs
   }
-  const walkOnce = async (label, { rearm = false } = {}) => {
+  const walkOnceInner = async (label, { rearm = false } = {}) => {
     let ms = effectiveWalkBudget({ distBudget: budget, remainingMs: remaining() })
     if (ms <= 0) ms = graceTopUp('entry')
     if (ms <= 0) throw new Error('budget exhausted (walk floor)')
@@ -1703,6 +1705,38 @@ export async function depositToChest (bot, {
       // across the fuel commons and the final banks. Static known-good
       // destination = the machine ttl semantics (v0.92.0), now for chests too.
       gotoSafe(bot, new goals.GoalNear(chest.position.x, chest.position.y, chest.position.z, 3), { timeoutMs: ms, label, priority: PATH_PRIO_BANK, doomedRearm: rearm, doomTtl: CHEST_DOOM_TTL_MS }))
+  }
+  // (v0.974.0) THE WALK'S OWN INTENT - the wrapper owns the board's lifecycle
+  // around EVERY walk attempt (the inner stays byte for byte). MEASURED (FACE
+  // 262 = 38260766817): 12 of 13 repeat no-path refusals printed ttl 15s - the
+  // ABSORBED shape: the prior verdict was LIVE at each re-refusal, the walks
+  // simply DECIDED before it landed ([-128,72,384] x3: F11 -> F16 -> F12
+  // overlapped inside the ~4.5s A*-exhaustion window). No record-side window
+  // can prevent a walk whose decision predated the verdict - the walk itself
+  // speaks BEFORE it starts: the intent lands, the other bots' scans skip the
+  // chest until the walk resolves (success, refusal, throw - the finally owns
+  // the clear, the ttl only bounds a lost resolve). The verdict ledger still
+  // owns the AFTERMATH exactly as before; the board owns the DURING.
+  const walkOnce = async (label, opts = {}) => {
+    const intentCell = chest.position && typeof chest.position.floored === 'function'
+      ? chest.position.floored()
+      : (chest.position && Number.isFinite(chest.position.x) ? { x: Math.floor(chest.position.x), y: Math.floor(chest.position.y), z: Math.floor(chest.position.z) } : null)
+    const intentLive = Array.isArray(walkIntents) && !!intentCell
+    if (intentLive) {
+      const freshIntents = recordWalkIntent(walkIntents, intentCell, bot.username, Date.now())
+      walkIntents.length = 0
+      for (const e of freshIntents) walkIntents.push(e)
+      log(`${tag} walk-intent: chest at [${intentCell.x},${intentCell.y},${intentCell.z}] held for the fleet (${walkIntents.length} live, ttl ${Math.round(WALK_INTENT_TTL_MS / 1000)}s)`)
+    }
+    try {
+      return await walkOnceInner(label, opts)
+    } finally {
+      if (intentLive) {
+        const cleared = clearWalkIntent(walkIntents, intentCell, bot.username, Date.now())
+        walkIntents.length = 0
+        for (const e of cleared) walkIntents.push(e)
+      }
+    }
   }
   // (v0.46.0) THE PROXIMITY FAST-PATH (their 19:53 sketch item 1): a bot that
   // ALREADY stands within reach of the chest must not spend a pathfinder hop
@@ -1835,7 +1869,7 @@ export async function depositToChest (bot, {
         // the nearest chest') when the second candidate also fails, and the second
         // candidate's success when it does not
         // (v0.27.0) the hop inherits the SAME wall clock, not a fresh budget
-        const second = await depositToChest(bot, { keep, maxDistance, log, timeoutMs, budgetMs: remaining(), exclude: [dead], noPathLedger })
+        const second = await depositToChest(bot, { keep, maxDistance, log, timeoutMs, budgetMs: remaining(), exclude: [dead], noPathLedger, walkIntents })
         if (second.deposited > 0) return second
         return { deposited: 0, reason: `chest unreachable (${lastMsg})` }
       }
@@ -2114,7 +2148,7 @@ export async function depositToChest (bot, {
  * items remain. A single full chest then costs a walk, not the whole delivery.
  * Returns { deposited, chestsUsed, chestReport } - never throws.
  */
-export async function depositToChests (bot, { maxChests = 8, findRadius = 64, keep = KEEP, log = () => {}, budgetMs = null, yardCenter = null, yardRadius = YARD_CHEST_RADIUS, noPathLedger = null, fullChestLedger = null, onVerticalDoom = null, preAscent = null } = {}) {
+export async function depositToChests (bot, { maxChests = 8, findRadius = 64, keep = KEEP, log = () => {}, budgetMs = null, yardCenter = null, yardRadius = YARD_CHEST_RADIUS, noPathLedger = null, fullChestLedger = null, walkIntents = null, onVerticalDoom = null, preAscent = null } = {}) {
   let total = 0
   let chestsUsed = 0
   const reports = []
@@ -2267,6 +2301,25 @@ export async function depositToChests (bot, { maxChests = 8, findRadius = 64, ke
         continue
       }
     }
+    // (v0.974.0) THE WALK-INTENT SKIP: another bot's walk to THIS chest is IN
+    // FLIGHT - the decision-concurrency front the verdict ledgers cannot price
+    // (FACE 262: 12 of 13 repeat refusals were walks that decided before the
+    // prior verdict landed). Skip before the queue: the second walker picks
+    // the next chest in the ring instead of queueing behind the first walker's
+    // A* (the ask is the FRESHEST information the scan has - a walk in flight
+    // NOW). The owner's own intents never answer (the retry re-walks freely);
+    // radius 1 / dy 2 TIGHT (the doomed-goal skip's own reach - a walk to
+    // chest A must never skip chest B); junk reads no skip (the nopath law:
+    // a skip costs the deposit, the hop only costs CPU).
+    if (Array.isArray(walkIntents) && chest.position) {
+      const skipCell = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
+      const wi = skipCell && Number.isFinite(skipCell.x) ? nearWalkIntent(walkIntents, skipCell, Date.now(), { excludeBot: bot.username }) : null
+      if (wi?.hit) {
+        log(`[${bot.username ?? 'bot'}] chest skip (walk in flight by ${wi.bot ?? 'bot'} cached ${Math.round(wi.ageMs / 1000)}s ago at [${skipCell.x},${skipCell.y},${skipCell.z}])`)
+        tried.push(skipCell)
+        continue
+      }
+    }
     // (v0.188.0) THE HOP VERTICAL DOOM GATE - the last un-gated walk site for
     // the deep-bot vertical class. MEASURED (run47 = fleet 36181152847, the
     // triple-union fleet, F19's bank chain): seven hops from y~44 to the y=72
@@ -2343,7 +2396,7 @@ export async function depositToChests (bot, { maxChests = 8, findRadius = 64, ke
     // Bounded by maxChests end to end.
     let res
     try {
-      res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, yardGraceHolder: yardGrace })
+      res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, yardGraceHolder: yardGrace })
     } catch (e) {
       const msg = e && e.message ? e.message : 'unknown'
       log(`[${bot.username ?? 'bot'}] hop: chest at [${chest.position?.x ?? '?'},${chest.position?.y ?? '?'},${chest.position?.z ?? '?'}]${hopDist != null ? ` d=${hopDist}` : ''} zero: visit died mid-visit (${msg}) - the chain excludes it, the pocket rides the next window`)

@@ -328,4 +328,71 @@ const lib = fs.readFileSync(new URL('../../src/lib/ledgerbook.mjs', import.meta.
 assert.match(lib, /the ledger families' own book \(v0\.869\.0\)/, "the row's own byte lives in the lib")
 assert.match(lib, /NOPATH_RADIUS, NOPATH_DY } from '\.\/nopath\.mjs'/, 'the no-path reach rides the REAL constants (the one-ruler law)')
 
+// ---- the walk-intent family (v0.974.0): the board's own economy ----
+
+// The FACE 262 cure's own receipts: the record speaks BEFORE the walk (the
+// board's write), the skip names the walk in flight (the board's save - the
+// holder rides INSIDE the line, the join by construction). The verbatim
+// shapes ride the deposit.mjs v0.974.0 templates.
+const INTENT = [
+  'F11 [F11] walk-intent: chest at [-128,72,384] held for the fleet (1 live, ttl 90s)',
+  'F16 [F16] chest skip (walk in flight by F11 cached 2s ago at [-128,72,384])',
+  'F12 [F12] chest skip (walk in flight by F11 cached 4s ago at [-128,72,384])',
+  'F11 [F11] walk-intent: chest at [-128,72,384] held for the fleet (2 live, ttl 90s)'
+]
+
+const intent = ledgerRecordBook(INTENT)
+assert.equal(intent.records, 2, 'the two intent writes fold (the attempt + the retry re-speaks)')
+assert.equal(intent.saves, 2, 'the two in-flight skips fold')
+const wi = intent.families['walk-intent']
+assert.equal(wi.records, 2, 'the walk-intent records')
+assert.equal(wi.distinctChests, 1, 'one chest held the board')
+assert.deepEqual(wi.chests['-128,72,384'], { n: 2, bots: { F11: 2 } }, 'the door\'s own writes fold per bot')
+assert.deepEqual(wi.repeatChests, [{ pos: '-128,72,384', n: 2, bots: { F11: 2 } }], 'the repeat intent rides')
+assert.deepEqual(wi.live, { n: 2, min: 1, max: 2, avg: 1.5 }, 'the board occupancy 1..2 avg 1.5')
+assert.equal(wi.fresh, 2, 'every intent write rides fresh (no escalation class)')
+assert.equal(wi.escalated, 0, 'no escalation in the walk-intent family')
+assert.equal(wi.saves, 2, 'the walk-intent saves')
+assert.deepEqual(wi.saveBots, { F16: 1, F12: 1 }, 'the askers fold (the asker is the saving bot)')
+assert.deepEqual(wi.saveAge, { n: 2, min: 2, max: 4, avg: 3 }, 'the intent ages 2..4s avg 3')
+assert.deepEqual(wi.parentCell, { sameCell: 2, neighbor: 0, orphan: 0 }, 'the holder\'s own write joins BY CONSTRUCTION (same cell)')
+assert.deepEqual(wi.parentBot, { same: 0, cross: 2 }, 'CROSS-BOT 2 of 2 - the asker is never the holder (the owner never blocks itself)')
+assert.deepEqual(wi.passGap, { n: 2, min: 1, max: 2, avg: 1.5 }, 'the write-to-skip gaps 1..2 lines')
+assert.equal(wi.leverage, 1, 'the family leverage 2/2 = 1')
+assert.match(
+  ledgerRecordBookRow(intent),
+  /walk-intent 2 record\(s\) on 1 chest\(s\) \(repeats 1\) \(live 1\.\.2 avg 1\.5 - fresh 2 \/ escalated 0 \/ timeout 0\) bought 2 skip\(s\) \(bots 2 \(F12=1 F16=1\), age 2\.\.4s avg 3; parents same-cell 2 \/ neighbor 0 \/ orphan 0, same-bot 0 \/ cross-bot 2, pass gap 1\.\.2 lines avg 1\.5\) - leverage 1 skips\/record/,
+  'the walk-intent row cell'
+)
+
+// The intent skip must not inflate the verdict families and vice versa.
+const intentMixed = ledgerRecordBook([
+  'F11 [F11] walk-intent: chest at [-128,72,384] held for the fleet (1 live, ttl 90s)',
+  'F16 [F16] chest skip (walk in flight by F11 cached 2s ago at [-128,72,384])',
+  'F2 [F2] chest skip (no path cached 0s ago at [-116,72,412])',
+  'F4 [F4] no-path ledger: chest at [-135,72,390] cached for the fleet (1 live, ttl 15s)'
+])
+assert.equal(intentMixed.families['walk-intent'].saves, 1, 'the intent save lands in its own family')
+assert.equal(intentMixed.families['no-path'].saves, 1, 'the no-path save stays in its own family')
+assert.equal(intentMixed.families['no-path'].records, 1, 'the intent write never inflated no-path')
+assert.equal(intentMixed.records, 2, 'the totals fold across the three families')
+assert.equal(intentMixed.saves, 2, 'the totals saves fold')
+
+// The honest silences: the intent census line names no chest - not a write;
+// junk shapes render nothing.
+assert.equal(ledgerRecordBook(['walk-intent board: 2 live intent(s) at end phase']), null, 'the end-phase census names no chest - not a write')
+assert.equal(ledgerRecordBook(['F4 [F4] walk-intent: chest at [x,y,z] held for the fleet (1 live, ttl 90s)']), null, 'a junk position is not an intent write')
+assert.equal(ledgerRecordBook(['F4 [F4] walk-intent: chest at [-1,72,-1] held for the fleet (1 live, ttl 45s)']), null, 'a 45s ttl never prints on the board (the machine rides 90s)')
+assert.equal(ledgerRecordBook(['F4 [F4] chest skip (walk in flight by F5 at [-1,72,-1])']), null, 'a skip without the age byte is not a save (the emitter always names it)')
+
+// The fence battery grows the third family: the escalation and the timeout
+// can never ride the board (every write is fresh by construction).
+assert.equal(ledgerRecordBookConsistent(intent), true, 'the walk-intent book is consistent')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { escalated: 1, fresh: 1 })), false, 'the walk-intent escalation can never ride')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { timeout: 1 })), false, 'the walk-intent timeout can never ride')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { records: 2 })), false, 'the walk-intent records break')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { saveBots: { F2: 9 } })), false, 'the walk-intent save bots sum break')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { parentCell: { sameCell: 0, neighbor: 0, orphan: 2 } })), false, 'the walk-intent parent split break')
+assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { parentBot: { same: 2, cross: 0 } })), false, 'the walk-intent parent bot split break')
+
 console.log('ledgerbook.test.mjs: all green')

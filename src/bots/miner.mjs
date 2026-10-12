@@ -150,6 +150,7 @@ export function createMiner ({
   waterTableBoard = null, // (v0.84.0) shared WaterTableBoard (src/lib/watertable.mjs): one bot's fluid strike ceilings every shaft in the region
   noPathLedger = null, // (v0.62.0) the fleet-wide 'No path' verdict array (one process = one shared array); null = the ledger is off
   fullChestLedger = null, // (v0.65.0) the fleet-wide 'chest full' verdict array (same ride); null = the ledger is off
+  walkIntents = null, // (v0.974.0) the fleet-wide walk-intent board (same ride): walks in flight skip each other - the decision-concurrency cure (FACE 262: 12 of 13 repeat no-path refusals were walks that decided before the verdict landed); null = the board is off
   seedLastDeath = null, // (v0.203.0) the PREVIOUS attempt's un-attempted death record (the runner's death carry) - a relog must not bury the re-loot plan
   dragonDeaths = null, // (v0.225.0) the fleet-shared dragon death registry (server verb + corpse pos records) - the zone anchor's input; null = a private log (solo honest)
   torchResupply = null, // (v0.269.0) async ({ itemsNeeded }) => void - the torch-coal commons ask (the pocket-closed torch economy's cure); null = the legacy shape byte for byte
@@ -6616,7 +6617,7 @@ export function createMiner ({
     // deposit' after every click was rejected and smeltThenBank reported bank: 0
     // with a full pocket - fleet 35538062596 F18). depositToChests excludes the
     // dead chest and scans again (maxChests bound) until the pockets drain.
-    const res = await depositToChests(bot, { log, noPathLedger, fullChestLedger, ...opts })
+    const res = await depositToChests(bot, { log, noPathLedger, fullChestLedger, walkIntents, ...opts })
     if (res.deposited > 0) stats.banked = (stats.banked ?? 0) + res.deposited
     const reason = res.deposited > 0
       ? 'ok'

@@ -82,6 +82,13 @@ const NOPATH_RECORD_RE = /^(F\d+) \[F\d+\] no-path ledger: chest at \[(-?\d+),(-
 const FULLCHEST_RECORD_RE = /^(F\d+) \[F\d+\] full-chest ledger: chest at \[(-?\d+),(-?\d+),(-?\d+)\] cached for the fleet \((\d+) live, ttl (\d+)s\)$/
 const NOPATH_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(no path cached (\d+)s ago at \[(-?\d+),(-?\d+),(-?\d+)\]\)$/
 const FULLCHEST_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(full cached (\d+)s ago at \[(-?\d+),(-?\d+),(-?\d+)\]\)$/
+// (v0.974.0) THE WALK-INTENT FAMILY - the decision-concurrency cure's own
+// receipts. The record line speaks BEFORE the walk (the board's write); the
+// skip line names the walk in flight (the board's save - the holder's own
+// bot rides INSIDE the line, so the parent-bot read is the join by
+// construction: the skip's holder IS the record's writer).
+const WALKINTENT_RECORD_RE = /^(F\d+) \[F\d+\] walk-intent: chest at \[(-?\d+),(-?\d+),(-?\d+)\] held for the fleet \((\d+) live, ttl 90s\)$/
+const WALKINTENT_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(walk in flight by (F\d+) cached (\d+)s ago at \[(-?\d+),(-?\d+),(-?\d+)\]\)$/
 
 const mkStats = (list) => list.length === 0
   ? null
@@ -211,15 +218,106 @@ export function ledgerRecordBook (lines) {
   if (!Array.isArray(rows)) return null
   const noPath = foldFamily(rows, NOPATH_RECORD_RE, NOPATH_SKIP_RE, { escalatable: true, radius: NOPATH_RADIUS, dy: NOPATH_DY })
   const fullChest = foldFamily(rows, FULLCHEST_RECORD_RE, FULLCHEST_SKIP_RE, { escalatable: false, radius: FULL_CHEST_RADIUS_READ, dy: FULL_CHEST_DY_READ })
-  if (noPath.records + noPath.saves + fullChest.records + fullChest.saves === 0) return null
-  const records = noPath.records + fullChest.records
-  const saves = noPath.saves + fullChest.saves
+  // (v0.974.0) the walk-intent family folds with the SKIPPING bot's own regex
+  // group (the holder rides group 2) - foldFamily reads the skip's bot from
+  // group 1, so the intent family's fold rides a CUSTOM fold below: the
+  // record leg reuses foldFamily's machinery via the standard shapes, the
+  // skip leg names the holder and the cell, the parent join is the
+  // holder-by-construction (the skip's holder IS the record's writer).
+  const walkIntent = foldWalkIntentFamily(rows)
+  if (noPath.records + noPath.saves + fullChest.records + fullChest.saves + walkIntent.records + walkIntent.saves === 0) return null
+  const records = noPath.records + fullChest.records + walkIntent.records
+  const saves = noPath.saves + fullChest.saves + walkIntent.saves
   return {
-    families: { 'no-path': noPath, 'full-chest': fullChest },
+    families: { 'no-path': noPath, 'full-chest': fullChest, 'walk-intent': walkIntent },
     records,
     saves,
     leverage: ratio(saves, records)
   }
+}
+
+// (v0.974.0) the walk-intent family's own fold: the record line's shape and
+// the skip line's shape differ from the ledger families' (the skip names the
+// HOLDER, not an age) - the fold rides foldFamily for the record leg (the
+// group layout matches FULLCHEST_RECORD_RE's: bot, x, y, z, live, ttl) and a
+// custom skip read for the holder lines. The parent join: the holder named
+// IN the skip IS the record's writer (the join by construction), the cell
+// reads from the skip line itself (the record's floored chest cell is the
+// same cell the walk committed to). Pure, reads never mutate.
+function foldWalkIntentFamily (rows) {
+  const fam = EMPTY_FAMILY()
+  const lives = []
+  const ages = []
+  const gaps = []
+  const writes = []
+  for (let idx = 0; idx < rows.length; idx++) {
+    const l = rows[idx]
+    if (typeof l !== 'string') continue
+    const rec = l.match(WALKINTENT_RECORD_RE)
+    if (rec) {
+      const bot = rec[1]
+      const x = Number(rec[2])
+      const y = Number(rec[3])
+      const z = Number(rec[4])
+      const live = Number(rec[5])
+      fam.records++
+      const pos = `${rec[2]},${rec[3]},${rec[4]}`
+      if (!fam.chests[pos]) fam.chests[pos] = { n: 0, bots: {} }
+      fam.chests[pos].n++
+      fam.chests[pos].bots[bot] = (fam.chests[pos].bots[bot] || 0) + 1
+      if (Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(z)) writes.push({ x, y, z, bot, idx })
+      if (Number.isFinite(live) && live >= 0) lives.push(live)
+      fam.fresh++
+      continue
+    }
+    const skip = l.match(WALKINTENT_SKIP_RE)
+    if (skip) {
+      const asker = skip[1]
+      const holder = skip[2]
+      const age = Number(skip[3])
+      const sx = Number(skip[4])
+      const sy = Number(skip[5])
+      const sz = Number(skip[6])
+      fam.saves++
+      fam.saveBots[asker] = (fam.saveBots[asker] || 0) + 1
+      if (Number.isFinite(age) && age >= 0) ages.push(age)
+      // the holder named IN the line joins BY CONSTRUCTION: the parent is the
+      // holder's own prior write within the tight reach (the walk-intent
+      // consult's own radius 1 / dy 2) - the freshest intent wins the consult
+      // (nearWalkIntent), so the holder's record is the join's own truth.
+      if (Number.isFinite(sx) && Number.isFinite(sy) && Number.isFinite(sz)) {
+        let parent = null
+        for (const w of writes) {
+          if (w.bot !== holder) continue
+          if (Math.abs(w.y - sy) > 2) continue
+          if (Math.hypot(w.x - sx, w.z - sz) > 1) continue
+          if (!parent || w.idx > parent.idx) parent = w
+        }
+        if (!parent) {
+          fam.parentCell.orphan++
+        } else {
+          gaps.push(idx - parent.idx)
+          fam.parentCell.sameCell++
+          if (parent.bot === asker) fam.parentBot.same++
+          else fam.parentBot.cross++
+        }
+      } else {
+        fam.parentCell.orphan++
+      }
+    }
+  }
+  fam.distinctChests = Object.keys(fam.chests).length
+  fam.repeatChests = Object.entries(fam.chests)
+    .filter(([, c]) => c.n >= 2)
+    .map(([pos, c]) => ({ pos, n: c.n, bots: { ...c.bots } }))
+    .sort((a, b) => b.n - a.n ||
+      Object.keys(b.bots).length - Object.keys(a.bots).length ||
+      a.pos.localeCompare(b.pos))
+  fam.live = mkStats(lives)
+  fam.saveAge = mkStats(ages)
+  fam.passGap = mkStats(gaps)
+  fam.leverage = ratio(fam.saves, fam.records)
+  return fam
 }
 
 /** THE CONSISTENCY FENCE (the v0.852.0 fence law): both families carry
@@ -235,8 +333,8 @@ export function ledgerRecordBookConsistent (book) {
   if (!book || typeof book !== 'object') return false
   const fams = book.families
   if (!fams || typeof fams !== 'object') return false
-  if (Object.keys(fams).sort().join(',') !== 'full-chest,no-path') return false
-  if (!fams['no-path'] || !fams['full-chest']) return false
+  if (Object.keys(fams).sort().join(',') !== 'full-chest,no-path,walk-intent') return false
+  if (!fams['no-path'] || !fams['full-chest'] || !fams['walk-intent']) return false
   let records = 0
   let saves = 0
   for (const [name, fam] of Object.entries(fams)) {
@@ -270,6 +368,8 @@ export function ledgerRecordBookConsistent (book) {
       if (!src || src.n !== r.n) return false
     }
     if (name === 'full-chest' && fam.escalated !== 0) return false
+    if (name === 'walk-intent' && fam.escalated !== 0) return false
+    if (name === 'walk-intent' && fam.timeout !== 0) return false
     const botsSum = Object.values(fam.saveBots || {}).reduce((a, b) => a + b, 0)
     if (botsSum !== fam.saves) return false
     if ((fam.saveAge === null) !== (fam.saves === 0)) return false
@@ -323,7 +423,7 @@ export function ledgerRecordBookConsistent (book) {
 export function ledgerRecordBookRow (book) {
   if (!ledgerRecordBookConsistent(book)) return null
   const cells = []
-  for (const [name, label] of [['no-path', 'no-path'], ['full-chest', 'full-chest']]) {
+  for (const [name, label] of [['no-path', 'no-path'], ['full-chest', 'full-chest'], ['walk-intent', 'walk-intent']]) {
     const fam = book.families[name]
     if (fam.records === 0 && fam.saves === 0) continue
     const parented = fam.saves - fam.parentCell.orphan

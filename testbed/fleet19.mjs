@@ -1249,6 +1249,7 @@ async function runBot (name, target, index) {
         hazardLedger, // (v0.62.0) shared water-hazard ledger: one rescue vets targets for the fleet
         waterTableBoard, // (v0.84.0) shared aquifer ceiling: one strike stops every shaft above the water in the region
         noPathLedger, // (v0.62.0) shared fleet-wide 'No path' verdicts (one process = one array)
+        walkIntents, // (v0.974.0) shared fleet-wide walk intents: walks in flight skip each other (the decision-concurrency cure)
         dragonDeaths, // (v0.225.0) shared dragon death registry: every fresh server verdict + corpse pos feeds the kill-zone anchor
         // cross-process claims (a scout in a second terminal): broadcast our trips as
         // PVB2 chat lines; claimSync is attached right after the bot logs in
@@ -4229,6 +4230,7 @@ setFleetDuckSweeper(stormSweepAllGoals)
 // reads; the report prints the count as the A*-storm evidence.
 const noPathLedger = []
 const fullChestLedger = [] // (v0.65.0) shared fleet-wide 'chest full' verdicts - one discovery spares the other 18 the walk
+const walkIntents = [] // (v0.974.0) shared fleet-wide walk intents - a walk speaks BEFORE it starts, the other bots' scans skip the chest until it resolves (FACE 262's rent: 12 of 13 repeat refusals were overlapping walks)
 const bankArmSpoke = new Set() // (v0.574.0) THE ARM SILENCE CENSUS - every bot whose bank arm family WANTED a pass (planned/dusk/dusk-plan/pockets-full/deliverable/shed all feed one bankWanted gate, and the wanted pass speaks); the end-phase row reads the complement - the never-wanted bots whose pockets rode the deadline in silence
 const prePositionArmed = new Set() // (v0.645.0) THE PRE-POSITION'S OWN CENSUS - the walk-home seat's armed set (the dig loop's one-shot delivery seat; face 37239853197 armed 10 bots and the arm census still read them 'never armed' - the seat's wanted pass was invisible to the book)
 const prePositionLanded = [] // (v0.645.0) the landed pre-position deliveries' unit counts (the seat's own conversion: face 37239853197 landed 3 of 10, +378u)
@@ -4861,6 +4863,7 @@ console.log(`kicks handled: ${kicks} (reconnect attempts: ${reconnects})`)
 // 'chest skip (no path cached ...)' lines).
 console.log(`no-path ledger: ${noPathLedger.length} live verdict(s) at end phase`)
 console.log(`full-chest ledger: ${fullChestLedger.length} live verdict(s) at end phase`)
+console.log(`walk-intent board: ${walkIntents.length} live intent(s) at end phase`)
 const dgs = doomedGoalStats()
 console.log(`doomed-goal ledger: ${dgs.records} recorded, ${dgs.refusals} re-issues refused at the funnel, ${dgs.absorbed} re-dooms absorbed (the v0.96.0 backoff - the storm can no longer out-pace the ttl), ${dgs.live} live at end phase (v0.72.0 spiral breaker)`)
 // (v0.574.0) THE ARM SILENCE ROW - the cadence's own leanness law: the row reads
