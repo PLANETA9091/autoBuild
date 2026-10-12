@@ -25937,3 +25937,31 @@ Stage Summary:
 - FACE 236 = 38186629196 dispatched 204 (the tip race resolved to the lane's e8c6af8d), in_progress on the v0.965.0 tree.
 - Next free version 0.966.0. Carried fronts: the blind family's own seat (the water lane's constant - two faces two rows), the mortality watch (calm calm - the face-233 OOM singular), the o2-low front (the lane's v0.965.0 = the o2 arm's own clock - THE FRONT IS NOW THEIRS TWICE), the BANK EARLY lever (the door clock's rows: LATE / MID / silence - the per-face law holds), the write-off's own night (the deadline's dark collection), the reloot zero (eight faces), the throne's rotation law (seven refusals), the gather drought (thin), the sandbox mortality (alive thirteen).
 - Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+
+---
+Task ID: cron30-20261012-0830
+Agent: main agent (cron fire 0830, Job ID 414125)
+Task: fire 0830 A-G loop (FACE 236 read FIRST - the v0.965.0 tree's first on-tree face, the o2 arm's own clock's first live row; FACE 237 dispatch)
+
+Work Log:
+- Sandbox survived (fourteenth consecutive). Synced /home/z/privateB-repo (tip ee583c78 = my fire-0800 worklog; code v0.965.0 THE O2 ARM'S OWN CLOCK = 25c52024; next free 0.966.0). Pull --rebase clean at open.
+- Gates BY RUN ID: my fire-0800 push gate 38186702134 (ee583c78) SUCCESS (landed this fire's open).
+- FACE 236 = 38186629196 SUCCESS read (sha e8c6af8d, the v0.965.0 tree's first on-tree fleet face), three poll rounds (~31 min), artifacts mined to face236/ (fleet19.log 3809 lines + decomp236.txt 688 rows):
+  * THE O2 ARM'S OWN CLOCK'S FIRST ON-TREE ROW RODE THE HONEST SILENCE (v0.965.0): the arm book priced nothing - 0 drown-kind deaths joined an arm (the fence law: no deaths, no book, the clock rides with it) - the clock waited for its water
+  * THE SAVED FACE: 52 rescue starts, 0 drown-kind deaths - the water lane landed every rider (ends: released 44 / complete 5 / frozenStanddown 2 / timeout 1); F8's dive join: relog 1 + start 12 (23.1% of the starts)
+  * THE MORTALITY WATCH'S THIRD CALM ROW: full face, heartbeat n=44, rss peak 398M, mainLate max 1312ms - the face-233 OOM stays singular (calm calm calm)
+  * DEATHS 2 ALL MOB: Drowned x2 (both F2, slain surface y=62 in-water), the mob book's anatomy: slain 2 surface 2 - the ambient night's own spread; the drain's thirds mid 55u / late 31u; the deadline's own diver: F2 owns both (100%)
+  * THE CHURN'S CALM FACE: 6 dup kicks + 1 relog = 7 (the calmest since face 232's 6); F8 owns the churn (4 kicks + 1 relog, 6 of 8 reconnects = 75%); the relog ladder 0 stalled (the saver did its job)
+  * THE BANK HELD: banked 1364u of mined 2385, conversion 111.5%, yield 9.6u/visit over 142 visits; the door leg 21 (unreachable 17), the rate 14.8%; the door clock (v0.963.0) rode SILENT (21 legs, no 2:1 dominance - the honest silence's own row law); the write-off's own seat: F14 202u wet-wall + F13 177u low-o2 + F17 172u night
+  * THE CALM BOOKS: A* decide-timeout 5 + no-path 4 + unreachable 5 (the walk lattice LATE-dominant 3 of 4); famines 5 (food 4 + wood 1, the gather drought logs 1/1, food owns 80%); the reloot zero stands NINE faces (arms 0, 2 piles ~86u, biggest 55u F2); the smelt: batches 7, fuel clips 7 of 115 completed, the debt 168 units smelting; fights 8 kills 2; storm verdict CALM 0 air glitches; worldmap 1514 positions 24 chunks, map launches 7 (sand 5 + gravel 2) spread across 7 bots (no solo crowd)
+  * THE THRONE REFUSED AN EIGHTH ON-TREE FACE: F8 x15 + F18 x8 own 23/55 (41.8%), the cast rotated AGAIN
+- F: x1 pre-poll seat FREE (38186629196 completed) -> POST 204 -> FACE 237 = 38188617165 queued VERIFIED BY RUN ID + event, riding ee583c78 (the v0.965.0 tree at the tip)
+- No code this fire (the read+dispatch shape, the twentieth consecutive); next free 0.966.0
+- The box ends before FACE 237's ~35-min clock - the read rides fire 0900
+
+Stage Summary:
+- FACE 236 = 38186629196 SUCCESS read: the o2 arm's own clock's first on-tree row rode the honest silence (no drown-kind death - the fence law's own first face), the SAVED FACE (52 starts 0 drown deaths), the mortality watch's third calm row (rss 398M), deaths 2 all Drowned mob kills (F2 the deadline's own diver), churn 7 calm (F8 owns 75% of the reconnects), the bank held (1364u, conversion 111.5%, the door clock's silence), the reloot zero nine faces, the throne refused an eighth face.
+- FACE 237 = 38188617165 dispatched 204, queued on the v0.965.0 tree.
+- Next free version 0.966.0. Carried fronts: the arm clock's water watch (the fence waits for a drown-kind death to price), the blind family's own seat (silent two faces running), the mortality watch (the OOM singular), the o2-low front (the lane's v0.965.0), the BANK EARLY lever (LATE / MID / silence - the per-face law), the write-off's own night, the reloot zero (nine faces), the throne's rotation law (eight refusals), the gather drought (logs 1/1), the smelt clip debt (168 units), the sandbox mortality (alive fourteen).
+- Identity PLANETA9091 verified per commit. NO force-push, NO history rewrite. Zero conflicts, zero zombies.
+- Repo push: pending (worklog fire-0830 append). NEXT SESSION READ LIST: FACE 237 = 38188617165 (the v0.965.0 tree's second on-tree fleet face - the arm clock's second-row watch: does the fence stay silent or does the water arrive), gate verdict for the fire-0830 push BY RUN ID, next free 0.966.0.
