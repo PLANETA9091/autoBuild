@@ -107,3 +107,47 @@ test('one parser one truth: the lens\u0027s population is MEM_HB_RE\u0027s own m
   assert.equal(r.n, direct)
   assert.equal(MEM_HB_RE.test(mem(300)), true)
 })
+
+test('THE ARM RIDE\u0027S OWN SHAPE - FACE 272 REAL-layout compact: one plateau run of 28 from gauge 27 of 54, pre-arm peak 444M', () => {
+  const cells = [371, 372, 380, 380, 383, 384, 380, 386, 385, 387, 382, 382, 387, 388, 387, 387, 386, 386, 389, 393, 397, 419, 436, 443, 443, 444, 457, 459, 458, 458, 458, 458, 454, 455, 457, 457, 452, 458, 456, 454, 451, 454, 454, 458, 454, 454, 456, 458, 452, 458, 454, 459, 456, 456]
+  const lines = cells.map((r) => mem(r))
+  const r = valveMarginJoin(lines)
+  assert.equal(r.n, 54)
+  assert.equal(r.peak, 459)
+  assert.equal(r.overValveCells, 28)
+  assert.equal(r.overArmRuns, 1)
+  assert.equal(r.overArmLongest, 28)
+  assert.equal(r.stepIndex, 27)
+  assert.equal(r.preArmPeak, 444)
+  assert.equal(r.shape, 'the ride is a PLATEAU - one run of 28 gauge(s) from gauge 27 of 54, never below the arm again (the pre-arm band peaked at 444M)')
+  assert.equal(r.verdict, "the valve arm is RIDDEN - rss peak 459M rides 9M past the 450M valve floor (residency 28 gauge(s)) - the valve's own span owns the storm, the closest-approach book rode the wrong floor")
+})
+
+test('the shape stays a CELL - the v0.974.9 verdict words ride byte-stable for every shape', () => {
+  const r = valveMarginJoin([mem(371), mem(460), mem(380), mem(465), mem(390)])
+  assert.equal(r.overArmRuns, 2)
+  assert.equal(r.shape, 'the ride rides 2 run(s), longest 1 gauge(s) (stripes, not a plateau)')
+  assert.equal(r.verdict, "the valve arm is RIDDEN - rss peak 465M rides 15M past the 450M valve floor (residency 2 gauge(s)) - the valve's own span owns the storm, the closest-approach book rode the wrong floor")
+})
+
+test('one run that returns below the arm reads the returned words (no plateau claim)', () => {
+  const r = valveMarginJoin([mem(371), mem(470), mem(480), mem(390), mem(395)])
+  assert.equal(r.overArmRuns, 1)
+  assert.equal(r.stepIndex, 2)
+  assert.equal(r.preArmPeak, 371)
+  assert.equal(r.shape, 'the ride is one run of 2 gauge(s) from gauge 2 of 5 (returned below the arm at the tail)')
+})
+
+test('a face that starts over the arm rides no preArmPeak (the honest unknown)', () => {
+  const r = valveMarginJoin([mem(460), mem(455), mem(458)])
+  assert.equal(r.stepIndex, 1)
+  assert.equal(r.preArmPeak, null)
+  assert.equal(r.shape, 'the ride is a PLATEAU - one run of 3 gauge(s) from gauge 1 of 3, never below the arm again')
+})
+
+test('the clean face reads no shape (the floor holds - nothing rides)', () => {
+  const r = valveMarginJoin([mem(371), mem(380), mem(383)])
+  assert.equal(r.shape, '')
+  assert.equal(r.stepIndex, null)
+  assert.equal(r.preArmPeak, null)
+})

@@ -4676,7 +4676,8 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
 {
   const vm = valveMarginJoin(lines)
   if (vm) {
-    console.log(`  valve margin (v0.974.9): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room`)
+    const shapeTail = vm.shape ? ` | ${vm.shape}` : ''
+    console.log(`  valve margin (v0.974.9, shape v0.974.10): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}`)
   }
 }
 
