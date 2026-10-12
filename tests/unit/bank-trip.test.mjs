@@ -445,3 +445,51 @@ test("THE ARM SILENCE CENSUS: a wanted pass is a spoke, the end-phase row reads 
   assert.match(fleetSrc, /their end pockets carried \$\{silentTotal\}u/, 'the row names the silent mass')
   assert.match(fleetSrc, /top \$\{top\[0\]\}=\$\{top\[1\]\}u/, 'the row names the top silent holder')
 })
+
+// ---------------------------------------------------------------------------
+// (v0.970.0) THE EARLY BANK CADENCE - the door clock's own lever (48 -> 32).
+// Face 243 (38202261687, the v0.969.0 field): the door clock's first LATE row
+// since 237 (9 of 12 rides rode the closing third) - the decompose names the
+// lever BANK EARLY, and the walk lattice's LATE no-path x2 repeats it. The
+// arithmetic was the floor's own trap: at the measured ~67 units/bot/600s
+// rate the 48u floor landed the first planned pocket at ~430s - past the
+// 600s window's close (360s) and mid-late in a 941s face. These pins keep
+// the floor inside the window's own arithmetic (the v0.176.0 class must
+// never reopen) and the fleet call site riding the constant (the cure
+// reaches the field, the v0.198.0 dead-wire lesson).
+// ---------------------------------------------------------------------------
+test('the early cadence floor lands inside the planned window (the v0.970.0 arithmetic)', () => {
+  // the measured rate's own pin: ~67 units/bot/600s (the floor comment's own
+  // measurement). The floor's units-time must land the first trip INSIDE a
+  // 600s run's eligible window [everyMs, 600s - minRemainingMs].
+  const rate = 67 / 600 // units per second, the measured fleet rate
+  const landS = BANK_TRIP_MIN_UNITS / rate
+  const windowCloseS = (600000 - BANK_TRIP_MIN_REMAINING_MS) / 1000
+  assert.ok(landS < windowCloseS,
+    `the floor lands at ~${Math.round(landS)}s, the window closes at ${windowCloseS}s - the trip must stay catchable`)
+  // the window's own catchability: wider than one mining-loop iteration
+  // (the v0.176.0 lesson's own bar, ~90-150s)
+  assert.ok(windowCloseS - BANK_TRIP_EVERY_MS / 1000 > 150,
+    'the eligible window stays wider than one mining-loop iteration')
+})
+
+test("the early floor arms the trip in the face's early half (the lever's own verdicts)", () => {
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: 941000 }), true,
+    "a 941s face arms the first planned trip early (the measured era's face length)")
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: 600000 }), true,
+    'a 600s run arms it too (the floor no longer lands past the window)')
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS - 1, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: 941000 }), false,
+    'a pocket one unit light never trips (the floor is a floor)')
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS, remainingMs: BANK_TRIP_MIN_REMAINING_MS - 1 }), false,
+    'the end-phase fence holds byte for byte (the lever is the floor alone)')
+  assert.equal(bankTripDue({ units: BANK_TRIP_MIN_UNITS, msSinceBank: BANK_TRIP_EVERY_MS - 1, remainingMs: 941000 }), false,
+    'the cadence clock holds byte for byte (the lever is the floor alone)')
+})
+
+test('REGRESSION PIN: the fleet call site rides the constant (no explicit minUnits)', () => {
+  const fleetSrc = readFileSync(new URL('../../testbed/fleet19.mjs', import.meta.url), 'utf8')
+  const call = fleetSrc.match(/bankTripDue\(\{[\s\S]*?\}\)/)
+  assert.ok(call, 'the planned-trip call exists in the work loop')
+  assert.ok(!/minUnits/.test(call[0]),
+    "the units floor stays the constant's own - the v0.970.0 cure reaches the field (the v0.198.0 dead-wire lesson)")
+})

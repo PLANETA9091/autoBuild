@@ -619,7 +619,23 @@ export function needsBanking (bot) {
 // branch, which already climbs out, walks to the yard and returns to the
 // remembered column.
 export const BANK_TRIP_EVERY_MS = 150000 // a planned bank trip at most every 2.5 min of digging
-export const BANK_TRIP_MIN_UNITS = 48 // ...but only when the pockets hold real loot (measured: ~67 units/bot/600s)
+// (v0.970.0) 48 -> 32: THE EARLY BANK CADENCE - the door clock's own lever.
+// MEASURED (face 243 = 38202261687, the v0.969.0 field): the door clock's
+// first LATE row since 237 (9 of 12 door rides rode the closing third) - the
+// decompose names the lever BANK EARLY (the door's failures rode the closing
+// churn), and the walk lattice's LATE no-path x2 repeats it (the late chest
+// ring starves the lattice - arm the walk lane earlier). The arithmetic was
+// already the floor's own trap: at the measured ~67 units/bot/600s rate
+// (0.112 u/s) the 48u floor landed the first planned pocket at ~430s - for a
+// 600s run PAST the eligible window's close (600-240=360s: the v0.176.0
+// 'planned trips never fire' class, still priced in), for a 941s face one
+// trip in the mid-late third whose door legs walked straight into the churn.
+// At 32u the floor lands ~286s: the trip arms in the early half, a 941s face
+// fits a SECOND planned trip (~572s, still inside the window), the mass
+// reaches the yard before the closing churn, and the late third carries
+// lighter pockets. The dusk lane's own 24u floor, the fuel-tithe bypass and
+// the end-phase fences keep their bytes (the lever is the floor alone).
+export const BANK_TRIP_MIN_UNITS = 32 // ...but only when the pockets hold real loot (measured: ~67 units/bot/600s; the v0.970.0 early-bank arithmetic)
 // (v0.176.0) 330s -> 240s: THE 600s-RUN WINDOW ARITHMETIC. The planned trip's
 // eligible window in a 600s run is [BANK_TRIP_EVERY_MS (150s since the last
 // attempt), 600s - minRemainingMs]. At 330s that window was [150s, 270s] =
