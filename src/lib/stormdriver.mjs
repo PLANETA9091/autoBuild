@@ -66,7 +66,10 @@ import { SOCK_LOSS_RE } from './sockloss.mjs'
 
 // The pulse gauge line's own anatomy (heartbeat.mjs's emitter template:
 // `b] n=${n} ts=${tsSec}s rss=${rssMb}M late=${lateMs}ms mainLate=${mainLateMs}ms`).
-const PULSE_GAUGE_RE = /b\] n=(\d+) ts=(\d+)s rss=(\d+)M late=(\d+)ms mainLate=(\d+)ms/
+// Exported since v0.974.7: the burst-freeze join reads the SAME cells with
+// this SAME parser - one gauge parser one truth (the sockloss import's own
+// law, kept for the gauge side too).
+export const PULSE_GAUGE_RE = /b\] n=(\d+) ts=(\d+)s rss=(\d+)M late=(\d+)ms mainLate=(\d+)ms/
 
 /** mainLate (ms) a gauge must read at the loss's freshest witness to call
  * the loss stall-adjacent. */

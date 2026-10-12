@@ -152,6 +152,7 @@ import { emptyWhyRetries } from '../../src/lib/retrywhy.mjs' // (v0.909.0) the e
 import { bareEndJoin } from '../../src/lib/bareend.mjs' // (v0.910.0) the bare end's own join - the bare '()' skins joined to the socket-loss certificates (the known class's own shadow vs the face's quietest ends; the partition reconciles with the v0.909.0 bare cell by construction)
 import { sockLossCensus, sockChurnJoin, sockJoinSeatRow, sockJoinRidersRow, sockBareSeatRow, sockBareRidersRow } from '../../src/lib/sockloss.mjs' // (v0.806.0) the socket loss's own book - the client-side death certificates (the error/socket-error/raw-stack bursts, the twin + raw reconciles, the log's thirds clock; v0.809.0 the join's own seat; v0.812.0 the bare kick's own seat)
 import { stormDriverJoin } from '../../src/lib/stormdriver.mjs' // (v0.974.5) the storm driver's own join - the loss ↔ mainLate stall lens (the 0200 fire's driver hypothesis priced)
+import { burstFreezeJoin } from '../../src/lib/burstfreeze.mjs' // (v0.974.7) the burst's own arrow - the burst → freeze precedence lens (the v0.974.6 fire's direction flip priced)
 import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 book's own class - the o2-reset drown form split's own seat (the never lane the arm's own gap, the active lane the arm's own loss; the strict-majority law, a tie owns nothing)
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
@@ -2367,6 +2368,21 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     const sdj = stormDriverJoin(lines)
     if (sdj) {
       console.log(`  the storm driver's own join (v0.974.6): ${sdj.n} loss(es) - stall-adjacent ${sdj.stall} (peak mainLate ${sdj.maxStallLate}ms at the freshest gauge) / calm ${sdj.calm} / ungauged ${sdj.ungauged}${sdj.verdict ? ` - ${sdj.verdict}` : ''}`)
+    }
+    // (v0.974.7) THE BURST'S OWN ARROW - the burst -> freeze precedence lens.
+    // The v0.974.6 fire's direction fork flipped BY HAND on FACE 268's bytes
+    // (the burst rode ts 521-541 calm-bookended; the ~25s freeze sat at
+    // ts=561, TWENTY SECONDS after) - this row prices the arrow per face:
+    // every gauge at/over the 5s fence is a freeze seat with a ts, every
+    // loss anchors to its freshest preceding gauge's ts (the same cell the
+    // driver join prices), and the 30s tail fence splits the freezes into
+    // tail / late / alone. One additive row beside the driver join.
+    const bfj = burstFreezeJoin(lines)
+    if (bfj) {
+      const gaps = bfj.minGap != null
+        ? ` (nearest gap ${bfj.minGap}s${bfj.maxGap !== bfj.minGap ? ` / widest ${bfj.maxGap}s` : ''})`
+        : ''
+      console.log(`  the burst's own arrow (v0.974.7): ${bfj.n} loss(es) - freeze(s) ${bfj.freezes} - tail ${bfj.tail} / late ${bfj.late} / alone ${bfj.alone}${gaps} - ${bfj.verdict}`)
     }
   }
 }
