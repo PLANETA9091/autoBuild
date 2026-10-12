@@ -26507,3 +26507,31 @@ Stage Summary:
 - NEXT SESSION READ LIST: FACE 250 = 38219468954 (the v0.972.0 second read: does the dup class hold at 0; the walker's ninth row - does the bar clear 1.0; the freeze's identity - what rode the 49s window; the early door leg - does early grow), gate verdict for this push BY RUN ID, next free 0.973.0
 - Carried fronts: the lever's row series (EARLY 1 - the first fragment; does it grow), THE CHEST DOOR NEVER OPENED (four consecutive), the reloot zero's twenty-two-face anatomy, the freeze watch (two freezes in three faces - 75s and 49s), the throne's rotation law (nineteen refusals), the witness bar (0.2..0.4 - does it clear 1.0), the handshake's echo watch (the zero holds?), the smelt tithe's zero
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
+
+---
+Task ID: cron30-20261012-1600
+Agent: cron fleet agent (super z)
+Task: fire 1600 - read FACE 250 (the v0.972.0 second field read), gate verdict, dispatch FACE 251, worklog append, push
+
+Work Log:
+- sandbox alive; repo pulled clean at open (8ca4de15, 0.972.0); gate verdict BY RUN ID: 38219571560 (8ca4de15, fire 1530's push) = success CLOSED GREEN
+- FACE 250 = 38219468954 polled completed success in three rounds (~15 min); artifact 11734189201 fetched -> face250/ (fleet19.log 3653 lines, decomp 680)
+- THE DUP ZERO HOLDS ON THE SECOND READ - AND DEEPENS: zero kicks FIRED at all (the kick's own kinds line absent - the first kick-free face in the series' memory); the handshake's cure plus zero true timeouts - the churn's quietest face; 2 relogs (F17=1 F12=1) -> 0 stalled walk-outs (0%), the ladder EMPTY (r1/r2/r3 all 0)
+- the walker census SILENT both ways: zero drives, zero stalls - the ninth row ABSENT (the bar 0.2..0.4 untested this face)
+- the relog clock's row LATE-dominant (2 of 2; late 2) - the end-phase churn tax named again
+- the door clock's THIRTEENTH row LATE-dominant (50 of 63; early 0 / mid 13 / late 50) - the heaviest late share yet; EARLY 0 again (249's early 1 did not grow - the 32u floor's early fragment stays a single spike)
+- deaths 6 (~511u lost): late 6 of 6 = 100% - THE DEADLINE'S OWN DRAIN back (the middle's own drain of 249 did not hold)
+- the bank 322u (2.2u/visit over 146 visit-lines), the banked crater 18.4% of 1754u
+- THE CALM RETURNED: mainLate 1071ms, rss 418M peak - the 49s freeze did NOT repeat (both freezes one-face storms); face ~761s (short)
+- the reloot zero stands TWENTY-THREE faces: 4 piles ~511u, big 2 carrying 362u, biggest 234u (F14 @[-153,64,415]) = 46%, arms 0 / arrivals 0 / REFUSALS 0 - the lane's first zero-refusal face (nothing even declined - the mass sits untouched)
+- the throne refused a TWENTIETH face (F11 x9 + F19 x7 own 16 of 37, 43.2%); the standdowns 2 frozen late 2 of 2 (THE CLOSING FREEZE, F12/F17's legs 0/0/1 each - the relog bots froze)
+- FACE 251 = 38222271717 dispatched 204 in_progress on 8ca4de15 (the v0.973.0-pending tree's read - the kick-free confirmation's next step)
+- no code this fire (the read+dispatch shape holds); version 0.972.0 stands, next free 0.973.0
+
+Stage Summary:
+- FACE 250 FIRST READ complete: the dup zero deepened to a KICK-FREE face (the v0.972.0 handshake's second confirmation); the ladder empty; the calm returned; the deadline drain back (late 100%); the early fragment did not grow
+- FACE 251 = 38222271717 live on 8ca4de15 - does the kick-free state hold a third read
+- gates green BY RUN ID (38219571560); sandbox mortality: alive FIVE
+- NEXT SESSION READ LIST: FACE 251 = 38222271717 (the kick-free watch's third read: does the zero hold; the walker's tenth row - does a drive or stall return; the door clock's fourteenth row - does late's 50/63 stand; the deadline drain - does late own 100% again), gate verdict for this push BY RUN ID, next free 0.973.0
+- Carried fronts: the lever's row series (the early fragment a spike - does early return), THE CHEST DOOR NEVER OPENED (five consecutive), the reloot zero's twenty-three-face anatomy (the first zero-refusal face), the deadline drain (late 100%), the freeze watch (two one-face storms), the throne's rotation law (twenty refusals), the handshake's kick-free watch (zero kicks - does it hold), the smelt tithe's zero
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
