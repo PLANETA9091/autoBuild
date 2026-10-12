@@ -511,3 +511,83 @@ test('v0.967.0: the census rides the counted families - zero new filter keys (th
   // the fleet filter already carries the family key - the mouth needed NO new filter work
   assert.ok(fleetSrc.includes('death drop|reloot|'), 'the filter\u0027s reloot key passes the mouth lines untouched (zero new keys)')
 })
+
+// ---- (v0.969.0) THE SECOND SITTING - the rebuild's tail re-arms the defer ----
+// MEASURED (face 241 = 38197668634, the v0.967.0 mouth's first field face):
+// arms 0, arrivals 0, ONE visible refusal (wet-spot, ~92u priced) while 18
+// piles ~2024u stranded - the FOURTEENTH consecutive zero-arm face. The
+// anatomy is the defer's own lane: the mouth's delay branch leaves the
+// record un-attempted, trusting 'the loop top's lane re-arms it when the
+// grace expires' - but the loop top never opens for the post-death bot (the
+// SAME seat problem the mouth itself cured, one level deeper). The cure: the
+// rebuild's own tail re-asks the record once, after ensureTools, under the
+// SAME fences. These pins read the second sitting's source (the dead-wire
+// class is only catchable at the call site).
+const sitBlock = () => {
+  const start = fleetSrc.indexOf('const sitDeath = attempt > 0')
+  const end = fleetSrc.indexOf('dir=(', start)
+  assert.ok(start > -1 && end > start, 'the second sitting exists at the rebuild tail (between ensureTools and the bootstrap summary)')
+  return fleetSrc.slice(start, end)
+}
+
+test('v0.969.0: the second sitting sits at the rebuild tail, after ensureTools, gated attempt > 0', () => {
+  const toolsIdx = fleetSrc.indexOf('const res = await ensureTools(miner.bot, { miner, log: () => {} })')
+  const sitIdx = fleetSrc.indexOf('const sitDeath = attempt > 0')
+  const woodIdx = fleetSrc.indexOf('await miner.gatherWood(')
+  assert.ok(toolsIdx > -1 && sitIdx > toolsIdx, 'the second sitting follows ensureTools (the grace first window has run by then)')
+  assert.ok(woodIdx > -1 && woodIdx < toolsIdx, 'the seat sits after the whole bootstrap (gatherWood precedes it)')
+  assert.ok(sitIdx < fleetSrc.indexOf('dir=(', sitIdx), 'the second sitting precedes the bootstrap summary line (the rebuild owns its verdicts first)')
+  const sit = sitBlock()
+  assert.ok(sit.includes('!sitDeath.attempted'), 'the gate reads the un-attempted flag (a resolved record never re-asks)')
+  assert.ok(!sit.includes('hasPickNow('), 'the second sitting never names the loop-top helper (the TDZ class - the mouth pin byte for byte)')
+})
+
+test('v0.969.0: the second sitting asks the plan with every scalar (the run195 dead-wire class)', () => {
+  const sit = sitBlock()
+  const call = sit.match(/relootPlan\(\{[\s\S]*?\}\)/)
+  assert.ok(call, 'the call site exists')
+  assert.match(call[0], /spot:\s*sitDeath\.spot/, 'the spot rides the call')
+  assert.match(call[0], /deathAt:\s*sitDeath\.at/, 'the death clock rides the call (the despawn window prices from it)')
+  assert.match(call[0], /now:\s*Date\.now\(\)/, "the caller's clock rides the call")
+  assert.match(call[0], /botPos:\s*miner\.bot\.entity/, 'the rebuilt position rides the call (the distance needs it)')
+  assert.match(call[0], /spotWet:\s*sitSpotWet/, 'the live wet read rides the call (the v0.854.0 fence is only as real as its wire)')
+  assert.match(call[0], /pocketU:\s*sitDeath\.pocketU/, 'the stake rides the call (the no-stake fence reads it)')
+  assert.match(sit, /const sitSpotWet = \(\(\) => \{[\s\S]*?\}\)\(\)/, 'the wet read exists at the sitting top (before the plan call)')
+  const readIdx = sit.indexOf('const sitSpotWet')
+  const callIdx = sit.indexOf('relootPlan({')
+  assert.ok(readIdx > -1 && callIdx > readIdx && callIdx - readIdx < 1200, 'the wet read precedes the plan call it feeds')
+})
+
+test('v0.969.0: the second sitting fence order - plan, night, the silent delay, the walk (zero drift)', () => {
+  const sit = sitBlock()
+  const refuseIdx = sit.indexOf('if (!smp.go) {')
+  const nightIdx = sit.indexOf('else if (walkForbidden(miner.bot.time?.timeOfDay)) {')
+  const deferIdx = sit.indexOf('else if (!sitPileArm && sitUnarmed.defer) {')
+  const walkIdx = sit.indexOf('} else {\n            sitDeath.attempted = true')
+  assert.ok(refuseIdx > -1 && nightIdx > refuseIdx && deferIdx > nightIdx && walkIdx > deferIdx,
+    'the fences chain in the mouth order: plan -> night -> delay -> walk (zero drift)')
+  assert.match(sit, /const sitPileArm = relootPileVerdict\(\{ pileU: sitDeath\.pocketU \}\)\.bypass/,
+    'the pile bypass reads the record stake (one truth, the v0.484.0 verdict)')
+  assert.match(sit, /const sitUnarmed = relootUnarmedVerdict\(\{ deathAt: sitDeath\.at, now: Date\.now\(\) \}\)/,
+    'the grace reads the SAME verdict (the v0.261.0 window, one truth)')
+  // the one-walk law: every terminal verdict marks BEFORE its work; the delay marks nothing
+  const walk = sit.match(/sitDeath\.attempted = true[\s\S]*?await gotoSafe\(/)
+  assert.ok(walk, 'the sitting marks the record before its own goto')
+  assert.match(sit, /if \(!smp\.go\) \{\s*sitDeath\.attempted = true/, 'the plan refusal marks the record')
+  assert.ok(sit.includes('else if (walkForbidden(miner.bot.time?.timeOfDay)) {\n            sitDeath.attempted = true'),
+    'the night fence marks the record (the v0.185.0 law)')
+  assert.ok(!/else if \(!sitPileArm && sitUnarmed\.defer\) \{[\s\S]*?sitDeath\.attempted = true/.test(sit.slice(deferIdx, walkIdx)),
+    'the delay branch marks NOTHING (silence is the delay honest shape - the next pass re-arms)')
+})
+
+test('v0.969.0: the census rides the counted families - zero new filter keys (the census guard)', () => {
+  const sit = sitBlock()
+  assert.ok(sit.includes('reloot: no walk ('), 'the sitting refusals ride the counted why family')
+  assert.ok(sit.includes('reloot: walking to the own death spot ['), 'the sitting arms ride the counted walking family')
+  assert.ok(sit.includes('reloot: arrived in '), 'the sitting arrivals ride the counted family')
+  assert.ok(sit.includes('reloot: walk failed ('), 'the sitting failures ride the counted family')
+  assert.ok(sit.includes(", the rebuild mouth's second sitting)"), 'the seat marker names the second sitting for the anatomy (the arms split by seat)')
+  assert.match(sit, /sitPileArm && sitEscalation \? ', the pile arm' : ''/, 'the pile-arm marker rides the sitting walking line (only for the unarmed walk)')
+  // the one-ask-per-pass scope: the sitting reads ONE record (the newest) - not a queue drain
+  assert.ok(sit.includes('miner.lastDeath?.() ?? null'), 'the sitting prices the bot OWN last death (the per-bot seat law)')
+})

@@ -1614,6 +1614,92 @@ async function runBot (name, target, index) {
         const res = await ensureTools(miner.bot, { miner, log: () => {} })
         if (res.ok && attempt === 0) toolsOk++
         if (res.ok && attempt > 0) toolsReboot++
+        // (v0.969.0) THE SECOND SITTING - the rebuild's tail re-asks the
+        // mouth's deferred record. MEASURED (face 241 = 38197668634, the
+        // v0.967.0 mouth's first field face): arms 0, arrivals 0, ONE visible
+        // refusal (wet-spot, ~92u priced) while 18 piles ~2024u stranded -
+        // the FOURTEENTH consecutive zero-arm face. The anatomy is the
+        // defer's own lane: the mouth's delay branch leaves the record
+        // un-attempted, trusting 'the loop top's lane re-arms it when the
+        // grace expires' - but the loop top never opens for the post-death
+        // bot (the SAME seat problem the mouth itself cured, one level
+        // deeper: the re-arm lane is starved exactly like the ask lane was).
+        // The deaths crowded the late third (90% - five dark-third faces
+        // running), so the deferring bot rebuilds while the clock runs out
+        // and the loop top never sits. THE CURE: the rebuild's own tail
+        // re-asks. By the time ensureTools returns, the grace's first window
+        // has run (the rebuild owns 60s+ of the 90s grace), the pocket holds
+        // what the bootstrap funded, and the SAME plan re-prices fresh: the
+        // eight fences + the night fence inherit verbatim, the walk fires
+        // legally or the honest verdict prints. ONE ask per rebuild pass
+        // (the newest record rides - a mid-rebuild death prices fresh on its
+        // own pass); the one-walk law byte for byte (the arm and every
+        // terminal verdict mark BEFORE their work; only the defer class
+        // stays silent - its next pass re-arms it). The census rides the
+        // SAME counted families (the walking / the arrival / the refusal /
+        // the walk-failed); the seat marker names the second sitting for
+        // the anatomy.
+        const sitDeath = attempt > 0 ? (miner.lastDeath?.() ?? null) : null
+        if (sitDeath && !sitDeath.attempted) {
+          const sitPileArm = relootPileVerdict({ pileU: sitDeath.pocketU }).bypass
+          const sitUnarmed = relootUnarmedVerdict({ deathAt: sitDeath.at, now: Date.now() })
+          const sitSpotWet = (() => {
+            try {
+              const s = sitDeath.spot
+              if (!s || !Number.isFinite(s.x) || !Number.isFinite(s.y) || !Number.isFinite(s.z)) return false
+              const b = miner.bot.blockAt(new Vec3(Math.floor(s.x), Math.floor(s.y), Math.floor(s.z)))
+              return !!(b && typeof b.name === 'string' && RELOOT_SPOT_FLUID_RE.test(b.name))
+            } catch { return false }
+          })()
+          let smp = null
+          try {
+            smp = relootPlan({
+              spot: sitDeath.spot,
+              deathAt: sitDeath.at,
+              now: Date.now(),
+              botPos: miner.bot.entity
+                ? { x: miner.bot.entity.position.x, y: miner.bot.entity.position.y, z: miner.bot.entity.position.z }
+                : null,
+              spotWet: sitSpotWet,
+              pocketU: sitDeath.pocketU
+            })
+          } catch { smp = { go: false, why: 'no-spot' } }
+          if (!smp.go) {
+            sitDeath.attempted = true
+            console.log(`${name} reloot: no walk (${smp.why}) - the second sitting's verdict, the record resolves here`)
+          } else if (walkForbidden(miner.bot.time?.timeOfDay)) {
+            sitDeath.attempted = true
+            console.log(`${name} reloot: no walk (night) - the walk-forbidden window owns the surface, the drops ride out their clock (the second sitting's verdict)`)
+          } else if (!sitPileArm && sitUnarmed.defer) {
+            // (v0.969.0) a mid-rebuild death rides the SAME delay law byte
+            // for byte: the record stays un-attempted, silence is the
+            // delay's honest shape, the next pass re-arms it.
+          } else {
+            sitDeath.attempted = true
+            // (v0.969.0) the second sitting is still pre-helper in this
+            // file's flow (hasPickNow is born below, at the loop's own
+            // antechamber), so the escalation reads the pocket inline - the
+            // mouth's own junk-safe shape, one seat later.
+            const sitPick = (() => { try { return miner.bot.inventory.items().some(i => i.name.includes('pickaxe')) } catch { return false } })()
+            const sitEscalation = !sitPick
+            console.log(`${name} reloot: walking to the own death spot [${smp.goal.x},${smp.goal.y},${smp.goal.z}] (${Math.round(smp.dist)}b, budget ${(smp.budgetMs / 1000).toFixed(0)}s, window ${(smp.windowMs / 1000).toFixed(0)}s${sitEscalation ? ', the unarmed escalation' : ''}${sitPileArm && sitEscalation ? ', the pile arm' : ''}, the rebuild mouth's second sitting)`)
+            const sitT0 = Date.now()
+            try {
+              await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, smp.goal.x, smp.goal.y, smp.goal.z, { range: smp.range }), { timeoutMs: smp.budgetMs, label: 'reloot' })
+              let stacks = 0
+              try {
+                const me = miner.bot.entity.position
+                for (const e of Object.values(miner.bot.entities)) {
+                  if (!e || e.name !== 'item' || !e.position || e.isValid === false) continue
+                  if (e.position.distanceTo(me) <= 2.5) stacks++
+                }
+              } catch { /* a junk entity read reads zero stacks */ }
+              console.log(`${name} reloot: arrived in ${((Date.now() - sitT0) / 1000).toFixed(0)}s - ${stacks} item stack(s) in reach${stacks ? '' : ' - nothing left (picked up or despawned)'}`)
+            } catch (e) {
+              console.log(`${name} reloot: walk failed (${e.message}) - the drops stay lost (the second sitting's one walk; the ladder stays the loop's own)`)
+            }
+          }
+        }
         console.log(`${name} dir=(${direction.x.toFixed(2)},${direction.z.toFixed(2)}) logs=${miner.bot.inventory.items().filter(i => i.name.endsWith('_log')).reduce((a, i) => a + i.count, 0)} tools=${res.kit || 'none'}`)
       }
 
