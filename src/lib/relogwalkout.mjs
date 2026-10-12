@@ -158,3 +158,115 @@ export function walkoutStallLine ({ tag = '', displacement = null, windowMs = 0,
   const read = Number.isFinite(d) ? `${d.toFixed(1)} blocks of the ${RELOG_WALKOUT_MIN_PROGRESS.toFixed(1)} progress bar` : 'displacement unmeasured'
   return `${tag} water: relog walk-out stalled (window ${w}s, ${read}) - ${why}`
 }
+
+// (v0.968.0) THE WALK-OUT'S OWN WALK - the drive's pure aim law. The field
+// priced the promise's hole live (face 239 = 38192522229, all four windows
+// stalled at 0.1-0.6 blocks of the 1.0 bar): the hold's own line promises
+// 'the fresh client walks the hazard-ledgered column out' and nothing ever
+// aims the walk - the escalation rungs reset gates and release goal slots
+// (the funnel admits, the plan re-decides) but the plan re-decides THE SAME
+// wedged action (F10's second window: relog #2, rung 2, still 0.4 blocks).
+// The drive is the promise's first walker: at a HELD page (never the bypass
+// - the drowning clock outranks the hold and the rescue owns it), while the
+// witness is armed and the bot has not left the column, the wiring aims ONE
+// walk at the nearest DRY standable cell this scan finds. One attempt per
+// witness (the driven latch - the one-walk law, the mouth's precedent); the
+// window still judges (walked-out deletes the witness, stalled runs the
+// ladder's rungs - the v0.425.0 backstop unchanged); a sealed scan aims
+// nothing (the aim never invents a walk it cannot see).
+//
+// THE DRY LAW (the aim never points INTO the water): a candidate cell needs
+// a solid ground below (boundingBox !== 'empty'), empty-or-missing feet and
+// head (the standGoalNear shape - water blocks read 'empty' bounding boxes,
+// so the water check rides isWaterName on top, injected by the wiring), and
+// isWaterName false at the feet and the head. The scan order prices the
+// exit's own direction: the horizontal ring first (OUT of the column,
+// nearest ring radius first, level seat before rise before drop), then the
+// column's own ends (rise - the surface is the natural head-wet exit - then
+// drop), then the honest null (sealed).
+export const WALKOUT_AIM_RING = 3
+export const WALKOUT_AIM_DY_SCAN = [0, 1, -1, 2, -2]
+export const WALKOUT_AIM_COLUMN_REACH = 4
+
+/**
+ * The drive's pure aim: the nearest dry standable cell around the relog
+ * position, or null (sealed - the wiring logs the sealed line and aims
+ * nothing). Junk-safe: a non-finite axis, a missing reader or a junk
+ * predicate read null (a lost read never aims - the gates-decide
+ * convention); a readCell throw reads as a refused cell, never a crash.
+ * @param {{x?: number, y?: number, z?: number}|null} [from] the witness's relog position
+ * @param {(x: number, y: number, z: number) => {name?: string, boundingBox?: string}|null} [readCell] the wiring's block read
+ * @param {(name: string) => boolean} [isWater] the water-name predicate (injected - the pure core never forks the water law)
+ * @param {{ring?: number, dyScan?: number[], columnReach?: number}} [opts]
+ * @returns {null|{x: number, y: number, z: number}}
+ */
+export function walkoutAimCell (from, readCell, isWater, { ring = WALKOUT_AIM_RING, dyScan = WALKOUT_AIM_DY_SCAN, columnReach = WALKOUT_AIM_COLUMN_REACH } = {}) {
+  if (!from || typeof readCell !== 'function' || typeof isWater !== 'function') return null
+  const px = Math.floor(Number(from.x))
+  const py = Math.floor(Number(from.y))
+  const pz = Math.floor(Number(from.z))
+  if (!Number.isFinite(px) || !Number.isFinite(py) || !Number.isFinite(pz)) return null
+  const dys = Array.isArray(dyScan) ? dyScan.filter(d => Number.isInteger(d)).slice(0, 9) : WALKOUT_AIM_DY_SCAN
+  const dryStandable = (cx, cy, cz) => {
+    let ground = null
+    let feet = null
+    let head = null
+    try {
+      ground = readCell(cx, cy - 1, cz)
+      feet = readCell(cx, cy, cz)
+      head = readCell(cx, cy + 1, cz)
+    } catch { return false }
+    if (!ground || ground.boundingBox === 'empty') return false
+    if (feet && feet.boundingBox !== 'empty') return false
+    if (head && head.boundingBox !== 'empty') return false
+    if (feet && isWater(feet.name)) return false
+    if (head && isWater(head.name)) return false
+    return true
+  }
+  // the horizontal ring first - OUT is the exit's own direction
+  const ring8 = [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]
+  for (let r = 1; r <= ring; r++) {
+    for (const [ox, oz] of ring8) {
+      const cx = px + ox * r
+      const cz = pz + oz * r
+      for (const dy of dys) {
+        if (dryStandable(cx, py + dy, cz)) return { x: cx, y: py + dy, z: cz }
+      }
+    }
+  }
+  // the column's own ends: the surface (the head-wet exit) then the tail
+  for (let d = 1; d <= columnReach; d++) {
+    if (dryStandable(px, py + d, pz)) return { x: px, y: py + d, z: pz }
+  }
+  for (let d = 1; d <= columnReach; d++) {
+    if (dryStandable(px, py - d, pz)) return { x: px, y: py - d, z: pz }
+  }
+  return null
+}
+
+/**
+ * The drive's own line (one per witness - the driven latch bounds it in the
+ * field). Worded OUT of every existing lane: not 'relog walk-out' (the
+ * witness census's own prefix - its stall RE and its escape hatch must read
+ * this line as foreign), not 'frozen client relog' (the relog counter's
+ * lane), not the hazard board's shapes. The aim cell and the displacement
+ * ride the line (the dy-instrument's field style - the artifact carries the
+ * numbers, not just the verdict).
+ * @param {object} [p]
+ * @param {string} [p.tag] the bot tag ('[F10]')
+ * @param {null|{x: number, y: number, z: number}} [p.aim] the aimed cell (null = sealed)
+ * @param {number} [p.displacement] blocks moved at the drive's instant (null = unmeasured - the wiring never fires there, the pure law keeps the honest class)
+ * @returns {string}
+ */
+export function walkoutDriveLine ({ tag = '', aim = null, displacement = null } = {}) {
+  const raw = displacement
+  const d = raw === null || raw === undefined ? NaN : Number(raw)
+  const dRead = Number.isFinite(d) ? `${d.toFixed(1)} blocks from the relog cell` : 'displacement unmeasured'
+  const ax = aim && Number.isFinite(Number(aim.x)) ? Math.floor(Number(aim.x)) : null
+  const ay = aim && Number.isFinite(Number(aim.y)) ? Math.floor(Number(aim.y)) : null
+  const az = aim && Number.isFinite(Number(aim.z)) ? Math.floor(Number(aim.z)) : null
+  if (ax !== null && ay !== null && az !== null) {
+    return `${tag} water: walk-out drive aims the held page's walk (${dRead}, goal [${ax},${ay},${az}]) - the promise's own walker, the window judges`
+  }
+  return `${tag} water: walk-out drive finds no dry aim (${dRead}, the bounded ring reads sealed) - the promise waits, the ladder keeps its rungs`
+}

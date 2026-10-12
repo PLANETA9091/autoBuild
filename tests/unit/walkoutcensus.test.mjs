@@ -114,3 +114,100 @@ test('walk-out witness: determinism - the same input reads the same census twice
   const b = JSON.stringify(walkoutWitnessCensus(rows))
   assert.equal(a, b)
 })
+
+// (v0.968.0) THE DRIVE'S OWN LENS - the field instrument rides the same
+// round-trip law: the lines are BUILT by walkoutDriveLine (the fleet's own
+// emitter), parsed back by parseWalkoutDrive, folded by walkoutDriveCensus,
+// and rendered by walkoutDriveRow. The lane isolation pins the vocabulary
+// fence: the drive line must read FOREIGN to the witness stall lane (the
+// witness's own census and its escape hatch), the relog counter, and the
+// stall parser - one parser one truth, three lanes zero collisions.
+import { walkoutDriveLine } from '../../src/lib/relogwalkout.mjs'
+import { parseWalkoutDrive, walkoutDriveCensus, walkoutDriveRow } from '../../src/lib/walkoutcensus.mjs'
+
+const dline = (o) => walkoutDriveLine({ tag: 'F10 [F10]', ...o })
+
+test('walk-out drive lens: the round-trip law - the aimed line (the emitter builds, the parser reads)', () => {
+  const l = dline({ aim: { x: -127, y: 50, z: 398 }, displacement: 0.4 })
+  assert.equal(l, "F10 [F10] water: walk-out drive aims the held page's walk (0.4 blocks from the relog cell, goal [-127,50,398]) - the promise's own walker, the window judges")
+  const p = parseWalkoutDrive(l)
+  assert.equal(p.bot, 'F10')
+  assert.equal(p.kind, 'aimed')
+  assert.equal(p.displacement, 0.4)
+  assert.deepEqual(p.goal, { x: -127, y: 50, z: 398 })
+})
+
+test('walk-out drive lens: the sealed line round-trips with goal null', () => {
+  const l = dline({ aim: null, displacement: 0.6 })
+  assert.equal(l, 'F10 [F10] water: walk-out drive finds no dry aim (0.6 blocks from the relog cell, the bounded ring reads sealed) - the promise waits, the ladder keeps its rungs')
+  const p = parseWalkoutDrive(l)
+  assert.equal(p.bot, 'F10')
+  assert.equal(p.kind, 'sealed')
+  assert.equal(p.displacement, 0.6)
+  assert.equal(p.goal, null)
+})
+
+test('walk-out drive lens: the lane isolation - the drive line is foreign to every neighbor lane', () => {
+  const l = dline({ aim: { x: 1, y: 50, z: 0 }, displacement: 0.2 })
+  // the stall parser never claims the drive line
+  assert.equal(parseWalkoutStall(l), null)
+  // the witness census's escape hatch (its prefix gate demands 'relog
+  // walk-out') never counts the drive line
+  const c = walkoutWitnessCensus([l])
+  assert.equal(c.windows.n, 0)
+  assert.equal(c.unparsed, 0)
+  // the drive census never claims the stall lines
+  const stall = walkoutStallLine({ tag: 'F10 [F10]', displacement: 0.4, windowMs: 10000, why: walkoutEscalation({ stage: 1 }).why })
+  assert.equal(parseWalkoutDrive(stall), null)
+  const dc = walkoutDriveCensus([stall])
+  assert.equal(dc, null)
+})
+
+test('walk-out drive lens: the census folds the mixed face (byBot, displacement, aimedGoals)', () => {
+  const rows = [
+    dline({ aim: { x: 1, y: 50, z: 0 }, displacement: 0.1 }),
+    dline({ aim: null, displacement: 0.6 }),
+    dline({ tag: 'F1 [F1]', aim: { x: -3, y: 51, z: 2 }, displacement: 0.4 })
+  ]
+  const c = walkoutDriveCensus(rows)
+  assert.equal(c.drives.n, 3)
+  assert.equal(c.drives.aimed, 2)
+  assert.equal(c.drives.sealed, 1)
+  assert.deepEqual(c.drives.byBot, { F10: 2, F1: 1 })
+  assert.equal(c.displacement.n, 3)
+  assert.equal(c.displacement.min, 0.1)
+  assert.equal(c.displacement.max, 0.6)
+  assert.equal(c.displacement.sum, 1.1)
+  assert.equal(c.aimedGoals, 2)
+})
+
+test('walk-out drive lens: the row rides byte-exact, the honest silences hold', () => {
+  const c = walkoutDriveCensus([
+    dline({ aim: { x: 1, y: 50, z: 0 }, displacement: 0.1 }),
+    dline({ aim: null, displacement: 0.6 })
+  ])
+  assert.equal(
+    walkoutDriveRow(c),
+    "the walk-out drive's own read (v0.968.0): 2 drive(s), 1 aimed / 1 sealed, the displacement at the drive 0.1..0.6 blocks; 1 sealed ring(s) - the aim never invents a walk it cannot see - the promise's first walker rode the hold; the stall rate prices the cure on the next read"
+  )
+  // the all-aimed face: no sealed clause
+  const c2 = walkoutDriveCensus([dline({ aim: { x: 1, y: 50, z: 0 }, displacement: 0.2 })])
+  assert.equal(
+    walkoutDriveRow(c2),
+    "the walk-out drive's own read (v0.968.0): 1 drive(s), 1 aimed / 0 sealed, the displacement at the drive 0.2..0.2 blocks - the promise's first walker rode the hold; the stall rate prices the cure on the next read"
+  )
+  // the honest silences: a drive-free face reads null, junk reads null
+  assert.equal(walkoutDriveCensus(['F1 [F1] heartbeat alive']), null)
+  assert.equal(walkoutDriveCensus('not an array'), null)
+  assert.equal(walkoutDriveCensus(null), null)
+  assert.equal(walkoutDriveRow(null), null)
+  assert.equal(walkoutDriveRow({ drives: { n: 0, aimed: 0, sealed: 0 }, displacement: { n: 0 } }), null)
+  assert.equal(walkoutDriveRow({ drives: 'junk', displacement: 'junk' }), null)
+})
+
+test('walk-out drive lens: determinism - the same input reads the same census twice', () => {
+  const rows = [dline({ aim: { x: 1, y: 50, z: 0 }, displacement: 0.3 }), dline({ aim: null, displacement: 0.5 })]
+  const a = JSON.stringify(walkoutDriveCensus(rows))
+  const b = JSON.stringify(walkoutDriveCensus(rows))
+  assert.equal(a, b)
+})

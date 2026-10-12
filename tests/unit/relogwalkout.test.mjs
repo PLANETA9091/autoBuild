@@ -8,12 +8,16 @@
 // identity can never silently drift.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import {
   RELOG_WALKOUT_MIN_PROGRESS,
-  walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine
+  walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine,
+  walkoutAimCell, walkoutDriveLine
 } from '../../src/lib/relogwalkout.mjs'
 import { frozenReturnGate } from '../../src/lib/drowning.mjs'
 import { STALL_MIN_PROGRESS } from '../../src/lib/walkgovernor.mjs'
+
+const minerSrc = readFileSync(new URL('../../src/bots/miner.mjs', import.meta.url), 'utf8')
 
 test('relog walk-out: the window IS the frozen-return gate ladder (the code owns the budget)', () => {
   // the gate's own rungs: 10s / 20s / 40s, capped at 60s - the walk-out
@@ -173,4 +177,175 @@ test('relog walk-out: the F10 synthetic - three relog cycles ratchet the ladder,
   const walked = walkoutVerdict({ displacement: walkoutDisplacement(col, { x: -129, y: 49.9, z: 415 }) })
   assert.equal(walked, 'walked-out')
   assert.equal(walkoutDisplacement(col, { x: -129, y: 49.9, z: 415 }) >= RELOG_WALKOUT_MIN_PROGRESS, true)
+})
+
+// (v0.968.0) THE WALK-OUT'S OWN WALK - the drive's pure aim law. The field
+// priced the hole (face 239: four windows, all stalled at 0.1-0.6 of the
+// 1.0 bar): the hold's own line promises the walk and nothing aims it. The
+// aim law's tests ride a synthetic world map (the wiring's bot.blockAt
+// shape: {name, boundingBox} or null) - water's real boundingBox IS 'empty'
+// in mineflayer, which is exactly why the dry law rides isWaterName on top
+// of the standGoalNear shape (the bounding box alone would seat the bot in
+// the flood).
+
+test('walk-out drive: the aim finds the nearest dry standable ring seat (level first)', () => {
+  // the bot relogged INTO the column at [0,50,0]; the east neighbor is dry:
+  // ground stone at [1,49,0], air feet [1,50,0], air head [1,51,0]
+  const world = new Map([
+    ['1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['1,50,0', { name: 'air', boundingBox: 'empty' }],
+    ['1,51,0', { name: 'air', boundingBox: 'empty' }],
+    // the bot's own column: water at the feet and the head
+    ['0,50,0', { name: 'water', boundingBox: 'empty' }],
+    ['0,51,0', { name: 'water', boundingBox: 'empty' }],
+    ['0,49,0', { name: 'stone', boundingBox: 'block' }]
+  ])
+  const rc = (x, y, z) => world.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  const iw = (n) => n === 'water'
+  const aim = walkoutAimCell({ x: 0, y: 50, z: 0 }, rc, iw)
+  assert.deepEqual(aim, { x: 1, y: 50, z: 0 })
+})
+
+test('walk-out drive: the dry law - a water-named cell refuses even with an empty bounding box', () => {
+  // THE TRAP the law exists for: water reads boundingBox 'empty', so the
+  // standGoalNear shape alone would seat the aim inside the flood. The east
+  // cell is water at the feet; the west cell is dry - the aim must skip east.
+  const world = new Map([
+    // east: water at the feet (boundingBox empty), stone below
+    ['1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['1,50,0', { name: 'water', boundingBox: 'empty' }],
+    ['1,51,0', { name: 'air', boundingBox: 'empty' }],
+    // west: dry and standable
+    ['-1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['-1,50,0', { name: 'air', boundingBox: 'empty' }],
+    ['-1,51,0', { name: 'air', boundingBox: 'empty' }]
+  ])
+  const rc = (x, y, z) => world.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  const iw = (n) => n === 'water'
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc, iw), { x: -1, y: 50, z: 0 })
+  // the head-water variant: feet dry, head water - still refused
+  const world2 = new Map([
+    ['1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['1,50,0', { name: 'air', boundingBox: 'empty' }],
+    ['1,51,0', { name: 'water', boundingBox: 'empty' }],
+    ['-1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['-1,50,0', { name: 'air', boundingBox: 'empty' }],
+    ['-1,51,0', { name: 'air', boundingBox: 'empty' }]
+  ])
+  const rc2 = (x, y, z) => world2.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc2, iw), { x: -1, y: 50, z: 0 })
+})
+
+test('walk-out drive: the dy order and the ring priority (level, rise, drop; r=1 before r=2)', () => {
+  const iw = (n) => n === 'water'
+  // the level seat sealed (water), the rise dry: dy=1 wins over dy=-1
+  const world = new Map([
+    ['1,49,0', { name: 'stone', boundingBox: 'block' }],
+    ['1,50,0', { name: 'water', boundingBox: 'empty' }],
+    ['1,51,0', { name: 'water', boundingBox: 'empty' }],
+    ['1,52,0', { name: 'air', boundingBox: 'empty' }]
+  ])
+  const rc = (x, y, z) => world.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  // [1,50,0] water feet -> dy 0 refused; [1,51,0] water feet -> dy 1
+  // refused (ground [1,50,0] is water=empty); dy -1: ground [1,48,0] air
+  // refused; dy 2: ground [1,51,0] water refused... the scan falls through
+  // to the next ring cell - give [0,51,1] (the z+ neighbor) a dry seat
+  world.set('0,50,1', { name: 'water', boundingBox: 'empty' })
+  world.set('-1,49,0', { name: 'stone', boundingBox: 'block' })
+  world.set('-1,48,0', { name: 'stone', boundingBox: 'block' })
+  world.set('-1,50,0', { name: 'air', boundingBox: 'empty' })
+  world.set('-1,51,0', { name: 'air', boundingBox: 'empty' })
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc, iw), { x: -1, y: 50, z: 0 })
+  // the ring radius priority: seal ALL r=1 seats, the r=2 east seat wins
+  const world2 = new Map([['2,49,0', { name: 'stone', boundingBox: 'block' }]])
+  const rc2 = (x, y, z) => world2.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  // every r=1 candidate reads air feet on air ground (ground empty ->
+  // refused) - the ground law seals the inner ring by construction
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc2, iw), { x: 2, y: 50, z: 0 })
+})
+
+test('walk-out drive: the column ends (rise before drop) and the honest sealed null', () => {
+  const iw = (n) => n === 'water'
+  // ring: 0 - the horizontal scan skipped by the caller's own option (the
+  // 1x1 sealed shaft shape); the shelf above the flood is the exit
+  const world = new Map([
+    ['0,52,0', { name: 'stone', boundingBox: 'block' }],
+    ['0,53,0', { name: 'air', boundingBox: 'empty' }],
+    ['0,54,0', { name: 'air', boundingBox: 'empty' }]
+  ])
+  const rc = (x, y, z) => world.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc, iw, { ring: 0 }), { x: 0, y: 53, z: 0 })
+  // the drop tail: no shelf above, the tail below is dry (ground stone)
+  const world2 = new Map([
+    ['0,47,0', { name: 'stone', boundingBox: 'block' }],
+    ['0,48,0', { name: 'air', boundingBox: 'empty' }],
+    ['0,49,0', { name: 'air', boundingBox: 'empty' }]
+  ])
+  const rc2 = (x, y, z) => world2.get(`${x},${y},${z}`) ?? { name: 'air', boundingBox: 'empty' }
+  assert.deepEqual(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc2, iw, { ring: 0 }), { x: 0, y: 48, z: 0 })
+  // sealed: the walls are solid everywhere, the column ends are solid
+  const world3 = new Map([['0,49,0', { name: 'stone', boundingBox: 'block' }]])
+  const rc3 = (x, y, z) => world3.get(`${x},${y},${z}`) ?? { name: 'stone', boundingBox: 'block' }
+  assert.equal(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc3, iw, { ring: 1, columnReach: 2 }), null)
+})
+
+test('walk-out drive: the aim junk battery - a lost read never aims', () => {
+  const rc = () => ({ name: 'air', boundingBox: 'empty' })
+  const iw = (n) => n === 'water'
+  assert.equal(walkoutAimCell(null, rc, iw), null, 'no from - no aim')
+  assert.equal(walkoutAimCell(undefined, rc, iw), null)
+  assert.equal(walkoutAimCell({ x: NaN, y: 50, z: 0 }, rc, iw), null, 'a NaN axis never aims')
+  assert.equal(walkoutAimCell({ x: 0, y: Infinity, z: 0 }, rc, iw), null)
+  assert.equal(walkoutAimCell({ x: 0, y: 50, z: 0 }, null, iw), null, 'no reader - no aim')
+  assert.equal(walkoutAimCell({ x: 0, y: 50, z: 0 }, rc, 'not a function'), null, 'a junk predicate never aims')
+  assert.equal(walkoutAimCell({ x: 0, y: 50, z: 0 }, () => { throw new Error('chunk gone') }, iw), null, 'a throwing read refuses every cell, never crashes')
+  assert.equal(walkoutAimCell({ x: 0, y: 50, z: 0 }, () => null, iw), null, 'null cells: the ground law seals every seat')
+})
+
+test('walk-out drive: the line rides the numbers byte-exact (the dy-instrument field style)', () => {
+  assert.equal(
+    walkoutDriveLine({ tag: 'F10 [F10]', aim: { x: -127, y: 50, z: 398 }, displacement: 0.4 }),
+    "F10 [F10] water: walk-out drive aims the held page's walk (0.4 blocks from the relog cell, goal [-127,50,398]) - the promise's own walker, the window judges"
+  )
+  assert.equal(
+    walkoutDriveLine({ tag: 'F1 [F1]', aim: null, displacement: 0.1 }),
+    'F1 [F1] water: walk-out drive finds no dry aim (0.1 blocks from the relog cell, the bounded ring reads sealed) - the promise waits, the ladder keeps its rungs'
+  )
+  // the unmeasured class keeps its honest name (the wiring never fires
+  // there - the pure law keeps the class for the field's own honesty)
+  assert.match(
+    walkoutDriveLine({ tag: 'F8 [F8]', aim: { x: 1, y: 50, z: 0 }, displacement: null }),
+    /walk-out drive aims the held page's walk \(displacement unmeasured, goal \[1,50,0\]\)/
+  )
+  // a junk aim cell reads the sealed line (the aim never lies as a goal)
+  assert.match(
+    walkoutDriveLine({ tag: 'F8 [F8]', aim: { x: NaN, y: 50, z: 0 }, displacement: 0.3 }),
+    /walk-out drive finds no dry aim/
+  )
+})
+
+test('REGRESSION PIN: the drive wires the hold branch with its fences (the run195 dead-wire class)', () => {
+  // the drive lives in miner.mjs's FROZEN-RETURN GATE hold branch - the
+  // exact branch whose own line promises the walk. The pins name every
+  // fence the call must carry: the one-walk latch, the bar gate, the aim,
+  // the goal, and the line.
+  assert.ok(minerSrc.includes("if (wo && !wo.done && !wo.driven) {"),
+    'the drive gates on the witness armed, not done, not yet driven')
+  assert.ok(minerSrc.includes('wo.driven = true // one aim attempt per witness (the one-walk law)'),
+    'the driven latch rides the witness (one attempt per relog, the mouth\'s one-walk precedent)')
+  assert.ok(minerSrc.includes('dNow !== null && dNow < RELOG_WALKOUT_MIN_PROGRESS'),
+    'the bar gate: a bot already leaving (d >= the walk layer bar) needs no aim; an unmeasured read never fires')
+  assert.ok(minerSrc.includes('walkoutAimCell(wo,'), 'the aim rides the witness\'s own relog position (the pure law, injected reads)')
+  assert.ok(minerSrc.includes('releaseWalkGoal(bot)'), 'the stale-stop law clears the slot before the aim (the jobqueue\'s own order)')
+  assert.ok(minerSrc.includes('pf.setGoal(new goals.GoalNear(aim.x, aim.y, aim.z, 1))'), 'the aim lands as a GoalNear (the pathfinder walks, the window judges)')
+  assert.ok(minerSrc.includes('walkoutDriveLine({ tag, aim, displacement: dNow })'), 'the drive line rides the numbers')
+  assert.ok(minerSrc.includes('walkoutDriveLine({ tag, aim: null, displacement: dNow })'), 'the sealed scan logs its own honest line')
+  // the fence order: the drive sits INSIDE the hold branch (the bypass
+  // keeps the rescue's clock - a critical page must never meet the drive)
+  const holdBranch = minerSrc.slice(minerSrc.indexOf('if (frozenHoldLive && !frozenReturnBypass({ oxygen: o2raw, headWet, underHold: frozenHoldLive })) {'))
+  const holdEnd = holdBranch.indexOf('// (v0.265.0) THE BYPASS ECHO')
+  const branch = holdBranch.slice(0, holdEnd > 0 ? holdEnd : 2000)
+  assert.ok(branch.includes('wo.driven = true'), 'the drive rides INSIDE the hold branch (before the return)')
+  assert.ok(branch.includes('walkoutAimCell(wo,'), 'the aim is the hold branch\'s own walker')
+  assert.ok(branch.includes('return'), 'the hold branch still returns - the drive never pages the rescue')
 })

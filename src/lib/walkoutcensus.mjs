@@ -97,3 +97,108 @@ export function walkoutWitnessCensus (lines) {
   }
   return { windows, unparsed }
 }
+
+// (v0.968.0) THE DRIVE'S OWN LENS - the walk-out drive's field instrument.
+// The v0.968.0 lever gave the hold's promise its first walker (the drive
+// aims ONE dry walk per witness at a held page); this lens reads the drive
+// lines back so the next face's read prices the lever WITHOUT a re-mine:
+// how many aims fired, how many scans read sealed, and the displacement the
+// bot had already ridden at the drive's instant. The emitter (one line per
+// witness, src/lib/relogwalkout.mjs's walkoutDriveLine via miner.mjs's
+// hold branch):
+//   F10 [F10] water: walk-out drive aims the held page's walk (0.4 blocks
+//   from the relog cell, goal [-127,50,398]) - the promise's own walker, the
+//   window judges
+//   F10 [F10] water: walk-out drive finds no dry aim (0.4 blocks from the
+//   relog cell, the bounded ring reads sealed) - the promise waits, the
+//   ladder keeps its rungs
+// One parser per emitter (the one-parser law); the line's vocabulary is
+// worded OUT of the witness stall lane ('relog walk-out') and the relog
+// counter's lane ('frozen client relog') - this census counts DRIVES, the
+// witness census counts STALLS, and the escape hatch reads the drive line
+// as foreign (its prefix gate demands 'relog walk-out'). Mining surface
+// only: zero fleet wiring added by the lens (the v0.379.0 precedent).
+const WALKOUT_DRIVE_RE = new RegExp(TAG +
+  "water: walk-out drive (aims the held page's walk|finds no dry aim) \\((\\d+(?:\\.\\d+)) blocks from the relog cell(?:, goal \\[(-?\\d+),(-?\\d+),(-?\\d+)\\])?(?:, the bounded ring reads sealed)?\\)")
+
+/**
+ * Parse one walk-out drive line, or null.
+ * @param {string} [line]
+ * @returns {null|{bot: string, kind: 'aimed'|'sealed', displacement: number, goal: {x: number, y: number, z: number}|null}}
+ */
+export function parseWalkoutDrive (line) {
+  if (typeof line !== 'string') return null
+  const m = line.match(WALKOUT_DRIVE_RE)
+  if (!m) return null
+  const kind = m[2] === "aims the held page's walk" ? 'aimed' : 'sealed'
+  const d = Number(m[3])
+  if (!Number.isFinite(d) || d < 0) return null
+  let goal = null
+  if (m[4] !== undefined) {
+    const gx = Number(m[4])
+    const gy = Number(m[5])
+    const gz = Number(m[6])
+    if (Number.isFinite(gx) && Number.isFinite(gy) && Number.isFinite(gz)) goal = { x: gx, y: gy, z: gz }
+  }
+  return { bot: m[1] || null, kind, displacement: d, goal }
+}
+
+/**
+ * The drive census over a face log (pure; the decompose field read).
+ * Accepts an array of lines or a raw text blob; anything else reads null
+ * (the junk convention). A face with zero drive lines reads null - the
+ * honest silence (the lever never fired, the promise's walker idle).
+ * @param {string[]|string} [lines] the face log
+ * @returns {null|{drives: {n: number, aimed: number, sealed: number, byBot: Object<string, number>}, displacement: {n: number, min: number|null, max: number|null, sum: number}, aimedGoals: number}}
+ */
+export function walkoutDriveCensus (lines) {
+  const src = Array.isArray(lines)
+    ? lines
+    : (typeof lines === 'string' ? lines.split('\n') : null)
+  if (!src) return null
+  const rows = []
+  for (const l of src) {
+    const p = parseWalkoutDrive(l)
+    if (p) rows.push(p)
+  }
+  if (rows.length === 0) return null
+  const drives = { n: rows.length, aimed: 0, sealed: 0, byBot: {} }
+  const displacement = { n: 0, min: null, max: null, sum: 0 }
+  let aimedGoals = 0
+  for (const r of rows) {
+    if (r.kind === 'aimed') aimedGoals++
+    else drives.sealed++
+    if (r.bot) drives.byBot[r.bot] = (drives.byBot[r.bot] || 0) + 1
+    if (displacement.min === null || r.displacement < displacement.min) displacement.min = r.displacement
+    if (displacement.max === null || r.displacement > displacement.max) displacement.max = r.displacement
+    displacement.sum += r.displacement
+    displacement.n++
+  }
+  drives.aimed = aimedGoals
+  return { drives, displacement, aimedGoals }
+}
+
+/**
+ * The drive census's own row (the byte-exact verdict line). Guards: a null
+ * census, a non-object, a zero-drive book or any non-finite cell read the
+ * honest silence null (the row never invents).
+ * @param {null|object} [c] walkoutDriveCensus's own read
+ * @returns {null|string}
+ */
+export function walkoutDriveRow (c) {
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return null
+  const dr = c.drives
+  if (!dr || typeof dr !== 'object') return null
+  const dp = c.displacement
+  if (!dp || typeof dp !== 'object') return null
+  const cells = [dr.n, dr.aimed, dr.sealed, dp.n]
+  if (!cells.every((n) => Number.isFinite(n))) return null
+  if (!(dr.n > 0)) return null
+  const dpPart = dp.n > 0 && Number.isFinite(dp.min) && Number.isFinite(dp.max)
+    ? `, the displacement at the drive ${dp.min}..${dp.max} blocks`
+    : ''
+  const sealedPart = dr.sealed > 0
+    ? `; ${dr.sealed} sealed ring(s) - the aim never invents a walk it cannot see`
+    : ''
+  return `the walk-out drive's own read (v0.968.0): ${dr.n} drive(s), ${dr.aimed} aimed / ${dr.sealed} sealed${dpPart}${sealedPart} - the promise's first walker rode the hold; the stall rate prices the cure on the next read`
+}

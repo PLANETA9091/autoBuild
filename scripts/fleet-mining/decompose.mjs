@@ -139,6 +139,7 @@ import { whaleRentRow } from '../../src/lib/whalerent.mjs' // (v0.911.0) the loo
 import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) the calm paradox - the death-free face's full-speed water lane
 import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
+import { walkoutDriveCensus, walkoutDriveRow } from '../../src/lib/walkoutcensus.mjs' // (v0.968.0) the walk-out drive's own read - the promise's first walker's field book
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
 import { relogDiveJoin, relogDiveJoinRow, relogDiveRiders, relogDiveRidersRow } from '../../src/lib/relogdive.mjs' // (v0.916.0) the relog's own dive join - the loop bill's own missing half (the relog bots joined to the rescue lane's own spenders - the reconnect loop's own closure); (v0.917.0) + the dive join's own riders - the cap's own tail named (the membership's own census)
 import { freezeBill } from '../../src/lib/freezebill.mjs' // (v0.724.0) the freeze gate's own ladder - the frozen relog's streak/gate/vitals bytes folded per bot (the doubling's own futility read)
@@ -2119,6 +2120,19 @@ console.log('  hazard memorized:', count(/hazard memorized/))
     const dpRow = dp.n > 0 ? `, displacement ${dp.min}..${dp.max} blocks (avg ${(dp.sum / dp.n).toFixed(2)}) vs the bar max ${wwc.windows.barMax}` : ''
     console.log(`  witness numbers: window ${ws.min}..${ws.max}s (avg ${(ws.sum / ws.n).toFixed(1)})${dpRow}, unmeasured ${dp.unmeasured}/${wwn}`)
     if (wwc.unparsed > 0) console.log(`  unparsed: ${wwc.unparsed} walk-out line(s) the grammar refused - the escape hatch`)
+  }
+  // (v0.968.0) THE WALK-OUT DRIVE'S OWN READ - the promise's first walker's
+  // field book. The drive can ride a stall-free face too (a walked-out
+  // window prints nothing but the drive line printed at the hold), so the
+  // gate rides the drive census's own null - never the stall count.
+  const wdc = walkoutDriveCensus(lines)
+  if (wdc) {
+    if (rws === 0) console.log("--- RELOG WALK-OUT CENSUS (v0.425.0: the frozen-after-relog detector) ---")
+    const dr = wdc.drives
+    const byBot = Object.entries(dr.byBot).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}=${v}`).join(' ')
+    console.log(`  walk-out drives: ${dr.n} (aimed ${dr.aimed} / sealed ${dr.sealed})${byBot ? ` per-bot: ${byBot}` : ''}`)
+    const row = walkoutDriveRow(wdc)
+    if (row) console.log(`  ${row}`)
   }
   // (v0.715.0) THE RELOG'S OWN LOOP BILL - the founding warning's own
   // meter (the v0.425.0 header: 'the relog lane was feeding the loop

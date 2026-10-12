@@ -12,7 +12,7 @@ import { Vec3 } from 'vec3'
 import { installFly } from '../lib/fly.mjs'
 import { installRageFastBreak } from '../lib/fastdig.mjs'
 import { MiningJobQueue, withTimeout, gotoSafe, standGoalNear, inBox, unreachableBatchVerdict, UNREACHABLE_FENCE_BATCHES, ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS, resetWalkGovernorFor, releaseWalkGoal, nearDoomedGoal, DOOMED_GOAL_RADIUS } from '../lib/jobqueue.mjs'
-import { walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine } from '../lib/relogwalkout.mjs' // (v0.425.0) the frozen-after-relog witness - the walk-out promise gets enforced
+import { walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine, walkoutAimCell, walkoutDriveLine, RELOG_WALKOUT_MIN_PROGRESS } from '../lib/relogwalkout.mjs' // (v0.425.0) the frozen-after-relog witness - the walk-out promise gets enforced; (v0.968.0) the drive - the promise's own walker (the aim law + the line)
 import { collectGain, depositToChests, inventoryLoad } from '../lib/deposit.mjs'
 import { stalledButCraftable, TRIP_WALK_MS } from '../lib/woodplan.mjs'
 import { isPlantableSapling, plantableCell, pickSapling } from '../lib/sapling.mjs'
@@ -3034,6 +3034,39 @@ export function createMiner ({
         // armed hold + a junked bar (the reset sentinel) is the F9 evidence -
         // the drowning clock outranks the hold even when the bar cannot say so.
         if (frozenHoldLive && !frozenReturnBypass({ oxygen: o2raw, headWet, underHold: frozenHoldLive })) {
+          // (v0.968.0) THE WALK-OUT'S OWN WALK - the hold's own promise gains
+          // its walker. Face 239 priced the hole live (all four windows
+          // stalled at 0.1-0.6 blocks): the hold line promises 'the fresh
+          // client walks the hazard-ledgered column out' and nothing aimed
+          // the walk - the rungs reset gates and release slots but the plan
+          // re-decides the same wedged action. The drive aims ONE walk at the
+          // nearest DRY standable cell (the pure law in walkoutAimCell) while
+          // the witness is armed, not done, not yet driven, and the
+          // displacement from the relog cell still reads below the walk
+          // layer's own progress bar (a bot already leaving needs no aim).
+          // Fences: one attempt per witness (the driven latch - the one-walk
+          // law), HELD pages only (the bypass keeps the rescue's clock), the
+          // junk classes fire nothing (an unmeasured read never aims, a
+          // sealed scan logs the honest sealed line), and the window still
+          // judges - the ladder's rungs stay the backstop unchanged.
+          try {
+            const wo = frozenRelogWalkouts.get(username)
+            if (wo && !wo.done && !wo.driven) {
+              wo.driven = true // one aim attempt per witness (the one-walk law)
+              const dNow = walkoutDisplacement(wo, bot.entity?.position)
+              if (dNow !== null && dNow < RELOG_WALKOUT_MIN_PROGRESS) {
+                const aim = walkoutAimCell(wo, (x, y, z) => { try { return bot.blockAt(new Vec3(x, y, z)) } catch { return null } }, isWaterName)
+                const pf = bot.pathfinder
+                if (aim && pf && typeof pf.setGoal === 'function') {
+                  try { releaseWalkGoal(bot) } catch { /* the aim's own slot clear - the stale-stop law first */ }
+                  try { pf.setGoal(new goals.GoalNear(aim.x, aim.y, aim.z, 1)) } catch { /* a throwing aim never kills the sentry */ }
+                  log(walkoutDriveLine({ tag, aim, displacement: dNow }))
+                } else {
+                  log(walkoutDriveLine({ tag, aim: null, displacement: dNow }))
+                }
+              }
+            }
+          } catch { /* a drive must never kill the sentry */ }
           if (now - lastGlitchLogAt >= AIR_GLITCH_LOG_MS) {
             lastGlitchLogAt = now
             log(`${tag} water: frozen-return gate holds the page (${Math.round((frozenGateUntil - now) / 1000)}s left) - the fresh client walks the hazard-ledgered column out`)
