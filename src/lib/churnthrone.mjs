@@ -30,6 +30,20 @@
 // silence itself. Read-time tooling, zero fleet wiring, zero new log
 // lines, zero census shape change - CENSUS GUARD.
 //
+// (v0.974.13) THE FOLD'S OWN REFUSAL - the shadow's silence's own word.
+// The shadow's law rides the honest silence in three shapes and the reads
+// hand-derived the word twice (face 274's contested spread, face 275's
+// sticky tie - both reads assembled the blocking lane by hand). The
+// refusal names the fold's own blocking class: THE TIE (a leaderless
+// lane owns nothing - the tied pair named at the top count), THE
+// CONTESTED SPREAD (the lanes led apart - each lane's own leader named),
+// THE LONE LANE (no fold on one lane - the join fence's own word). The
+// branch law holds both ways: a seated throne reads no refusal word (the
+// owner's own rows own the face), a seated shadow reads none (the seat
+// row owns the face it named) - the refusal speaks ONLY beside the
+// fold's own silence. Read-time tooling, zero fleet wiring, zero new log
+// lines, zero census shape change - CENSUS GUARD.
+//
 
 import { standdownBotTally } from './standdownclock.mjs' // (v0.931.0) the standdown book's own tally - the lib's own cells, never re-spelled
 
@@ -272,22 +286,13 @@ const laneLeader = (lane) => {
 }
 
 /**
- * churnShadow(cells) - the throne's own shadow: the four instability
- * lanes' plurality fold (churn / standdown / relog + the sticky lane).
- * @param {{rescuePerBot?: Object<string, {starts?: number}>|null,
- *          rescueTotals?: {starts?: number}|null,
- *          standdownBook?: Object|null,
- *          relogsByBot?: Object<string, number>|null,
- *          relogsTotal?: number|null,
- *          stickyByBot?: Object<string, number>|null,
- *          stickyTotal?: number|null}} [cells]
- *   the books' own cells (the throne's three + the sticky lane's own)
- * @returns {null|{bot: string, lanes: Array<{lane: string, owns: number, of: number}>, nonEmpty: number}}
- *   the unanimous shadow (null = the throne seated, a partial lead, a
- *   leaderless tie, a single-lane fold, or junk - the honest silences)
+ * shadowLanes(cells) - the shadow's four lanes' own shared walk (the
+ * seat's own inputs and the refusal's own word read the SAME walk -
+ * one walk per fold, never re-spelled between the cells).
+ * @param {Object} [cells] the books' own cells (churnShadow's own shape)
+ * @returns {Array<{lane: string, cells: {byBot: Object<string, number>, total: number}, leader: {bot: string, owns: number}|null}>} the non-empty lanes (each with its plurality leader, or the tie's null)
  */
-export function churnShadow (cells) {
-  if (churnThrone(cells)) return null // the branch law: the throne's own row owns the owner's face
+const shadowLanes = (cells) => {
   const c = cells && typeof cells === 'object' ? cells : {}
   // the same three lanes the throne reads (the same walks, zero re-parsing)
   const churnByBot = {}
@@ -312,7 +317,28 @@ export function churnShadow (cells) {
   if (sdTally) lanes.push({ lane: STANDDOWN, cells: sdTally, leader: laneLeader(sdTally) })
   if (relogLane) lanes.push({ lane: RELOG, cells: relogLane, leader: laneLeader(relogLane) })
   if (stickyLane) lanes.push({ lane: STICKY, cells: stickyLane, leader: laneLeader(stickyLane) })
+  return lanes
+}
 
+/**
+ * churnShadow(cells) - the throne's own shadow: the four instability
+ * lanes' plurality fold (churn / standdown / relog + the sticky lane).
+ * @param {{rescuePerBot?: Object<string, {starts?: number}>|null,
+ *          rescueTotals?: {starts?: number}|null,
+ *          standdownBook?: Object|null,
+ *          relogsByBot?: Object<string, number>|null,
+ *          relogsTotal?: number|null,
+ *          stickyByBot?: Object<string, number>|null,
+ *          stickyTotal?: number|null}} [cells]
+ *   the books' own cells (the throne's three + the sticky lane's own)
+ * @returns {null|{bot: string, lanes: Array<{lane: string, owns: number, of: number}>, nonEmpty: number}}
+ *   the unanimous shadow (null = the throne seated, a partial lead, a
+ *   leaderless tie, a single-lane fold, or junk - the honest silences;
+ *   the silence's own word lives in churnShadowRefusal, v0.974.13)
+ */
+export function churnShadow (cells) {
+  if (churnThrone(cells)) return null // the branch law: the throne's own row owns the owner's face
+  const lanes = shadowLanes(cells)
   // THE JOIN FENCE byte for byte: at least two non-empty lanes ride.
   if (lanes.length < 2) return null
   // THE UNANIMITY LAW: every non-empty lane has a leader AND one bot
@@ -345,4 +371,108 @@ export function churnShadowRow (s) {
   }
   const laneBits = lanes.map((l) => `the ${l.lane} ${l.owns} of ${l.of}`).join(', ')
   return `the throne's own shadow (v0.974.11): ${bot} led every non-empty lane's own plurality at once - ${laneBits} (${nonEmpty} lane(s)) - THE SHADOW'S OWN FACE: the strict-majority law refused the throne, the pluralities' own fold named the face the throne refused - the sticky lane (v0.924.0's own book) joins the fold`
+}
+
+/**
+ * churnShadowRefusal(cells) - the fold's own refusal: the shadow's
+ * silence's own word (v0.974.13). When the fold refuses to seat (the
+ * throne dark, the unanimity law's own refusal), the silence names its
+ * own blocking class - the tie (a leaderless lane owns nothing), the
+ * contested spread (the lanes led apart), the lone lane (no fold on one
+ * lane). The branch law holds both ways: a seated throne or a seated
+ * shadow reads NO refusal word (the owner's own row owns the face).
+ * The law order byte for byte: the join fence's word rides before the
+ * tie's own (a lone tied lane is the fence's own face), the zero-lane
+ * join stays the silence itself (no word over nothing).
+ * @param {{rescuePerBot?: Object<string, {starts?: number}>|null,
+ *          rescueTotals?: {starts?: number}|null,
+ *          standdownBook?: Object|null,
+ *          relogsByBot?: Object<string, number>|null,
+ *          relogsTotal?: number|null,
+ *          stickyByBot?: Object<string, number>|null,
+ *          stickyTotal?: number|null}} [cells]
+ *   the books' own cells (churnShadow's own shape)
+ * @returns {null|{kind: string, lanes: Array<Object>}}
+ *   the refusal (null = the throne or the shadow seated, or the
+ *   zero-lane join, or junk - the honest silences)
+ */
+export function churnShadowRefusal (cells) {
+  if (churnThrone(cells)) return null // the branch law: the throne's own row owns the owner's face
+  if (churnShadow(cells)) return null // the branch law: the seat's own row owns the face it named
+  const lanes = shadowLanes(cells)
+  if (!lanes.length) return null // the zero-lane join is the silence itself (no word over nothing)
+  // the join fence's own word: the lone lane (one lane only - no fold).
+  if (lanes.length < 2) {
+    const l = lanes[0]
+    const out = { kind: 'lone', lanes: [{ lane: l.lane, of: l.cells.total }] }
+    if (l.leader) { out.lanes[0].bot = l.leader.bot; out.lanes[0].owns = l.leader.owns }
+    return out
+  }
+  // the tie's own word: a leaderless lane owns nothing (the tied pair
+  // named at the top count - the lane's own cells re-read, never re-walked).
+  const tied = lanes.filter((l) => !l.leader)
+  if (tied.length) {
+    const ties = []
+    for (const l of tied) {
+      let top = 0
+      for (const owns of Object.values(l.cells.byBot)) {
+        const v = Number(owns)
+        if (Number.isFinite(v) && v > top) top = v
+      }
+      const tiedBots = Object.keys(l.cells.byBot).filter((b) => Number(l.cells.byBot[b]) === top)
+      ties.push({ lane: l.lane, of: l.cells.total, top, tiedBots })
+    }
+    return { kind: 'tie', lanes: ties }
+  }
+  // the contested spread's own word: every lane leads, the lanes lead apart.
+  const led = lanes.map((l) => ({ lane: l.lane, bot: l.leader.bot, owns: l.leader.owns, of: l.cells.total }))
+  return { kind: 'contested', lanes: led }
+}
+
+/**
+ * churnShadowRefusalRow(r) - the fold's own refusal's row (THE FOLD'S
+ * OWN SILENCE). Junk never prints a row (the honest silence's own row
+ * law): every field is guarded before the template speaks.
+ * @param {Object|null} [r] the churnShadowRefusal result
+ * @returns {string|null} the row (null on junk)
+ */
+export function churnShadowRefusalRow (r) {
+  if (!r || typeof r !== 'object' || Array.isArray(r)) return null
+  if (!Array.isArray(r.lanes) || !r.lanes.length || r.lanes.length > 4) return null
+  if (r.kind === 'tie') {
+    const bits = []
+    for (const l of r.lanes) {
+      if (!l || typeof l !== 'object' || Array.isArray(l)) return null
+      if (typeof l.lane !== 'string' || !l.lane) return null
+      if (!Number.isFinite(l.of) || l.of <= 0) return null
+      if (!Number.isFinite(l.top) || l.top <= 0) return null
+      if (!Array.isArray(l.tiedBots) || l.tiedBots.length < 2) return null
+      if (!l.tiedBots.every((b) => typeof b === 'string' && b)) return null
+      bits.push(`the ${l.lane} lane rode a tie (${l.tiedBots.map((b) => `${b} x${l.top}`).join(' + ')}, ${l.tiedBots.length * l.top} of ${l.of})`)
+    }
+    return `the fold's own refusal (v0.974.13): ${bits.join('; ')} - a tie owns nothing - THE TIE'S OWN SILENCE: the unanimity law refused the seat, the silence's own word named`
+  }
+  if (r.kind === 'contested') {
+    const bits = []
+    for (const l of r.lanes) {
+      if (!l || typeof l !== 'object' || Array.isArray(l)) return null
+      if (typeof l.lane !== 'string' || !l.lane || typeof l.bot !== 'string' || !l.bot) return null
+      if (!Number.isFinite(l.owns) || l.owns <= 0 || !Number.isFinite(l.of) || l.of <= 0 || l.owns > l.of) return null
+      bits.push(`the ${l.lane} ${l.bot}`)
+    }
+    const bots = new Set(r.lanes.map((l) => l.bot))
+    return `the fold's own refusal (v0.974.13): the lanes led apart - ${bits.join(', ')} (${r.lanes.length} lane(s) led, ${bots.size} bot(s)) - THE CONTESTED SPREAD'S OWN SILENCE: the unanimity law refused the seat, the silence's own word named`
+  }
+  if (r.kind === 'lone') {
+    if (r.lanes.length !== 1) return null
+    const l = r.lanes[0]
+    if (!l || typeof l !== 'object' || Array.isArray(l) || typeof l.lane !== 'string' || !l.lane) return null
+    if (!Number.isFinite(l.of) || l.of <= 0) return null
+    if (l.bot !== undefined) {
+      if (typeof l.bot !== 'string' || !l.bot || !Number.isFinite(l.owns) || l.owns <= 0) return null
+    }
+    const lead = l.bot !== undefined ? `, the ${l.bot} lead ${l.owns} of ${l.of}` : ''
+    return `the fold's own refusal (v0.974.13): the lone lane (the ${l.lane}${lead}) - no fold on one lane - THE LONE LANE'S OWN SILENCE: the join fence refused the seat, the silence's own word named`
+  }
+  return null
 }

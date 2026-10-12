@@ -12,7 +12,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow } from '../../src/lib/churnthrone.mjs'
+import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow, churnShadowRefusal, churnShadowRefusalRow } from '../../src/lib/churnthrone.mjs'
 import { standdownBotTally } from '../../src/lib/standdownclock.mjs'
 import { stickyLaneCells } from '../../src/lib/stickyseat.mjs'
 
@@ -299,4 +299,116 @@ test('SHADOW: the sticky lane rides stickyseat\'s own fold (one read per emitter
   assert.deepEqual(lane, { byBot: { F14: 16 }, total: 16 }, 'the five sticky classes fold, the clean closes stay out')
   assert.equal(stickyLaneCells(null), null, 'the junk perBot reads the honest silence')
   assert.equal(stickyLaneCells({ F14: { complete: 5 } }), null, 'the clean-only book reads the honest silence')
+})
+
+// === (v0.974.13) THE FOLD'S OWN REFUSAL - the shadow's silence's own
+// word. Face 275's own cells (the four lanes' own reads): churn F15 6 /
+// F13 5 / F5 2 / F9 1 / F19 1 of 15, standdown F15 3 of 5, relog F15 2 /
+// F13 1 / F5 1 of 4, sticky F13 2 + F15 2 of 5 - the tie's own face the
+// 0700 fire hand-derived ('the sticky lane rode a tie (F13 x2 + F15 x2,
+// 4 of 5) - a tie owns nothing'); the contested spread rides the
+// synthetic shape (the lanes led apart).
+const FACE275 = {
+  rescuePerBot: {
+    F15: { starts: 6 }, F13: { starts: 5 }, F5: { starts: 2 },
+    F9: { starts: 1 }, F19: { starts: 1 }
+  },
+  rescueTotals: { starts: 15 },
+  relogsByBot: { F15: 2, F13: 1, F5: 1 },
+  relogsTotal: 4,
+  standdownBook: { stamps: [...Array(3).fill({ bot: 'F15' }), { bot: 'F5' }, { bot: 'F19' }] },
+  stickyByBot: { F13: 2, F15: 2 },
+  stickyTotal: 5
+}
+
+test("REFUSAL: the tie's own word - face 275 real layout, the sticky lane rode a tie", () => {
+  assert.equal(churnThrone(FACE275), null, 'the throne stays dark (the churn lane rides no strict majority)')
+  assert.equal(churnShadow(FACE275), null, 'the fold refuses (the sticky lane rides leaderless)')
+  const r = churnShadowRefusal(FACE275)
+  assert.ok(r, 'the refusal speaks')
+  assert.equal(r.kind, 'tie')
+  assert.deepEqual(r.lanes, [{ lane: 'sticky', of: 5, top: 2, tiedBots: ['F13', 'F15'] }])
+  const row = churnShadowRefusalRow(r)
+  assert.equal(row, "the fold's own refusal (v0.974.13): the sticky lane rode a tie (F13 x2 + F15 x2, 4 of 5) - a tie owns nothing - THE TIE'S OWN SILENCE: the unanimity law refused the seat, the silence's own word named")
+})
+
+test("REFUSAL: the contested spread's own word - the lanes led apart", () => {
+  const cells = {
+    rescuePerBot: { F7: { starts: 6 }, F13: { starts: 5 } },
+    rescueTotals: { starts: 11 },
+    relogsByBot: { F7: 2, F13: 1 },
+    relogsTotal: 3,
+    standdownBook: { stamps: [...Array(5).fill({ bot: 'F13' }), ...Array(4).fill({ bot: 'F7' })] },
+    stickyByBot: { F13: 4, F7: 3 },
+    stickyTotal: 7
+  }
+  const r = churnShadowRefusal(cells)
+  assert.ok(r, 'the refusal speaks')
+  assert.equal(r.kind, 'contested')
+  assert.deepEqual(r.lanes, [
+    { lane: 'churn', bot: 'F7', owns: 6, of: 11 },
+    { lane: 'standdown', bot: 'F13', owns: 5, of: 9 },
+    { lane: 'relog', bot: 'F7', owns: 2, of: 3 },
+    { lane: 'sticky', bot: 'F13', owns: 4, of: 7 }
+  ])
+  const row = churnShadowRefusalRow(r)
+  assert.equal(row, "the fold's own refusal (v0.974.13): the lanes led apart - the churn F7, the standdown F13, the relog F7, the sticky F13 (4 lane(s) led, 2 bot(s)) - THE CONTESTED SPREAD'S OWN SILENCE: the unanimity law refused the seat, the silence's own word named")
+})
+
+test("REFUSAL: the lone lane's own word - no fold on one lane", () => {
+  const cells = {
+    rescuePerBot: { F5: { starts: 9 } },
+    rescueTotals: { starts: 14 }
+  }
+  const r = churnShadowRefusal(cells)
+  assert.ok(r, 'the refusal speaks')
+  assert.equal(r.kind, 'lone')
+  assert.deepEqual(r.lanes, [{ lane: 'churn', of: 14, bot: 'F5', owns: 9 }])
+  const row = churnShadowRefusalRow(r)
+  assert.equal(row, "the fold's own refusal (v0.974.13): the lone lane (the churn, the F5 lead 9 of 14) - no fold on one lane - THE LONE LANE'S OWN SILENCE: the join fence refused the seat, the silence's own word named")
+})
+
+test('REFUSAL: a multi-lane tie names every tied lane in one row', () => {
+  const cells = {
+    rescuePerBot: { F14: { starts: 5 }, F6: { starts: 5 } },
+    rescueTotals: { starts: 10 },
+    relogsByBot: { F14: 1, F6: 1 },
+    relogsTotal: 2
+  }
+  const r = churnShadowRefusal(cells)
+  assert.ok(r, 'the refusal speaks')
+  assert.equal(r.kind, 'tie')
+  assert.equal(r.lanes.length, 2)
+  const row = churnShadowRefusalRow(r)
+  assert.match(row, /the churn lane rode a tie \(F14 x5 \+ F6 x5, 10 of 10\); the relog lane rode a tie \(F14 x1 \+ F6 x1, 2 of 2\)/)
+  assert.match(row, /THE TIE'S OWN SILENCE/)
+})
+
+test("REFUSAL: the branch law both ways - a seated throne or a seated shadow reads no refusal word", () => {
+  // the throne's own face (face 226 + the sticky lane F5 also leads)
+  const throneCells = { ...FACE226, stickyByBot: { F5: 5, F13: 3 }, stickyTotal: 8 }
+  assert.ok(churnThrone(throneCells), 'the throne seats')
+  assert.equal(churnShadowRefusal(throneCells), null, "no refusal word over the throne's own rows")
+  // the shadow's own face (face 272's unanimous fold)
+  assert.ok(churnShadow(FACE272), 'the shadow seats')
+  assert.equal(churnShadowRefusal(FACE272), null, "no refusal word over the shadow's own row")
+})
+
+test('REFUSAL: the junk battery - junk never invents a word', () => {
+  for (const junk of [null, undefined, 42, 'x', [], {}, { kind: 'tie' }, { kind: 'tie', lanes: [] }, { kind: 'nonsense', lanes: [{ lane: 'churn' }] }]) {
+    assert.equal(churnShadowRefusalRow(junk), null, `junk ${JSON.stringify(junk)} reads the honest silence`)
+  }
+  assert.equal(churnShadowRefusalRow({ kind: 'tie', lanes: [{ lane: 'sticky', of: 5, top: 2, tiedBots: ['F13'] }] }), null, 'a one-bot tie reads the honest silence')
+  assert.equal(churnShadowRefusalRow({ kind: 'tie', lanes: [{ lane: 'sticky', of: 5, top: 0, tiedBots: ['F13', 'F15'] }] }), null, 'a zero-top tie reads the honest silence')
+  assert.equal(churnShadowRefusalRow({ kind: 'lone', lanes: [{ lane: 'churn', of: 14, bot: 'F5' }] }), null, 'a leaderless lone-lane bot field reads the honest silence')
+  // the zero-lane join is the silence itself (no word over nothing)
+  assert.equal(churnShadowRefusal(null), null)
+  assert.equal(churnShadowRefusal({}), null)
+})
+
+test("REFUSAL: the shadow's own row byte-stable beside the refusal (the shared-walk refactor priced)", () => {
+  const s = churnShadow(FACE272)
+  assert.ok(s, 'the shadow still seats on the shared walk')
+  const row = churnShadowRow(s)
+  assert.match(row, /the throne's own shadow \(v0\.974\.11\): F14 led every non-empty lane's own plurality at once - the churn 19 of 62, the standdown 13 of 22, the relog 3 of 7, the sticky 15 of 26 \(4 lane\(s\)\)/)
 })
