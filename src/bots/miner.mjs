@@ -12,7 +12,7 @@ import { Vec3 } from 'vec3'
 import { installFly } from '../lib/fly.mjs'
 import { installRageFastBreak } from '../lib/fastdig.mjs'
 import { MiningJobQueue, withTimeout, gotoSafe, standGoalNear, inBox, unreachableBatchVerdict, UNREACHABLE_FENCE_BATCHES, ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS, resetWalkGovernorFor, releaseWalkGoal, nearDoomedGoal, DOOMED_GOAL_RADIUS } from '../lib/jobqueue.mjs'
-import { walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine, walkoutAimCell, walkoutDriveLine, RELOG_WALKOUT_MIN_PROGRESS } from '../lib/relogwalkout.mjs' // (v0.425.0) the frozen-after-relog witness - the walk-out promise gets enforced; (v0.968.0) the drive - the promise's own walker (the aim law + the line)
+import { walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine, walkoutAimCell, walkoutDriveLine, walkoutReassertWanted, RELOG_WALKOUT_MIN_PROGRESS } from '../lib/relogwalkout.mjs' // (v0.425.0) the frozen-after-relog witness - the walk-out promise gets enforced; (v0.968.0) the drive - the promise's own walker (the aim law + the line); (v0.971.0) the drive's own tenure - the walk keeps its seat (the re-assert law)
 import { collectGain, depositToChests, inventoryLoad } from '../lib/deposit.mjs'
 import { stalledButCraftable, TRIP_WALK_MS } from '../lib/woodplan.mjs'
 import { isPlantableSapling, plantableCell, pickSapling } from '../lib/sapling.mjs'
@@ -3058,15 +3058,56 @@ export function createMiner ({
                 const aim = walkoutAimCell(wo, (x, y, z) => { try { return bot.blockAt(new Vec3(x, y, z)) } catch { return null } }, isWaterName)
                 const pf = bot.pathfinder
                 if (aim && pf && typeof pf.setGoal === 'function') {
-                  try { releaseWalkGoal(bot) } catch { /* the aim's own slot clear - the stale-stop law first */ }
-                  try { pf.setGoal(new goals.GoalNear(aim.x, aim.y, aim.z, 1)) } catch { /* a throwing aim never kills the sentry */ }
-                  log(walkoutDriveLine({ tag, aim, displacement: dNow }))
+                  // (v0.971.0) THE PATH PROBE - the aim's own reachability (the
+                  // house canPathTo idiom, ONE 600ms A* burst per witness): a
+                  // standable cell the path cannot see is not a walk - the drive
+                  // logs the honest sealed line and the slot stays empty (the
+                  // v0.968.0 aim law's own honesty, extended from the block scan
+                  // to the path; the window still judges, the rungs stay the
+                  // backstop). A pathfinder without the probe reads sealed (a
+                  // bare mock's silence is the honest class).
+                  let pathOk = false
+                  try {
+                    const p = typeof pf.getPathTo === 'function' ? pf.getPathTo(pf.movements, new goals.GoalNear(aim.x, aim.y, aim.z, 1), 600) : null
+                    pathOk = !!(p && p.status === 'success' && p.path && p.path.length > 0)
+                  } catch { pathOk = false }
+                  if (pathOk) {
+                    try { releaseWalkGoal(bot) } catch { /* the aim's own slot clear - the stale-stop law first */ }
+                    try { pf.setGoal(new goals.GoalNear(aim.x, aim.y, aim.z, 1)) } catch { /* a throwing aim never kills the sentry */ }
+                    wo.aim = { x: aim.x, y: aim.y, z: aim.z } // (v0.971.0) the tenure's own seat record
+                    log(walkoutDriveLine({ tag, aim, displacement: dNow }))
+                  } else {
+                    log(walkoutDriveLine({ tag, aim: null, displacement: dNow }))
+                  }
                 } else {
                   log(walkoutDriveLine({ tag, aim: null, displacement: dNow }))
                 }
               }
             }
           } catch { /* a drive must never kill the sentry */ }
+          // (v0.971.0) THE DRIVE'S OWN TENURE - the walk keeps its seat. The
+          // work loop is NOT held by the frozen-return gate: the rebuild's own
+          // plan re-decides the same wedged action and re-issues goals over the
+          // drive's walk (the v0.968.0 diagnosis one layer deeper - the drive
+          // aimed, the churn ate the seat; four faces, displacement 0..0). The
+          // tenure seat-keeps at the sentry's own cadence: while the witness is
+          // live, driven, aimed and still below the bar, a goal slot that no
+          // longer holds the drive's aim re-asserts it (release + setGoal, the
+          // drive's own order; the pure law in walkoutReassertWanted - the
+          // unmeasured rule, the bar, the one-walk law's letter, junk-safe).
+          // The drive line stays ONE per witness (the census's aimed/sealed
+          // book unchanged - zero new line families, zero new filter keys).
+          try {
+            const woT = frozenRelogWalkouts.get(username)
+            const pfT = bot.pathfinder
+            if (woT && woT.driven && woT.aim && !woT.done && pfT && typeof pfT.setGoal === 'function') {
+              const dT = walkoutDisplacement(woT, bot.entity?.position)
+              if (walkoutReassertWanted({ pfGoal: pfT.goal ?? null, aim: woT.aim, displacement: dT, until: woT.until, now, done: woT.done === true })) {
+                try { releaseWalkGoal(bot) } catch { /* the seat's own slot clear - the stale-stop law first */ }
+                try { pfT.setGoal(new goals.GoalNear(woT.aim.x, woT.aim.y, woT.aim.z, 1)) } catch { /* a throwing re-assert never kills the sentry */ }
+              }
+            }
+          } catch { /* a tenure must never kill the sentry */ }
           if (now - lastGlitchLogAt >= AIR_GLITCH_LOG_MS) {
             lastGlitchLogAt = now
             log(`${tag} water: frozen-return gate holds the page (${Math.round((frozenGateUntil - now) / 1000)}s left) - the fresh client walks the hazard-ledgered column out`)

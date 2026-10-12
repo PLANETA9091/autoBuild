@@ -270,3 +270,60 @@ export function walkoutDriveLine ({ tag = '', aim = null, displacement = null } 
   }
   return `${tag} water: walk-out drive finds no dry aim (${dRead}, the bounded ring reads sealed) - the promise waits, the ladder keeps its rungs`
 }
+
+// (v0.971.0) THE DRIVE'S OWN TENURE - the walk's seat-keeping. Face 245's
+// ladder read 100% stalled with the drive riding (four faces, four drives,
+// displacement 0..0 every time): the work loop is NOT held by the frozen-
+// return gate - the rebuild's own plan re-decides the same wedged action and
+// re-issues goals over the drive's walk (the v0.968.0 diagnosis one layer
+// deeper: the drive aimed the walk, the churn ate the seat). And a standable
+// cell is not a walkable one - the aim law's block scan sees the cell, the
+// path may not see it at all, and the pathfinder's refusal is silent. The
+// tenure's two laws:
+//   (1) THE PATH PROBE (the wiring, the house canPathTo idiom): one 600ms
+//       A* burst per witness at drive time - an aim the path cannot see
+//       logs the honest sealed line and the slot stays empty (the v0.968.0
+//       aim law's own honesty, extended from the block scan to the path).
+//   (2) THE SEAT-KEEPING (this law): while the witness is live, driven,
+//       aimed and still below the bar, a goal slot that no longer holds
+//       the drive's aim re-asserts it (release + setGoal, the drive's own
+//       order, the sentry's own 600ms cadence). The drive line stays ONE
+//       per witness (the census's aimed/sealed book unchanged - zero new
+//       line families, zero new filter keys).
+
+/** The seat's own tolerance (blocks): the pathfinder's goal slot holds the
+ * drive's aim when the two sit this close. The commit passes the aim's own
+ * integers, so an exact seat reads 0; the eps forgives float drift only. */
+export const WALKOUT_GOAL_SEAT_EPS = 0.5
+
+/** Does the pathfinder's goal slot still hold the drive's aim? Pure,
+ * junk-safe: any missing side, any non-finite axis - the seat is LOST
+ * (a junk read must never quiet a lost walk). */
+export function walkoutGoalHolds (pfGoal, aim) {
+  if (!pfGoal || !aim) return false
+  const dx = Number(pfGoal.x) - Number(aim.x)
+  const dy = Number(pfGoal.y) - Number(aim.y)
+  const dz = Number(pfGoal.z) - Number(aim.z)
+  if (!Number.isFinite(dx) || !Number.isFinite(dy) || !Number.isFinite(dz)) return false
+  return Math.sqrt(dx * dx + dy * dy + dz * dz) <= WALKOUT_GOAL_SEAT_EPS
+}
+
+/** Should the held page re-assert the drive's walk now? True only when the
+ * witness is live (not done, now < until), the walk is still owed (the
+ * displacement measured and below the walk layer's own bar - the unmeasured
+ * rule: a lost read never manufactures a re-assert), the aim exists (an
+ * unaimed witness keeps the sealed silence - the one-walk law's letter),
+ * and the goal slot has LOST the seat (null, clobbered, or drifted beyond
+ * the eps). Junk-safe in the family shape: a junk clock or a junk window
+ * reads false (the sentry's own Date.now() cannot produce one - a bare
+ * mock's junk must never churn the slot). */
+export function walkoutReassertWanted ({ pfGoal = null, aim = null, displacement = null, until = 0, now = 0, done = false } = {}) {
+  if (done === true) return false
+  const n = Number(now)
+  const u = Number(until)
+  if (!Number.isFinite(n) || !Number.isFinite(u) || !(n < u)) return false
+  const d = displacement === null || displacement === undefined ? NaN : Number(displacement)
+  if (!Number.isFinite(d) || d >= RELOG_WALKOUT_MIN_PROGRESS) return false
+  if (!aim) return false
+  return !walkoutGoalHolds(pfGoal, aim)
+}

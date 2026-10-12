@@ -12,7 +12,7 @@ import { readFileSync } from 'node:fs'
 import {
   RELOG_WALKOUT_MIN_PROGRESS,
   walkoutWindowMs, walkoutDisplacement, walkoutVerdict, walkoutEscalation, walkoutStallLine,
-  walkoutAimCell, walkoutDriveLine
+  walkoutAimCell, walkoutDriveLine, walkoutGoalHolds, walkoutReassertWanted, WALKOUT_GOAL_SEAT_EPS
 } from '../../src/lib/relogwalkout.mjs'
 import { frozenReturnGate } from '../../src/lib/drowning.mjs'
 import { STALL_MIN_PROGRESS } from '../../src/lib/walkgovernor.mjs'
@@ -348,4 +348,69 @@ test('REGRESSION PIN: the drive wires the hold branch with its fences (the run19
   assert.ok(branch.includes('wo.driven = true'), 'the drive rides INSIDE the hold branch (before the return)')
   assert.ok(branch.includes('walkoutAimCell(wo,'), 'the aim is the hold branch\'s own walker')
   assert.ok(branch.includes('return'), 'the hold branch still returns - the drive never pages the rescue')
+})
+
+// ---------------------------------------------------------------------------
+// (v0.971.0) THE DRIVE'S OWN TENURE - the walk keeps its seat. Face 245's
+// ladder read 100% stalled with the drive riding (four faces, four drives,
+// displacement 0..0 every time): the work loop is NOT held by the frozen-
+// return gate - the rebuild's own plan re-decides and re-issues goals over
+// the drive's walk, and a standable cell is not a walkable one (the silent
+// no-path class). Two laws: the PATH PROBE (one 600ms A* burst per witness -
+// an aim the path cannot see logs the honest sealed line) and the SEAT-KEEPING
+// (the re-assert at the sentry's own cadence while the slot has lost the seat).
+// ---------------------------------------------------------------------------
+test('walkoutGoalHolds: the seat identity (the v0.971.0 tenure law)', () => {
+  assert.equal(WALKOUT_GOAL_SEAT_EPS, 0.5, 'the seat eps is the law\'s own number (the commit passes the aim\'s own integers)')
+  assert.equal(walkoutGoalHolds({ x: 5, y: 50, z: 9 }, { x: 5, y: 50, z: 9 }), true, 'the same cell holds the seat')
+  assert.equal(walkoutGoalHolds({ x: 5.3, y: 50, z: 9 }, { x: 5, y: 50, z: 9 }), true, 'inside the eps holds (0.3 drift is float noise)')
+  assert.equal(walkoutGoalHolds({ x: 5.6, y: 50, z: 9 }, { x: 5, y: 50, z: 9 }), false, 'beyond the eps is a lost seat (0.6)')
+  assert.equal(walkoutGoalHolds(null, { x: 5, y: 50, z: 9 }), false, 'an empty slot never holds')
+  assert.equal(walkoutGoalHolds({ x: 5, y: 50, z: 9 }, null), false, 'no aim, no seat')
+  assert.equal(walkoutGoalHolds({ x: NaN, y: 50, z: 9 }, { x: 5, y: 50, z: 9 }), false, 'a junk axis never holds (a junk read must never quiet a lost walk)')
+  assert.equal(walkoutGoalHolds({ x: 5, y: 50, z: 9 }, { y: 50 }), false, 'a partial aim never holds')
+  assert.equal(walkoutGoalHolds(undefined, undefined), false, 'a wholesale junk call reads the lost seat')
+})
+
+test('walkoutReassertWanted: the tenure law (the churn-cure battery)', () => {
+  const aim = { x: -127, y: 50, z: 398 }
+  const base = { aim, displacement: 0.2, until: 10000, now: 5000, done: false }
+  assert.equal(walkoutReassertWanted({ ...base, pfGoal: null }), true, 'a cleared slot is a lost seat - the walk re-asserts')
+  assert.equal(walkoutReassertWanted({ ...base, pfGoal: { x: 0, y: 0, z: 0 } }), true, 'a clobbered slot is a lost seat - the churn cannot eat the walk')
+  assert.equal(walkoutReassertWanted({ ...base, pfGoal: aim }), false, 'the seated walk keeps its seat (no churn, no re-assert)')
+  assert.equal(walkoutReassertWanted({ ...base, pfGoal: { x: -127.4, y: 50, z: 398 } }), false, 'inside the eps is the same seat (float noise)')
+  assert.equal(walkoutReassertWanted({ ...base, done: true, pfGoal: null }), false, 'a done witness never re-asserts (the window judged)')
+  assert.equal(walkoutReassertWanted({ ...base, now: 10001, pfGoal: null }), false, 'an expired window never re-asserts (the rungs own the next move)')
+  assert.equal(walkoutReassertWanted({ ...base, now: 'junk', pfGoal: null }), false, 'a junk clock never re-asserts')
+  assert.equal(walkoutReassertWanted({ ...base, until: 'junk', pfGoal: null }), false, 'a junk window never re-asserts')
+  assert.equal(walkoutReassertWanted({ ...base, displacement: null, pfGoal: null }), false, 'an unmeasured read never re-asserts (the unmeasured rule)')
+  assert.equal(walkoutReassertWanted({ ...base, displacement: 1.0, pfGoal: null }), false, 'a bot already leaving needs no seat-keeping (the bar)')
+  assert.equal(walkoutReassertWanted({ ...base, aim: null, pfGoal: null }), false, 'an unaimed witness keeps the sealed silence (the one-walk law\'s letter)')
+  assert.equal(walkoutReassertWanted({ ...base }), true, 'a missing pfGoal reads a lost seat (the junk-safe default)')
+  assert.equal(walkoutReassertWanted(), false, 'a wholesale junk call reads the honest silence')
+})
+
+test('REGRESSION PIN: the drive keeps its own tenure (the v0.971.0 seat-keeping class)', () => {
+  // the probe: ONE 600ms A* burst per witness (the house canPathTo idiom) -
+  // a standable cell the path cannot see is not a walk; the honest sealed
+  // line rides the SAME shape (zero new line families)
+  assert.ok(minerSrc.includes("pf.getPathTo(pf.movements, new goals.GoalNear(aim.x, aim.y, aim.z, 1), 600)"),
+    'the probe rides the pathfinder (the house canPathTo idiom, the drive\'s own goal shape)')
+  assert.ok(minerSrc.includes("pathOk = !!(p && p.status === 'success' && p.path && p.path.length > 0)"),
+    'the probe\'s verdict reads the house rule (status success + a real path)')
+  assert.ok(minerSrc.includes('wo.aim = { x: aim.x, y: aim.y, z: aim.z }'),
+    'the committed aim rides the witness (the tenure\'s own seat record)')
+  // the tenure: seat-keeping inside the hold branch, after the drive, before
+  // the return - the pure law gates it, the drive\'s own order re-asserts
+  const tenureIdx = minerSrc.indexOf("(v0.971.0) THE DRIVE'S OWN TENURE")
+  assert.ok(tenureIdx > 0, 'the tenure block exists')
+  const holdBranch = minerSrc.slice(minerSrc.indexOf('if (frozenHoldLive && !frozenReturnBypass({ oxygen: o2raw, headWet, underHold: frozenHoldLive })) {'))
+  const holdEnd = holdBranch.indexOf('// (v0.265.0) THE BYPASS ECHO')
+  const branch = holdBranch.slice(0, holdEnd > 0 ? holdEnd : 4000)
+  assert.ok(branch.includes("THE DRIVE'S OWN TENURE"), 'the tenure rides INSIDE the hold branch (before the return)')
+  assert.ok(branch.includes('walkoutReassertWanted({ pfGoal: pfT.goal ?? null, aim: woT.aim, displacement: dT, until: woT.until, now, done: woT.done === true })'),
+    'the re-assert rides the pure law (the wiring never decides alone)')
+  assert.ok(branch.includes('pfT.setGoal(new goals.GoalNear(woT.aim.x, woT.aim.y, woT.aim.z, 1))'),
+    'the re-assert lands the SAME goal shape (the drive\'s own order)')
+  assert.ok(branch.includes('releaseWalkGoal(bot)'), 'the stale-stop law clears the slot before the re-assert (the jobqueue\'s own order)')
 })
