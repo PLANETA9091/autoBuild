@@ -26399,3 +26399,32 @@ Stage Summary:
 - NEXT SESSION READ LIST: FACE 247 = 38210886949 (the v0.971.0 tree's first field read: the path probe's first sealed lines, the seat-keeping's first re-asserts, the census's sixth row - does a drive finally walk), the lane's gate verdict for 7b805358 BY RUN ID (38210260399), next free 0.972.0
 - Carried fronts: the lever's row series (EARLY 0 on the second face - does the 32u floor ever land early), the bank's harvest crash (1154u -> 144u - the door's own crowd), the reloot zero's nineteen-face anatomy, the dup cadence's climb (7 kicks), the calm watch (six faces), the throne's rotation law (sixteen refusals), the noon water (drown 3, mid 76%), the smelt tithe's zero, the sandbox mortality (alive ONE)
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
+
+---
+Task ID: cron30-20261012-1430
+Agent: cron fleet agent (super z)
+Task: fire 1430 - read FACE 247 (the v0.971.0 tree's first field read), gate verdicts, dispatch FACE 248, worklog append, push
+
+Work Log:
+- sandbox SURVIVED the gap (first fire in four without a reset); repo pulled clean, no lane commits since d3d46f0d; version 0.971.0 stands, next free 0.972.0
+- gate verdicts BY RUN ID: 38210990229 (d3d46f0d, fire 1400's push) = success CLOSED GREEN; 38210260399 (7b805358, the lane's v0.971.0) = success CLOSED GREEN
+- FACE 247 = 38210886949 polled completed success in two rounds (~10 min); artifact 11730441401 fetched -> face247/ (fleet19.log 3873 lines - second-largest, decomp 715)
+- THE WITNESS BAR MOVED: F9's stall window displacement 0.3..0.3 blocks of the 1.0 bar - THE FIRST NONZERO DISPLACEMENT IN CENSUS HISTORY (four faces rode 0..0); the ladder's r1 rung (gates reset, the funnel admits fresh walks); 4 relogs -> 1 stalled (25%), F9 = 4 relogs owning 100% of the face's churn
+- the drive census's aimed/sealed book UNCHANGED (2 aimed / 2 sealed) - zero new drives fired; the v0.971.0 path-probe and seat-keeping lines did not fire (no drive to probe, no seat to keep - the laws' first true field read still pending a drive)
+- the door clock's TENTH row LATE-dominant (36 of 45; early 0 / mid 8 / late 36) - BANK EARLY's evidence repeats: the closing churn owns the door; THE CHEST DOOR NEVER OPENED second consecutive (unreachable 40 of 45, rate 34.1% of 132 visit-lines); the bank recovered 827u (6.3u/visit) after 246's 144u crater
+- the relog clock's row LATE-dominant (3 of 4; early 0 / mid 1 / late 3) - THE END-PHASE CHURN TAX named: the drain's late legs drop the sessions
+- deaths 11 (the mort climbs: 20->5->3->1->6->7->11) - THE DEADLINE'S OWN DRAIN: the late third owns 100% of ~1016u lost (9 of 11 deaths late); deaths 9 on 5 grounds, multi-kill grounds 3
+- THE CALM BROKE: mainLate 75245ms - a 75-SECOND FREEZE, the first since the stormguard's four-face absence; rss 632M peak THE HIGHEST EVER (previous 434M); face ~801s
+- the dup cadence EXPLODED: 22 kicks (duplicate_login 17 = 77.3%), the retimeter's rides 3400..8100ms vs the floor 6000ms, THE MISS 5 (F13 3 / F14 2)
+- the reloot zero stands TWENTY faces: 9 piles ~1016u, big 4 carrying 789u, biggest 214u (F18 @[-120,64,378]), arms 0 / arrivals 0 / refusals 2 (no-stake 2) - the death drain's own mirror: the mass sits where it fell
+- the throne refused a SEVENTEENTH face (F12 x17 + F13 x12 own 29 of 54, 53.7%); the water lane 58 arms SPREAD (14/21/23 - no third owns the water); the standdowns 4 frozen late 3 of 4 (THE CLOSING FREEZE, F9's legs 0/1/3)
+- FACE 248 = 38213459922 dispatched 204 queued on d3d46f0d (the v0.971.0 tree's second field read)
+- no code this fire (the read+dispatch shape holds); version untouched 0.971.0, next free 0.972.0
+
+Stage Summary:
+- FACE 247 FIRST READ complete: the v0.971.0 tree's first field read answered PARTIAL - the witness bar moved (0.3 blocks, the ladder's r1), but zero new drives fired so the path probe and the seat-keeping stayed silent; the calm broke (75s freeze, rss 632M); the dup cadence exploded (22); the deadline drain owns the deaths (late 100%)
+- FACE 248 = 38213459922 live on d3d46f0d - the v0.971.0 tree's second field read (does a drive fire, does the probe log the honest sealed line, does the seat-keeping hold)
+- gates green BY RUN ID (38210990229, 38210260399); sandbox mortality: alive TWO (the reset streak broke at one)
+- NEXT SESSION READ LIST: FACE 248 = 38213459922 (the v0.971.0 second read: the drive census's seventh row - does a drive fire and walk; the freeze's identity - what rode the 75s window; the dup storm - does 22 repeat), gate verdict for this push BY RUN ID, next free 0.972.0
+- Carried fronts: the lever's row series (EARLY 0 three faces running - does the 32u floor ever land early), THE CHEST DOOR NEVER OPENED (two consecutive - unreachable 40/53), the reloot zero's twenty-face anatomy (1016u stranded), the dup cadence's explosion (22 kicks), the calm watch (BROKEN at six - the 75s freeze), the throne's rotation law (seventeen refusals), the deadline drain (late 100%), the witness bar (0.3 - does it clear 1.0)
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
