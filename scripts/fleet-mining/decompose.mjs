@@ -2355,15 +2355,18 @@ console.log('  hazard memorized:', count(/hazard memorized/))
       const sbr = sockBareRidersRow(sj)
       if (sbr) console.log(`  the socket join's bare riders (v0.812.0): ${sbr}`)
     }
-    // (v0.974.5) THE STORM DRIVER'S OWN JOIN - the 0200 fire's hand-read
+    // (v0.974.6) THE STORM DRIVER'S OWN JOIN - the 0200 fire's hand-read
     // hypothesis (FACE 268's max mainLate 24750ms as the socket storm's own
-    // candidate driver) priced by the face's own bytes: every loss reads the
-    // pulse gauges in its 20-line past (the churn join's own window), a
-    // mainLate at/over the 5s fence (the blackbox dump's own threshold)
-    // calls the loss stall-adjacent. One additive row beside the book.
+    // candidate driver) priced by the face's own bytes: every loss reads its
+    // NEAREST PRECEDING pulse gauge with NO line bound (the v0.974.6 reach
+    // law - a gauge is never more than one ~15-20s cadence back in process
+    // time; the line window was measured moot on FACE 268's 330-line gauge
+    // silence that swallowed the whole burst). A mainLate at/over the 5s
+    // fence (the blackbox dump's own threshold) calls the loss
+    // stall-adjacent. One additive row beside the book.
     const sdj = stormDriverJoin(lines)
     if (sdj) {
-      console.log(`  the storm driver's own join (v0.974.5): ${sdj.n} loss(es) - stall-adjacent ${sdj.stall} (peak mainLate ${sdj.maxStallLate}ms in the ${sdj.window}-line window) / calm ${sdj.calm} / ungauged ${sdj.ungauged}${sdj.verdict ? ` - ${sdj.verdict}` : ''}`)
+      console.log(`  the storm driver's own join (v0.974.6): ${sdj.n} loss(es) - stall-adjacent ${sdj.stall} (peak mainLate ${sdj.maxStallLate}ms at the freshest gauge) / calm ${sdj.calm} / ungauged ${sdj.ungauged}${sdj.verdict ? ` - ${sdj.verdict}` : ''}`)
     }
   }
 }

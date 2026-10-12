@@ -1,5 +1,5 @@
-// (v0.974.5) THE STORM DRIVER'S OWN JOIN - the socket loss ↔ the mainLate
-// stall's own line-window lens, pure, mining-surface only.
+// (v0.974.5, rebuilt v0.974.6) THE STORM DRIVER'S OWN JOIN - the socket loss ↔ the mainLate
+// stall's own freshest-witness lens, pure, mining-surface only.
 //
 // WHAT PRICED IT (FACE 268 = 38284845691, the v0.974.4 tree, read by the
 // 0200 fire): 15 socket losses (ECONNRESET 12 / EPIPE 3, one per bot, the
@@ -13,15 +13,34 @@
 //
 // THE JOIN: every socket-loss certificate (the sockloss.mjs SOCK_LOSS_RE
 // population - the same lines the book row reads, one parser one truth)
-// reads the pulse gauge lines ('b] n=.. ts=..s rss=..M late=..ms
-// mainLate=..ms', the heartbeat's own emitter shape) in the W lines
-// BEFORE it. The direction is the driver's own: the stall PRECEDES the
-// loss it drives, so the window looks back only. A loss whose window
-// holds a gauge with mainLate >= STALL_ADJACENT_MS is stall-adjacent;
-// one whose window holds gauges but none past the threshold is calm;
-// one with no gauge in the window is ungauged (the gauge's 15s cadence
-// can miss a short window - the honest third cell, never a guessed
-// reading).
+// reads its NEAREST PRECEDING pulse gauge line ('b] n=.. ts=..s rss=..M
+// late=..ms mainLate=..ms', the heartbeat's own emitter shape) with NO
+// line bound. The direction is the driver's own: the stall PRECEDES the
+// loss it drives. A loss whose freshest preceding gauge reads mainLate
+// >= STALL_ADJACENT_MS is stall-adjacent; one whose gauge reads under
+// the fence is calm; one with no preceding gauge at all is ungauged.
+//
+// THE REACH LAW (the v0.974.6 rebuild - two lessons priced):
+//   - v0.974.5's 20-line reach priced 14 of FACE 268's 15 losses
+//     UNGAUGED (the gauge's ~77-line cadence outran the window);
+//   - the 80-line cadence reach STILL priced 11 of 15 ungauged - and
+//     the measurement named the structure: FACE 268's whole 15-loss
+//     burst sat inside ONE 330-line gauge silence (gauge n=26 @ts=521
+//     -> n=27 @ts=541) - the burst lived between two gauges, and every
+//     loss's freshest preceding gauge read mainLate 784ms (CALM). In
+//     PROCESS TIME a gauge is never more than one cadence (~15-20s)
+//     back - the line distance is a noise proxy (the death clusters'
+//     line-rate spikes), the TS distance is the honest anchor. The
+//     reach is therefore UNBOUNDED in lines: the freshest preceding
+//     gauge IS the loss's own stall witness, whatever the line gap.
+//   - AND THE DIRECTION FORK FLIPPED on the same bytes: the 268 burst
+//     rode ts 521-541 with the main CALM before (784) and after (205),
+//     while the ~25s main freeze sat at ts=561 - TWENTY SECONDS AFTER
+//     the burst ended. The hand hypothesis ('the stall drives the
+//     storm') reads BACKWARDS on this face: the arrow candidate is
+//     burst -> freeze (the reconnect herd's join storm, the v0.14.2
+//     class) or a common network event driving both. The lens prices
+//     the driver seat per face; the direction rides the ts cells.
 //
 // THE LAWS:
 // - one parser one truth: the loss population is sockloss.mjs's own
@@ -34,10 +53,6 @@
 //   own threshold is 5s)"); the same 5s fence separates a stall worth
 //   blaming from the known 2-3s CPU-starvation band (allocvalve.mjs's
 //   own measurement).
-// - the window: 20 lines - the churn join's own precedent
-//   (sockloss.mjs SOCK_JOIN_WINDOW = 20); junk window/threshold fall
-//   back to the defaults (the fence law), a negative window reads 0
-//   (the clamp law).
 // - the honest zero: a face with no socket loss returns null (the
 //   healthy-silence inverted is the BOOK row's own law - the join adds
 //   no second silence); a non-array reads null (the junk convention).
@@ -53,26 +68,22 @@ import { SOCK_LOSS_RE } from './sockloss.mjs'
 // `b] n=${n} ts=${tsSec}s rss=${rssMb}M late=${lateMs}ms mainLate=${mainLateMs}ms`).
 const PULSE_GAUGE_RE = /b\] n=(\d+) ts=(\d+)s rss=(\d+)M late=(\d+)ms mainLate=(\d+)ms/
 
-/** mainLate (ms) a gauge must read inside the window to call the loss stall-adjacent. */
+/** mainLate (ms) a gauge must read at the loss's freshest witness to call
+ * the loss stall-adjacent. */
 export const STALL_ADJACENT_MS = 5000
-
-/** How many lines back from a loss the join reads the gauges (the churn join's own 20). */
-export const STORM_DRIVER_WINDOW = 20
 
 /**
  * The storm driver's own join over a face log (pure, junk-safe).
  *
  * @param {string[]|null} [lines] the face log (array of lines; anything else -> null)
  * @param {object} [opts]
- * @param {number} [opts.window] lines back from a loss (default STORM_DRIVER_WINDOW)
  * @param {number} [opts.stallMs] the stall fence (default STALL_ADJACENT_MS)
  * @returns {null|{n: number, stall: number, calm: number, ungauged: number,
  *   byKind: Object<string, number>, stallKinds: Object<string, number>,
- *   maxStallLate: number, window: number, stallMs: number, verdict: string|null}}
+ *   maxStallLate: number, stallMs: number, verdict: string|null}}
  */
-export function stormDriverJoin (lines, { window = STORM_DRIVER_WINDOW, stallMs = STALL_ADJACENT_MS } = {}) {
+export function stormDriverJoin (lines, { stallMs = STALL_ADJACENT_MS } = {}) {
   if (!Array.isArray(lines)) return null
-  const win = Number.isFinite(window) && window >= 0 ? Math.floor(window) : STORM_DRIVER_WINDOW
   const th = Number.isFinite(stallMs) && stallMs >= 0 ? Math.floor(stallMs) : STALL_ADJACENT_MS
   const losses = []
   const gauges = []
@@ -90,29 +101,22 @@ export function stormDriverJoin (lines, { window = STORM_DRIVER_WINDOW, stallMs 
   let maxStallLate = 0
   const byKind = {}
   const stallKinds = {}
+  let gi = 0 // gauges ascend by i; one forward pointer serves every loss
+  let freshest = -1
   for (const loss of losses) {
     byKind[loss.kind] = (byKind[loss.kind] || 0) + 1
-    // the gauges in the window BEFORE the loss (gauges ascend by i, so the
-    // backward scan may stop at the first line-gap past the window)
-    let saw = false
-    let peak = 0
-    for (let gi = gauges.length - 1; gi >= 0; gi--) {
-      const g = gauges[gi]
-      if (g.i >= loss.i) continue
-      if (loss.i - g.i > win) break
-      saw = true
-      if (g.mainLate > peak) peak = g.mainLate
-    }
-    if (!saw) { ungauged++; continue }
-    if (peak >= th) {
+    while (gi < gauges.length && gauges[gi].i < loss.i) { freshest = gi; gi++ }
+    if (freshest < 0) { ungauged++; continue }
+    const g = gauges[freshest]
+    if (g.mainLate >= th) {
       stall++
       stallKinds[loss.kind] = (stallKinds[loss.kind] || 0) + 1
-      if (peak > maxStallLate) maxStallLate = peak
+      if (g.mainLate > maxStallLate) maxStallLate = g.mainLate
     } else {
       calm++
     }
   }
-  return { n: losses.length, stall, calm, ungauged, byKind, stallKinds, maxStallLate, window: win, stallMs: th, verdict: stormDriverSeat({ stall, calm, ungauged, n: losses.length, maxStallLate }) }
+  return { n: losses.length, stall, calm, ungauged, byKind, stallKinds, maxStallLate, stallMs: th, verdict: stormDriverSeat({ stall, calm, ungauged, n: losses.length, maxStallLate }) }
 }
 
 /**
@@ -122,8 +126,8 @@ export function stormDriverJoin (lines, { window = STORM_DRIVER_WINDOW, stallMs 
  * (the tie law - a share never owns).
  * @param {object} [p]
  * @param {number} [p.stall] stall-adjacent losses
- * @param {number} [p.calm] calm-window losses
- * @param {number} [p.ungauged] losses with no gauge in the window
+ * @param {number} [p.calm] losses whose freshest gauge read under the fence
+ * @param {number} [p.ungauged] losses with no preceding gauge at all
  * @param {number} [p.n] total losses
  * @param {number} [p.maxStallLate] the peak mainLate the stall class rode
  * @returns {string|null} the seat's words (null on junk arithmetic)
@@ -135,9 +139,9 @@ export function stormDriverSeat ({ stall = 0, calm = 0, ungauged = 0, n = 0, max
   const t = Number.isFinite(n) && n > 0 ? Math.floor(n) : 0
   const peak = Number.isFinite(maxStallLate) && maxStallLate > 0 ? Math.floor(maxStallLate) : 0
   if (!t || s + c + u > t) return null
-  if (s === 0 && c === 0) return null // the window never saw a gauge (all ungauged) - no words are honest yet
-  if (s === 0 && u > c) return `the gauges ride beyond the window's reach (ungauged ${u} of ${t}) - the driver stays unpriced` // (v0.974.5 first-read lesson: FACE 268 priced 14 of 15 ungauged - the calm words would overclaim; a stall > 0 keeps its own words)
+  if (s === 0 && c === 0) return null // the join never saw a gauge (all losses pre-gauge) - no words are honest yet
+  if (s === 0 && u > 0) return `the losses rode their freshest gauges calm where witnessed (calm ${c} / ungauged ${u}) - the driver seat stays empty` // (the v0.974.5 first-read lesson: the ungauged share rides named, never silently)
   if (s === 0) return 'the losses rode calm gauges - the driver seat stays empty'
-  if (s * 2 > t) return `the stall rides the storm (peak mainLate ${peak}ms in the window)`
+  if (s * 2 > t) return `the stall rides the storm (peak mainLate ${peak}ms at the freshest gauge)`
   return 'the seat is mixed - the storm shares its drivers'
 }
