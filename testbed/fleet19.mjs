@@ -51,6 +51,7 @@ import { duskBankPlan } from '../src/lib/duskbank.mjs' // (v0.229.0) the heavy p
 import { shedTripDue } from '../src/lib/bankshed.mjs' // (v0.566.0) THE SHED CONSULT SEAT - the whale cure's fourth leg joins the arming ladder's last rung: the plan (v0.558.0), the pricer (v0.561.0), the gate (v0.564.0), the wiring (this lane)
 import { reconnectDelayMs, LOGIN_SPAWN_TIMEOUT_MS } from '../src/lib/backoff.mjs'
 import { kickWitnessFill } from '../src/lib/kickwitness.mjs' // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - the kicked event's byte fills the seats the catch never hears
+import { relogHandshakeWanted } from '../src/lib/reloghandshake.mjs' // (v0.972.0) THE RELOG'S OWN HANDSHAKE - a session that returns whole ends its own seat, the old session never feeds the next login a duplicate
 import { writeFileAtomic } from '../src/lib/atomicsave.mjs'
 import { snapshotStats, seedStats, sentryAttributionRow, rescueEconomyDecode, rescueHoleRow, stormDietRow, stormVerdictRow, airBarLedgerRow, sensorLiarRow, scoutReportRow, mapCoverageRow, snapshotScoutStats, seedScoutStats } from '../src/lib/statcarry.mjs'
 import { createServerGuard, isSocketLossLine, isTimeoutKickLine, probeServerPort, PROBE_INTERVAL_MS } from '../src/lib/serverguard.mjs'
@@ -4009,6 +4010,13 @@ async function runBot (name, target, index) {
       lastWhy = filled.lastWhy
       kickKind = filled.kickKind
     }
+    // (v0.972.0) THE RELOG'S OWN HANDSHAKE - the seat read rides the why's own truth
+    // (face 247's released artifact: 22 kicked lines = 5 true timeout kicks + 17
+    // duplicate_login ECHOES, one per end-phase relog - the session that returns
+    // WHOLE reaches this tail with the client STILL CONNECTED, and the next login
+    // makes the vanilla server kick the old seat with duplicate_login; the fill
+    // reads the seat BEFORE the reset below, the end gate rides after the sleep).
+    const handshake = relogHandshakeWanted({ threw: lastWhy !== '' })
     // (v0.18.9) totals survive into the next attempt's miner; a failed LOGIN leaves
     // no stats object - keep the previous carry instead of resetting to zero
     const snap = snapshotStats(miner?.stats)
@@ -4040,6 +4048,11 @@ async function runBot (name, target, index) {
     lastWhy = ''
     kickKind = null // (v0.904.0) the kind is per-attempt - the next session classifies its own
     await new Promise(r => setTimeout(r, delay))
+    // (v0.972.0) THE RELOG'S OWN HANDSHAKE - the end gate rides AFTER the sleep,
+    // BEFORE the next createMiner: the old seat closes here, so the server never
+    // manufactures the duplicate kick of the old client (the v0.904.0 floor keeps
+    // guarding the true-kick path; this lane is the normal completion's own seat).
+    if (handshake.end) { try { miner?.bot?.end() } catch { /* a dead seat holds no goodbye */ } }
   }
 }
 
