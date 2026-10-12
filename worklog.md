@@ -26479,3 +26479,31 @@ Stage Summary:
 - NEXT SESSION READ LIST: FACE 249 = 38216374800 (the v0.972.0 first read: the kicked-lines census - do the duplicate_login echoes starve; the walker's eighth row - does a drive finally clear the bar; the bank - does the zero repeat), gate verdicts BY RUN ID (the lane's 38216085463, this push's), next free 0.973.0
 - Carried fronts: the lever's row series (EARLY 0 three faces - the 32u floor never landed), THE CHEST DOOR NEVER OPENED (three consecutive), the reloot zero's twenty-one-face anatomy (1018u stranded), the deadline drain (late 91-100% two faces), the calm watch (returned after the one-face storm), the throne's rotation law (eighteen refusals), the witness bar (0.2..0.3 - does it clear 1.0), the handshake's echo watch (v0.972.0's first field read)
 - Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
+
+---
+Task ID: cron30-20261012-1530
+Agent: cron fleet agent (super z)
+Task: fire 1530 - read FACE 249 (the v0.972.0 handshake's first field read), gate verdicts, dispatch FACE 250, worklog append, push
+
+Work Log:
+- sandbox alive; repo pulled clean at open (e7e4e2c4, 0.972.0); gate verdicts BY RUN ID: 38216085463 (9403a3af, the lane's v0.972.0) = success CLOSED GREEN; 38216536794 (e7e4e2c4, fire 1500's push) = success CLOSED GREEN (verified before this fire's own push)
+- FACE 249 = 38216374800 polled completed success in three rounds (~15 min); artifact 11732734094 fetched -> face249/ (fleet19.log 4046 lines, decomp 742)
+- THE HANDSHAKE'S CURE LANDED ON ITS FIRST FIELD READ: the kick's own kinds - 6 kicked lines, disconnect.timeout 6, THE DUP CLASS 0 - the duplicate_login ECHOES STARVED (the series' first zero-dup face; the whole-return seats ended by relogHandshakeWanted, the vanilla server never kicked the old seat once)
+- the walker census's eighth observation: 3 stalled windows (F10=1 F13=1 F1=1), displacement 0.2..0.4 (avg 0.30) vs the bar 1 - the bar's MAX climbed (0.3 -> 0.4) but never cleared; the ladder r1 3 / r2 0 / r3 0; 3 relogs -> 3 stalled (100%); no repeats - the saver did its job
+- the relog clock's row EARLY-dominant (2 of 3; early 2 / mid 1 / late 0) - THE FIRST EARLY ROW SINCE 240: the entry window's churn owns the opening, the launch window's geometry is the front
+- the door clock's TWELFTH row LATE-dominant (17 of 33; early 1 / mid 14 / late 17) - BANK EARLY's evidence repeats, and EARLY 1: THE FIRST NONZERO EARLY DOOR LEG IN TWELVE ROWS (the 32u floor's first early fragment after three EARLY-0 faces)
+- deaths 11 (~443u lost): mid 349u (5) / late 94u (5) - THE DEADLINE'S OWN DRAIN BROKE: the late third owns only 21%, THE MIDDLE'S OWN DRAIN rides (the bank lever's seat moved with the storm)
+- the bank RECOVERED from 248's zero: 848u banked (6.2u/visit over 136 visit-lines), the banked crater 43.1% of 1969u (the series' richest endgame loot)
+- THE CALM BROKE AGAIN: mainLate 49210ms - a 49-SECOND FREEZE (the second freeze in three faces; 247's 75s, 249's 49s), rss 485M peak; face ~1001s the longest in the recent series
+- the reloot zero stands TWENTY-TWO faces: 8 piles ~443u, big 2 carrying 255u, biggest 133u (F1 @[-134,49,415]), arms 0 / arrivals 0 / refusals 4 (no-stake 2, wet-spot 2)
+- the throne refused a NINETEENTH face (F1 x17 + F10 x15 own 32 of 78, 41.0%); the relog dive join: F1 + F10 own 25 of 59 start(s) (42.4%)
+- FACE 250 = 38219468954 dispatched 204 in_progress on e7e4e2c4 (the v0.972.0 tree's SECOND field read - does the dup zero hold)
+- no code this fire (the read+dispatch shape holds); version 0.972.0 stands, next free 0.973.0
+
+Stage Summary:
+- FACE 249 FIRST READ complete: the v0.972.0 handshake answered YES on its first field read (the dup class 0 - the echoes starved); the walker bar climbed (0.4); the door clock's first early leg (early 1); the deadline drain broke (late 21%); the calm broke again (49s freeze, the second in three faces)
+- FACE 250 = 38219468954 live on e7e4e2c4 - the dup zero's confirmation read
+- gates green BY RUN ID (38216085463, 38216536794); sandbox mortality: alive FOUR (the reset streak stays broken)
+- NEXT SESSION READ LIST: FACE 250 = 38219468954 (the v0.972.0 second read: does the dup class hold at 0; the walker's ninth row - does the bar clear 1.0; the freeze's identity - what rode the 49s window; the early door leg - does early grow), gate verdict for this push BY RUN ID, next free 0.973.0
+- Carried fronts: the lever's row series (EARLY 1 - the first fragment; does it grow), THE CHEST DOOR NEVER OPENED (four consecutive), the reloot zero's twenty-two-face anatomy, the freeze watch (two freezes in three faces - 75s and 49s), the throne's rotation law (nineteen refusals), the witness bar (0.2..0.4 - does it clear 1.0), the handshake's echo watch (the zero holds?), the smelt tithe's zero
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / dispatch (seat pre-polled, POST 204 on the free seat, BY RUN ID verified) / one-parser / one-lattice / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite
