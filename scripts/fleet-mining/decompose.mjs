@@ -20,7 +20,7 @@ import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/l
 import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, depositDuoRow } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read; (v0.937.0) + the deposit's own cast - the family's own bot-level seat (the v0.827.0 lane seat's own sibling)
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
 import { nudgeApproachBook, nudgeCast, nudgeCastRow, nudgeDuo, nudgeDuoRow } from '../../src/lib/nudgebook.mjs' // (v0.939.0) the nudge approach's own cast - the verdicts' own bot-level seat (the raw per-bot row's own sibling)
-import { openDeafCensus, chestFateLedger } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests
+import { openDeafCensus, chestFateLedger, valveVoiceCount } from '../../src/lib/opendeaf.mjs' // (v0.438.0) the open-timeout zeros against the valve + the main-late spikes; (v0.448.0) the returns to the autopsied chests; (v0.974.24) the valve's own voice count - the silent cross's half
 import { shaftLockBook, shaftCast, shaftCastRow, shaftDuo, shaftDuoRow } from '../../src/lib/shaftcast.mjs' // (v0.940.0) the shaft lock's own cast - the locks' own bot-level seat (the roster's own sibling)
 import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../src/lib/zeroclock.mjs' // (v0.441.0) the hop zeros' face-phase anatomy; (v0.766.0) the walk lattice's own clock - the no-path class's phase verdict
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
@@ -4745,7 +4745,20 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // (v0.974.14) THE RESIDENCY WORD - the arm's own dose rides beside the
     // shape (the span law's own currency; the honest silence prints nothing)
     const resTail = vm.residency ? ` | ${vm.residency}` : ''
-    console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}`)
+    // (v0.974.24) THE SILENT CROSS - the rate anchor's own blind spot. FACE
+    // 291's cross rode rss peak 452M (2M past the 450M arm) with the valve
+    // speaking NOTHING - the runtime valve arms on a RATE (queue pressure,
+    // the sustained climbs), so the slow-creep class crosses the floor
+    // gauge by gauge and never trips it. The clause prices the cross from
+    // the two halves: the lens's over-floor residency AND the valve's own
+    // voice (opendeaf's census) - arm ridden + 0 voice = the blind spot's
+    // own name. The speaking faces price nothing (the honest silence - the
+    // valve's spans are opendeaf's read, this row names only the silence).
+    const voice = valveVoiceCount(lines)
+    const crossTail = (vm.overValveCells > 0 && voice.closes === 0 && voice.opens === 0)
+      ? ` | THE SILENT CROSS - the arm rode ${vm.overValveCells} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor's slow-creep blind spot (the residency rode the lens, the valve rode nothing)`
+      : ''
+    console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14, silent cross v0.974.24): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}${crossTail}`)
   }
 }
 

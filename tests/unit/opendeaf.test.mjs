@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  parsePulseAnchor, parseValveClose, parseValveOpen, parseOpenRetry, openDeafCensus, chestFateLedger,
+  parsePulseAnchor, parseValveClose, parseValveOpen, parseOpenRetry, openDeafCensus, chestFateLedger, valveVoiceCount,
 } from '../../src/lib/opendeaf.mjs'
 
 // THE ROUND-TRIP LAW (the walkoutcensus precedent): the test lines are the
@@ -285,4 +285,52 @@ test('chestFateLedger: the re-read law and the repeat verdict - the blacklist cu
   const f2 = chestFateLedger(occl)
   assert.equal(f2.coords[0].verdict, 'chest')
   assert.equal(f2.staleRepeats, 0, 'the occlusion leg\'s repeats are another front\'s fuel')
+})
+
+// (v0.974.24) THE VALVE VOICE CENSUS - the silent cross's own half. The
+// cross question ('the floor was crossed and the valve said NOTHING') needs
+// the voice count beside the valve margin lens's residency cells. The voice
+// is the LINE, not the stamp - the ts-less valve line still speaks.
+test('valveVoiceCount: the mixed face counts closes and opens verbatim', () => {
+  const v = valveVoiceCount([
+    ANCHOR_TRUNC,
+    VALVE_CLOSE,
+    'b] n=5 ts=90s rss=380M late=11ms mainLate=200ms',
+    VALVE_OPEN,
+    VALVE_CLOSE,
+  ])
+  assert.deepEqual(v, { closes: 2, opens: 1 })
+})
+
+test('valveVoiceCount: the ts-less valve line still speaks (the voice is the line, not the stamp)', () => {
+  const v = valveVoiceCount([
+    '[allocvalve] CLOSED: path queue 6q sustained 30s - the pre-stamp face\'s own closure',
+    '[allocvalve] OPEN: rss 350M after closure (strikes 1) - the funnel flows again',
+  ])
+  assert.deepEqual(v, { closes: 1, opens: 1 }, 'the parsers read null on ts-less lines (they anchor windows) - the voice census counts the SPEECH')
+})
+
+test('valveVoiceCount: the junk battery judges nothing - prose, other lanes, non-strings, non-array', () => {
+  assert.deepEqual(valveVoiceCount([]), { closes: 0, opens: 0 })
+  assert.deepEqual(valveVoiceCount([
+    '[allocvalve] idle this face (the prose mentions the valve but never speaks the CLOSED/OPEN grammar)',
+    'F6 [F6] hop: chest at [-136,72,407] d=13 zero: cannot open chest',
+    'b] n=9 ts=300s rss=442M late=12ms mainLate=800ms',
+    42,
+    null,
+    undefined,
+  ]), { closes: 0, opens: 0 })
+  assert.deepEqual(valveVoiceCount(null), { closes: 0, opens: 0 }, 'non-array never throws')
+  assert.deepEqual(valveVoiceCount(undefined), { closes: 0, opens: 0 })
+})
+
+test('valveVoiceCount: the silent-cross face reads zeros both - the cross precondition\'s own shape', () => {
+  // the FACE 291 class: rss crossed the floor (452M) and the valve rode silent -
+  // the voice half reads {0,0} while the lens's overValveCells reads >= 1
+  const v = valveVoiceCount([
+    'b] n=10 ts=100s rss=444M late=12ms mainLate=300ms',
+    'b] n=11 ts=110s rss=452M late=12ms mainLate=300ms',
+    'b] n=12 ts=120s rss=451M late=12ms mainLate=300ms',
+  ])
+  assert.deepEqual(v, { closes: 0, opens: 0 })
 })

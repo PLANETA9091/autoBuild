@@ -82,6 +82,29 @@ export function parseValveOpen (s) {
   return { ts: num(ts), strikes: strikes ? num(strikes[1]) : null }
 }
 
+// (v0.974.24) THE VALVE VOICE CENSUS - the silent cross's own half. The
+// valve margin lens prices the arm's residency (overValveCells, the dose,
+// the ride's share) but the lens is READ-side: whether the RUNTIME valve
+// itself ever spoke on the face is this file's own emitter grammar
+// ('[allocvalve] CLOSED:' / '[allocvalve] OPEN:'). The cross question -
+// 'the floor was crossed and the valve said NOTHING' - needs both halves:
+// the lens's over-floor cells AND this census's voice count. The voice is
+// the LINE, not the stamp: the parsers above read null on a ts-less valve
+// line (they anchor windows), but a ts-less line is still a spoken voice
+// (the ts stamp rides every valve line since v0.143.0; the pre-stamp
+// faces' voice must still count). Junk-safe: non-array input and every
+// non-string line judge NOTHING; the counts never throw.
+export function valveVoiceCount (lines) {
+  const voice = { closes: 0, opens: 0 }
+  if (!Array.isArray(lines)) return voice
+  for (const line of lines) {
+    if (typeof line !== 'string') continue
+    if (line.includes('[allocvalve] CLOSED:')) voice.closes++
+    else if (line.includes('[allocvalve] OPEN:')) voice.opens++
+  }
+  return voice
+}
+
 // 'F6 [F6] deposit: open attempt 1 timed out (...) at [x,y,z] - the v0.25.0 retry follows'
 // 'F6 [F6] deposit: open retry won on attempt 2 at [x,y,z] (the window opened after the retry)'
 // 'F6 [F6] deposit: open retry lost on attempt 2 (...) at [x,y,z] - the zero follows'
