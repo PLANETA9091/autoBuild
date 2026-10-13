@@ -97,6 +97,19 @@
 // only when a fourth-rung life rode - the fold prices what rode,
 // never invents.
 //
+// THE LADDER'S OWN SIXTH RUNG (v0.976.12): the ladder's own next seat
+// (the FACE 308 read priced the absence by hand: no depth-6 life rode
+// - the sixth rung was named unnamed, no hand-priced verdict yet; the
+// seat waits whole). The raise to the edge +6 owns depth exactly 6 -
+// the deepest remainder's own yield byte rides beside the fifth
+// rung's word; the fence grows the sixth rung's own laws (the image -
+// the sixth rung never owns more than the remainder, the rungs' own
+// FULL joint law - two + three + four + five + six never exceed the
+// remainder, the coherence law - a sixth-rung life pins the
+// remainder's own ceiling at 6+, the close law - the whole remainder
+// at the sixth rung pins the ceiling at 6). The word rides only when
+// a sixth-rung life rode - the fold prices what rode, never invents.
+//
 // Pure: reads, never mutates. Junk-safe: non-string rows judge
 // nothing; non-array/string input reads the empty book.
 
@@ -886,15 +899,15 @@ export function o2TriggerKindRow (book) {
  * @returns {{deaths: number, noCrossing: number, blind: number,
  *   catchable: {count: number, min: number|null, max: number|null, sum: number},
  *   raiseYield: {caught: number, two: number, three: number,
- *   four: number, rest: {count: number, min: number|null,
- *   max: number|null, sum: number}}, lies: number}|null} null when the
- *   source book prices nothing
+ *   four: number, five: number, six: number, rest: {count: number,
+ *   min: number|null, max: number|null, sum: number}},
+ *   lies: number}|null} null when the source book prices nothing
  */
 export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), silentBornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, two: 0, three: 0, four: 0, five: 0, rest: emptyFold() }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), silentBornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, two: 0, three: 0, four: 0, five: 0, six: 0, rest: emptyFold() }, lies: 0 }
   // (v0.976.11) the WHEN words' own lane: the priced deaths' own ts
   // list rides the fold's own build - the thirds' own counts price
   // against the stream's own end byte after the walk (the starveclock
@@ -1016,6 +1029,11 @@ export function o2TriggerEdgeBook (book) {
       // depth 2..5' - the depth-5 tail's own top rode unnamed, the
       // fourth rung's honest silence named it the next fire's own word)
       else if (depth === 5) out.raiseYield.five++
+      // (v0.976.12) the ladder's own sixth rung: the raise to the edge
+      // +6 owns depth exactly 6 - the deepest rungs' own yield byte (no
+      // depth-6 life rode the FACE 308 read's own face - the sixth rung
+      // was named unnamed; the seat waits whole)
+      else if (depth === 6) out.raiseYield.six++
     }
   }
   // (v0.976.11) the WHEN words' own lane byte: the stream's own end
@@ -1174,6 +1192,18 @@ export function o2TriggerEdgeConsistent (e) {
   if (r.two + r.three + r.four + r.five > r.rest.count) return false
   if (r.five > 0 && r.rest.max < 5) return false
   if (r.five === r.rest.count && r.rest.count > 0 && r.rest.max !== 5) return false
+  // (v0.976.12) the ladder's own sixth rung: the yield's own image
+  // (the sixth rung never owns more than the remainder), the rungs'
+  // own FULL joint law (two + three + four + five + six never own more
+  // than the remainder together), the coherence law (a sixth-rung life
+  // rides depth exactly 6 - its presence pins the remainder's own
+  // ceiling at 6+), and the close law (the whole remainder at the
+  // sixth rung pins the remainder's own ceiling at 6)
+  if (!Number.isInteger(r.six) || r.six < 0) return false
+  if (r.six > r.rest.count) return false
+  if (r.two + r.three + r.four + r.five + r.six > r.rest.count) return false
+  if (r.six > 0 && r.rest.max < 6) return false
+  if (r.six === r.rest.count && r.rest.count > 0 && r.rest.max !== 6) return false
   if (e.blind + c.count + e.lies !== e.noCrossing) return false
   if (e.lies > 0) return false // the lie seat: the fold's own contrapositive is absolute
   if (c.count > 0 && (c.min < 1 || c.max < c.min)) return false
@@ -1326,5 +1356,16 @@ export function o2TriggerEdgeRow (e) {
       ? ` (the ladder's own fifth rung (v0.976.8): the fifth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 5}) owns the whole remainder - ${r.five} of ${r.rest.count} rest life(s) rode depth 5 - THE LADDER'S OWN CLOSE: five rungs price every miss)`
       : ` (the ladder's own fifth rung (v0.976.8): the fifth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 5}) owns ${r.five} of ${r.rest.count} rest life(s) rode depth 5 - ${r.rest.count - r.five} rest life(s) rode beside the rung (the remainder rode depth ${r.rest.min}..${r.rest.max}))`
   }
-  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})${secondWord}${thirdWord}${fourthWord}${fifthWord}`
+  // (v0.976.12) the ladder's own sixth rung - the deepest remainder's
+  // own word (the shape's own two words, never a threshold): the close
+  // (six rungs price every miss) / the sixth rung's own share beside
+  // the rest. The word rides only when a sixth-rung life rode - the
+  // fold prices what rode, never invents.
+  let sixthWord = ''
+  if (r.six > 0) {
+    sixthWord = r.six === r.rest.count
+      ? ` (the ladder's own sixth rung (v0.976.12): the sixth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 6}) owns the whole remainder - ${r.six} of ${r.rest.count} rest life(s) rode depth 6 - THE LADDER'S OWN CLOSE: six rungs price every miss)`
+      : ` (the ladder's own sixth rung (v0.976.12): the sixth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 6}) owns ${r.six} of ${r.rest.count} rest life(s) rode depth 6 - ${r.rest.count - r.six} rest life(s) rode beside the rung (the remainder rode depth ${r.rest.min}..${r.rest.max}))`
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})${secondWord}${thirdWord}${fourthWord}${fifthWord}${sixthWord}`
 }
