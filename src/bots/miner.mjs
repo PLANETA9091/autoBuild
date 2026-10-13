@@ -76,6 +76,7 @@ import {
 import { noteTransitStall, rearmVerdict } from '../lib/rearm.mjs' // (v0.443.0) THE SAME-TARGET RE-ARM BRAKE - the zero-gain loop's cross-episode gate
 import { suffocateRescueTargets, SUFFOCATE_WATCH_EVERY_TICKS, SUFFOCATE_DIG_MAX_TICKS } from '../lib/suffocate.mjs'
 import { WET_CHURN_LOG_CAP } from '../lib/wetchurn.mjs' // (v0.223.0) the churn recorder's memory cap (the plan's own constant)
+import { rescueDisarmGate } from '../lib/rescuedisarm.mjs' // (v0.974.17) THE RESCUE'S OWN DISARM SWEEP - the arm edge's one clear re-asserted every pass (the live-goal-only law)
 import { DRAGON_DEATH_LOG_CAP } from '../lib/dragonzone.mjs' // (v0.225.0) the dragon death registry's memory cap (the zone's own constant)
 import { WaterTableBoard } from '../lib/watertable.mjs' // (v0.84.0) the aquifer ceiling memory
 import { craftTorches, countItem } from './tools.mjs'
@@ -2285,6 +2286,20 @@ export function createMiner ({
         // (v0.374.0) the death latch breaks too: a respawned client reads
         // health 20 and the loop would swim ON posthumously otherwise.
         if (diedMidRescue || (bot.health ?? 20) <= 0) break
+        // (v0.974.17) THE RESCUE'S OWN DISARM SWEEP - the arm edge cleared the
+        // goal once; FACE 285 priced the windows the one clear leaves (the
+        // release->re-arm consult race, the nudge retry's re-issue): rescue
+        // active owned 3 of 3 o2-reset drown(s) with two live leg walks at
+        // death - the goal's movement writes fight the swim's control states
+        // every physics tick. Re-assert the disarm EVERY pass, conditional on
+        // a LIVE goal only (a goal-less pass touches nothing - the swim's own
+        // control writes are never cleared out from under it); silent - the
+        // census's own rescueActive class judges the cure by its next face.
+        const liveGoal = (() => { try { return bot.pathfinder?.getGoal?.() ?? null } catch { return null } })()
+        if (rescueDisarmGate({ hasGoal: liveGoal != null }).clear) {
+          try { bot.pathfinder.setGoal(null) } catch { /* the swim keeps its hands */ }
+          try { bot.clearControlStates() } catch { /* nothing held */ }
+        }
         const read = waterRead()
         // (v0.104.0) waterlogged contact counts: a bot standing in a
         // waterlogged stair IS in water (the F17 class) - the rescue must swim
