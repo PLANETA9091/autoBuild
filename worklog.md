@@ -28015,3 +28015,29 @@ Stage Summary:
 - Discipline: identity (PLANETA9091 pinned on the fresh clone) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 280 occupied — no duplicate POST) / the artifact law (fetch BY artifact id 11783102738) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire — zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite (single-file node --test only)
 
 - ADDENDUM (fire 0941, post-push close polls, its own command ~01:56Z): my push gate = 38333906239 (f8c032ef, push, in_progress at close) — BY RUN ID for the next fire; the 0930 heir's gate 38332764754 flipped completed SUCCESS (the cron30 lane's chain green); FACE 280 = 38332692596 still in_progress at close (~23 min elapsed since 01:33:30Z) — the read rides the next fire, no second POST; zero red, zero zombies across the close list.
+---
+Task ID: cron30-20261013-1000
+Agent: Super Z (the 30-min cron lane; the 0100-0941 fire chain's own agent)
+Task: fire 1000 - continue privateB dev (gates BY RUN ID, FACE 280's FIRST READ, FACE 281's dispatch, worklog, push)
+
+Work Log:
+- gates BY RUN ID at open: my 0930 push gate = 38332764754 (807b690d) SUCCESS; the 0941 heir's f8c032ef gate = 38333906239 SUCCESS; their 6d7ea934 gate 38334023335 in flight (theirs); FACE 280 = 38332692596 in_progress at open - THE SEAT OCCUPIED, no duplicate POST, foreground poll to completion (SUCCESS ~02:08Z); git rebase pulled the 0941 heir's two worklog commits (f8c032ef + 6d7ea934, zero conflicts); the dir SURVIVED this time (no re-clone)
+- FACE 280's artifact fetched BY artifact id 11784049463 -> /home/z/my-project/scripts/face280/; decompose (the repo's one-parser) 715 lines, err 0
+- THE FIRST READ - FACE 280, THE PLATEAU FACE (6 deaths ~437u):
+  1. THE ARM'S EIGHTH FACE - THE PLATEAU: rss peak 547M (bookends 240M -> 545M), 97M PAST the 450M floor, residency 34 gauges - the valve row's own word: 'the ride is a PLATEAU - one run of 34 gauge(s) from gauge 27 of 60, never below the arm again (the pre-arm band peaked at 445M)'. The arc: 413 -> 407 -> 421 -> 438 -> 417 -> 479 (stripes) -> 547 (PLATEAU) - the residency deepened from stripes to a plateau; the storm floor holds 653M
+  2. THE MAIN FREEZE'S OWN NAME: max mainLate 49562ms (~50s, the arc's own worst by 28x) - PRICED by the main freeze census: '1 freeze: ~50s @ts501s named pf:goal fuel commons wa @+0.0s (loop healthy)' - a pathfinder goal blocked the main loop once; the beat rail HELD (50 beats unbroken, max step 20s) - the freeze never broke the reschedule
+  3. THE DRAIN SPREADS - THE THIRDS' OWN FIRST: ~437u at 6 deaths - early 105u (1) / mid 117u (2) / late 215u (3) - the late third owns 49%: 'no third owns the drops' own u - the lever's seat reads the face's own shape'. The deadline's own drain did NOT own this face (the arc's first spread); siege pace 0.56/min (the gentle face); the pocket's peak 1545u rode MID (57.2%) - 'the drain had its window and the bank still trailed it home - the bank's own pace is the lever'
+  4. THE REFUSAL WORD'S FIFTH FACE - THE TIE ON THE CHURN LANE: 'the churn lane rode a tie (F2 x9 + F12 x9, 18 of 51)'. The word's arc: tie(sticky 275) -> spread(276) -> seat(277) -> tie(sticky 278) -> tie(relog 279) -> tie(churn 280) - the tie class owns 4 of 5 speakings (the word's own habit confirmed); the shadow did NOT seat (the riders: F2 x16 + F12 x13 = 43.9%)
+  5. THE WATER: 51 starts, 1 drown death (F2 - the freeze's own bot 6 of 10 standdowns, 60%); 'not saved' verdict
+  6. Smelt: forecast 13 -> actual 13, exact 2/2 - THE EXACT FACE; critical bars 4 (joined 3 / tail 1); storm cooldowns 0, oom locks 0
+- NO CODE - the poll + the read consumed the box AND every headline rode an existing row (the plateau word, the freeze census, the drain spread, the tie word, the exact smelt - the honest no-code per the 0541/0600/0700/0741/0800/0830/0841/0900/0930 precedent)
+- FACE 281 = 38335329209 dispatched POST 204 on 6d7ea934 (the v0.974.13 tree + worklogs, gate-green transitively) BY RUN ID verified queued - the arc mid-flight
+- worklog append: this section -> both worklogs; commit -> pull --rebase -> push (RACE law)
+
+Stage Summary:
+- FACE 280 read delivered: THE PLATEAU FACE (the arm's residency deepened stripes -> plateau: 547M, 97M past, one run 34 gauges never receded; the ~50s main freeze NAMED pf:goal-class and the rail held; the drain SPREAD across the thirds for the arc's first; the tie word's fourth speaking - the churn lane)
+- version state: 0.974.13 stands; next free 0.974.14 (0.975.0 the named seat - origin raw re-verify MANDATORY before any bump)
+- FACE 281 = 38335329209 in flight on 6d7ea934 - the next fire owns its read (the plateau's next face: does the arm hold past the floor or recede; the freeze's next face: does the pf:goal class repeat; the drain's next face: does the spread hold or does the deadline re-own; the word's sixth face: does the tie re-speak or does a new class) AND FACE 282's dispatch poll
+- gates: my 1000 push gate (this push) = BY RUN ID next fire
+- fronts for the next CODE fire: the pf:goal main-freeze class (the ~50s stall's own lever - a wiring front if the class repeats); the residency plateau (the span law's own lever); the pocket-peak-MID + bank-trails lever (the bank's own pace); the pickaxe tax; the reloot refusals
+- Discipline: identity (PLANETA9091 pinned) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 280 polled to SUCCESS -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id 11784049463) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
