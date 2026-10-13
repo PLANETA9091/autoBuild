@@ -840,15 +840,15 @@ export function o2TriggerKindRow (book) {
  * @param {object|null} [book] the o2TriggerBook fold
  * @returns {{deaths: number, noCrossing: number, blind: number,
  *   catchable: {count: number, min: number|null, max: number|null, sum: number},
- *   raiseYield: {caught: number, rest: {count: number, min: number|null,
- *   max: number|null, sum: number}}, lies: number}|null} null when the
+ *   raiseYield: {caught: number, two: number, rest: {count: number,
+ *   min: number|null, max: number|null, sum: number}}, lies: number}|null} null when the
  *   source book prices nothing
  */
 export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, rest: emptyFold() }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, two: 0, rest: emptyFold() }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -929,6 +929,11 @@ export function o2TriggerEdgeBook (book) {
       rf.sum += depth
       if (rf.min === null || depth < rf.min) rf.min = depth
       if (rf.max === null || depth > rf.max) rf.max = depth
+      // (v0.976.0) the ladder's own second rung: the raise to the edge
+      // +2 owns depth exactly 2 - the remainder's own yield byte (the
+      // run108 verdict priced the close by hand: 'the rest rode depth
+      // 2..2' - the second rung's own word becomes a field byte)
+      if (depth === 2) out.raiseYield.two++
     }
   }
   return out
@@ -1002,6 +1007,16 @@ export function o2TriggerEdgeConsistent (e) {
   if (r.rest.count === 0 && (r.rest.min !== null || r.rest.max !== null || r.rest.sum !== 0)) return false
   if (r.caught + r.rest.count !== c.count) return false
   if (r.rest.count > 0 && r.rest.min < 2) return false
+  // (v0.976.0) the ladder's own second rung: the yield's own image
+  // (the second rung never owns more than the remainder), the
+  // coherence law (a second-rung life rides depth exactly 2 - its
+  // presence pins the remainder's own floor), and the close law (the
+  // whole remainder at the second rung pins the remainder's own
+  // ceiling)
+  if (!Number.isInteger(r.two) || r.two < 0) return false
+  if (r.two > r.rest.count) return false
+  if (r.two > 0 && r.rest.min !== 2) return false
+  if (r.two === r.rest.count && r.rest.count > 0 && r.rest.max !== 2) return false
   if (e.blind + c.count + e.lies !== e.noCrossing) return false
   if (e.lies > 0) return false // the lie seat: the fold's own contrapositive is absolute
   if (c.count > 0 && (c.min < 1 || c.max < c.min)) return false
@@ -1086,5 +1101,17 @@ export function o2TriggerEdgeRow (e) {
   } else {
     raiseWord = `the minimal raise prices ${r.caught} of ${c.count} life(s) - the rest rode depth ${r.rest.min}..${r.rest.max}${avg} - THE LADDER'S OWN SPLIT: the first rung's yield rides beside the deeper rungs' price`
   }
-  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})`
+  // (v0.976.0) the ladder's own second rung - the remainder's own
+  // word (the shape's own three words, never a threshold): the close
+  // (two rungs price every miss) / the deeper rungs' own word / the
+  // tail (the second rung's own share beside the deeper rungs)
+  let secondWord = ''
+  if (r.rest.count > 0) {
+    secondWord = r.two === r.rest.count
+      ? ` (the ladder's own second rung (v0.976.0): the second rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 2}) owns the whole remainder - ${r.two} of ${r.rest.count} rest life(s) rode depth 2 - THE LADDER'S OWN CLOSE: two rungs price every miss)`
+      : (r.two === 0
+        ? ` (the ladder's own second rung (v0.976.0): the second rung prices nothing - the deeper rungs' own word (the remainder rode depth ${r.rest.min}..${r.rest.max}))`
+        : ` (the ladder's own second rung (v0.976.0): the second rung owns ${r.two} of ${r.rest.count} rest life(s) - the deeper rungs' own tail (the remainder rode depth ${r.rest.min}..${r.rest.max}))`)
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})${secondWord}`
 }
