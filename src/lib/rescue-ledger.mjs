@@ -626,3 +626,74 @@ export function rescueUnclosedOxygenRow (f) {
   const unpricedWord = f.unpriced > 0 ? ` - ${f.unpriced} start line(s) rode the air unnamed` : ''
   return `the unclosed starts' own oxygen (v0.976.14): ${f.count} unclosed start(s) rode oxygen ${f.min}..${f.max} - the air the seat held when the walk never answered${unpricedWord}`
 }
+
+// (v0.976.15) THE UNCLOSED STARTS' OWN RIDER - the per-bot byte the
+// verbatim start lines rode unnamed (the FACE 312 = 38466304299 read
+// priced it by hand: '3 unclosed: F15, F16, F17 - x1 each, the spread's
+// own mix' - the book's own bot stayed every reader's hand-price). The
+// fold reads the bot tag out of each unclosed line the ledger already
+// kept (zero re-classification - the one classifier, the ledger's own
+// botOf law: the leading F-tag the every-log-line rides); a start line
+// without the bot byte prices the honest unpriced seat. The fence: the
+// fold's own image (the counts recount the priced starts exactly, the
+// bot tags ride the F-shape, a startless fold prices the honest empty
+// book). Pure: reads, never mutates. Junk-safe: non-array input reads
+// null, a non-string line lies nothing (null).
+const UNCLOSED_BOT_RE = /^F(\d+)\s/
+const RIDER_BOT_KEY_RE = /^F\d+$/
+
+export function rescueUnclosedRider (unclosedLines) {
+  if (!Array.isArray(unclosedLines)) return null
+  const perBot = {}
+  let count = 0
+  for (const l of unclosedLines) {
+    if (typeof l !== 'string') return null
+    const m = l.match(UNCLOSED_BOT_RE)
+    if (m) {
+      const bot = 'F' + m[1]
+      perBot[bot] = (perBot[bot] || 0) + 1
+      count++
+    }
+  }
+  return { count, perBot, unpriced: unclosedLines.length - count }
+}
+
+export function rescueUnclosedRiderConsistent (f) {
+  if (!f || typeof f !== 'object' || Array.isArray(f)) return false
+  if (!Number.isInteger(f.count) || f.count < 0) return false
+  if (!Number.isInteger(f.unpriced) || f.unpriced < 0) return false
+  if (!f.perBot || typeof f.perBot !== 'object' || Array.isArray(f.perBot)) return false
+  let sum = 0
+  for (const [bot, n] of Object.entries(f.perBot)) {
+    if (!RIDER_BOT_KEY_RE.test(bot)) return false
+    if (!Number.isInteger(n) || n < 1) return false
+    sum += n
+  }
+  if (sum !== f.count) return false
+  return true
+}
+
+// (v0.976.15) the unclosed starts' own rider's word - the solo bot's own
+// seat when one bot's own client owns the book whole (the explosion
+// book's own attacker law: even 1 of 1 names the seat); the top-two pair
+// concentration when the bots spread (the orphan book's own rider law -
+// the tie law held, the mix is the shape). A startless fold prices the
+// honest silence (the row's own law). Junk never prints a word.
+export function rescueUnclosedRiderRow (f) {
+  if (!f || typeof f !== 'object' || Array.isArray(f)) return null
+  if (!(f.count > 0)) return null
+  const bots = Object.entries(f.perBot || {})
+    .filter(([, n]) => Number.isFinite(n) && n > 0)
+    .sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  if (!bots.length) return null
+  if (bots.length === 1) {
+    const [bot, owns] = bots[0]
+    if (owns !== f.count) return null
+    return `the unclosed starts' own rider (v0.976.15): ${bot} owns ${owns} of ${f.count} unclosed start(s) (100.0%) - THE WALK'S OWN SEAT: one bot's own client owns the unclosed book - the reconnect's own front prices the churn the raw split rode unnamed`
+  }
+  const [leader, leaderOwns] = bots[0]
+  const [runner, runnerOwns] = bots[1]
+  const pairOwns = leaderOwns + runnerOwns
+  const share = (pairOwns / f.count * 100).toFixed(1)
+  return `the unclosed starts' own riders (v0.976.15): no solo bot owns the book - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${f.count} unclosed start(s) (${share}%) - THE WALK'S OWN SPREAD: the tie law held, the bots are the shape - the walk's own mix prices the reconnect the solo law refused to seat`
+}
