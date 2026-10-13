@@ -120,6 +120,7 @@ const emptyBook = () => ({
   noCrossing: 0,
   untimed: 0,
   window: { count: 0, min: null, max: null, sum: 0 },
+  endTs: null,
   perDeath: []
 })
 
@@ -246,6 +247,11 @@ export function o2TriggerBook (lines) {
       continue
     }
   }
+  // (v0.976.11) the stream's own end byte: the heartbeat's own last ts
+  // rides the book - the WHEN words' own lane prices the deaths' own
+  // thirds against the same clock the stream lived (the starveclock's
+  // own clockEnd grain - the one-clock law, never a second read)
+  book.endTs = lastTs
   return book
 }
 
@@ -256,6 +262,10 @@ export function o2TriggerBook (lines) {
  */
 export function o2TriggerConsistent (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return false
+  // (v0.976.11) the stream's own end byte: null (no heartbeat rode) or
+  // a positive integer (the heartbeat's own last ts) - a junk clock
+  // prices the book nothing (the fence's own honesty)
+  if (book.endTs !== null && book.endTs !== undefined && (!Number.isInteger(book.endTs) || book.endTs <= 0)) return false
   const nonNeg = (v) => Number.isInteger(v) && v >= 0
   if (![book.deaths, book.crossed, book.noCrossing, book.untimed].every(nonNeg)) return false
   if (!nonNeg(book.window.count) || !nonNeg(book.window.sum)) return false
@@ -885,6 +895,12 @@ export function o2TriggerEdgeBook (book) {
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
   const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), silentBornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, two: 0, three: 0, four: 0, five: 0, rest: emptyFold() }, lies: 0 }
+  // (v0.976.11) the WHEN words' own lane: the priced deaths' own ts
+  // list rides the fold's own build - the thirds' own counts price
+  // against the stream's own end byte after the walk (the starveclock
+  // thirds cut's own reuse - the one-formula law)
+  const bornWhenTs = []
+  const unbornWhenTs = []
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -919,6 +935,7 @@ export function o2TriggerEdgeBook (book) {
             u.sum += d.ts
             if (u.min === null || d.ts < u.min) u.min = d.ts
             if (u.max === null || d.ts > u.max) u.max = d.ts
+            unbornWhenTs.push(d.ts)
           }
         } else if (Number.isInteger(d.lifeHb)) {
           const s = out.silentSpan
@@ -953,6 +970,7 @@ export function o2TriggerEdgeBook (book) {
             b.sum += d.ts
             if (b.min === null || d.ts < b.min) b.min = d.ts
             if (b.max === null || d.ts > b.max) b.max = d.ts
+            bornWhenTs.push(d.ts)
           }
         }
       }
@@ -999,6 +1017,20 @@ export function o2TriggerEdgeBook (book) {
       // fourth rung's honest silence named it the next fire's own word)
       else if (depth === 5) out.raiseYield.five++
     }
+  }
+  // (v0.976.11) the WHEN words' own lane byte: the stream's own end
+  // (the book's own heartbeat grain) prices the priced deaths' own
+  // thirds - the starveclock cut's own formula (thirdS = endTs / 3, the
+  // boundary rides the later third), the no-clock face prices the
+  // honest zeros (the lane never invents a clock)
+  out.endTs = book.endTs !== null && book.endTs !== undefined ? book.endTs : null
+  out.silentBornLanes = { early: 0, mid: 0, late: 0 }
+  out.silentUnbornLanes = { early: 0, mid: 0, late: 0 }
+  if (Number.isInteger(out.endTs) && out.endTs > 0) {
+    const thirdS = out.endTs / 3
+    const laneOf = (t) => (t < thirdS ? 'early' : t < 2 * thirdS ? 'mid' : 'late')
+    for (const t of bornWhenTs) out.silentBornLanes[laneOf(t)]++
+    for (const t of unbornWhenTs) out.silentUnbornLanes[laneOf(t)]++
   }
   return out
 }
@@ -1053,6 +1085,22 @@ export function o2TriggerEdgeConsistent (e) {
   if (b.count > 0 && (b.min === null || b.max === null)) return false
   if (b.count === 0 && (b.min !== null || b.max !== null || b.sum !== 0)) return false
   if (b.count > s.born) return false
+  // (v0.976.11) the WHEN words' own lane: the stream's own end byte
+  // (null or a positive integer - the heartbeat's own grain), the two
+  // lane folds' own image (the thirds' own counts recount the priced
+  // deaths exactly), and the no-clock law (no endTs prices the honest
+  // zeros - the lane never invents a clock)
+  if (e.endTs !== null && e.endTs !== undefined && (!Number.isInteger(e.endTs) || e.endTs <= 0)) return false
+  const laneFolds = [['silentBornLanes', b], ['silentUnbornLanes', u]]
+  for (const [key, when] of laneFolds) {
+    const l = e[key]
+    if (!l || typeof l !== 'object' || Array.isArray(l)) return false
+    for (const k of ['early', 'mid', 'late']) {
+      if (!Number.isInteger(l[k]) || l[k] < 0) return false
+    }
+    if (l.early + l.mid + l.late !== when.count) return false
+    if (!(Number.isInteger(e.endTs) && e.endTs > 0) && (l.early !== 0 || l.mid !== 0 || l.late !== 0)) return false
+  }
   for (const f of [s.ts, s.hb, s.fp]) {
     if (!f || typeof f !== 'object' || Array.isArray(f)) return false
     if (!Number.isInteger(f.count) || f.count < 0 || !Number.isInteger(f.sum) || f.sum < 0) return false
@@ -1150,6 +1198,20 @@ export function o2TriggerEdgeRow (e) {
   let blindWord = ''
   if (e.blind > 0) {
     const bs = e.blindSplit
+    // (v0.976.11) the WHEN words' own lane clause - the thirds' own
+    // seat riding the stream's own end byte (the starveclock cut's own
+    // formula reuse, the majority law above half - a tie owns nothing).
+    // The clause prices what rode: the owning lane names its own front,
+    // the spread prices the honest tie.
+    const laneClause = (lanes, count) => {
+      if (!lanes || !Number.isInteger(e.endTs) || e.endTs <= 0 || count <= 0) return ''
+      const byte = `the stream's own thirds (v0.976.11): early ${lanes.early} / mid ${lanes.mid} / late ${lanes.late} of ${count} priced`
+      const half = count / 2
+      if (lanes.late > half) return ` - ${byte} - the late third owns the lane - THE STREAM'S OWN CADENCE: the deaths crowd the stream's own end - the cadence's own front`
+      if (lanes.early > half) return ` - ${byte} - the early third owns the lane - THE SPAWN'S OWN DAWN: the deaths crowd the face's own opening - the spawn lane's own front`
+      if (lanes.mid > half) return ` - ${byte} - the mid third owns the lane - THE WALK'S OWN MIDDLE: the deaths crowd the walk's own span - the walk's own front`
+      return ` - ${byte} - no third owns the lane - the thirds' own spread (the tie's own law held)`
+    }
     const splitByte = `the blind split: reset ${bs.reset} / unknown ${bs.unknown} / silent ${bs.silent}` + (bs.legacy > 0 ? ` / legacy ${bs.legacy}` : '')
     let frontByte
     if (bs.reset > 0 && bs.silent === 0) frontByte = "the sensor's own death owns the blind share - the sensor-health front"
@@ -1189,7 +1251,7 @@ export function o2TriggerEdgeRow (e) {
         // lives ride the honest silence
         const b = e.silentBornTs
         if (b.count > 0) {
-          blindWord += ` (the born lives' own when (v0.976.2): ${b.count} of ${s.born} priced the clock - the deaths rode ts ${b.min}..${b.max})`
+          blindWord += ` (the born lives' own when (v0.976.2): ${b.count} of ${s.born} priced the clock - the deaths rode ts ${b.min}..${b.max}${laneClause(e.silentBornLanes, b.count)})`
         }
       }
       // (v0.975.7) the unborn lives' own WHEN word - the sight-span
@@ -1198,7 +1260,7 @@ export function o2TriggerEdgeRow (e) {
       // cadence); the untimed unborn ride the honest silence
       const u = e.silentUnbornTs
       if (e.silentUnborn > 0 && u.count > 0) {
-        blindWord += ` (the unborn lives' own when (v0.975.7): ${u.count} of ${e.silentUnborn} priced the clock - the deaths rode ts ${u.min}..${u.max})`
+        blindWord += ` (the unborn lives' own when (v0.975.7): ${u.count} of ${e.silentUnborn} priced the clock - the deaths rode ts ${u.min}..${u.max}${laneClause(e.silentUnbornLanes, u.count)})`
       }
     }
   }
