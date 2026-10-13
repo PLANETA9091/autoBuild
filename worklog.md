@@ -28925,3 +28925,17 @@ Stage Summary:
 - FACE 300 = 38408433825 in flight on bc6dde0d at this correction's close (~50 min - the fleet's own pace under queue contention; the next fire names it BY RUN ID) - the next fire owns FACE 300's read AND FACE 301's dispatch; the dispatch seat is TAKEN until 300 completes (the yield honest)
 - the next fire's own duties: the gate pair's verification (38410518998 the 2130 fire's pre-cure worklog gate - the failure or the cancel is the concurrency's own word, the tip's green covers the tree); FACE 300's read at HEAD (the grand total's row prices it - the mass's own byte joins the record); FACE 301's dispatch on the cured tree if the seat is free
 - Discipline: the red-run law (the jobs pulled BY RUN ID, the failing asserts read, the cure single-cause, the four batteries green before the push) / the missed-pin's own cure grown to the siblings' population / RACE (the rebase over 6ce6b1e0 clean, no force-push) / identity (PLANETA9091 byte-verified both commits) / FIRST READ honest (the failure named, the overreach named - the parser-side row's own boundary re-measured)
+
+---
+Task ID: cron-agent-loop-202610132141-correction-2
+Agent: Super Z (main agent; the 2141 fire's own second closing word)
+Task: FACE 300's completion + FACE 301's dispatch (the seat law's own tail)
+
+Work Log:
+- FACE 300 = 38408433825 completed SUCCESS BY RUN ID (bc6dde0d, the v0.975.4 tree) - the runs list read ONE call, zero active dispatch runs, the lane FREE
+- dispatch POST 204 = FACE 301 = 38414602668 on 76d505cd (THE CURED TREE, v0.975.6 - the sibling cure's own gate 38411790745 SUCCESS stands under it) with the CANONICAL inputs (run_fleet=true) - materialized in_progress BY RUN ID, no duplicate; the first dispatch to ride the grand total's own tree AND the cured band
+- the next fire owns FACE 300's read (at HEAD - the parser-side grand total row prices it: the mass's own byte joins the record) AND FACE 301's read AND FACE 302's dispatch
+
+Stage Summary:
+- FACE 300 SUCCESS (bc6dde0d) + FACE 301 = 38414602668 in flight on the cured tree 76d505cd - the seat law held twice this fire (FACE 300's dispatch at mid-fire, FACE 301's at the tail)
+- version state: 0.975.6 stands (76d505cd verified green by 38411790745's tree; the correction gate 38414375252 rides the same tree + worklog), next free 0.975.7 (origin re-verify MANDATORY)
