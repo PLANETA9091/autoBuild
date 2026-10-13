@@ -12,7 +12,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow, churnShadowRefusal, churnShadowRefusalRow } from '../../src/lib/churnthrone.mjs'
+import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow, churnShadowRefusal, churnShadowRefusalRow, churnThronePair, churnThronePairRow } from '../../src/lib/churnthrone.mjs'
 import { standdownBotTally } from '../../src/lib/standdownclock.mjs'
 import { stickyLaneCells } from '../../src/lib/stickyseat.mjs'
 
@@ -411,4 +411,81 @@ test("REFUSAL: the shadow's own row byte-stable beside the refusal (the shared-w
   assert.ok(s, 'the shadow still seats on the shared walk')
   const row = churnShadowRow(s)
   assert.match(row, /the throne's own shadow \(v0\.974\.11\): F14 led every non-empty lane's own plurality at once - the churn 19 of 62, the standdown 13 of 22, the relog 3 of 7, the sticky 15 of 26 \(4 lane\(s\)\)/)
+})
+
+// (v0.974.25) THE PAIR'S OWN BOOK - the fold's own pair seat. The
+// verbatim cells below are face 291's own hand-read re-shaped: the noon
+// freeze pair F11+F6 own 11 of 12 frozen standdowns, and the SAME pair
+// rides the churn and the relog lanes - one pair's own book no fold
+// ever priced (the throne asks for one bot, the shadow for one leader).
+
+// face 291's own pair shape (the hand-read's own cells, the standdown
+// byte verbatim 11 of 12; the churn and relog lanes re-shaped to the
+// same pair's own book)
+const PAIR291 = {
+  rescuePerBot: { F6: { starts: 4 }, F11: { starts: 2 }, F14: { starts: 1 }, F1: { starts: 1 } },
+  rescueTotals: { starts: 8 },
+  relogsByBot: { F11: 4, F6: 3 },
+  relogsTotal: 7,
+  standdownBook: { stamps: [...Array(6).fill({ bot: 'F11' }), ...Array(5).fill({ bot: 'F6' }), { bot: 'F13' }] }
+}
+
+test('THE PAIR: face 291 shape - F11+F6 own every lane together', () => {
+  const p = churnThronePair(PAIR291)
+  assert.ok(p, 'the pair book seats')
+  assert.deepEqual(p.pair, ['F11', 'F6'])
+  assert.deepEqual(p.lanes, [
+    { lane: 'churn', owns: 6, of: 8 },
+    { lane: 'standdown', owns: 11, of: 12 },
+    { lane: 'relog', owns: 7, of: 7 }
+  ])
+  assert.equal(p.owns, 24)
+  assert.equal(p.ofEvents, 27)
+  assert.equal(p.share, 0.889)
+})
+
+test('THE PAIR ROW: the pair book byte verbatim', () => {
+  const row = churnThronePairRow(churnThronePair(PAIR291))
+  assert.equal(row, "the pair's own book (v0.974.25): F11+F6 owned every non-empty lane together - the churn 6 of 8, the standdown 11 of 12, the relog 7 of 7 (24 of 27 event(s), 88.9%) - THE PAIR'S OWN BOOK: the throne asked for one bot, the shadow asked for one leader - the pair's own join names the two sessions the lanes keep riding together")
+})
+
+test('THE PAIR: the branch law both ways - a seated throne or shadow reads no pair row', () => {
+  assert.ok(churnThrone(FACE226), 'the throne seats')
+  assert.equal(churnThronePair(FACE226), null, "no pair row over the throne's own rows")
+  assert.ok(churnShadow(FACE272), 'the shadow seats')
+  assert.equal(churnThronePair(FACE272), null, "no pair row over the shadow's own row")
+})
+
+test('THE PAIR: the contested pair - the lanes topped apart read the silence', () => {
+  const cells = {
+    rescuePerBot: { F11: { starts: 6 }, F6: { starts: 5 } },
+    rescueTotals: { starts: 11 },
+    relogsByBot: { F14: 3, F15: 2, F6: 1 },
+    relogsTotal: 6
+  }
+  assert.equal(churnThronePair(cells), null, 'a different top pair in one lane contests the book')
+})
+
+test('THE PAIR: the per-lane tie leads nothing (the tie law at pair level)', () => {
+  const cells = {
+    rescuePerBot: { A: { starts: 2 }, B: { starts: 1 }, C: { starts: 1 } },
+    rescueTotals: { starts: 4 },
+    relogsByBot: { A: 2, B: 1 },
+    relogsTotal: 3
+  }
+  assert.equal(churnThronePair(cells), null, 'a tied lane owns no pair')
+})
+
+test('THE PAIR: the junk battery - junk never invents a book', () => {
+  for (const junk of [null, undefined, 42, 'x', [], {}]) {
+    assert.equal(churnThronePair(junk), null, `junk ${JSON.stringify(junk)} reads the honest silence`)
+  }
+  // the join fence: a single non-empty lane stays the seats' own verdict
+  assert.equal(churnThronePair({ rescuePerBot: { F5: { starts: 9 } }, rescueTotals: { starts: 14 } }), null, 'a lone lane reads the honest silence')
+  // a one-bot universe rides the shadow's own branch (the one bot leads
+  // every lane - the branch law's own null, the fence stays protective)
+  assert.equal(churnThronePair({ rescuePerBot: { F5: { starts: 9 } }, rescueTotals: { starts: 14 }, relogsByBot: { F5: 1 }, relogsTotal: 1 }), null, 'a one-bot universe rides the shadow branch')
+  for (const junk of [null, undefined, 42, 'x', [], {}, { pair: 'F11' }, { pair: ['F11'], lanes: [] }, { pair: ['F11', 'F6'], lanes: [{ lane: 'churn' }] }]) {
+    assert.equal(churnThronePairRow(junk), null, `row junk ${JSON.stringify(junk)} reads the honest silence`)
+  }
 })

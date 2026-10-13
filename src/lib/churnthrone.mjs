@@ -429,6 +429,120 @@ export function churnShadowRefusal (cells) {
   return { kind: 'contested', lanes: led }
 }
 
+// (v0.974.25) THE PAIR'S OWN BOOK - the fold's own pair seat. WHAT PRICED
+// IT: face 291's own hand-read - 'the noon freeze pair F11+F6 own 11 of
+// 12 frozen standdowns - the deaths AND the freezes AND the dive join's
+// closure - one pair's own book' - a cross-lane read at the PAIR level no
+// fold ever owned: the throne asks for ONE bot holding every lane's
+// strict majority, the shadow asks for ONE bot leading every lane's
+// plurality, and both folds go silent the moment a SECOND bot shares the
+// sessions - while the lanes keep riding TWO bots' own book together.
+// THE PAIR'S LAW: the same four lanes the shadow reads (the shadowLanes
+// walk reused verbatim - the one-walk law, zero re-parsing); the pair
+// seats only when ONE unordered pair tops EVERY non-empty lane's own
+// coverage at once (per lane, the pair's coverage = the two members' own
+// counts summed; the lane's top pair must be unique - a tie leads
+// nothing, the tie law's own byte at pair level); the join fence byte
+// for byte (>= 2 non-empty lanes). The branch law holds: a seated throne
+// or a seated shadow reads no pair row (the owner's own rows own the
+// face - the shadow's own idiom); the refusal's word stays the fold's
+// own last silence (the pair row and the refusal row never both - the
+// call site's additive else-branch, the lib holds the fence either way).
+// Read-time tooling, zero fleet wiring, zero new log lines, zero census
+// shape change - CENSUS GUARD.
+
+/**
+ * The one lane's own top pair (the pair seat's own lane byte): the pair
+ * of bots whose summed coverage is the lane's strict top - unique, or
+ * the lane leads nothing (a tie at the top owns no pair).
+ * @param {{byBot: Object<string, number>, total: number}} lane the lane's cells
+ * @param {Array<[string, string]>} universe every unordered bot pair (byte-sorted members)
+ * @returns {{pair: [string, string], owns: number}|null} the lane's top pair (null = tie/absent)
+ */
+const laneTopPair = (lane, universe) => {
+  let top = null
+  let topCovers = 0
+  let tie = false
+  for (const [a, b] of universe) {
+    const covers = (Number(lane.byBot[a]) || 0) + (Number(lane.byBot[b]) || 0)
+    if (covers > topCovers) { topCovers = covers; top = [a, b]; tie = false } else if (covers === topCovers && covers > 0) tie = true
+  }
+  if (top === null || tie || topCovers <= 0) return null
+  return { pair: top, owns: topCovers }
+}
+
+/**
+ * churnThronePair(cells) - the pair's own book: the four instability
+ * lanes' pair fold (churn / standdown / relog + the sticky lane).
+ * @param {{rescuePerBot?: Object<string, {starts?: number}>|null,
+ *          rescueTotals?: {starts?: number}|null,
+ *          standdownBook?: Object|null,
+ *          relogsByBot?: Object<string, number>|null,
+ *          relogsTotal?: number|null,
+ *          stickyByBot?: Object<string, number>|null,
+ *          stickyTotal?: number|null}} [cells]
+ *   the books' own cells (churnShadow's own shape)
+ * @returns {null|{pair: [string, string],
+ *   lanes: Array<{lane: string, owns: number, of: number}>,
+ *   owns: number, ofEvents: number, share: number}}
+ *   the pair book (null = the throne or the shadow seated, a contested
+ *   or tied lane, a single-lane fold, or junk - the honest silences)
+ */
+export function churnThronePair (cells) {
+  if (churnThrone(cells)) return null // the branch law: the throne's own row owns the owner's face
+  if (churnShadow(cells)) return null // the branch law: the seat's own row owns the face it named
+  const lanes = shadowLanes(cells)
+  // THE JOIN FENCE byte for byte: at least two non-empty lanes ride.
+  if (lanes.length < 2) return null
+  // the pair universe: every unordered pair of the bots the lanes ride
+  // (byte-sorted members - the deterministic order's own key)
+  const bots = [...new Set(lanes.flatMap((l) => Object.keys(l.cells.byBot)))].sort()
+  if (bots.length < 2) return null
+  const universe = []
+  for (let i = 0; i < bots.length; i++) {
+    for (let j = i + 1; j < bots.length; j++) universe.push([bots[i], bots[j]])
+  }
+  // THE UNANIMITY LAW at pair level: every non-empty lane's top pair is
+  // THE SAME pair, uniquely (a tied lane leads nothing - the silence).
+  let first = null
+  const lanesOut = []
+  for (const l of lanes) {
+    const top = laneTopPair(l.cells, universe)
+    if (!top) return null
+    if (first === null) first = top.pair
+    else if (top.pair[0] !== first[0] || top.pair[1] !== first[1]) return null
+    lanesOut.push({ lane: l.lane, owns: top.owns, of: l.cells.total })
+  }
+  const owns = lanesOut.reduce((a, s) => a + s.owns, 0)
+  const ofEvents = lanesOut.reduce((a, s) => a + s.of, 0)
+  return { pair: first, lanes: lanesOut, owns, ofEvents, share: +(owns / ofEvents).toFixed(3) }
+}
+
+/**
+ * churnThronePairRow(p) - the pair book's own row (THE PAIR'S OWN BOOK).
+ * Junk never prints a row (the honest silence's own row law): every
+ * field is guarded before the template speaks.
+ * @param {Object|null} [p] the churnThronePair result
+ * @returns {string|null} the row (null on junk)
+ */
+export function churnThronePairRow (p) {
+  if (!p || typeof p !== 'object' || Array.isArray(p)) return null
+  const { pair, lanes, owns, ofEvents, share } = p
+  if (!Array.isArray(pair) || pair.length !== 2) return null
+  const [a, b] = pair
+  if (typeof a !== 'string' || !a || typeof b !== 'string' || !b || a === b) return null
+  if (!Array.isArray(lanes) || lanes.length < 2) return null
+  for (const l of lanes) {
+    if (!l || typeof l !== 'object' || Array.isArray(l)) return null
+    if (typeof l.lane !== 'string' || !l.lane) return null
+    if (!Number.isFinite(l.owns) || l.owns <= 0 || !Number.isFinite(l.of) || l.of <= 0 || l.owns > l.of) return null
+  }
+  if (!Number.isFinite(owns) || owns <= 0 || !Number.isFinite(ofEvents) || ofEvents <= 0 || owns > ofEvents) return null
+  if (!Number.isFinite(share)) return null
+  const laneBits = lanes.map((l) => `the ${l.lane} ${l.owns} of ${l.of}`).join(', ')
+  return `the pair's own book (v0.974.25): ${a}+${b} owned every non-empty lane together - ${laneBits} (${owns} of ${ofEvents} event(s), ${(share * 100).toFixed(1)}%) - THE PAIR'S OWN BOOK: the throne asked for one bot, the shadow asked for one leader - the pair's own join names the two sessions the lanes keep riding together`
+}
+
 /**
  * churnShadowRefusalRow(r) - the fold's own refusal's row (THE FOLD'S
  * OWN SILENCE). Junk never prints a row (the honest silence's own row
