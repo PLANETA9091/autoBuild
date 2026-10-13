@@ -1,7 +1,7 @@
 // Decompose a fleet19.log into the evidence classes the worklog tracks.
 // Usage: node scripts/fleet-mining/decompose.mjs <path-to-fleet19.log>
 import { readFileSync } from 'node:fs'
-import { rescueLedger, rescueEndSeconds, RESCUE_END_CLASSES, rescueStartBill, rescueStartBillRow, rescueStartRiders, rescueStartRidersRow, rescueEndBill, rescueEndBillRow, rescueEndRiders, rescueEndRidersRow, rescueMidSeat, rescueMidSeatRow, rescueMidRiders, rescueMidRidersRow } from '../../src/lib/rescue-ledger.mjs' // (v0.368.0) the pure pairing's field read; (v0.773.0) WHICH walker owns the starts; (v0.779.0) WHICH class owns the ends; (v0.790.0) WHICH mid-episode event owns the churn
+import { rescueLedger, rescueEndSeconds, RESCUE_END_CLASSES, rescueStartBill, rescueStartBillRow, rescueStartRiders, rescueStartRidersRow, rescueEndBill, rescueEndBillRow, rescueEndRiders, rescueEndRidersRow, rescueMidSeat, rescueMidSeatRow, rescueMidRiders, rescueMidRidersRow, rescueUnclosedOxygen, rescueUnclosedOxygenRow } from '../../src/lib/rescue-ledger.mjs' // (v0.368.0) the pure pairing's field read; (v0.773.0) WHICH walker owns the starts; (v0.779.0) WHICH class owns the ends; (v0.790.0) WHICH mid-episode event owns the churn; (v0.976.14) the unclosed starts' own oxygen byte
 import { orphanOwnerCensus } from '../../src/lib/orphanowner.mjs' // (v0.679.0) the orphan end's per-bot owner (the dead-client class names its bot)
 import { orphanBookSeat, orphanBookSeatRow, orphanBookRiders, orphanBookRidersRow } from '../../src/lib/orphanowner.mjs' // (v0.802.0) the orphan book's own seat (the byClass cell's own majority)
 import { askWhyCensus, dryAskVerdict, dryAskVerdictRow, dryAskBotBill, dryAskBotBillRow, dryAskRiders, dryAskRidersRow } from '../../src/lib/askwhycensus.mjs' // (v0.652.0) THE ASK'S OWN WHY BOOK - the ask ladder's walk-failure whys joined to the dry terminals (the delivery side's v0.612.0 why-book law, the ask side's own seat); (v0.769.0) WHICH class owns the dry ask; (v0.772.0) WHICH walker owns the class's rows
@@ -674,6 +674,12 @@ console.log(`  timeout budget burned: ${timeoutSeconds.toFixed(1)}s`)
 console.log('  timeout budget per-bot:', Object.entries(ledger.timeoutSecondsByBot).map(([b, s]) => `${b}=${s.toFixed(1)}s`).join(' ') || 'none')
 for (const l of ledger.orphanEndLines) console.log('  ORPHAN END:', l)
 for (const l of ledger.unclosedLines) console.log('  UNCLOSED START:', l)
+// (v0.976.14) THE UNCLOSED STARTS' OWN OXYGEN - the air byte the verbatim
+// lines rode unnamed (the FACE 311 read priced it by hand: F10 oxygen 13,
+// F15 oxygen 12 - the seat's own air becomes a record byte):
+const unclosedOxygen = rescueUnclosedOxygen(ledger.unclosedLines)
+const unclosedOxygenRow = rescueUnclosedOxygenRow(unclosedOxygen)
+if (unclosedOxygenRow) console.log(`  ${unclosedOxygenRow}`)
 console.log(`  mid-episode: shore-stall ${ledger.midEvents.shoreStall || 0}, transit-stall ${ledger.midEvents.transitStall || 0}, blind-live ${ledger.midEvents.blindLive || 0}, no-ground-truth ${ledger.midEvents.noGroundTruth || 0}, repeat-wet standdown ${ledger.midEvents.repeatWetStanddown || 0}`)
 // (v0.790.0) THE RESCUE'S MID-EPISODE SEAT - WHICH mid-episode event owns
 // the rescue churn (the seat + the riders, one row never both - the

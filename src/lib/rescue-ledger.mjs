@@ -579,3 +579,50 @@ export function rescueMidRidersRow (r) {
       !Number.isFinite(share)) return null
   return `the rescue's own mid-episode riders (v0.790.0): no solo event owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofEvents} mid-episode event(s) (${(share * 100).toFixed(1)}%) - THE MID-EPISODE'S OWN CROWD: the seat's tie law held, the crowd is the shape - the events' own spread prices the water the solo law refused to name`
 }
+
+// (v0.976.14) THE UNCLOSED STARTS' OWN OXYGEN - the air byte the verbatim
+// start lines rode unnamed (the FACE 311 = 38466304299 read priced it by
+// hand: '2 unclosed: F10 oxygen 13, F15 oxygen 12' - the seat's own air
+// stayed every reader's hand-price). The fold reads the oxygen literal out
+// of each unclosed line the ledger already kept (zero re-classification -
+// the one classifier, rescueLedger's own walk); a start line without the
+// air byte prices the honest unpriced seat. The fence: the fold's own
+// image (the counts recount the priced starts exactly, the air rides
+// positive integers, a startless fold prices the honest zeros). Pure:
+// reads, never mutates. Junk-safe: non-array input reads null, a
+// non-string line lies nothing (null).
+const UNCLOSED_OXYGEN_RE = /\boxygen (\d+)\b/
+
+export function rescueUnclosedOxygen (unclosedLines) {
+  if (!Array.isArray(unclosedLines)) return null
+  const airs = []
+  for (const l of unclosedLines) {
+    if (typeof l !== 'string') return null
+    const m = l.match(UNCLOSED_OXYGEN_RE)
+    if (m) airs.push(Number(m[1]))
+  }
+  if (airs.length === 0) return { count: 0, min: null, max: null, sum: 0, unpriced: unclosedLines.length }
+  return { count: airs.length, min: Math.min(...airs), max: Math.max(...airs), sum: airs.reduce((a, b) => a + b, 0), unpriced: unclosedLines.length - airs.length }
+}
+
+export function rescueUnclosedOxygenConsistent (f) {
+  if (!f || typeof f !== 'object' || Array.isArray(f)) return false
+  if (!Number.isInteger(f.count) || f.count < 0) return false
+  if (!Number.isInteger(f.unpriced) || f.unpriced < 0) return false
+  if (!Number.isInteger(f.sum) || f.sum < 0) return false
+  if (f.count === 0) {
+    if (f.min !== null || f.max !== null || f.sum !== 0) return false
+    return true
+  }
+  if (f.min === null || f.max === null) return false
+  if (!Number.isInteger(f.min) || f.min < 1 || !Number.isInteger(f.max) || f.max < f.min) return false
+  if (f.sum < f.count * f.min || f.sum > f.count * f.max) return false
+  return true
+}
+
+export function rescueUnclosedOxygenRow (f) {
+  if (!f || typeof f !== 'object') return null
+  if (f.count === 0) return null
+  const unpricedWord = f.unpriced > 0 ? ` - ${f.unpriced} start line(s) rode the air unnamed` : ''
+  return `the unclosed starts' own oxygen (v0.976.14): ${f.count} unclosed start(s) rode oxygen ${f.min}..${f.max} - the air the seat held when the walk never answered${unpricedWord}`
+}
