@@ -158,7 +158,7 @@ class MockFurnace {
   }
 }
 
-// (v0.974.29) THE LUMP FURNACE - the cap tests' own pacing cure. The base mock
+// (v0.974.30) THE LUMP FURNACE - the cap tests' own pacing cure. The base mock
 // converts ONE item per outputItem() call, so a 64-batch pays 64 real 200ms
 // row-sync sleeps (~13s of pure timer wait) and a 30-batch ~6s more - inside a
 // suite that shares two cores with 400 sibling files the smelting file sat at
