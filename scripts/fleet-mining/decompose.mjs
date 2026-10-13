@@ -163,6 +163,7 @@ import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned sea
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
 import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues; (v0.976.9) the answer's own wire - the spoken arm's own row rides the same lens (the v0.976.6 lib shipped the answer cell, the graft's wire debt now paid - FACE 308 = 38446472656 rode the first SPOKEN face after the word's birth and the row priced nothing in the record - the wire's own gap named by the field)
 import { giantWhenRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane
+import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
@@ -3543,6 +3544,24 @@ if (stormMem.hb.count > 0) {
     // faces' story, the untimed stall prices the honest silence)
     const gw = giantWhenRow({ giantTsS: hb.giantTsS, maxMainLateMs: hb.maxMainLateMs, firstTsS: hb.firstTsS, lastTsS: hb.lastTsS, freezes: mfCensus.freezes.length })
     if (gw) console.log(`  ${gw}`)
+    // (v0.976.19) THE GIANT'S OWN ECHO - the seat's cross-face repeat:
+    // the prior face's giant and this face's giant sharing the same
+    // gauge address (FACE 313's 57526ms NOON and FACE 314's 75368ms
+    // DUSK both rode ts=501s - the seat's own recurrence the single
+    // face's lens cannot see; one face cannot read persistence, the
+    // v0.471.0 law). The fold receives the census's own images; the
+    // threshold gate above already vetted the current face's seat - the
+    // prior face's seat is vetted by the same predicate (the same
+    // constant, never forked). No prior face given -> no read (the row
+    // stays silent - the one-face law).
+    if (prevLines) {
+      const prevHb = stormCensus(prevLines).hb
+      const prevFreezes = mainFreezeCensus(prevLines).freezes.length
+      if (prevHb.maxMainLateMs !== null && prevHb.maxMainLateMs >= BLACKBOX_FREEZE_MS && prevFreezes === 0) {
+        const ge = giantEchoRow({ prev: { giantTsS: prevHb.giantTsS, maxMainLateMs: prevHb.maxMainLateMs, freezes: prevFreezes }, cur: { giantTsS: hb.giantTsS, maxMainLateMs: hb.maxMainLateMs, freezes: mfCensus.freezes.length } })
+        if (ge) console.log(`  ${ge}`)
+      }
+    }
   }
 }
 // (v0.822.0) THE BEAT RAIL'S OWN CONTINUITY - the distress row's own
