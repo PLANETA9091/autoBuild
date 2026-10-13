@@ -9,7 +9,7 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { valveMarginJoin, valveSilentCross, valveSilentCrossRow, VALVE_MARGIN_THIN_M } from '../../src/lib/valvemargin.mjs'
+import { valveMarginJoin, valveSilentCross, valveSilentCrossRow, valveSpokenArm, valveSpokenArmRow, VALVE_MARGIN_THIN_M } from '../../src/lib/valvemargin.mjs'
 import { ALLOC_VALVE_FLOOR_MB_DEFAULT } from '../../src/lib/allocvalve.mjs'
 import { STORM_FLOOR_MB_DEFAULT } from '../../src/lib/stormguard.mjs'
 import { MEM_HB_RE } from '../../src/lib/memhb.mjs'
@@ -220,4 +220,59 @@ test("the pace's own honest silence (v0.976.4) - the rate never rides the empty 
   assert.equal(valveSilentCross(clean, { closes: 0, opens: 0 }).paceMPerGauge, 0)
   assert.equal(valveSilentCross(null, { closes: 0, opens: 0 }).paceMPerGauge, 0)
   assert.equal(valveSilentCross(vm, null).paceMPerGauge, 0)
+})
+
+test("the arm's own answer (v0.976.6) - the silent cross's own mirror on FACE 304's own shape", () => {
+  // FACE 304's own spoken face in miniature: the arm ridden 9 gauge(s),
+  // the dose 63 M-gauge(s), the share 20.5%, the valve spoke once - the
+  // dose the voice answered prices the pace 63/9 = 7 (the same grain)
+  const vm = { n: 44, overValveCells: 9, overArmArea: 63, rideSharePct: 20.5 }
+  const c = valveSpokenArm(vm, { closes: 1, opens: 1 })
+  assert.deepEqual(c, { spoken: true, gauges: 9, dose: 63, sharePct: 20.5, paceMPerGauge: 7, closes: 1, opens: 1 })
+  assert.equal(
+    valveSpokenArmRow(vm, { closes: 1, opens: 1 }),
+    "THE ARM'S OWN ANSWER - the arm rode 9 gauge(s) and the valve spoke (1 close(s), 1 open(s)) - the climb's own pace 7 M-gauge(s) per gauge of residency - the dose the voice answered (the valve's own span stays opendeaf's read, the lens only names the answer)",
+  )
+  // the folded shape rides the same cell (the joined vm's own arithmetic)
+  const joined = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  const c2 = valveSpokenArm(joined, { closes: 2, opens: 0 })
+  assert.equal(c2.spoken, true)
+  assert.equal(c2.gauges, 3)
+  assert.equal(c2.dose, 21)
+  assert.equal(c2.paceMPerGauge, 7)
+  assert.equal(c2.closes, 2)
+  assert.equal(c2.opens, 0)
+})
+
+test("the arm's own answer's honest silence (v0.976.6) - the silent voice, the unridden face, the junk halves", () => {
+  // the silent voice - the silent cross's own seat, never doubled here
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  const silent = valveSpokenArm(vm, { closes: 0, opens: 0 })
+  assert.deepEqual(silent, { spoken: false, gauges: 0, dose: 0, sharePct: 0, paceMPerGauge: 0, closes: 0, opens: 0 })
+  assert.equal(valveSpokenArmRow(vm, { closes: 0, opens: 0 }), null)
+  // the unridden face prices nothing (no dose, no answer - the valve
+  // may speak without the arm ridden)
+  const clean = valveMarginJoin([mem(371), mem(380), mem(383)])
+  assert.equal(valveSpokenArm(clean, { closes: 1, opens: 1 }).spoken, false)
+  assert.equal(valveSpokenArmRow(clean, { closes: 1, opens: 1 }), null)
+  // the junk halves price the honest empty
+  assert.equal(valveSpokenArm(null, { closes: 1, opens: 1 }).spoken, false)
+  assert.equal(valveSpokenArm(vm, null).spoken, false)
+  assert.equal(valveSpokenArm('vm', 'voice').spoken, false)
+  assert.equal(valveSpokenArmRow(null, { closes: 1, opens: 1 }), null)
+})
+
+test("the arm's own answer's fence (v0.976.6) - the answer never rides a lie", () => {
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  // a count the face cannot own lies
+  assert.equal(valveSpokenArm({ ...vm, overValveCells: 9, n: 4 }, { closes: 1, opens: 1 }).spoken, false)
+  // a negative voice lies
+  assert.equal(valveSpokenArm(vm, { closes: -1, opens: 1 }).spoken, false)
+  assert.equal(valveSpokenArm(vm, { closes: 1, opens: -1 }).spoken, false)
+  // a vm without its own share lies
+  const noShare = { ...vm }
+  delete noShare.rideSharePct
+  assert.equal(valveSpokenArm(noShare, { closes: 1, opens: 1 }).spoken, false)
+  // a non-integer voice lies
+  assert.equal(valveSpokenArm(vm, { closes: 1.5, opens: 0 }).spoken, false)
 })

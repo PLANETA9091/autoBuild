@@ -93,6 +93,21 @@
 // keeps its voice), and the honest silence prices nothing (the speaking
 // faces and the unridden faces ride the null - the valve's spans stay
 // opendeaf's read, the lens only names the silence).
+//
+// THE ARM'S OWN ANSWER (v0.976.6 - the silent cross's own mirror): FACE
+// 304 = 38430223472 rode the valve's FIRST SPOKEN FACE by hand - the arm
+// ridden 9 gauge(s), the dose 63 M-gauge(s), the share 20.5%, and the
+// valve SPOKE ('alloc valve: 1 close(s) (1 by the queue-pressure arm)'):
+// the dose the voice answered stayed unnamed (the silent cross prices
+// the silence, never the answer). The two halves compose the answer
+// cell here - the arm's half rides the same fence laws (a count the
+// face owns, a dose the cells sum, a share the face prices), the
+// voice's half must be the SPOKEN seat (the silent voice prices the
+// honest empty - the silent cross's own seat, never doubled here; a
+// negative voice lies), and the pace rides the same share's own grain
+// (the dose the voice closed against, face over face). The unridden
+// face prices nothing (no dose, no answer - the valve's own spans stay
+// opendeaf's read, the lens only names the answer).
 import { MEM_HB_RE } from './memhb.mjs'
 import { ALLOC_VALVE_FLOOR_MB_DEFAULT } from './allocvalve.mjs'
 import { STORM_FLOOR_MB_DEFAULT } from './stormguard.mjs'
@@ -237,4 +252,56 @@ export function valveSilentCrossRow (vm, voice) {
   const c = valveSilentCross(vm, voice)
   if (!c.cross) return null
   return `THE SILENT CROSS - the arm rode ${c.gauges} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the climb's own pace ${c.paceMPerGauge} M-gauge(s) per gauge of residency - the rate anchor's slow-creep blind spot priced (the residency rode the lens, the valve rode nothing)`
+}
+
+/**
+ * (v0.976.6) THE ARM'S OWN ANSWER - the silent cross's own mirror: the
+ * arm ridden + the valve SPOKE (the dose the voice answered). The arm's
+ * half rides the same fence laws as the silent cross; the voice's half
+ * must be the spoken seat (closes + opens > 0 - the silent voice prices
+ * the honest empty, the silent cross's own seat never doubled; a
+ * negative voice lies). Junk-safe: the junk halves, the unridden faces
+ * and the silent voices price the honest empty (the answer never lies).
+ *
+ * @param {{overValveCells?: number, n?: number, overArmArea?: number, rideSharePct?: number}} [vm] the valveMarginJoin fold
+ * @param {{closes?: number, opens?: number}} [voice] the valveVoiceCount census
+ * @returns {{spoken: boolean, gauges: number, dose: number, sharePct: number, paceMPerGauge: number, closes: number, opens: number}} the answer's own cells (the honest empty when the answer prices nothing)
+ */
+export function valveSpokenArm (vm, voice) {
+  const empty = { spoken: false, gauges: 0, dose: 0, sharePct: 0, paceMPerGauge: 0, closes: 0, opens: 0 }
+  if (!vm || typeof vm !== 'object' || Array.isArray(vm)) return empty
+  if (!voice || typeof voice !== 'object' || Array.isArray(voice)) return empty
+  // the fence: the arm's half must prove itself (the same laws the
+  // silent cross rides - a count the face owns, a dose the cells sum,
+  // a share the face prices)
+  if (!Number.isInteger(vm.n) || vm.n <= 0) return empty
+  if (!Number.isInteger(vm.overValveCells) || vm.overValveCells <= 0 || vm.overValveCells > vm.n) return empty
+  if (!Number.isInteger(vm.overArmArea) || vm.overArmArea < 0) return empty
+  if (!Number.isFinite(vm.rideSharePct) || vm.rideSharePct < 0 || vm.rideSharePct > 100) return empty
+  // the fence: the voice's half must be the SPOKEN seat (the silent
+  // voice prices the honest empty - the silent cross's own seat, never
+  // doubled here; a negative voice lies)
+  if (!Number.isInteger(voice.closes) || !Number.isInteger(voice.opens)) return empty
+  if (voice.closes < 0 || voice.opens < 0) return empty
+  if (voice.closes === 0 && voice.opens === 0) return empty
+  // the pace rides the same share's own grain (the v0.976.4 law - the
+  // dose the voice closed against, face over face)
+  const paceMPerGauge = Math.round((vm.overArmArea / vm.overValveCells) * 10) / 10
+  return { spoken: true, gauges: vm.overValveCells, dose: vm.overArmArea, sharePct: vm.rideSharePct, paceMPerGauge, closes: voice.closes, opens: voice.opens }
+}
+
+/**
+ * (v0.976.6) THE ARM'S OWN ANSWER'S OWN ROW - the silent cross's own
+ * mirror word. The honest null when the answer prices nothing (the
+ * silent faces - the silent cross's own seat, the unridden faces, the
+ * junk halves).
+ *
+ * @param {{overValveCells?: number, n?: number, overArmArea?: number, rideSharePct?: number}} [vm] the valveMarginJoin fold
+ * @param {{closes?: number, opens?: number}} [voice] the valveVoiceCount census
+ * @returns {string|null} the answer word, or null
+ */
+export function valveSpokenArmRow (vm, voice) {
+  const c = valveSpokenArm(vm, voice)
+  if (!c.spoken) return null
+  return `THE ARM'S OWN ANSWER - the arm rode ${c.gauges} gauge(s) and the valve spoke (${c.closes} close(s), ${c.opens} open(s)) - the climb's own pace ${c.paceMPerGauge} M-gauge(s) per gauge of residency - the dose the voice answered (the valve's own span stays opendeaf's read, the lens only names the answer)`
 }
