@@ -48,7 +48,7 @@
  *  spin' and lost the timers/imm cells - the mis-read exactly when the
  *  LOOPING class speaks). The nesting-capable verdict group keeps every
  *  flat verdict byte-true (all dumps on record ride 'healthy'). */
-export const MAIN_FREEZE_LINE_RE = /^\[blackbox\] main freeze ~(\d+)s; last: (.+?)(?:; loop: timers=(\d+) imm=(\d+)\/(\d+)s \(((?:[^()]|\([^()]*\))+)\))?$/
+export const MAIN_FREEZE_LINE_RE = /^\[blackbox\] main freeze ~(\d+)s; last: (.+?)(?:; loop: timers=(\d+) imm=(\d+)\/(\d+)s \(((?:[^()]|\([^()]*\))+)\))?(?: \| h: sock=(\d+) tmr=(\d+) pipe=(\d+) oth=(\d+))?$/ // (v0.974.16) the optional handle-census tail rides AFTER the verdict paren - the legacy lines keep parsing, the census lines parse whole
 
 /** The heartbeat's pulse gauge: the freeze's position anchor. The real
  *  line reads '[hb] n=<k> ts=<s>s rss=...' - the unanchored 'b]' stem is

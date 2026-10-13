@@ -27,7 +27,7 @@
 // log carries the whole matrix without re-reading raw timestamps.
 import { Worker } from 'node:worker_threads'
 import { installNoteSink } from './blackbox.mjs'
-import { pulseLine } from './looppulse.mjs' // (v0.974.15) one truth: the dump's verdict rides the pulse's own ladder (the flood class included) - the inline copy retired
+import { pulseLine, readHandleCensus } from './looppulse.mjs' // (v0.974.15) one truth: the dump's verdict rides the pulse's own ladder (the flood class included) - the inline copy retired; (v0.974.16) the handle census rides the same seat
 
 // Eval worker (CJS - eval workers are CommonJS by design). It must NEVER throw:
 // a dead heartbeat is a diagnostic loss, not a fleet failure. Every failure path
@@ -374,7 +374,11 @@ function bbDump (lateNow) {
     // (v0.974.15) the ladder rides pulseLine's own words (one truth - the
     // inline copy read 'healthy' on FACE 282's flood; the flood class now
     // flows from the lib both ladders used to fork)
-    suffix = pulseLine({ timers: pw.timers, immediates: pw.immediates, dtS: intervalMs / 1000 })
+    // (v0.974.16) the handle census rides AFTER the verdict paren when the
+    // main's magic-gated census is present - the flood window's own fd
+    // population prices the flood's seat; absent census keeps the legacy bytes
+    var hc = readHandleCensus(pulseSab)
+    suffix = pulseLine({ timers: pw.timers, immediates: pw.immediates, dtS: intervalMs / 1000, handles: hc })
   }
   try { fs.writeSync(writeFd, '[blackbox] main freeze ~' + Math.round(lateNow / 1000) + 's; last: ' + parts.join(' <- ') + suffix + '\\n') } catch { /* stdout closed */ }
 }

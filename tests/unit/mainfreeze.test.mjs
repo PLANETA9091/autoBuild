@@ -151,3 +151,34 @@ test('the row composer is junk-safe on its own (the split-form law)', () => {
   assert.equal(mainFreezeRow(null), 'main freeze census: no main freeze')
   assert.equal(mainFreezeRow([{ seconds: 5 }]), "main freeze census: 1 freeze: ~5s named 'none' (loop unscoped)")
 })
+
+test('the handle-census tail (v0.974.16) parses whole - the census row survives the tail, the cells stay theirs', () => {
+  // FACE 284's own flood bytes + the new tail: the same line the v0.974.14-era
+  // tree printed '(healthy)' on, now carrying the population cell
+  const dump = '[blackbox] main freeze ~55s; last: pf:queue next column al @+0.0s <- other @+-3.1s; loop: timers=1530 imm=138010822/20s (FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied) | h: sock=19 tmr=42 pipe=1 oth=3'
+  const m = MAIN_FREEZE_LINE_RE.exec(dump)
+  assert.ok(m, 'the tail-carrying line must parse')
+  assert.equal(m[1], '55')
+  assert.equal(m[2], 'pf:queue next column al @+0.0s <- other @+-3.1s')
+  assert.equal(m[3], '1530')
+  assert.equal(m[4], '138010822')
+  assert.equal(m[5], '20')
+  assert.equal(m[6], 'FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied')
+  assert.equal(m[7], '19')
+  assert.equal(m[8], '42')
+  assert.equal(m[9], '1')
+  assert.equal(m[10], '3')
+  const { freezes, row } = mainFreezeCensus([
+    'b] n=29 ts=601s rss=504M late=130ms mainLate=54814ms',
+    dump
+  ])
+  assert.equal(freezes.length, 1)
+  assert.equal(freezes[0].seconds, 55)
+  assert.equal(freezes[0].named, 'pf:queue next column al @+0.0s')
+  assert.equal(freezes[0].loopVerdict, 'FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied')
+  assert.equal(row, "main freeze census: 1 freeze: ~55s @ts601s named 'pf:queue next column al @+0.0s' (loop FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied)")
+  // the legacy lines (no tail) keep parsing byte-true (the optional group never lies)
+  assert.ok(MAIN_FREEZE_LINE_RE.test('[blackbox] main freeze ~48s; last: other @+0.0s; loop: timers=1467 imm=140006193/20s (healthy)'))
+  // a tail with NO loop group still parses (the tail is its own optional slot)
+  assert.ok(MAIN_FREEZE_LINE_RE.test('[blackbox] main freeze ~5s; last: x @+0.0s | h: sock=1 tmr=2 pipe=3 oth=4'))
+})

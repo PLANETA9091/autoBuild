@@ -14,7 +14,9 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   createPulseSab, createLoopPulse, readPulseSab, pulseLine,
-  PULSE_SLOT_TIMERS, PULSE_SLOT_IMMEDIATES, PULSE_SAB_INT32_SLOTS
+  handleCensus, readHandleCensus,
+  PULSE_SLOT_TIMERS, PULSE_SLOT_IMMEDIATES, PULSE_SAB_INT32_SLOTS,
+  PULSE_SLOT_HANDLE_MAGIC, PULSE_HANDLE_MAGIC
 } from '../../src/lib/looppulse.mjs'
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -113,5 +115,84 @@ test('pulseLine: the FLOOD class (v0.974.15) - the timers served AND the check p
   assert.equal(
     pulseLine({ timers: 40, immediates: 900, dtS: 20 }),
     '; loop: timers=40 imm=900/20s (healthy)'
+  )
+})
+
+test('handleCensus (v0.974.16): the pure fd-family count - the flood\'s population prices its own seat', () => {
+  const mk = name => ({ constructor: { name } })
+  // FACE 284's own flood window's expected shape: 19 bot sockets ride among
+  // the handles; the families split sock/tmr/pipe/oth, junk entries -> oth
+  const c = handleCensus([
+    mk('TCP'), mk('Socket'), mk('TLSWrap'), // sock family
+    mk('Timeout'), mk('Timeout'), mk('Timeout'), // tmr family
+    mk('Pipe'), // pipe family
+    mk('Server'), mk('MessagePort'), null, 42, undefined // oth family
+  ])
+  assert.deepEqual(c, { sock: 3, tmr: 3, pipe: 1, oth: 5 })
+  // junk input stays a zeroed census - never throws
+  assert.deepEqual(handleCensus(null), { sock: 0, tmr: 0, pipe: 0, oth: 0 })
+  assert.deepEqual(handleCensus(undefined), { sock: 0, tmr: 0, pipe: 0, oth: 0 })
+  assert.deepEqual(handleCensus('junk'), { sock: 0, tmr: 0, pipe: 0, oth: 0 })
+  assert.deepEqual(handleCensus([]), { sock: 0, tmr: 0, pipe: 0, oth: 0 })
+  // a handle whose constructor read throws stays oth (diagnostics never throw)
+  const bomb = { get constructor () { throw new Error('boom') } }
+  assert.deepEqual(handleCensus([bomb]), { sock: 0, tmr: 0, pipe: 0, oth: 1 })
+})
+
+test('the census lands in the SAB magic-gated (the writer rides start + every probe tick)', async () => {
+  const sab = createPulseSab()
+  const orig = process._getActiveHandles
+  process._getActiveHandles = () => [ { constructor: { name: 'TCP' } }, { constructor: { name: 'Timeout' } } ]
+  try {
+    const pulse = createLoopPulse({ sab, intervalMs: 25 })
+    pulse.start() // the FIRST census lands synchronously, before any probe fire
+    const fresh = readHandleCensus(sab)
+    assert.deepEqual(fresh, { sock: 1, tmr: 1, pipe: 0, oth: 0 })
+    await sleep(60) // a probe tick rewrites the census
+    pulse.stop()
+  } finally { process._getActiveHandles = orig }
+  assert.deepEqual(readHandleCensus(sab), { sock: 1, tmr: 1, pipe: 0, oth: 0 })
+  // the magic gate: a fresh SAB (no census ever written) reads null
+  assert.equal(readHandleCensus(createPulseSab()), null)
+  // a junk magic reads null (the tail stays absent, the legacy bytes hold)
+  const junk = createPulseSab()
+  new Int32Array(junk)[PULSE_SLOT_HANDLE_MAGIC] = 12345
+  assert.equal(readHandleCensus(junk), null)
+  assert.equal(readHandleCensus(null), null)
+  assert.equal(readHandleCensus(new SharedArrayBuffer(4)), null)
+  // the real _getActiveHandles throws nothing through the writer (junk-safe)
+  const sab2 = createPulseSab()
+  const pulse2 = createLoopPulse({ sab: sab2, intervalMs: 25 })
+  assert.doesNotThrow(() => pulse2.start())
+  await sleep(40)
+  pulse2.stop()
+  const real = readHandleCensus(sab2)
+  assert.ok(real && real.sock >= 0 && real.tmr >= 0 && real.pipe >= 0 && real.oth >= 0, 'the real census rides non-negative counts')
+})
+
+test('pulseLine: the handle-census tail rides AFTER the verdict paren (the grammar stays parseable)', () => {
+  // FACE 284's own flood numbers + a census tail: the same numbers that read
+  // '(healthy)' on the stale-byte era read FLOODED on the v0.974.15 ladder,
+  // and the population rides the dump line's own tail
+  assert.equal(
+    pulseLine({ timers: 1530, immediates: 138010822, dtS: 20, handles: { sock: 19, tmr: 42, pipe: 1, oth: 3 } }),
+    '; loop: timers=1530 imm=138010822/20s (FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied) | h: sock=19 tmr=42 pipe=1 oth=3'
+  )
+  // handles absent/junk -> the legacy bytes byte-exact (the tail never lies)
+  assert.equal(
+    pulseLine({ timers: 40, immediates: 900, dtS: 20 }),
+    '; loop: timers=40 imm=900/20s (healthy)'
+  )
+  assert.equal(
+    pulseLine({ timers: 0, immediates: 3, dtS: 20, handles: null }),
+    '; loop: timers=0 imm=3/20s (NOT LOOPING - a sync block owns the thread)'
+  )
+  assert.equal(
+    pulseLine({ timers: 0, immediates: 3, dtS: 20, handles: {} }),
+    '; loop: timers=0 imm=3/20s (NOT LOOPING - a sync block owns the thread)'
+  )
+  assert.equal(
+    pulseLine({ timers: 0, immediates: 3, dtS: 20, handles: { sock: NaN, tmr: 1, pipe: 0, oth: 0 } }),
+    '; loop: timers=0 imm=3/20s (NOT LOOPING - a sync block owns the thread)'
   )
 })
