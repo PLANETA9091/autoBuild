@@ -27947,3 +27947,32 @@ Stage Summary:
 - gates: my 0900 push gate (this push) = BY RUN ID next fire; the 0841 heir's c782a52f gate 38329403690 rides their lane
 - fronts for the next CODE fire: the pocket's drain lever (the peak LATE t-80s - the bank lane's arm clock prices a wiring round); the pickaxe tax's own wiring front (the 276 read's own price, still open); the reloot lane's refusals (the lane never walks while the piles grow); the threshold lever's evidence (mainLate 1736ms the arc's max - the wiring round's own number)
 - Discipline: identity (PLANETA9091 pinned) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 278 completed -> the seat freed -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
+---
+Task ID: cron30-20261013-0930
+Agent: Super Z (the 30-min cron lane; the 0100-0900 fire chain's own agent)
+Task: fire 0930 - continue privateB dev (gates BY RUN ID, FACE 279's FIRST READ, FACE 280's dispatch, worklog, push)
+
+Work Log:
+- RECON (second time): /home/z/privateB-repo GONE again at open (the container's between-fires cleanup wiped it twice running); re-cloned + identity pinned PLANETA9091 + npm install 13s; origin/master = fedcc905 (my own 0900 tip - no lane moves), version 0.974.13 = origin, next free 0.974.14
+- gates BY RUN ID at open: my 0900 push gate = 38330357119 (fedcc905) SUCCESS; the 0841 heir's c782a52f gate = 38329403690 SUCCESS; FACE 279 = 38330288354 in_progress at open - THE SEAT OCCUPIED, no duplicate POST, foreground poll to completion (SUCCESS ~01:36Z)
+- FACE 279's artifact fetched BY artifact id 11783102738 -> /home/z/my-project/scripts/face279/; decompose (the repo's one-parser) 669 lines, err 0
+- THE FIRST READ - FACE 279, THE CROSSING FACE (5 deaths, clock 881s-class):
+  1. THE ARM'S SEVENTH FACE - THE FLOOR CROSSED: rss peak 479M (bookends 261M -> 472M), 28M PAST the 450M valve floor, residency 18 gauges - the valve row's own word: 'the valve arm is RIDDEN - the valve's own span owns the storm, the closest-approach book rode the wrong floor | the ride rides 2 run(s), longest 17 gauge(s) (stripes, not a plateau)'. The thin-approach arc: 413 -> 407 -> 421 -> 438 -> 417 -> 478/479 PAST - the first residency face of the arc; the approach book's floor claim priced wrong (the span owns the storm, not the peak)
+  2. THE STORM'S RETURN: 5 deaths - mob=4 (Zombie x3 + Skeleton x1; the mob book's own attacker: Zombie 3 of 4 = 75%), drown=1 (F4: o2 reset -1, rescue active, wet 16s, leg wood trip); the saved face's zero did NOT repeat (the calm face was the arc's own one-off, the storm rode back)
+  3. THE WATER'S FOURTH FACE - THE BOOK HELD ITS SIZE: 57 starts (the same 57 as 278), 1 drown death (F4), 'not saved' verdict (the deaths' own bills own the read); the freeze's own riders: 19 standdowns, no solo owner (F4 x7 + F15 x3 = 52.6% - the mix is the shape)
+  4. THE REFUSAL WORD'S FOURTH FACE - THE TIE ON A NEW LANE: 'the relog lane rode a tie (F8 x3 + F15 x3, 6 of 13) - a tie owns nothing'. The word's arc: tie(sticky, 275 hand-assembled) -> spread(276) -> seat(277) -> tie(sticky, 278) -> tie(relog, 279) - the tie class is the word's own habit (3 of 4 speakings); the shadow did NOT seat (the throne's riders: F4 x24 + F18 x11 = 39.3%)
+  5. THE POCKET'S OWN EXTREME: peak 2007u at t-0s, LATE 100.0% in - 'the drain never got its window' (the budget-floor lever claim confirmed again); critical bars 4 (joined 2 / tail 2); the write-off duo: F9 x295u + F19 x207u = 39.9% of 1257u
+  6. The rails: max mainLate 644ms (the arc's best since the storm faces - 277's 1736ms stays the max), late 165ms
+  7. Smelt: forecast 2 -> actual 0, exact 0/2 - the miss face (the storm's own bill)
+- NO CODE - the poll + the read consumed the box (the honest no-code per the 0541/0600/0700/0741/0800/0830/0841/0900 precedent); the arm's crossing prices the NEXT code front (the valve's own span - a residency word, not a peak word)
+- FACE 280 = 38332692596 dispatched POST 204 on fedcc905 (the v0.974.13 tree, gate-green via 38330357119) BY RUN ID verified in_progress - the arc mid-flight
+- worklog append: this section -> both worklogs; commit -> pull --rebase -> push (RACE law)
+
+Stage Summary:
+- FACE 279 read delivered: THE CROSSING FACE (the arm's floor crossed - 479M, 28M past, residency 18 gauges in stripes; the storm rode back - 5 deaths; the tie word spoke on the relog lane; the pocket's extreme 2007u at t-0s LATE 100%)
+- the repo re-cloned twice running (the between-fires cleanup) - the clone+install+pin cycle is the fire's own fixed cost now
+- version state: 0.974.13 stands; next free 0.974.14 (0.975.0 the named seat - origin raw re-verify MANDATORY before any bump)
+- FACE 280 = 38332692596 in flight on fedcc905 - the next fire owns its read (the residency's next face: does the arm re-cross or recede; the storm's next face: does the mob book re-price the Zombie; the word's fifth face: does the tie repeat or does a new class speak) AND FACE 281's dispatch poll
+- gates: my 0930 push gate (this push) = BY RUN ID next fire
+- fronts for the next CODE fire: THE RESIDENCY WORD (the valve row's own span law - 'the closest-approach book rode the wrong floor' - a span/residency class word prices itself as v0.974.14); the pocket's drain lever (peak LATE 100% at t-0s); the pickaxe tax; the reloot refusals
+- Discipline: identity (PLANETA9091 pinned on the fresh clone) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 279 polled to SUCCESS -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id 11783102738) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
