@@ -197,10 +197,10 @@ export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEF
  *
  * @param {{overValveCells?: number, n?: number, overArmArea?: number, rideSharePct?: number}} [vm] the valveMarginJoin fold
  * @param {{closes?: number, opens?: number}} [voice] the valveVoiceCount census
- * @returns {{cross: boolean, gauges: number, dose: number, sharePct: number}} the cross's own cells (the honest empty when the cross prices nothing)
+ * @returns {{cross: boolean, gauges: number, dose: number, sharePct: number, paceMPerGauge: number}} the cross's own cells (the honest empty when the cross prices nothing)
  */
 export function valveSilentCross (vm, voice) {
-  const empty = { cross: false, gauges: 0, dose: 0, sharePct: 0 }
+  const empty = { cross: false, gauges: 0, dose: 0, sharePct: 0, paceMPerGauge: 0 }
   if (!vm || typeof vm !== 'object' || Array.isArray(vm)) return empty
   if (!voice || typeof voice !== 'object' || Array.isArray(voice)) return empty
   // the fence: the arm's half must prove itself (a count the face owns,
@@ -214,7 +214,13 @@ export function valveSilentCross (vm, voice) {
   if (!Number.isInteger(voice.closes) || !Number.isInteger(voice.opens)) return empty
   if (voice.closes < 0 || voice.opens < 0) return empty
   if (voice.closes > 0 || voice.opens > 0) return empty
-  return { cross: true, gauges: vm.overValveCells, dose: vm.overArmArea, sharePct: vm.rideSharePct }
+  // (v0.976.4) the rate's own byte - the climb's own pace (the dose's
+  // own arithmetic: M-gauges per gauge of residency, the share's own
+  // grain - 1 decimal). The rate anchor's blind spot priced as a RATE:
+  // the slow creep never trips a fast valve - the pace is the byte the
+  // wire decision reads face over face.
+  const paceMPerGauge = Math.round((vm.overArmArea / vm.overValveCells) * 10) / 10
+  return { cross: true, gauges: vm.overValveCells, dose: vm.overArmArea, sharePct: vm.rideSharePct, paceMPerGauge }
 }
 
 /**
@@ -230,5 +236,5 @@ export function valveSilentCross (vm, voice) {
 export function valveSilentCrossRow (vm, voice) {
   const c = valveSilentCross(vm, voice)
   if (!c.cross) return null
-  return `THE SILENT CROSS - the arm rode ${c.gauges} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor's slow-creep blind spot (the residency rode the lens, the valve rode nothing)`
+  return `THE SILENT CROSS - the arm rode ${c.gauges} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the climb's own pace ${c.paceMPerGauge} M-gauge(s) per gauge of residency - the rate anchor's slow-creep blind spot priced (the residency rode the lens, the valve rode nothing)`
 }

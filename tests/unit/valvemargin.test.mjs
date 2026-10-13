@@ -164,8 +164,9 @@ test("the silent cross's own cell (v0.976.3) - the record's own call prices from
   assert.equal(c.gauges, 3)
   assert.equal(c.dose, 21)
   assert.equal(c.sharePct, 75)
+  assert.equal(c.paceMPerGauge, 7) // (v0.976.4) the pace's own byte - 21/3, the exact pace prints the integer
   const row = valveSilentCrossRow(vm, { closes: 0, opens: 0 })
-  assert.equal(row, 'THE SILENT CROSS - the arm rode 3 gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor\'s slow-creep blind spot (the residency rode the lens, the valve rode nothing)')
+  assert.equal(row, 'THE SILENT CROSS - the arm rode 3 gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the climb\'s own pace 7 M-gauge(s) per gauge of residency - the rate anchor\'s slow-creep blind spot priced (the residency rode the lens, the valve rode nothing)')
 })
 
 test("the silent cross's own honest silence (v0.976.3) - the speaking face and the unridden face price nothing", () => {
@@ -173,7 +174,7 @@ test("the silent cross's own honest silence (v0.976.3) - the speaking face and t
   // names only the silence)
   const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
   const spoken = valveSilentCross(vm, { closes: 2, opens: 1 })
-  assert.deepEqual(spoken, { cross: false, gauges: 0, dose: 0, sharePct: 0 })
+  assert.deepEqual(spoken, { cross: false, gauges: 0, dose: 0, sharePct: 0, paceMPerGauge: 0 })
   assert.equal(valveSilentCrossRow(vm, { closes: 2, opens: 1 }), null)
   // the floor held - no cross (the unridden face's own honest null)
   const clean = valveMarginJoin([mem(371), mem(380), mem(383)])
@@ -196,4 +197,27 @@ test("the silent cross's own fence (v0.976.3) - the cross never rides a lie", ()
   const noShare = { ...vm }
   delete noShare.rideSharePct
   assert.equal(valveSilentCross(noShare, { closes: 0, opens: 0 }).cross, false)
+})
+
+test("the cross's own rate (v0.976.4) - the climb's own pace byte on FACE 303's own shape", () => {
+  // FACE 303's own cross: the arm rode 23 gauge(s), the dose 342 M-gauge(s)
+  // - the pace 342/23 rounds to 14.9 (the share's own grain)
+  const vm = { n: 52, overValveCells: 23, overArmArea: 342, rideSharePct: 44.2 }
+  const c = valveSilentCross(vm, { closes: 0, opens: 0 })
+  assert.deepEqual(c, { cross: true, gauges: 23, dose: 342, sharePct: 44.2, paceMPerGauge: 14.9 })
+  assert.equal(
+    valveSilentCrossRow(vm, { closes: 0, opens: 0 }),
+    'THE SILENT CROSS - the arm rode 23 gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the climb\'s own pace 14.9 M-gauge(s) per gauge of residency - the rate anchor\'s slow-creep blind spot priced (the residency rode the lens, the valve rode nothing)',
+  )
+})
+
+test("the pace's own honest silence (v0.976.4) - the rate never rides the empty cell", () => {
+  // the speaking face and the unridden face: the pace rides zero (the
+  // rate prices nothing the cross does not own)
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  assert.equal(valveSilentCross(vm, { closes: 1, opens: 0 }).paceMPerGauge, 0)
+  const clean = valveMarginJoin([mem(371), mem(380), mem(383)])
+  assert.equal(valveSilentCross(clean, { closes: 0, opens: 0 }).paceMPerGauge, 0)
+  assert.equal(valveSilentCross(null, { closes: 0, opens: 0 }).paceMPerGauge, 0)
+  assert.equal(valveSilentCross(vm, null).paceMPerGauge, 0)
 })
