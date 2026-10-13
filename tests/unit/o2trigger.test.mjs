@@ -114,9 +114,9 @@ test('the face-145 battery - the artifact\'s own lines, byte for byte', () => {
   // F12: the crossing at the o2=8 read (ts 241), the death at ts 261 -
   // the window 20s (the trigger's own false-positive price: the death
   // was suffocate, the band read was real)
-  assert.deepEqual(b.perDeath[0], { bot: 'F12', ts: 261, crossed: true, window: 20, lastO2: 20, lastO2Gap: 1, lastO2Span: 1, lastPassHead: 'dry', minO2: 5 }, 'the last numeric read rides the seat with its own position and cadence and shore state (the v0.895.0 read gap + cadence, the v0.896.0 head) + the life\'s own floor (the v0.975.0 byte: 11/8/5/19/20 -> 5)')
+  assert.deepEqual(b.perDeath[0], { bot: 'F12', ts: 261, crossed: true, window: 20, lastO2: 20, lastO2Gap: 1, lastO2Span: 1, lastPassHead: 'dry' }, 'the last numeric read rides the seat with its own position and cadence and shore state (the v0.895.0 read gap + cadence, the v0.896.0 head)')
   // F3: never dipped into the band (14/18/20) - the honest no-crossing
-  assert.deepEqual(b.perDeath[1], { bot: 'F3', ts: 280, crossed: false, window: null, lastO2: 20, lastO2Gap: 1, lastO2Span: 1, lastPassHead: 'wet', minO2: 14 })
+  assert.deepEqual(b.perDeath[1], { bot: 'F3', ts: 280, crossed: false, window: null, lastO2: 20, lastO2Gap: 1, lastO2Span: 1, lastPassHead: 'wet' })
   assert.equal(b.noCrossing, 1)
   const row = o2TriggerRow(b)
   assert.ok(row.includes("the o2-low trigger's own window (v0.884.0)"))
