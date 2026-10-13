@@ -12,7 +12,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { starveClockBook, starveClockVerdict, starveClockRow, STARVE_LANES, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'
+import { starveClockBook, starveClockVerdict, starveClockRow, STARVE_LANES, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow } from '../../src/lib/starveclock.mjs'
 
 const hb = (n, ts) => `b] n=${n} ts=${ts}s rss=400M late=10ms mainLate=5ms`
 const hop = (bot, ts) => `${bot} [${bot}] hop: chest at [-100,60,400] d=10 zero: chest unreachable (Took to long to decide path to goal!)`
@@ -174,7 +174,7 @@ test('THE SPREAD LAW: the burst share names a diffuse face honestly (no one-wind
 
 test('THE CENSUS GUARD: the row rides the walk-fail lens beside the decide weather (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.975.5 band's own growth re-measured - the v0.974.28 precedent, the missed-pin's own cure)
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.975.7 band's own growth re-measured - the v0.975.5 precedent, the missed-pin's own cure)
   const wx = src.indexOf('const dw = decideWeather(lines)')
   const sb = src.indexOf('const svb = starveClockBook(lines)')
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
@@ -194,10 +194,17 @@ test('THE CENSUS GUARD: the row rides the walk-fail lens beside the decide weath
   assert.ok(hopLeg > wx) // the hop leg at the weather's own birth site
   assert.ok(walkLeg > hopLeg) // the walk leg at the commons ledger's own birth site (the last leg)
   assert.ok(total > walkLeg) // the total prints after its last leg
-  assert.ok(src.includes('if (sgt) console.log(`  ${starveGrandTotalRow(sgt)}`)'))
+  assert.ok(src.includes('const sgtf = starveGrandTotalFront(sgt)'))
+  assert.ok(src.includes('if (sgtf) console.log(`  ${starveGrandTotalFrontRow(sgtf)}`)'))
+  assert.ok(src.includes('if (sgtm) console.log(`  ${starveGrandTotalMixRow(sgtm)}`)'))
+  const sgtfIdx = src.indexOf('const sgtf = starveGrandTotalFront(sgt)')
+  const sgtmIdx = src.indexOf('const sgtm = starveGrandTotalMix(sgt)')
+  assert.ok(sgtfIdx > total && sgtmIdx > sgtfIdx) // the front rides beside the total, the mix inside the front's own else (the branch law's own shape)
   // the prose lives in the lib, never duplicated in the mine
   assert.equal(src.includes("the A* starvation's own grand total"), false)
   assert.equal(src.includes("the three lanes' own mass"), false)
+  assert.equal(src.includes("THE DECIDER'S OWN SEAT"), false)
+  assert.equal(src.includes("THE MASS'S OWN CROWD"), false)
 })
 
 // (v0.975.5) THE STARVATION'S OWN GRAND TOTAL - the three lanes' own
@@ -223,5 +230,60 @@ test('v0.975.5 the grand total row speaks byte-exact and junk never prints', () 
   assert.equal(starveGrandTotalRow({ hop: 1, walkFail: 1, bankDecide: 1, total: 4 }), null)
   for (const junk of [undefined, null, 42, 'str', {}, { hop: 1, walkFail: 1, bankDecide: 1 }, { hop: 'x', walkFail: 1, bankDecide: 1, total: 3 }, { hop: -1, walkFail: 1, bankDecide: 1, total: 1 }, { hop: 0, walkFail: 0, bankDecide: 0, total: 0 }]) {
     assert.equal(starveGrandTotalRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+// (v0.975.7) THE GRAND TOTAL'S OWN FRONT - WHICH lane's own mass owns
+// the sum (the strict-majority seat, the v0.933.0 law applied to the
+// sum's own fold); the mix companion rides the seat's silence (the
+// branch law lives in the lib).
+test('v0.975.7 the grand total front seats the strict-majority lane (a tie or a spread owns nothing)', () => {
+  // the seat: one lane over half the total (face 300's own byte: walk-fail 8 of 8)
+  assert.deepEqual(starveGrandTotalFront({ hop: 0, walkFail: 8, bankDecide: 0, total: 8 }), { lane: 'walk-fail', owns: 8, ofTotal: 8, shareOfTotal: 1 })
+  assert.deepEqual(starveGrandTotalFront({ hop: 0, walkFail: 12, bankDecide: 3, total: 15 }), { lane: 'walk-fail', owns: 12, ofTotal: 15, shareOfTotal: 0.8 })
+  assert.deepEqual(starveGrandTotalFront({ hop: 8, walkFail: 4, bankDecide: 0, total: 12 }), { lane: 'hop', owns: 8, ofTotal: 12, shareOfTotal: 0.667 })
+  // the tie law: exactly half owns nothing (2 of 4, 5 of 15 thirds, face 299's 62 of 131)
+  assert.equal(starveGrandTotalFront({ hop: 2, walkFail: 2, bankDecide: 0, total: 4 }), null)
+  assert.equal(starveGrandTotalFront({ hop: 5, walkFail: 5, bankDecide: 5, total: 15 }), null)
+  assert.equal(starveGrandTotalFront({ hop: 45, walkFail: 24, bankDecide: 62, total: 131 }), null)
+  // the sum law rides the seat too (the legs must own their total)
+  assert.equal(starveGrandTotalFront({ hop: 1, walkFail: 1, bankDecide: 1, total: 4 }), null)
+  for (const junk of [undefined, null, 42, 'str', {}, { hop: 1, walkFail: 1, bankDecide: 1 }, { hop: 'x', walkFail: 1, bankDecide: 1, total: 3 }, { hop: -1, walkFail: 1, bankDecide: 1, total: 1 }, { hop: 0, walkFail: 0, bankDecide: 0, total: 0 }]) {
+    assert.equal(starveGrandTotalFront(junk), null, `the seat must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.975.7 the mix rides the seat\'s silence (the branch law) and names the pair', () => {
+  // the branch law: the seat's owner exists - the mix never prints (face 300's own byte)
+  assert.equal(starveGrandTotalMix({ hop: 0, walkFail: 8, bankDecide: 0, total: 8 }), null)
+  assert.equal(starveGrandTotalMix({ hop: 0, walkFail: 12, bankDecide: 3, total: 15 }), null)
+  // the mix: count desc + the lane's own byte asc (face 296's own byte: 68/74/23)
+  assert.deepEqual(starveGrandTotalMix({ hop: 68, walkFail: 74, bankDecide: 23, total: 165 }), { leader: 'walk-fail', leaderOwns: 74, runner: 'hop', runnerOwns: 68, ofTotal: 165, pairOwns: 142, shareOfTotal: 0.861, duet: false })
+  // face 299's own byte: bank decide leads the mix
+  assert.deepEqual(starveGrandTotalMix({ hop: 45, walkFail: 24, bankDecide: 62, total: 131 }), { leader: 'bank decide', leaderOwns: 62, runner: 'hop', runnerOwns: 45, ofTotal: 131, pairOwns: 107, shareOfTotal: 0.817, duet: false })
+  // the duet flag: the three-way tie rides the name-asc pair (bank decide + hop)
+  assert.deepEqual(starveGrandTotalMix({ hop: 5, walkFail: 5, bankDecide: 5, total: 15 }), { leader: 'bank decide', leaderOwns: 5, runner: 'hop', runnerOwns: 5, ofTotal: 15, pairOwns: 10, shareOfTotal: 0.667, duet: true })
+  // the sum law rides the mix too
+  assert.equal(starveGrandTotalMix({ hop: 1, walkFail: 1, bankDecide: 1, total: 4 }), null)
+  for (const junk of [undefined, null, 42, 'str', {}, { hop: 1, walkFail: 1, bankDecide: 1 }, { hop: 'x', walkFail: 1, bankDecide: 1, total: 3 }, { hop: -1, walkFail: 1, bankDecide: 1, total: 1 }, { hop: 0, walkFail: 0, bankDecide: 0, total: 0 }]) {
+    assert.equal(starveGrandTotalMix(junk), null, `the mix must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.975.7 the front and mix rows speak byte-exact and junk never prints', () => {
+  // face 300's own field word
+  assert.equal(starveGrandTotalFrontRow({ lane: 'walk-fail', owns: 8, ofTotal: 8, shareOfTotal: 1 }), 'the grand total\'s own front (v0.975.7): walk-fail owns 8 of 8 starves (100.0%) - THE DECIDER\'S OWN SEAT: one lane\'s own mass owns the grand total - the lane\'s own front prices the cure the sum rode unnamed')
+  // the singular grain
+  assert.equal(starveGrandTotalFrontRow({ lane: 'hop', owns: 8, ofTotal: 12, shareOfTotal: 0.667 }), 'the grand total\'s own front (v0.975.7): hop owns 8 of 12 starves (66.7%) - THE DECIDER\'S OWN SEAT: one lane\'s own mass owns the grand total - the lane\'s own front prices the cure the sum rode unnamed')
+  assert.equal(starveGrandTotalFrontRow({ lane: 'hop', owns: 1, ofTotal: 1, shareOfTotal: 1 }), 'the grand total\'s own front (v0.975.7): hop owns 1 of 1 starve (100.0%) - THE DECIDER\'S OWN SEAT: one lane\'s own mass owns the grand total - the lane\'s own front prices the cure the sum rode unnamed')
+  for (const junk of [undefined, null, 42, 'str', {}, { lane: 'hop', owns: 1, ofTotal: 1 }, { lane: '', owns: 1, ofTotal: 1, shareOfTotal: 1 }, { lane: 'hop', owns: 0, ofTotal: 1, shareOfTotal: 0 }, { lane: 'hop', owns: 2, ofTotal: 1, shareOfTotal: 2 }, { lane: 'hop', owns: 'x', ofTotal: 1, shareOfTotal: 1 }]) {
+    assert.equal(starveGrandTotalFrontRow(junk), null, `the front row must stay silent on ${JSON.stringify(junk)}`)
+  }
+  // face 296's own mix word
+  assert.equal(starveGrandTotalMixRow({ leader: 'walk-fail', leaderOwns: 74, runner: 'hop', runnerOwns: 68, ofTotal: 165, pairOwns: 142, shareOfTotal: 0.861, duet: false }), 'the grand total\'s own mix (v0.975.7): no solo lane owns the majority - walk-fail x74 + hop x68 own 142 of 165 starves (86.1%) - THE MASS\'S OWN CROWD: the seat\'s tie law held, the mix is the shape - the lanes\' own spread prices the sky the solo law refused to seat')
+  // the duet's own word
+  assert.equal(starveGrandTotalMixRow({ leader: 'bank decide', leaderOwns: 5, runner: 'hop', runnerOwns: 5, ofTotal: 15, pairOwns: 10, shareOfTotal: 0.667, duet: true }), 'the grand total\'s own mix (v0.975.7): no solo lane owns the majority - bank decide x5 + hop x5 own 10 of 15 starves (66.7%) - THE MASS\'S OWN CROWD: the seat\'s tie law held, the mix is the shape (the duet\'s own tie) - the lanes\' own spread prices the sky the solo law refused to seat')
+  for (const junk of [undefined, null, 42, 'str', {}, { leader: 'hop', leaderOwns: 1, runner: 'walk-fail', runnerOwns: 1, ofTotal: 2 }, { leader: '', leaderOwns: 1, runner: 'walk-fail', runnerOwns: 1, ofTotal: 2, pairOwns: 2, shareOfTotal: 1, duet: false }, { leader: 'hop', leaderOwns: 0, runner: 'walk-fail', runnerOwns: 1, ofTotal: 2, pairOwns: 1, shareOfTotal: 0.5, duet: false }, { leader: 'hop', leaderOwns: 1, runner: 'walk-fail', runnerOwns: 1, ofTotal: 2, pairOwns: 3, shareOfTotal: 1.5, duet: false }, { leader: 'hop', leaderOwns: 1, runner: 'walk-fail', runnerOwns: 1, ofTotal: 2, pairOwns: 2, shareOfTotal: 1, duet: 'yes' }]) {
+    assert.equal(starveGrandTotalMixRow(junk), null, `the mix row must stay silent on ${JSON.stringify(junk)}`)
   }
 })

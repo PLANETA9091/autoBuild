@@ -648,3 +648,81 @@ export function starveGrandTotalRow (g) {
   if (!(total > 0)) return null
   return `the A* starvation's own grand total (v0.975.5): ${total} starve(s) - hop ${hop} + walk-fail ${walkFail} + bank decide ${bankDecide} (the three lanes' own mass, the decider's own front)`
 }
+
+// (v0.975.7) THE GRAND TOTAL'S OWN FRONT - WHICH lane's own mass owns
+// the grand total (the strict-majority seat, the v0.933.0 law applied
+// to the sum's own fold: the lane owns when its byte rides over half
+// the total - a tie or a spread owns nothing). The reads kept naming
+// the front by hand (face 300's read named walk-fail 8 of 8; face
+// 298's read named walk-fail 12 of 18; the mix faces 296/299 rode
+// unnamed). The lanes ride the row's own words (hop / walk-fail /
+// bank decide). Mining surface only: zero fleet wiring - CENSUS GUARD.
+export function starveGrandTotalFront (g) {
+  if (!g || typeof g !== 'object') return null
+  const { hop, walkFail, bankDecide, total } = g
+  for (const x of [hop, walkFail, bankDecide, total]) {
+    if (!Number.isFinite(x) || x < 0) return null
+  }
+  if (hop + walkFail + bankDecide !== total) return null
+  if (!(total > 0)) return null
+  const half = total / 2
+  const lanes = { hop, 'walk-fail': walkFail, 'bank decide': bankDecide }
+  for (const [lane, owns] of Object.entries(lanes)) {
+    if (owns > half) return { lane, owns, ofTotal: total, shareOfTotal: +(owns / total).toFixed(3) }
+  }
+  return null
+}
+
+// (v0.975.7) the front's own branch law - the mix companion (the
+// v0.933.0 riders law verbatim: count desc, the lane's own byte asc):
+// the seat's owner exists - the mix never prints. The duet flag rides
+// (the tie's own word).
+export function starveGrandTotalMix (g) {
+  if (!g || typeof g !== 'object') return null
+  const { hop, walkFail, bankDecide, total } = g
+  for (const x of [hop, walkFail, bankDecide, total]) {
+    if (!Number.isFinite(x) || x < 0) return null
+  }
+  if (hop + walkFail + bankDecide !== total) return null
+  if (!(total > 0)) return null
+  const ranked = [['hop', hop], ['walk-fail', walkFail], ['bank decide', bankDecide]]
+    .sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+  const half = total / 2
+  if (ranked[0][1] > half) return null // the branch law: the seat's owner exists - the mix never prints
+  const [leader, leaderOwns] = ranked[0]
+  const [runner, runnerOwns] = ranked[1]
+  const pairOwns = leaderOwns + runnerOwns
+  return { leader, leaderOwns, runner, runnerOwns, ofTotal: total, pairOwns, shareOfTotal: +(pairOwns / total).toFixed(3), duet: leaderOwns === runnerOwns }
+}
+
+// (v0.975.7) the front's own row - THE DECIDER'S OWN SEAT: one lane's
+// own mass owns the grand total. Junk never prints a seat (the honest
+// silence's own row law).
+export function starveGrandTotalFrontRow (f) {
+  if (!f || typeof f !== 'object') return null
+  const { lane, owns, ofTotal, shareOfTotal } = f
+  if (typeof lane !== 'string' || lane === '' ||
+      !Number.isFinite(owns) || owns <= 0 ||
+      !Number.isFinite(ofTotal) || ofTotal <= 0 || owns > ofTotal ||
+      !Number.isFinite(shareOfTotal)) return null
+  const unit = ofTotal === 1 ? 'starve' : 'starves'
+  return `the grand total's own front (v0.975.7): ${lane} owns ${owns} of ${ofTotal} ${unit} (${(shareOfTotal * 100).toFixed(1)}%) - THE DECIDER'S OWN SEAT: one lane's own mass owns the grand total - the lane's own front prices the cure the sum rode unnamed`
+}
+
+// (v0.975.7) the mix's own row - THE MASS'S OWN CROWD: the grand
+// total's lanes rode a mix, the spread is the shape (a measure of the
+// shape, never a named owner - the seat's tie law holds). Junk never
+// prints a shape (the honest silence's own row law).
+export function starveGrandTotalMixRow (m) {
+  if (!m || typeof m !== 'object') return null
+  const { leader, leaderOwns, runner, runnerOwns, ofTotal, pairOwns, shareOfTotal, duet } = m
+  if (typeof leader !== 'string' || leader === '' ||
+      typeof runner !== 'string' || runner === '' ||
+      !Number.isFinite(leaderOwns) || leaderOwns <= 0 ||
+      !Number.isFinite(runnerOwns) || runnerOwns <= 0 ||
+      !Number.isFinite(ofTotal) || ofTotal <= 0 ||
+      !Number.isFinite(pairOwns) || pairOwns > ofTotal ||
+      !Number.isFinite(shareOfTotal) || typeof duet !== 'boolean') return null
+  const unit = ofTotal === 1 ? 'starve' : 'starves'
+  return `the grand total's own mix (v0.975.7): no solo lane owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofTotal} ${unit} (${(shareOfTotal * 100).toFixed(1)}%) - THE MASS'S OWN CROWD: the seat's tie law held, the mix is the shape${duet ? ' (the duet\'s own tie)' : ''} - the lanes' own spread prices the sky the solo law refused to seat`
+}

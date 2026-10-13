@@ -27,7 +27,7 @@ import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budge
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
 import { waterLegBook, waterLegConsistent, waterLegRow } from '../../src/lib/waterleg.mjs' // (v0.957.0) the water's own leg - the drown context's own leg axis across EVERY rescue relation (the live lane's walk, the trigger-blind's walk, the returns' walk - the map the stale-only seat never drew)
 import { entryLungBook, entryLungConsistent, entryLungRow } from '../../src/lib/entrylung.mjs' // (v0.974.18) THE ENTRY-LUNG CELL - the o2 bar AT the wet episode's own start (FACE 287's empty-lungs-at-entry front priced as a measurement; the fast cross owns the verdict)
-import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky; (v0.974.28) + the burst's own seat - the densest 30s window's own WHEN (the v0.733.0 cut) + WHO (the v0.932.0 bill law), THE DECIDER'S OWN RUSH HOUR
+import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky; (v0.974.28) + the burst's own seat - the densest 30s window's own WHEN (the v0.733.0 cut) + WHO (the v0.932.0 bill law), THE DECIDER'S OWN RUSH HOUR
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
 import { sensorWindowsBook, sensorWindowsRow } from '../../src/lib/sensorwindow.mjs' // (v0.881.0) THE SENSOR WINDOW'S OWN BOOK - the blind reads' own windows: a maximal run of consecutive reset(-1) pass reads in one bot's line-order stream (the reuse law: parseSentryPass is the one parser, the blind skin is the o2 kind 'reset' - the parser's own word, never re-spelled); the run's read count is the price, the pass span (from..to) is the clock - the sensor-health front's own next byte (the toll owns the rides, the windows own the DURATION)
@@ -5398,4 +5398,17 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
 // own seat); any leg missing reads the lanes never assembled (the
 // honest silence - the near-miss's own fence law).
 const sgt = starveGrandTotal(starveGrandHop, starveGrandWalk, starveGrandBank)
-if (sgt) console.log(`  ${starveGrandTotalRow(sgt)}`)
+if (sgt) {
+  console.log(`  ${starveGrandTotalRow(sgt)}`)
+  // (v0.975.7) the grand total's own front - WHICH lane's own mass owns
+  // the sum (the strict-majority seat, the v0.933.0 law applied to the
+  // sum's own fold); the mix companion rides the seat's silence (the
+  // branch law lives in the lib - the owner exists, the mix never
+  // prints).
+  const sgtf = starveGrandTotalFront(sgt)
+  if (sgtf) console.log(`  ${starveGrandTotalFrontRow(sgtf)}`)
+  else {
+    const sgtm = starveGrandTotalMix(sgt)
+    if (sgtm) console.log(`  ${starveGrandTotalMixRow(sgtm)}`)
+  }
+}

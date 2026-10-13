@@ -140,7 +140,7 @@ test("THE ROWS' JUNK BATTERY: rows read null on junk", () => {
 
 test('THE CENSUS GUARD: the lane block rides beside the bot block on the one-parse book (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'")) // the import
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow } from '../../src/lib/starveclock.mjs'")) // the import
   const sb = src.indexOf('const svb = starveClockBook(lines)')
   const st = src.indexOf('const svt = starveBotSeat(svb)')
   const sl = src.indexOf('const svs = starveLaneSeat(svb)')
