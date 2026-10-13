@@ -505,7 +505,9 @@ const starveBurstView = (book) => {
 // (v0.974.28) THE BURST'S OWN SEAT - the earliest densest
 // DECIDE_BURST_WINDOW_S window, its own third seat (the v0.733.0 cut)
 // and its own bot book (the v0.932.0 bill law, the branch law fenced
-// inside: botSeat or riders, never both).
+// inside: botSeat or riders, never both). (v0.976.1) + the clock's own
+// end rides the seat's own output (the lead's own input byte - the
+// schedule prices from the seat, not a re-read).
 export function starveBurstSeat (book) {
   const v = starveBurstView(book)
   if (!v) return null
@@ -568,7 +570,46 @@ export function starveBurstSeat (book) {
     thirdSeat,
     botSeat,
     riders,
+    clockEnd,
   }
+}
+
+// (v0.976.1) THE BURST'S OWN LEAD - the window's own open minus the
+// clock's own end: the arm's own schedule byte. The closing sky's own
+// lever claim rode the record by hand face over face ("arm the walks
+// before it" / "arm the asks before it") and no row ever priced HOW
+// LONG before the deadline the window opened - the lead is that
+// schedule byte (face 302's window rode t-80s of the clock's own end
+// 841s). The fence: the seat must stand (the lead prices nothing on a
+// silent seat), the clock's own end must stand, the window's own open
+// never rides negative, and the lead never negative (the image law: a
+// lead under zero reads the seat's own clock mispriced - the honest
+// silence). Pure: reads, never mutates. Mining surface only: zero
+// fleet wiring, zero new log lines - CENSUS GUARD.
+export function starveBurstLead (s) {
+  if (!s || typeof s !== 'object' || Array.isArray(s)) return null
+  const { window, clockEnd } = s
+  if (!window || typeof window !== 'object' || Array.isArray(window) ||
+      !Number.isFinite(window.first) || window.first < 0 ||
+      !Number.isFinite(clockEnd) || clockEnd <= 0) return null
+  const lead = clockEnd - window.first
+  if (!Number.isFinite(lead) || lead < 0) return null // the image law
+  return { lead, open: window.first, clockEnd }
+}
+
+// (v0.976.1) the lead's own row - THE ARM'S OWN LEAD: the schedule's
+// own byte priced (the closing-rush lever's own how-long). Junk never
+// prints a lead (the honest silence's own row law); the image law
+// rides the row too (open + lead = the clock's own end, the
+// coherence's own fence).
+export function starveBurstLeadRow (l) {
+  if (!l || typeof l !== 'object' || Array.isArray(l)) return null
+  const { lead, open, clockEnd } = l
+  if (!Number.isFinite(lead) || lead < 0 ||
+      !Number.isFinite(open) || open < 0 ||
+      !Number.isFinite(clockEnd) || clockEnd <= 0 ||
+      open + lead !== clockEnd) return null
+  return `the burst's own lead (v0.976.1): the window's own open rode t-${lead}s of the clock's own end (${clockEnd}s) - THE ARM'S OWN LEAD: the schedule's own byte priced - the ask's own window rides ${lead}s before the deadline`
 }
 
 // The burst's own third levers - one table, the v0.913.0 levers precedent.

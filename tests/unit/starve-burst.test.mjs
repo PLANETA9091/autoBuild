@@ -14,7 +14,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { starveClockBook, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'
+import { starveClockBook, starveBurstSeat, starveBurstSeatRow, starveBurstLead, starveBurstLeadRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'
 
 const hb = (n, ts) => `b] n=${n} ts=${ts}s rss=400M late=10ms mainLate=5ms`
 const hop = (bot) => `${bot} [${bot}] hop: chest at [-100,60,400] d=10 zero: chest unreachable (Took to long to decide path to goal!)`
@@ -31,6 +31,7 @@ test('THE WINDOW LAW: the earliest densest window owns - the full seat shape', (
     thirdSeat: { cls: 'early', owns: 5 },
     botSeat: { bot: 'F5', owns: 5, ofWindow: 5 },
     riders: null,
+    clockEnd: 900,
   })
 })
 
@@ -68,6 +69,7 @@ test("THE WINDOW'S OWN SKY: the mid seat inside a straddling window - both seats
     thirdSeat: { cls: 'mid', owns: 3 },
     botSeat: { bot: 'F6', owns: 3, ofWindow: 5 },
     riders: null,
+    clockEnd: 900,
   })
 })
 
@@ -120,6 +122,7 @@ test('THE PIPELINE PIN: the book-parsed stamps price the same seat (the stamp la
     thirdSeat: { cls: 'mid', owns: 3 },
     botSeat: { bot: 'F6', owns: 3, ofWindow: 5 },
     riders: null,
+    clockEnd: 900,
   })
 })
 
@@ -154,15 +157,72 @@ test("THE ROWS' JUNK BATTERY: rows read null on junk", () => {
   assert.equal(starveBurstSeatRow({ window: { first: 10, last: 20, n: 2 }, ofTimed: 2, shareOfTimed: 1, thirds: { early: 2, mid: 0, late: 0 }, thirdSeat: null, botSeat: null, riders: { leader: 'F2', leaderOwns: 1, runner: 'F8', runnerOwns: 1, pairOwns: 3, ofWindow: 2, duet: false } }), null) // the pair sum mismatch
 })
 
+test("THE LEAD WORD: the seat prices the arm's own schedule (face 302's own shape)", () => {
+  // the window's open rode t-80s of the clock's own end 841s - face 302's own lead (the v0.974.28 seat's own output prices it)
+  const seat = { window: { first: 761, last: 781, n: 26 }, ofTimed: 126, shareOfTimed: 0.206, thirds: { early: 0, mid: 0, late: 26 }, thirdSeat: { cls: 'late', owns: 26 }, botSeat: { bot: 'F7', owns: 17, ofWindow: 26 }, riders: null, clockEnd: 841 }
+  assert.deepEqual(starveBurstLead(seat), { lead: 80, open: 761, clockEnd: 841 })
+  assert.equal(
+    starveBurstLeadRow(starveBurstLead(seat)),
+    "the burst's own lead (v0.976.1): the window's own open rode t-80s of the clock's own end (841s) - THE ARM'S OWN LEAD: the schedule's own byte priced - the ask's own window rides 80s before the deadline",
+  )
+})
+
+test('THE IMAGE LAW: the lead never negative, the boundary lead rides zero', () => {
+  // the window's open past the clock's own end - the seat's own clock mispriced, the silence
+  assert.equal(starveBurstLead({ window: { first: 900, last: 920, n: 2 }, clockEnd: 841 }), null)
+  // the boundary rides - the open AT the clock's own end prices lead 0
+  assert.deepEqual(starveBurstLead({ window: { first: 841, last: 841, n: 1 }, clockEnd: 841 }), { lead: 0, open: 841, clockEnd: 841 })
+  assert.equal(
+    starveBurstLeadRow({ lead: 0, open: 841, clockEnd: 841 }),
+    "the burst's own lead (v0.976.1): the window's own open rode t-0s of the clock's own end (841s) - THE ARM'S OWN LEAD: the schedule's own byte priced - the ask's own window rides 0s before the deadline",
+  )
+})
+
+test("THE LEAD'S OWN FENCES: junk never prices a schedule", () => {
+  assert.equal(starveBurstLead(null), null)
+  assert.equal(starveBurstLead(undefined), null)
+  assert.equal(starveBurstLead('nope'), null)
+  assert.equal(starveBurstLead(42), null)
+  assert.equal(starveBurstLead([]), null)
+  assert.equal(starveBurstLead({}), null)
+  assert.equal(starveBurstLead({ clockEnd: 841 }), null) // no window leg
+  assert.equal(starveBurstLead({ window: { first: '761' }, clockEnd: 841 }), null) // the junk open
+  assert.equal(starveBurstLead({ window: { first: -5 }, clockEnd: 841 }), null) // the negative open
+  assert.equal(starveBurstLead({ window: { first: 761 } }), null) // no clock - no schedule
+  assert.equal(starveBurstLead({ window: { first: 761 }, clockEnd: 0 }), null)
+  assert.equal(starveBurstLead({ window: { first: 761 }, clockEnd: '841' }), null)
+  // the silent seat prices nothing - the lead rides the seat, not a re-read
+  assert.equal(starveBurstLead(starveBurstSeat({ stamps: [], clockEnd: 900 })), null)
+})
+
+test("THE LEAD ROW'S JUNK BATTERY: the coherence's own fence rides the row", () => {
+  assert.equal(starveBurstLeadRow(null), null)
+  assert.equal(starveBurstLeadRow(undefined), null)
+  assert.equal(starveBurstLeadRow('nope'), null)
+  assert.equal(starveBurstLeadRow({}), null)
+  assert.equal(starveBurstLeadRow({ lead: -1, open: 842, clockEnd: 841 }), null) // the negative lead
+  assert.equal(starveBurstLeadRow({ lead: 80, open: 760, clockEnd: 841 }), null) // the coherence's own fence - open + lead must own the clock's end
+  assert.equal(starveBurstLeadRow({ lead: 80, open: 761, clockEnd: 840 }), null) // the coherence's own fence, the other side
+  assert.equal(starveBurstLeadRow({ lead: '80', open: 761, clockEnd: 841 }), null) // the junk byte
+  assert.equal(starveBurstLeadRow({ lead: 80, open: -1, clockEnd: 79 }), null) // the junk open rides no row
+})
+
 test('THE CENSUS GUARD: the burst seat rides beside the clock rows in the one parse (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow } from '../../src/lib/starveclock.mjs'")) // the import band's own growth (the v0.975.7 growth re-measured - the v0.933.0 precedent)
+  assert.ok(src.includes("starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow, starveGrandTotalFront, starveGrandTotalFrontRow, starveGrandTotalMix, starveGrandTotalMixRow, starveBurstLead, starveBurstLeadRow } from '../../src/lib/starveclock.mjs'")) // the import band's own growth (the v0.976.1 growth re-measured - the v0.933.0 precedent)
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
   const st = src.indexOf('const svt = starveBotSeat(svb)')
   const svs = src.indexOf('const svs = starveLaneSeat(svb)')
   const sb = src.indexOf('const svburst = starveBurstSeat(svb)')
   assert.ok(sv > 0 && st > sv && svs > st && sb > svs) // one parse - the seat rides beside the clock's rows, never before them
   assert.ok(src.includes("if (svburst) console.log(`  ${starveBurstSeatRow(svburst)}`)"))
+  const sl = src.indexOf('const svlead = starveBurstLead(svburst)')
+  assert.ok(sl > sb) // the schedule byte rides the seat (the v0.976.1 additive law)
+  assert.ok(src.includes("if (svlead) console.log(`  ${starveBurstLeadRow(svlead)}`)"))
+  // the prose lives in the lib, never duplicated in the mine
+  assert.equal(src.includes("the burst's own lead"), false)
+  assert.equal(src.includes("THE ARM'S OWN LEAD"), false)
+  assert.equal(src.includes("the schedule's own byte priced"), false)
 })
 
 // THE FIRST DRAFT'S OWN LESSON (recorded not rewritten): the first draft's
