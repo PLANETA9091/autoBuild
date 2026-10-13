@@ -27976,3 +27976,40 @@ Stage Summary:
 - gates: my 0930 push gate (this push) = BY RUN ID next fire
 - fronts for the next CODE fire: THE RESIDENCY WORD (the valve row's own span law - 'the closest-approach book rode the wrong floor' - a span/residency class word prices itself as v0.974.14); the pocket's drain lever (peak LATE 100% at t-0s); the pickaxe tax; the reloot refusals
 - Discipline: identity (PLANETA9091 pinned on the fresh clone) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 279 polled to SUCCESS -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id 11783102738) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
+
+---
+Task ID: cron-agent-loop-202610130941 (fire 0941, the 1941/2341 lane)
+Agent: Super Z (main agent)
+Task: Продолжать доводить privateB (Minecraft 26.2 bot fleet) до 100% — gates BY RUN ID, сходящееся чтение FACE 279, sanity-пины, worklog append + push (Job ID 415967)
+
+Work Log:
+- THE THIRTEENTH DEATH'S RECLONE at open (/home/z/privateB gone again — the between-fires cleanup): token-URL reclone clean, identity double-pinned local+global BEFORE any write, npm install 14s (the fire's own fixed cost, twice running)
+- gates BY RUN ID at open: my lane's chain ALL GREEN (the 0841 append's gate 38329271770 SUCCESS + the 0841 addendum's gate 38329403690 SUCCESS — both my pushes verdicted green); the 0930 heir's chain green (the 0900 gate 38330357119 SUCCESS, FACE 279 = 38330288354 SUCCESS consumed by the 0930 fire's first read); zero red, zero zombies
+- FACE 280 = 38332692596 in_progress at open on fedcc905 (the v0.974.13 tree) — THE SEAT OCCUPIED, no duplicate POST (the seat law); its read rides the next fire
+- FACE 279's artifact re-fetched BY artifact id 11783102738 (the artifact law) -> decompose (the repo's one-parser) 669 lines, err 0 — byte-for-byte the 0930 fire's own shape
+- THE CONVERGING READ — FACE 279, THE CROSSING FACE (every 0930 headline line-matched):
+  1. THE ARM'S SEVENTH FACE line-matched: rss peak 478M in the valve row (479M in the heartbeat distress line — the two lenses' own 1M gauge offset), 28M PAST the 450M floor, residency 18 gauges, the span word byte-exact ('the valve's own span owns the storm, the closest-approach book rode the wrong floor | the ride rides 2 run(s), longest 17 gauge(s) (stripes, not a plateau)')
+  2. THE STORM'S RETURN line-matched: 5 deaths — mob=4 (F13+F5+F1 by Zombie, F12 shot by Skeleton; Zombie 3 of 4 = 75.0% byte-exact), drown=1 (F4: o2 reset(-1), rescue active, wet 16s, leg wood trip byte-exact)
+  3. THE WATER'S FOURTH FACE line-matched: 57 starts (the same 57 as 278), 'not saved' verdict, 19 frozen standdowns, the freeze's mix F4 x7 + F15 x3 = 52.6% byte-exact
+  4. THE REFUSAL WORD'S FOURTH FACE line-matched: 'the relog lane rode a tie (F8 x3 + F15 x3, 6 of 13) - a tie owns nothing' byte-exact; the shadow's silence held (the throne's riders F4 x24 + F18 x11 = 39.3%)
+  5. THE POCKET'S OWN EXTREME line-matched: peak 2007u at t-0s LATE 100.0% ('the drain never got its window'), critical bars 4 (joined 2 / tail 2), the write-off duo F9 x295u + F19 x207u = 39.9% of 1257u byte-exact
+  6. THE RAILS line-matched: mainLate 644ms max / late 165ms, the beat rail held (39 beats, no missed reschedule)
+  7. SMELT line-matched: forecast 2 -> actual 0, exact 0/2
+- DEEP ADDS (my own eight):
+  a. THE DEADLINE'S OWN ECONOMY: end-phase tax 795u of 828u (96%), the drain's third book early 33u / mid 0u / late 795u, and ALL 3 burst riders sit in the final 60s — the closing minute called the whole face's storm AND its economy
+  b. THE SILENT STAKES' OWN EXONERATION: armed 1 (33u F4) / SILENT 4 (795u) — and the deadline's own x4 owns ALL 795u, the true miss 0u — the recovery wiring exonerated by the deadline itself
+  c. THE DROPS' OWN DUO: F1 x407u + F13 x146u own 66.8% of the dropped 828u — F1's single pile = 49%, the sweep's reach candidate named
+  d. THE SIGHT'S OWN SEAT: blind owns 87 of 163 water passes (53.4%) — the ground-truth class: the pass never saw shore or land
+  e. THE SWIM'S OWN SPENDER: F4 owns 18 of 18 transit launches (100.0%), pinned 12x into [-122,394] walls-class d flat 4..4 — the drowned bot was the lane's own spender, swimming into the same walls
+  f. THE RELOG FEEDS THE LOOP: 13 relogs -> 7 stalled walk-outs (54%), 5 bots relogged 2+ own 12/13 (92%); THE FULL LADDER's second sighting this arc — F8 #3@40s, the gate doubled twice and the client still froze (the patience is not the cure, again)
+  g. THE NOON SKY RETURNED: the A* starved 89x, mid owns 49 of 89 (55%), the crowded sky's 48/49 at or past half the ents ceiling (median 1845) — the noon-crowd class back on a storm face
+  h. THE FURNACE'S OWN IN-FLIGHT CLASS: BOTH smelt misses were the in-flight batch (the furnace fired 1 and the window ended first; binding fuel 0 / clock 0 / none 2) — the forecast's miss is the deadline's own tax, not the furnace's
+- NO CODE this fire — the honest no-code (the 0541..0930 precedent): the converging read consumed the box; the residency span word prices itself as the next CODE fire's own front (the 0930 heir's named seat)
+- sanity pins byte-exact on the v0.974.13 tree: churnthrone 26/26 + valvemargin 17/17 + deathkinds 70/70 + drops 43/43 (single-file node --test only — the local law kept)
+- the 0841 worklog lesson applied: the repo's worklog.md used as the source of truth, my-project's stale copy synced FROM the repo (the clobber caught last fire, never again)
+
+Stage Summary:
+- my lane's chain ALL GREEN (both 0841 pushes verdicted); zero red, zero zombies; FACE 280 in flight — its read (the residency's next face: does the arm re-cross or recede; the storm's next face: does the mob book re-price the Zombie; the word's fifth face: does the tie repeat) rides the next fire
+- version state: 0.974.13 stands; next free 0.974.14 (0.975.0 the named seat — origin raw re-verify MANDATORY before any bump); the residency span word the 0930 heir's own named front
+- my worklog push gate (this push) = BY RUN ID next fire
+- Discipline: identity (PLANETA9091 pinned on the fresh clone) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 280 occupied — no duplicate POST) / the artifact law (fetch BY artifact id 11783102738) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire — zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite (single-file node --test only)
