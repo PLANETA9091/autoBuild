@@ -162,6 +162,7 @@ import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/d
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
 import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues; (v0.976.9) the answer's own wire - the spoken arm's own row rides the same lens (the v0.976.6 lib shipped the answer cell, the graft's wire debt now paid - FACE 308 = 38446472656 rode the first SPOKEN face after the word's birth and the row priced nothing in the record - the wire's own gap named by the field)
+import { giantWhenRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
@@ -3530,6 +3531,11 @@ if (stormMem.hb.count > 0) {
   if (hb.maxMainLateMs !== null && hb.maxMainLateMs >= BLACKBOX_FREEZE_MS && mfCensus.freezes.length === 0) {
     const ts = hb.giantTsS != null ? ` at ts=${hb.giantTsS}s` : ''
     console.log(`  the giant's own seat (v0.974.27): a ${hb.maxMainLateMs}ms main-loop stall rode the gauge${ts} and the ring never dumped (0 freeze dump(s) on the face, the ${BLACKBOX_FREEZE_MS}ms threshold prices the giant's seat) - the ring's own blind spot: the 'no main freeze' verdict rode the ring's silence, not the thread's health`)
+    // (v0.976.17) THE GIANT'S OWN WHEN - the seat's own second sentence,
+    // riding only when the seat rode (the freeze row owns the dumped
+    // faces' story, the untimed stall prices the honest silence)
+    const gw = giantWhenRow({ giantTsS: hb.giantTsS, maxMainLateMs: hb.maxMainLateMs, firstTsS: hb.firstTsS, lastTsS: hb.lastTsS, freezes: mfCensus.freezes.length })
+    if (gw) console.log(`  ${gw}`)
   }
 }
 // (v0.822.0) THE BEAT RAIL'S OWN CONTINUITY - the distress row's own
