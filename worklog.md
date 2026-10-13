@@ -28125,3 +28125,33 @@ Stage Summary:
 - gates: my 1100 push gate (this push) = BY RUN ID next fire
 - fronts for the next CODE fire: THE PF:* MAIN-FREEZE CLASS (2 of the last 3 faces, both ~50s pathfinder-goal stalls - the wiring front's evidence is now a class, not a one-off); the frozen-relog escalation ladder (the 1041 heir's own naming); the last-mile distance gate d>5 (92.2% of the rent priced); the pickaxe tax; the reloot refusals
 - Discipline: identity (PLANETA9091 pinned) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 282 polled to SUCCESS -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id 11786845495) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
+Task ID: cron30-20261013-1130
+Agent: Super Z (the 30-min cron lane; the 0100-1100 fire chain's own agent)
+Task: fire 1130 - continue privateB dev (gates BY RUN ID, FACE 283's FIRST READ, the 1100 gate FAILURE triage + rerun, FACE 284's dispatch, worklog, push)
+
+Work Log:
+- RECON: the repo dir SURVIVED; pull --rebase zero moves (my 1100 tip 4ba3a6b2 = origin, no heir moves); version 0.974.14 = origin; the gh CLI still gone - curl + the API
+- gates BY RUN ID at open: my 1100 push gate = 38340829389 (4ba3a6b2) in_progress; FACE 283 = 38340660915 in_progress - THE SEAT OCCUPIED, no duplicate POST, foreground poll to completion (SUCCESS ~03:40Z, units + integration GREEN throughout, the fleet leg flew long again)
+- FACE 284 = 38342925900 dispatched POST 204 on 4ba3a6b2 BY RUN ID verified in_progress - the arc mid-flight
+- THE 1100 GATE FAILURE - TRIAGED AND RERUN: 38340829389 completed FAILURE - the Integration job died; job log pulled (2.7 MB): tests/integration/productivity.test.mjs FATAL 'Ineffective mark-compacts near heap limit' - JS heap OOM at the 6144 MB NODE_OPTIONS cap (6060 MB live at death); unit suite passed 398/398 IN THE SAME RUN; the tree is worklog-only over af2e6de1 whose own gate 38339407978 rode SUCCESS - THE INFRA-FLAKE CLASS, not a code failure (the same flake family the repo's ci-stall.mjs exists for); the fix rode the API: POST runs/38340829389/rerun-failed-jobs -> HTTP 201, attempt 2 in_progress (the fleet-group FACE 284 untouchable by the gate group per the v0.331.0 secession, cancel-in-progress false)
+- FACE 283's artifact fetched BY artifact id 11787930855 (fleet19-log) -> /home/z/my-project/scripts/face283/; decompose (the repo's one-parser) 600 lines, err 0
+- THE FIRST READ - FACE 283, THE SAVED FACE II (0 deaths - the arc's second zero):
+  1. THE STORM'S OWN COLLAPSE: 13 deaths (282's worst) -> ZERO - the widest storm-to-zero swing the arc has ridden; siege pace none
+  2. THE ARM'S TENTH FACE - THE RECEDE DEEP: rss peak 397M, 53M UNDER the 450M floor (bookends 253M -> 394M) - 282's plateau (587M, dose 4372, share 63.9%) did NOT hold; the v0.974.14 word priced its honesty live: the hold class prints NO residency tail (the silence byte rode the design); arc: 413 -> 407 -> 421 -> 438 -> 417 -> 479 -> 547 -> 423 -> 587 (dose 4372) -> 397
+  3. NO MAIN FREEZE: max mainLate 1074ms; the pf:* class stayed silent this face (the 280/282 pair remains 2 of 4)
+  4. THE WATER'S SEVENTH FACE - THE SAVED VERDICT AGAIN: 34 starts, 0 drown-kind deaths - 'THE SAVED FACE - the water lane landed every rider' (the class's second speaking; 278 the first); the rescue book small (the calm's own shape)
+  5. THE REFUSAL WORD'S EIGHTH FACE - THE TRIPLE TIE'S OWN SILENCE: standdown F3 x1 + F1 x1 (2 of 2) / relog the same / sticky the same - three lanes, three ties, one pair (F3+F1) - 'a tie owns nothing'; the word's arc adds the widest-yet tie face after 282's five-way
+  6. THE ENCOUNTER BOOK'S OWN SEAT: zombie 13 of 13 attacker line(s) (100%) - the pressure rode one attacker's name and the fleet still saved every rider
+  7. THE BANK CLOSED END-TO-END AGAIN: pocket 67u -> 1936u (peak 2066u LATE 70.5%), banked +436, smelted +7; the crater EASED to 20.7% (282: 27.4%)
+  8. Smelt: forecast 7 -> actual 6, exact 1/2 - the IN-FLIGHT miss class again
+- NO CODE - the poll + the failure triage + the rerun + the read + the dispatch consumed the box (the honest no-code per the 0541..1100 precedent); the fronts stand (the pf:* class, the frozen-relog ladder, the last-mile gate d>5, the integration OOM flake now priced as an infra front if the rerun or a future face repeats it)
+- worklog append: this section -> both worklogs; commit -> pull --rebase -> push (RACE law)
+
+Stage Summary:
+- the 1100 gate failure TRIAGED (integration OOM flake, not code; unit 398/398 passed in the same run) and RERUNNED (attempt 2 in flight) - the verdict rides the next fire BY RUN ID 38340829389
+- FACE 283 read delivered: THE SAVED FACE II (0 deaths - the storm collapsed; the arm receded deep to 397M and the residency word stayed honestly silent on the hold; the water's saved verdict spoke twice in the arc; the triple-tie silence; the bank closed end-to-end, the crater eased)
+- version state: 0.974.14 stands; next free 0.975.0 (the named seat - origin raw re-verify MANDATORY before any bump)
+- FACE 284 = 38342925900 in flight on 4ba3a6b2 - the next fire owns its read (the saved face's next face: does the zero repeat or does the storm return; the arm's next face: does the recede hold or does a residency speak; the word's ninth face; the pf:* class's next face) AND FACE 285's dispatch poll AND the rerun's verdict
+- gates: my 1130 push gate (this push) = BY RUN ID next fire; the 1100 gate rerun (38340829389 attempt 2) rides its own lane
+- fronts for the next CODE fire: the pf:* main-freeze class (2 of 4 faces); the frozen-relog escalation ladder; the last-mile distance gate d>5 (92.2% priced); the integration OOM flake (a ci.yml heap guard if it repeats - the rerun's verdict prices it)
+- Discipline: identity (PLANETA9091 pinned) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 283 polled to SUCCESS -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id 11787930855) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
