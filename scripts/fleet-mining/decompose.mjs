@@ -4714,7 +4714,10 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
   const vm = valveMarginJoin(lines)
   if (vm) {
     const shapeTail = vm.shape ? ` | ${vm.shape}` : ''
-    console.log(`  valve margin (v0.974.9, shape v0.974.10): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}`)
+    // (v0.974.14) THE RESIDENCY WORD - the arm's own dose rides beside the
+    // shape (the span law's own currency; the honest silence prints nothing)
+    const resTail = vm.residency ? ` | ${vm.residency}` : ''
+    console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}`)
   }
 }
 

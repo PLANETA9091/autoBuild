@@ -1,5 +1,22 @@
-// (v0.974.9, shape v0.974.10) THE VALVE MARGIN LENS - the rss book's own
-// floor read, pure, mining-surface only.
+// (v0.974.9, shape v0.974.10, residency v0.974.14) THE VALVE MARGIN LENS -
+// the rss book's own floor read, pure, mining-surface only.
+//
+// THE RESIDENCY WORD (v0.974.14 - the span law's own dose, priced by the
+// THREE-fire seat: the 0930/0941/1030 reads hand-priced the same missing
+// byte - 'a span/residency class word prices itself as v0.974.14'). The
+// RIDDEN verdict names the peak's depth and the gauge COUNT; the shape
+// names the run structure (plateau / one-run / stripes) - but the arc's
+// own lever words ('the valve's own span owns the storm') price the SPAN
+// TIMES THE DEPTH: FACE 279's stripes rode '18 gauges', FACE 280's plateau
+// rode '97M past, 34 gauges ONE RUN' - the reads kept multiplying by hand.
+// The word prices the arm's own DOSE: overArmArea = the sum of every
+// gauge's excess over the floor (M-gauge units - the storm's own currency
+// through the valve), and the ride's SHARE: rideSharePct = the over-arm
+// gauges' share of the face (the residency's own occupancy). The cells
+// ride the return; the verdict/shape strings stay byte-stable (the
+// v0.974.9/974.10 lesson - a word is a cell, never a graft). The honest
+// silence: a face the floor held prices NOTHING (residency '' - the
+// recede face's own word, the 281 read's own class).
 //
 // WHAT PRICED IT: the worklogs priced THREE fires of 'closest approach'
 // against the valve's 600M floor - 'rss peak 592M - 8M under the valve's
@@ -75,15 +92,17 @@ export const VALVE_MARGIN_THIN_M = 50
  * @param {{valveFloorM?: number, stormFloorM?: number, thinM?: number}} [opts]
  * @returns {null|{n: number, peak: number, valveFloorM: number, stormFloorM: number,
  *   marginValve: number, marginStorm: number, overValve: number,
- *   overValveCells: number, overArmRuns: number, overArmLongest: number,
+ *   overValveCells: number, overArmArea: number, rideSharePct: number,
+ *   overArmRuns: number, overArmLongest: number,
  *   stepIndex: number|null, preArmPeak: number|null, thinM: number,
- *   verdict: string, shape: string}}
+ *   verdict: string, shape: string, residency: string}}
  */
 export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEFAULT, stormFloorM = STORM_FLOOR_MB_DEFAULT, thinM = VALVE_MARGIN_THIN_M } = {}) {
   if (!Array.isArray(lines)) return null
   let n = 0
   let peak = null
   let overValveCells = 0
+  let overArmArea = 0
   const rssCells = []
   for (const line of lines) {
     if (typeof line !== 'string') continue
@@ -94,7 +113,7 @@ export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEF
     rssCells.push(rss)
     n++
     if (peak === null || rss > peak) peak = rss
-    if (rss >= valveFloorM) overValveCells++
+    if (rss >= valveFloorM) { overValveCells++; overArmArea += rss - valveFloorM }
   }
   if (n === 0 || peak === null) return null
   const marginValve = valveFloorM - peak // negative = the peak is past the arm
@@ -132,6 +151,13 @@ export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEF
       shape = `the ride rides ${overArmRuns} run(s), longest ${overArmLongest} gauge(s) (stripes, not a plateau)`
     }
   }
+  // (v0.974.14) THE RESIDENCY WORD - the span law's own dose (see the
+  // header). Cells only: the verdict/shape strings above stay byte-stable;
+  // the word composes from the cells' own arithmetic, no new constant.
+  const rideSharePct = overValveCells > 0 ? Math.round((overValveCells / n) * 1000) / 10 : 0
+  const residency = overValveCells > 0
+    ? `the arm's own dose ${overArmArea} M-gauge(s) over the floor - the ride's share ${rideSharePct}% of ${n} gauge(s)`
+    : '' // the honest silence - the floor held, the residency prices nothing
   let verdict
   if (peak >= stormFloorM) {
     verdict = `the euthanasia floor is BREACHED - rss peak ${peak}M rides ${peak - stormFloorM}M past the ${stormFloorM}M storm floor - the OOM cliff's own class`
@@ -142,5 +168,5 @@ export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEF
   } else {
     verdict = `the valve floor holds - rss peak ${peak}M, ${marginValve}M under the ${valveFloorM}M valve floor`
   }
-  return { n, peak, valveFloorM, stormFloorM, marginValve, marginStorm, overValve, overValveCells, overArmRuns, overArmLongest, stepIndex, preArmPeak, thinM, verdict, shape }
+  return { n, peak, valveFloorM, stormFloorM, marginValve, marginStorm, overValve, overValveCells, overArmArea, rideSharePct, overArmRuns, overArmLongest, stepIndex, preArmPeak, thinM, verdict, shape, residency }
 }
