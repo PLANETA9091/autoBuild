@@ -43,17 +43,17 @@ test('drownContextLine: the wet window rides the row tail (the F16 next-column s
     rescueActive: false, lastRescueAt: null, now,
     leg: 'next column', headWetSince: now - 30000
   })
-  assert.equal(line, 'F16 death: drown context (o2 0, feet water, head water, rescue never, leg next column, wet 30s)', 'the wade shape: 30s of exposure on the row tail')
+  assert.equal(line, 'F16 death: drown context (o2 0, feet water, head water, rescue never, leg next column, wet 30s, entry o2 ?)', 'the wade shape: 30s of exposure on the row tail')
   const plunge = drownContextLine({
     tag: 'F7', oxygen: 0, feet: 'water', head: 'water', now,
     leg: 'fuel commons walk', headWetSince: now - 2000
   })
-  assert.equal(plunge, 'F7 death: drown context (o2 0, feet water, head water, rescue never, leg fuel commons walk, wet 2s)', 'the plunge shape: 2s')
+  assert.equal(plunge, 'F7 death: drown context (o2 0, feet water, head water, rescue never, leg fuel commons walk, wet 2s, entry o2 ?)', 'the plunge shape: 2s')
 })
 
 test('drownContextLine: legacy calls (no headWetSince) read the tail honestly', () => {
   const line = drownContextLine({ tag: 'F3', oxygen: 0, feet: 'water', head: 'water' })
-  assert.ok(line.endsWith(', leg unknown, wet unknown)'), 'the default tracker state reads unknown, got: ' + line)
+  assert.ok(line.endsWith(', leg unknown, wet unknown, entry o2 ?)'), 'the default tracker state reads unknown, got: ' + line)
 })
 
 test('the wet window is wired: the death context passes the bot\'s tracker (v0.275.0)', () => {
@@ -98,14 +98,14 @@ test('drownContextLine: the @last tail rides the row (the bobbing-drown shape)',
     rescueActive: false, lastRescueAt: null, now: 300000,
     leg: 'next column', headWetSince: null, lastWetMs: 12000
   })
-  assert.equal(line, 'F13 death: drown context (o2 0, feet water, head water, rescue never, leg next column, wet 12s@last)', 'the reset tracker with a prior episode names the previous wetting on the tail')
+  assert.equal(line, 'F13 death: drown context (o2 0, feet water, head water, rescue never, leg next column, wet 12s@last, entry o2 ?)', 'the reset tracker with a prior episode names the previous wetting on the tail')
   const legacy = drownContextLine({ tag: 'F3', oxygen: 0, feet: 'water', head: 'water', lastWetMs: 12000 })
-  assert.ok(legacy.endsWith(', leg unknown, wet 12s@last)'), 'a legacy call with only lastWetMs still reads the fallback')
+  assert.ok(legacy.endsWith(', leg unknown, wet 12s@last, entry o2 ?)'), 'a legacy call with only lastWetMs still reads the fallback')
 })
 
 test('the last-episode fallback is wired: the tracker capture and the pass-through (v0.279.0)', () => {
   assert.ok(minerSrc.includes('lastWetMs: headWetLastMs, // (v0.279.0) the last-episode fallback'), 'the drown context passes the bot\'s headWetLastMs capture')
   assert.ok(minerSrc.includes('if (headWetSince) { headWetLastMs = now - headWetSince; headWetEndedAt = now } headWetSince = 0'), 'the dry sample ends the episode - its duration survives the reset (re-tailed by the sync law: v0.357.0 stamps headWetEndedAt at the same page)')
-  assert.ok(statcarrySrc.includes('lastWetMs = null } = r || {}'), 'the context destructure grows the fallback option')
+  assert.ok(statcarrySrc.includes('lastWetMs = null, entryLung = null } = r || {}'), 'the context destructure grows the fallback option (and the v0.974.18 entry-lung cell beside it)')
   assert.ok(statcarrySrc.includes('wetWindowLabel(headWetSince, now, lastWetMs)'), 'the renderer receives the fallback beside the live tracker')
 })

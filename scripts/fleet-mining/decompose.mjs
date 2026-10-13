@@ -26,6 +26,7 @@ import { zeroClockCensus, budgetFloorVerdict, noPathClockVerdict } from '../../s
 import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budgetZeroRiders, budgetZeroRidersRow } from '../../src/lib/budgetspread.mjs' // (v0.473.0) the budget-zero family's per-bot half - the sizing lever's spread read (fuel commons + iron commune, the trip kind rides the line); (v0.475.0) the goal-size split - the miscalibration read; (v0.787.0) WHICH lane owns the zero book
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
 import { waterLegBook, waterLegConsistent, waterLegRow } from '../../src/lib/waterleg.mjs' // (v0.957.0) the water's own leg - the drown context's own leg axis across EVERY rescue relation (the live lane's walk, the trigger-blind's walk, the returns' walk - the map the stale-only seat never drew)
+import { entryLungBook, entryLungConsistent, entryLungRow } from '../../src/lib/entrylung.mjs' // (v0.974.18) THE ENTRY-LUNG CELL - the o2 bar AT the wet episode's own start (FACE 287's empty-lungs-at-entry front priced as a measurement; the fast cross owns the verdict)
 import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
@@ -1103,6 +1104,21 @@ if (o2g && o2g.deaths > 0) {
   if (wlb && waterLegConsistent(wlb)) {
     const wlr = waterLegRow(wlb)
     if (wlr) console.log(`  ${wlr}`)
+  }
+  // (v0.974.18) THE ENTRY-LUNG CELL - FACE 287's own front priced live. The
+  // death context always carried the o2 bar AT DEATH; the entry cell rides
+  // the tail's own end (the o2 bar when the wet episode STARTED - the sentry
+  // tick's first wet sighting), so the fast-drown class (wet <= 10s, the
+  // face's own F19/F10 shape) splits by the lung class it actually rode:
+  // the empty lung (<= 6 - under ~4.5s of air) is the entry/refill gate's
+  // own population, the full lung (>= 14) REFUTES the front for those
+  // deaths (the drain/rescue lane owns them). The book reads the LOG LINES
+  // directly (the book-only law - the perBot fold is last-wins), the fence
+  // rides the print, a cell-less face keeps its honest unknown count.
+  const elb = entryLungBook(lines)
+  if (elb && entryLungConsistent(elb)) {
+    const elr = entryLungRow(elb)
+    if (elr) console.log(`  ${elr}`)
   }
   // (v0.736.0) THE CRIED-WOLF DEATH - the churn's own aftermath join (the
   // skywalk law: two lenses, one read, no re-parsing). A bot whose trigger

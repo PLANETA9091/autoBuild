@@ -1,4 +1,5 @@
 import { WATER_NAMES, o2SensorLabel } from './drowning.mjs'
+import { entryLungLabel } from './entrylung.mjs' // (v0.974.18) the entry-lung cell's own render (the tail's token)
 // Per-bot stat survival across reconnects (v0.18.9).
 //
 // WHY: fleet19's runBot loop recreates the miner on every reconnect (a kick or
@@ -494,7 +495,7 @@ export function wetWindowLabel (headWetSince, now = Date.now(), lastWetMs = null
 // UNCONDITIONAL (always present) so a missing stamp can never masquerade as
 // a deliberate omission in the next face's census.
 export function drownContextLine (r = {}) {
-  const { tag = '', oxygen = null, feet = null, head = null, feetWaterlogged = false, headWaterlogged = false, rescueActive = false, lastRescueAt = null, now = Date.now(), leg = null, headWetSince = null, lastWetMs = null } = r || {}
+  const { tag = '', oxygen = null, feet = null, head = null, feetWaterlogged = false, headWaterlogged = false, rescueActive = false, lastRescueAt = null, now = Date.now(), leg = null, headWetSince = null, lastWetMs = null, entryLung = null } = r || {}
   if (feet === null && head === null && oxygen === null) return null
   // (v0.264.0) the -1 reset sentinel renders NAMED (the v0.64.0 law): face
   // 36365938885's F1 chain printed a raw 'o2 -1' in this line - the sentinel
@@ -514,7 +515,11 @@ export function drownContextLine (r = {}) {
   // (v0.275.0) the wet window rides the tail - the trip-drown class's exposure measure
   // (v0.279.0) the last-episode fallback rides beside it - a reset tracker with a prior
   // episode renders the previous wetting '@last' (face 36397191054: 'wet unknown' x2)
-  return `${tag} death: drown context (o2 ${o2}, feet ${f}${fw}, head ${h}${hw}, rescue ${rescue}, leg ${legName}, ${wetWindowLabel(headWetSince, now, lastWetMs)})`
+  // (v0.974.18) the entry-lung cell rides the tail's own end - the o2 bar AT ENTRY
+  // (the wet episode's own start), FACE 287's empty-lungs-at-entry front priced as a
+  // measurement; the token is UNCONDITIONAL (the v0.270.0 law - a missing cell can
+  // never masquerade as a deliberate omission; '?' claims nothing)
+  return `${tag} death: drown context (o2 ${o2}, feet ${f}${fw}, head ${h}${hw}, rescue ${rescue}, leg ${legName}, ${wetWindowLabel(headWetSince, now, lastWetMs)}, entry o2 ${entryLungLabel(entryLung)})`
 }
 
 // (v0.274.0) THE SUFFOCATE DEATH CONTEXT - the suffocate-class telemetry gap.

@@ -21,7 +21,9 @@
 // reset(-1)|N|?, feet/head name + optional ' wl' (the waterlogged flag),
 // rescue active|Ns ago|never, leg (any text - the '@coords' stamp rides
 // it), wet Ns|Ns@last|unknown (the v0.279.0 last-episode fallback's own
-// honesty, split here too).
+// honesty, split here too), and (v0.974.18) the OPTIONAL entry-lung tail
+// ', entry o2 ?|N|N@last' (entrylung.mjs's own cell - the group stays out
+// of the aggregate: the legacy lines and the legacy shape hold byte-true).
 //
 // (v0.479.0) THE RE-ENTRY PRICE - the wiring pricing's standing reader (the
 // fire-1838 handoff): the sight-loss wiring candidate ('arm the rescue on
@@ -66,7 +68,7 @@
 // zero shape (the row stays silent). Pure: reads, never mutates.
 import { parseSentryPass } from './sentry.mjs'
 
-export const DROWN_CONTEXT_RE = /^(F\d+) \[\1\] death: drown context \(o2 (reset\(-1\)|\?|\d+), feet ((?:unknown|[a-z_]+)(?: wl)?), head ((?:unknown|[a-z_]+)(?: wl)?), rescue (active|\d+s ago|never), leg (.+), (wet \d+s|wet \d+s@last|wet unknown)\)$/i
+export const DROWN_CONTEXT_RE = /^(F\d+) \[\1\] death: drown context \(o2 (reset\(-1\)|\?|\d+), feet ((?:unknown|[a-z_]+)(?: wl)?), head ((?:unknown|[a-z_]+)(?: wl)?), rescue (active|\d+s ago|never), leg (.+), (wet \d+s|wet \d+s@last|wet unknown)(?:, entry o2 (\?|\d+(?:@last)?))?\)$/i
 
 export const BREATH_MIRROR_RE = /^(F\d+) \[\1\] water: breath mirror \[([a-z-]+)\](?: - .*)? \(o2 ([^,]*), (head WET|head dry\/unknown), snapshot (\d+(?:\.\d+)?s old|none)\)$/i
 

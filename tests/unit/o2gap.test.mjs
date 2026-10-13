@@ -141,6 +141,25 @@ test('o2Gap never matches the sibling lanes (the anchor law: rescue lines, the s
   assert.ok(!DROWN_CONTEXT_RE.test('F13 [F13] death: drown context (o2 reset(-1), feet water, head water, rescue sometime, leg x, wet 3s)'))
 })
 
+// (v0.974.18) THE ENTRY-LUNG TAIL - the grammar grew, never shrank: the
+// legacy lines keep their matches (the v0.707.0 law), the entry tail
+// parses in all three token forms, the junk tokens refuse.
+test('DROWN_CONTEXT_RE grows the optional entry tail (the grammar holds the legacy bytes byte-true)', () => {
+  // every legacy pin above still rides - the tail is OPTIONAL
+  const legacy = 'F13 [F13] death: drown context (o2 reset(-1), feet water, head water, rescue 42s ago, leg fuel commons walk @-145,391, wet 3s@last)'
+  assert.ok(DROWN_CONTEXT_RE.test(legacy))
+  const m = DROWN_CONTEXT_RE.exec(legacy)
+  assert.equal(m[8], undefined, 'the legacy line leaves the entry group unset')
+  // the new tail parses; the wet token keeps its own group position
+  const live = DROWN_CONTEXT_RE.exec('F1 [F1] death: drown context (o2 reset(-1), feet water, head water, rescue 63s ago, leg combat flee, wet 49s, entry o2 12)')
+  assert.equal(live[7], 'wet 49s')
+  assert.equal(live[8], '12')
+  const last = DROWN_CONTEXT_RE.exec('F3 [F3] death: drown context (o2 0, feet water, head water, rescue never, leg x, wet 8s, entry o2 7@last)')
+  assert.equal(last[8], '7@last')
+  const unk = DROWN_CONTEXT_RE.exec('F2 [F2] death: drown context (o2 9, feet water, head water, rescue never, leg unknown, wet unknown, entry o2 ?)')
+  assert.equal(unk[8], '?')
+})
+
 test('BREATH_MIRROR_RE anchors the emitter\'s own words (the two head skins, the class tag, the tail census)', () => {
   // the live pair verbatim
   assert.ok(BREATH_MIRROR_RE.test('F13 [F13] water: breath mirror [controls-blind] - the wet-escape climb owned the controls but the sentry\'s sight died 25s before death - the o2 burned unwatched while the owner failed (the F14 36566021862 class: the snapshot was the blindness evidence) (o2 18, head dry/unknown, snapshot 25.3s old)'))

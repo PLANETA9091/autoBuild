@@ -77,6 +77,7 @@ import { noteTransitStall, rearmVerdict } from '../lib/rearm.mjs' // (v0.443.0) 
 import { suffocateRescueTargets, SUFFOCATE_WATCH_EVERY_TICKS, SUFFOCATE_DIG_MAX_TICKS } from '../lib/suffocate.mjs'
 import { WET_CHURN_LOG_CAP } from '../lib/wetchurn.mjs' // (v0.223.0) the churn recorder's memory cap (the plan's own constant)
 import { rescueDisarmGate } from '../lib/rescuedisarm.mjs' // (v0.974.17) THE RESCUE'S OWN DISARM SWEEP - the arm edge's one clear re-asserted every pass (the live-goal-only law)
+import { wetEntryLungCell } from '../lib/entrylung.mjs' // (v0.974.18) THE ENTRY-LUNG CELL - the o2 bar at the wet episode's own start (FACE 287's front, the tracker's own builder)
 import { DRAGON_DEATH_LOG_CAP } from '../lib/dragonzone.mjs' // (v0.225.0) the dragon death registry's memory cap (the zone's own constant)
 import { WaterTableBoard } from '../lib/watertable.mjs' // (v0.84.0) the aquifer ceiling memory
 import { craftTorches, countItem } from './tools.mjs'
@@ -600,6 +601,7 @@ export function createMiner ({
           lastRescueAt,
           headWetSince, // (v0.275.0) the wet window - the head-wet exposure the trip took before the drown
           lastWetMs: headWetLastMs, // (v0.279.0) the last-episode fallback - the reset eats the live read at the drown tick (face 36397191054: 'wet unknown' x2)
+          entryLung: headWetEntryO2, // (v0.974.18) the entry-lung cell - the o2 bar at the wet episode's start (FACE 287's front)
           now: Date.now(),
           leg: bot._gotoSafeLabel ?? null // (v0.270.0) the trip leg stamp - which walk owned the death
         })
@@ -2062,6 +2064,7 @@ export function createMiner ({
   let lastBypassEchoAt = 0 // (v0.265.0) the bypass echo's rate limiter (the AIR_GLITCH_LOG_MS cadence)
   let headWetSince = 0
   let headWetLastMs = 0 // (v0.279.0) the most recent COMPLETED wet episode's duration - the death context's fallback when the live tracker reads reset
+  let headWetEntryO2 = null // (v0.974.18) the entry-lung cell - the o2 bar AT the wet episode's start ({o2, atLast}|null), FACE 287's empty-lungs-at-entry front
   let headWetEndedAt = 0 // (v0.357.0) the epoch ms that episode ended - the wet-rescue window's tail anchor
   let blindWetSince = 0 // (v0.974.4) the blind+wet window's open epoch - the sensor speaking or the head drying closes it (the escalation's persistence tracker)
   let dryGlitchStreak = 0 // (v0.95.0) consecutive critical-on-dry readings - the escalation ladder's fuel
@@ -2886,11 +2889,21 @@ export function createMiner ({
       } catch { /* a witness must never kill the sentry */ }
       const read = waterRead()
       const headWet = isWaterName(read.head)
+      // (v0.127.0) the trust read ONCE here and reused below - same reads, one
+      // verdict; (v0.974.18) the read moves above the tracker line so the
+      // entry-lung cell rides the SAME tick's own reads (no second read)
+      const contactTrust = airBarTrust(read)
+      const o2Now = bot.oxygenLevel
       // (v0.279.0) the completed-episode capture: a dry sample ends the wet
       // episode - its DURATION survives in headWetLastMs so the death context
       // can render the previous wetting '@last' when the live tracker reads
       // reset (the surface-bob + rescue-gate freeze the field read proved)
-      if (headWet) { if (!headWetSince) headWetSince = now } else { if (headWetSince) { headWetLastMs = now - headWetSince; headWetEndedAt = now } headWetSince = 0 }
+      // (v0.974.18) the entry snapshot fires at the wet episode's own start
+      // (the 0 -> ts transition): the live read when it admits (the history's
+      // own law), else the history's last honest tail '@last', else nothing
+      if (headWet) {
+        if (!headWetSince) { headWetSince = now; headWetEntryO2 = wetEntryLungCell({ o2: o2Now, admissible: historyAdmissible(o2Now, contactTrust), lastKnown: o2History.length ? o2History[o2History.length - 1] : null }) }
+      } else { if (headWetSince) { headWetLastMs = now - headWetSince; headWetEndedAt = now } headWetSince = 0; headWetEntryO2 = null }
       // (v0.119.0) feed the falling-bar history - in-domain readings only
       // (the -1 reset sentinel and NaN never enter; the verdict's trend lane
       // needs an honest tail). Capped so the window stays recent.
@@ -2901,10 +2914,9 @@ export function createMiner ({
       // so airBarFalling's first-last read NEGATIVE and the falling lane -
       // the one lane built for the stale-dry-blocks flood - never fired while
       // the streak lane sat behind its laddered cap. A critical read on WET
-      // or UNKNOWN contact still enters (a real drain's slope). The trust
-      // read ONCE here and reused below - same reads, one verdict.
-      const contactTrust = airBarTrust(read)
-      const o2Now = bot.oxygenLevel
+      // or UNKNOWN contact still enters (a real drain's slope). (v0.974.18)
+      // the trust + o2 reads moved ABOVE the tracker line (one read, one
+      // verdict - the entry-lung cell rides the same tick's own reads).
       if (historyAdmissible(o2Now, contactTrust)) { o2History.push(o2Now); if (o2History.length > O2_HISTORY_CAP) o2History.shift() }
       // (v0.16.0) the 26.2 oxygen sensor can read ~0 on dry land - fleet #120
       // measured 140 rescue starts with zero real drownings, every one of them
