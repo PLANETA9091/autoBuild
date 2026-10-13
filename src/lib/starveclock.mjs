@@ -450,3 +450,164 @@ export function starveLaneRidersRow (r) {
   const unit = ofStarves === 1 ? 'starve' : 'starves'
   return `the starve's own lane mix (v0.933.0): no solo lane owns the majority - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${ofStarves} ${unit} (${(shareOfStarves * 100).toFixed(1)}%) - THE STARVE'S OWN LANE MIX: the seat's tie law held, the mix is the shape - the lanes' own spread prices the sky the solo law refused to seat`
 }
+
+//
+// THE BURST'S OWN SEAT (v0.974.28) - the decide burst's own WHEN+WHO
+// axes. The v0.913.0 clock priced the burst's SHARE (the densest 30s
+// window over the timed stamps - the DECIDE_BURST_WINDOW_S law imported,
+// never forked) and no row ever said WHEN the window rode or WHO rode
+// it - the front stayed 'THE DECIDER'S CLOCK' unnamed since v0.769.0
+// (the dry ask's verdict lever's own word). THE WINDOW LAW (the clock's
+// own sliding window verbatim - the same two-pointer walk, the byte
+// never forked): the earliest densest window owns (a width tie never
+// re-rolls - the earliest start's own byte, the deterministic shape).
+// The window's own sky rides the v0.733.0 point cut (thirdS =
+// clockEnd / 3, the boundary rides the later third) and the
+// strict-majority law at window level (a third owns the window only
+// above half - a tie owns nothing, the storm-has-no-seat precedent).
+// The window's own bots ride the v0.932.0 bill law (the well-formed bot
+// byte the atom, junk bots never tally, the real stamps still do) with
+// the branch law fenced inside (a solo bot above half owns the rush
+// hour, the riders measure beside the seat's silence). Junk never
+// invents a rush hour: a non-object book, a non-array stamps leg, a
+// missing or non-finite clockEnd (no thirds without a clock - the
+// verdict's own fence), a zero timed mass (the window never rides
+// untimed stamps - the burst is a time window) - the honest silence.
+// Pure: reads, never mutates. Zero fleet wiring (mining-surface only,
+// the v0.913.0 own precedent) - the fleet's own decide refusals are the
+// filter-keys, they already ride.
+//
+
+// The timed pair view over the book's own stamps - the clock's rail
+// required (the burst is the clock's own shape: the bare stamps form
+// rides no window, no clockEnd byte no burst). {ts, bot} pairs, junk
+// cells and untimed stamps never price (the window is a time window).
+// Returns null without a live clock (no thirds without a clock - the
+// verdict's own fence).
+const starveBurstView = (book) => {
+  const stamps = book && typeof book === 'object' && !Array.isArray(book)
+    ? book.stamps
+    : (Array.isArray(book) ? book : null)
+  if (!Array.isArray(stamps)) return null
+  const clockEnd = book && typeof book === 'object' ? book.clockEnd : undefined
+  if (!Number.isFinite(clockEnd) || clockEnd <= 0) return null
+  const view = []
+  for (const s of stamps) {
+    if (!s || typeof s !== 'object' || Array.isArray(s)) continue
+    if (!Number.isFinite(s.ts)) continue // junk ts + the untimed law (null rides no window)
+    view.push({ ts: s.ts, bot: typeof s.bot === 'string' ? s.bot : null })
+  }
+  if (view.length <= 0) return null
+  view.sort((a, b) => a.ts - b.ts)
+  return { view, clockEnd }
+}
+
+// (v0.974.28) THE BURST'S OWN SEAT - the earliest densest
+// DECIDE_BURST_WINDOW_S window, its own third seat (the v0.733.0 cut)
+// and its own bot book (the v0.932.0 bill law, the branch law fenced
+// inside: botSeat or riders, never both).
+export function starveBurstSeat (book) {
+  const v = starveBurstView(book)
+  if (!v) return null
+  const { view, clockEnd } = v
+  const n = view.length
+  let bestJ = 0
+  let bestI = 0
+  let bestW = 0
+  for (let i = 0, j = 0; i < n; i++) {
+    while (view[i].ts - view[j].ts > DECIDE_BURST_WINDOW_S) j++
+    const w = i - j + 1
+    if (w > bestW) { bestW = w; bestI = i; bestJ = j } // the earliest densest window owns
+  }
+  const win = view.slice(bestJ, bestI + 1)
+  const thirdS = clockEnd / 3
+  const thirds = { early: 0, mid: 0, late: 0 }
+  for (const p of win) {
+    const cls = p.ts < thirdS ? 'early' : p.ts < 2 * thirdS ? 'mid' : 'late'
+    thirds[cls]++
+  }
+  let topCls = null
+  let topN = 0
+  for (const cls of ['early', 'mid', 'late']) {
+    if (thirds[cls] > topN) { topN = thirds[cls]; topCls = cls }
+  }
+  const thirdSeat = topCls !== null && topN > win.length - topN
+    ? { cls: topCls, owns: topN }
+    : null // a tie owns nothing - the storm-has-no-seat precedent
+  const byBot = {}
+  let welled = 0
+  for (const p of win) {
+    if (typeof p.bot !== 'string' || !STARVE_BOT_RE.test(p.bot)) continue
+    byBot[p.bot] = (byBot[p.bot] || 0) + 1
+    welled += 1
+  }
+  let botSeat = null
+  let riders = null
+  if (welled > 0) {
+    const half = welled / 2
+    let seatBot = null
+    for (const [bot, owns] of Object.entries(byBot)) {
+      if (owns > half) { seatBot = bot; break } // a solo bot above half owns the rush hour
+    }
+    if (seatBot !== null) {
+      botSeat = { bot: seatBot, owns: byBot[seatBot], ofWindow: welled }
+    } else {
+      const ranked = Object.entries(byBot).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))
+      if (ranked.length >= 2) {
+        const [leader, leaderOwns] = ranked[0]
+        const [runner, runnerOwns] = ranked[1]
+        riders = { leader, leaderOwns, runner, runnerOwns, pairOwns: leaderOwns + runnerOwns, ofWindow: welled, duet: leaderOwns === runnerOwns }
+      }
+    }
+  }
+  return {
+    window: { first: win[0].ts, last: win[win.length - 1].ts, n: win.length },
+    ofTimed: n,
+    shareOfTimed: +(win.length / n).toFixed(3),
+    thirds,
+    thirdSeat,
+    botSeat,
+    riders,
+  }
+}
+
+// The burst's own third levers - one table, the v0.913.0 levers precedent.
+export const STARVE_BURST_LEVERS = {
+  early: 'THE OPENING RUSH: the decider\'s rush hour rode the face\'s first third - the spawn\'s own geometry prices the burst',
+  mid: 'THE NOON RUSH: the decider\'s rush hour rode the face\'s middle third',
+  late: 'THE CLOSING RUSH: the decider\'s rush hour rode the deadline\'s own third - arm the asks before it',
+}
+
+// (v0.974.28) the burst's own row - THE DECIDER'S OWN RUSH HOUR: the
+// densest 30s window priced WHEN + WHO the share rode unnamed. Junk
+// never prints a rush hour (the honest silence's own row law).
+export function starveBurstSeatRow (s) {
+  if (!s || typeof s !== 'object') return null
+  const { window, ofTimed, shareOfTimed, thirds, thirdSeat, botSeat, riders } = s
+  if (!window || typeof window !== 'object' ||
+      !Number.isFinite(window.first) || !Number.isFinite(window.last) || window.last < window.first ||
+      !Number.isFinite(window.n) || window.n <= 0 ||
+      !Number.isFinite(ofTimed) || ofTimed <= 0 || window.n > ofTimed ||
+      !Number.isFinite(shareOfTimed) || shareOfTimed <= 0 || shareOfTimed > 1 ||
+      !thirds || !Number.isFinite(thirds.early) || !Number.isFinite(thirds.mid) || !Number.isFinite(thirds.late) ||
+      thirds.early + thirds.mid + thirds.late !== window.n) return null
+  if (botSeat && riders) return null // the branch law's row fence - never both
+  if (botSeat && (typeof botSeat.bot !== 'string' || !STARVE_BOT_RE.test(botSeat.bot) ||
+      !Number.isFinite(botSeat.owns) || botSeat.owns <= 0 ||
+      !Number.isFinite(botSeat.ofWindow) || botSeat.ofWindow < botSeat.owns)) return null
+  if (riders && (typeof riders.leader !== 'string' || riders.leader === '' ||
+      typeof riders.runner !== 'string' || riders.runner === '' ||
+      !Number.isFinite(riders.leaderOwns) || riders.leaderOwns <= 0 ||
+      !Number.isFinite(riders.runnerOwns) || riders.runnerOwns <= 0 ||
+      !Number.isFinite(riders.pairOwns) || riders.pairOwns !== riders.leaderOwns + riders.runnerOwns ||
+      !Number.isFinite(riders.ofWindow) || riders.ofWindow < riders.pairOwns)) return null
+  const head = `the burst's own seat (v0.974.28): the window rode ${window.n} of ${ofTimed} timed starves (${Math.round(shareOfTimed * 100)}%) ts ${window.first}..${window.last}s`
+  const sky = `the window's own sky: early ${thirds.early} / mid ${thirds.mid} / late ${thirds.late}`
+  const skyBit = thirdSeat
+    ? `${sky} - ${thirdSeat.cls} owns ${thirdSeat.owns} of ${window.n} (${Math.round((thirdSeat.owns / window.n) * 100)}%) - ${STARVE_BURST_LEVERS[thirdSeat.cls] || 'the window\'s own detail is the front'}`
+    : `${sky} - no third owns the window - the rush hour spread across the clock`
+  let botBit = ' - the window\'s own bots rode unnamed'
+  if (botSeat) botBit = ` - ${botSeat.bot} owns ${botSeat.owns} of ${botSeat.ofWindow} - THE BURST'S OWN BOT: one bot's own asks priced the rush hour`
+  else if (riders) botBit = ` - ${riders.leader} x${riders.leaderOwns} + ${riders.runner} x${riders.runnerOwns} own ${riders.pairOwns} of ${riders.ofWindow} - THE BURST'S OWN MIX: the rush hour rode a crowd${riders.duet ? ' (the duet\'s own tie)' : ''}`
+  return `${head} - ${skyBit}${botBit}`
+}

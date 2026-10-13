@@ -146,7 +146,7 @@ test("THE ROWS' JUNK BATTERY: rows read null on junk", () => {
 
 test('THE CENSUS GUARD: the seat rides the one-parse book beside the clock row (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.933.0 band's own growth - the intents held)
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.974.28 band's own growth re-measured - the v0.933.0 precedent, the intents held)
   const wx = src.indexOf('const dw = decideWeather(lines)')
   const sb = src.indexOf('const svb = starveClockBook(lines)')
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
