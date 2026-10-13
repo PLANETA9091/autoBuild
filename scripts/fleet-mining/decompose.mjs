@@ -161,7 +161,7 @@ import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 b
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
-import { valveMarginJoin, valveSilentCrossRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues
+import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues; (v0.976.9) the answer's own wire - the spoken arm's own row rides the same lens (the v0.976.6 lib shipped the answer cell, the graft's wire debt now paid - FACE 308 = 38446472656 rode the first SPOKEN face after the word's birth and the row priced nothing in the record - the wire's own gap named by the field)
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
@@ -4845,7 +4845,15 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     const voice = valveVoiceCount(lines)
     const crossWord = valveSilentCrossRow(vm, voice)
     const crossTail = crossWord ? ` | ${crossWord}` : ''
-    console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14, silent cross v0.974.24): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}${crossTail}`)
+    // (v0.976.9) THE ANSWER'S OWN WIRE - the answer word rides the
+    // record beside the silent cross's own tail (the two seats never
+    // double: the silent voice prices the cross, the spoken voice
+    // prices the answer - the honest silence holds the third seat).
+    // The graft only glues (byte-stable output - the row's own voice,
+    // the unit-tested fence's one truth).
+    const answerWord = valveSpokenArmRow(vm, voice)
+    const answerTail = answerWord ? ` | ${answerWord}` : ''
+    console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14, silent cross v0.974.24): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}${crossTail}${answerTail}`)
   }
 }
 
