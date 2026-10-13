@@ -14,7 +14,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { starveClockBook, starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs'
+import { starveClockBook, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'
 
 const hb = (n, ts) => `b] n=${n} ts=${ts}s rss=400M late=10ms mainLate=5ms`
 const hop = (bot) => `${bot} [${bot}] hop: chest at [-100,60,400] d=10 zero: chest unreachable (Took to long to decide path to goal!)`
@@ -156,7 +156,7 @@ test("THE ROWS' JUNK BATTERY: rows read null on junk", () => {
 
 test('THE CENSUS GUARD: the burst seat rides beside the clock rows in the one parse (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs'")) // the import band's own growth (the v0.933.0 precedent)
+  assert.ok(src.includes("starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'")) // the import band's own growth (the v0.933.0 precedent)
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
   const st = src.indexOf('const svt = starveBotSeat(svb)')
   const svs = src.indexOf('const svs = starveLaneSeat(svb)')
