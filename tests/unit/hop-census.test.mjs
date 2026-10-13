@@ -380,3 +380,18 @@ test('v0.770.0 the riders ride the decompose mine (WIRING)', async () => {
   assert.equal(src.includes('else if (hopZero.riders)'), true) // the companion only speaks in the bill's silence
   assert.equal(src.includes("the bleed's own riders"), false) // the prose lives in the lib, never duplicated in the mine
 })
+
+// (v0.974.21) THE RENT'S OWN AGE BYTE - the bucket tests survive the tail.
+// The byte rides as a separate paren group AFTER the message's own parens -
+// every bucket test rides a substring of the untouched message, the ms
+// captures keep their own 'ms)' seat.
+
+test('THE CONSULT BYTE: the byte-carrying hop keeps its bucket and its ms byte (v0.974.21)', () => {
+  const e = parseHopZero('F12 [F12] hop: chest at [-143,68,411] d=23 zero: chest unreachable (walk to chest (retry): timeout after 28090ms) (ledger live 3s ago)')
+  assert.equal(e.klass.why, 'walk-timeout', 'the walk-timeout bucket survives the tail')
+  assert.equal(e.klass.ms, 28090, "the ms capture keeps its own 'ms)' seat")
+  const b = parseHopZero('F5 [F5] hop: chest at [-103,68,421] d=17 zero: chest unreachable (budget exhausted (walk floor)) (ledger live 8s ago)')
+  assert.equal(b.klass.why, 'budget-floor', 'the budget-floor bucket survives the tail')
+  const n = parseHopZero('F15 [F15] hop: chest at [-143,68,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)')
+  assert.equal(n.klass.why, 'no-path', 'the no-path bucket survives the tail')
+})

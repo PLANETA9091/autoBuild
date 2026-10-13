@@ -46,6 +46,22 @@ const WRITE_RE = /no-path ledger: chest at \[(-?\d+),(\d+),(-?\d+)\] cached for 
 const HOLD_RE = /walk-intent: chest at \[(-?\d+),(\d+),(-?\d+)\] held for the fleet \((\d+) live, ttl (\d+)s\)/
 const SKIP_RE = /chest skip \(no path cached (\d+)s ago at \[(-?\d+),(\d+),(-?\d+)\]\)/
 const RENT_RE = /hop: chest at \[(-?\d+),(\d+),(-?\d+)\] d=\d+ zero: chest unreachable/
+// (v0.974.21) THE RENT'S OWN AGE BYTE - the wire's own measurement half. The
+// field verdict (45/45 shadow on the two faces) priced the consult hole and
+// the verdict law named the cure: the rent seat needs the consult byte. The
+// wire rides the rent line's OWN tail - the failed hop re-consults the
+// no-path ledger AT FAILURE MOMENT and the answer lands as a separate paren
+// group AFTER the message's own parens ('chest unreachable (No path to the
+// goal!) (ledger live 3s ago)') - the original reason bytes stay untouched,
+// so every anchored consumer survives byte-true (the door leg's (.+)\)$
+// capture still ends on the message's own paren, the hop census's bucket
+// tests ride substrings of the untouched message). The census reads the byte
+// and splits the SHADOW class: rode-live (the byte present - the ledger
+// SPOKE at failure moment and the walk rode anyway: the decision preceded
+// the verdict, the concurrency seam) vs rode-blind (no byte - the ledger was
+// silent even at failure: the copy/propagation hole). A legacy rent line
+// (no byte) reads rode-blind - the two-face record's shape byte-true.
+const RENT_BYTE_RE = / \(ledger live (\d+)s ago\)$/
 
 const cellKey = (x, y, z) => `${x},${y},${z}`
 
@@ -66,7 +82,8 @@ export function rentShadowEvent (line) {
   }
   m = RENT_RE.exec(line)
   if (m) {
-    return { kind: 'rent', cell: cellKey(+m[1], +m[2], +m[3]) }
+    const b = RENT_BYTE_RE.exec(line)
+    return { kind: 'rent', cell: cellKey(+m[1], +m[2], +m[3]), ledgerAgeS: b ? +b[1] : null }
   }
   return null
 }
@@ -75,14 +92,17 @@ export function rentShadowEvent (line) {
  * Fold the log's rent-shadow census. Pure. Returns:
  *   cells         - per cell: { writes, holds, skips, rents, timeoutWrites,
  *                   lastSkipAgeS, classes: {blind, shadow, expired} }
- *   totals        - { writes, holds, skips, rents, blind, shadow, expired }
+ *   totals        - { writes, holds, skips, rents, blind, shadow, expired,
+ *                   shadowLive, shadowBlind } (the v0.974.21 split: the
+ *                   shadow class's own two seats - shadowLive + shadowBlind
+ *                   always sum to shadow)
  *   verdict       - the owner's own word: 'blind' | 'shadow' | 'expired' |
  *                   'tie' | 'silent' (no rents at all)
  *   wireQuestion  - the priced read for the next fire's own seat
  */
 export function rentShadowCensus (lines) {
   const cells = new Map()
-  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0 }
+  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0, shadowLive: 0, shadowBlind: 0 }
   if (!Array.isArray(lines)) {
     return { cells, totals, verdict: 'silent', wireQuestion: 'no lines - nothing priced' }
   }
@@ -112,6 +132,11 @@ export function rentShadowCensus (lines) {
         cls = 'blind' // the ledger never spoke for this cell
       } else if (c.liveProven) {
         cls = 'shadow' // the rent rode inside the proven-live window - the consult hole's own candidate
+        // (v0.974.21) the wire's own split: the byte's presence names WHICH
+        // seat the hole rode - the ledger speaking at failure moment (rode-live,
+        // the concurrency seam) vs silent even then (rode-blind, the copy hole)
+        if (ev.ledgerAgeS != null) totals.shadowLive++
+        else totals.shadowBlind++
         c.liveProven = false // one shadow rent consumes the proof (the next rent needs its own proof)
       } else {
         cls = 'expired' // the window closed (or no skip ever proved it) - the ttl's own brevity candidate
@@ -129,7 +154,7 @@ export function rentShadowCensus (lines) {
     const max = Math.max(blind, shadow, expired)
     const owners = [blind === max && max > 0 ? 'blind' : null, shadow === max && max > 0 ? 'shadow' : null, expired === max && max > 0 ? 'expired' : null].filter(Boolean)
     verdict = owners.length > 1 ? 'tie' : owners[0]
-    if (verdict === 'shadow') wireQuestion = 'the consult hole owns - the rent seat needs the consult byte (wire)'
+    if (verdict === 'shadow') wireQuestion = 'the consult hole owns - the consult byte rides the rent line now (the wire, v0.974.21): the split prices rode-live vs rode-blind'
     else if (verdict === 'expired') wireQuestion = "the ttl's own brevity owns - the chest floor needs its own turn (constant)"
     else if (verdict === 'blind') wireQuestion = "the write seat's own hole owns - the rent's cell never entered the ledger"
     else if (verdict === 'tie') wireQuestion = 'the tie owns nothing - the unanimity law refused the seat'
@@ -142,5 +167,11 @@ export function rentShadowRow (c) {
   if (!c || !c.totals || c.totals.rents === 0) return null
   const t = c.totals
   const share = n => t.rents ? (100 * n / t.rents).toFixed(1) : '0.0'
-  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%) - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
+  // (v0.974.21) the split's own clause - rides ONLY when the face carried at
+  // least one byte (a legacy byte-less face reads byte-identical: the
+  // grammar-growth law, the honest silence on the unwired tree)
+  const split = t.shadow > 0 && t.shadowLive > 0
+    ? ` - the split: rode-live ${t.shadowLive} / rode-blind ${t.shadowBlind}`
+    : ''
+  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%)${split} - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
 }

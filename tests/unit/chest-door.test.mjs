@@ -197,3 +197,20 @@ test('WIRING: the decompose prints the chest door\'s own bot bill beside the ban
   const lib = fs.readFileSync(new URL('../../src/lib/chestdoor.mjs', import.meta.url), 'utf8')
   assert.match(lib, /the chest door's own bot bill \(v0\.861\.0\)/, "the row's own byte lives in the lib")
 })
+
+// ---- (v0.974.21) THE RENT'S OWN AGE BYTE - the door leg's anchor survives ----
+// The deposit seat's consult byte rides the rent line as a separate paren
+// group AFTER the message's own parens. The door leg's capture (.+)\)$ is
+// anchored on the line's end - the byte must keep the message's own paren
+// as the capture's tail seat (the msg grows, the verdicts stay substring-safe).
+
+test('THE CONSULT BYTE: the byte-carrying hop ride still prices the door leg (v0.974.21)', () => {
+  const bill = chestDoorBill([
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)',
+    'F5 [F5] hop: chest at [-103,81,421] d=17 zero: chest unreachable (Took to long to decide path to goal!) (ledger live 8s ago)'
+  ])
+  assert.equal(bill.hop.n, 2, 'the anchored (.+)\\)$ capture still seats the byte-carrying ride')
+  assert.equal(bill.verdicts.noPath, 1, 'the noPath verdict rides the untouched message bytes')
+  assert.equal(bill.verdicts.decide, 1, 'the decide verdict rides the untouched message bytes')
+  assert.equal(bill.n, 2)
+})

@@ -2414,7 +2414,30 @@ export async function depositToChests (bot, { maxChests = 8, findRadius = 64, ke
       // line per failed hop: WHICH chest refused and WHY - bounded by maxChests.
       // (v0.45.0) d= joins the line (the 304-hop fleet could not separate a
       // doomed 40-block hop from an at-the-yard one).
-      log(`[${bot.username ?? 'bot'}] hop: chest at [${chest.position?.x ?? '?'},${chest.position?.y ?? '?'},${chest.position?.z ?? '?'}]${hopDist != null ? ` d=${hopDist}` : ''} zero: ${res.reason || 'unknown'}`)
+      // (v0.974.21) THE RENT'S OWN AGE BYTE - the wire's own measurement
+      // half, the field verdict's named cure (45/45 shadow on the two
+      // faces): the failed hop re-consults the no-path ledger AT FAILURE
+      // MOMENT and the answer rides the rent line's own tail as a separate
+      // paren group AFTER the message's own parens ('chest unreachable (No
+      // path to the goal!) (ledger live 3s ago)'). The reason's own bytes
+      // stay untouched - the door leg's (.+)\)$ anchor, the hop census's
+      // bucket substrings and the trip-close audit all survive byte-true.
+      // rode-live (the byte present): the ledger SPOKE at failure moment and
+      // the walk rode anyway - the decision preceded the verdict, the
+      // concurrency seam. rode-blind (no byte): the ledger was silent even
+      // at failure - the copy/propagation hole. Junk-safe: a non-array
+      // ledger, a junk position, a non-unreachable reason or a throwing
+      // read prints the legacy line byte for byte (the census-guard law:
+      // zero new line families, the byte rides the rent line's own tail).
+      let rentWhy = String(res.reason || 'unknown')
+      if (/^chest unreachable/.test(rentWhy) && Array.isArray(noPathLedger) && chest.position) {
+        try {
+          const rentCell = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
+          const rb = rentCell && Number.isFinite(rentCell.x) ? nearNoPath(noPathLedger, rentCell, Date.now()) : null
+          if (rb?.hit) rentWhy = `${rentWhy} (ledger live ${Math.round(rb.ageMs / 1000)}s ago)`
+        } catch { /* the byte is an honest silence on a throwing read */ }
+      }
+      log(`[${bot.username ?? 'bot'}] hop: chest at [${chest.position?.x ?? '?'},${chest.position?.y ?? '?'},${chest.position?.z ?? '?'}]${hopDist != null ? ` d=${hopDist}` : ''} zero: ${rentWhy}`)
       // (v0.23.1) FLEET EVIDENCE (3e21d58): 5x 'chest unreachable (No path to the
       // goal!)' at final bank - the NEAREST chest's walk dead-ends (a pond, a rim,
       // unloaded chunks) and the whole deposit died with the loot still in pockets.

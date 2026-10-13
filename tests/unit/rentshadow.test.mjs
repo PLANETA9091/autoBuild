@@ -127,4 +127,92 @@ import { rentShadowEvent, rentShadowCensus, rentShadowRow } from '../../src/lib/
   assert.match(row, /rents 5 on 1 cell\(s\)/)
 }
 
+// --- (v0.974.21) THE RENT'S OWN AGE BYTE - the wire's own pins ---
+
+// --- the byte's own event grammar ---
+{
+  const rb = rentShadowEvent('F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)')
+  assert.equal(rb.kind, 'rent'); assert.equal(rb.cell, '-143,81,411'); assert.equal(rb.ledgerAgeS, 3)
+  const legacy = rentShadowEvent('F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)')
+  assert.equal(legacy.ledgerAgeS, null) // the legacy line byte-true
+  // the junk byte forms read the honest null - the rent still prices
+  assert.equal(rentShadowEvent('F5 [F5] hop: chest at [1,81,1] d=9 zero: chest unreachable (No path) (ledger live ago)').ledgerAgeS, null)
+  assert.equal(rentShadowEvent('F5 [F5] hop: chest at [1,81,1] d=9 zero: chest unreachable (No path) (ledger live -3s ago)').ledgerAgeS, null)
+  assert.equal(rentShadowEvent('F5 [F5] hop: chest at [1,81,1] d=9 zero: chest unreachable (No path) (ledger live 3s ago').ledgerAgeS, null)
+  // the byte rides nowhere else: a skip line with a byte-like tail stays a skip
+  assert.equal(rentShadowEvent('F14 [F14] chest skip (no path cached 5s ago at [1,81,1]) (ledger live 2s ago)').kind, 'skip')
+}
+
+// --- rode-live: the ledger SPOKE at failure moment and the walk rode anyway ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)'
+  ])
+  assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowLive, 1); assert.equal(c.totals.shadowBlind, 0)
+  assert.equal(c.verdict, 'shadow')
+  const row = rentShadowRow(c)
+  assert.match(row, /the split: rode-live 1 \/ rode-blind 0/)
+  assert.match(row, /consult byte rides the rent line now/)
+}
+
+// --- rode-blind: the legacy shape (no byte) - the two-face record byte-true ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)'
+  ])
+  assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowLive, 0); assert.equal(c.totals.shadowBlind, 1)
+  assert.equal(c.verdict, 'shadow')
+  const row = rentShadowRow(c)
+  assert.ok(!row.includes(' - the split: rode-live'), 'a byte-less face reads byte-identical: no split clause')
+  assert.match(row, /consult byte rides the rent line now/)
+}
+
+// --- the mixed split: one of each seat (each proof its own write) ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)',
+    'F7 [F7] no-path ledger: chest at [-143,81,411] cached for the fleet (3 live, ttl 15s)',
+    'F16 [F16] hop: chest at [-143,81,411] d=17 zero: chest unreachable (No path to the goal!) (ledger live 8s ago)'
+  ])
+  assert.equal(c.totals.shadow, 2); assert.equal(c.totals.shadowLive, 1); assert.equal(c.totals.shadowBlind, 1)
+  assert.match(rentShadowRow(c), /the split: rode-live 1 \/ rode-blind 1/)
+}
+
+// --- the byte on a NON-shadow rent moves no split seat ---
+{
+  const c = rentShadowCensus([
+    'F10 [F10] hop: chest at [-100,81,400] d=12 zero: chest unreachable (No path to the goal!) (ledger live 4s ago)',
+    'F10 [F10] no-path ledger: chest at [-100,81,400] cached for the fleet (1 live, ttl 15s)'
+  ])
+  assert.equal(c.totals.blind, 1); assert.equal(c.totals.shadowLive, 0); assert.equal(c.totals.shadowBlind, 0)
+  assert.equal(c.verdict, 'blind')
+  assert.ok(!rentShadowRow(c).includes(' - the split: rode-live'))
+}
+
+// --- the 288-shaped synthetic rides the split honestly (every rent rode its
+// --- own write's t=0 proof: 5 shadow, all rode-blind on the legacy bytes) ---
+{
+  const c = rentShadowCensus([
+    'F10 [F10] walk-intent: chest at [-143,81,411] held for the fleet (2 live, ttl 90s)',
+    'F10 [F10] no-path ledger: chest at [-143,81,411] cached for the fleet (1 live, ttl 15s)',
+    'F10 [F10] hop: chest at [-143,81,411] d=17 zero: chest unreachable (No path to the goal!)',
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F5 [F5] hop: chest at [-143,81,411] d=17 zero: chest unreachable (Took to long to decide path to goal!)',
+    'F14 [F14] chest skip (no path cached 5s ago at [-143,81,411])',
+    'F15 [F15] chest skip (no path cached 8s ago at [-143,81,411])',
+    'F15 [F15] walk-intent: chest at [-143,81,411] held for the fleet (4 live, ttl 90s)',
+    'F15 [F15] no-path ledger: chest at [-143,81,411] cached for the fleet (4 live, ttl 15s)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)',
+    'F15 [F15] no-path ledger: chest at [-143,81,411] cached for the fleet (4 live, ttl 15s)',
+    'F15 [F15] hop: chest at [-143,81,411] d=20 zero: chest unreachable (No path to the goal!)',
+    'F7 [F7] no-path ledger: chest at [-143,81,411] cached for the fleet (5 live, ttl 15s, timeout verdict)',
+    'F7 [F7] hop: chest at [-143,81,411] d=17 zero: chest unreachable (Took to long to decide path to goal!)'
+  ])
+  assert.equal(c.totals.shadow, 5); assert.equal(c.totals.shadowBlind, 5); assert.equal(c.totals.shadowLive, 0)
+  assert.equal(c.totals.shadowLive + c.totals.shadowBlind, c.totals.shadow, 'the split sums to the shadow class')
+}
+
 console.log('rentshadow: all pins green')
