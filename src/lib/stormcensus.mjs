@@ -157,7 +157,7 @@ export function parseValveOpen (line) {
  */
 export function stormCensus (lines) {
   const c = {
-    hb: { count: 0, timed: 0, maxLateMs: null, maxMainLateMs: null, giantTsS: null, firstTsS: null, lastTsS: null },
+    hb: { count: 0, timed: 0, maxLateMs: null, maxMainLateMs: null, giantTsS: null, firstTsS: null, lastTsS: null, postGiantTsS: null, postGiantMainLateMs: null },
     rss: { firstM: null, peakM: null, lastM: null },
     valve: {
       closures: 0, opens: 0, maxRefusedS: null, peakCloseRssM: null,
@@ -175,6 +175,11 @@ export function stormCensus (lines) {
       if (c.hb.maxMainLateMs === null || hb.mainLateMs > c.hb.maxMainLateMs) {
         c.hb.maxMainLateMs = hb.mainLateMs
         c.hb.giantTsS = hb.tsS // (v0.974.27) the max mainLate gauge's own address - the giant's seat rides the same gauge (threshold-agnostic, the join lives in decompose)
+        c.hb.postGiantTsS = null // (v0.976.20) the max moved - the tail resets (the tail prices the first gauge after the FINAL giant)
+        c.hb.postGiantMainLateMs = null
+      } else if (c.hb.giantTsS !== null && c.hb.postGiantMainLateMs === null) {
+        c.hb.postGiantMainLateMs = hb.mainLateMs // (v0.976.20) the first gauge after the giant - the tail's own drain byte (the loop's own catch-up)
+        c.hb.postGiantTsS = hb.tsS
       }
       if (c.hb.firstTsS === null) c.hb.firstTsS = hb.tsS // (v0.976.17) the rail's own bookends - the giant's when prices the stall's lane by the series' own clock (the mirror of rss.firstM/lastM)
       c.hb.lastTsS = hb.tsS
