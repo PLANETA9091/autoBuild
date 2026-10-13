@@ -77,6 +77,7 @@ import { RELOOT_DESPAWN_MS } from '../../src/lib/reloot.mjs' // (v0.663.0) the d
 import { upgradeCensus, deferPromise, upgradeVerdicts, verdictSpread, promisePersistence } from '../../src/lib/upgradecensus.mjs' // (v0.465.0) the tool ladder's own harvest - the rung's delivered tools counted; (v0.467.0) the defer promise's order-aware join; (v0.468.0) the verdict census - the counter-vs-words window named; (v0.470.0) the verdict spread - the worn class's per-bot spread; (v0.471.0) the promise persistence - the kept bots' cross-face fate
 import { counterGap, upgradeJoin } from '../../src/lib/countergap.mjs' // (v0.469.0) the counter-words gap - the tally join that closes the book the verdict census named (SLOT COLLISION #5: 0.468.0 taken mid-fire); (v0.474.0) the words-verdict join - the residual's name
 import { mainFreezeCensus } from '../../src/lib/mainfreeze.mjs' // (v0.661.0) THE MAIN FREEZE'S OWN ROW - the blackbox dump's own census (the ring's last named activity reads at last)
+import { BLACKBOX_FREEZE_MS } from '../../src/lib/blackbox.mjs' // (v0.974.27) the ring's own dump threshold - the giant's seat prices against the code's own constant, never a re-declared number (the floor fiction lesson)
 import { stormRefusalLedger } from '../../src/lib/stormrefusal.mjs' // (v0.478.0) the storm ledger - the craft storm's transient/terminal split, the three handoffs' standing why-read
 import { fleeLedger, STUCK_REFLEE_U, fleeOutcomeBill, fleeOutcomeBillRow, fleeOutcomeRiders, fleeOutcomeRidersRow } from '../../src/lib/fleeledger.mjs' // (v0.481.0) the flee survival ledger - the escape lane's own episode book (the start side's outcome, the chase's progress); (v0.798.0) WHICH outcome owns the flee book
 import { criticalPrelude } from '../../src/lib/criticalprelude.mjs' // (v0.483.0) the critical prelude - the combat lane's own low-hp sensor priced (the bar's join to the flight it announced)
@@ -3445,9 +3446,24 @@ if (openDeaf.openDeaf.length > 0) {
 // late/mainLate peaks.
 console.log('--- STORM EVENT CENSUS (v0.409.0: the stormguard verdicts + the allocvalve) ---')
 const stormMem = stormCensus(lines)
+const mfCensus = mainFreezeCensus(lines) // (v0.974.27) hoisted once - the giant's own seat reads the ring's voice beside the row, the row reuses the same scan
 if (stormMem.hb.count > 0) {
   const hb = stormMem.hb
   console.log(`  heartbeat distress: n=${hb.count} max late=${hb.maxLateMs}ms max mainLate=${hb.maxMainLateMs}ms (rss bookends ${stormMem.rss.firstM}M -> ${stormMem.rss.lastM}M, peak ${stormMem.rss.peakM}M)`)
+  // (v0.974.27) THE GIANT'S OWN SEAT - the gauge-side stall the ring's own
+  // silence never named. FACE 293's giant rode mainLate=24795ms at ts=641s
+  // (the face's biggest single economy event) and the log carries ZERO
+  // '[blackbox]' lines: the ring's own law (the dump fires when mainLate
+  // >= BLACKBOX_FREEZE_MS) never spoke, so the main freeze row's honest
+  // 'no main freeze' verdict rode the RING's silence, not the thread's
+  // health - the emitter's blind spot, priced by the two censuses' join
+  // (the gauge's max mainLate >= the ring's own threshold + the ring's
+  // zero voice). Faces the ring DID dump read nothing here (the freeze
+  // row owns their story - the honest silence's own law).
+  if (hb.maxMainLateMs !== null && hb.maxMainLateMs >= BLACKBOX_FREEZE_MS && mfCensus.freezes.length === 0) {
+    const ts = hb.giantTsS != null ? ` at ts=${hb.giantTsS}s` : ''
+    console.log(`  the giant's own seat (v0.974.27): a ${hb.maxMainLateMs}ms main-loop stall rode the gauge${ts} and the ring never dumped (0 freeze dump(s) on the face, the ${BLACKBOX_FREEZE_MS}ms threshold prices the giant's seat) - the ring's own blind spot: the 'no main freeze' verdict rode the ring's silence, not the thread's health`)
+  }
 }
 // (v0.822.0) THE BEAT RAIL'S OWN CONTINUITY - the distress row's own
 // twin: the v0.820.0 setInterval rail's field verdict (the n= steps
@@ -3461,7 +3477,7 @@ if (beatRailRow) console.log(`  ${beatRailRow}`)
 // w' named, banked 55 of 1640 mined - the cadence froze inside the one
 // window that had to deliver). Face order, each freeze its own token;
 // 'no main freeze' on the honest zero.
-console.log('  ' + mainFreezeCensus(lines).row)
+console.log('  ' + mfCensus.row)
 const s = stormMem.storms
 // (v0.804.0) the forming leg's own cell rides the row (the jumps join the
 // gate: face 88's OOM storm now names its forming leg beside its peaks).

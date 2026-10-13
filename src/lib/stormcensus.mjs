@@ -157,7 +157,7 @@ export function parseValveOpen (line) {
  */
 export function stormCensus (lines) {
   const c = {
-    hb: { count: 0, timed: 0, maxLateMs: null, maxMainLateMs: null },
+    hb: { count: 0, timed: 0, maxLateMs: null, maxMainLateMs: null, giantTsS: null },
     rss: { firstM: null, peakM: null, lastM: null },
     valve: {
       closures: 0, opens: 0, maxRefusedS: null, peakCloseRssM: null,
@@ -172,7 +172,10 @@ export function stormCensus (lines) {
       c.hb.count++
       c.hb.timed++
       if (c.hb.maxLateMs === null || hb.lateMs > c.hb.maxLateMs) c.hb.maxLateMs = hb.lateMs
-      if (c.hb.maxMainLateMs === null || hb.mainLateMs > c.hb.maxMainLateMs) c.hb.maxMainLateMs = hb.mainLateMs
+      if (c.hb.maxMainLateMs === null || hb.mainLateMs > c.hb.maxMainLateMs) {
+        c.hb.maxMainLateMs = hb.mainLateMs
+        c.hb.giantTsS = hb.tsS // (v0.974.27) the max mainLate gauge's own address - the giant's seat rides the same gauge (threshold-agnostic, the join lives in decompose)
+      }
       if (c.rss.firstM === null) c.rss.firstM = hb.rssM
       c.rss.lastM = hb.rssM
       if (c.rss.peakM === null || hb.rssM > c.rss.peakM) c.rss.peakM = hb.rssM

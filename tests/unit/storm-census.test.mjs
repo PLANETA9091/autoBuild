@@ -232,3 +232,40 @@ test('the jumps cell reads the honest zero on the calm face + the junk battery +
   assert.ok(src.includes('if (s.probes + s.fatals + s.jumps > 0) {'))
   assert.ok(src.includes('if (s.probes + s.fatals + s.jumps + v.closures > 0) {'))
 })
+
+// (v0.974.27) THE GIANT'S OWN SEAT - the gauge-side stall the ring's own
+// silence never named. FACE 293's giant rode mainLate=24795ms at ts=641s
+// and the log carried ZERO '[blackbox]' lines: the 'no main freeze' verdict
+// rode the RING's silence, not the thread's health. The cells: the max
+// mainLate gauge's own address rides the census; the threshold + the ring's
+// voice join live in decompose (one read per emitter).
+test("the giant's own seat: giantTsS rides the max mainLate gauge's own address (v0.974.27)", () => {
+  const c = stormCensus([
+    '[workerguard] b] n=1 ts=21s rss=247M late=5ms mainLate=0ms',
+    '[workerguard] b] n=2 ts=41s rss=312M late=10ms mainLate=281ms',
+    '[workerguard] b] n=3 ts=61s rss=453M late=148ms mainLate=24795ms',
+    '[workerguard] b] n=4 ts=781s rss=422M late=172ms mainLate=274ms',
+  ])
+  assert.equal(c.hb.maxMainLateMs, 24795)
+  assert.equal(c.hb.giantTsS, 61, "the giant rides the MAX gauge's own ts - not the first, not the last")
+})
+
+test("the giant's own seat: the honest nulls - no gauges, non-array, the one-gauge face", () => {
+  const calm = stormCensus([])
+  assert.equal(calm.hb.maxMainLateMs, null)
+  assert.equal(calm.hb.giantTsS, null)
+  assert.equal(stormCensus(null).hb.giantTsS, null, 'non-array never throws')
+  assert.equal(stormCensus(undefined).hb.giantTsS, null)
+  const one = stormCensus(['[workerguard] b] n=1 ts=41s rss=312M late=10ms mainLate=281ms'])
+  assert.equal(one.hb.giantTsS, 41, 'a one-gauge face rides its own address')
+})
+
+test("the giant's own seat: the WIRING - the clause gates on the ring's own threshold + the zero voice", async () => {
+  const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.ok(src.includes('hb.maxMainLateMs >= BLACKBOX_FREEZE_MS && mfCensus.freezes.length === 0'), "the join: the gauge giant + the ring's zero voice")
+  assert.ok(src.includes("import { BLACKBOX_FREEZE_MS } from '../../src/lib/blackbox.mjs'"), "the threshold rides the code's own constant - never re-declared (the floor fiction lesson)")
+  assert.ok(src.includes("the giant's own seat (v0.974.27)"), 'the row names itself')
+  assert.ok(src.includes('console.log(\'  \' + mfCensus.row)'), 'the freeze row reuses the same scan - no double census')
+  const sc = await readFile(new URL('../../src/lib/stormcensus.mjs', import.meta.url), 'utf8')
+  assert.ok(sc.includes('giantTsS = hb.tsS'), 'the cell rides the max branch')
+})
