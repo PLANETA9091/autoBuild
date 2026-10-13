@@ -103,18 +103,69 @@ test('the edge book - the floor above the edge is the miss seat\'s own depth', (
 test('the edge fence - a lie prices nothing, the blind rides the honest word', () => {
   // the lie seat: a no-crossing death with a floor at-or-below the edge
   // (the crossing law's own contrapositive is absolute)
-  const lie = { deaths: 1, noCrossing: 1, blind: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 1 }
+  const lie = { deaths: 1, noCrossing: 1, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 1 }
   assert.equal(o2TriggerEdgeConsistent(lie), false)
   assert.equal(o2TriggerEdgeRow(lie), null)
   // the seats must sum to the fold's own noCrossing
-  const split = { deaths: 2, noCrossing: 2, blind: 0, catchable: { count: 1, min: 3, max: 3, sum: 3 }, lies: 0 }
+  const split = { deaths: 2, noCrossing: 2, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 1, min: 3, max: 3, sum: 3 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(split), false)
-  // all-blind: the row rides the sensor's own sight word
-  const blind = { deaths: 2, noCrossing: 2, blind: 2, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  // the blind split's own image: the four skins sum to the blind total
+  const badSplit = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 1, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  assert.equal(o2TriggerEdgeConsistent(badSplit), false)
+  // all-blind (reset skins): the row rides the sensor's own death word
+  const blind = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 2, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(blind), true)
   const row = o2TriggerEdgeRow(blind)
   assert.ok(row.includes('no numeric floor above the edge (2 blind)'))
   assert.ok(row.includes('the sensor\'s own sight prices the edge nothing'))
+  assert.ok(row.includes('the blind split: reset 2 / unknown 0 / silent 0'))
+  assert.ok(row.includes('the sensor\'s own death owns the blind share - the sensor-health front'))
+})
+
+test("the blind seat's own skin (v0.975.2) - the reset/unknown/silent split", () => {
+  // three no-crossing blind lives: the sensor's own death (reset(-1)),
+  // the parse's own unknown (?), the stream's own gap (no pass at all)
+  const lines = [
+    hb(0, 100),
+    pass('F3', 0, 'reset(-1)'), died('F3', 'drowned'), // the sensor died
+    pass('F4', 0, '?'), died('F4', 'drowned'), // the unknown skin
+    died('F5', 'drowned') // no pass line ever - the stream's gap
+  ]
+  const b = o2TriggerBook(lines)
+  assert.equal(b.deaths, 3)
+  assert.equal(b.noCrossing, 3)
+  assert.equal(b.perDeath[0].minO2, null)
+  assert.equal(b.perDeath[0].blindKind, 'reset')
+  assert.equal(b.perDeath[1].blindKind, 'unknown')
+  assert.equal(b.perDeath[2].blindKind, 'silent')
+  assert.equal(o2TriggerConsistent(b), true)
+  const e = o2TriggerEdgeBook(b)
+  assert.equal(e.blind, 3)
+  assert.equal(e.blindSplit.reset, 1)
+  assert.equal(e.blindSplit.unknown, 1)
+  assert.equal(e.blindSplit.silent, 1)
+  assert.equal(e.blindSplit.legacy, 0)
+  assert.equal(o2TriggerEdgeConsistent(e), true)
+  const row = o2TriggerEdgeRow(e)
+  assert.ok(row.includes('the blind split: reset 1 / unknown 1 / silent 1'))
+  assert.ok(row.includes('the two fronts compete'))
+})
+
+test('the blind skin judges nothing - the crossing state untouched (the v0.975.2 observer law)', () => {
+  // a reset skin between numeric reads never crosses, never clears,
+  // never re-arms - the crossing law stands byte for byte
+  const lines = [
+    hb(0, 100),
+    pass('F3', 0, 14), // above the edge - no crossing
+    pass('F3', 1, 'reset(-1)'), // the sensor died - judges nothing
+    pass('F3', 2, 12), // still above the edge - still no crossing
+    died('F3', 'drowned')
+  ]
+  const b = o2TriggerBook(lines)
+  assert.equal(b.noCrossing, 1)
+  assert.equal(b.perDeath[0].minO2, 12) // the floor never rode the blind skin
+  assert.equal(b.perDeath[0].blindKind, null) // the numeric life's blind byte is moot
+  assert.equal(o2TriggerConsistent(b), true)
 })
 
 test('junk-safe - the honest nulls', () => {

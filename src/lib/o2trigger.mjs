@@ -66,10 +66,10 @@ const emptyBook = () => ({
 export function o2TriggerBook (lines) {
   const book = emptyBook()
   if (!Array.isArray(lines)) return book
-  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2 }
+  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2, lastBlindKind, sawPass }
   let lastTs = null
   const seatFor = (bot) => {
-    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null }
+    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null, lastBlindKind: null, sawPass: false }
     return state[bot]
   }
   let li = -1 // the log's own adjacency: the fold's own line index (every element counts)
@@ -82,6 +82,18 @@ export function o2TriggerBook (lines) {
       const p = parseSentryPass(line)
       if (!p) continue
       const seat = seatFor(p.bot)
+      // the sight's own witness byte (the v0.975.2 byte): the pass line's
+      // own existence rides the seat - the silent life (no pass at all)
+      // and the blind-skinned life judge differently (the sensor's own
+      // death vs the stream's own gap)
+      seat.sawPass = true
+      if (p.o2.kind !== 'value') {
+        // the blind skin's own word (the v0.975.2 byte): the last blind
+        // skin rides the seat - the blind skins judge nothing and clear
+        // nothing (the crossing law stands); this is the passive
+        // observer's own byte, the crossing state untouched
+        seat.lastBlindKind = p.o2.kind
+      }
       if (p.o2.kind === 'value') {
         // the miss seat's own proximity (the v0.892.0 byte): the last
         // numeric o2 read rides the seat - the parse's own field,
@@ -133,7 +145,7 @@ export function o2TriggerBook (lines) {
       // the cadence's own cell (the v0.895.0 byte): the last TWO
       // reads' own distance (the one-read seat rides the honest null)
       const lastO2Span = seat.lastO2At !== null && seat.prevO2At !== null ? seat.lastO2At - seat.prevO2At : null
-      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2 })
+      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2, blindKind: seat.minO2 === null ? (seat.lastBlindKind || (seat.sawPass ? null : 'silent')) : null })
       // the death reset's own law: the state never survives the death
       seat.crossingTs = null
       seat.hasCrossing = false
@@ -143,6 +155,8 @@ export function o2TriggerBook (lines) {
       seat.prevO2At = null
       seat.lastPassHead = null
       seat.minO2 = null
+      seat.lastBlindKind = null
+      seat.sawPass = false
       continue
     }
   }
@@ -198,8 +212,18 @@ export function o2TriggerConsistent (book) {
       if (!Number.isInteger(d.minO2) || d.minO2 < 0) return false
       if (d.lastO2 === null || d.lastO2 === undefined) return false
       if (d.minO2 > d.lastO2) return false
+      // the blind byte shares the no-numeric seat's own law: a numeric
+      // life's blindKind is moot - only null may ride
+      if (d.blindKind !== null && d.blindKind !== undefined) return false
     } else if (d.lastO2 !== null && d.lastO2 !== undefined) {
       return false
+    }
+    // the blind byte's own shape (the v0.975.2 byte): the legal words
+    // are the parse's own skins + the stream's own gap word; the
+    // undefined seat stays legal (the legacy book shape - never forged)
+    if (d.blindKind !== null && d.blindKind !== undefined) {
+      if (d.blindKind !== 'reset' && d.blindKind !== 'unknown' && d.blindKind !== 'silent') return false
+      if (d.minO2 !== null && d.minO2 !== undefined) return false
     }
     deaths++
     if (!d.crossed) noCrossing++
@@ -749,14 +773,25 @@ export function o2TriggerKindRow (book) {
 export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
     out.noCrossing++
     // the legacy seat (no floor byte rode) reads the honest blind - the
     // older book shape prices the edge nothing, never forged
-    if (d.minO2 === null || d.minO2 === undefined) { out.blind++; continue }
+    if (d.minO2 === null || d.minO2 === undefined) {
+      out.blind++
+      // (v0.975.2) the blind seat's own skin: the sensor's own death
+      // (reset) vs the parse's own unknown (?) vs the stream's own gap
+      // (silent - no pass line rode the life) vs the legacy shape (the
+      // byte absent - priced, never forged)
+      if (d.blindKind === 'reset') out.blindSplit.reset++
+      else if (d.blindKind === 'unknown') out.blindSplit.unknown++
+      else if (d.blindKind === 'silent') out.blindSplit.silent++
+      else out.blindSplit.legacy++
+      continue
+    }
     if (d.minO2 <= TRIGGER_O2_MAX) { out.lies++; continue }
     const depth = d.minO2 - TRIGGER_O2_MAX
     out.catchable.count++
@@ -783,6 +818,14 @@ export function o2TriggerEdgeConsistent (e) {
   if (!Number.isInteger(e.noCrossing) || e.noCrossing < 0) return false
   if (!Number.isInteger(e.blind) || e.blind < 0) return false
   if (!Number.isInteger(e.lies) || e.lies < 0) return false
+  // (v0.975.2) the blind split's own image: the four skins sum to the
+  // blind total (the two-ways law - the walk's own recount must agree)
+  const bs = e.blindSplit
+  if (!bs || typeof bs !== 'object' || Array.isArray(bs)) return false
+  for (const k of ['reset', 'unknown', 'silent', 'legacy']) {
+    if (!Number.isInteger(bs[k]) || bs[k] < 0) return false
+  }
+  if (bs.reset + bs.unknown + bs.silent + bs.legacy !== e.blind) return false
   const c = e.catchable
   if (!c || typeof c !== 'object' || Array.isArray(c)) return false
   if (!Number.isInteger(c.count) || c.count < 0 || !Number.isInteger(c.sum) || c.sum < 0) return false
@@ -805,8 +848,23 @@ export function o2TriggerEdgeConsistent (e) {
 export function o2TriggerEdgeRow (e) {
   if (!o2TriggerEdgeConsistent(e)) return null
   const c = e.catchable
-  if (c.count === 0) {
-    return `the no-crossing deaths' own floor (v0.975.0): ${e.noCrossing} no-crossing death(s), no numeric floor above the edge (${e.blind} blind) - the sensor's own sight prices the edge nothing`
+  // (v0.975.2) the blind split's own word - the sensor's own death vs
+  // the stream's own gap name the lane's own competing front (the
+  // field's own two words: the lever real when the floor rode, the
+  // sensor's sight owning the miss seat when the skins rode blind)
+  let blindWord = ''
+  if (e.blind > 0) {
+    const bs = e.blindSplit
+    const splitByte = `the blind split: reset ${bs.reset} / unknown ${bs.unknown} / silent ${bs.silent}` + (bs.legacy > 0 ? ` / legacy ${bs.legacy}` : '')
+    let frontByte
+    if (bs.reset > 0 && bs.silent === 0) frontByte = "the sensor's own death owns the blind share - the sensor-health front"
+    else if (bs.silent > 0 && bs.reset === 0) frontByte = "the stream's own gap owns the blind share - the sight-span front"
+    else if (bs.reset > 0 && bs.silent > 0) frontByte = "the blind share is split (the sensor's own death vs the stream's own gap) - the two fronts compete"
+    else frontByte = 'the blind share judges nothing'
+    blindWord = ` (${splitByte} - ${frontByte})`
   }
-  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)`
+  if (c.count === 0) {
+    return `the no-crossing deaths' own floor (v0.975.0): ${e.noCrossing} no-crossing death(s), no numeric floor above the edge (${e.blind} blind) - the sensor's own sight prices the edge nothing${blindWord}`
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord}`
 }
