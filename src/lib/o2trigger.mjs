@@ -66,10 +66,10 @@ const emptyBook = () => ({
 export function o2TriggerBook (lines) {
   const book = emptyBook()
   if (!Array.isArray(lines)) return book
-  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead }
+  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2 }
   let lastTs = null
   const seatFor = (bot) => {
-    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null }
+    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null }
     return state[bot]
   }
   let li = -1 // the log's own adjacency: the fold's own line index (every element counts)
@@ -88,6 +88,11 @@ export function o2TriggerBook (lines) {
         // never re-computed (the reuse law); the read's own position
         // rides beside it (the v0.893.0 gap's own seat)
         seat.lastO2 = p.o2.value
+        // the life's own floor (the v0.975.0 byte): the lowest numeric
+        // read of the current life - the no-crossing deaths' own lever
+        // price (the band edge's own seat: a floor above the edge is the
+        // o2-units a raised edge would have bought)
+        seat.minO2 = seat.minO2 === null ? p.o2.value : Math.min(seat.minO2, p.o2.value)
         // the read cadence's own seat (the v0.895.0 byte): the read's
         // own position hands its post to the previous-read slot - the
         // last TWO reads' own distance is the cadence's own cell
@@ -128,7 +133,7 @@ export function o2TriggerBook (lines) {
       // the cadence's own cell (the v0.895.0 byte): the last TWO
       // reads' own distance (the one-read seat rides the honest null)
       const lastO2Span = seat.lastO2At !== null && seat.prevO2At !== null ? seat.lastO2At - seat.prevO2At : null
-      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead })
+      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2 })
       // the death reset's own law: the state never survives the death
       seat.crossingTs = null
       seat.hasCrossing = false
@@ -137,6 +142,7 @@ export function o2TriggerBook (lines) {
       seat.lastO2At = null
       seat.prevO2At = null
       seat.lastPassHead = null
+      seat.minO2 = null
       continue
     }
   }
@@ -181,6 +187,17 @@ export function o2TriggerConsistent (book) {
     if (d.lastPassHead !== null && d.lastPassHead !== undefined) {
       if (d.lastPassHead !== 'wet' && d.lastPassHead !== 'dry') return false
       if (d.lastO2 === null || d.lastO2 === undefined) return false
+    } else if (d.lastO2 !== null && d.lastO2 !== undefined) {
+      return false
+    }
+    // the life's own floor shape (the v0.975.0 byte): the floor shares
+    // the last read's own seat - both ride or neither does, the floor
+    // never rides above the last read (the lowest read's own law); the
+    // undefined seat stays legal (the legacy book shape - never forged)
+    if (d.minO2 !== null && d.minO2 !== undefined) {
+      if (!Number.isInteger(d.minO2) || d.minO2 < 0) return false
+      if (d.lastO2 === null || d.lastO2 === undefined) return false
+      if (d.minO2 > d.lastO2) return false
     } else if (d.lastO2 !== null && d.lastO2 !== undefined) {
       return false
     }
@@ -696,4 +713,100 @@ export function o2TriggerKindRow (book) {
   if (book.kinds.noCrossingUnknown > 0) parts.push(`no-crossing unkinded ${book.kinds.noCrossingUnknown}`)
   if (!parts.length) return null
   return `the o2-low trigger's own kind join (v0.896.0): ${parts.join(', ')} - the kind join prices the trigger's own cost`
+}
+
+// (v0.975.0) THE NO-CROSSING DEATHS' OWN FLOOR - the band edge's own
+// lever price (the front five faces named and never priced: 'the o2-low
+// band edge - v0.975.0's named seat'). The window book (v0.884.0)
+// prices the RUNWAY after the crossing; the field's own word (deaths 7,
+// crossed 1, no-crossing 6) names the band edge <=10's own miss seat -
+// NOBODY priced HOW MUCH a raised edge would have bought. The floor is
+// the lever's own arithmetic: the life's own lowest numeric read
+// (minO2 - the v0.975.0 fold byte). A no-crossing life's every numeric
+// read rode ABOVE the edge (the crossing law's own contrapositive: any
+// read at-or-below the edge crosses), so the floor above the edge IS
+// the miss seat's own depth: depth = minO2 - TRIGGER_O2_MAX - the
+// minimal raise that would have put the life's own floor at-or-below
+// the raised edge (the crossing would then ride the raised edge's own
+// law). The idiom is o2arm's fatalDepth's own mirror (the edge minus
+// the firing point there, the floor minus the edge here - one lever,
+// two ends). The honest exclusions: the blind/unread seat (no numeric
+// read rode - the sensor's own death prices the edge nothing); the
+// crossed death prices nothing (the edge already caught it). The lie
+// seat (a no-crossing death with a floor at-or-below the edge) prices
+// nothing (the fence law - the fold's own contrapositive is absolute).
+// Mining-surface only: zero fleet wiring, zero new log lines, zero
+// census shape change - CENSUS GUARD. Pure: reads, never mutates.
+
+/** The edge book's own fold: the no-crossing deaths' own floors against
+ * the census's own rescueBand edge - the raised edge's own price.
+ *
+ * @param {object|null} [book] the o2TriggerBook fold
+ * @returns {{deaths: number, noCrossing: number, blind: number,
+ *   catchable: {count: number, min: number|null, max: number|null, sum: number},
+ *   lies: number}|null} null when the source book prices nothing
+ */
+export function o2TriggerEdgeBook (book) {
+  if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
+  if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  for (const d of book.perDeath) {
+    if (!d || typeof d !== 'object') return null
+    if (d.crossed) continue // the edge caught it - the lever prices nothing
+    out.noCrossing++
+    // the legacy seat (no floor byte rode) reads the honest blind - the
+    // older book shape prices the edge nothing, never forged
+    if (d.minO2 === null || d.minO2 === undefined) { out.blind++; continue }
+    if (d.minO2 <= TRIGGER_O2_MAX) { out.lies++; continue }
+    const depth = d.minO2 - TRIGGER_O2_MAX
+    out.catchable.count++
+    out.catchable.sum += depth
+    if (out.catchable.min === null || depth < out.catchable.min) out.catchable.min = depth
+    if (out.catchable.max === null || depth > out.catchable.max) out.catchable.max = depth
+  }
+  return out
+}
+
+/**
+ * The fence: the edge fold must be the window book's own image. The
+ * deaths agree, the no-crossing walk's seats sum to the fold's own
+ * noCrossing (blind + catchable + lies), every depth rides the fold's
+ * own bounds (1..the floor's own height above the edge), a lie prices
+ * nothing.
+ *
+ * @param {object|null} [e] the o2TriggerEdgeBook fold
+ * @returns {boolean} true when the fold may price
+ */
+export function o2TriggerEdgeConsistent (e) {
+  if (!e || typeof e !== 'object' || Array.isArray(e)) return false
+  if (!Number.isInteger(e.deaths) || e.deaths <= 0) return false
+  if (!Number.isInteger(e.noCrossing) || e.noCrossing < 0) return false
+  if (!Number.isInteger(e.blind) || e.blind < 0) return false
+  if (!Number.isInteger(e.lies) || e.lies < 0) return false
+  const c = e.catchable
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return false
+  if (!Number.isInteger(c.count) || c.count < 0 || !Number.isInteger(c.sum) || c.sum < 0) return false
+  if (c.count > 0 && (c.min === null || c.max === null)) return false
+  if (c.count === 0 && (c.min !== null || c.max !== null || c.sum !== 0)) return false
+  if (e.blind + c.count + e.lies !== e.noCrossing) return false
+  if (e.lies > 0) return false // the lie seat: the fold's own contrapositive is absolute
+  if (c.count > 0 && (c.min < 1 || c.max < c.min)) return false
+  return true
+}
+
+/**
+ * The edge book's own row - one line, the band edge's own lever price.
+ * The honest null when the fold is absent or inconsistent (a fold that
+ * cannot prove itself prices nothing - the fence law).
+ *
+ * @param {object|null} [e] the o2TriggerEdgeBook fold
+ * @returns {string|null} the row byte, or null
+ */
+export function o2TriggerEdgeRow (e) {
+  if (!o2TriggerEdgeConsistent(e)) return null
+  const c = e.catchable
+  if (c.count === 0) {
+    return `the no-crossing deaths' own floor (v0.975.0): ${e.noCrossing} no-crossing death(s), no numeric floor above the edge (${e.blind} blind) - the sensor's own sight prices the edge nothing`
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)`
 }
