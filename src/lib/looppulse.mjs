@@ -31,6 +31,23 @@
 // the poll/check phases are saturated, NOT a sync spin. Both ~0 = sync
 // block. timers ~80 = the loop is fine (the drift would be a lie).
 //
+// THE FLOOD CLASS (v0.974.15 - the instrument's own theory priced wrong by
+// the field): FACE 282 = 38337910926's dump rode 'timers=1467
+// imm=140006193/20s (healthy)' with mainLate 48085ms and the freeze census
+// pricing the freeze REAL (~48s, the pf:* class's second face) - the drift
+// was NOT a lie, so the doc line above ('timers ~80 = the loop is fine')
+// priced WRONG: a loop can serve its timers AND drown in the check phase
+// (7 million loop passes/s = the macrotask flood's own signature - the
+// healthy word lied exactly once the flood rode). THE CURE: the imm's own
+// seat outranks the timers-passed cell (fresh evidence outranks the stale
+// cell - the band arm's own law): timers served + imm past the LOOPING line
+// (w*50, the existing constant, never a new number) reads 'FLOODED' - the
+// drift is real, the flood owns the window. The legacy classes keep their
+// exact bytes (the byte-stable verdict law); the FLOOD words stay
+// PAREN-FREE (the mainfreeze grammar's own slot - a paren inside the
+// verdict tail eats the loop scope into the chain, the one-level-nesting
+// fix's own lesson).
+//
 // Zero-risk by construction: the counters are plain Int32 increments on the
 // main thread (nanoseconds per fire), the immediates loop is guarded and
 // stoppable, junk SABs stay harmless, and diagnostics never throw.
@@ -102,15 +119,22 @@ export function readPulseSab (sab) {
 
 /** The dump suffix the worker appends to the blackbox freeze line. Pure:
  * pins the format the log-reading agents will parse. dtS = the observation
- * window in seconds (the heartbeat beat period). */
+ * window in seconds (the heartbeat beat period).
+ * (v0.974.15) THE FLOOD CLASS: timers served + imm past the LOOPING line
+ * (w*50) reads FLOODED - the macrotask flood's own signature (FACE 282's
+ * own falsification: timers=1467 imm=140006193/20s read 'healthy' while
+ * the ~48s freeze was real). The FLOOD words stay paren-free. */
 export function pulseLine ({ timers, immediates, dtS = 20 } = {}) {
   const t = Number.isFinite(timers) ? timers : 0
   const i = Number.isFinite(immediates) ? immediates : 0
   const w = Number.isFinite(dtS) && dtS > 0 ? Math.round(dtS) : 20
   const expected = Math.max(1, Math.round(w / 0.25)) // the timers-phase budget at the 250ms probe period
+  const flood = i > w * 50
   const verdict = t >= expected * 0.5
-    ? 'healthy'
-    : (i > w * 50
+    ? (flood
+        ? 'FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied'
+        : 'healthy')
+    : (flood
         ? 'LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin)'
         : 'NOT LOOPING - a sync block owns the thread')
   return `; loop: timers=${t} imm=${i}/${w}s (${verdict})`

@@ -27,6 +27,7 @@
 // log carries the whole matrix without re-reading raw timestamps.
 import { Worker } from 'node:worker_threads'
 import { installNoteSink } from './blackbox.mjs'
+import { pulseLine } from './looppulse.mjs' // (v0.974.15) one truth: the dump's verdict rides the pulse's own ladder (the flood class included) - the inline copy retired
 
 // Eval worker (CJS - eval workers are CommonJS by design). It must NEVER throw:
 // a dead heartbeat is a diagnostic loss, not a fleet failure. Every failure path
@@ -370,9 +371,10 @@ function bbDump (lateNow) {
   var suffix = ''
   var pw = pulseWindow()
   if (pw) {
-    var exp = Math.round((intervalMs / 1000) / 0.25)
-    var verdict = pw.timers >= exp * 0.5 ? 'healthy' : (pw.immediates > intervalMs / 1000 * 50 ? 'LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin)' : 'NOT LOOPING - a sync block owns the thread')
-    suffix = '; loop: timers=' + pw.timers + ' imm=' + pw.immediates + '/' + Math.round(intervalMs / 1000) + 's (' + verdict + ')'
+    // (v0.974.15) the ladder rides pulseLine's own words (one truth - the
+    // inline copy read 'healthy' on FACE 282's flood; the flood class now
+    // flows from the lib both ladders used to fork)
+    suffix = pulseLine({ timers: pw.timers, immediates: pw.immediates, dtS: intervalMs / 1000 })
   }
   try { fs.writeSync(writeFd, '[blackbox] main freeze ~' + Math.round(lateNow / 1000) + 's; last: ' + parts.join(' <- ') + suffix + '\\n') } catch { /* stdout closed */ }
 }

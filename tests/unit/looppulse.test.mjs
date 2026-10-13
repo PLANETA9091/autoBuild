@@ -83,3 +83,35 @@ test('pulseLine: the verdict boundaries are exact (the dump must NAME the phase)
     '; loop: timers=7 imm=41255/20s (LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin))'
   )
 })
+
+test('pulseLine: the FLOOD class (v0.974.15) - the timers served AND the check phase saturated reads FLOODED (the healthy word lied)', () => {
+  // FACE 282's own falsification: timers passed (1467/20s), the check phase
+  // exploded (140006193/20s = 7M loop passes/s), the dump read 'healthy'
+  // while the ~48s freeze was real (mainLate 48085ms, the census priced it)
+  const flood = pulseLine({ timers: 1467, immediates: 140006193, dtS: 20 })
+  assert.equal(
+    flood,
+    '; loop: timers=1467 imm=140006193/20s (FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied)'
+  )
+  // the flood line rides the EXISTING LOOPING constant (w*50, never a new
+  // number) - the boundary byte: 1000 stays healthy, 1001 floods
+  assert.match(pulseLine({ timers: 40, immediates: 1000, dtS: 20 }), /healthy/)
+  assert.match(pulseLine({ timers: 40, immediates: 1001, dtS: 20 }), /FLOODED/)
+  // the FLOOD words stay paren-free (the mainfreeze grammar's own slot)
+  const floodWords = (pulseLine({ timers: 40, immediates: 5000, dtS: 20 }).match(/\((.*)\)$/))[1]
+  assert.equal(floodWords.includes('('), false)
+  // the starved classes keep their exact bytes (the byte-stable verdict law)
+  assert.equal(
+    pulseLine({ timers: 0, immediates: 40000, dtS: 20 }),
+    '; loop: timers=0 imm=40000/20s (LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin))'
+  )
+  assert.equal(
+    pulseLine({ timers: 0, immediates: 3, dtS: 20 }),
+    '; loop: timers=0 imm=3/20s (NOT LOOPING - a sync block owns the thread)'
+  )
+  // the legacy healthy string byte-true (the pre-flood dumps re-read the same)
+  assert.equal(
+    pulseLine({ timers: 40, immediates: 900, dtS: 20 }),
+    '; loop: timers=40 imm=900/20s (healthy)'
+  )
+})

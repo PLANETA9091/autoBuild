@@ -106,6 +106,40 @@ test('the gauge anchor updates: a later gauge re-seats the position for the next
   assert.equal(freezes[0].ts, 200)
 })
 
+test('the verdicts own nesting (v0.974.15): a paren-d LOOPING verdict keeps its cells and its chain (the flat cell never eats the scope)', () => {
+  const dump = '[blackbox] main freeze ~43s; last: other @+0.0s <- pf:queue walk @+-1.0s; loop: timers=4 imm=41255/20s (LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin))'
+  const m = MAIN_FREEZE_LINE_RE.exec(dump)
+  assert.ok(m, 'the nesting-capable verdict group matches the LOOPING dump')
+  assert.equal(m[2], 'other @+0.0s <- pf:queue walk @+-1.0s', 'the chain stays the chain (the loop scope never rides inside it)')
+  assert.equal(m[3], '4')
+  assert.equal(m[4], '41255')
+  assert.equal(m[6], 'LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin)')
+  const { freezes, row } = mainFreezeCensus([
+    'b] n=3 ts=101s rss=310M late=80ms mainLate=43449ms',
+    dump
+  ])
+  assert.equal(freezes.length, 1)
+  assert.equal(freezes[0].seconds, 43)
+  assert.equal(freezes[0].ts, 101)
+  assert.equal(freezes[0].named, 'pf:queue walk @+-1.0s')
+  assert.equal(freezes[0].loopVerdict, 'LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin)')
+  assert.equal(row, "main freeze census: 1 freeze: ~43s @ts101s named 'pf:queue walk @+-1.0s' (loop LOOPING - poll/check saturated, the timers phase starved (NOT a sync spin))")
+})
+
+test('the FLOOD verdict rides the census too (v0.974.15, FACE 282\u0027s own numbers)', () => {
+  const dump = '[blackbox] main freeze ~48s; last: other @+0.0s <- pf:done next column alt @+0.0s; loop: timers=1467 imm=140006193/20s (FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied)'
+  const { freezes, row } = mainFreezeCensus([
+    'b] n=28 ts=581s rss=579M late=126ms mainLate=48085ms',
+    dump
+  ])
+  assert.equal(freezes.length, 1)
+  assert.equal(freezes[0].seconds, 48)
+  assert.equal(freezes[0].ts, 581)
+  assert.equal(freezes[0].named, 'pf:done next column alt @+0.0s')
+  assert.equal(freezes[0].loopVerdict, 'FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied')
+  assert.equal(row, "main freeze census: 1 freeze: ~48s @ts581s named 'pf:done next column alt @+0.0s' (loop FLOODED - poll/check saturated WITH the timers served - the drift is real, the healthy word lied)")
+})
+
 test('the regexes and the label constant stay exported for the pins', () => {
   assert.ok(MAIN_FREEZE_LINE_RE.test('[blackbox] main freeze ~5s; last: x @+0.0s'))
   assert.ok(MAIN_FREEZE_GAUGE_RE.test('b] n=1 ts=0s rss=1M late=0ms mainLate=0ms'))

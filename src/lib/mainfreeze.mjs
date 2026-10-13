@@ -40,8 +40,15 @@
  */
 
 /** The '[blackbox] main freeze' dump's shape: the seconds, the chain, and
- *  the optional v0.77.0 loop-scope tail. */
-export const MAIN_FREEZE_LINE_RE = /^\[blackbox\] main freeze ~(\d+)s; last: (.+?)(?:; loop: timers=(\d+) imm=(\d+)\/(\d+)s \(([^)]+)\))?$/
+ *  the optional v0.77.0 loop-scope tail. (v0.974.15) THE VERDICT'S OWN
+ *  NESTING: the tail's verdict may carry ONE paren nesting level (the
+ *  pulseLine's own LOOPING words - '...starved (NOT a sync spin)' - rode
+ *  paren'd, and the flat [^)]+ verdict cell ate the loop scope into the
+ *  chain: the census kept the freeze but read the verdict 'NOT a sync
+ *  spin' and lost the timers/imm cells - the mis-read exactly when the
+ *  LOOPING class speaks). The nesting-capable verdict group keeps every
+ *  flat verdict byte-true (all dumps on record ride 'healthy'). */
+export const MAIN_FREEZE_LINE_RE = /^\[blackbox\] main freeze ~(\d+)s; last: (.+?)(?:; loop: timers=(\d+) imm=(\d+)\/(\d+)s \(((?:[^()]|\([^()]*\))+)\))?$/
 
 /** The heartbeat's pulse gauge: the freeze's position anchor. The real
  *  line reads '[hb] n=<k> ts=<s>s rss=...' - the unanchored 'b]' stem is
