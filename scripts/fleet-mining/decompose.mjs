@@ -169,6 +169,7 @@ import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-
 import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deathKindRidersRow, mobAttackerBill, mobAttackerBillRow, mobAttackerRiders, mobAttackerRidersRow, kindAttackerBill, kindAttackerBillRow, misreadDirectionBill, misreadDirectionBillRow, misreadDirectionRiders, misreadDirectionRidersRow, fallAnatomyBook, fallAnatomyConsistent, fallAnatomyRow, fallRelayBook, fallRelayConsistent, fallRelayRow, mobAnatomyBook, mobAnatomyConsistent, mobAnatomyRow, drownAnatomyBook, drownAnatomyConsistent, drownAnatomyRow } from '../../src/lib/deathkinds.mjs' // (v0.425.0) the vertical-death front's mechanical leg; (v0.784.0) WHICH kind owns the death book; (v0.788.0) WHICH server-named killer owns the mob book; (v0.974.12) WHICH server-named killer owns EVERY kinded book (the grammar's own ' by ' tail measured past the mob family); (v0.844.0) WHICH direction owns the sensor-blind misread book; (v0.897.0) WHERE the fall kind's own deaths own (the band + the site's own repeat); (v0.898.0) WHERE and HOW the mob kind's own kills own (the verb + the band + the site's own repeat); (v0.899.0) WHEN the fall's own relay rode (the time leg the anatomy does not price); (v0.956.0) WHERE the drown kind's own deaths own (the water's own spot book)
 import { houndCensus, houndArenaSeat, houndArenaSeatRow, houndArenaRiders, houndArenaRidersRow, houndAnswerSeat, houndAnswerSeatRow, houndAnswerRiders, houndAnswerRidersRow, houndPreySeat, houndPreySeatRow, houndPreyRiders, houndPreyRidersRow, houndPressureSeat, houndPressureSeatRow, houndPressureRiders, houndPressureRidersRow, houndBaneSeat, houndBaneSeatRow, houndBaneRiders, houndBaneRidersRow } from '../../src/lib/houndcensus.mjs' // (v0.433.0) the hound presence's field read; (v0.791.0) WHICH arena owns the hound kill book; (v0.925.0) WHICH answer class owns the presence book; (v0.926.0) WHICH bot owns the kill book; (v0.928.0) WHICH bot owns the presence book; (v0.929.0) WHICH bot owns the defeat book
 import { faceFate } from '../../src/lib/facefate.mjs' // (v0.546.0) the frozen book's READER side - the face's own fate named before the censuses speak
+import { liarLadderReachBook, liarLadderReachConsistent, liarLadderReachRow } from '../../src/lib/liarladder.mjs' // (v0.976.10) THE LIAR LADDER'S OWN REACH - the chronic-liar patience ladder's own depth byte (the raw split rode, the reach stayed unnamed)
 
 const file = process.argv[2]
 if (!file) { console.error('usage: decompose.mjs <fleet19.log> [priorFace.log] [serverLog.log]'); process.exit(1) }
@@ -883,6 +884,15 @@ console.log(`  zero-probe timeouts (the bearing branch ate every pass): ${zeroPr
 console.log('  per-bot glitch pages(air-bar ignored):', fmt(perBot(/air-bar glitch ignored/)))
 console.log('  liar ladder ratchets:', count(/liar ladder ratchets/), 'per-bot:', fmt(perBot(/liar ladder ratchets/)))
 console.log('  liar ladder resets:', count(/liar ladder resets/))
+// (v0.976.10) THE LIAR LADDER'S OWN REACH - the patience ladder's own
+// depth byte: the deepest rung + the bar at the reach (the fleet's own
+// formula) + the stand-down's own seat. The face with no ratchet
+// prices nothing (the honest silence - the fold prices what rode).
+const llr = liarLadderReachBook(lines)
+if (llr && liarLadderReachConsistent(llr)) {
+  const llrRow = liarLadderReachRow(llr)
+  if (llrRow) console.log(' ' + llrRow)
+}
 console.log('  overrides (believe the bar):', count(/air-bar glitch override/))
 console.log('  wet-critical fast window:', count(/wet-critical fast window/))
 console.log('  GRACE HOLD/VOID:', count(/GRACE (HOLD|VOID)/), ' STORM PROBE:', count(/STORM PROBE/), ' FATAL:', count(/FATAL/))
