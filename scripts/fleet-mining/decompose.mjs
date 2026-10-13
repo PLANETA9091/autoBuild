@@ -161,7 +161,7 @@ import { o2ClassSeatRow } from '../../src/lib/o2book.mjs' // (v0.813.0) the o2 b
 import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/dupclock.mjs' // (v0.729.0) the duplicate's own clock - the server log's join side (the losses, the cadence, the bursts, the storm; v0.734.0 the unseen loss's own column, v0.735.0 the surplus kick's own side, v0.740.0 the burst's own door)
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
-import { valveMarginJoin } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment)
+import { valveMarginJoin, valveSilentCrossRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
@@ -4833,19 +4833,18 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // (v0.974.14) THE RESIDENCY WORD - the arm's own dose rides beside the
     // shape (the span law's own currency; the honest silence prints nothing)
     const resTail = vm.residency ? ` | ${vm.residency}` : ''
-    // (v0.974.24) THE SILENT CROSS - the rate anchor's own blind spot. FACE
-    // 291's cross rode rss peak 452M (2M past the 450M arm) with the valve
-    // speaking NOTHING - the runtime valve arms on a RATE (queue pressure,
-    // the sustained climbs), so the slow-creep class crosses the floor
-    // gauge by gauge and never trips it. The clause prices the cross from
-    // the two halves: the lens's over-floor residency AND the valve's own
-    // voice (opendeaf's census) - arm ridden + 0 voice = the blind spot's
-    // own name. The speaking faces price nothing (the honest silence - the
-    // valve's spans are opendeaf's read, this row names only the silence).
+    // (v0.974.24 -> v0.976.3) THE SILENT CROSS - the rate anchor's own
+    // blind spot. FACE 291's cross rode rss peak 452M (2M past the 450M
+    // arm) with the valve speaking NOTHING; FACE 303 = 38424668138 rode
+    // the first RIDDEN-AND-SILENT face (23 gauge(s), 18M past, dose 342
+    // M-gauge(s)) and the graft's hand-word priced it. The word rides the
+    // lens now (valveSilentCrossRow - the unit-tested fence, one truth);
+    // the graft only glues (byte-stable output - the record keeps its
+    // voice). The speaking faces price nothing (the honest silence - the
+    // valve's spans are opendeaf's read, the row names only the silence).
     const voice = valveVoiceCount(lines)
-    const crossTail = (vm.overValveCells > 0 && voice.closes === 0 && voice.opens === 0)
-      ? ` | THE SILENT CROSS - the arm rode ${vm.overValveCells} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor's slow-creep blind spot (the residency rode the lens, the valve rode nothing)`
-      : ''
+    const crossWord = valveSilentCrossRow(vm, voice)
+    const crossTail = crossWord ? ` | ${crossWord}` : ''
     console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14, silent cross v0.974.24): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}${crossTail}`)
   }
 }

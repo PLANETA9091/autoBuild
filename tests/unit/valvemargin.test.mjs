@@ -9,7 +9,7 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { valveMarginJoin, VALVE_MARGIN_THIN_M } from '../../src/lib/valvemargin.mjs'
+import { valveMarginJoin, valveSilentCross, valveSilentCrossRow, VALVE_MARGIN_THIN_M } from '../../src/lib/valvemargin.mjs'
 import { ALLOC_VALVE_FLOOR_MB_DEFAULT } from '../../src/lib/allocvalve.mjs'
 import { STORM_FLOOR_MB_DEFAULT } from '../../src/lib/stormguard.mjs'
 import { MEM_HB_RE } from '../../src/lib/memhb.mjs'
@@ -150,4 +150,50 @@ test('the clean face reads no shape (the floor holds - nothing rides)', () => {
   assert.equal(r.shape, '')
   assert.equal(r.stepIndex, null)
   assert.equal(r.preArmPeak, null)
+})
+
+test("the silent cross's own cell (v0.976.3) - the record's own call prices from the two halves", () => {
+  // the ridden plateau + the silent voice: the cross stands (FACE 303's
+  // own shape in miniature - the arm rode, the valve never spoke)
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  assert.equal(vm.overValveCells, 3)
+  assert.equal(vm.overArmArea, 21)
+  assert.equal(vm.rideSharePct, 75)
+  const c = valveSilentCross(vm, { closes: 0, opens: 0 })
+  assert.equal(c.cross, true)
+  assert.equal(c.gauges, 3)
+  assert.equal(c.dose, 21)
+  assert.equal(c.sharePct, 75)
+  const row = valveSilentCrossRow(vm, { closes: 0, opens: 0 })
+  assert.equal(row, 'THE SILENT CROSS - the arm rode 3 gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor\'s slow-creep blind spot (the residency rode the lens, the valve rode nothing)')
+})
+
+test("the silent cross's own honest silence (v0.976.3) - the speaking face and the unridden face price nothing", () => {
+  // the valve spoke - no cross (the spans are opendeaf's read, the row
+  // names only the silence)
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  const spoken = valveSilentCross(vm, { closes: 2, opens: 1 })
+  assert.deepEqual(spoken, { cross: false, gauges: 0, dose: 0, sharePct: 0 })
+  assert.equal(valveSilentCrossRow(vm, { closes: 2, opens: 1 }), null)
+  // the floor held - no cross (the unridden face's own honest null)
+  const clean = valveMarginJoin([mem(371), mem(380), mem(383)])
+  const unridden = valveSilentCross(clean, { closes: 0, opens: 0 })
+  assert.equal(unridden.cross, false)
+  assert.equal(valveSilentCrossRow(clean, { closes: 0, opens: 0 }), null)
+})
+
+test("the silent cross's own fence (v0.976.3) - the cross never rides a lie", () => {
+  const vm = valveMarginJoin([mem(435), mem(457), mem(459), mem(455)])
+  // the junk halves price the honest empty (never forged)
+  assert.equal(valveSilentCross(null, { closes: 0, opens: 0 }).cross, false)
+  assert.equal(valveSilentCross(vm, null).cross, false)
+  assert.equal(valveSilentCross('vm', 'voice').cross, false)
+  // a count the face cannot own lies (more over-gauges than gauges)
+  assert.equal(valveSilentCross({ ...vm, overValveCells: 9, n: 4 }, { closes: 0, opens: 0 }).cross, false)
+  // a negative voice lies
+  assert.equal(valveSilentCross(vm, { closes: -1, opens: 0 }).cross, false)
+  // a vm without its own share lies
+  const noShare = { ...vm }
+  delete noShare.rideSharePct
+  assert.equal(valveSilentCross(noShare, { closes: 0, opens: 0 }).cross, false)
 })

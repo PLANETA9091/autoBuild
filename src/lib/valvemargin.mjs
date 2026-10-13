@@ -78,6 +78,21 @@
 // width is the anchor (run53 rss 367M, run92 375-383M: the healthy faces
 // ride 70-80M of margin under the live 450M arm), so 50M of headroom is
 // the thin line between the healthy band and the arm.
+//
+// THE SILENT CROSS'S OWN CELL (v0.976.3 - the record's own call): FACE
+// 303 = 38424668138's cross rode the graft's word by hand - the arm rode
+// 23 gauge(s) 18M past the floor, the dose 342 M-gauge(s), the share
+// 44.2%, and the valve never spoke (0 CLOSED, 0 OPEN): the first
+// RIDDEN-AND-SILENT face (five faces the silence priced only unridden
+// peaks - 462/453/416/465/412 - the sixth rode the arm and still no
+// voice). The word leaves the mining graft (a word is a cell, never a
+// graft - the v0.974.9 lesson's own mirror): the two halves compose the
+// cell here, the fence prices the lie (the cross never rides a vm the
+// floors disproved, a voice that spoke, or a count the face cannot own),
+// the row speaks byte-identical to the graft's own word (the record
+// keeps its voice), and the honest silence prices nothing (the speaking
+// faces and the unridden faces ride the null - the valve's spans stay
+// opendeaf's read, the lens only names the silence).
 import { MEM_HB_RE } from './memhb.mjs'
 import { ALLOC_VALVE_FLOOR_MB_DEFAULT } from './allocvalve.mjs'
 import { STORM_FLOOR_MB_DEFAULT } from './stormguard.mjs'
@@ -169,4 +184,51 @@ export function valveMarginJoin (lines, { valveFloorM = ALLOC_VALVE_FLOOR_MB_DEF
     verdict = `the valve floor holds - rss peak ${peak}M, ${marginValve}M under the ${valveFloorM}M valve floor`
   }
   return { n, peak, valveFloorM, stormFloorM, marginValve, marginStorm, overValve, overValveCells, overArmArea, rideSharePct, overArmRuns, overArmLongest, stepIndex, preArmPeak, thinM, verdict, shape, residency }
+}
+
+/**
+ * (v0.976.3) THE SILENT CROSS'S OWN CELL - the two halves compose the
+ * cross (the arm's own residency + the valve's own silence): the arm
+ * ridden (over-floor gauges the face owns) + the valve never spoke
+ * (0 CLOSED, 0 OPEN - opendeaf's census supplied by the caller, the
+ * spans stay opendeaf's read). Junk-safe: a vm the floors disproved, a
+ * voice that spoke, a negative voice, or a count the face cannot own
+ * prices the honest empty (the cross never lies).
+ *
+ * @param {{overValveCells?: number, n?: number, overArmArea?: number, rideSharePct?: number}} [vm] the valveMarginJoin fold
+ * @param {{closes?: number, opens?: number}} [voice] the valveVoiceCount census
+ * @returns {{cross: boolean, gauges: number, dose: number, sharePct: number}} the cross's own cells (the honest empty when the cross prices nothing)
+ */
+export function valveSilentCross (vm, voice) {
+  const empty = { cross: false, gauges: 0, dose: 0, sharePct: 0 }
+  if (!vm || typeof vm !== 'object' || Array.isArray(vm)) return empty
+  if (!voice || typeof voice !== 'object' || Array.isArray(voice)) return empty
+  // the fence: the arm's half must prove itself (a count the face owns,
+  // a dose the cells sum, a share the face prices)
+  if (!Number.isInteger(vm.n) || vm.n <= 0) return empty
+  if (!Number.isInteger(vm.overValveCells) || vm.overValveCells <= 0 || vm.overValveCells > vm.n) return empty
+  if (!Number.isInteger(vm.overArmArea) || vm.overArmArea < 0) return empty
+  if (!Number.isFinite(vm.rideSharePct) || vm.rideSharePct < 0 || vm.rideSharePct > 100) return empty
+  // the fence: the voice's half must be the silence (spoken counts and
+  // negative counts price the honest empty - the cross never invents)
+  if (!Number.isInteger(voice.closes) || !Number.isInteger(voice.opens)) return empty
+  if (voice.closes < 0 || voice.opens < 0) return empty
+  if (voice.closes > 0 || voice.opens > 0) return empty
+  return { cross: true, gauges: vm.overValveCells, dose: vm.overArmArea, sharePct: vm.rideSharePct }
+}
+
+/**
+ * (v0.976.3) THE SILENT CROSS'S OWN ROW - the record's own call, spoken
+ * byte-identical to the graft's own word (the record keeps its voice).
+ * The honest null when the cross prices nothing (the speaking faces, the
+ * unridden faces, the junk halves).
+ *
+ * @param {{overValveCells?: number, n?: number, overArmArea?: number, rideSharePct?: number}} [vm] the valveMarginJoin fold
+ * @param {{closes?: number, opens?: number}} [voice] the valveVoiceCount census
+ * @returns {string|null} the cross word, or null
+ */
+export function valveSilentCrossRow (vm, voice) {
+  const c = valveSilentCross(vm, voice)
+  if (!c.cross) return null
+  return `THE SILENT CROSS - the arm rode ${c.gauges} gauge(s) and the valve never spoke (0 CLOSED, 0 OPEN) - the rate anchor's slow-creep blind spot (the residency rode the lens, the valve rode nothing)`
 }
