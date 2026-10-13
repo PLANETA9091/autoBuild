@@ -52,6 +52,16 @@
 // owns the seat); both shapes in one fold = the two seats compete (the
 // split idiom's own third word).
 //
+// THE UNBORN LIVES' OWN WHEN WORD (v0.975.7): the unborn silent lives
+// (the fold's own start owns the birth) price the WHEN seat - the
+// death's own clock (the ts byte the death already rode). The unborn
+// share rode the field twice (all 3 unborn on the face-297-shaped
+// log, all 1 unborn on FACE 299) and the sight-span front's own fix
+// names its lane by WHEN: the deaths riding the face's own opening =
+// the spawn/walk-out lane's own byte, the deaths riding late = the
+// stream's own cadence. The unborn lives with no clock rode the
+// honest null - the WHEN fold prices what rode, never invents.
+//
 // Pure: reads, never mutates. Junk-safe: non-string rows judge
 // nothing; non-array/string input reads the empty book.
 
@@ -836,7 +846,7 @@ export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -862,6 +872,16 @@ export function o2TriggerEdgeBook (book) {
       if (d.blindKind === 'silent') {
         if (d.lifeHb === null) {
           out.silentUnborn++
+          // (v0.975.7) the unborn lives' own WHEN seat: the death's own
+          // clock prices when the stream's gap rode - the untimed
+          // unborn life prices nothing (the clock's own honesty)
+          if (d.ts !== null && d.ts !== undefined && Number.isInteger(d.ts)) {
+            const u = out.silentUnbornTs
+            u.count++
+            u.sum += d.ts
+            if (u.min === null || d.ts < u.min) u.min = d.ts
+            if (u.max === null || d.ts > u.max) u.max = d.ts
+          }
         } else if (Number.isInteger(d.lifeHb)) {
           const s = out.silentSpan
           s.born++
@@ -931,6 +951,14 @@ export function o2TriggerEdgeConsistent (e) {
   if (!Number.isInteger(s.born) || s.born < 0) return false
   if (!Number.isInteger(e.silentUnborn) || e.silentUnborn < 0) return false
   if (s.born + e.silentUnborn !== bs.silent) return false
+  // (v0.975.7) the unborn lives' own WHEN fold: the standard shape, the
+  // count never exceeding the unborn total (the image law's own walk)
+  const u = e.silentUnbornTs
+  if (!u || typeof u !== 'object' || Array.isArray(u)) return false
+  if (!Number.isInteger(u.count) || u.count < 0 || !Number.isInteger(u.sum) || u.sum < 0) return false
+  if (u.count > 0 && (u.min === null || u.max === null)) return false
+  if (u.count === 0 && (u.min !== null || u.max !== null || u.sum !== 0)) return false
+  if (u.count > e.silentUnborn) return false
   for (const f of [s.ts, s.hb, s.fp]) {
     if (!f || typeof f !== 'object' || Array.isArray(f)) return false
     if (!Number.isInteger(f.count) || f.count < 0 || !Number.isInteger(f.sum) || f.sum < 0) return false
@@ -999,6 +1027,14 @@ export function o2TriggerEdgeRow (e) {
               : 'the gap seat is split (the bot\'s own stream vs the whole stream\'s sleep) - the two seats compete')
           blindWord += ` (the silent gap's own seat split (v0.975.5): ${s.fp.count} priced life(s) - ${fpByte})`
         }
+      }
+      // (v0.975.7) the unborn lives' own WHEN word - the sight-span
+      // front's own fix names its lane by WHEN (the face's own opening
+      // = the spawn lane's byte, the late deaths = the stream's own
+      // cadence); the untimed unborn ride the honest silence
+      const u = e.silentUnbornTs
+      if (e.silentUnborn > 0 && u.count > 0) {
+        blindWord += ` (the unborn lives' own when (v0.975.7): ${u.count} of ${e.silentUnborn} priced the clock - the deaths rode ts ${u.min}..${u.max})`
       }
     }
   }

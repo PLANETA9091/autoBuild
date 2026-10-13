@@ -103,17 +103,17 @@ test('the edge book - the floor above the edge is the miss seat\'s own depth', (
 test('the edge fence - a lie prices nothing, the blind rides the honest word', () => {
   // the lie seat: a no-crossing death with a floor at-or-below the edge
   // (the crossing law's own contrapositive is absolute)
-  const lie = { deaths: 1, noCrossing: 1, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 1 }
+  const lie = { deaths: 1, noCrossing: 1, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 1 }
   assert.equal(o2TriggerEdgeConsistent(lie), false)
   assert.equal(o2TriggerEdgeRow(lie), null)
   // the seats must sum to the fold's own noCrossing
-  const split = { deaths: 2, noCrossing: 2, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 1, min: 3, max: 3, sum: 3 }, lies: 0 }
+  const split = { deaths: 2, noCrossing: 2, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 1, min: 3, max: 3, sum: 3 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(split), false)
   // the blind split's own image: the four skins sum to the blind total
-  const badSplit = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 1, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const badSplit = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 1, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(badSplit), false)
   // all-blind (reset skins): the row rides the sensor's own death word
-  const blind = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 2, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const blind = { deaths: 2, noCrossing: 2, blind: 2, blindSplit: { reset: 2, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(blind), true)
   const row = o2TriggerEdgeRow(blind)
   assert.ok(row.includes('no numeric floor above the edge (2 blind)'))
@@ -168,10 +168,36 @@ test("the silent life's own coverage seat (v0.975.4) - the unborn prices the fol
   assert.equal(e.blindSplit.silent, 1)
   assert.equal(e.silentSpan.born, 0)
   assert.equal(e.silentUnborn, 1)
+  assert.equal(e.silentUnbornTs.count, 1, 'the death\'s own clock rode - the WHEN seat prices')
+  assert.equal(e.silentUnbornTs.min, 120)
+  assert.equal(e.silentUnbornTs.max, 120)
+  assert.equal(e.silentUnbornTs.sum, 120)
   assert.equal(o2TriggerEdgeConsistent(e), true)
   const row = o2TriggerEdgeRow(e)
   assert.ok(row.includes("the stream's own gap owns the blind share - the sight-span front"))
   assert.ok(row.includes('all 1 unborn - the fold\'s own start owns the birth'))
+  assert.ok(row.includes("the unborn lives' own when (v0.975.7): 1 of 1 priced the clock - the deaths rode ts 120..120"))
+})
+
+test("the unborn lives' own when seat (v0.975.7) - the untimed unborn prices the honest silence", () => {
+  // the silent life with no heartbeat rode before the death: the ts
+  // byte never rode - the WHEN fold prices nothing (the clock's own
+  // honesty), the row's WHEN word stays silent
+  const lines = [
+    died('F5', 'drowned') // no heartbeat ever - the untimed unborn seat
+  ]
+  const b = o2TriggerBook(lines)
+  assert.equal(b.perDeath[0].blindKind, 'silent')
+  assert.equal(b.perDeath[0].ts, null, 'no heartbeat rode - the death stays untimed')
+  assert.equal(o2TriggerConsistent(b), true)
+  const e = o2TriggerEdgeBook(b)
+  assert.equal(e.silentUnborn, 1)
+  assert.equal(e.silentUnbornTs.count, 0)
+  assert.equal(e.silentUnbornTs.min, null)
+  assert.equal(o2TriggerEdgeConsistent(e), true)
+  const row = o2TriggerEdgeRow(e)
+  assert.ok(row.includes('all 1 unborn - the fold\'s own start owns the birth'))
+  assert.ok(!row.includes("the unborn lives' own when"), 'the WHEN word stays silent when no clock rode')
 })
 
 test("the silent life's own coverage seat (v0.975.4) - the born life prices the stream's own pulse", () => {
@@ -266,14 +292,14 @@ test("the silent gap's own seat split (v0.975.5) - the bot-local word and the co
 test("the silent life's own coverage fence (v0.975.4) - the image law and the shared seat", () => {
   // the image law: the born lives plus the unborn lives must be exactly
   // the silent skin's own total - the walk's own recount
-  const badImage = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 1, min: 5, max: 5, sum: 5 }, hb: { count: 1, min: 2, max: 2, sum: 2 }, fp: { count: 1, min: 1, max: 1, sum: 1 } }, silentUnborn: 1, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const badImage = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 1, min: 5, max: 5, sum: 5 }, hb: { count: 1, min: 2, max: 2, sum: 2 }, fp: { count: 1, min: 1, max: 1, sum: 1 } }, silentUnborn: 1, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(badImage), false, 'born 1 + unborn 1 is not the silent total 1 - the fold lies')
   // the sub-fold's own shape: a count without its bounds lies
-  const badBounds = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 1, min: null, max: null, sum: 5 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const badBounds = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 1, min: null, max: null, sum: 5 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(badBounds), false)
   // the legacy shape (no lifeHb byte at all) prices neither - the image
   // law breaks and the fence holds the row (never forged)
-  const legacySilent = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const legacySilent = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(legacySilent), false, 'born 0 + unborn 0 is not the silent total 1 - the legacy shape prices nothing')
   assert.equal(o2TriggerEdgeRow(legacySilent), null)
   // the perDeath shared seat: the span without its own pulse count lies
@@ -289,8 +315,12 @@ test("the silent life's own coverage fence (v0.975.4) - the image law and the sh
   assert.equal(o2TriggerConsistent(spanNoHb), false, 'the span without its own birth seat lies')
   const fpNoHb = { ...b, perDeath: [b.perDeath[0], { ...b.perDeath[1], lifeHb: null }] }
   assert.equal(o2TriggerConsistent(fpNoHb), false, 'the fleet pass count without its own birth seat lies')
-  const fpOverBorn = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 2, min: 0, max: 1, sum: 1 } }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const fpOverBorn = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 1, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 2, min: 0, max: 1, sum: 1 } }, silentUnborn: 0, silentUnbornTs: { count: 0, min: null, max: null, sum: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   assert.equal(o2TriggerEdgeConsistent(fpOverBorn), false, 'the fp fold pricing more lives than were born lies')
+  // the unborn WHEN fold's own image: the count never exceeding the
+  // unborn total (the image law's own walk)
+  const whenOverUnborn = { deaths: 1, noCrossing: 1, blind: 1, blindSplit: { reset: 0, unknown: 0, silent: 1, legacy: 0 }, silentSpan: { born: 0, ts: { count: 0, min: null, max: null, sum: 0 }, hb: { count: 0, min: null, max: null, sum: 0 }, fp: { count: 0, min: null, max: null, sum: 0 } }, silentUnborn: 0, silentUnbornTs: { count: 1, min: 120, max: 120, sum: 120 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  assert.equal(o2TriggerEdgeConsistent(whenOverUnborn), false, 'the WHEN fold pricing a life the unborn total does not own lies')
   // the unborn seat stays legal (the legacy book shape - never forged)
   const legacyBook = o2TriggerBook([hb(0, 80), died('F5', 'drowned')])
   const legacyRow = { ...legacyBook, perDeath: [{ bot: 'F5', ts: 80, crossed: false, window: null, lastO2: null, lastO2Gap: null, lastO2Span: null, lastPassHead: null }] }
