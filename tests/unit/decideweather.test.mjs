@@ -127,7 +127,8 @@ test('the zero shape: a famine-free face never invents a starve (and junk reads 
 
 test('WIRING: decompose rides the decide weather beside the decide clock', () => {
   const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { decideWeather } from '../../src/lib/decideweather.mjs'"), 'the import rides')
+  // (v0.974.26) the import band grew with the empty share's own seat
+  assert.ok(src.includes("import { decideWeather, decideWeatherEmptyRow } from '../../src/lib/decideweather.mjs'"), 'the import rides')
   assert.ok(src.includes('the decide weather: the A* starved at ents'), 'the print rides beside the decide clock')
 })
 
@@ -246,4 +247,78 @@ test("WIRING: decompose rides the hop lane's sky beside the decide weather", () 
   const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
   assert.ok(src.includes("the hop lane's sky:"), 'the print rides beside the decide weather')
   assert.ok(src.includes('under the drained sky'), 'the drained clause rides')
+})
+
+// (v0.974.26) THE EMPTY SKY'S OWN SHARE - the ents-0 class's own seat
+// (cols-blind, both lanes). The record's own hand-read priced the class
+// twice by hand ('3/35 hop starves rode ents 0', '4 of 26 - the rss
+// held, the climb cannot explain those') - the fold prices it now.
+import { decideWeatherEmptyRow } from '../../src/lib/decideweather.mjs'
+
+// the drained-sky face (the 30th's own shape re-priced): the 0/0 gauge
+// feeds BOTH classes (the drained's stricter 0/0 law AND the empty's
+// ents-0 law ride the same join)
+const EMPTY = [
+  'b] n=1 ts=100s rss=425M late=5ms mainLate=0ms',
+  '   mem: heap=100M/146M old=80M ext=120M ab=120M rss=425M cols=0 ents=0 evicted=0 path=1a/0q (max 6) stale=0',
+  'F4 fuel commons: chest walk failed after the nudge (Took to long to decide path to goal!)',
+  'F16 fuel commons: chest walk failed after the nudge (Took to long to decide path to goal!)',
+  'F3 [F3] hop: chest at [-114,71,409] d=8 zero: chest unreachable (Took to long to decide path to goal!)'
+]
+
+test("EMPTY SKY: the 0/0 gauge feeds both classes - the walk mass's share and the hop's", () => {
+  const r = decideWeather(EMPTY)
+  assert.equal(r.gauged, 2)
+  assert.deepEqual(r.empty, { n: 2, of: 2 })
+  assert.deepEqual(r.emptyRss, { min: 425, median: 425, max: 425 })
+  assert.equal(r.hop.gauged, 1)
+  assert.deepEqual(r.hop.empty, { n: 1, of: 1 })
+  assert.deepEqual(r.hop.emptyRss, { min: 425, median: 425, max: 425 })
+  // the drained's own law stays byte-identical (the 0/0 gauge speaks it)
+  assert.deepEqual(r.hop.drained, { n: 1, of: 1 })
+  assert.deepEqual(r.hop.drainedRss, { min: 425, median: 425, max: 425 })
+})
+
+test("EMPTY SKY: the class split - ents 0 with cols ALIVE speaks the empty, not the drained", () => {
+  const r = decideWeather([
+    'b] n=1 ts=100s rss=425M late=5ms mainLate=0ms',
+    '   mem: heap=100M/146M old=80M ext=120M ab=120M rss=425M cols=2109 ents=0 evicted=237 path=6a/5q (max 6) stale=0',
+    'F3 [F3] hop: chest at [-114,71,409] d=8 zero: chest unreachable (Took to long to decide path to goal!)'
+  ])
+  assert.deepEqual(r.hop.empty, { n: 1, of: 1 })
+  assert.equal(r.hop.drained, null, 'the drained law needs cols 0 too - the wider class speaks alone')
+  assert.equal(r.empty, null, 'the walk mass rode no empty join')
+})
+
+test('EMPTY SKY: the old shape byte-identical on a no-empty face (mini27)', () => {
+  const r = decideWeather(mini27)
+  assert.equal(r.empty, null)
+  assert.equal(r.emptyRss, null)
+  assert.equal(r.hop.empty, null)
+  assert.equal(r.hop.emptyRss, null)
+  assert.deepEqual(r.ents, { min: 2405, median: 2899, max: 2899 })
+  assert.deepEqual(r.crowded, { n: 5, of: 5 })
+})
+
+test('EMPTY SKY ROW: the verbatim row - both lanes speak in one row', () => {
+  const row = decideWeatherEmptyRow(decideWeather(EMPTY))
+  assert.equal(row, "the empty sky's own share (v0.974.26): the walk mass 2 of 2 (rss 425..425M, median 425M), the hop 1 of 1 (rss 425..425M, median 425M) rode ents 0 - the entity climb cannot explain the empty joins - THE EMPTY SKY'S OWN SHARE: the crowded share's own falsifier - the sky was empty at the starve, the pressure that stayed is the row's own suspect")
+})
+
+test('EMPTY SKY ROW: the silent faces read the honest silence', () => {
+  assert.equal(decideWeatherEmptyRow(decideWeather(mini27)), null, 'a no-empty face reads the silence (the grammar-growth law)')
+  assert.equal(decideWeatherEmptyRow(null), null)
+  assert.equal(decideWeatherEmptyRow(undefined), null)
+  assert.equal(decideWeatherEmptyRow(42), null)
+  assert.equal(decideWeatherEmptyRow([]), null)
+  assert.equal(decideWeatherEmptyRow({}), null)
+  assert.equal(decideWeatherEmptyRow({ empty: { n: 0, of: 5 }, emptyRss: null }), null, 'a zero n reads the silence')
+  assert.equal(decideWeatherEmptyRow({ empty: { n: 6, of: 5 }, emptyRss: { min: 1, median: 1, max: 1 } }), null, 'n over of reads the silence')
+  assert.equal(decideWeatherEmptyRow({ empty: { n: 1, of: 5 }, emptyRss: null }), null, 'a share without its rss band reads the silence')
+})
+
+test('WIRING: decompose rides the empty share row beside the decide weather', () => {
+  const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  assert.ok(src.includes("the empty sky's own share"), 'the row rides beside the decide weather')
+  assert.ok(src.includes('decideWeatherEmptyRow'), 'the import band grew')
 })

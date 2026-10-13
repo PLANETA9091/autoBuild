@@ -164,6 +164,22 @@ export function decideWeather (lines) {
     const half = faceEntsMax / 2
     crowded = { n: gaugedEnts.filter((e) => e >= half).length, of: gauged }
   }
+  // (v0.974.26) THE EMPTY SKY'S OWN SHARE - the walk mass's ents-0 class
+  // (cols-blind - the record's own byte: 'the ents-0 starves - the rss
+  // held, the climb cannot explain those'): the starves whose joined
+  // gauge read ents 0 ride the entity climb's own falsifier - the sky
+  // was EMPTY at the starve, the pressure that stayed is the suspect.
+  const walkEmptyRss = []
+  for (const t of failTs) {
+    if (t === null) continue
+    let g = -1
+    for (let i = 0; i < gaugeTs.length; i++) {
+      if (gaugeTs[i] <= t) g = i
+      else break
+    }
+    if (g === -1) continue
+    if (gaugeEnts[g] === 0) walkEmptyRss.push(gaugeRss[g])
+  }
   // (v0.695.0) the hop lane's own join - the same gauge walk, its own book
   const hopGaugedEnts = []
   const hopGaugedRss = []
@@ -189,6 +205,14 @@ export function decideWeather (lines) {
     const half = faceEntsMax / 2
     hopCrowded = { n: hopGaugedEnts.filter((e) => e >= half).length, of: hopGauged }
   }
+  // (v0.974.26) the hop lane's own empty share - the SAME ents-0 law
+  // (cols-blind), the drained field's own word stays byte-identical (the
+  // stricter ents-0-AND-cols-0 class keeps its 0/0 law beside the wider
+  // empty share - two words, one sky, never forked).
+  const hopEmptyRss = []
+  for (let i = 0; i < hopGaugedEnts.length; i++) {
+    if (hopGaugedEnts[i] === 0) hopEmptyRss.push(hopGaugedRss[i])
+  }
   const hopDrained = hopDrainedRss.length > 0
     ? { n: hopDrainedRss.length, of: hopGauged }
     : null
@@ -202,6 +226,8 @@ export function decideWeather (lines) {
     faceEntsMax,
     faceRssMax,
     crowded,
+    empty: walkEmptyRss.length > 0 ? { n: walkEmptyRss.length, of: gauged } : null,
+    emptyRss: tripleOf(walkEmptyRss),
     hop: {
       zeros: hopFailTs.length,
       gauged: hopGauged,
@@ -210,7 +236,38 @@ export function decideWeather (lines) {
       rss: tripleOf(hopGaugedRss),
       crowded: hopCrowded,
       drained: hopDrained,
-      drainedRss: tripleOf(hopDrainedRss)
+      drainedRss: tripleOf(hopDrainedRss),
+      empty: hopEmptyRss.length > 0 ? { n: hopEmptyRss.length, of: hopGauged } : null,
+      emptyRss: tripleOf(hopEmptyRss)
     }
   }
+}
+
+// (v0.974.26) THE EMPTY SKY'S OWN SHARE - the row. The clause rides ONLY
+// when a lane's empty class speaks (the grammar-growth law: a face with
+// no empty join reads byte-identical); both lanes may speak in one row
+// (the mass and the hop clause joined by their own comma). Junk never
+// prints a share (the honest silence's own row law).
+/**
+ * @param {Object|null} [dw] the decideWeather verdict
+ * @returns {string|null} the row (null when no empty class speaks, or on junk)
+ */
+export function decideWeatherEmptyRow (dw) {
+  if (!dw || typeof dw !== 'object' || Array.isArray(dw)) return null
+  const clause = (e, r) => {
+    if (!e || typeof e !== 'object' || Array.isArray(e)) return null
+    if (!Number.isFinite(e.n) || e.n <= 0 || !Number.isFinite(e.of) || e.of <= 0 || e.n > e.of) return null
+    if (!r || typeof r !== 'object' || Array.isArray(r)) return null
+    if (!Number.isFinite(r.min) || !Number.isFinite(r.median) || !Number.isFinite(r.max)) return null
+    return `${e.n} of ${e.of} (rss ${r.min}..${r.max}M, median ${r.median}M)`
+  }
+  const walk = clause(dw.empty, dw.emptyRss)
+  const hop = dw.hop && typeof dw.hop === 'object' && !Array.isArray(dw.hop)
+    ? clause(dw.hop.empty, dw.hop.emptyRss)
+    : null
+  const clauses = []
+  if (walk) clauses.push(`the walk mass ${walk}`)
+  if (hop) clauses.push(`the hop ${hop}`)
+  if (!clauses.length) return null
+  return `the empty sky's own share (v0.974.26): ${clauses.join(', ')} rode ents 0 - the entity climb cannot explain the empty joins - THE EMPTY SKY'S OWN SHARE: the crowded share's own falsifier - the sky was empty at the starve, the pressure that stayed is the row's own suspect`
 }
