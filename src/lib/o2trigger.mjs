@@ -32,6 +32,17 @@
 // The death resets the bot's own state (the v0.880.0 death-reset law's
 // own idiom: an arm never survives the death it joined).
 //
+// THE SILENT LIFE'S OWN COVERAGE SEAT (v0.975.4): the blind skin
+// 'silent' names the stream's own gap - no pass line rode the life at
+// all. The gap's own WIDTH is the sight-span front's own price: the
+// heartbeat clock is the stream's own pulse (the one-parser law's own
+// global tick), so a silent life that RODE a birth (the previous
+// death's own reset) prices two cells - the life's own span in
+// seconds (the birth's clock to the death's clock) and the life's own
+// heartbeat count (the pulses the stream sent while the pass line
+// slept). A life with no previous death rides the honest unborn - the
+// fold's own start owns the birth, the seat never invents one.
+//
 // Pure: reads, never mutates. Junk-safe: non-string rows judge
 // nothing; non-array/string input reads the empty book.
 
@@ -66,10 +77,11 @@ const emptyBook = () => ({
 export function o2TriggerBook (lines) {
   const book = emptyBook()
   if (!Array.isArray(lines)) return book
-  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2, lastBlindKind, sawPass }
+  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2, lastBlindKind, sawPass, birthTs, hbAtBirth }
   let lastTs = null
+  let hbTotal = 0 // the stream's own pulse count (the v0.975.4 seat's own clock)
   const seatFor = (bot) => {
-    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null, lastBlindKind: null, sawPass: false }
+    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null, lastBlindKind: null, sawPass: false, birthTs: null, hbAtBirth: null }
     return state[bot]
   }
   let li = -1 // the log's own adjacency: the fold's own line index (every element counts)
@@ -77,7 +89,7 @@ export function o2TriggerBook (lines) {
     li++
     if (typeof line !== 'string') continue
     const hm = line.match(HB_RE)
-    if (hm) { lastTs = Number(hm[1]); continue }
+    if (hm) { lastTs = Number(hm[1]); hbTotal++; continue }
     if (SENTRY_PASS_RE.test(line)) {
       const p = parseSentryPass(line)
       if (!p) continue
@@ -145,7 +157,15 @@ export function o2TriggerBook (lines) {
       // the cadence's own cell (the v0.895.0 byte): the last TWO
       // reads' own distance (the one-read seat rides the honest null)
       const lastO2Span = seat.lastO2At !== null && seat.prevO2At !== null ? seat.lastO2At - seat.prevO2At : null
-      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2, blindKind: seat.minO2 === null ? (seat.lastBlindKind || (seat.sawPass ? null : 'silent')) : null })
+      // the silent life's own coverage seat (the v0.975.4 byte): the
+      // life's own span rides the birth's own clock (the previous
+      // death's own ts) to this death's clock, and the life's own
+      // heartbeat count rides the stream's own pulse between the two
+      // lines - the unborn seat (no previous death) prices the honest
+      // nulls (the fold's own start owns the birth, never invented)
+      const lifeHb = seat.hbAtBirth === null ? null : hbTotal - seat.hbAtBirth
+      const lifeSpan = seat.birthTs !== null && lastTs !== null ? Math.max(0, lastTs - seat.birthTs) : null
+      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2, blindKind: seat.minO2 === null ? (seat.lastBlindKind || (seat.sawPass ? null : 'silent')) : null, lifeSpan, lifeHb })
       // the death reset's own law: the state never survives the death
       seat.crossingTs = null
       seat.hasCrossing = false
@@ -157,6 +177,11 @@ export function o2TriggerBook (lines) {
       seat.minO2 = null
       seat.lastBlindKind = null
       seat.sawPass = false
+      // the silent life's own birth re-pin (the v0.975.4 law): the new
+      // life's birth rides THIS death's own clock and THIS death's own
+      // pulse position - the life the reset opens prices from here
+      seat.birthTs = lastTs
+      seat.hbAtBirth = hbTotal
       continue
     }
   }
@@ -224,6 +249,18 @@ export function o2TriggerConsistent (book) {
     if (d.blindKind !== null && d.blindKind !== undefined) {
       if (d.blindKind !== 'reset' && d.blindKind !== 'unknown' && d.blindKind !== 'silent') return false
       if (d.minO2 !== null && d.minO2 !== undefined) return false
+    }
+    // the silent life's own coverage shape (the v0.975.4 byte): the
+    // heartbeat count is the fold's own non-negative integer, the span
+    // shares the birth's own seat - the span without its own pulse
+    // count lies (a span prices a birth, the birth counts the pulses);
+    // the undefined seat stays legal (the legacy book shape)
+    if (d.lifeHb !== null && d.lifeHb !== undefined) {
+      if (!Number.isInteger(d.lifeHb) || d.lifeHb < 0) return false
+    }
+    if (d.lifeSpan !== null && d.lifeSpan !== undefined) {
+      if (!Number.isInteger(d.lifeSpan) || d.lifeSpan < 0) return false
+      if (d.lifeHb === null || d.lifeHb === undefined) return false
     }
     deaths++
     if (!d.crossed) noCrossing++
@@ -773,7 +810,8 @@ export function o2TriggerKindRow (book) {
 export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold() }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -790,6 +828,30 @@ export function o2TriggerEdgeBook (book) {
       else if (d.blindKind === 'unknown') out.blindSplit.unknown++
       else if (d.blindKind === 'silent') out.blindSplit.silent++
       else out.blindSplit.legacy++
+      // (v0.975.4) the silent life's own coverage fold: the born silent
+      // lives price the stream's own pulse (the heartbeat count) and
+      // the life's own span (the clock); the unborn lives (no previous
+      // death - the fold's own start owns the birth) ride their own
+      // honest count; the legacy shape (no lifeHb byte at all) prices
+      // neither - the image law breaks and the fence holds the row
+      if (d.blindKind === 'silent') {
+        if (d.lifeHb === null) {
+          out.silentUnborn++
+        } else if (Number.isInteger(d.lifeHb)) {
+          const s = out.silentSpan
+          s.born++
+          s.hb.count++
+          s.hb.sum += d.lifeHb
+          if (s.hb.min === null || d.lifeHb < s.hb.min) s.hb.min = d.lifeHb
+          if (s.hb.max === null || d.lifeHb > s.hb.max) s.hb.max = d.lifeHb
+          if (d.lifeSpan !== null && d.lifeSpan !== undefined && Number.isInteger(d.lifeSpan)) {
+            s.ts.count++
+            s.ts.sum += d.lifeSpan
+            if (s.ts.min === null || d.lifeSpan < s.ts.min) s.ts.min = d.lifeSpan
+            if (s.ts.max === null || d.lifeSpan > s.ts.max) s.ts.max = d.lifeSpan
+          }
+        }
+      }
       continue
     }
     if (d.minO2 <= TRIGGER_O2_MAX) { out.lies++; continue }
@@ -826,6 +888,22 @@ export function o2TriggerEdgeConsistent (e) {
     if (!Number.isInteger(bs[k]) || bs[k] < 0) return false
   }
   if (bs.reset + bs.unknown + bs.silent + bs.legacy !== e.blind) return false
+  // (v0.975.4) the silent life's own coverage fold: the born lives plus
+  // the unborn lives must be exactly the silent skin's own total (the
+  // image law - the walk's own recount), each sub-fold rides the
+  // standard shape (the count, the bounds, the sum agree)
+  const s = e.silentSpan
+  if (!s || typeof s !== 'object' || Array.isArray(s)) return false
+  if (!Number.isInteger(s.born) || s.born < 0) return false
+  if (!Number.isInteger(e.silentUnborn) || e.silentUnborn < 0) return false
+  if (s.born + e.silentUnborn !== bs.silent) return false
+  for (const f of [s.ts, s.hb]) {
+    if (!f || typeof f !== 'object' || Array.isArray(f)) return false
+    if (!Number.isInteger(f.count) || f.count < 0 || !Number.isInteger(f.sum) || f.sum < 0) return false
+    if (f.count > 0 && (f.min === null || f.max === null)) return false
+    if (f.count === 0 && (f.min !== null || f.max !== null || f.sum !== 0)) return false
+  }
+  if (s.hb.count > s.born || s.ts.count > s.born) return false
   const c = e.catchable
   if (!c || typeof c !== 'object' || Array.isArray(c)) return false
   if (!Number.isInteger(c.count) || c.count < 0 || !Number.isInteger(c.sum) || c.sum < 0) return false
@@ -862,6 +940,22 @@ export function o2TriggerEdgeRow (e) {
     else if (bs.reset > 0 && bs.silent > 0) frontByte = "the blind share is split (the sensor's own death vs the stream's own gap) - the two fronts compete"
     else frontByte = 'the blind share judges nothing'
     blindWord = ` (${splitByte} - ${frontByte})`
+    // (v0.975.4) the silent lives' own coverage word: the gap's own
+    // width prices the sight-span front's own seat - the stream's own
+    // pulse (heartbeats) and the life's own span rode while the pass
+    // line slept; the unborn lives own the fold's own start
+    if (bs.silent > 0) {
+      const s = e.silentSpan
+      if (s.born === 0) {
+        blindWord += ` (the silent lives' own span (v0.975.4): all ${e.silentUnborn} unborn - the fold's own start owns the birth)`
+      } else {
+        const parts = []
+        if (s.ts.count > 0) parts.push(`the clock ${s.ts.min}..${s.ts.max}s avg ${(s.ts.sum / s.ts.count).toFixed(1)}`)
+        if (s.hb.count > 0) parts.push(`the pulse ${s.hb.min}..${s.hb.max} heartbeat(s) avg ${(s.hb.sum / s.hb.count).toFixed(1)}`)
+        if (parts.length === 0) parts.push('the births rode, the cells price nothing')
+        blindWord += ` (the silent lives' own span (v0.975.4): ${s.born} born life(s) - ${parts.join(', ')}` + (e.silentUnborn > 0 ? `; ${e.silentUnborn} unborn` : '') + ')'
+      }
+    }
   }
   if (c.count === 0) {
     return `the no-crossing deaths' own floor (v0.975.0): ${e.noCrossing} no-crossing death(s), no numeric floor above the edge (${e.blind} blind) - the sensor's own sight prices the edge nothing${blindWord}`
