@@ -881,6 +881,38 @@ test("the ladder's own sixth rung fence (v0.976.12) - the image, the full joint,
   assert.equal(o2TriggerEdgeConsistent(noSix), false)
 })
 
+test("the ladder's own beyond (v0.976.13) - the deeper remainder's own word and the honest silence", () => {
+  // a life rode deeper than the sixth rung's own edge - the beyond
+  // word names the seat the six rungs never own (the joint law's own
+  // remainder: rest.count minus the rungs two..six)
+  const lines1 = [
+    hb(0, 100),
+    pass('F3', 0, 16), died('F3', 'drowned'), // depth 6
+    pass('F4', 0, 17), died('F4', 'drowned') // depth 7
+  ]
+  const e1 = o2TriggerEdgeBook(o2TriggerBook(lines1))
+  assert.equal(e1.raiseYield.six, 1)
+  assert.equal(e1.raiseYield.rest.count, 2)
+  assert.equal(e1.raiseYield.rest.max, 7)
+  assert.equal(o2TriggerEdgeConsistent(e1), true)
+  const row1 = o2TriggerEdgeRow(e1)
+  assert.ok(row1.includes("the ladder's own beyond (v0.976.13): 1 of 2 rest life(s) rode beyond the sixth rung (depth 7+) - the remainder's own ceiling 7 - THE LADDER'S OWN NEXT SEAT WAITS"))
+  // the honest silence: every rest life rode depth <= 6 - the word
+  // prices nothing (the fold prices what rode, never invents)
+  const lines2 = [
+    hb(0, 100),
+    pass('F3', 0, 16), died('F3', 'drowned'), // depth 6
+    pass('F4', 0, 16), died('F4', 'drowned') // depth 6
+  ]
+  const e2 = o2TriggerEdgeBook(o2TriggerBook(lines2))
+  assert.equal(e2.raiseYield.six, 2)
+  assert.equal(e2.raiseYield.rest.max, 6)
+  assert.equal(o2TriggerEdgeConsistent(e2), true)
+  const row2 = o2TriggerEdgeRow(e2)
+  assert.ok(!row2.includes('beyond'))
+  assert.ok(row2.includes('sixth rung'))
+})
+
 test('the blind skin judges nothing - the crossing state untouched (the v0.975.2 observer law)', () => {
   // a reset skin between numeric reads never crosses, never clears,
   // never re-arms - the crossing law stands byte for byte

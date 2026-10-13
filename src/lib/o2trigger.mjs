@@ -1367,5 +1367,15 @@ export function o2TriggerEdgeRow (e) {
       ? ` (the ladder's own sixth rung (v0.976.12): the sixth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 6}) owns the whole remainder - ${r.six} of ${r.rest.count} rest life(s) rode depth 6 - THE LADDER'S OWN CLOSE: six rungs price every miss)`
       : ` (the ladder's own sixth rung (v0.976.12): the sixth rung (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 6}) owns ${r.six} of ${r.rest.count} rest life(s) rode depth 6 - ${r.rest.count - r.six} rest life(s) rode beside the rung (the remainder rode depth ${r.rest.min}..${r.rest.max}))`
   }
-  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})${secondWord}${thirdWord}${fourthWord}${fifthWord}${sixthWord}`
+  // (v0.976.13) the ladder's own beyond - the deeper remainder's own
+  // word (the depth-7+ lives' own seat the six rungs never own): the
+  // beyond-owning count is the joint law's own remainder - the lives
+  // the rungs two..six cannot name. The word rides only when a life
+  // rode deeper than the sixth rung's own edge - the fold prices what
+  // rode, never invents.
+  let beyondWord = ''
+  if (r.rest.count > 0 && r.rest.max >= 7) {
+    beyondWord = ` (the ladder's own beyond (v0.976.13): ${r.rest.count - (r.two + r.three + r.four + r.five + r.six)} of ${r.rest.count} rest life(s) rode beyond the sixth rung (depth 7+) - the remainder's own ceiling ${r.rest.max} - THE LADDER'S OWN NEXT SEAT WAITS)`
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})${secondWord}${thirdWord}${fourthWord}${fifthWord}${sixthWord}${beyondWord}`
 }
