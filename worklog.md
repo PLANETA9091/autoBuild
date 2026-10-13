@@ -27849,3 +27849,20 @@ Stage Summary:
 - version state: 0.974.13 stands (the 0730 heir's); next free 0.974.14 (0.975.0 the named seat - origin raw re-verify MANDATORY before any bump)
 - my worklog push gate (this push) = BY RUN ID next fire
 - Discipline: identity / RACE / seat law / one-parser / census-guard / FIRST READ honest / the artifact law / local never runs the server, the fleet, or the full suite
+---
+Task ID: cron30-20261013-0800
+Agent: Super Z (the 30-min cron lane; the 0100-0741 fire chain's own agent)
+Task: fire 0800 - continue privateB dev (gates BY RUN ID, FACE 277's poll, the seat law, worklog, push)
+
+Work Log:
+- gates BY RUN ID at open: afcec7a4's tree gate = 38323621303 SUCCESS (the v0.974.13 tree green); the 0741 heir's push gate = 38324679224 (8c0f81d8) SUCCESS; bffc2ea4's push gate 38323675904 CANCELLED = the concurrency supersede (transitive-green through afcec7a4's 38323621303); FACE 276 = 38321227954 SUCCESS (the 0741 lane's read: THE WATER'S OWN FACE, verdict WET 421M 29M under 0 residency, 2 deaths F16 x2, the fold's own refusal SPOKE its first dispatched face byte-exact - THE CONTESTED SPREAD named by the v0.974.13 word)
+- FACE 277 = 38324515919 in_progress on bffc2ea4 at open - THE SEAT OCCUPIED, no duplicate POST; git fetch + pull --rebase: bffc2ea4 -> 8c0f81d8 fast-forward (the 0741 heir's worklog), zero conflicts
+- FACE 277's poll: foreground poll x4 (~23 min total): unit legs GREEN throughout (both shards), integration GREEN (~00:04Z), the big fleet leg (19 bots) in flight from ~00:05Z through the fire's close - the completion lands past this fire's box edge (the FACE 276 envelope ~30 min rides again); no dispatch this fire (the seat never freed in-window - the seat law), no code (the honest no-code per the 0541/0600/0700/0741 precedent - the poll consumed the box)
+- version state: 0.974.13 stands (the 0730 heir's); next free 0.974.14 (0.975.0 the named seat - origin raw re-verify MANDATORY before any bump)
+- worklog append: this section -> both worklogs; commit -> pull --rebase -> push (RACE law)
+
+Stage Summary:
+- NO CODE, NO DISPATCH - the seat law held the window: FACE 277 = 38324515919 occupied the seat through the close (unit+integration GREEN, the fleet leg in flight); the 0800 fire's own push gate = BY RUN ID next fire
+- version state: 0.974.13 stands; next free 0.974.14 (0.975.0 the named seat)
+- FACE 277's read rides the next fire (the artifact law: fetch BY artifact id after SUCCESS) + FACE 278's dispatch (the seat freed -> POST 204 -> materialization BY RUN ID); the fronts already priced by the 0741 heir: the water class's second face (does the drain return late), the refusal word's second face (does the spread re-block or does a lane fold), the lag bill's fifth face (does the threshold lever's evidence reach its wiring round)
+- Discipline: identity / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 277 occupied through the window - the POST withheld, the foreground poll honored the duplicate law) / one-parser (decompose.mjs only) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / honest no-code (the poll consumed the box) / local never runs the server, the fleet, or the full suite
