@@ -57,6 +57,7 @@ export const SAVED_VERDICT = 'THE SAVED FACE'
 // a fork. The ANCHORED shape leads: a prose sample quoting the arena fails
 // the anchor and never counts.
 import { KILL_RE, KILL_DRY_SHORE_RE } from './houndcensus.mjs'
+import { TRIGGER_O2_MAX } from './o2trigger.mjs' // (v0.976.18) the o2 census's own band edge - the thin-air law's own byte, never forked
 
 /**
  * (v0.731.0) The release toll's own bar - the released kills the verdict's
@@ -696,4 +697,66 @@ export function rescueUnclosedRiderRow (f) {
   const pairOwns = leaderOwns + runnerOwns
   const share = (pairOwns / f.count * 100).toFixed(1)
   return `the unclosed starts' own riders (v0.976.15): no solo bot owns the book - ${leader} x${leaderOwns} + ${runner} x${runnerOwns} own ${pairOwns} of ${f.count} unclosed start(s) (${share}%) - THE WALK'S OWN SPREAD: the tie law held, the bots are the shape - the walk's own mix prices the reconnect the solo law refused to seat`
+}
+
+// (v0.976.18) THE UNCLOSED STARTS' OWN THIN AIR - the band's own share the
+// oxygen spread's max hides (the FACE 312 = 38466304299 read priced it by
+// hand: the spread rode 1..15 - the max names the full lungs, the min's
+// own seat stayed the reader's hand-price: F15 oxygen 1 - the walk never
+// answered while the lungs were already spent). The fold reads the same
+// oxygen literal out of each unclosed line the ledger already kept (zero
+// re-classification - the one classifier, the v0.976.14 fold's own walk)
+// and counts the airs that fell inside the o2 census's own band edge
+// (o2 <= TRIGGER_O2_MAX - the census's own cell, never forked). The fence:
+// the fold's own image (the thin never outruns the priced, the thin airs
+// ride the band's own edge 1..10, a thinless fold prices the honest nulls,
+// a thinless priced fold lies). Pure: reads, never mutates. Junk-safe:
+// non-array input reads null, a non-string line lies nothing (null).
+export function rescueUnclosedThinAir (unclosedLines) {
+  if (!Array.isArray(unclosedLines)) return null
+  let priced = 0
+  let thin = 0
+  let thinMin = null
+  let thinMax = null
+  for (const l of unclosedLines) {
+    if (typeof l !== 'string') return null
+    const m = l.match(UNCLOSED_OXYGEN_RE)
+    if (m) {
+      const air = Number(m[1])
+      priced++
+      if (air <= TRIGGER_O2_MAX) {
+        thin++
+        thinMin = thinMin === null ? air : Math.min(thinMin, air)
+        thinMax = thinMax === null ? air : Math.max(thinMax, air)
+      }
+    }
+  }
+  return { priced, thin, thinMin, thinMax, unpriced: unclosedLines.length - priced }
+}
+
+export function rescueUnclosedThinAirConsistent (f) {
+  if (!f || typeof f !== 'object' || Array.isArray(f)) return false
+  if (!Number.isInteger(f.priced) || f.priced < 0) return false
+  if (!Number.isInteger(f.thin) || f.thin < 0) return false
+  if (!Number.isInteger(f.unpriced) || f.unpriced < 0) return false
+  if (f.thin > f.priced) return false
+  if (f.thin === 0) {
+    if (f.thinMin !== null || f.thinMax !== null) return false
+    return true
+  }
+  if (f.thinMin === null || f.thinMax === null) return false
+  if (!Number.isInteger(f.thinMin) || f.thinMin < 1 || f.thinMin > TRIGGER_O2_MAX) return false
+  if (!Number.isInteger(f.thinMax) || f.thinMax < f.thinMin || f.thinMax > TRIGGER_O2_MAX) return false
+  return true
+}
+
+// (v0.976.18) the thin air's word - the band's own share's row: the count
+// inside the census's own edge names the near-drown the spread's own max
+// hides. A thinless fold prices the honest silence (the row's own law -
+// the band never rode, the word prices nothing). Junk never prints a word.
+export function rescueUnclosedThinAirRow (f) {
+  if (!f || typeof f !== 'object' || Array.isArray(f)) return null
+  if (!(f.thin > 0)) return null
+  const unpricedWord = f.unpriced > 0 ? ` - ${f.unpriced} start line(s) rode the air unnamed` : ''
+  return `the unclosed starts' own thin air (v0.976.18): ${f.thin} unclosed start(s) rode air inside the o2 band's own edge <=${TRIGGER_O2_MAX} (oxygen ${f.thinMin}..${f.thinMax}) - the walk's own lateness priced the near-drown the spread's own max hides${unpricedWord}`
 }
