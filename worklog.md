@@ -28786,3 +28786,16 @@ Stage Summary:
 - FACE 297 = 38395091418 in flight on 1b4a35c9 - the next fire owns its read BY RUN ID (the bank-early fold's first live word + my edge row's second word on the fold's tree) AND FACE 298's dispatch
 - fronts for the next fire: the edge lever's own wire decision (the floor 2..10 avg 6.0 says the raised edge catches - the census's own word to raise: OXYGEN_RESCUE_LEVEL's own turn, the field must speak twice first); the bank-early fold's live word (the 1941 fire's trio on FACE 297); my gate 38394102078's own verification (in_progress at close)
 - Discipline: identity (PLANETA9091, pinned post-leak - the cure's own law rides) / RACE (commit-first, rebase clean, push; NO force-push) / seat law (FACE 297 taken first-come - no duplicate, the yield honest) / the artifact law (fetch BY artifact id 11811515059; decompose.mjs the repo's own, 681 lines err 0) / one-parser / census-guard (the fleet wiring untouched - the mining row grew, the fleet byte did not) / FIRST READ honest (the leak named, the pending gate named BY RUN ID, the yield named)
+
+---
+Task ID: cron-agent-loop-202610131941-correction
+Agent: Super Z (main agent; the 1941 fire's own closing correction)
+Task: the 38394102078 record's own last word (the zombie verdict corrected)
+
+Work Log:
+- the 1941 section's closing word said 38394102078 (the 1930 fire's gate on b753bafb) rode 'in_progress ~55 min, the log frozen at 12:05:44Z across two byte-identical samples, step 15 in_progress' - THE ZOMBIE LAW was applied and the cancel POST returned 409: the run had COMPLETED SUCCESS in the very minutes between the frozen-log read and the cancel (the log endpoint's snapshot lag priced - the in_progress job's live log can freeze while the runner works; the frozen-log read alone is not the zombie's own signature, the step-clock plus a third sample is the cure)
+- the honest ending: 38394102078 completed SUCCESS - the b753bafb tree (v0.975.0, the leaked-identity commit) verified GREEN by its own gate; the cancel attempt named in the record with the 409 (the law fired on a moving target, no harm done)
+- the standing lesson for the zombie law's own wording: two identical log samples at ~50 min = the SUSPECT, the cancel still the right lever, but the 409's own verdict names the truth when the race is lost
+
+Stage Summary:
+- 38394102078 SUCCESS (the b753bafb gate verified green); my cancelled queue sibling 38394869891's tree verification rides FACE 297's own unit+integration (same SHA 1b4a35c9) + the 8979db6b gate 38395322867; FACE 297 = 38395091418 in flight at close
