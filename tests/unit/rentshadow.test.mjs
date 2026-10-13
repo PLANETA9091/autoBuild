@@ -216,3 +216,51 @@ import { rentShadowEvent, rentShadowCensus, rentShadowRow } from '../../src/lib/
 }
 
 console.log('rentshadow: all pins green')
+
+// --- (v0.974.22) THE SHADOW'S OWN FEEDER - which machine's proof the rent rode ---
+
+// --- hold-fed: the walk-intent hold's flight window owns the shadow ---
+{
+  const c = rentShadowCensus([
+    'F10 [F10] walk-intent: chest at [-143,81,411] held for the fleet (2 live, ttl 90s)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)'
+  ])
+  assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowByWrite, 0); assert.equal(c.totals.shadowByHold, 1)
+  const row = rentShadowRow(c)
+  assert.match(row, /the feeder: write-fed 0 \/ hold-fed 1/)
+}
+
+// --- write-fed: the byte-identical law (no clause rides) ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)'
+  ])
+  assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowByWrite, 1); assert.equal(c.totals.shadowByHold, 0)
+  const row = rentShadowRow(c)
+  assert.ok(!row.includes(' - the feeder:'), 'a pure write-fed face reads byte-identical: no feeder clause')
+}
+
+// --- mixed: both feeders' own clause, the sums' own law ---
+{
+  const c = rentShadowCensus([
+    'F10 [F10] walk-intent: chest at [-143,81,411] held for the fleet (2 live, ttl 90s)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)',
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F7 [F7] hop: chest at [-143,81,411] d=17 zero: chest unreachable (Took to long to decide path to goal!)'
+  ])
+  assert.equal(c.totals.shadow, 2); assert.equal(c.totals.shadowByWrite, 1); assert.equal(c.totals.shadowByHold, 1)
+  assert.equal(c.totals.shadowByWrite + c.totals.shadowByHold, c.totals.shadow)
+  assert.match(rentShadowRow(c), /the feeder: write-fed 1 \/ hold-fed 1/)
+}
+
+// --- the freshest proof's own law: a write after a hold re-feeds the seat ---
+{
+  const c = rentShadowCensus([
+    'F10 [F10] walk-intent: chest at [-143,81,411] held for the fleet (2 live, ttl 90s)',
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)'
+  ])
+  assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowByWrite, 1); assert.equal(c.totals.shadowByHold, 0)
+  assert.ok(!rentShadowRow(c).includes(' - the feeder:'), 'the write overwrote the hold: the face reads write-fed')
+}

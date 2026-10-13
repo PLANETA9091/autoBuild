@@ -93,16 +93,20 @@ export function rentShadowEvent (line) {
  *   cells         - per cell: { writes, holds, skips, rents, timeoutWrites,
  *                   lastSkipAgeS, classes: {blind, shadow, expired} }
  *   totals        - { writes, holds, skips, rents, blind, shadow, expired,
- *                   shadowLive, shadowBlind } (the v0.974.21 split: the
- *                   shadow class's own two seats - shadowLive + shadowBlind
- *                   always sum to shadow)
+ *                   shadowLive, shadowBlind, shadowByWrite, shadowByHold }
+ *                   (the v0.974.21 split: the shadow class's own two seats -
+ *                   shadowLive + shadowBlind always sum to shadow; the
+ *                   v0.974.22 feeder split: WHICH machine's proof the shadow
+ *                   rode - shadowByWrite + shadowByHold always sum to shadow
+ *                   too - the no-path seat's write vs the walk-intent seat's
+ *                   hold name the consult hole's own feeder)
  *   verdict       - the owner's own word: 'blind' | 'shadow' | 'expired' |
  *                   'tie' | 'silent' (no rents at all)
  *   wireQuestion  - the priced read for the next fire's own seat
  */
 export function rentShadowCensus (lines) {
   const cells = new Map()
-  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0, shadowLive: 0, shadowBlind: 0 }
+  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0, shadowLive: 0, shadowBlind: 0, shadowByWrite: 0, shadowByHold: 0 }
   if (!Array.isArray(lines)) {
     return { cells, totals, verdict: 'silent', wireQuestion: 'no lines - nothing priced' }
   }
@@ -110,7 +114,7 @@ export function rentShadowCensus (lines) {
     const ev = rentShadowEvent(line)
     if (!ev) continue
     if (!cells.has(ev.cell)) {
-      cells.set(ev.cell, { writes: 0, holds: 0, skips: 0, rents: 0, timeoutWrites: 0, lastSkipAgeS: null, classes: { blind: 0, shadow: 0, expired: 0 }, lastWriteSeen: false, liveProven: false })
+      cells.set(ev.cell, { writes: 0, holds: 0, skips: 0, rents: 0, timeoutWrites: 0, lastSkipAgeS: null, classes: { blind: 0, shadow: 0, expired: 0 }, lastWriteSeen: false, liveProven: false, proofKind: null })
     }
     const c = cells.get(ev.cell)
     if (ev.kind === 'write') {
@@ -118,10 +122,12 @@ export function rentShadowCensus (lines) {
       if (ev.timeout) c.timeoutWrites++
       c.lastWriteSeen = true
       c.liveProven = true // the write itself is the liveness's own t=0
+      c.proofKind = 'write' // (v0.974.22) the feeder's own seat - the freshest proof names itself
     } else if (ev.kind === 'hold') {
       c.holds++
       c.lastWriteSeen = true
       c.liveProven = true
+      c.proofKind = 'hold' // (v0.974.22) the intent board's proof joins the same seat
     } else if (ev.kind === 'skip') {
       c.skips++
       if (c.lastWriteSeen) c.lastSkipAgeS = ev.ageS // the age byte's own proof
@@ -137,6 +143,12 @@ export function rentShadowCensus (lines) {
         // the concurrency seam) vs silent even then (rode-blind, the copy hole)
         if (ev.ledgerAgeS != null) totals.shadowLive++
         else totals.shadowBlind++
+        // (v0.974.22) the feeder's own split: WHICH machine's proof the rent
+        // rode - the no-path write's t=0 or the walk-intent hold's flight
+        // window (the freshest proof wins: a write after a hold re-feeds the
+        // seat); junk-proof falls back to the write side (the ledger's own
+        // majority machine) - never throws
+        totals[c.proofKind === 'hold' ? 'shadowByHold' : 'shadowByWrite']++
         c.liveProven = false // one shadow rent consumes the proof (the next rent needs its own proof)
       } else {
         cls = 'expired' // the window closed (or no skip ever proved it) - the ttl's own brevity candidate
@@ -173,5 +185,11 @@ export function rentShadowRow (c) {
   const split = t.shadow > 0 && t.shadowLive > 0
     ? ` - the split: rode-live ${t.shadowLive} / rode-blind ${t.shadowBlind}`
     : ''
-  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%)${split} - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
+  // (v0.974.22) the feeder's own clause - rides ONLY when a hold fed a shadow
+  // (a pure write-fed face reads byte-identical: the grammar-growth law, the
+  // 288-shaped pins' own guarantee)
+  const feeder = t.shadowByHold > 0
+    ? ` - the feeder: write-fed ${t.shadowByWrite} / hold-fed ${t.shadowByHold}`
+    : ''
+  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%)${split}${feeder} - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
 }
