@@ -394,6 +394,78 @@ export function bankEarlyFoldRow (f) {
   return `the bank-early lever's own fold (v0.974.32): three own rows named the same closing churn - the door's clock LATE (${door.late} of ${door.n}), the clock clips LATE (${clip.late} of ${clip.n}), the pocket's peak LATE (${(peakFrac * 100).toFixed(1)}% in) - arm the bank early (the evidence's own trio, three rows one lever)`
 }
 
+// (v0.975.3) THE FOLD'S OWN NEAR-MISS - the silence's own word (the
+// v0.974.13 refusal-row law applied to the trio's own fold). FACE 296
+// and FACE 297 both rode the same shape: two of the trio's three legs
+// rode LATE and the third refused - and WHICH leg missed rotated (the
+// door rode MID on 296, the pocket's peak rode MID on 297) - the fold's
+// own silence twice, the near-miss the reads kept deriving by hand.
+// The word fires ONLY when all three legs stand (any junk leg reads
+// the trio never assembled - the honest silence keeps its silence) and
+// exactly TWO ride LATE: the all-three face is the fold's own word
+// (never double-spoken - the fold owns that face), the 0/1-LATE faces
+// own no near-miss (a trio that never leaned has no miss to name).
+// The row names each leg's own byte and the miss's own leg - the
+// rotation becomes a field byte. One-parser law: the near-miss reads
+// the hoisted verdicts' own bytes - zero re-parsing, zero new regexes.
+// Mining surface only: zero fleet wiring, zero new log lines - CENSUS
+// GUARD.
+export function bankEarlyNearMiss (doorV, clipV, peak) {
+  if (!doorV || typeof doorV !== 'object') return null
+  if (!clipV || typeof clipV !== 'object') return null
+  if (!peak || typeof peak !== 'object') return null
+  const dv = doorV.verdict, cv = clipV.verdict, pv = peak.phase
+  const ok = (v) => v === 'late' || v === 'mid' || v === 'early'
+  if (!ok(dv) || !ok(cv) || !ok(pv)) return null
+  const lateCount = (dv === 'late' ? 1 : 0) + (cv === 'late' ? 1 : 0) + (pv === 'late' ? 1 : 0)
+  if (lateCount !== 2) return null
+  const dn = doorV.n, cn = clipV.n
+  const dp = doorV.byPhase, cp = clipV.byPhase
+  if (!Number.isFinite(dn) || dn <= 0 || !dp || typeof dp !== 'object') return null
+  if (!Number.isFinite(cn) || cn <= 0 || !cp || typeof cp !== 'object') return null
+  if (!Number.isFinite(dp[dv]) || dp[dv] <= 0) return null
+  if (!Number.isFinite(cp[cv]) || cp[cv] <= 0) return null
+  if (!Number.isFinite(peak.frac) || peak.frac < 0 || peak.frac > 1) return null
+  const miss = dv !== 'late' ? 'door' : (cv !== 'late' ? 'clip' : 'peak')
+  return {
+    miss,
+    door: { verdict: dv, x: dp[dv], n: dn },
+    clip: { verdict: cv, x: cp[cv], n: cn },
+    peak: { verdict: pv, frac: peak.frac }
+  }
+}
+
+// (v0.975.3) the near-miss's own row - the miss's own leg named in its
+// own seat (the fold row's own order: door, clip, peak; the LATE legs'
+// own wording rides the fold row's own bytes). Junk never prints a
+// near-miss (the honest silence's own row law).
+export function bankEarlyNearMissRow (f) {
+  if (!f || typeof f !== 'object') return null
+  const { miss, door, clip, peak } = f
+  if (miss !== 'door' && miss !== 'clip' && miss !== 'peak') return null
+  if (!door || typeof door !== 'object' || !clip || typeof clip !== 'object' || !peak || typeof peak !== 'object') return null
+  const ok = (v) => v === 'late' || v === 'mid' || v === 'early'
+  if (!ok(door.verdict) || !ok(clip.verdict) || !ok(peak.verdict)) return null
+  if (!Number.isFinite(door.x) || door.x <= 0 || !Number.isFinite(door.n) || door.n <= 0) return null
+  if (!Number.isFinite(clip.x) || clip.x <= 0 || !Number.isFinite(clip.n) || clip.n <= 0) return null
+  if (!Number.isFinite(peak.frac) || peak.frac < 0 || peak.frac > 1) return null
+  const lateLegs = (door.verdict === 'late' ? 1 : 0) + (clip.verdict === 'late' ? 1 : 0) + (peak.verdict === 'late' ? 1 : 0)
+  if (lateLegs !== 2) return null
+  if (miss === 'door' && door.verdict === 'late') return null
+  if (miss === 'clip' && clip.verdict === 'late') return null
+  if (miss === 'peak' && peak.verdict === 'late') return null
+  const doorSeg = miss === 'door'
+    ? `the door's clock's own ${door.verdict.toUpperCase()} (${door.x} of ${door.n}) the miss's own leg`
+    : `the door's clock LATE (${door.x} of ${door.n})`
+  const clipSeg = miss === 'clip'
+    ? `the clock clips' own ${clip.verdict.toUpperCase()} (${clip.x} of ${clip.n}) the miss's own leg`
+    : `the clock clips LATE (${clip.x} of ${clip.n})`
+  const peakSeg = miss === 'peak'
+    ? `the pocket's peak's own ${peak.verdict.toUpperCase()} (${(peak.frac * 100).toFixed(1)}% in) the miss's own leg`
+    : `the pocket's peak LATE (${(peak.frac * 100).toFixed(1)}% in)`
+  return `the bank-early fold's own near-miss (v0.975.3): two of the trio's three own legs rode LATE - ${doorSeg}, ${clipSeg}, ${peakSeg} - the fold's silence is the law's own word (two of three never joined)`
+}
+
 /**
  * doorstepStormCensus(d) - the three lanes' doors folded into one toll.
  *

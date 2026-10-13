@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow } from '../../src/lib/bankdocket.mjs'
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow, bankEarlyNearMiss, bankEarlyNearMissRow } from '../../src/lib/bankdocket.mjs'
 
 // Face 32's live shapes verbatim (run 37457243091, the silent-bank face:
 // 143 bank-ish lines, 0u banked) - the docket's two legs ride the bank
@@ -405,8 +405,9 @@ test('v0.974.32 the fold row speaks byte-exact and junk never prints', () => {
 test('v0.974.32 the fold rides the decompose mine (WIRING - the hoist law)', async () => {
   const { readFileSync } = await import('node:fs')
   const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  // the import rides the bankdocket band
-  assert.equal(src.includes('bankEarlyFold, bankEarlyFoldRow } from \'../../src/lib/bankdocket.mjs\''), true)
+  // the import rides the bankdocket band (the v0.975.3 near-miss joined -
+  // the whole band re-pinned byte-exact, the missed-pin's own cure)
+  assert.equal(src.includes('bankEarlyFold, bankEarlyFoldRow, bankEarlyNearMiss, bankEarlyNearMissRow } from \'../../src/lib/bankdocket.mjs\''), true)
   // the three hoists ride their own call sites (zero re-parsing - the
   // verdicts already computed, the fold reads the same bytes)
   const bd = src.indexOf('const bdcv = bankDoorClockVerdict(bd)')
@@ -414,7 +415,100 @@ test('v0.974.32 the fold rides the decompose mine (WIRING - the hoist law)', asy
   const cccv = src.indexOf('const cccv = clockClipClockVerdict(sl)')
   const fold = src.indexOf('const bef = bankEarlyFold(beDoor, beClip, bePeak)')
   assert.ok(bd > 0 && pc > bd && cccv > pc && fold > cccv) // one order - the fold prints after its last leg
+  // the near-miss rides the fold's own else-branch (the silence's own
+  // word never competes with the fold's own face)
+  const benm = src.indexOf('const benm = bankEarlyNearMiss(beDoor, beClip, bePeak)')
+  assert.ok(benm > fold)
+  assert.equal(src.includes('if (bef) console.log(`  ${bankEarlyFoldRow(bef)}`)'), true)
+  assert.equal(src.includes('if (benm) console.log(`  ${bankEarlyNearMissRow(benm)}`)'), true)
   // the prose lives in the lib, never duplicated in the mine
   assert.equal(src.includes("the bank-early lever's own fold"), false)
   assert.equal(src.includes('arm the bank early'), false)
+  assert.equal(src.includes("the bank-early fold's own near-miss"), false)
+  assert.equal(src.includes("the miss's own leg"), false)
+})
+
+// (v0.975.3) THE FOLD'S OWN NEAR-MISS - the silence's own word (the
+// v0.974.13 refusal-row law applied to the trio's own fold). FACE 296
+// and FACE 297 both rode two-of-three with the miss's own leg rotating
+// (the door's MID, then the peak's MID) - the word names the shape.
+test('v0.975.3 the near-miss fires on exactly two LATE and names the miss', () => {
+  const lateDoor = { verdict: 'late', n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 }, anchors: 38, wide: 0, thirdS: 253.7 }
+  const lateClip = { verdict: 'late', n: 3, byPhase: { early: 0, mid: 0, late: 3, unplaced: 0 }, anchors: 40, wide: 0, thirdS: 267 }
+  const latePeak = { peak: 2700, peakT: 0, firstT: 537, lastT: 0, span: 537, elapsed: 537, frac: 1, phase: 'late', drop: 1400 }
+  // FACE 297's own shape: the peak rode MID - the miss's own leg named
+  const f = bankEarlyNearMiss(lateDoor, lateClip, { ...latePeak, phase: 'mid', frac: 0.646 })
+  assert.ok(f)
+  assert.deepEqual(f, { miss: 'peak', door: { verdict: 'late', x: 5, n: 5 }, clip: { verdict: 'late', x: 3, n: 3 }, peak: { verdict: 'mid', frac: 0.646 } })
+  // FACE 296's own shape: the door rode MID - the rotation named (the
+  // mid door's own counts ride the miss leg's own cells)
+  const midDoor = { verdict: 'mid', n: 114, byPhase: { early: 0, mid: 72, late: 42, unplaced: 0 }, anchors: 179, wide: 0, thirdS: 253.7 }
+  const g = bankEarlyNearMiss(midDoor, lateClip, latePeak)
+  assert.ok(g)
+  assert.deepEqual(g, { miss: 'door', door: { verdict: 'mid', x: 72, n: 114 }, clip: { verdict: 'late', x: 3, n: 3 }, peak: { verdict: 'late', frac: 1 } })
+  // the clip's own miss shape
+  const midClip = { verdict: 'mid', n: 3, byPhase: { early: 0, mid: 2, late: 1, unplaced: 0 }, anchors: 40, wide: 0, thirdS: 267 }
+  const h = bankEarlyNearMiss(lateDoor, midClip, latePeak)
+  assert.ok(h)
+  assert.deepEqual(h, { miss: 'clip', door: { verdict: 'late', x: 5, n: 5 }, clip: { verdict: 'mid', x: 2, n: 3 }, peak: { verdict: 'late', frac: 1 } })
+  // the all-three face is the FOLD's own word - the near-miss never
+  // double-speaks it
+  assert.equal(bankEarlyNearMiss(lateDoor, lateClip, latePeak), null)
+  // 0/1 LATE own no near-miss (a trio that never leaned)
+  assert.equal(bankEarlyNearMiss(midDoor, midClip, { ...latePeak, phase: 'mid' }), null)
+  assert.equal(bankEarlyNearMiss(midDoor, lateClip, { ...latePeak, phase: 'mid' }), null)
+  // junk legs read the trio never assembled (any single junk leg silences)
+  assert.equal(bankEarlyNearMiss(null, lateClip, latePeak), null)
+  assert.equal(bankEarlyNearMiss(lateDoor, null, latePeak), null)
+  assert.equal(bankEarlyNearMiss(lateDoor, lateClip, null), null)
+  assert.equal(bankEarlyNearMiss(42, lateClip, latePeak), null)
+  assert.equal(bankEarlyNearMiss({ verdict: 'wow', n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 } }, lateClip, latePeak), null)
+  assert.equal(bankEarlyNearMiss(lateDoor, lateClip, { ...latePeak, phase: 'someday' }), null)
+  // a verdict whose own count cell is empty refuses (the malformed byte)
+  assert.equal(bankEarlyNearMiss({ verdict: 'mid', n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 } }, lateClip, latePeak), null)
+  // the peak's own frac fence
+  assert.equal(bankEarlyNearMiss(lateDoor, lateClip, { ...latePeak, phase: 'mid', frac: 1.5 }), null)
+})
+
+test('v0.975.3 the near-miss row speaks byte-exact and junk never prints', () => {
+  const peakMiss = bankEarlyNearMissRow({
+    miss: 'peak',
+    door: { verdict: 'late', x: 15, n: 28 },
+    clip: { verdict: 'late', x: 2, n: 3 },
+    peak: { verdict: 'mid', frac: 0.646 }
+  })
+  assert.equal(peakMiss, `the bank-early fold's own near-miss (v0.975.3): two of the trio's three own legs rode LATE - the door's clock LATE (15 of 28), the clock clips LATE (2 of 3), the pocket's peak's own MID (64.6% in) the miss's own leg - the fold's silence is the law's own word (two of three never joined)`)
+  const doorMiss = bankEarlyNearMissRow({
+    miss: 'door',
+    door: { verdict: 'mid', x: 72, n: 114 },
+    clip: { verdict: 'late', x: 2, n: 3 },
+    peak: { verdict: 'late', frac: 1 }
+  })
+  assert.equal(doorMiss, `the bank-early fold's own near-miss (v0.975.3): two of the trio's three own legs rode LATE - the door's clock's own MID (72 of 114) the miss's own leg, the clock clips LATE (2 of 3), the pocket's peak LATE (100.0% in) - the fold's silence is the law's own word (two of three never joined)`)
+  const clipMiss = bankEarlyNearMissRow({
+    miss: 'clip',
+    door: { verdict: 'late', x: 15, n: 28 },
+    clip: { verdict: 'early', x: 1, n: 3 },
+    peak: { verdict: 'late', frac: 0.8333333 }
+  })
+  assert.equal(clipMiss, `the bank-early fold's own near-miss (v0.975.3): two of the trio's three own legs rode LATE - the door's clock LATE (15 of 28), the clock clips' own EARLY (1 of 3) the miss's own leg, the pocket's peak LATE (83.3% in) - the fold's silence is the law's own word (two of three never joined)`)
+  // junk never prints (the honest silence's own row law)
+  for (const junk of [undefined, null, 42, 'str', {}, { miss: 'toe', door: { verdict: 'late', x: 1, n: 1 }, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'mid', frac: 0.5 } }, { miss: 'peak', door: null, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'mid', frac: 0.5 } }, { miss: 'peak', door: { verdict: 'late', x: 1, n: 1 }, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'mid', frac: 'x' } }, { miss: 'peak', door: { verdict: 'late', x: 0, n: 1 }, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'mid', frac: 0.5 } }, { miss: 'peak', door: { verdict: 'late', x: 1, n: 1 }, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'late', frac: 1 } }, { miss: 'door', door: { verdict: 'late', x: 1, n: 1 }, clip: { verdict: 'late', x: 1, n: 1 }, peak: { verdict: 'mid', frac: 0.5 } }]) {
+    assert.equal(bankEarlyNearMissRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.975.3 the near-miss reads the hoisted verdicts (the lib-level trio join)', () => {
+  // the verdicts' own shapes ride bankDoorClockVerdict's own return law:
+  // the near-miss reads them with zero re-parsing (the same bytes the
+  // fold read - one parse, two words)
+  const lateDoor = { verdict: 'late', n: 28, byPhase: { early: 0, mid: 13, late: 15, unplaced: 0 }, anchors: 37, wide: 0, thirdS: 253.7 }
+  const lateClip = { verdict: 'late', n: 3, byPhase: { early: 0, mid: 1, late: 2, unplaced: 0 }, anchors: 37, wide: 0, thirdS: 267 }
+  const midPeak = { peak: 1961, peakT: 190, firstT: 537, lastT: 0, span: 537, elapsed: 537, frac: 0.646, phase: 'mid', drop: 766 }
+  const nm = bankEarlyNearMiss(lateDoor, lateClip, midPeak)
+  assert.ok(nm)
+  const row = bankEarlyNearMissRow(nm)
+  assert.ok(row.includes('the door\'s clock LATE (15 of 28)'))
+  assert.ok(row.includes('the clock clips LATE (2 of 3)'))
+  assert.ok(row.includes("the pocket's peak's own MID (64.6% in) the miss's own leg"))
 })

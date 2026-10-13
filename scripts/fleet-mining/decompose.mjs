@@ -141,7 +141,7 @@ import { whaleWaterBill } from '../../src/lib/whalewater.mjs' // (v0.698.0) the 
 import { whaleRotationRow } from '../../src/lib/transitloop.mjs' // (v0.754.0) the whale's own rotation - the seat split's verdict (the rotation was the wall's own disguise)
 import { whaleRentRow } from '../../src/lib/whalerent.mjs' // (v0.911.0) the loop's own rent - the give-up's own arm and the launches past it
 import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) the calm paradox - the death-free face's full-speed water lane
-import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever); (v0.974.32) + the three clocks' own trio (the fold)
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow, bankEarlyNearMiss, bankEarlyNearMissRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever); (v0.974.32) + the three clocks' own trio (the fold); (v0.975.3) + the fold's own near-miss (the silence's own word - the two-of-three face's own legs, the missing leg named)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
 import { walkoutDriveCensus, walkoutDriveRow } from '../../src/lib/walkoutcensus.mjs' // (v0.968.0) the walk-out drive's own read - the promise's first walker's field book
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
@@ -4001,6 +4001,12 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // any other combination reads the honest silence
     const bef = bankEarlyFold(beDoor, beClip, bePeak)
     if (bef) console.log(`  ${bankEarlyFoldRow(bef)}`)
+    else {
+      // (v0.975.3) the fold's own near-miss - the silence's own word
+      // (the two-of-three face's own legs, the missing leg named)
+      const benm = bankEarlyNearMiss(beDoor, beClip, bePeak)
+      if (benm) console.log(`  ${bankEarlyNearMissRow(benm)}`)
+    }
     // (v0.462.0) THE HARVEST LEG - the join's both halves on one row: the
     // took lines (the machine's own output collection, the smelted
     // counter's emitter twin) beside the counter's smelted delta. NO gap
