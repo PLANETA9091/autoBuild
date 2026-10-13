@@ -174,7 +174,7 @@ test('THE SPREAD LAW: the burst share names a diffuse face honestly (no one-wind
 
 test('THE CENSUS GUARD: the row rides the walk-fail lens beside the decide weather (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.933.0 band's own growth - the intents held)
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.974.28 band's own growth re-measured - the v0.933.0 precedent, the starve-bot/starve-lane pins' own word, the 1800 fire's miss cured)
   const wx = src.indexOf('const dw = decideWeather(lines)')
   const sb = src.indexOf('const svb = starveClockBook(lines)')
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
