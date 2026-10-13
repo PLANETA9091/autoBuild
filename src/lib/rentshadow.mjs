@@ -93,20 +93,27 @@ export function rentShadowEvent (line) {
  *   cells         - per cell: { writes, holds, skips, rents, timeoutWrites,
  *                   lastSkipAgeS, classes: {blind, shadow, expired} }
  *   totals        - { writes, holds, skips, rents, blind, shadow, expired,
- *                   shadowLive, shadowBlind, shadowByWrite, shadowByHold }
+ *                   shadowLive, shadowBlind, shadowByWrite, shadowByHold,
+ *                   shadowLiveZero, shadowLiveAged }
  *                   (the v0.974.21 split: the shadow class's own two seats -
  *                   shadowLive + shadowBlind always sum to shadow; the
  *                   v0.974.22 feeder split: WHICH machine's proof the shadow
  *                   rode - shadowByWrite + shadowByHold always sum to shadow
  *                   too - the no-path seat's write vs the walk-intent seat's
- *                   hold name the consult hole's own feeder)
+ *                   hold name the consult hole's own feeder; the v0.974.23
+ *                   age seat: the rode-live rents' own byte age - the
+ *                   v0.96.0 absorb law makes the failure-moment byte the
+ *                   pre-walk truth (a pre-walk entry's clock survives the
+ *                   failure's own write, so age 0s = the walk was
+ *                   blind-reasonable, age Ns = the entry the skip gate
+ *                   missed - the hole's own two faces)
  *   verdict       - the owner's own word: 'blind' | 'shadow' | 'expired' |
  *                   'tie' | 'silent' (no rents at all)
  *   wireQuestion  - the priced read for the next fire's own seat
  */
 export function rentShadowCensus (lines) {
   const cells = new Map()
-  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0, shadowLive: 0, shadowBlind: 0, shadowByWrite: 0, shadowByHold: 0 }
+  const totals = { writes: 0, holds: 0, skips: 0, rents: 0, blind: 0, shadow: 0, expired: 0, shadowLive: 0, shadowBlind: 0, shadowByWrite: 0, shadowByHold: 0, shadowLiveZero: 0, shadowLiveAged: 0 }
   if (!Array.isArray(lines)) {
     return { cells, totals, verdict: 'silent', wireQuestion: 'no lines - nothing priced' }
   }
@@ -141,8 +148,20 @@ export function rentShadowCensus (lines) {
         // (v0.974.21) the wire's own split: the byte's presence names WHICH
         // seat the hole rode - the ledger speaking at failure moment (rode-live,
         // the concurrency seam) vs silent even then (rode-blind, the copy hole)
-        if (ev.ledgerAgeS != null) totals.shadowLive++
-        else totals.shadowBlind++
+        if (ev.ledgerAgeS != null) {
+          totals.shadowLive++
+          // (v0.974.23) THE HOLE'S OWN AGE - the absorb law's own read: the
+          // failure's own write cannot refresh a LIVE pre-walk entry (the
+          // v0.96.0 backoff absorbs it, the original clock survives), so the
+          // byte's age names the pre-walk state - 0s = the walk was
+          // blind-reasonable (the failure wrote the first evidence, no hole),
+          // Ns = the entry ALREADY held when the walk rented (the skip
+          // gate's own miss - the hole's true face)
+          if (ev.ledgerAgeS === 0) totals.shadowLiveZero++
+          else totals.shadowLiveAged++
+        } else {
+          totals.shadowBlind++
+        }
         // (v0.974.22) the feeder's own split: WHICH machine's proof the rent
         // rode - the no-path write's t=0 or the walk-intent hold's flight
         // window (the freshest proof wins: a write after a hold re-feeds the
@@ -191,5 +210,11 @@ export function rentShadowRow (c) {
   const feeder = t.shadowByHold > 0
     ? ` - the feeder: write-fed ${t.shadowByWrite} / hold-fed ${t.shadowByHold}`
     : ''
-  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%)${split}${feeder} - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
+  // (v0.974.23) the age seat's own clause - rides ONLY when a byte-carrying
+  // face carried rode-live rents (a pre-wire face reads byte-identical, and
+  // the v0.974.21 clause stays byte-identical beside it)
+  const ageSeat = t.shadowLive > 0
+    ? ` - the hole's own age: aged ${t.shadowLiveAged} / zero-age ${t.shadowLiveZero}`
+    : ''
+  return `the rent shadow's own book (v0.974.19): rents ${t.rents} on ${c.cells.size} cell(s) - blind ${t.blind} (${share(t.blind)}%) / shadow ${t.shadow} (${share(t.shadow)}%) / expired ${t.expired} (${share(t.expired)}%)${split}${feeder}${ageSeat} - ${c.verdict === 'tie' ? "THE TIE'S OWN SILENCE: the unanimity law refused the seat" : `THE ${c.verdict.toUpperCase()}'S OWN SEAT: ${c.wireQuestion}`}`
 }

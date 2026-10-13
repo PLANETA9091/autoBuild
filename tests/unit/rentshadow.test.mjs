@@ -264,3 +264,59 @@ console.log('rentshadow: all pins green')
   assert.equal(c.totals.shadow, 1); assert.equal(c.totals.shadowByWrite, 1); assert.equal(c.totals.shadowByHold, 0)
   assert.ok(!rentShadowRow(c).includes(' - the feeder:'), 'the write overwrote the hold: the face reads write-fed')
 }
+
+// --- (v0.974.23) THE HOLE'S OWN AGE - the rode-live byte's own two faces ---
+
+// --- aged: the pre-walk entry survived the failure's own write (the skip gate's miss) ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)'
+  ])
+  assert.equal(c.totals.shadowLive, 1); assert.equal(c.totals.shadowLiveAged, 1); assert.equal(c.totals.shadowLiveZero, 0)
+  const row = rentShadowRow(c)
+  assert.match(row, /the hole's own age: aged 1 \/ zero-age 0/)
+  // the v0.974.21 clause rides byte-identical beside the age seat
+  assert.match(row, /the split: rode-live 1 \/ rode-blind 0/)
+}
+
+// --- zero-age: the walk was blind-reasonable (the failure wrote the first evidence) ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 0s ago)'
+  ])
+  assert.equal(c.totals.shadowLive, 1); assert.equal(c.totals.shadowLiveZero, 1); assert.equal(c.totals.shadowLiveAged, 0)
+  assert.match(rentShadowRow(c), /the hole's own age: aged 0 \/ zero-age 1/)
+}
+
+// --- mixed: both faces' own sums (aged + zero-age = shadowLive) ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 3s ago)',
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F7 [F7] hop: chest at [-143,81,411] d=17 zero: chest unreachable (Took to long to decide path to goal!) (ledger live 0s ago)'
+  ])
+  assert.equal(c.totals.shadowLive, 2)
+  assert.equal(c.totals.shadowLiveAged + c.totals.shadowLiveZero, c.totals.shadowLive)
+  assert.match(rentShadowRow(c), /the hole's own age: aged 1 \/ zero-age 1/)
+}
+
+// --- the byte-less face reads byte-identical: no age clause, no split clause ---
+{
+  const c = rentShadowCensus([
+    'F5 [F5] no-path ledger: chest at [-143,81,411] cached for the fleet (2 live, ttl 15s, timeout verdict)',
+    'F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!)'
+  ])
+  assert.equal(c.totals.shadowLive, 0); assert.equal(c.totals.shadowLiveAged, 0); assert.equal(c.totals.shadowLiveZero, 0)
+  const row = rentShadowRow(c)
+  assert.ok(!row.includes("the hole's own age:"), 'a pre-wire face reads byte-identical: no age clause')
+  assert.ok(!row.includes(' - the split: rode-live'))
+}
+
+// --- the 0s byte parses (the grammar's own floor) and rides nowhere else ---
+{
+  const ev = rentShadowEvent('F15 [F15] hop: chest at [-143,81,411] d=18 zero: chest unreachable (No path to the goal!) (ledger live 0s ago)')
+  assert.equal(ev.kind, 'rent'); assert.equal(ev.ledgerAgeS, 0)
+}
