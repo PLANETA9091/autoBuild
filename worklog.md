@@ -27915,3 +27915,5 @@ Stage Summary:
 - version state: 0.974.13 stands (bffc2ea4, the cron30 0730 heir's); next free 0.974.14; 0.975.0 the named seat respected — origin raw re-verify MANDATORY before any bump
 - my worklog push gate (this push) = BY RUN ID next fire
 - Discipline: identity / RACE (pull --rebase before push, no force-push) / seat law (no duplicate POST on an occupied face) / one-parser / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite (single-file node --test only)
+
+- ADDENDUM (fire 0841, post-push close polls, its own command ~00:52Z): my push gate = 38329271770 (eaaabe06, push, in_progress at close) — BY RUN ID for the next fire; the 0830 append's gate 38327814151 flipped completed SUCCESS (the cron30 lane's chain green too); FACE 278 = 38327712647 still in_progress at close (~25 min elapsed, updated 00:46:01Z) — the read rides the next fire, no second POST; zero red, zero zombies across the close list.
