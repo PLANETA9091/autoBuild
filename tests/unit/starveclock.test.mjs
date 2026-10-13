@@ -12,7 +12,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-import { starveClockBook, starveClockVerdict, starveClockRow, STARVE_LANES } from '../../src/lib/starveclock.mjs'
+import { starveClockBook, starveClockVerdict, starveClockRow, STARVE_LANES, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'
 
 const hb = (n, ts) => `b] n=${n} ts=${ts}s rss=400M late=10ms mainLate=5ms`
 const hop = (bot, ts) => `${bot} [${bot}] hop: chest at [-100,60,400] d=10 zero: chest unreachable (Took to long to decide path to goal!)`
@@ -174,11 +174,54 @@ test('THE SPREAD LAW: the burst share names a diffuse face honestly (no one-wind
 
 test('THE CENSUS GUARD: the row rides the walk-fail lens beside the decide weather (WIRING)', async () => {
   const src = await readFile(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
-  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.974.28 band's own growth re-measured - the v0.933.0 precedent, the starve-bot/starve-lane pins' own word, the 1800 fire's miss cured)
+  assert.ok(src.includes("import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs'")) // the import (the v0.975.5 band's own growth re-measured - the v0.974.28 precedent, the missed-pin's own cure)
   const wx = src.indexOf('const dw = decideWeather(lines)')
   const sb = src.indexOf('const svb = starveClockBook(lines)')
   const sv = src.indexOf('const svc = starveClockVerdict(svb)')
   assert.ok(wx > 0 && sb > wx && sv > sb) // one parse - the book computed once, the clock rides beside the weather row, never before it
   const st = src.indexOf('const svt = starveBotSeat(svb)')
   assert.ok(st > sv) // the seat rides beside the clock row, never before it (the v0.932.0 growth)
+  // (v0.975.5) the grand total's own hoist law: the lets ride the bank
+  // docket's own birth site, each leg assigned at its own byte's site,
+  // the total prints after its last leg (the commons block's own close)
+  const bd = src.indexOf('const bd = bankDocket(lines, bankVisitLines)')
+  const lets = src.indexOf('let starveGrandHop = null')
+  const bankLeg = src.indexOf('starveGrandBank = bd && bd.door ? bd.door.decideTimeouts : null')
+  const hopLeg = src.indexOf('starveGrandHop = dw && dw.hop ? dw.hop.zeros : null')
+  const walkLeg = src.indexOf('starveGrandWalk = cl && cl.totals ? cl.totals.walkFail : null')
+  const total = src.indexOf('const sgt = starveGrandTotal(starveGrandHop, starveGrandWalk, starveGrandBank)')
+  assert.ok(bd > 0 && lets > bd && bankLeg > lets) // the lets ride the docket's own site, the bank leg assigned at its own birth
+  assert.ok(hopLeg > wx) // the hop leg at the weather's own birth site
+  assert.ok(walkLeg > hopLeg) // the walk leg at the commons ledger's own birth site (the last leg)
+  assert.ok(total > walkLeg) // the total prints after its last leg
+  assert.ok(src.includes('if (sgt) console.log(`  ${starveGrandTotalRow(sgt)}`)'))
+  // the prose lives in the lib, never duplicated in the mine
+  assert.equal(src.includes("the A* starvation's own grand total"), false)
+  assert.equal(src.includes("the three lanes' own mass"), false)
+})
+
+// (v0.975.5) THE STARVATION'S OWN GRAND TOTAL - the three lanes' own
+// mass joined; the reads' hand sum owned (face 296's 165, face 297's
+// 37, face 299's 131 - the field's own verdicts).
+test('v0.975.5 the grand total sums the three lanes (all legs or the silence)', () => {
+  const g = starveGrandTotal(45, 24, 62)
+  assert.ok(g)
+  assert.deepEqual(g, { hop: 45, walkFail: 24, bankDecide: 62, total: 131 })
+  // the zero leg stands (a lane can ride clean), the all-zero face reads the silence
+  assert.deepEqual(starveGrandTotal(0, 12, 3), { hop: 0, walkFail: 12, bankDecide: 3, total: 15 })
+  assert.equal(starveGrandTotal(0, 0, 0), null)
+  // any missing or junk leg reads the lanes never assembled
+  for (const junk of [[null, 1, 1], [1, null, 1], [1, 1, null], [undefined, 1, 1], [1, 'x', 1], [1, 1, NaN], [-1, 1, 1], [1, -2, 1], [1, 1, -3]]) {
+    assert.equal(starveGrandTotal(...junk), null, `the total must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.975.5 the grand total row speaks byte-exact and junk never prints', () => {
+  const row = starveGrandTotalRow({ hop: 45, walkFail: 24, bankDecide: 62, total: 131 })
+  assert.equal(row, 'the A* starvation\'s own grand total (v0.975.5): 131 starve(s) - hop 45 + walk-fail 24 + bank decide 62 (the three lanes\' own mass, the decider\'s own front)')
+  // the sum law rides the row too (the legs must own their total)
+  assert.equal(starveGrandTotalRow({ hop: 1, walkFail: 1, bankDecide: 1, total: 4 }), null)
+  for (const junk of [undefined, null, 42, 'str', {}, { hop: 1, walkFail: 1, bankDecide: 1 }, { hop: 'x', walkFail: 1, bankDecide: 1, total: 3 }, { hop: -1, walkFail: 1, bankDecide: 1, total: 1 }, { hop: 0, walkFail: 0, bankDecide: 0, total: 0 }]) {
+    assert.equal(starveGrandTotalRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
 })

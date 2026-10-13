@@ -611,3 +611,40 @@ export function starveBurstSeatRow (s) {
   else if (riders) botBit = ` - ${riders.leader} x${riders.leaderOwns} + ${riders.runner} x${riders.runnerOwns} own ${riders.pairOwns} of ${riders.ofWindow} - THE BURST'S OWN MIX: the rush hour rode a crowd${riders.duet ? ' (the duet\'s own tie)' : ''}`
   return `${head} - ${skyBit}${botBit}`
 }
+
+// (v0.975.5) THE STARVATION'S OWN GRAND TOTAL - the three lanes' own
+// mass joined (the hop zeros' own byte + the walk-fail lens' own byte +
+// the bank door's own decide timeouts). The reads kept summing the
+// three lanes by hand (face 296's 165 = hop 68 + walk-fail 74 + bank
+// 23 named the biggest mass in the record; face 297's 37 named the
+// collapse - the WHEN-lever's own runtime front priced face over face)
+// - the sum becomes a field byte. The row names each lane's own byte
+// and the total - the mass rides NO clock claim (the heartbeat rail's
+// own n is a different grammar - the row invents no equality with the
+// starve clock). The fence: all three legs must stand (any missing or
+// junk leg reads the lanes never assembled - the honest silence; the
+// near-miss's own fence law, v0.975.3), any negative refuses, and the
+// all-zero face reads the silence too (no mass, no row). Mining
+// surface only: zero fleet wiring, zero new log lines - CENSUS GUARD.
+export function starveGrandTotal (hop, walkFail, bankDecide) {
+  for (const x of [hop, walkFail, bankDecide]) {
+    if (!Number.isFinite(x) || x < 0) return null
+  }
+  const total = hop + walkFail + bankDecide
+  if (!(total > 0)) return null
+  return { hop, walkFail, bankDecide, total }
+}
+
+// (v0.975.5) the grand total's own row - the three lanes' own mass, the
+// decider's own front (the reads' own hand sum, owned). Junk never
+// prints a total (the honest silence's own row law).
+export function starveGrandTotalRow (g) {
+  if (!g || typeof g !== 'object') return null
+  const { hop, walkFail, bankDecide, total } = g
+  for (const x of [hop, walkFail, bankDecide, total]) {
+    if (!Number.isFinite(x) || x < 0) return null
+  }
+  if (hop + walkFail + bankDecide !== total) return null
+  if (!(total > 0)) return null
+  return `the A* starvation's own grand total (v0.975.5): ${total} starve(s) - hop ${hop} + walk-fail ${walkFail} + bank decide ${bankDecide} (the three lanes' own mass, the decider's own front)`
+}

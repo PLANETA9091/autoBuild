@@ -27,7 +27,7 @@ import { budgetSpread, budgetGoalSplit, budgetZeroSeat, budgetZeroSeatRow, budge
 import { reentryLegBill, reentryLegRow } from '../../src/lib/reentryseat.mjs' // (v0.912.0) the re-entry's own leg - the stale class's own seat off the v0.746.0 rows' captured-but-unread leg field
 import { waterLegBook, waterLegConsistent, waterLegRow } from '../../src/lib/waterleg.mjs' // (v0.957.0) the water's own leg - the drown context's own leg axis across EVERY rescue relation (the live lane's walk, the trigger-blind's walk, the returns' walk - the map the stale-only seat never drew)
 import { entryLungBook, entryLungConsistent, entryLungRow } from '../../src/lib/entrylung.mjs' // (v0.974.18) THE ENTRY-LUNG CELL - the o2 bar AT the wet episode's own start (FACE 287's empty-lungs-at-entry front priced as a measurement; the fast cross owns the verdict)
-import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky; (v0.974.28) + the burst's own seat - the densest 30s window's own WHEN (the v0.733.0 cut) + WHO (the v0.932.0 bill law), THE DECIDER'S OWN RUSH HOUR
+import { starveClockBook, starveClockVerdict, starveClockRow, starveBotSeat, starveBotSeatRow, starveBotRiders, starveBotRidersRow, starveLaneSeat, starveLaneSeatRow, starveLaneRiders, starveLaneRidersRow, starveBurstSeat, starveBurstSeatRow, starveGrandTotal, starveGrandTotalRow } from '../../src/lib/starveclock.mjs' // (v0.913.0) THE STARVE'S OWN CLOCK - the A* starvation's face-wide thirds verdict (the house's four lanes joined on the heartbeat rail, the v0.733.0 point cut, the strict-majority seat + the burst's own share); (v0.932.0) + the starve book's own WHO axis - WHICH bot's own A* starves own the sky; (v0.933.0) + the starve book's own LANE axis - WHICH lane's own decide-timeouts own the sky; (v0.974.28) + the burst's own seat - the densest 30s window's own WHEN (the v0.733.0 cut) + WHO (the v0.932.0 bill law), THE DECIDER'S OWN RUSH HOUR
 import { o2Gap, reentryGaps, REENTRY_IMMEDIATE_MAX } from '../../src/lib/o2gap.mjs' // (v0.477.0) the rescue-relation split - the o2 census's missing half (stale vs live rescues) + the sentry's last-known read joined per drown death; (v0.746.0) the re-entry's own gap - the stale class's own clock (immediate vs delayed)
 import { sensorToll } from '../../src/lib/sensortoll.mjs' // (v0.707.0) the sensor's own toll - the reset(-1) skin's mass across the family's three skins
 import { sensorWindowsBook, sensorWindowsRow } from '../../src/lib/sensorwindow.mjs' // (v0.881.0) THE SENSOR WINDOW'S OWN BOOK - the blind reads' own windows: a maximal run of consecutive reset(-1) pass reads in one bot's line-order stream (the reuse law: parseSentryPass is the one parser, the blind skin is the o2 kind 'reset' - the parser's own word, never re-spelled); the run's read count is the price, the pass span (from..to) is the clock - the sensor-health front's own next byte (the toll owns the rides, the windows own the DURATION)
@@ -2728,6 +2728,15 @@ if (bankYieldRow) console.log(`  bank yield: ${bankYieldRow.rateUPerVisit}u/visi
 // deposit moved 0: the zero probes + the deposit zeros). The fork names
 // the silence's owner - the fleet's cure input rides whichever leg owns.
 const bd = bankDocket(lines, bankVisitLines)
+// (v0.975.5) THE STARVATION'S OWN GRAND TOTAL - the three lanes' own
+// bytes hoisted (the bank decide's own timeout count here, the hop
+// zeros' own byte at the weather's own birth site, the walk-fail lens'
+// own byte at the commons ledger's own birth site) - the total prints
+// after its last leg (the v0.974.32 hoist law's own shape).
+let starveGrandHop = null
+let starveGrandWalk = null
+let starveGrandBank = null
+starveGrandBank = bd && bd.door ? bd.door.decideTimeouts : null
 // (v0.974.32) THE BANK-EARLY LEVER'S OWN FOLD - the three verdicts'
 // own bytes hoisted (the door's clock, the clock clips' clock, the
 // pocket's peak) - the fold rides the verdicts already computed, zero
@@ -3240,6 +3249,7 @@ if (openDeaf.openDeaf.length > 0) {
     // mem gauge at or before its own anchor - does the A* starve under the
     // entity climb's pressure, or on its own geometry.
     const dw = decideWeather(lines)
+    starveGrandHop = dw && dw.hop ? dw.hop.zeros : null // (v0.975.5) the hop leg's own birth site
     if (dw.gauged > 0 && dw.ents) {
       const fork = dw.crowded
         ? (dw.crowded.n * 2 >= dw.crowded.of
@@ -5221,6 +5231,7 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
 // nobody had counted. The dead letter box law lives here.
 {
   const cl = commonsLedger(lines)
+  starveGrandWalk = cl && cl.totals ? cl.totals.walkFail : null // (v0.975.5) the walk leg's own birth site (ungated - the byte exists whether or not the sweeps printed)
   if (cl && cl.totals.sweeps > 0) {
     const t = cl.totals
     console.log(`--- COMMONS LEDGER (v0.502.0: the ask's answer - the sweeps, the walk, the deliveries) ---`)
@@ -5381,3 +5392,10 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     if (rows.length) console.log(`  bots heaviest-first: ${rows.map(([b, r]) => `${b} ${r.sweeps}sw/${r.asks}ask`).join(' ')}`)
   }
 }
+// (v0.975.5) THE STARVATION'S OWN GRAND TOTAL - the three lanes' own
+// mass joined (hop + walk-fail + bank decide), the row prints after
+// its last leg (the commons ledger's own block - the walk-fail lens'
+// own seat); any leg missing reads the lanes never assembled (the
+// honest silence - the near-miss's own fence law).
+const sgt = starveGrandTotal(starveGrandHop, starveGrandWalk, starveGrandBank)
+if (sgt) console.log(`  ${starveGrandTotalRow(sgt)}`)
