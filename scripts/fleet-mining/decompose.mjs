@@ -141,7 +141,7 @@ import { whaleWaterBill } from '../../src/lib/whalewater.mjs' // (v0.698.0) the 
 import { whaleRotationRow } from '../../src/lib/transitloop.mjs' // (v0.754.0) the whale's own rotation - the seat split's verdict (the rotation was the wall's own disguise)
 import { whaleRentRow } from '../../src/lib/whalerent.mjs' // (v0.911.0) the loop's own rent - the give-up's own arm and the launches past it
 import { calmRescueParadox } from '../../src/lib/calmrescue.mjs' // (v0.701.0) the calm paradox - the death-free face's full-speed water lane
-import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever)
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow } from '../../src/lib/bankdocket.mjs' // (v0.700.0) the bank's docket - the silent bank's own anatomy (the door leg vs the empty-pocket leg); (v0.706.0) + the doorstep storm's census (the three lanes' doors folded into one toll); (v0.963.0) + the door's own phase book (the early bank's own lever); (v0.974.32) + the three clocks' own trio (the fold)
 import { walkoutWitnessCensus } from '../../src/lib/walkoutcensus.mjs' // (v0.437.0) the walk-out witness's own numbers (the window/displacement/unmeasured read)
 import { walkoutDriveCensus, walkoutDriveRow } from '../../src/lib/walkoutcensus.mjs' // (v0.968.0) the walk-out drive's own read - the promise's first walker's field book
 import { relogBill } from '../../src/lib/relogbill.mjs' // (v0.715.0) the relog's own loop bill - the relogs' repeats joined to the walk-out's stalled deliveries (the loop's own meter)
@@ -2728,6 +2728,13 @@ if (bankYieldRow) console.log(`  bank yield: ${bankYieldRow.rateUPerVisit}u/visi
 // deposit moved 0: the zero probes + the deposit zeros). The fork names
 // the silence's owner - the fleet's cure input rides whichever leg owns.
 const bd = bankDocket(lines, bankVisitLines)
+// (v0.974.32) THE BANK-EARLY LEVER'S OWN FOLD - the three verdicts'
+// own bytes hoisted (the door's clock, the clock clips' clock, the
+// pocket's peak) - the fold rides the verdicts already computed, zero
+// re-parsing (the giant clause's own hoist law, v0.974.27).
+let beDoor = null
+let beClip = null
+let bePeak = null
 if (bd && (bd.door.total > 0 || bd.pocket.total > 0)) {
   const fork = bd.pocket.total > bd.door.total
     ? ' - THE POCKET MET THE CHEST EMPTY: the visits and the mass lived on different clocks'
@@ -2740,6 +2747,7 @@ if (bd && (bd.door.total > 0 || bd.pocket.total > 0)) {
   // the early bank's own lever reads live); no dominance reads the
   // honest silence
   const bdcv = bankDoorClockVerdict(bd)
+  beDoor = bdcv // (v0.974.32) the fold's own leg hoisted
   if (bdcv) console.log(`  ${bankDoorClockRow(bdcv)}`)
 }
 // (v0.704.0) THE FUEL LANE'S OWN DOOR - the nudge walk's own verdict in
@@ -3919,6 +3927,7 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
       // additive row at the section's own end - the old rows' bytes stay
       // the face's own; the no-drop and the junk read the honest silence.
       const pc = pocketPeakClock(lines)
+      bePeak = pc // (v0.974.32) the fold's own leg hoisted
       if (pc) console.log(`  ${pocketPeakClockRow(pc)}`)
     }
   }
@@ -3984,7 +3993,14 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // law prices the phase - the early arm's own lever reads live); no
     // dominance reads the honest silence
     const cccv = clockClipClockVerdict(sl)
+    beClip = cccv // (v0.974.32) the fold's own leg hoisted
     if (cccv) console.log(`  ${clockClipClockRow(cccv)}`)
+    // (v0.974.32) THE BANK-EARLY LEVER'S OWN FOLD - three rows one
+    // lever (the door's clock + the clock clips' clock + the pocket's
+    // peak, all LATE = the closing churn owns the bank's own face);
+    // any other combination reads the honest silence
+    const bef = bankEarlyFold(beDoor, beClip, bePeak)
+    if (bef) console.log(`  ${bankEarlyFoldRow(bef)}`)
     // (v0.462.0) THE HARVEST LEG - the join's both halves on one row: the
     // took lines (the machine's own output collection, the smelted
     // counter's emitter twin) beside the counter's smelted delta. NO gap

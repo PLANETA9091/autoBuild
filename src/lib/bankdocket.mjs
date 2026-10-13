@@ -358,6 +358,42 @@ export function bankDoorClockRow (v) {
   return `the bank door's own clock (v0.963.0): the door leg rode EARLY-dominant (${early} of ${n}; ${book}) - the opening's own geometry owns the door: the yard's placement is the front, not the clock`
 }
 
+// (v0.974.32) THE BANK-EARLY LEVER'S OWN FOLD - the three clocks' own
+// evidence joined (the bank door's own clock v0.963.0 + the clock
+// clips' own clock v0.962.0 + the pocket's own peak clock v0.771.0).
+// FACE 294's read priced the same lever three times on one face: the
+// door's failures rode the closing churn, the chains armed late, the
+// pocket's peak never got its window - three rows, one word. The fold
+// speaks ONLY when all three verdicts ride LATE (each leg's own 2:1
+// dominance law already held upstream - the fold invents no phase of
+// its own); any other combination reads the honest silence (null).
+// One-parser law: the fold reads the three verdicts' own bytes - zero
+// re-parsing, zero new regexes. Mining surface only: zero fleet
+// wiring, zero new log lines - CENSUS GUARD.
+export function bankEarlyFold (doorV, clipV, peak) {
+  if (!doorV || typeof doorV !== 'object' || doorV.verdict !== 'late') return null
+  if (!clipV || typeof clipV !== 'object' || clipV.verdict !== 'late') return null
+  if (!peak || typeof peak !== 'object' || peak.phase !== 'late') return null
+  const { n: dn, byPhase: dp } = doorV
+  const { n: cn, byPhase: cp } = clipV
+  if (!Number.isFinite(dn) || dn <= 0 || !dp || !Number.isFinite(dp.late) || dp.late <= 0) return null
+  if (!Number.isFinite(cn) || cn <= 0 || !cp || !Number.isFinite(cp.late) || cp.late <= 0) return null
+  if (!Number.isFinite(peak.frac) || peak.frac < 0 || peak.frac > 1) return null
+  return { door: { late: dp.late, n: dn }, clip: { late: cp.late, n: cn }, peakFrac: peak.frac }
+}
+
+// (v0.974.32) the bank-early fold's own row - the trio's own word, the
+// lever's own name the door row spoke first (BANK EARLY). Junk never
+// prints a fold (the honest silence's own row law).
+export function bankEarlyFoldRow (f) {
+  if (!f || typeof f !== 'object') return null
+  const { door, clip, peakFrac } = f
+  if (!door || !clip || !Number.isFinite(peakFrac)) return null
+  if (!Number.isFinite(door.late) || door.late <= 0 || !Number.isFinite(door.n) || door.n <= 0) return null
+  if (!Number.isFinite(clip.late) || clip.late <= 0 || !Number.isFinite(clip.n) || clip.n <= 0) return null
+  return `the bank-early lever's own fold (v0.974.32): three own rows named the same closing churn - the door's clock LATE (${door.late} of ${door.n}), the clock clips LATE (${clip.late} of ${clip.n}), the pocket's peak LATE (${(peakFrac * 100).toFixed(1)}% in) - arm the bank early (the evidence's own trio, three rows one lever)`
+}
+
 /**
  * doorstepStormCensus(d) - the three lanes' doors folded into one toll.
  *

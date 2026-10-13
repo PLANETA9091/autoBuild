@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow } from '../../src/lib/bankdocket.mjs'
+import { bankDocket, doorstepStormCensus, bankDoorClockVerdict, bankDoorClockRow, bankEarlyFold, bankEarlyFoldRow } from '../../src/lib/bankdocket.mjs'
 
 // Face 32's live shapes verbatim (run 37457243091, the silent-bank face:
 // 143 bank-ish lines, 0u banked) - the docket's two legs ride the bank
@@ -368,4 +368,53 @@ test('v0.963.0 the bank door clock rides the decompose mine (WIRING)', async () 
   assert.equal(src.includes('bankDoorClockRow(bdcv)'), true)
   assert.equal(src.includes("the bank door's own clock"), false) // the prose lives in the lib, never duplicated in the mine
   assert.equal(src.includes('the door leg rode LATE-dominant'), false)
+})
+
+// (v0.974.32) THE BANK-EARLY LEVER'S OWN FOLD - the three clocks' own
+// trio (the door's clock + the clock clips' clock + the pocket's peak).
+// FACE 294's read priced the same lever three times on one face; the
+// fold speaks only when all three ride LATE.
+test('v0.974.32 the bank-early fold reads the trio (all three LATE or the honest silence)', () => {
+  const lateDoor = { verdict: 'late', n: 5, byPhase: { early: 0, mid: 0, late: 5, unplaced: 0 }, anchors: 38, wide: 0, thirdS: 253.7 }
+  const lateClip = { verdict: 'late', n: 3, byPhase: { early: 0, mid: 0, late: 3, unplaced: 0 }, anchors: 40, wide: 0, thirdS: 267 }
+  const latePeak = { peak: 2700, peakT: 0, firstT: 537, lastT: 0, span: 537, elapsed: 537, frac: 1, phase: 'late', drop: 1400 }
+  const f = bankEarlyFold(lateDoor, lateClip, latePeak)
+  assert.ok(f)
+  assert.deepEqual(f, { door: { late: 5, n: 5 }, clip: { late: 3, n: 3 }, peakFrac: 1 })
+  // each leg's own phase refuses the fold (the fold invents no phase)
+  assert.equal(bankEarlyFold({ ...lateDoor, verdict: 'mid' }, lateClip, latePeak), null)
+  assert.equal(bankEarlyFold(lateDoor, { ...lateClip, verdict: 'early' }, latePeak), null)
+  assert.equal(bankEarlyFold(lateDoor, lateClip, { ...latePeak, phase: 'mid' }), null)
+  // the tie shape: a door whose late does not hold the majority never
+  // got here (the verdict law refused upstream) - the fold still guards
+  // its own bytes: a late verdict with a non-positive late count refuses
+  assert.equal(bankEarlyFold({ verdict: 'late', n: 5, byPhase: { early: 0, mid: 0, late: 0, unplaced: 5 }, anchors: 38, wide: 0 }, lateClip, latePeak), null)
+  assert.equal(bankEarlyFold(lateDoor, lateClip, { ...latePeak, frac: 1.5 }), null)
+})
+
+test('v0.974.32 the fold row speaks byte-exact and junk never prints', () => {
+  const row = bankEarlyFoldRow({ door: { late: 50, n: 93 }, clip: { late: 9, n: 12 }, peakFrac: 1 })
+  assert.equal(row, `the bank-early lever's own fold (v0.974.32): three own rows named the same closing churn - the door's clock LATE (50 of 93), the clock clips LATE (9 of 12), the pocket's peak LATE (100.0% in) - arm the bank early (the evidence's own trio, three rows one lever)`)
+  const fracRow = bankEarlyFoldRow({ door: { late: 2, n: 3 }, clip: { late: 1, n: 1 }, peakFrac: 0.8333333 })
+  assert.equal(fracRow, `the bank-early lever's own fold (v0.974.32): three own rows named the same closing churn - the door's clock LATE (2 of 3), the clock clips LATE (1 of 1), the pocket's peak LATE (83.3% in) - arm the bank early (the evidence's own trio, three rows one lever)`)
+  for (const junk of [undefined, null, 42, 'str', {}, { door: null, clip: {}, peakFrac: 1 }, { door: { late: 1, n: 1 }, clip: null, peakFrac: 1 }, { door: { late: 1, n: 1 }, clip: { late: 1, n: 1 }, peakFrac: 'x' }, { door: { late: 0, n: 1 }, clip: { late: 1, n: 1 }, peakFrac: 0.5 }]) {
+    assert.equal(bankEarlyFoldRow(junk), null, `the row must stay silent on ${JSON.stringify(junk)}`)
+  }
+})
+
+test('v0.974.32 the fold rides the decompose mine (WIRING - the hoist law)', async () => {
+  const { readFileSync } = await import('node:fs')
+  const src = readFileSync(new URL('../../scripts/fleet-mining/decompose.mjs', import.meta.url), 'utf8')
+  // the import rides the bankdocket band
+  assert.equal(src.includes('bankEarlyFold, bankEarlyFoldRow } from \'../../src/lib/bankdocket.mjs\''), true)
+  // the three hoists ride their own call sites (zero re-parsing - the
+  // verdicts already computed, the fold reads the same bytes)
+  const bd = src.indexOf('const bdcv = bankDoorClockVerdict(bd)')
+  const pc = src.indexOf('const pc = pocketPeakClock(lines)')
+  const cccv = src.indexOf('const cccv = clockClipClockVerdict(sl)')
+  const fold = src.indexOf('const bef = bankEarlyFold(beDoor, beClip, bePeak)')
+  assert.ok(bd > 0 && pc > bd && cccv > pc && fold > cccv) // one order - the fold prints after its last leg
+  // the prose lives in the lib, never duplicated in the mine
+  assert.equal(src.includes("the bank-early lever's own fold"), false)
+  assert.equal(src.includes('arm the bank early'), false)
 })
