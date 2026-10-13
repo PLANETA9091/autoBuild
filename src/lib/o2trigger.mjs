@@ -43,6 +43,15 @@
 // slept). A life with no previous death rides the honest unborn - the
 // fold's own start owns the birth, the seat never invents one.
 //
+// THE SILENT GAP'S OWN SEAT SPLIT (v0.975.5): a born silent life names
+// its own owner by the fleet's own sight - the pass lines the grammar
+// parsed FLEET-WIDE during the life (the global passTotal's own
+// counter). Pass lines rode while this bot's pass line slept = the gap
+// is bot-local (the bot's own stream owns the seat); the whole
+// stream slept = the gap is the stream's own (the server's own gap
+// owns the seat); both shapes in one fold = the two seats compete (the
+// split idiom's own third word).
+//
 // Pure: reads, never mutates. Junk-safe: non-string rows judge
 // nothing; non-array/string input reads the empty book.
 
@@ -77,11 +86,12 @@ const emptyBook = () => ({
 export function o2TriggerBook (lines) {
   const book = emptyBook()
   if (!Array.isArray(lines)) return book
-  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2, lastBlindKind, sawPass, birthTs, hbAtBirth }
+  const state = {} // per bot: { crossingTs, hasCrossing, inBand, lastO2, lastO2At, prevO2At, lastPassHead, minO2, lastBlindKind, sawPass, birthTs, hbAtBirth, passAtBirth }
   let lastTs = null
   let hbTotal = 0 // the stream's own pulse count (the v0.975.4 seat's own clock)
+  let passTotal = 0 // the fleet's own pass lines the grammar parsed (the v0.975.5 split's own counter)
   const seatFor = (bot) => {
-    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null, lastBlindKind: null, sawPass: false, birthTs: null, hbAtBirth: null }
+    if (!state[bot]) state[bot] = { crossingTs: null, hasCrossing: false, inBand: false, lastO2: null, lastO2At: null, prevO2At: null, lastPassHead: null, minO2: null, lastBlindKind: null, sawPass: false, birthTs: null, hbAtBirth: null, passAtBirth: null }
     return state[bot]
   }
   let li = -1 // the log's own adjacency: the fold's own line index (every element counts)
@@ -94,6 +104,7 @@ export function o2TriggerBook (lines) {
       const p = parseSentryPass(line)
       if (!p) continue
       const seat = seatFor(p.bot)
+      passTotal++ // the fleet's own sight rode (the v0.975.5 split's own counter)
       // the sight's own witness byte (the v0.975.2 byte): the pass line's
       // own existence rides the seat - the silent life (no pass at all)
       // and the blind-skinned life judge differently (the sensor's own
@@ -165,7 +176,11 @@ export function o2TriggerBook (lines) {
       // nulls (the fold's own start owns the birth, never invented)
       const lifeHb = seat.hbAtBirth === null ? null : hbTotal - seat.hbAtBirth
       const lifeSpan = seat.birthTs !== null && lastTs !== null ? Math.max(0, lastTs - seat.birthTs) : null
-      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2, blindKind: seat.minO2 === null ? (seat.lastBlindKind || (seat.sawPass ? null : 'silent')) : null, lifeSpan, lifeHb })
+      // the silent gap's own seat split (the v0.975.5 byte): the fleet's
+      // own pass lines during the life - the unborn seat prices the
+      // honest null beside its siblings (one birth, three cells)
+      const lifeFleetPasses = seat.passAtBirth === null ? null : passTotal - seat.passAtBirth
+      book.perDeath.push({ bot, ts: lastTs, crossed, window, lastO2: seat.lastO2, lastO2Gap, lastO2Span, lastPassHead: seat.lastPassHead, minO2: seat.minO2, blindKind: seat.minO2 === null ? (seat.lastBlindKind || (seat.sawPass ? null : 'silent')) : null, lifeSpan, lifeHb, lifeFleetPasses })
       // the death reset's own law: the state never survives the death
       seat.crossingTs = null
       seat.hasCrossing = false
@@ -182,6 +197,7 @@ export function o2TriggerBook (lines) {
       // pulse position - the life the reset opens prices from here
       seat.birthTs = lastTs
       seat.hbAtBirth = hbTotal
+      seat.passAtBirth = passTotal
       continue
     }
   }
@@ -260,6 +276,15 @@ export function o2TriggerConsistent (book) {
     }
     if (d.lifeSpan !== null && d.lifeSpan !== undefined) {
       if (!Number.isInteger(d.lifeSpan) || d.lifeSpan < 0) return false
+      if (d.lifeHb === null || d.lifeHb === undefined) return false
+    }
+    // the silent gap's own seat split shape (the v0.975.5 byte): the
+    // fleet pass count is the fold's own non-negative integer sharing
+    // the birth's own seat - the count without its own pulse count lies
+    // (the split prices a birth); the undefined seat stays legal (the
+    // legacy book shape)
+    if (d.lifeFleetPasses !== null && d.lifeFleetPasses !== undefined) {
+      if (!Number.isInteger(d.lifeFleetPasses) || d.lifeFleetPasses < 0) return false
       if (d.lifeHb === null || d.lifeHb === undefined) return false
     }
     deaths++
@@ -811,7 +836,7 @@ export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold() }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -849,6 +874,15 @@ export function o2TriggerEdgeBook (book) {
             s.ts.sum += d.lifeSpan
             if (s.ts.min === null || d.lifeSpan < s.ts.min) s.ts.min = d.lifeSpan
             if (s.ts.max === null || d.lifeSpan > s.ts.max) s.ts.max = d.lifeSpan
+          }
+          // (v0.975.5) the silent gap's own seat split: the fleet's own
+          // pass lines during the life - the owner's own fold (the
+          // bot-local seat vs the stream's own seat)
+          if (d.lifeFleetPasses !== null && d.lifeFleetPasses !== undefined && Number.isInteger(d.lifeFleetPasses)) {
+            s.fp.count++
+            s.fp.sum += d.lifeFleetPasses
+            if (s.fp.min === null || d.lifeFleetPasses < s.fp.min) s.fp.min = d.lifeFleetPasses
+            if (s.fp.max === null || d.lifeFleetPasses > s.fp.max) s.fp.max = d.lifeFleetPasses
           }
         }
       }
@@ -897,13 +931,13 @@ export function o2TriggerEdgeConsistent (e) {
   if (!Number.isInteger(s.born) || s.born < 0) return false
   if (!Number.isInteger(e.silentUnborn) || e.silentUnborn < 0) return false
   if (s.born + e.silentUnborn !== bs.silent) return false
-  for (const f of [s.ts, s.hb]) {
+  for (const f of [s.ts, s.hb, s.fp]) {
     if (!f || typeof f !== 'object' || Array.isArray(f)) return false
     if (!Number.isInteger(f.count) || f.count < 0 || !Number.isInteger(f.sum) || f.sum < 0) return false
     if (f.count > 0 && (f.min === null || f.max === null)) return false
     if (f.count === 0 && (f.min !== null || f.max !== null || f.sum !== 0)) return false
   }
-  if (s.hb.count > s.born || s.ts.count > s.born) return false
+  if (s.hb.count > s.born || s.ts.count > s.born || s.fp.count > s.born) return false
   const c = e.catchable
   if (!c || typeof c !== 'object' || Array.isArray(c)) return false
   if (!Number.isInteger(c.count) || c.count < 0 || !Number.isInteger(c.sum) || c.sum < 0) return false
@@ -954,6 +988,17 @@ export function o2TriggerEdgeRow (e) {
         if (s.hb.count > 0) parts.push(`the pulse ${s.hb.min}..${s.hb.max} heartbeat(s) avg ${(s.hb.sum / s.hb.count).toFixed(1)}`)
         if (parts.length === 0) parts.push('the births rode, the cells price nothing')
         blindWord += ` (the silent lives' own span (v0.975.4): ${s.born} born life(s) - ${parts.join(', ')}` + (e.silentUnborn > 0 ? `; ${e.silentUnborn} unborn` : '') + ')'
+        // (v0.975.5) the silent gap's own seat split - the born lives
+        // name their own owner by the fleet's own sight (the shape's
+        // own three words, never a threshold)
+        if (s.fp.count > 0) {
+          const fpByte = s.fp.min > 0
+            ? `the fleet's own sight lived (min ${s.fp.min}..max ${s.fp.max} pass line(s) rode) - the bot's own stream owns the gap seat`
+            : (s.fp.max === 0
+              ? 'the whole stream slept - the server\'s own gap owns the seat'
+              : 'the gap seat is split (the bot\'s own stream vs the whole stream\'s sleep) - the two seats compete')
+          blindWord += ` (the silent gap's own seat split (v0.975.5): ${s.fp.count} priced life(s) - ${fpByte})`
+        }
       }
     }
   }
