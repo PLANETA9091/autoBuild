@@ -840,13 +840,15 @@ export function o2TriggerKindRow (book) {
  * @param {object|null} [book] the o2TriggerBook fold
  * @returns {{deaths: number, noCrossing: number, blind: number,
  *   catchable: {count: number, min: number|null, max: number|null, sum: number},
- *   lies: number}|null} null when the source book prices nothing
+ *   raiseYield: {caught: number, rest: {count: number, min: number|null,
+ *   max: number|null, sum: number}}, lies: number}|null} null when the
+ *   source book prices nothing
  */
 export function o2TriggerEdgeBook (book) {
   if (!book || typeof book !== 'object' || !Array.isArray(book.perDeath)) return null
   if (!Number.isInteger(book.deaths) || book.deaths <= 0) return null
   const emptyFold = () => ({ count: 0, min: null, max: null, sum: 0 })
-  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, lies: 0 }
+  const out = { deaths: book.deaths, noCrossing: 0, blind: 0, blindSplit: { reset: 0, unknown: 0, silent: 0, legacy: 0 }, silentSpan: { born: 0, ts: emptyFold(), hb: emptyFold(), fp: emptyFold() }, silentUnborn: 0, silentUnbornTs: emptyFold(), catchable: { count: 0, min: null, max: null, sum: 0 }, raiseYield: { caught: 0, rest: emptyFold() }, lies: 0 }
   for (const d of book.perDeath) {
     if (!d || typeof d !== 'object') return null
     if (d.crossed) continue // the edge caught it - the lever prices nothing
@@ -914,6 +916,20 @@ export function o2TriggerEdgeBook (book) {
     out.catchable.sum += depth
     if (out.catchable.min === null || depth < out.catchable.min) out.catchable.min = depth
     if (out.catchable.max === null || depth > out.catchable.max) out.catchable.max = depth
+    // (v0.975.9) the raise's own first rung: the minimal raise (the
+    // edge +1) owns depth exactly 1 - the yield's own seat (the wire
+    // decision's own byte: the floor's three words rode 6.0/1.0/7.0,
+    // the raise-to-11's own yield was named by hand in the reads - the
+    // front becomes a field byte); the deeper lives ride the rest fold
+    // (the ladder's own next rungs' price)
+    if (depth === 1) out.raiseYield.caught++
+    else {
+      const rf = out.raiseYield.rest
+      rf.count++
+      rf.sum += depth
+      if (rf.min === null || depth < rf.min) rf.min = depth
+      if (rf.max === null || depth > rf.max) rf.max = depth
+    }
   }
   return out
 }
@@ -971,6 +987,21 @@ export function o2TriggerEdgeConsistent (e) {
   if (!Number.isInteger(c.count) || c.count < 0 || !Number.isInteger(c.sum) || c.sum < 0) return false
   if (c.count > 0 && (c.min === null || c.max === null)) return false
   if (c.count === 0 && (c.min !== null || c.max !== null || c.sum !== 0)) return false
+  // (v0.975.9) the raise's own first rung: the yield fold's own image
+  // (the caught lives plus the rest's own fold must be exactly the
+  // catchable total - the walk's own recount), the rest rides the
+  // standard shape, and the rung law: the first rung owns depth
+  // exactly 1 - everything it misses rides depth >= 2 (a rest life at
+  // depth 1 is the fold's own lie - the yield miscounted)
+  const r = e.raiseYield
+  if (!r || typeof r !== 'object' || Array.isArray(r)) return false
+  if (!Number.isInteger(r.caught) || r.caught < 0) return false
+  if (!r.rest || typeof r.rest !== 'object' || Array.isArray(r.rest)) return false
+  if (!Number.isInteger(r.rest.count) || r.rest.count < 0 || !Number.isInteger(r.rest.sum) || r.rest.sum < 0) return false
+  if (r.rest.count > 0 && (r.rest.min === null || r.rest.max === null)) return false
+  if (r.rest.count === 0 && (r.rest.min !== null || r.rest.max !== null || r.rest.sum !== 0)) return false
+  if (r.caught + r.rest.count !== c.count) return false
+  if (r.rest.count > 0 && r.rest.min < 2) return false
   if (e.blind + c.count + e.lies !== e.noCrossing) return false
   if (e.lies > 0) return false // the lie seat: the fold's own contrapositive is absolute
   if (c.count > 0 && (c.min < 1 || c.max < c.min)) return false
@@ -1041,5 +1072,19 @@ export function o2TriggerEdgeRow (e) {
   if (c.count === 0) {
     return `the no-crossing deaths' own floor (v0.975.0): ${e.noCrossing} no-crossing death(s), no numeric floor above the edge (${e.blind} blind) - the sensor's own sight prices the edge nothing${blindWord}`
   }
-  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord}`
+  // (v0.975.9) the raise's own first rung - the wire decision's own
+  // word (the shape's own three words, never a threshold): the
+  // minimal raise's own yield prices the raise real / the deeper
+  // rungs' own price / the split rides
+  const r = e.raiseYield
+  const avg = r.rest.count > 0 ? ` avg ${(r.rest.sum / r.rest.count).toFixed(1)}` : ''
+  let raiseWord
+  if (r.caught === c.count) {
+    raiseWord = `the minimal raise (edge ${TRIGGER_O2_MAX} -> ${TRIGGER_O2_MAX + 1}) owns the whole share - ${r.caught} of ${c.count} life(s) rode depth 1 - THE MINIMAL RAISE'S OWN SEAT: the wire's own word prices the raise real`
+  } else if (r.caught === 0) {
+    raiseWord = `the minimal raise prices nothing - the rest rode depth ${r.rest.min}..${r.rest.max}${avg} - THE LADDER'S OWN PRICE: the deeper rungs' own word`
+  } else {
+    raiseWord = `the minimal raise prices ${r.caught} of ${c.count} life(s) - the rest rode depth ${r.rest.min}..${r.rest.max}${avg} - THE LADDER'S OWN SPLIT: the first rung's yield rides beside the deeper rungs' price`
+  }
+  return `the no-crossing deaths' own floor (v0.975.0): ${c.count} of ${e.noCrossing} no-crossing death(s) rode a numeric floor ${c.min}..${c.max} avg ${(c.sum / c.count).toFixed(1)} o2-unit(s) above the rescueBand's edge (${TRIGGER_O2_MAX}) - the minimal raise the raised edge would have bought (the lever's own price)${blindWord} (the raise's own first rung (v0.975.9): ${raiseWord})`
 }
