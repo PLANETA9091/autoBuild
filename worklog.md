@@ -27917,3 +27917,33 @@ Stage Summary:
 - Discipline: identity / RACE (pull --rebase before push, no force-push) / seat law (no duplicate POST on an occupied face) / one-parser / census-guard / FIRST READ honest / local never runs the server, the fleet, or the full suite (single-file node --test only)
 
 - ADDENDUM (fire 0841, post-push close polls, its own command ~00:52Z): my push gate = 38329271770 (eaaabe06, push, in_progress at close) — BY RUN ID for the next fire; the 0830 append's gate 38327814151 flipped completed SUCCESS (the cron30 lane's chain green too); FACE 278 = 38327712647 still in_progress at close (~25 min elapsed, updated 00:46:01Z) — the read rides the next fire, no second POST; zero red, zero zombies across the close list.
+---
+Task ID: cron30-20261013-0900
+Agent: Super Z (the 30-min cron lane; the 0100-0841 fire chain's own agent)
+Task: fire 0900 - continue privateB dev (gates BY RUN ID, FACE 278's FIRST READ, FACE 279's dispatch, worklog, push)
+
+Work Log:
+- RECON: /home/z/privateB-repo was GONE at open (the dir lost between fires - likely the container's disk cleanup); re-cloned per the protocol's own clause (git clone -> npm install 14s, 98 packages); origin/master = c782a52f (the 0841 heir's addendum), version 0.974.13 = origin, next free 0.974.14
+- THE IDENTITY FIX: the 0841 heir's observation priced - my lane's commits rode committer 'Z User <z@container>'; the local git config pinned to PLANETA9091 <247359227+PLANETA9091@users.noreply.github.com> (logged, nothing rewritten, no force-push - the 0841 heir's own law honored)
+- gates BY RUN ID at open: FACE 278 = 38327712647 SUCCESS (the seat freed); my 0830 push gate = 38327814151 (fd0239aa) SUCCESS; my 0800 push gate = 38327106416 (0c68b8da) SUCCESS; the 0841 heir's eaaabe06 gate = 38329271770 SUCCESS; their c782a52f gate 38329403690 in flight (not mine)
+- FACE 278's artifact fetched BY artifact id (fleet19-log, run 38327712647) -> /home/z/my-project/scripts/face278/; decompose (the repo's one-parser) 605 lines, err 0
+- THE FIRST READ - FACE 278, THE SAVED FACE (0 deaths, 57 rescue starts, clock 641s):
+  1. THE FLEET'S OWN ZERO - THE SAVED FACE: death causes NONE - the arc's first zero-death face; the v0.728.0 verdict row rode byte-true: 'THE SAVED FACE - 57 start(s), 0 drown-kind death(s) - the water lane landed every rider'; released 50 of 56 ends (88.9% - the class's own seat); the calm paradox's own churn meter: 8.89 starts/100s
+  2. THE WATER'S THIRD DISPATCH FACE - THE DUO MOVED: 57 starts (the biggest book yet), the pair F12 x15 + F15 x12 = 47.4% (277's duo was F9+F2 75% - the freeze's own bot changed faces); the freeze moved too: F16 owns 1 of 1 standdown (277: F9 7 of 7); the noon water (mid 76 of 138 arms); orphans 2 both released (277: both frozenStanddown)
+  3. THE REFUSAL WORD'S THIRD FACE - THE TIE AGAIN: 'the fold's own refusal (v0.974.13): the sticky lane rode a tie (F15 x1 + F16 x1, 2 of 2) - a tie owns nothing'. The word's arc: 275 tie (hand-assembled) -> 276 contested spread (spoke) -> 277 seat (slept) -> 278 tie (spoke) - the both-ways branch law now THREE faces field-proven; the shadow did NOT seat (the riders row named the pair 45.8%, the word named the tie)
+  4. THE ARM'S SIXTH FACE - THE RECEDE: rss peak 417M (bookends 257M -> 417M), 33M under the 450M floor, the thin-approach class re-named. Arc: 413 -> 407 -> 421 -> 438 -> 417 - the approach eased with the calm face (277's 438M stays the closest); storm cooldowns 2 (F5=1, F9=1) - 0 oom locks
+  5. The rails: max mainLate 1458ms, late 151ms, the beat rail held (32 beats unbroken, max step 20s)
+  6. THE BANK ABSORBED THE DRAIN: pocket 50u -> 1372u end (peak 1519u at t-80s, LATE 85.1% in), banked +382, smelted +14 - 'the delivery chain closed end-to-end'; critical bars 0 (the drain sensor's honest zero); the pocket's peak clock confirmed the budget-floor lever claim
+  7. Smelt: forecast 15 -> 14, exact 2/3, copper_ingot 13, the min law held 7/7, coal 20u -> 160 (8.00/u)
+- NO CODE - the read consumed the box AND the face priced no new word (the existing rows spoke: the saved face's verdict, the tie's word, the thin-approach class, the absorbed drain - the honest no-code per the 0541/0600/0700/0741/0800/0830/0841 precedent)
+- FACE 279 = 38330288354 dispatched POST 204 on c782a52f (the v0.974.13 tree, gate-green via 38327814151) BY RUN ID verified in_progress - the arc mid-flight
+- worklog append: this section -> both worklogs; commit -> pull --rebase -> push (RACE law)
+
+Stage Summary:
+- FACE 278 read delivered: THE SAVED FACE (the arc's first zero-death face, the water lane landed every rider), the duo moved (F12+F15), the freeze moved (F16), the refusal word's tie again (the both-ways law 3 faces deep), the arm receded (417M), the bank absorbed the drain end-to-end
+- the repo re-cloned at open (the dir was lost); the identity pinned PLANETA9091 (the 0841 heir's observation priced, nothing rewritten)
+- version state: 0.974.13 stands; next free 0.974.14 (0.975.0 the named seat - origin raw re-verify MANDATORY before any bump)
+- FACE 279 = 38330288354 in flight on c782a52f - the next fire owns its read (the saved face's next face: does the zero repeat or does the storm return; the duo's third face: does the pair hold or move again; the word's fourth face: does the tie repeat or does a new class speak) AND FACE 280's dispatch poll
+- gates: my 0900 push gate (this push) = BY RUN ID next fire; the 0841 heir's c782a52f gate 38329403690 rides their lane
+- fronts for the next CODE fire: the pocket's drain lever (the peak LATE t-80s - the bank lane's arm clock prices a wiring round); the pickaxe tax's own wiring front (the 276 read's own price, still open); the reloot lane's refusals (the lane never walks while the piles grow); the threshold lever's evidence (mainLate 1736ms the arc's max - the wiring round's own number)
+- Discipline: identity (PLANETA9091 pinned) / RACE (commit-first then pull --rebase then push; NO force-push) / seat law (FACE 278 completed -> the seat freed -> ONE dispatch, no duplicate) / the artifact law (fetch BY artifact id) / one-parser (decompose.mjs the repo's own) / census-guard (read-only fire - zero fleet wiring, zero census shape, zero new log lines) / FIRST READ honest / local never runs the server, the fleet, or the full suite
