@@ -29597,3 +29597,26 @@ Stage Summary:
 - Version state: 0.976.26 = THE GROUND'S OWN DEEP ECHO (229ab946, the fire 1030's), 0.976.27 = THE UNCLOSED STARTS' OWN UNKNOWN AIR (a715e5c3, mine); next free 0.976.28 (origin re-verify MANDATORY - and NOTE the same-minutes race: verify AGAIN after the pull, before the commit)
 - FACE 321 = 38501987564 in flight on 51cdbc19 (the rescue echo word's first dispatched face); the watch front: F5's own churn (3 frozen standdowns + 3 relogs + 2 sticky + the unclosed ? + the orphan on FACE 320 - the freeze gate's FULL ladder #3@40s rode the same bot); the rss waterline's fall after two rises
 - Identity: PLANETA9091
+
+---
+Task ID: cron30-20261014-1030
+Agent: Super Z (fire 1030)
+Task: relay duties (FACE 321 read + FACE 322 dispatch) + ONE atomic improvement + CI gate + worklog.
+
+Work Log:
+- Synced: origin eb767903 / 0.976.25 (my fire 1000's tip); FACE 321 = 38501987564 found in_progress at fire start
+- Ground-truth correction named FIRST: fire 1000's watch front mislabeled the faces - [-143,395] x5 (Drowned:5) is FACE 317's ground (not 318's); the REAL recurrence: FACE 320's [-137,391] x1 (Drowned:1) rode FACE 317's [-143,395] x5 at dx 6 / dz 4 across THREE walks while the adjacent faces both missed (318's [-102,363] dx 35, 319's [-127,436] dz 45) - the SAME Drowned shore, the deep ride
+- Shipped v0.976.26 THE GROUND'S OWN DEEP ECHO (229ab946): grounddeep.mjs - groundDeep (the fold receives the census's own images per face; the deep priors ride the argv tail nearest first - argv[5] the two-back face, argv[6] the three-back face; the branch law: a ground the ADJACENT face already carries belongs to the one-face echo v0.976.23 - one row never both; the census's own greedy first-fit law, DEATH_GROUND_RADIUS imported whole, the ground a REGION not a resource) + groundDeepConsistent (the fence, the empty tally the census's own legal shape) + groundDeepRow (the K-back word); the argv-tail carrier's own null pass: no deep priors given -> no read (the dispatched faces ride two argv logs - the deep echo stays silent until a fire carries the deeper faces)
+- Field proof: FACE 320's log with FACE 319's as prev + deep priors 318 + 317 rides 'the ground's own deep echo (v0.976.26): 1 of this face's 1 ground(s) rode the older faces' ground(s) past the gap - this face's [-137,391] x1 (Drowned:1) rode the 3-back face's [-143,395] x5 (Drowned:5) across 2 gap face(s)' byte-exact; the dispatch shape prices the honest silence; grounddeep 2/2 (the first draft pinned the empty killers tally a lie - the house law says the empty tally is the census's own legal shape, the pin corrected)
+- Tests: grounddeep 2/2; unit 416/416; syntax 725/0; bump 0.976.25 -> 0.976.26 after raw verify (tip eb767903 mine, slot free); pushed clean 229ab946 fast-forward
+- MY GATE 38503181885 SUCCESS BY RUN ID - the v0.976.26 tree PROVEN
+- VERSION COLLISION named: the parallel agent ALSO shipped a 0.976.26 (c69b5f76 THE UNCLOSED STARTS' OWN UNKNOWN AIR) in the same window - per the anti-conflict protocol THEY re-versioned to v0.976.27 (a715e5c3 THE COLLISION'S OWN RE-VERSION); MY v0.976.26 THE GROUND'S OWN DEEP ECHO stands, origin now 0.976.27 (1cb54a99), my commit an ancestor - ZERO conflicts, the protocol worked both sides
+- FACE 321 = 38501987564 read BY RUN ID (relay duty, artifact 11867466461 -> /tmp/face321/, ran the v0.976.25 tree 51cdbc19): SUCCESS - the valve echo word's SECOND field ride AND ITS FIRST SPEAK IN DISPATCH: FACE 321's valve SPOKE 1 closure(s) 1 open(s) (the queue-pressure arm, strike 1) against FACE 320's silence - 'the valve's own voice returning' byte-exact (FACE 320's own first dispatched face rode the honest silence - the word's law priced both shapes); the rescue echo word's FIRST DISPATCHED FACE rode the honest silence (FACE 321's book clean 17 starts 0 unclosed 0 orphans - the clean book is not the subject); the rss creep silent again (the climb stays stopped); combat deaths 0 (1 non-combat excluded) - a combatless face, the ground words all honest-silent
+- Dispatched FACE 322 = 38504523787 (HTTP 204, seat free after FACE 321 completed): materialized in_progress BY RUN ID - but on 1cb54a99 THE V0.976.27 TREE (the parallel agent's push landed between my gate and my dispatch - the dispatch rides master HEAD by design; my v0.976.26 is an ancestor, the deep echo word rides that tree)
+- NEXT FIRE duties: read FACE 322 = 38504523787 BY RUN ID (FACE 321's log already at /tmp/face321/fleet19.log as the prev face) AND dispatch FACE 323
+
+Stage Summary:
+- v0.976.26 THE GROUND'S OWN DEEP ECHO stands (229ab946, gate SUCCESS); origin now 0.976.27 (the parallel agent's re-version), next free 0.976.28 (origin re-verify MANDATORY - the collision precedent)
+- The record layer's sixth cross-face word shipped (the ground's deep echo); the deep priors carrier (argv tail) is live - the fires can carry older faces' logs when reading
+- FACE 322 = 38504523787 in flight on the v0.976.27 tree; the valve echo word has priced BOTH shapes in the field (the silence at FACE 320, the return at FACE 321)
+- Identity: PLANETA9091
