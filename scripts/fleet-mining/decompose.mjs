@@ -168,6 +168,7 @@ import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../s
 import { floorCrossRow } from '../../src/lib/floorcross.mjs' // (v0.976.30) the floor's own crossing - the valve margin's own cross-face step: the prior face's margin against this face's margin (the thin-approach became the silent cross: FACE 322's +23M under rode to FACE 323's -32M past - the waterline stepped over the valve's own 450M line between the walks while the valve's own voice stayed silent); the same lens runs over the prior face's lines (one-parser law, never a fork), the floors must hold still across the pair, under -> past prices the crossing, past -> under prices the retreat, a held side prices the honest silence; the valve's voice rides as context bytes - co-existence reported, causation never guessed
 import { giantWhenRow, giantTailRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane; (v0.976.20) the giant's own tail - the seat's own third sentence: the first gauge after the giant's own drain byte (the loop's own catch-up, the shadow seat at the ring's own threshold)
 import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
+import { giantSizeRow } from '../../src/lib/giantsize.mjs' // (v0.976.33) the giant's own size - the stall's own depth step across faces (the field priced the growth by hand two faces deep: FACE 313's 57526ms giant rode to FACE 314's 75368ms - 17842ms deeper - and the record's own echo came home: FACE 325's 75350ms giant 18ms shy of the 75368ms record); the branch law ONE DIRECTION ONE BRANCH - deeper prices the GROWTH, shallower prices the EASE, a held size and the sparse giant book (a max under the ring's own threshold) price the honest silence; the freeze law rides the family's own seat (a dumped face's story owns the freeze row); the same censuses run over the prior face's lines (one-parser law, never a fork); the threshold rides the code's own constant, never re-declared
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { rssCreepRow } from '../../src/lib/rsscreep.mjs' // (v0.976.21) the rss's own creep - the waterline's cross-face step: this face's peak against the prior face's peak (the rise the valve's own silence hid - FACE 312's 500M, FACE 313's 511M, FACE 314's 546M the two reads hand-priced before the word existed); the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0; the giant's echo's carrier, v0.976.19), the fold receives the census's own images (stormcensus owns the rss peak - one-parser law, never re-parsed); a held-or-fallen waterline prices the honest silence (the rise is the subject)
 import { valveEchoRow } from '../../src/lib/valveecho.mjs' // (v0.976.24) the valve's own echo - the valve's cross-face voice: silent -> spoke prices the voice's RETURN (FACE 315/316/317 rode 0 CLOSED 0 OPEN three faces deep, FACE 318 = 38496821547's own valve SPOKE 2 closure(s) by the queue-pressure arm with both opens riding back), spoke -> spoke prices the voice's REPEAT; the fold receives the census's own valve images { closures, opens } (stormcensus owns the valve - one-parser law, never re-parsed; the same images the creep's wire already holds); a silent face prices the honest silence (the voice's rest is not the subject - the voice is)
@@ -3697,6 +3698,25 @@ if (stormMem.hb.count > 0) {
       if (prevHb.maxMainLateMs !== null && prevHb.maxMainLateMs >= BLACKBOX_FREEZE_MS && prevFreezes === 0) {
         const ge = giantEchoRow({ prev: { giantTsS: prevHb.giantTsS, maxMainLateMs: prevHb.maxMainLateMs, freezes: prevFreezes }, cur: { giantTsS: hb.giantTsS, maxMainLateMs: hb.maxMainLateMs, freezes: mfCensus.freezes.length } })
         if (ge) console.log(`  ${ge}`)
+        // (v0.976.33) THE GIANT'S OWN SIZE - the stall's own depth step
+        // across faces: the prior face's giant against this face's
+        // giant (the same censuses over each face's own lines - the
+        // one-parser law, never a fork; the echo's own block shares
+        // the vetting). The field priced the growth by hand two faces
+        // deep: FACE 313's 57526ms giant rode to FACE 314's 75368ms -
+        // 17842ms deeper - and the record's own echo came home: FACE
+        // 325's 75350ms giant 18ms shy of the 75368ms record. The
+        // branch law: ONE DIRECTION ONE BRANCH - deeper prices the
+        // GROWTH, shallower prices the EASE, a held size prices the
+        // honest silence; the sparse giant book prices no step (a max
+        // under the ring's own threshold is no giant's size); the
+        // freeze law rides the family's own seat (the lib fences it
+        // whole). The echo owns the WHERE (the address recurring), the
+        // when owns the LANE, this word owns the HOW DEEP - seats by
+        // subject, never by duplication. No prior face -> no read
+        // (the one-face law).
+        const gs = giantSizeRow({ prev: { giantMs: prevHb.maxMainLateMs, freezes: prevFreezes }, cur: { giantMs: hb.maxMainLateMs, freezes: mfCensus.freezes.length } })
+        if (gs) console.log(`  ${gs}`)
       }
     }
   }
