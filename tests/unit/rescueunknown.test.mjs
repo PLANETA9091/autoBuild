@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { RESCUE_UNKNOWN_RE, rescueUnclosedUnknown, rescueUnclosedUnknownConsistent, rescueUnclosedUnknownRow } from '../../src/lib/rescueunknown.mjs'
 
-test("the unclosed starts' own unknown air (v0.976.26) - the fold, the fence, the word", () => {
+test("the unclosed starts' own unknown air (v0.976.27) - the fold, the fence, the word", () => {
   // the FACE 320 = 38498739267 read's own shape byte-exact: F5's
   // unclosed start rode 'oxygen ?' - the emitter's own sentinel
   // (bot.oxygenLevel ?? '?') names the sensor's own silence: the air
@@ -20,7 +20,7 @@ test("the unclosed starts' own unknown air (v0.976.26) - the fold, the fence, th
   // the airs belong to the airs' own words - this lens defers them
   assert.equal(f320.unpriced, 2)
   const row1 = rescueUnclosedUnknownRow(f320)
-  assert.ok(row1.includes("the unclosed starts' own unknown air (v0.976.26): 1 unclosed start(s) rode the '?' byte"))
+  assert.ok(row1.includes("the unclosed starts' own unknown air (v0.976.27): 1 unclosed start(s) rode the '?' byte"))
   assert.ok(row1.includes("the emitter's own sentinel names the sensor's own silence: the air the start line never held"))
   // the byte's own field history: the verbatim riders from the cached
   // faces (face33's F7, face294's F12, face308's F6) match the lens -

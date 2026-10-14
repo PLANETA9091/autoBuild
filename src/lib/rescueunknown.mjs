@@ -1,4 +1,4 @@
-// (v0.976.26) THE UNCLOSED STARTS' OWN UNKNOWN AIR - the '?' byte's
+// (v0.976.27) THE UNCLOSED STARTS' OWN UNKNOWN AIR - the '?' byte's
 // own name. The field priced it by hand across the cached record:
 // FACE 320 = 38498739267's read named it (F5's unclosed start rode
 // 'oxygen ?' and every reader's fork priced it unnamed - ARM_O2_RE's
@@ -94,5 +94,5 @@ export function rescueUnclosedUnknownRow (f) {
   if (!f || typeof f !== 'object') return null
   if (!rescueUnclosedUnknownConsistent(f)) return null
   if (f.unknown === 0) return null
-  return `the unclosed starts' own unknown air (v0.976.26): ${f.unknown} unclosed start(s) rode the '?' byte - the emitter's own sentinel names the sensor's own silence: the air the start line never held`
+  return `the unclosed starts' own unknown air (v0.976.27): ${f.unknown} unclosed start(s) rode the '?' byte - the emitter's own sentinel names the sensor's own silence: the air the start line never held`
 }
