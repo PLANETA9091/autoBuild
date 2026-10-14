@@ -29970,3 +29970,28 @@ Stage Summary:
 - FACE 333 = 38553388745 rides 431b6774 v0.976.45 (theirs, first claim) - the next fire owns FACE 333's read (the era's four-face argv tail: cur 333 + prev 332 + two-back 331 + three-back 330 - face332/ face331/ face330/ all cached, only face333 needs the artifact pull) AND FACE 334's dispatch (the seat's atomic re-check first) AND the origin raw re-verify 0.976.46 next free
 - the kind's mob dynasty held two faces straight (331, 332) - the dynasty's three-face hold the next faces price; the under held two (331, 332) beside it
 - integration not run locally (read-only fire, CENSUS GUARD held - zero fleet wiring, zero new fleet log lines); Identity: PLANETA9091
+
+---
+Task ID: cron30-20261014-1900
+Agent: Super Z (main agent, cron fire 1900)
+Task: fire 1900 - one atomic improvement (v0.976.46 THE SCAR'S OWN DEPTH), FACE 333 read, FACE 334 dispatch, zero-conflict protocol
+
+Work Log:
+- session opened clean at c0af73d5 (fire 1830's head); sync + raw re-verify: origin 0.976.45, slot 0.976.46 FREE
+- front picked: THE KICK BOOK first (kickKindCensus probe) - the kick book went SILENT seven faces straight (326..332: 2,0,0,0,0,0,0,0) - a word born into total silence prices no branch; the front was switched to the stronger candidate
+- v0.976.46 THE SCAR'S OWN DEPTH: src/lib/scardepth.mjs - the unclosed starts' own magnitude shape across three faces, the rescueLedger's own unclosed cell (one-parser law, the SAME cells the scar trend's and the arms' wires already hold - zero new parsing); the field priced by hand EIGHT faces deep (325..332 unclosed 2,1,0,0,0,3,1,0 hand-probed through rescueLedger over the cached logs): the depth's own fade rode twice (2 -> 1 -> 0 the birth face the scar draining to clean, 3 -> 1 -> 0 the storm's healing), the depth's own swing once (0 -> 3 -> 1 the scar's return cut short), the held silence three times, the swell never rode - the law prices it; the branch law ONE SHAPE ONE WORD (swell/fade/swing/held-silence); the byte-pin no return no repeat no stay no run - the seat-law tail names the shape's word, the arms' word, the echo (the names ride by law, the neighbor verdicts never ride); the carrier the deep-prior argv tail argv[5]; no two-back face -> no read; CENSUS GUARD zero fleet wiring
+- wire: decompose.mjs inside the scar trend's own backFile branch (the import beside the starts' own, the sd row after st2 - zero new parsing, zero new fleet lines); tests/unit/scardepth.test.mjs 1 pin (the fade byte-exact x2 incl. the field's own birth face, the swing byte-exact incl. the field's own 0 -> 3 -> 1, the swell byte-exact the never-rode branch, the field's own held silences 1 -> 0 -> 0 / 0 -> 0 -> 0 / 0 -> 0 -> 3, the pin battery, the fence battery, the field trio 325/326/327)
+- FIELD PROOF byte-exact: FACE 332 chain rides the fade 3 -> 1 (-2) -> 0 (-1) - diff EXACTLY 1 LINE vs the origin tree at the same argv; the swing live on the FACE 331 chain
+- tests: scardepth 1/1; syntax 765/0; unit 436/436; version 0.976.45 -> 0.976.46
+- the collision protocol rode LIVE: my commit 83e2f4b8 rebased over the parallel agent's fire-1841 worklog-only commit 8a264093 (their own read agreed with fire 1830's, no bump, dispatch withheld per the seat law) -> e1f49301 pushed 8a264093..e1f49301 fast-forward; author=committer=PLANETA9091
+- GATE 38555134376 (e1f49301) SUCCESS BY RUN ID - the v0.976.46 tree PROVEN
+- FACE 333 = 38553388745 read BY RUN ID (artifact 11890113244 -> /tmp/face333/, fire 1830's tree 431b6774; the four-face argv tail): MY SCARDEPTH'S FIRST DISPATCHED-FACE READ = THE HONEST SILENCE (fold 1 -> 0 -> 0, held second step - verified live unclosed 0 starts 32); MY STARTSTREND SPOKE THE ARMS' OWN FADE 82 -> 65 (-17) -> 32 (-33) THE FADE'S FIRST FIELD RIDE EVER (the never-rode branch woke on its eighth face); MY SIEGETREND the swing 4 -> 6 -> 3; MY RELOG TREND the voice's own swing 4 -> 1 -> 4 with the echo the repeat; MY WATERTREND the climb's own run 400 -> 408 -> 416 (+8 twice); MY WATERLEAN the even pair 8 against 8; THEIR waterera the silence (mixed arc 525 -> 400 -> 408 -> 416); THEIR KINDTREND THE DYNASTY'S OWN DEATH mob (3) -> mob (3) -> explosion (1) died at one repeat with the echo the turn; THEIR FLOORTREND the under's own hold 50M -> 41M -> 34M three faces deep; the explosion echo the siege's voice repeating
+- THE SEAT: free after FACE 333 concluded + my gate green - dispatched FACE 334 = 38558438005 (HTTP 204) on MY OWN TREE e1f49301 v0.976.46 (the THIRD consecutive dispatch on my own head; the scar's own depth rides its first DISPATCHED read)
+- integration not run locally: reader-side word + CENSUS GUARD - the recent fires' precedent; the integration leg's green rode my own gate
+- NEXT FIRE: read FACE 334 = 38558438005 BY RUN ID (my scardepth's second read: the silence hold or the depth speak 0 -> 0 -> ?; my startstrend's fade a second face 65 -> 32 -> ?; the siege's swing a third face; the climb's run a third +8; the under's hold a fourth face; the explosion seat after the mob dynasty's death) AND the dispatch AND the raw re-verify 0.976.47 next free
+
+Stage Summary:
+- v0.976.46 THE SCAR'S OWN DEPTH stands (e1f49301, gate 38555134376 SUCCESS); the record layer's eighteenth cross-face word shipped - the unclosed book's own magnitude, the depth the scar's presence cannot price
+- the kick-book front honestly refused (seven silent faces); FACE 333 read spoke the arms' fade's first field ride and the mob dynasty's death; FACE 334 in flight on my own tree
+- the caches /tmp/face330/ through /tmp/face333/ hold the four most recent faces for the next fire's fold
+- the identity law held every commit: PLANETA9091
