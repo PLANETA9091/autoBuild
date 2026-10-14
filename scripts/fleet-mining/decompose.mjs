@@ -68,6 +68,7 @@ import { fuelDiet, coalEquivalent } from '../../src/lib/fueldiet.mjs' // (v0.666
 import { fuelYieldOf } from '../../src/lib/smelting.mjs' // (v0.666.0) the vanilla yield table's own voice - the diet row's coal divisor, never a made constant
 import { tierDeferCensus } from '../../src/lib/tierdefer.mjs' // (v0.463.0) the tool ladder's own voice - the steer's deferred names counted
 import { deathGrounds, DEATH_GROUND_RADIUS, deathGroundSeat, deathGroundSeatRow, deathGroundRiders, deathGroundRidersRow } from '../../src/lib/deathground.mjs' // (v0.464.0) the combat deaths' spatial join - the mob-cure's WHERE input; (v0.793.0) WHICH ground owns the combat book
+import { deathGroundEchoRow } from '../../src/lib/deathgroundecho.mjs' // (v0.976.23) the ground's own echo - the nest's cross-face repeat: this face's ground(s) against the prior face's grounds within the census's own +-12 radius (FACE 316's zombie shore [-135,397] and FACE 317's drowned x5+1 the read hand-priced before the word existed) - the carrier is decompose's own prior-face argument (the echo/creep's proven pattern), the fold receives the census's own images over the SAME deathGrounds parser (one-parser law, never re-spelled); the killers' own voices may swap - the ground is the subject
 import { hazardBoardCensus, hazardBoardCensusRow, hazardWalkBack, hazardWalkBackRow, hazardRefusalCensus, hazardRefusalCensusRow } from '../../src/lib/waterhazard.mjs'
 import { deepPocketCensus, deepPocketCensusRow } from '../../src/lib/deeppocket.mjs' // (v0.835.0) the deep-pocket ascend's own shape - the dig's ceiling name, the pocket's own geography (the spot repeats), the o2 floor over the numeric reads, the lid/why lane (the sibling climb family fenced out)
 import { wetCeilingCensus, wetCeilingCensusRow, wetColumnCompletion, wetColumnCompletionRow, wetColumnShortfall, wetColumnShortfallRow, wetColumnWaste, wetColumnWasteRow } from '../../src/lib/climbwet.mjs' // (v0.836.0) the water column's own dig - the climb lane's wet-ceiling ascend family, the deep-pocket lens' sibling priced on its own seat: the ceiling spread (the no-guard writer lets water dominate), the spot census, the y-blind column map (the bot's own descent between climbs), the within-episode dig vs the budget print; (v0.840.0) + the wet column's kept promise - the family's own completion read on the same parser: the whole-budget spend vs the early abandonment (the real faces so far read kept=0 - the budget always outran the climb); (v0.842.0) + the shortfall's own shape - the reach read: the deficit histogram (budget - dig, the kept class rides 0) + the nearest miss (how far the budget outran the climb); (v0.845.0) + the wasted dig - the shortfall's own why leg: the water class (a water cell buys no headroom - the dig's own purpose defeated) vs the solid digs
@@ -2016,6 +2017,20 @@ if (shooter.total > 0) {
     else {
       const dgr = deathGroundRiders(dg)
       if (dgr) console.log(`  ${deathGroundRidersRow(dgr)}`)
+    }
+    // (v0.976.23) THE GROUND'S OWN ECHO - the nest's cross-face repeat:
+    // the prior face's census over the SAME deathGrounds parser (the
+    // one-parser law, never re-spelled), the fold prices the across-face
+    // match with the census's own radius imported whole. No prior face
+    // given -> no read (the one-face law); a junk prior face prices the
+    // honest silence (the wiring's own null pass). Zero fleet wiring -
+    // CENSUS GUARD.
+    if (prevLines) {
+      const pdg = deathGrounds(prevLines)
+      const dger = pdg
+        ? deathGroundEchoRow({ prev: { combatDeaths: pdg.combatDeaths, blind: pdg.blind, grounds: pdg.grounds }, cur: { combatDeaths: dg.combatDeaths, blind: dg.blind, grounds: dg.grounds } })
+        : null
+      if (dger) console.log(`  ${dger}`)
     }
     // (v0.466.0) THE FLEE GROUND CROSS-READ - the two lenses join on the
     // same died lines: the shelter ledger read the OUTCOME (the verdict
