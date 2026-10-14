@@ -30536,3 +30536,25 @@ Stage Summary:
 - FACE 347 = THE RECOVERY FACE: the storm's own aftermath priced by the vocabulary (the rss recession word's own -880 read, the starts' own +36 refill)
 - FACE 348 = 38632163799 in flight on MY 99db3b19 (v0.976.66 incl. my skeleton word) - NEXT FIRE: read FACE 348 BY RUN ID (argv tail 348/347/346/345 - /tmp/face347 /tmp/face346 /tmp/face345 /tmp/face344 cached) AND the dispatch AND the raw re-verify 0.976.67 next free
 - HEAD after this fire: 99db3b19 (v0.976.66); Identity: PLANETA9091
+
+---
+Task ID: cron30-20261015-0430
+Agent: Super Z (cron fire 0430)
+Task: fire 0430 - THE DROWNED TOLL'S OWN TREND (v0.976.67), one atomic improvement, full anti-conflict loop
+
+Work Log:
+- fetched origin: HEAD 658ef883 (my fire 0400 worklog on 99db3b19 v0.976.66); FACE 348 = 38632163799 (my fire 0400 dispatch) in flight at fire start; syntax baseline 805/0
+- C: THE DROWNED TOLL'S OWN TREND v0.976.67 - the mob book's THIRD class-toll word (the attacker book's third seat beside zombie 64 + skeleton 66; fire 0330's handoff pre-named Drowned the next attacker seat 7 rides); src/lib/drownedtolltrend.mjs + tests/unit/drownedtolltrend.test.mjs + decompose.mjs wire (dlt fold beside skt in the census block, byAttacker.Drowned, one-parser law, CENSUS GUARD); THE NAME'S OWN FENCE priced in the header + the tail: the drowned toll prices the KILLER's own count (byAttacker.Drowned), the drown toll's own word (v0.976.61) prices the WATER DEATH's own count (byKind.drown) - a different book, the killer is not the death
+- field arithmetic (helper attackertolls348.mjs): drowned 340=3 341=0 342=0 343=0 344=2 345=1 346=0 347=0 - FADE x1 (FACE 346 chain 2 -> 1 -> 0 the branch's own birth THE FIRST FADE the attacker book's class tolls ever rode), swing x1 (FACE 345 chain 0 -> 2 -> 1), held x4 (342/343/344/347 chains), swell never rode
+- field proof byte-exact x2 vs origin tree 658ef883 (worktree): FACE 346 chain fade 2 -> 1 (-1) -> 0 (-1) diff EXACTLY 1 LINE + FACE 345 chain swing 0 -> 2 (+2) -> 1 (-1) diff EXACTLY 1 LINE + the held chains FACE 347 and FACE 344 diff ZERO lines each (the honest silence holds)
+- D: syntax 805/0; unit 457/457; drownedtolltrend 1/1; version 0.976.66 -> 0.976.67 (origin raw re-verified slot free); commit cd357bae pushed CLEAN 658ef883..cd357bae
+- E: gate 38633826683 (push run on cd357bae) SUCCESS by run id (~18 min, two poll rounds)
+- FACE 348 = 38632163799 read BY RUN ID (completed SUCCESS; artifact 11928480931 -> /tmp/face348): THE CALM FACE - the storm's full aftermath: siege SWELL 0 -> 1 (+1) -> 3 (+2) the book's rise ran two steps deep, total=3 deaths (drown 1 + mob 1 + explosion 1 one each), byAttacker {Drowned:1} the wet killer's own single drag, waterline FADE 1302M -> 422M (-880) -> 417M (-5) the slide's own run, heartbeat recovered max mainLate 1007ms (vs the storm's 31120ms), starts 30 unclosed 1 orphans 0 (orphans swing 0 -> 2 -> 0), the kind seat echo the drown kind's seat repeated the dynasty holding; ALL CLASS-TOLL WORDS HONEST-SILENCED on the FACE 348 chain (every fold held): MY DROWNED TOLL'S FIRST DISPATCHED READ the honest silence 0 -> 0 -> 1 (the arrival behind a held first step) + skeleton 0 -> 0 -> 0 + zombie 0 -> 0 -> 0 + drown 0 -> 1 -> 1 held + mob 0 -> 0 -> 1 held + explosion 0 -> 0 -> 1 held - the law prices them, the bars never invent them
+- F: dispatched FACE 349 = 38636160268 (HTTP 204) on MY OWN tree cd357bae v0.976.67, the EIGHTEENTH consecutive; materialized in_progress (my drowned toll's second ride in flight)
+- G: both worklogs appended
+
+Stage Summary:
+- v0.976.67 THE DROWNED TOLL'S OWN TREND stands (cd357bae, gate 38633826683 SUCCESS); the attacker book's class-toll family three seats (zombie + skeleton + drowned); the kind book's four seats unchanged; the attacker book's fade branch PRICED for the first time (the drowned toll's own 2 -> 1 -> 0)
+- FACE 348 = THE CALM FACE: the storm's full aftermath priced by the vocabulary (the waterline's own slide 1302M -> 422M -> 417M, the heartbeat's own recovery 31120ms -> 1007ms, the siege's own swell 0 -> 1 -> 3)
+- FACE 349 = 38636160268 in flight on MY cd357bae (v0.976.67 incl. my drowned word) - NEXT FIRE: read FACE 349 BY RUN ID (argv tail 349/348/347/346 - /tmp/face348 /tmp/face347 /tmp/face346 /tmp/face345 cached) AND the dispatch AND the raw re-verify 0.976.68 next free
+- HEAD after this fire: cd357bae (v0.976.67); Identity: PLANETA9091
