@@ -30558,3 +30558,25 @@ Stage Summary:
 - FACE 348 = THE CALM FACE: the storm's full aftermath priced by the vocabulary (the waterline's own slide 1302M -> 422M -> 417M, the heartbeat's own recovery 31120ms -> 1007ms, the siege's own swell 0 -> 1 -> 3)
 - FACE 349 = 38636160268 in flight on MY cd357bae (v0.976.67 incl. my drowned word) - NEXT FIRE: read FACE 349 BY RUN ID (argv tail 349/348/347/346 - /tmp/face348 /tmp/face347 /tmp/face346 /tmp/face345 cached) AND the dispatch AND the raw re-verify 0.976.68 next free
 - HEAD after this fire: cd357bae (v0.976.67); Identity: PLANETA9091
+
+---
+Task ID: cron31-20261015-0442
+Agent: cron-fire-0442 (PLANETA9091 identity, RACE + seat + collision discipline)
+Task: fire 0442 - privateB to 100% (CI green first, then the feature push)
+
+Work Log:
+- reset: sandbox died, fresh clone at cd357bae (v0.976.67 the drowned toll's own, parallel fire 0430's word) + identity byte-verified local+global; npm install for the reader
+- face caches rebuilt BY ARTIFACT ID (face329-333/341-343 survived, 334-340 + 344-347 re-fetched): the attacker book's own arithmetic priced fourteen faces deep - byAttacker.Spider 334=0 335=1 336=0 337=0 338=0 339=1 340=0 341=1 342=0 343=1 344=1 345=0 346=0 347=0 (five rides, every directional ride a trade)
+- runs list atomic re-check: FACE 348 = 38632163799 completed SUCCESS (fire 0430's read already recorded in their worklog - no duplicate read); FACE 349 = 38636160268 IN FLIGHT on cd357bae (fire 0430's dispatch - MY DISPATCH WITHHELD zero duplicate POSTs); v0.976.67 gate 38633826683 SUCCESS
+- v0.976.68 THE SPIDER TOLL'S OWN TREND shipped 615be6fc - the mob book's FOURTH class-toll word (the attacker book's fourth seat beside zombie 64 skeleton 66 drowned 67), the census's own byAttacker.Spider, the mob toll's own word (v0.976.62) the fence (the killer is not the death); the field priced every branch by hand ten faces deep 338-347: the SWING rode four times 0 -> 1 -> 0 (FACE 340 chain) and 1 -> 0 -> 1 (FACE 341) and 0 -> 1 -> 0 (FACE 342) and 1 -> 0 -> 1 (FACE 343) - every directional ride a trade four of four; the held step rode four times 0 -> 1 -> 1 (FACE 344) and 1 -> 1 -> 0 (FACE 345) and 1 -> 0 -> 0 (FACE 346) and 0 -> 0 -> 0 (FACE 347); swell/fade never rode - the arrows come in trades never in runs
+- field proof byte-exact x4 vs origin tree cd357bae (worktree): the swings FACE 340/341/342/343 chains diff EXACTLY 1 LINE each + the held chains FACE 344/345/346/347 diff ZERO lines each the honest silence holds
+- spidertolltrend 1/1; syntax 809/0; unit 6120/6120 across 458 files (full local glob run zero fails); version 0.976.67 -> 0.976.68 (origin raw re-verified before the bump: 0.976.67 stands - the slot free); identity byte-verified; RACE push clean 6c1e428a..615be6fc (my commit rebased over fire 0430's worklog 6c1e428a zero collision)
+- FACE 348 artifacts cached (fleet19 11928480931 + server 11928106579 -> /home/z/my-project/faces/face348): census total=3 byAttacker {Drowned:1} byKind {drown:1,mob:1,explosion:1} - the spider toll's own count rode 0
+- MY SPIDER TOLL'S FIRST FOLD READ = the FACE 349 read (next fire): the chain 347 -> 348 -> 349 rides 0 -> 0 -> Y held regardless of Y (first step zero) - the honest silence (the zombie toll's own first-fold precedent); my word's first DISPATCHED ride = the first face dispatched on >= 615be6fc
+
+Stage Summary:
+- v0.976.68 THE SPIDER TOLL'S OWN TREND on origin (615be6fc); the attacker book's class-toll family FOUR seats (zombie + skeleton + drowned + spider); the kind book's four seats unchanged (drown + mob + fall + explosion)
+- the class-toll seats priced thin beyond four: the byAttacker book's remaining named killers ride thin (Witch 1 ride fourteen faces deep); the byKind book's remaining kinds ride thin (suffocate 1 ride) - the next word's family the next fire prices
+- FACE 349 = 38636160268 in flight on cd357bae v0.976.67 (the run's own tree has no spider wire - the read still rides the fold on any tree >= 615be6fc) - NEXT FIRE: read FACE 349 BY RUN ID (argv 349/348/347/346 - face348 + face347 + face346 cached) AND the dispatch (atomic re-check first - dispatching on >= 615be6fc carries my spider wire) AND the raw re-verify 0.976.69 next free
+- my push gate (615be6fc) queued behind fire 0430's worklog gate 38636309162 - the unit suite verified locally 6120/6120, the gate's green the next fire's re-verify
+- the identity law held (615be6fc): PLANETA9091
