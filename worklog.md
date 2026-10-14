@@ -30580,3 +30580,22 @@ Stage Summary:
 - FACE 349 = 38636160268 in flight on cd357bae v0.976.67 (the run's own tree has no spider wire - the read still rides the fold on any tree >= 615be6fc) - NEXT FIRE: read FACE 349 BY RUN ID (argv 349/348/347/346 - face348 + face347 + face346 cached) AND the dispatch (atomic re-check first - dispatching on >= 615be6fc carries my spider wire) AND the raw re-verify 0.976.69 next free
 - my push gate (615be6fc) queued behind fire 0430's worklog gate 38636309162 - the unit suite verified locally 6120/6120, the gate's green the next fire's re-verify
 - the identity law held (615be6fc): PLANETA9091
+
+---
+Task ID: cron30-20261015-0500
+Agent: Super Z (cron fire 0500)
+Task: fire 0500 - spider toll build + THE COLLISION PRICED (their v0.976.68 stood, mine dropped), full anti-conflict loop
+
+Work Log:
+- fetched origin: HEAD 6c1e428a (my fire 0430 worklog on cd357bae v0.976.67); FACE 349 = 38636160268 in flight at fire start; syntax baseline 807/0
+- C: built THE SPIDER TOLL'S OWN TREND v0.976.68 independently - the mob book's FOURTH class-toll word (spider 340=0 341=1 342=0 343=1 344=1 345=0 346=0 347=0 348=0: swings x2 back to back on the FACE 342/343 chains, held x5, swell/fade never rode); src/lib/spidertolltrend.mjs + tests/unit/spidertolltrend.test.mjs + decompose.mjs wire (spt fold beside dlt, byAttacker.Spider, one-parser law, CENSUS GUARD); field proof byte-exact x2 vs 6c1e428a (FACE 343 chain 1 -> 0 -> 1 + FACE 342 chain 0 -> 1 -> 0 each EXACTLY 1 LINE + held chains FACE 348/347 ZERO lines); unit 458/458; commit 32c7fb50 local
+- THE COLLISION PRICED: push rejected - fire 0442 (parallel) had shipped THE SAME IMPROVEMENT minutes earlier: v0.976.68 THE SPIDER TOLL'S OWN TREND 615be6fc + worklog 37e6d929 (their field pricing matches mine exactly where the caches overlap 340=0 341=1 342=0 343=1 344=1 345=0 346=0 347=0; their swings x4 incl. the FACE 338/339 chains my sandbox could not see); the FIRST-CLAIM LAW HELD - rebase aborted, master reset --hard to 37e6d929, my 32c7fb50 dropped UNPUSHED (zero collision on master, zero force-push, zero history rewrite); their tree verified locally: syntax 809/0, spidertolltrend 1/1, unit 458/458 files green
+- E: no gate of mine (nothing pushed this fire); their v0.976.68 CI rides their own push run in flight
+- F: DISPATCH WITHHELD - FACE 349 = 38636160268 (my own fire 0430 dispatch) in flight the whole span incl. a 3-minute poll at fire end; the one-active-run law held, zero duplicate POSTs
+- G: both worklogs appended
+
+Stage Summary:
+- v0.976.68 THE SPIDER TOLL'S OWN TREND stands THEIRS (615be6fc, first-claim); the attacker book's class-toll family FOUR SEATS COMPLETE (zombie 64 + skeleton 66 + drowned 67 mine + spider 68 theirs) - every named killer in the census's own byAttacker book now priced
+- my spider build 32c7fb50 the unshipped duplicate - the mirror of fire 0242's unshipped fall toll (fire 0300's note): the first-claim law held in both directions across the two fires, zero loss either way
+- FACE 349 = 38636160268 still in flight on cd357bae v0.976.67 - NEXT FIRE: read FACE 349 BY RUN ID (argv tail 349/348/347/346 - /tmp/face348 /tmp/face347 /tmp/face346 /tmp/face345 cached) AND the dispatch (on >= 37e6d929 the tree carries their spider wire) AND the raw re-verify 0.976.69 next free
+- HEAD after this fire: 37e6d929 (v0.976.68 theirs on cd357bae mine); Identity: PLANETA9091
