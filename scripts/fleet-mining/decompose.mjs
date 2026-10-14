@@ -173,6 +173,7 @@ import { rssRecessionRow } from '../../src/lib/rssrecession.mjs' // (v0.976.28) 
 import { rescueUnclosedBlind, rescueUnclosedBlindRow } from '../../src/lib/rescueblind.mjs' // (v0.976.22) the unclosed starts' own blind seat - the -1 air byte's own name (the FACE 316 read: F17's 'oxygen -1' rode the airs' folds unnamed while the emitter's own grammar ARM_O2_RE reads '(-1|\d+)' and the arm's own law names the blind skin - the sensor's own death before the arm); the fold reads the ledger's own unclosed book through the emitter's own regex imported whole - the one-parser law, never forked; the airs belong to the airs' own words, the unmatchable lines ride the honest junk count
 import { rescueUnclosedUnknown, rescueUnclosedUnknownRow } from '../../src/lib/rescueunknown.mjs' // (v0.976.27) the unclosed starts' own unknown air - the '?' byte's own name (the FACE 320 = 38498739267 read: F5's 'oxygen ?' rode every reader's fork unnamed while the emitter's own sentinel 'bot.oxygenLevel ?? ?' names the sensor's own silence - the air the start line never held; the byte's own field history rode face33's F7 x2, face294's F12 x2, face308's F6 - each start's next line rode 'pass 0 ... o2=20', the sensor's first word rode the next line); the narrow lens, the UNCLOSED_OXYGEN_RE precedent - zero ripple into the arm classes, the blind fold, the airs' words
 import { rescueEchoRow } from '../../src/lib/rescueecho.mjs' // (v0.976.25) the rescue book's own echo - the book's cross-face scar: clean -> scarred prices the scar's RETURN (FACE 315's clean book 33/0, then FACE 316's book SPOKE 4 unclosed of 116; FACE 317 clean again 11/0, then FACE 318 = 38493190499's book SPOKE 1 unclosed F11 of 29 - the scar returning twice across four faces), scarred -> scarred prices the scar's REPEAT; the fold receives the ledger's own totals { unclosed, starts } per face (rescueLedger owns the book - one-parser law: the same parser runs over the prior face's lines, never a fork); a clean face prices the honest silence (the clean book is not the subject - the scar is)
+import { explosionEchoRow } from '../../src/lib/explosionecho.mjs' // (v0.976.29) the explosion book's own echo - the blast voice's cross-face word: quiet -> spoke prices the siege's own RETURN (FACE 314's quiet book 0 of 1, then FACE 315's book SPOKE 1 explosion of 5; FACE 318's quiet again, then FACE 319's lone blast; FACE 321's quiet, then FACE 322 = 38504523787's storm 4 explosions of 7 death(s) - the siege returning at full weight), spoke -> spoke prices the REPEAT (FACE 316's 2 explosions against FACE 315's spoken book); the fold receives the census's own images { explosions, deaths } per face (deathKindCensus owns the book - one-parser law: the same parser runs over the prior face's lines, never a fork); a quiet blast book prices the honest silence (the voice's rest is not the subject - the voice is); the deaths' own mass rides the row as context bytes (co-existence reported, causation never guessed)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
@@ -256,6 +257,19 @@ if (sweep.keywordOnly.length) {
   // many of them carry no server verdict.
   const inferredNote = kinds.inferredOnlyCount ? `, INFERRED-ONLY ${kinds.inferredOnlyCount}` : ''
   console.log(`  death causes: ${causeRow}${inferredNote}${unparsedNote}`)
+  // (v0.976.29) THE EXPLOSION BOOK'S OWN ECHO - the blast voice's
+  // cross-face word (the valve's own echo's branch law, v0.976.24):
+  // quiet -> spoke prices the siege's own RETURN, spoke -> spoke
+  // prices the REPEAT, a quiet blast book prices the honest silence
+  // (the voice's rest is not the subject - the voice is). The same
+  // deathKindCensus parser runs over the prior face's lines (one-parser
+  // law, the rescue echo's proven prev-parser pattern); no prior face
+  // given -> no read (the one-face law).
+  if (prevLines) {
+    const prevKinds = deathKindCensus(prevLines)
+    const ee = explosionEchoRow({ prev: { explosions: prevKinds.byKind.explosion || 0, deaths: prevKinds.total }, cur: { explosions: kinds.byKind.explosion || 0, deaths: kinds.total } })
+    if (ee) console.log(`  ${ee}`)
+  }
   // (v0.784.0) THE DEATHS' OWN KIND - WHICH kind owns the death book
   // (the seat + the riders, one row never both - the branch law;
   // the owner case leaves the companion unprinted).
