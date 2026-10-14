@@ -16,6 +16,7 @@ import { deathSweep } from '../../src/lib/deathsweep.mjs' // (v0.389.0) the hone
 import { churnThrone, churnThroneRow, churnThroneRiders, churnThroneRidersRow, churnShadow, churnShadowRow, churnShadowRefusal, churnShadowRefusalRow, churnThronePair, churnThronePairRow } from '../../src/lib/churnthrone.mjs' // (v0.961.0) THE CHURN BOT'S THRONE - the three instability lanes' own join (the rescue starts' cast v0.774.0 + the frozen standdown's bot v0.931.0 + the relog census's own cells): one bot holding every non-empty lane's strict majority at once - the cross-lane read the faces kept assembling by hand (face 226's own throne birth); (v0.974.11) + THE THRONE'S OWN SHADOW - the plurality fold beside the throne's silence (face 272's own hand-assembled face: one bot leading EVERY non-empty lane's plurality at once - the churn/standdown/relog lanes plus the sticky book's own lane); (v0.974.13) + THE FOLD'S OWN REFUSAL - the shadow's silence's own word (the tie, the contested spread, the lone lane - the reads 274/275 hand-derived the word twice)
 import { relogClockBook, relogClockVerdict, relogClockRow } from '../../src/lib/relogclock.mjs' // (v0.966.0) THE RELOG'S OWN CLOCK - the throne's third lane's own WHEN (the shared lattice's fourth book; the fence counts two ways against the census's own relogs.n)
 import { sealDeathCensus, strandedPiles, relootRecovery, relootRecoveryRow, relootRefusalPrice, relootRefusalPriceRow, rescueDeadPrice, rescueDeadPriceRow, BIG_PILE_U, thirdsVerdict, deathThirdCast, deathThirdCastRow } from '../../src/lib/sealdeath.mjs' // (v0.403.0) the seal economy's death leg; (v0.476.0) the stranded piles - the sweep-reach wire's price; (v0.755.0) the thirds' own verdict; (v0.843.0) the reloot's own price - the walk's own mass read; (v0.847.0) the reloot refusal's own price - the refused walk's own mass read; (v0.850.0) the armed rescue's own price - the watched death's own mass read; (v0.920.0) the late third's own cast - WHO owns the closing third's deaths (the census's own deathRows cells, zero re-parsing)
+import { siegePaceRow } from '../../src/lib/siegepace.mjs' // (v0.976.32) the siege's own pace - the deaths' own rate step across faces (the field priced the surge by hand two faces deep: FACE 323's 0.58 deaths/min over 12.0 min rode to FACE 324's 1.22 over 9.0 min - the pressure more than doubled while the max burst alone underpriced the sustained strike); the same census runs over the prior face's lines (one-parser law, never a fork), a risen pace prices the SURGE, a fallen pace prices the EBB, a held pace and the sparse clock price the honest silence, the pace rides its own cells' law (the pair law - a density that disagrees with its own deaths-over-span arithmetic lies)
 import { drainThirdBook, drainThirdConsistent, drainThirdRow } from '../../src/lib/drainthird.mjs' // (v0.882.0) THE DRAIN'S OWN THIRD BOOK - the death drops' own u rides the clock's thirds (the end-phase tax priced the final 60s' units, the siege thirds priced the death counts, the leak clock split the leak share - the drops' u never rode a third); the join rides the log's own adjacency (the death clock's law by reuse: HB_RE + the drop grammars, the one-parser law); the thirds cut rides the v0.733.0 law (t < thirdS strict, the boundary rides the later third); the verdict seat rides thirdsVerdict (one verdict law, never forked); the drain's own lever prices the bank lane's own front (bank before the third turns). Pure mining-surface, ZERO fleet wiring.
 import { sealCensus, SEAL_FAMILIES, depositCast, depositCastRow, depositDuo, depositDuoRow } from '../../src/lib/sealcensus.mjs' // (v0.397.0) the keep families' field read; (v0.937.0) + the deposit's own cast - the family's own bot-level seat (the v0.827.0 lane seat's own sibling)
 import { hopCensus, hopZeroBotBillRow, hopZeroRidersRow } from '../../src/lib/hopcensus.mjs' // (v0.399.0) the walk-deliveries class's field read; (v0.767.0) WHICH walker owns the bleed; (v0.770.0) the shape the solo law refused to seat
@@ -467,6 +468,30 @@ if (sweep.keywordOnly.length) {
         ? `  siege pace: ${c.pace} deaths/min over ${(c.spanS / 60).toFixed(1)} min of timed span - the sustained pressure the max burst misses`
         : ''
       if (paceNote) console.log(paceNote)
+      // (v0.976.32) THE SIEGE'S OWN PACE - the deaths' own rate step
+      // across faces: the prior face's pace against this face's pace
+      // (the same census over each face's own lines - the one-parser
+      // law, never a fork; the rescue echo's precedent). The field
+      // priced the surge by hand two faces deep: FACE 323's 0.58
+      // deaths/min over 12.0 min rode to FACE 324's 1.22 over 9.0 min
+      // - the pressure more than doubled while the max burst alone
+      // underpriced the sustained strike. The branch law: ONE
+      // DIRECTION ONE BRANCH - a risen pace prices the SURGE, a fallen
+      // pace prices the EBB, a held pace prices the honest silence;
+      // the sparse clock prices no step (the bars never invent). The
+      // pace rides its own cells' law (the pair law - a density that
+      // disagrees with its own deaths-over-span arithmetic lies). The
+      // siege pace row owns the within-face density, this word owns
+      // the STEP (cross-face) - co-existence by seat, never by
+      // duplication. No prior face -> no read (the one-face law).
+      if (prevLines) {
+        const prevClock = sealDeathCensus(prevLines).clock
+        const sp = siegePaceRow({
+          prev: { deaths: prevClock.timed, spanS: prevClock.spanS, pace: prevClock.pace },
+          cur: { deaths: c.timed, spanS: c.spanS, pace: c.pace }
+        })
+        if (sp) console.log(`  ${sp}`)
+      }
       // (v0.675.0) THE END-PHASE TAX - the deadline's own price: the units
       // whose deaths stamped inside the final 60s window (the rescue and
       // the re-gather cannot repay them - the face ends before any walk).
