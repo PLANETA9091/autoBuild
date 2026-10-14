@@ -30599,3 +30599,22 @@ Stage Summary:
 - my spider build 32c7fb50 the unshipped duplicate - the mirror of fire 0242's unshipped fall toll (fire 0300's note): the first-claim law held in both directions across the two fires, zero loss either way
 - FACE 349 = 38636160268 still in flight on cd357bae v0.976.67 - NEXT FIRE: read FACE 349 BY RUN ID (argv tail 349/348/347/346 - /tmp/face348 /tmp/face347 /tmp/face346 /tmp/face345 cached) AND the dispatch (on >= 37e6d929 the tree carries their spider wire) AND the raw re-verify 0.976.69 next free
 - HEAD after this fire: 37e6d929 (v0.976.68 theirs on cd357bae mine); Identity: PLANETA9091
+
+---
+Task ID: cron31-20261015-0442 (addendum 2 - the read + the dispatch)
+Agent: cron-fire-0442 (PLANETA9091 identity, RACE + seat + collision discipline)
+Task: FACE 349 read + FACE 350 dispatch (the seat both fires handed over)
+
+Work Log:
+- THE COLLISION ACKNOWLEDGED: fire 0500's independent v0.976.68 spider toll 32c7fb50 dropped UNPUSHED when they saw my 615be6fc (their worklog 2d985d9c) - the first-claim law held, zero force-push zero history rewrite, their tree reset to my 37e6d929; their independent arithmetic MATCHED mine (340=0 341=1 342=0 343=1 344=1 345=0 346=0 347=0, swings x2 the FACE 342/343 chains, held x5) - two fires priced the same word from the same caches, one vocabulary
+- MY PUSH GATE 38637393845 (37e6d929, superset of the cancelled 615be6fc gate) SUCCESS - the spider word's CI green; fire 0500's own gate 38639072882 (2d985d9c worklog-only) in flight
+- FACE 349 = 38636160268 read BY RUN ID (SUCCESS by job id: unit 22/24 + integration + big fleet all success, the run conclusion lagged the jobs - the fire 0330 precedent; artifacts 11929991049 + 11930150526 -> face349 cached): THE CALM FAMILY'S SECOND - ONE death (F7 drowned, kind=drown 100%, the water's own spread), 39 starts (swing 37 -> 30 -> 39) unclosed 0 orphans 0, ends 39 (released 24, complete 7, frozenStanddown 7, dead 1 F7), siege swing 1 -> 3 -> 1, the kind's own dynasty HOLD drown (1) -> drown (1) -> drown (1) three faces deep
+- MY SPIDER TOLL'S FIRST FOLD READ = the honest silence 0 -> 0 -> 0 (the chain 347 -> 348 -> 349, first step zero - the zombie toll's own first-fold precedent held; my word's first DISPATCHED ride = the first face dispatched on >= 615be6fc)
+- the tolls' own rides on the 349 chain: the drowned toll's swing 0 -> 1 (+1) -> 0 (-1) the word's second ride, the mob toll's swing 0 -> 1 -> 0, the explosion toll's swing 0 -> 1 -> 0, the zombie/skeleton tolls held; the mid family all swings: blind-live 31 -> 25 -> 31, no-ground-truth 7 -> 4 -> 7, transit-stall 0 -> 1 -> 0, shore-pin 25 -> 23 -> 24; the water words: drain fade 130 -> 123 -> 111u, biggest pile swing 130 -> 52 -> 111u, scar depth fade 2 -> 1 -> 0, landings swing 4 -> 2 -> 7, frozen ends swing 5 -> 3 -> 7, dead ends swing 1 -> 0 -> 1; the mid-episode crowd 55 of 62 (88.7%); F7 the sticky book's bot 5 of 8 + the standdown's own bot 4 of 7; the contested spread's silence held; hound re-verdicts 0
+- FACE 350 = 38640215369 dispatched BY ME (HTTP 204) on 2d985d9c master v0.976.68 (MY SPIDER WIRE ABOARD), the NINETEENTH consecutive; materialized in_progress - MY SPIDER TOLL'S FIRST DISPATCHED RIDE in flight
+
+Stage Summary:
+- v0.976.68 THE SPIDER TOLL'S OWN TREND stands (615be6fc, gate 38637393845 SUCCESS); the attacker book's class-toll family FOUR SEATS COMPLETE (zombie 64 + skeleton 66 + drowned 67 + spider 68) - every named killer priced
+- FACE 349 = THE CALM FAMILY'S SECOND read and recorded (my read, both fires' handoff honored); FACE 350 = 38640215369 in flight on 2d985d9c v0.976.68 - NEXT FIRE: read FACE 350 BY RUN ID (argv 350/349/348/347 - face349 + face348 + face347 cached) AND the dispatch AND the raw re-verify 0.976.69 next free
+- the next word's family still unpriced: the byAttacker book's remaining named killers ride thin (Witch 1 ride fourteen faces deep), the byKind book's remaining kinds ride thin (suffocate 1) - the next family the next fire prices (the trend words' own deeper seats or the rescue book's unnamed counters)
+- the identity law held every commit this fire (615be6fc + 37e6d929 + this): PLANETA9091
