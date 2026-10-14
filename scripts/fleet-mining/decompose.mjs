@@ -165,6 +165,7 @@ import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../s
 import { giantWhenRow, giantTailRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane; (v0.976.20) the giant's own tail - the seat's own third sentence: the first gauge after the giant's own drain byte (the loop's own catch-up, the shadow seat at the ring's own threshold)
 import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
+import { rssCreepRow } from '../../src/lib/rsscreep.mjs' // (v0.976.21) the rss's own creep - the waterline's cross-face step: this face's peak against the prior face's peak (the rise the valve's own silence hid - FACE 312's 500M, FACE 313's 511M, FACE 314's 546M the two reads hand-priced before the word existed); the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0; the giant's echo's carrier, v0.976.19), the fold receives the census's own images (stormcensus owns the rss peak - one-parser law, never re-parsed); a held-or-fallen waterline prices the honest silence (the rise is the subject)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
@@ -3599,6 +3600,19 @@ if (s.probes + s.fatals + s.jumps + v.closures > 0) {
   console.log(`  storm verdict: the storm EVENT story FIRED this face (verdicts ${s.probes + s.fatals + s.jumps}, valve closures ${v.closures}) - the gauge debt read lives in the MEMORY/OOM PRECURSORS block`)
 } else if (stormMem.hb.count === 0) {
   console.log('  reads: 0 (no hb/verdict/valve lines - the face predates them or the fleet leg never ran)')
+}
+// (v0.976.21) THE RSS'S OWN CREEP - the waterline's cross-face step,
+// the rise the valve's own silence hid (the allocvalve lines rode 0
+// while the fleet's own waterline climbed 500 -> 511 -> 546M across
+// three faces - the two reads hand-priced the creep before the word
+// existed). The fold receives the census's own images; no prior face
+// given -> no read (the row stays silent - the one-face law). A
+// held-or-fallen waterline prices the honest silence (the rise is the
+// subject - the fall is the waterline's own recovery).
+if (prevLines) {
+  const prevStormMem = stormCensus(prevLines)
+  const rc = rssCreepRow({ prev: { peakM: prevStormMem.rss.peakM, valveClosures: prevStormMem.valve.closures }, cur: { peakM: stormMem.rss.peakM, valveClosures: stormMem.valve.closures } })
+  if (rc) console.log(`  ${rc}`)
 }
 
 console.log('=== COMBAT (v0.135.0 instrument) ===')
