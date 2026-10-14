@@ -164,6 +164,7 @@ import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/d
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
 import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues; (v0.976.9) the answer's own wire - the spoken arm's own row rides the same lens (the v0.976.6 lib shipped the answer cell, the graft's wire debt now paid - FACE 308 = 38446472656 rode the first SPOKEN face after the word's birth and the row priced nothing in the record - the wire's own gap named by the field)
+import { floorCrossRow } from '../../src/lib/floorcross.mjs' // (v0.976.30) the floor's own crossing - the valve margin's own cross-face step: the prior face's margin against this face's margin (the thin-approach became the silent cross: FACE 322's +23M under rode to FACE 323's -32M past - the waterline stepped over the valve's own 450M line between the walks while the valve's own voice stayed silent); the same lens runs over the prior face's lines (one-parser law, never a fork), the floors must hold still across the pair, under -> past prices the crossing, past -> under prices the retreat, a held side prices the honest silence; the valve's voice rides as context bytes - co-existence reported, causation never guessed
 import { giantWhenRow, giantTailRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane; (v0.976.20) the giant's own tail - the seat's own third sentence: the first gauge after the giant's own drain byte (the loop's own catch-up, the shadow seat at the ring's own threshold)
 import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
@@ -5045,6 +5046,31 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     const answerWord = valveSpokenArmRow(vm, voice)
     const answerTail = answerWord ? ` | ${answerWord}` : ''
     console.log(`  valve margin (v0.974.9, shape v0.974.10, residency v0.974.14, silent cross v0.974.24): ${vm.n} mem gauge(s), rss peak ${vm.peak}M - ${vm.verdict} | storm floor ${vm.stormFloorM}M holds ${vm.marginStorm}M of room${shapeTail}${resTail}${crossTail}${answerTail}`)
+    // (v0.976.30) THE FLOOR'S OWN CROSSING - the valve margin's own
+    // cross-face step: the prior face's margin against this face's
+    // margin (the same lens over each face's own lines - the
+    // one-parser law, never a fork; the rescue echo's precedent).
+    // The field named it two faces deep: FACE 322's thin-approach
+    // (427M peak, 23M under the 450M floor) rode to FACE 323's silent
+    // cross (482M peak, 32M past) - the waterline stepped over the
+    // valve's own line between the walks while the valve's own voice
+    // stayed silent. The branch law: ONE SIDE ONE STEP - under ->
+    // past prices the crossing, past -> under prices the retreat, a
+    // held side prices the honest silence (the lens's own boundary
+    // law rides: past = margin <= 0, a peak exactly at the line is
+    // never under). The silent cross owns the RIDE (within-face),
+    // this word owns the STEP (cross-face) - co-existence by seat,
+    // never by duplication. No prior face or a gauge-less prior lens
+    // -> no read (the one-face law); a moved floor prices nothing
+    // (the fence's own law).
+    if (prevLines) {
+      const prevVm = valveMarginJoin(prevLines)
+      const fc = floorCrossRow({
+        prev: { marginValveM: prevVm ? prevVm.marginValve : null, valveFloorM: prevVm ? prevVm.valveFloorM : null, valveClosures: valveVoiceCount(prevLines).closes },
+        cur: { marginValveM: vm.marginValve, valveFloorM: vm.valveFloorM, valveClosures: voice.closes }
+      })
+      if (fc) console.log(`  ${fc}`)
+    }
   }
 }
 
