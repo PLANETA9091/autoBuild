@@ -69,6 +69,7 @@ import { fuelYieldOf } from '../../src/lib/smelting.mjs' // (v0.666.0) the vanil
 import { tierDeferCensus } from '../../src/lib/tierdefer.mjs' // (v0.463.0) the tool ladder's own voice - the steer's deferred names counted
 import { deathGrounds, DEATH_GROUND_RADIUS, deathGroundSeat, deathGroundSeatRow, deathGroundRiders, deathGroundRidersRow } from '../../src/lib/deathground.mjs' // (v0.464.0) the combat deaths' spatial join - the mob-cure's WHERE input; (v0.793.0) WHICH ground owns the combat book
 import { deathGroundEchoRow } from '../../src/lib/deathgroundecho.mjs' // (v0.976.23) the ground's own echo - the nest's cross-face repeat: this face's ground(s) against the prior face's grounds within the census's own +-12 radius (FACE 316's zombie shore [-135,397] and FACE 317's drowned x5+1 the read hand-priced before the word existed) - the carrier is decompose's own prior-face argument (the echo/creep's proven pattern), the fold receives the census's own images over the SAME deathGrounds parser (one-parser law, never re-spelled); the killers' own voices may swap - the ground is the subject
+import { groundDeepRow } from '../../src/lib/grounddeep.mjs' // (v0.976.26) the ground's own deep echo - the nest's own repeat past the adjacent face: grounds that MISSED the adjacent face yet rode an older face's ground (FACE 320's [-137,391] x1 Drowned rode FACE 317's [-143,395] x5 Drowned at dx 6 / dz 4 across three walks while the adjacent faces both missed - the SAME Drowned shore); the deep priors ride the argv tail (nearest first), the branch law leaves the adjacent match to the one-face echo (v0.976.23) - one row never both; the fold receives the census's own images (deathGrounds owns the died-line grammar, one-parser law, never a fork), the radius DEATH_GROUND_RADIUS imported whole; no deep priors given -> no read (the carrier's own null pass)
 import { hazardBoardCensus, hazardBoardCensusRow, hazardWalkBack, hazardWalkBackRow, hazardRefusalCensus, hazardRefusalCensusRow } from '../../src/lib/waterhazard.mjs'
 import { deepPocketCensus, deepPocketCensusRow } from '../../src/lib/deeppocket.mjs' // (v0.835.0) the deep-pocket ascend's own shape - the dig's ceiling name, the pocket's own geography (the spot repeats), the o2 floor over the numeric reads, the lid/why lane (the sibling climb family fenced out)
 import { wetCeilingCensus, wetCeilingCensusRow, wetColumnCompletion, wetColumnCompletionRow, wetColumnShortfall, wetColumnShortfallRow, wetColumnWaste, wetColumnWasteRow } from '../../src/lib/climbwet.mjs' // (v0.836.0) the water column's own dig - the climb lane's wet-ceiling ascend family, the deep-pocket lens' sibling priced on its own seat: the ceiling spread (the no-guard writer lets water dominate), the spot census, the y-blind column map (the bot's own descent between climbs), the within-episode dig vs the budget print; (v0.840.0) + the wet column's kept promise - the family's own completion read on the same parser: the whole-budget spend vs the early abandonment (the real faces so far read kept=0 - the budget always outran the climb); (v0.842.0) + the shortfall's own shape - the reach read: the deficit histogram (budget - dig, the kept class rides 0) + the nearest miss (how far the budget outran the climb); (v0.845.0) + the wasted dig - the shortfall's own why leg: the water class (a water cell buys no headroom - the dig's own purpose defeated) vs the solid digs
@@ -2045,6 +2046,34 @@ if (shooter.total > 0) {
         ? deathGroundEchoRow({ prev: { combatDeaths: pdg.combatDeaths, blind: pdg.blind, grounds: pdg.grounds }, cur: { combatDeaths: dg.combatDeaths, blind: dg.blind, grounds: dg.grounds } })
         : null
       if (dger) console.log(`  ${dger}`)
+      // (v0.976.26) THE GROUND'S OWN DEEP ECHO - the nest's own repeat
+      // past the adjacent face: grounds that MISSED the adjacent face
+      // yet rode an older face's ground (FACE 320's [-137,391] rode
+      // FACE 317's [-143,395] at dx 6 / dz 4 across three walks while
+      // the adjacent faces both missed - the SAME Drowned shore). The
+      // deep priors ride the argv tail (nearest first: argv[5] the
+      // two-back face, argv[6] the three-back face, ...); the branch
+      // law leaves the adjacent match to the one-face echo (v0.976.23)
+      // - one row never both. No deep priors given -> no read (the
+      // carrier's own null pass - the dispatched faces ride two argv
+      // logs and the deep echo stays silent until a fire carries the
+      // deeper faces). The same deathGrounds parser over every prior
+      // face's lines (one-parser law, never a fork). Zero fleet
+      // wiring - CENSUS GUARD.
+      const deepPriorFiles = process.argv.slice(5).filter((f) => f && f.length > 0)
+      if (pdg && deepPriorFiles.length > 0) {
+        const deepPriors = [
+          { combatDeaths: pdg.combatDeaths, blind: pdg.blind, grounds: pdg.grounds },
+          ...deepPriorFiles.map((f) => {
+            const g = deathGrounds(readFileSync(f, 'utf8').split('\n'))
+            return g ? { combatDeaths: g.combatDeaths, blind: g.blind, grounds: g.grounds } : null
+          })
+        ]
+        if (deepPriors.every((p) => p)) {
+          const gder = groundDeepRow({ cur: { combatDeaths: dg.combatDeaths, blind: dg.blind, grounds: dg.grounds }, priors: deepPriors })
+          if (gder) console.log(`  ${gder}`)
+        }
+      }
     }
     // (v0.466.0) THE FLEE GROUND CROSS-READ - the two lenses join on the
     // same died lines: the shelter ledger read the OUTCOME (the verdict
