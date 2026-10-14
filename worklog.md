@@ -30424,3 +30424,21 @@ Stage Summary:
 - FACE 345 = 38615869755 in flight on 60383894 (v0.976.60 tree); the next fire owns FACE 345's read BY RUN ID (the argv tail cur 345 + prev 344 + two-back 343 + three-back 342 - /tmp/face344 /tmp/face343 /tmp/face342 cached; face345 artifact fresh) AND the dispatch AND the raw re-verify 0.976.63 next free (fire 0242 took 0.976.62)
 - the class-toll family open: the fall toll (the third kind), the explosion toll, then the within-class anatomy books (the fall anatomy's band, the drown anatomy's spot) already hold census cells - the next atoms ride the one-parser law
 - the identity law held every commit this fire (848160de): PLANETA9091
+
+---
+Task ID: cron31-20261015-0242
+Agent: cron-fire-0242 (PLANETA9091 identity, RACE + seat + collision discipline)
+Task: fire 0242 addendum - FACE 345 read + the collision priced
+
+Work Log:
+- FACE 345 = 38615869755 completed SUCCESS - the read MINE by the fire 0230 handoff (downloaded BY RUN ID, artifact fleet19.log 2760 lines + server latest.log; argv tail 345/344/server345/343/342): MY MOB TOLL'S FIRST DISPATCHED-FACE READ the swing 1 -> 4 (+3) -> 1 (-3) + MY DROWN TOLL'S FIRST DISPATCHED-FACE READ the swing 1 -> 4 (+3) -> 0 (-4) + THE KINDTREND the dynasty's own death drown (1) -> drown (4) -> mob (1) the mob kind took the seat the drown kind rode + THE SIEGETREND the swing 2 -> 9 (+7) -> 1 (-8) + starts 30 THE SAVED FACE 0 drown-kind deaths + released 21 of 30 ends + THE DRAINTREND the swing 70 -> 702 (+632) -> 172 (-530)u + THE BLINDLIVE'S FADE 41 -> 31 -> 20 + THE NGT'S FADE 17 -> 13 -> 8 + the transit-stall's swing 3 -> 0 -> 3 + THE SHORE-PIN'S FADE 25 -> 20 -> 17 + THE MID-EPISODE'S OWN CROWD blind-live x20 + shore-pin x17 own 37 of 49 (75.5%) + THE FROZEN ENDS' FADE 12 -> 11 -> 5 + the hound F11 defeated the Drowned once, F8 the lone death (drowned-kill context, by Drowned) - the quiet lane's own saved face
+- THE FALL TOLL COLLISION PRICED: my fall toll build (module + test + wiring complete, swell/swing/fade proofs staged) died in flight - the parallel fire shipped v0.976.63 THE FALL TOLL'S OWN TREND (1d327cd3, origin raw 0.976.63 theirs stands) racing the worklog's own "fall toll the ready third" note; FIRST CLAIM KEEPS THE SEAT - my build discarded unpushed, their word stands, zero duplicate commits
+- THE DISPATCH SEAT THEIRS TOO: 38621612446 on 1d327cd3 in flight (created 19:11:50Z) = FACE 346 on their v0.976.63 tree - MY DISPATCH WITHHELD the runs list is the seat's authority, zero duplicate POSTs
+- v0.976.62 THE MOB TOLL'S OWN TREND shipped dd571a39 earlier this fire (gate watch rides the newest head's CI - the concurrency law supersedes, the cancelled runs are the pushes' own shadow not the red)
+
+Stage Summary:
+- v0.976.62 (mine, dd571a39) + v0.976.63 (theirs, 1d327cd3) both on origin - the kind-front THREE tolls deep (drown, mob, fall); the census family's class-toll words: the mob toll's and the drown toll's first dispatched-face reads rode FACE 345
+- FACE 346 = 38621612446 in flight on 1d327cd3 v0.976.63; the next fire owns FACE 346's read (BY RUN ID; the argv tail cur 346 + prev 345 + two-back 344 + three-back 343) AND the dispatch AND the raw re-verify 0.976.64 next free
+- the kind-front watch: the kind census's class tolls priced - drown, mob, fall; the remaining massy kinds the explosion toll only (sparse: swing x2 held x9 eleven faces deep), suffocate near-dead - the family's sweep may be near its end; the next fronts the non-kind ones (furnace/smelt chain, tool repair/replace, WorldMap target assignment, blaze rods/chorus, night/mob survivability)
+- the face caches: /tmp/face334-face345 fleet logs + server logs 341/342/344/345 (sandbox-ephemeral); local zips face341-343 + face345 zips at /tmp/a345_*.zip
+- the identity law held every commit this fire (dd571a39 + a667de22): PLANETA9091
