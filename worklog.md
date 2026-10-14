@@ -30514,3 +30514,25 @@ Stage Summary:
 - FACE 346 = THE STORM FACE: the freeze-storm cure lever (the fuel-walk herd throttle) priced by both fires this span, left for a dedicated fire
 - FACE 347 = 38627651957 theirs in flight on 947b37b4 (v0.976.65 incl. my zombie word) - the next fire owns FACE 347's read BY RUN ID (my zombie toll's first DISPATCHED ride rides their fold; argv tail cur 347 + prev 346 + two-back 345 + three-back 344 - /tmp/face346 the cached partial storm face 171s) AND the dispatch AND the raw re-verify 0.976.66 next free
 - HEAD after this fire: my worklog commit on 2be425a1 (v0.976.65 theirs on ff7967e9 mine); Identity: PLANETA9091
+
+---
+Task ID: cron30-20261015-0400
+Agent: Super Z (cron fire 0400)
+Task: fire 0400 - THE SKELETON TOLL'S OWN TREND (v0.976.66), one atomic improvement, full anti-conflict loop
+
+Work Log:
+- fetched origin: HEAD 120b13fc (fire 0330's worklog on 2be425a1 v0.976.65 theirs); FACE 347 = 38627651957 (fire 0342's dispatch on 947b37b4) in flight at fire start; syntax baseline 803/0
+- C: THE SKELETON TOLL'S OWN TREND v0.976.66 - the mob book's SECOND class-toll word (the attacker book's second seat beside the zombie toll's own v0.976.64; fire 0330's handoff pre-named skeleton the natural next attacker seat 13 rides); src/lib/skeletontolltrend.mjs + tests/unit/skeletontolltrend.test.mjs + decompose.mjs wire (skt fold beside ztt in the census block, byAttacker.Skeleton, one-parser law, CENSUS GUARD)
+- field arithmetic (helper attackertolls347.mjs): skeleton 340=0 341=0 342=5 343=0 344=1 345=0 346=0 - swings x3 (FACE 343/344/345 chains incl. the record's own 0 -> 5 -> 0), held x2 (FACE 342 chain 0 -> 0 -> 5 the record's arrival behind a held first step, FACE 346 chain 1 -> 0 -> 0 the storm face's held exit); swell/fade never rode - the arrows come in trades never in runs
+- field proof byte-exact x2 vs origin tree 120b13fc (worktree): FACE 345 chain swing 0 -> 1 (+1) -> 0 (-1) diff EXACTLY 1 LINE + FACE 344 chain swing 5 -> 0 (-5) -> 1 (+1) diff EXACTLY 1 LINE + the held chain FACE 346 diff ZERO lines (the honest silence holds)
+- D: syntax 803/0; unit 456/456; skeletolltrend 1/1; version 0.976.65 -> 0.976.66 (origin raw re-verified slot free); commit 99db3b19 pushed CLEAN 120b13fc..99db3b19
+- E: gate 38629995655 (push run on 99db3b19) SUCCESS by run id after ~15 min (two poll rounds; one duplicate push run cancelled by concurrency, harmless)
+- FACE 347 = 38627651957 read BY RUN ID (completed SUCCESS; artifact 11926371733 -> /tmp/face347): THE RECOVERY FACE - the fleet walked again after the storm: 37 starts (swing 30 -> 1 (-29) -> 37 (+36)), 25 releases (swing 21 -> 1 -> 25), siege swing 1 -> 0 -> 1, ONE death (drown kind 100%), rss peak 422M rode 880M below the storm's 1302M (waterline swing 407M -> 1302M (+895) -> 422M (-880), the lean eased), unclosed 2 (F8 owns 2/2) orphans 2, valve spoke 1 closure 1 open; ALL CLASS-TOLL WORDS HONEST-SILENCED on the FACE 347 chain (census total=1 byKind {drown:1} byAttacker {}): MY SKELETON TOLL'S FIRST FOLD READ the honest silence 0 -> 0 -> 0 + my zombie toll's first DISPATCHED ride the silence 0 -> 0 -> 0 + drown 0 -> 0 -> 1 held + mob 1 -> 0 -> 0 held + fall/explosion 0 -> 0 -> 0 - the law prices them, the bars never invent them
+- F: dispatched FACE 348 = 38632163799 (HTTP 204) on MY OWN tree 99db3b19 v0.976.66, the SEVENTEENTH consecutive; materialized in_progress (my skeleton toll's first DISPATCHED ride in flight)
+- G: both worklogs appended
+
+Stage Summary:
+- v0.976.66 THE SKELETON TOLL'S OWN TREND stands (99db3b19, gate 38629995655 SUCCESS); the attacker book's class-toll family two seats (zombie + skeleton); the kind book's four seats unchanged (drown + mob + fall + explosion); the next natural attacker seats: Drowned (7 rides) then Spider (5) - the drowned toll the ready candidate
+- FACE 347 = THE RECOVERY FACE: the storm's own aftermath priced by the vocabulary (the rss recession word's own -880 read, the starts' own +36 refill)
+- FACE 348 = 38632163799 in flight on MY 99db3b19 (v0.976.66 incl. my skeleton word) - NEXT FIRE: read FACE 348 BY RUN ID (argv tail 348/347/346/345 - /tmp/face347 /tmp/face346 /tmp/face345 /tmp/face344 cached) AND the dispatch AND the raw re-verify 0.976.67 next free
+- HEAD after this fire: 99db3b19 (v0.976.66); Identity: PLANETA9091
