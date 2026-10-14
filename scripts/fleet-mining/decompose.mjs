@@ -165,6 +165,7 @@ import { dupClock, unseenLosses, surplusKicks, burstDoor } from '../../src/lib/d
 import { pinBill } from '../../src/lib/pinbill.mjs' // (v0.722.0) the pinned seat's own bill - the water lane's launches per bot per target (the 70%/10+ concentration names the seat)
 import { memHbCensus, RSS_JUMP_STORM_M, ENT_JUMP_STORM_N } from '../../src/lib/memhb.mjs' // (v0.408.0) the OOM precursors' field read
 import { valveMarginJoin, valveSilentCrossRow, valveSpokenArmRow } from '../../src/lib/valvemargin.mjs' // (v0.974.9) the valve margin lens - the rss peak priced against the LIVE floors (the code's own constants, never the stale 600M comment); (v0.976.3) the silent cross's own row - the word rides the lens (one truth, the unit-tested fence), the graft only glues; (v0.976.9) the answer's own wire - the spoken arm's own row rides the same lens (the v0.976.6 lib shipped the answer cell, the graft's wire debt now paid - FACE 308 = 38446472656 rode the first SPOKEN face after the word's birth and the row priced nothing in the record - the wire's own gap named by the field)
+import { floorEchoRow } from '../../src/lib/floorecho.mjs' // (v0.976.40) the under's own echo - the floor's own side recurrence (the field priced the side's persistence by hand three pairs deep: FACE 325 rode 45M PAST the valve's own 450M floor, then FACE 326 rode 45M UNDER - the under's own RETURN - and the under HELD: FACE 327 rode 41M under, FACE 328 rode 33M under - the under's own REPEAT twice 45 -> 41, 41 -> 33); the branch law ONE SIDE ONE VOICE - a past prior face then an under face prices the UNDER'S OWN RETURN, an under prior face then an under face prices the UNDER'S OWN REPEAT, the release (under -> past) and the past's own rest (past -> past) price the honest silence (the release is not the subject - the under is; the rescueecho's own family law); the under is the thin-approach class's own seat; the seat law: the crossing's word prices the STEP between the sides, the echo prices the SIDE's own recurrence - co-existence by seat never by duplication (the crossing's held-side silence owns no recurrence name - the echo does); the fence rides the family's own law imported whole (floorCrossConsistent - never a re-declaration, the floor fiction lesson; a moved floor prices nothing), the fold is the SAME fold the crossing's wire already builds (one-parser law, never a fork); CENSUS GUARD: zero fleet wiring, zero new fleet log lines
 import { floorCrossRow } from '../../src/lib/floorcross.mjs' // (v0.976.30) the floor's own crossing - the valve margin's own cross-face step: the prior face's margin against this face's margin (the thin-approach became the silent cross: FACE 322's +23M under rode to FACE 323's -32M past - the waterline stepped over the valve's own 450M line between the walks while the valve's own voice stayed silent); the same lens runs over the prior face's lines (one-parser law, never a fork), the floors must hold still across the pair, under -> past prices the crossing, past -> under prices the retreat, a held side prices the honest silence; the valve's voice rides as context bytes - co-existence reported, causation never guessed
 import { giantWhenRow, giantTailRow } from '../../src/lib/giantwhen.mjs' // (v0.976.17) the giant's own when - the seat's own second sentence: the stream's own lane (DAWN/NOON/DUSK) the threshold stall rode, priced by the heartbeat series' own bookends (the rail's own clock, the starveclock cut's own formula) - the seat names the ts, the when names the lane; (v0.976.20) the giant's own tail - the seat's own third sentence: the first gauge after the giant's own drain byte (the loop's own catch-up, the shadow seat at the ring's own threshold)
 import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
@@ -5223,11 +5224,21 @@ console.log('  plan lines:', count(/materials plan|plan progress/i))
     // (the fence's own law).
     if (prevLines) {
       const prevVm = valveMarginJoin(prevLines)
-      const fc = floorCrossRow({
+      const floorFold = {
         prev: { marginValveM: prevVm ? prevVm.marginValve : null, valveFloorM: prevVm ? prevVm.valveFloorM : null, valveClosures: valveVoiceCount(prevLines).closes },
         cur: { marginValveM: vm.marginValve, valveFloorM: vm.valveFloorM, valveClosures: voice.closes }
-      })
+      }
+      const fc = floorCrossRow(floorFold)
       if (fc) console.log(`  ${fc}`)
+      // (v0.976.40) THE UNDER'S OWN ECHO - the SAME fold the crossing's
+      // wire already builds (one-parser law, never a fork): the
+      // crossing's word prices the step between the sides, the echo
+      // prices the side's own recurrence - the held side's own
+      // persistence is not a step's subject, it is the echo's own
+      // subject; the release and the past's own rest price the honest
+      // silence (the rescueecho's own family law)
+      const fe = floorEchoRow(floorFold)
+      if (fe) console.log(`  ${fe}`)
     }
   }
 }
