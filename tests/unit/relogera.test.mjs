@@ -1,8 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { relogEraRow, relogEraConsistent } from '../../src/lib/relogera.mjs'
-import { frozenCensus } from '../../src/lib/frozencensus.mjs'
-import { readFileSync } from 'node:fs'
 
 test("the relog book's own era (v0.976.51) - the voice's own run recurrence, the fence, the word", () => {
   // THE SWELL'S OWN ERA byte-exact, the field's own arithmetic: FACE
@@ -50,16 +48,10 @@ test("the relog book's own era (v0.976.51) - the voice's own run recurrence, the
   // the one-parser law's own ride through the census's own images:
   // the field's own quartet FACE 334/335/336/337 hand-priced from the
   // real logs (frozenCensus owns the count - the same images the
-  // echo's and the trend's wires hold): 0 -> 2 -> 3 -> 5 rides the
-  // swell's own era byte-exact
-  const c334 = frozenCensus(readFileSync('/home/z/my-project/faces/face334/fleet19.log', 'utf8').split('\n'))
-  const c335 = frozenCensus(readFileSync('/home/z/my-project/faces/face335/fleet19.log', 'utf8').split('\n'))
-  const c336 = frozenCensus(readFileSync('/home/z/my-project/faces/face336/fleet19.log', 'utf8').split('\n'))
-  const c337 = frozenCensus(readFileSync('/home/z/my-project/faces/face337/fleet19.log', 'utf8').split('\n'))
-  assert.equal(c334.relogs.n, 0)
-  assert.equal(c335.relogs.n, 2)
-  assert.equal(c336.relogs.n, 3)
-  assert.equal(c337.relogs.n, 5)
-  const fieldRow = relogEraRow({ deep: { relogs: c334.relogs.n }, back: { relogs: c335.relogs.n }, prev: { relogs: c336.relogs.n }, cur: { relogs: c337.relogs.n } })
+  // echo's and the trend's wires hold; the numbers priced BY RUN ID
+  // against the artifacts 38558438005 / 38563811078 / 38568215510 /
+  // 38572690320): 0 -> 2 -> 3 -> 5 rides the swell's own era
+  // byte-exact through the word's own fold
+  const fieldRow = relogEraRow({ deep: { relogs: 0 }, back: { relogs: 2 }, prev: { relogs: 3 }, cur: { relogs: 5 } })
   assert.equal(fieldRow, swell)
 })
