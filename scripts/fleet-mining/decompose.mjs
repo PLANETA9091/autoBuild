@@ -186,6 +186,7 @@ import { deathKindCensus, deathKindBill, deathKindBillRow, deathKindRiders, deat
 import { houndCensus, houndArenaSeat, houndArenaSeatRow, houndArenaRiders, houndArenaRidersRow, houndAnswerSeat, houndAnswerSeatRow, houndAnswerRiders, houndAnswerRidersRow, houndPreySeat, houndPreySeatRow, houndPreyRiders, houndPreyRidersRow, houndPressureSeat, houndPressureSeatRow, houndPressureRiders, houndPressureRidersRow, houndBaneSeat, houndBaneSeatRow, houndBaneRiders, houndBaneRidersRow } from '../../src/lib/houndcensus.mjs' // (v0.433.0) the hound presence's field read; (v0.791.0) WHICH arena owns the hound kill book; (v0.925.0) WHICH answer class owns the presence book; (v0.926.0) WHICH bot owns the kill book; (v0.928.0) WHICH bot owns the presence book; (v0.929.0) WHICH bot owns the defeat book
 import { faceFate } from '../../src/lib/facefate.mjs' // (v0.546.0) the frozen book's READER side - the face's own fate named before the censuses speak
 import { liarLadderReachBook, liarLadderReachConsistent, liarLadderReachRow, liarLadderReachOwnerRow } from '../../src/lib/liarladder.mjs' // (v0.976.10) THE LIAR LADDER'S OWN REACH - the chronic-liar patience ladder's own depth byte (the raw split rode, the reach stayed unnamed); (v0.976.16) the reach's own streak - WHO rode the deepest rung
+import { ladderEchoRow } from '../../src/lib/ladderecho.mjs' // (v0.976.35) the ladder's own streak echo - the reach owner's cross-face word (the field priced the seat's own story by hand: FACE 312's deepest rung #92 rode F9's own streak 92 of 157, FACE 324's ladder woke with F6 owning 11 of 11 = 100.0%, FACE 325's ladder emptied the seat into the tie); the branch law ONE SEAT ONE WORD - the same bot owning the deepest rung both faces prices the streak's own dynasty, a different bot prices the streak's own turn, an ownerless face (the tie's own law, the unnamed share, the quiet ladder) prices the honest silence; the fold receives the census's own books per face (liarLadderReachBook owns the fold - one-parser law, never a fork; the same cells the reach and streak rows already hold); the fence rides the family's own law imported whole; the within-face streak row prices WHO within the face, this word prices the seat's own cross-face story - co-existence by seat never by duplication; no prior face given -> no read (the one-face law)
 
 const file = process.argv[2]
 if (!file) { console.error('usage: decompose.mjs <fleet19.log> [priorFace.log] [serverLog.log]'); process.exit(1) }
@@ -1009,6 +1010,23 @@ if (llr && liarLadderReachConsistent(llr)) {
   // streak 92 of 157 - the seat's own WHO becomes a record byte):
   const llroRow = liarLadderReachOwnerRow(llr)
   if (llroRow) console.log(' ' + llroRow)
+  // (v0.976.35) THE STREAK'S OWN ECHO - the reach owner's cross-face
+  // word: the prior face's owner against this face's owner (the same
+  // census runs over the prior face's lines - the one-parser law,
+  // never a fork). The branch law: ONE SEAT ONE WORD - the same bot
+  // owning the deepest rung both faces prices the streak's own
+  // dynasty, a different bot prices the streak's own turn, an
+  // ownerless face prices the honest silence (the tie's own law: the
+  // word never seats a crowd). The within-face streak row prices WHO
+  // within the face (the row already printed beside this wire) - this
+  // word prices the seat's own cross-face story, co-existence by seat
+  // never by duplication. No prior face given -> no read (the
+  // one-face law above).
+  if (prevLines) {
+    const prevLlr = liarLadderReachBook(prevLines)
+    const le = ladderEchoRow({ prevBook: prevLlr, curBook: llr })
+    if (le) console.log(' ' + le)
+  }
 }
 console.log('  overrides (believe the bar):', count(/air-bar glitch override/))
 console.log('  wet-critical fast window:', count(/wet-critical fast window/))
