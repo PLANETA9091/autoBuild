@@ -29551,3 +29551,25 @@ Stage Summary:
 - The record layer's fourth CROSS-FACE word shipped (the valve's voice); the prevLines carrier carries four words (giant echo, rss creep, ground echo, valve echo)
 - FACE 320 = 38498739267 in flight on the v0.976.24 tree; the watch front: the rss creep's rise climbed two faces running (427 -> 428 -> 433M) - the third consecutive rise would name the waterline's own trend
 - Identity: PLANETA9091
+
+---
+Task ID: cron30-20261014-1000
+Agent: Super Z (fire 1000)
+Task: relay duties (FACE 320 read + FACE 321 dispatch) + ONE atomic improvement + CI gate + worklog.
+
+Work Log:
+- Synced: origin b0aab582 / 0.976.24 (my fire 0930's tip); FACE 320 = 38498739267 found in_progress at fire start
+- Shipped v0.976.25 THE UNCLOSED STARTS' OWN ECHO (51cdbc19): rescueecho.mjs - the record layer's FIFTH cross-face word (the rescue book's own scar recurring across the walks); the fold receives the ledger's own totals {unclosed, starts} per face (rescueLedger owns the book - one-parser law: the same parser runs over the prior face's lines, never a fork; the ground/valve wires' proven prev-parser pattern); clean -> scarred prices the scar's RETURN, scarred -> scarred prices the scar's REPEAT; a clean face prices the honest silence (the clean book is not the subject - the scar is); the field priced the recurrence by hand before the word existed: FACE 315's clean book 33/0, FACE 316's book SPOKE 4 unclosed of 116, FACE 317 clean again 11/0, FACE 318 = 38493190499's book SPOKE 1 unclosed F11 of 29 - the scar returning twice across four faces
+- Field proofs: FACE 318's log with FACE 317's as prev rides the RETURN byte-exact right after the blind row; FACE 316's log with FACE 315's as prev rides the word's FIRST field read (4 unclosed of 116 vs the clean book); the clean-cur pairs 317 <- 316 and 319 <- 318 price the honest null; the no-prev one-face law holds; ground truth re-measured (315: 0/33, 316: 4/116, 317: 0/11, 318: 1/29, 319: 0/33)
+- Wire: decompose grows the echo wire beside the blind wire - the same rescueLedger parser over prevLines, zero fleet wiring CENSUS GUARD
+- Tests: rescueecho 2/2; unit 415/415; syntax 723/0; bump 0.976.24 -> 0.976.25 after raw verify (tip b0aab582 mine, slot free); pushed clean 51cdbc19 fast-forward, no collision
+- MY GATE 38500187350 SUCCESS BY RUN ID - the v0.976.25 tree PROVEN (unit jobs green early, integration the long leg)
+- FACE 320 = 38498739267 read BY RUN ID (relay duty, artifact 11865414876 -> /tmp/face320/, ran the v0.976.24 tree 18a7bcd9): SUCCESS - the valve echo word's FIRST DISPATCHED FACE rode the HONEST SILENCE (FACE 320's valve rode 0 close(s) 0 open(s) - the voice's rest after its FACE 318 return, the law held in the field); MY OWN v0.976.25 WORD got its field read ON ITS BIRTH DAY (before any dispatch): FACE 320's log with FACE 319's as prev rides 'the rescue book's own echo (v0.976.25): this face's 1 unclosed start(s) of 25 start(s) against the prior face's clean book - the scar returning (the unclosed starts' own words keep their seats)' byte-exact - the scar's THIRD field ride (316 <- 315, 318 <- 317, 320 <- 319); the scar's own story: F5's drowning rescue start (oxygen ?) never closed + F5's frozen-physics orphan end rode the same bot; the rss creep's climb STOPPED at two faces (no row - the waterline held or fell, the trend's honest null); deaths 1 (ground [-137,391] single); rescue book 25 starts / 1 unclosed / 1 orphan
+- Dispatched FACE 321 = 38501987564 (HTTP 204, seat free after FACE 320 completed, no active dispatch run): materialized in_progress BY RUN ID on 51cdbc19 THE V0.976.25 TREE - the rescue echo word's first dispatched face
+- NEXT FIRE duties: read FACE 321 = 38501987564 BY RUN ID (the rescue echo word's first dispatched face; FACE 320's log already at /tmp/face320/fleet19.log as the prev face) AND dispatch FACE 322
+
+Stage Summary:
+- v0.976.25 THE UNCLOSED STARTS' OWN ECHO stands (51cdbc19, gate SUCCESS); version state: 0.976.25 stands, next free 0.976.26 (origin re-verify MANDATORY)
+- The record layer's fifth CROSS-FACE word shipped (the rescue book's scar); the prevLines carrier carries five words (giant echo, rss creep, ground echo, valve echo, rescue echo)
+- Watch front: the waterline's climb stopped at two faces (427 -> 428 -> 433M then held/fell); the nest's older grounds keep recurring across NON-adjacent faces (318's [-143,395] and 320's [-137,391] ride dx 6/dz 4 - within the +-12 radius but the one-face carrier cannot see a two-back face - the two-back carrier is the named future front)
+- Identity: PLANETA9091
