@@ -1,4 +1,4 @@
-// (v0.976.51) THE RESCUE FROZEN ENDS' OWN TREND - the rescue lane's
+// (v0.976.52) THE RESCUE FROZEN ENDS' OWN TREND - the rescue lane's
 // frozen-physics standdowns' own magnitude shape across three faces.
 // The field priced every branch by hand twelve faces deep before the
 // word existed (the frozen class's own count - the 'water: rescue
@@ -103,10 +103,10 @@ export function frozenTrendRow (e) {
   if (first === 0 || second === 0) return null
   const tail = '(the arms\' word prices the begins\' own mass, the release\'s word prices the exits\' own mass, the landings\' word prices the delivered ends\' own mass, the dead ends\' word prices the dead ends\' own mass, the ends\' bill prices the class\'s own closes - this word prices the frozen ends\' own mass, co-existence by seat never by duplication)'
   if (first > 0 && second > 0) {
-    return `the rescue frozen ends' own trend (v0.976.51): the frozen ends' rise ran two steps deep - ${arc} - the frozen ends' own swell ${tail}`
+    return `the rescue frozen ends' own trend (v0.976.52): the frozen ends' rise ran two steps deep - ${arc} - the frozen ends' own swell ${tail}`
   }
   if (first < 0 && second < 0) {
-    return `the rescue frozen ends' own trend (v0.976.51): the frozen ends' fall ran two steps deep - ${arc} - the frozen ends' own fade ${tail}`
+    return `the rescue frozen ends' own trend (v0.976.52): the frozen ends' fall ran two steps deep - ${arc} - the frozen ends' own fade ${tail}`
   }
-  return `the rescue frozen ends' own trend (v0.976.51): the frozen ends' own swing - ${arc} - the rise and the fall traded seats between the walks ${tail}`
+  return `the rescue frozen ends' own trend (v0.976.52): the frozen ends' own swing - ${arc} - the rise and the fall traded seats between the walks ${tail}`
 }
