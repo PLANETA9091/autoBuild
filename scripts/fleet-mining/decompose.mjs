@@ -169,6 +169,7 @@ import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the st
 import { rssCreepRow } from '../../src/lib/rsscreep.mjs' // (v0.976.21) the rss's own creep - the waterline's cross-face step: this face's peak against the prior face's peak (the rise the valve's own silence hid - FACE 312's 500M, FACE 313's 511M, FACE 314's 546M the two reads hand-priced before the word existed); the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0; the giant's echo's carrier, v0.976.19), the fold receives the census's own images (stormcensus owns the rss peak - one-parser law, never re-parsed); a held-or-fallen waterline prices the honest silence (the rise is the subject)
 import { valveEchoRow } from '../../src/lib/valveecho.mjs' // (v0.976.24) the valve's own echo - the valve's cross-face voice: silent -> spoke prices the voice's RETURN (FACE 315/316/317 rode 0 CLOSED 0 OPEN three faces deep, FACE 318 = 38496821547's own valve SPOKE 2 closure(s) by the queue-pressure arm with both opens riding back), spoke -> spoke prices the voice's REPEAT; the fold receives the census's own valve images { closures, opens } (stormcensus owns the valve - one-parser law, never re-parsed; the same images the creep's wire already holds); a silent face prices the honest silence (the voice's rest is not the subject - the voice is)
 import { rescueUnclosedBlind, rescueUnclosedBlindRow } from '../../src/lib/rescueblind.mjs' // (v0.976.22) the unclosed starts' own blind seat - the -1 air byte's own name (the FACE 316 read: F17's 'oxygen -1' rode the airs' folds unnamed while the emitter's own grammar ARM_O2_RE reads '(-1|\d+)' and the arm's own law names the blind skin - the sensor's own death before the arm); the fold reads the ledger's own unclosed book through the emitter's own regex imported whole - the one-parser law, never forked; the airs belong to the airs' own words, the unmatchable lines ride the honest junk count
+import { rescueEchoRow } from '../../src/lib/rescueecho.mjs' // (v0.976.25) the rescue book's own echo - the book's cross-face scar: clean -> scarred prices the scar's RETURN (FACE 315's clean book 33/0, then FACE 316's book SPOKE 4 unclosed of 116; FACE 317 clean again 11/0, then FACE 318 = 38493190499's book SPOKE 1 unclosed F11 of 29 - the scar returning twice across four faces), scarred -> scarred prices the scar's REPEAT; the fold receives the ledger's own totals { unclosed, starts } per face (rescueLedger owns the book - one-parser law: the same parser runs over the prior face's lines, never a fork); a clean face prices the honest silence (the clean book is not the subject - the scar is)
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
@@ -709,6 +710,18 @@ if (unclosedThinAirRow) console.log(`  ${unclosedThinAirRow}`)
 const unclosedBlind = rescueUnclosedBlind(ledger.unclosedLines)
 const unclosedBlindRow = rescueUnclosedBlindRow(unclosedBlind)
 if (unclosedBlindRow) console.log(`  ${unclosedBlindRow}`)
+// (v0.976.25) THE UNCLOSED STARTS' OWN ECHO - the rescue book's
+// cross-face scar: clean -> scarred prices the scar's RETURN,
+// scarred -> scarred prices the scar's REPEAT, a clean face prices
+// the honest silence (the clean book is not the subject). The same
+// rescueLedger parser runs over the prior face's lines (one-parser
+// law, the ground/valve wires' proven prev-parser pattern); no prior
+// face given -> no read (the one-face law).
+if (prevLines) {
+  const prevLedger = rescueLedger(prevLines)
+  const re = rescueEchoRow({ prev: { unclosed: prevLedger.totals.unclosed, starts: prevLedger.totals.starts }, cur: { unclosed: ledger.totals.unclosed, starts: ledger.totals.starts } })
+  if (re) console.log(`  ${re}`)
+}
 console.log(`  mid-episode: shore-stall ${ledger.midEvents.shoreStall || 0}, transit-stall ${ledger.midEvents.transitStall || 0}, blind-live ${ledger.midEvents.blindLive || 0}, no-ground-truth ${ledger.midEvents.noGroundTruth || 0}, repeat-wet standdown ${ledger.midEvents.repeatWetStanddown || 0}`)
 // (v0.790.0) THE RESCUE'S MID-EPISODE SEAT - WHICH mid-episode event owns
 // the rescue churn (the seat + the riders, one row never both - the
