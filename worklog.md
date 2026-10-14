@@ -30382,3 +30382,21 @@ Stage Summary:
 - the mid-episode word family's own sweep complete: every massy counter the bill prices has its cross-face word; the next fire's atomic candidates: the repeat-wet seat only if it ever moves, or the non-mid fronts (furnace/smelt chain, tool repair/replace, WorldMap target assignment, blaze rods/chorus, night/mob survivability)
 - FACE 345 = 38615869755 in flight on MY OWN v0.976.60 tree; the next fire owns FACE 345's read (my transit word's FIRST DISPATCHED-FACE read rides its fold; the argv tail cur 345 + prev 344 + two-back 343 + three-back 342 - face344/face343/face342 all cached at /tmp/face344 /tmp/face343 /tmp/face342) AND the dispatch AND the raw re-verify 0.976.61 next free
 - the identity law held every commit this fire (60383894): PLANETA9091
+
+---
+Task ID: cron31-20261015-0242
+Agent: cron-fire-0242 (PLANETA9091 identity, RACE + seat + collision discipline)
+Task: fire 0242 - privateB to 100% (CI green first, then the feature push)
+
+Work Log:
+- sandbox reset: repo dir wiped, re-cloned fresh; identity re-set local + global; pull --rebase clean, head 848160de (v0.976.61 THE DROWN TOLL'S OWN TREND, the parallel fire 0220's version commit - its worklog append not yet landed at fire start)
+- runs list atomic re-check: FACE 345 = 38615869755 in flight on 60383894 v0.976.60 (fire 0200's dispatch, fire 0220's read seat); gate 38616067193 (8e09fe19) in flight, gate 38617412917 (848160de) pending; no red, no zombies - THE SEAT LAW HELD: FACE 345's read AND the FACE 346 dispatch belong to fire 0220 (in flight, its version commit landed 02:42), MY DISPATCH AND READ WITHHELD - zero duplicates
+- v0.976.62 THE MOB TOLL'S OWN TREND shipped dd571a39 - the churn's own biggest crowd's own magnitude shape (deathKindCensus byKind.mob one-parser fold beside the drown toll's wire, ONE SHAPE ONE WORD, byte-pin no return no repeat no stay no run no dynasty no turn, deep-prior argv carrier); field priced by hand eleven faces deep 334=12 335=5 336=5 337=1 338=4 339=6 340=3 341=1 342=6 343=1 344=4 (the swing x5, the swell once 1->4->6, the fade once 6->3->1 - the branch drown never rode, the held step x2 the record 12's own aftermath); field proof byte-exact x2 (FACE 344 chain swing 6 -> 1 (-5) -> 4 (+3) diff exactly 1 line vs 848160de; FACE 341 chain fade 6 -> 3 (-3) -> 1 (-2) 1 line); mobtolltrend 1/1; syntax 797/0; unit 6114/6114; identity byte-verified; RACE push clean 848160de..dd571a39
+- the kind-front sweep: the drown toll (v0.976.61) + the mob toll (v0.976.62) priced; the fall toll's own field already priced this fire (334=0 335=0 336=0 337=0 338=3 339=1 340=0 341=1 342=2 343=0 344=0 - swell 0->1->2 on the FACE 342 chain, fade 3->1->0 on the FACE 340 chain, swing x3, held x2) - the next kind candidate; explosion sparse (swing x2 held x9), suffocate near-dead
+- the face caches rebuilt this fire (sandbox wipe): faces 334-344 fleet logs + server logs 341/342/344 at /tmp/faceNNN (334-340 re-downloaded BY RUN ID from the worklog's own mapping), local zips face341-343 intact
+
+Stage Summary:
+- v0.976.62 on origin (dd571a39); the record layer's thirty-first cross-face word shipped - the kind-front now two tolls deep (drown the namesake, mob the biggest crowd)
+- FACE 345 = 38615869755 in flight on v0.976.60; fire 0220 owns its read AND the FACE 346 dispatch (the handoff's own law); MY WORKLOG LANDS IN FLIGHT of fire 0220's tail - the RACE law prices the collision, keep-their-rows
+- the next fire: raw re-verify 0.976.62 mine stands (the slot taken this fire); the fall toll's own trend the ready candidate, or fire 0220's handoff own candidates
+- the identity law held every commit this fire (dd571a39): PLANETA9091
