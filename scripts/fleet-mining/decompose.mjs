@@ -166,6 +166,7 @@ import { giantWhenRow, giantTailRow } from '../../src/lib/giantwhen.mjs' // (v0.
 import { giantEchoRow } from '../../src/lib/giantecho.mjs' // (v0.976.19) the giant's own echo - the seat's cross-face repeat: the prior face's giant and this face's giant sharing the same gauge address (the stall's own seat recurring across the walks) - the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0), the fold receives the census's own images, never re-parses a line (the one-parser law); the threshold stays here where it already lives for the current face's seat - never forked
 import { stormCensus } from '../../src/lib/stormcensus.mjs' // (v0.409.0) the storm EVENT story's field read (verdicts + valve + hb)
 import { rssCreepRow } from '../../src/lib/rsscreep.mjs' // (v0.976.21) the rss's own creep - the waterline's cross-face step: this face's peak against the prior face's peak (the rise the valve's own silence hid - FACE 312's 500M, FACE 313's 511M, FACE 314's 546M the two reads hand-priced before the word existed); the carrier is decompose's own prior-face argument (the promise's cross-face leg, v0.471.0; the giant's echo's carrier, v0.976.19), the fold receives the census's own images (stormcensus owns the rss peak - one-parser law, never re-parsed); a held-or-fallen waterline prices the honest silence (the rise is the subject)
+import { rescueUnclosedBlind, rescueUnclosedBlindRow } from '../../src/lib/rescueblind.mjs' // (v0.976.22) the unclosed starts' own blind seat - the -1 air byte's own name (the FACE 316 read: F17's 'oxygen -1' rode the airs' folds unnamed while the emitter's own grammar ARM_O2_RE reads '(-1|\d+)' and the arm's own law names the blind skin - the sensor's own death before the arm); the fold reads the ledger's own unclosed book through the emitter's own regex imported whole - the one-parser law, never forked; the airs belong to the airs' own words, the unmatchable lines ride the honest junk count
 import { beatRailContinuity, beatRailContinuityRow } from '../../src/lib/beatrail.mjs' // (v0.822.0) the beat rail's own continuity - the n=/ts= series' field verdict (the v0.820.0 rail's own scar read)
 import { gcPoolCensus } from '../../src/lib/gcpool.mjs' // (v0.421.0) the GC Pinned hunt's pool read (the old/ext/ab split)
 import { voidCensus } from '../../src/lib/voidcensus.mjs' // (v0.423.0) the out-of-world stamp's field read
@@ -697,6 +698,15 @@ if (unclosedRiderRow) console.log(`  ${unclosedRiderRow}`)
 const unclosedThinAir = rescueUnclosedThinAir(ledger.unclosedLines)
 const unclosedThinAirRow = rescueUnclosedThinAirRow(unclosedThinAir)
 if (unclosedThinAirRow) console.log(`  ${unclosedThinAirRow}`)
+// (v0.976.22) THE UNCLOSED STARTS' OWN BLIND SEAT - the -1 air byte's
+// own name, riding beside the airs' own words (the FACE 316 read: F17's
+// 'oxygen -1' rode the unnamed seat while the emitter's own grammar
+// names it the blind skin - the sensor's own death before the arm; the
+// fold reads the emitter's own regex imported whole, never forked -
+// the one-parser law).
+const unclosedBlind = rescueUnclosedBlind(ledger.unclosedLines)
+const unclosedBlindRow = rescueUnclosedBlindRow(unclosedBlind)
+if (unclosedBlindRow) console.log(`  ${unclosedBlindRow}`)
 console.log(`  mid-episode: shore-stall ${ledger.midEvents.shoreStall || 0}, transit-stall ${ledger.midEvents.transitStall || 0}, blind-live ${ledger.midEvents.blindLive || 0}, no-ground-truth ${ledger.midEvents.noGroundTruth || 0}, repeat-wet standdown ${ledger.midEvents.repeatWetStanddown || 0}`)
 // (v0.790.0) THE RESCUE'S MID-EPISODE SEAT - WHICH mid-episode event owns
 // the rescue churn (the seat + the riders, one row never both - the
