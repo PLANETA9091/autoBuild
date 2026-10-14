@@ -1,4 +1,4 @@
-// (v0.976.36) THE PAIR'S OWN LEAN - the waterline's own proportion
+// (v0.976.37) THE PAIR'S OWN LEAN - the waterline's own proportion
 // between the two steps the trend's word already prices. The field
 // priced the gap by hand before the word existed: FACE 326 = 38521191638
 // rode the swing 449 -> 495 (+46) -> 405 (-90) - the fall dug almost
@@ -52,10 +52,10 @@ export function waterLeanRow (e) {
   const b = Math.abs(second)
   const deep = b - a
   if (deep > 0) {
-    return `the waterline's own lean (v0.976.36): ${a} then ${b} - the second step dug the deeper water (the pair's own deepening - the trend's word prices the direction, the lean prices the size)`
+    return `the waterline's own lean (v0.976.37): ${a} then ${b} - the second step dug the deeper water (the pair's own deepening - the trend's word prices the direction, the lean prices the size)`
   }
   if (deep < 0) {
-    return `the waterline's own lean (v0.976.36): ${a} then ${b} - the second step eased (the pair's own easing - the trend's word prices the direction, the lean prices the size)`
+    return `the waterline's own lean (v0.976.37): ${a} then ${b} - the second step eased (the pair's own easing - the trend's word prices the direction, the lean prices the size)`
   }
-  return `the waterline's own lean (v0.976.36): ${a} against ${a} - the even pair (the balance's own seat - the size never leaned)`
+  return `the waterline's own lean (v0.976.37): ${a} against ${a} - the even pair (the balance's own seat - the size never leaned)`
 }
