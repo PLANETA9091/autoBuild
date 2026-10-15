@@ -1,7 +1,7 @@
 {
   "name": "mcbot-fleet",
   "private": true,
-  "version": "0.976.82",
+  "version": "0.976.83",
   "type": "module",
   "scripts": {
     "test": "node scripts/run-tests.mjs unit",
