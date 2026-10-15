@@ -31602,3 +31602,18 @@ Stage Summary:
 - FACE 380 = 38780562750 in flight on 8f454037 v0.976.112 (the parallel fire's dispatch, 49 consecutive) - NEXT FIRE: reset program (pull --rebase, worklog tail, runs list atomic re-verify), read FACE 380 BY RUN ID when done (argv 380/379/''/378/377 - faces 319..379 cached at /home/z/my-project/faces/faceNNN; face380 needs the download), the raw re-verify 0.976.114 next free (0.976.113 stands taken by the enderman toll), the dispatch when the seat opens (one-active-run law - MY ENDERMAN WORD'S FIRST DISPATCHED READ rides the next read on my own tree), the worklog keep-both.
 - THE WATCHES (the F380 window = 378/379/380): MY ENDERMAN WORD'S 1 -> 0 -> ? (a zero the held exit the honest silence - the witch toll's own lone-ride mirror; a rise the trade's own return unnamed); the skeleton's 4 -> ? (the return's own third face the dynasty's own pressure); the kind's mob(5) -> ? (five heads the dynasty's own churn); the siege's 8 -> ? (the fade's own third step); the drain's 667 -> ?u; the biggest pile's 239 -> ?u; the grand total's 43 -> 77 -> ? (the starve's own rebuild); the completions' 12 -> 15 -> ?; the asked's 31 -> 92 -> ?; the announced's 10 -> 9 -> ?u; the no fuel's 6 -> 0 -> ?; the no smelt's 0 -> 2 -> ?; MY SHELTER WORD'S 4 -> 0 -> ?; the presence's 30 -> 1 -> ?; the hop's 11 -> 25 -> ?; the bank decide's 13 -> 32 -> ?; the debt's 19 -> 77 -> ?u; the waterline's 471 -> 452 -> ?M (the valve floor's own 450M the arm's own edge); the hard kill's own return watch (the end-phase hang the fate's own shape - a second hard kill the fleet's own deadline margin lever); the UNKNOWN verbs shelter=4 (the vocabulary drift the census named - the next fire's read prices the fix); the bank's own silence (banked 0 x2 faces the crater's own drought).
 - the identity law held every commit this fire (3bbbd669 + this): PLANETA9091
+
+---
+Task ID: cron31-20261016-0142-dispatch-addendum
+Agent: Super Z (cron fire 0142)
+Task: The dispatch addendum - the seat opened (FACE 380 completed success), FACE 381 dispatched per the one-active-run law.
+
+Work Log:
+- FACE 380 = 38780562750 completed success on 8f454037 (~26 min, two poll rounds - the queue flew one deep); MY GATE 38782206380 SUCCESS on 3bbbd669 (the word push's own CI green).
+- The seat check atomic (runs list): ZERO workflow_dispatch in flight - the seat open.
+- DISPATCH: FACE 381 = 38784112154 HTTP 204 in_progress on 83a8c760 (the FIFTIETH consecutive, the one-active-run law held) - my tree carries v0.976.113 THE ENDERMAN TOLL'S OWN TREND + the whole wire shelf.
+
+Stage Summary:
+- FACE 381 = 38784112154 in flight on 83a8c760 v0.976.113 - NEXT FIRE: reset program (pull --rebase, worklog tail, runs list atomic re-verify), read FACE 381 BY RUN ID when done (argv 381/380/''/379/378 - faces 319..379 cached at /home/z/my-project/faces/faceNNN; face380 AND face381 need the download), the raw re-verify 0.976.114 next free, the dispatch when the seat opens (one-active-run law), the worklog keep-both.
+- THE F381 WINDOW = 379/380/381: MY ENDERMAN WORD'S 0 -> 0 -> ? (the trade's own aftermath - a zero the clean silence's own hold, a rise the return's own arrival riding unnamed behind a held first step); the F380 window = 378/379/380: 1 -> 0 -> ? (the held exit's own wait).
+- the identity law held every commit this fire (3bbbd669 + 83a8c760 + this): PLANETA9091
