@@ -30945,3 +30945,27 @@ Stage Summary:
 - FACE 361 read; NO dispatch this fire (FACE 361 was the parallel fire's run) - NEXT FIRE: the dispatch if no active run AND the raw re-verify 0.976.86 next free
 - THE WATCHES: my word's chain 1 -> 12 -> 0 -> ? (a second dry-shore storm prices the swell's return); the water kill's chain 1 -> 0 -> ?; the dynasty's churn drown (2) -> ?; the hop's chain 3 -> 41 -> 0 -> ?; the drain 207u
 - the identity law held every commit this fire (39b54125 + this): PLANETA9091
+
+---
+Task ID: cron31-20261015-1242
+Agent: Super Z (cron fire 1242, Job ID 415967)
+Task: Continue privateB toward 100% - CI green check, feature advance, dispatch, worklog.
+
+Work Log:
+- A: SANDBOX DIED - /home/z/privateB gone; fresh clone (a97974dc tip); identity re-set LOCAL+GLOBAL PLANETA9091, byte-verified before every commit
+- B: pull --rebase clean; runs list atomic recheck: zero red, zero zombies, FACE 361 = 38679021491 completed success (read by the parallel fire per the repo worklog - THE HOUND'S OWN FULL QUIET presence 0 3 deaths)
+- C: faces cache rebuilt THIRTEEN faces BY RUN ID (348-358 + 360 + 361, artifacts fleet19-log zip -> flat fleet19.log); run mapping VERIFIED byte-exact against four prior words' pricings (350 dry-shore 6 / in-water 4; 357 dry-shore 8; 358 shelter 12 / in-water 5; 360 dry-shore 12; 361 the full quiet)
+- D: MY WORD BUILT: src/lib/houndotherextrend.mjs THE OTHER EXIT'S OWN TREND (fightEndsOther, the episode detail's own cell "other fight exits: N"); field priced FOURTEEN faces deep with grep cross-verify byte-exact (348-361 = 0,0,1,1,0,0,0,0,1,4,1,0,3,0); tests 1/1; decompose wiring; bump 0.976.85 -> 0.976.86 (origin raw re-verified first)
+- E: unit 6138/6138 after npm install (the fresh clone's node_modules was the only gap - 75 ERR_MODULE_NOT_FOUND, all environmental); syntax sweep clean
+- F: FIELD PROOF'S OWN CORRECTION PRICED: first hand-pricing rode one seat ahead (chain labels shifted); the proof flagged FACE 357/358/359/360/361 = EXACTLY 1 LINE each - the field's own arrows re-priced the window: THE FACE 357 CHAIN THE SWELL 0 -> 1 (+1) -> 4 (+3) BIRTH RIDE, the FACE 358 swing 1 -> 4 -> 1, THE FACE 359 FADE 4 -> 1 -> 0, the FACE 360 swing 1 -> 0 -> 3, the FACE 361 swing 0 -> 3 -> 0 - FIVE CHAINS, EVERY BRANCH THE LAW PRICES RODE; re-proof TOTAL exactly 5 byte-exact, lib/test/import comments re-aligned to the field
+- G: committed 1b3f506b (identity byte-verified) - THEN THE COLLISION: git pull --rebase revealed the parallel fire's 9e2f27ab v0.976.86 THE OTHER EXIT'S OWN TREND (houndfightendothertrend.mjs) claimed THE SAME CELL FIRST; the first-claim law held (the fire-1130 precedent): rebase abort + reset --hard onto their master, MY WORD DROPPED WHOLE - zero content collision (their pricing = my pricing byte-for-byte: the same five arrows, both fires priced the same field; their FIFTEEN faces deep = my fourteen + face347's 0)
+- H: THE HOUND TREND FAMILY COMPLETE - the remaining seats priced and closed: killsWaterline 0,0,0,0,0,0,0,0,0,1,1,0,0,0 fourteen deep (the trend all silence - every chain held or clean, no arrow ever); shoreNoCell all zeros; fleeShorePlain BARRED by the census's own population law (fleeShore's own skin detail, "a second count would recurse the defect") - fifteen named words (.71/.73/.74/.75/.76/.77/.78/.79/.80/.81/.82/.83/.84/.85/.86) + three lawful silences
+- I: FACE 362 = 38685850919 dispatched BY ME (HTTP 204 via ci.yml run_fleet=true) on 9e2f27ab master v0.976.86 (all FIFTEEN hound words aboard), the THIRTY-FIRST consecutive; materialized in_progress, zero duplicate POSTs (the atomic recheck first: zero workflow_dispatch in flight - the seat OPEN)
+- J: worklog keep-both (this entry + the my-project copy)
+
+Stage Summary:
+- v0.976.86 THE OTHER EXIT'S OWN TREND stands (9e2f27ab, the parallel fire's claim - the first-claim law held); MY duplicate 1b3f506b dropped whole, zero content collision; THE HOUND TREND FAMILY COMPLETE: every lawfully nameable seat has its word, the three remaining cells closed by their own laws (silence/silence/barred)
+- FACE 362 = 38685850919 in flight on 9e2f27ab v0.976.86 - NEXT FIRE: read FACE 362 BY RUN ID (argv 362/361/360/359/358 - face361/360/359/358/357/356/355/354/353/352/351/350/349/348 cached flat at /home/z/my-project/faces/faceNNN/fleet19.log; face362 needs download) AND the dispatch AND the raw re-verify 0.976.87 next free
+- NO LIVE HOUND SEAT REMAINS - the next fire's word search turns to the mission's other books (worldmap / scout->miner integration, chest logic, reporting, materials plan) unless the field grows a new cell
+- THE WATCHES (their frame now): the other exits' 0 -> 3 -> 0 -> ? (the storm's own relief held); the dry-shore's 12 -> 0 -> 0 -> ?; the in-water's 0 -> 0 -> 0 -> ?; the shelter's 0 -> 10 -> 0 -> ?; the fight's 6 -> 0 -> 0 -> ?; the kind's drown (2) -> ?; the drain's 812 -> ?; presence 52 -> 0 -> ?
+- the identity law held every commit this fire (1b3f506b + the worklog push): PLANETA9091
