@@ -30989,3 +30989,27 @@ Stage Summary:
 - FACE 362 = 38685850919 in flight on 9e2f27ab v0.976.86 - NEXT FIRE: read FACE 362 BY RUN ID (argv 362/361/360/359/358 - face361/360/359/358/357 cached) AND the dispatch if no active run AND the raw re-verify 0.976.87 next free AND the mission's other books
 - THE WATCHES: my word's first dispatched read the fold 1 -> 0 -> ? (a climb the swing's return, a zero the honest hold); the hop's chain 3 -> 41 -> 0 -> ?; the dynasty's churn; the drain; the pile
 - the identity law held every commit this fire (9e2f27ab + this): PLANETA9091
+
+---
+Task ID: cron31-20261015-1342
+Agent: cron-415967 (fire 1342)
+Task: Continue privateB to 100% - CI green check, FACE 362 read BY RUN ID, next word ship, FACE 363 dispatch, worklog keep-both.
+
+Work Log:
+- Reset program: identity PLANETA9091 byte-verified (local+global), pull --rebase fast-forwarded the clone to 37bdf747 (the parallel fires' chain: v0.976.84 in-water 50c69f79, v0.976.85 dry-shore 39b54125, v0.976.86 other-exit 9e2f27ab, worklogs 804bad7f/37bdf747), tree clean.
+- Runs list atomic re-verify: CI all green, no zombies; FACE 362 = 38685850919 completed SUCCESS (9e2f27ab v0.976.86) at 05:45:47Z.
+- Artifacts BY RUN ID: face360 (11946533511+11945984060), face361 (11948397174+11948107374), face362 (11950919678+11950749923) -> /home/z/my-project/faces/faceNNN (fleet19.log + logs/latest.log).
+- FACE 362 = THE WAKE'S OWN PARTIAL RETURN read: 13 deaths (mob 8 / drown 4 / fall 1), kind churn mob(15) -> drown(2) -> mob(8), siege swing 19 -> 3 (-16) -> 13 (+10) pace 2.05, drain swing 812 -> 207 -> 930u, biggest pile 287u F8, presence 21 (fight 2 / flee-dry 4 / shelter 6 / flee-shore 2 / other 7, F15 magnet 12), kills 1 dry-shore F12, hops 8, re-verdicts 2, flips 1, wins 1; MY SHELTER WORD'S SECOND DISPATCHED READ the swing 10 -> 0 (-10) -> 6 (+6) (the walls traded back).
+- THE MISSION'S OWN BOOK: the commons ledger's sweeps seat rode unnamed across the walks - hand-priced FIFTEEN faces deep (348..362: 44,36,31,41,34,57,32,51,44,45,43,57,44,36,32 - never zero; F350 fade 44->36->31, F351..360 ten swings straight, F361+F362 two fades straight) - cross-verified byte-exact vs the decompose sweeps line on faces 350/361/362.
+- v0.976.88 THE SWEEPS' OWN TREND shipped: src/lib/sweeptrend.mjs (sweepTrendConsistent + sweepTrendRow, ONE SHAPE ONE WORD, byte-pin no return/repeat/stay/run/owns/dynasty/turn, the tail names the six commons neighbor seats), decompose.mjs wired (import + fold inside the sweeps gate after the bots row, one-parser law: commonsLedger over each face's own lines, cur rides t.sweeps), tests/unit/sweeptrend.test.mjs (1 pin: swings x3 field chains F354/F358/F360, fades x2 the field's own two straight, swell the un-ridden branch, honest silences x4, byte-pin battery, fence battery, one-parser ride through commonsLedger synthetic images incl. the fold's own 44->36->32).
+- THE COLLISION PRICED: the parallel fire's 6cb34231 v0.976.87 THE WATERLINE KILL'S OWN TREND (the born-silent killsWaterline seat) landed while this word was building - DIFFERENT BOOKS zero content collision; stash -> rebase onto 6cb34231 -> pop clean, both words wired side by side; my word re-versioned whole v0.976.87 -> v0.976.88 (raw re-verified: 0.976.87 taken, 0.976.88 the next free).
+- Field proof byte-exact vs the origin tree 6cb34231 (the same-dir tmp method): the FACE 350..362 chains diff EXACTLY 1 LINE each - thirteen arrows byte-exact (ten swings + three fades) + TOTAL exactly 13 added, 0 removed, all exits 0; the waterline word's silence fold adds nothing on the field.
+- tests sweeptrend 1/1; node --check clean; syntax 849/0; integration skipped (no ~/jdk, no testbed server.jar - the fires' own precedent); commit d7de188c identity byte-verified (author AND committer PLANETA9091); RACE push clean 6cb34231..d7de188c; origin raw version 0.976.88 confirmed.
+- FACE 363 = 38690458832 dispatched HTTP 204 in_progress on d7de188c v0.976.88 (no in-flight dispatch at the seat check - the 32nd consecutive, one-active-run law held).
+
+Stage Summary:
+- v0.976.88 THE SWEEPS' OWN TREND on the tree (d7de188c): the commons book's first across-walks word, born speaking thirteen chains deep - the mission's own books opened beside the hound family's fifteen seats + the waterline's silent birth.
+- FACE 363 = 38690458832 in flight on d7de188c v0.976.88 all sixteen hound words + the sweeps word aboard.
+- NEXT FIRE: reset program (pull --rebase, worklog tail, runs list atomic re-verify - the parallel fires alive: two shipped mid-round this hour), read FACE 363 BY RUN ID (argv 363/362/361/360 - face359..362 cached flat at /home/z/my-project/faces/faceNNN), the raw re-verify 0.976.89 next free, the dispatch, the worklog keep-both.
+- Watches: my sweeps 44 -> 36 -> 32 -> ? (two fades straight - the yard's own easing; a third fade = the relief held, a rise = the yard's own refill); my shelter 8 -> 12 -> 0 -> 10 -> 0 -> 6 -> ? (the walls trade every storm); the waterline kill 0 -> ? (the silent word waits for its storm); the drain 812 -> 207 -> 930 -> ?; the siege 19 -> 3 -> 13 -> ?; the kind mob(8) -> ?; presence 21 -> ?; FACE 363 reads on d7de188c where ALL the words ride one face deep older.
+- Identity: PLANETA9091
