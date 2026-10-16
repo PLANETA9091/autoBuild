@@ -20,6 +20,7 @@ import {
   gotoSafe, recordDoomedGoal, doomedGoalStats, resetDoomedGoalLedger, DOOMED_GOAL_RADIUS,
   ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS
 } from '../../src/lib/jobqueue.mjs'
+import { RISE_ASSIST_TIMEOUT_MS } from '../../src/lib/surface.mjs'
 
 const minerSrc = readFileSync(new URL('../../src/bots/miner.mjs', import.meta.url), 'utf8')
 
@@ -102,8 +103,8 @@ test('doomed-goal ledger: a genuinely dead step cell still fails honestly throug
 // ---------------------------------------------------------------------------
 test('THE ASSIST BURST CAP: the explicit knobs bound the burst and restore on resolve', async () => {
   resetDoomedGoalLedger()
-  assert.equal(ASSIST_BURST_SEARCH_RADIUS, 24, 'the far-cap PROVEN radius (one burst shape, one law)')
-  assert.equal(ASSIST_BURST_THINK_TIMEOUT_MS, 500, 'the far-cap PROVEN think (the v0.144.0 math: ~4x fewer nodes, 4x sooner yield)')
+  assert.equal(ASSIST_BURST_SEARCH_RADIUS, 24, 'the far-cap PROVEN radius (one burst shape, one law - the RSS frontier bound UNTOUCHED since v0.358.0)')
+  assert.equal(ASSIST_BURST_THINK_TIMEOUT_MS, 1000, 'the think half RE-PRICED by the field (v0.976.135: the decide class 5+1 rides faces 395/394, the A* total wall-clock budget ate by the 19-bot pump gaps)')
   const seen = {}
   const bot = {
     _waterRescue: false,
@@ -122,9 +123,21 @@ test('THE ASSIST BURST CAP: the explicit knobs bound the burst and restore on re
   }
   await gotoSafe(bot, { x: 10, y: FLOOR + 7, z: 10 }, { timeoutMs: 500, label: 'burst probe', burstRadius: ASSIST_BURST_SEARCH_RADIUS, burstThinkMs: ASSIST_BURST_THINK_TIMEOUT_MS })
   assert.equal(seen.radius, 24, 'the burst radius is the capped pair DURING the walk')
-  assert.equal(seen.think, 500, 'the burst think is the capped pair DURING the walk')
+  assert.equal(seen.think, 1000, 'the burst think is the capped pair DURING the walk')
   assert.equal(bot.pathfinder.searchRadius, 32, 'the boot radius is restored after the resolve (the crippled-pathfinder class)')
   assert.equal(bot.pathfinder.thinkTimeout, 2000, 'the boot think is restored after the resolve')
+})
+
+test('THE ASSIST ENVELOPE LAW: the think never cannibalizes the jump arc (v0.976.135)', () => {
+  // the assist's goto envelope (RISE_ASSIST_TIMEOUT_MS) must keep at least
+  // HALF its wall clock for the WALK after the think budget spends its share:
+  // a decided path still needs the 1-2 block jump arc under the same 19-bot
+  // contention that ate the think - an envelope where think >= walk converts
+  // decide-cures into exec-timeouts (the v0.358.0 memory law keyed the
+  // frontier by radius, untouched; this law keys the WALL SHARE).
+  assert.equal(ASSIST_BURST_THINK_TIMEOUT_MS * 2 <= RISE_ASSIST_TIMEOUT_MS, true,
+    `the think ${ASSIST_BURST_THINK_TIMEOUT_MS}ms owns at most half the envelope ${RISE_ASSIST_TIMEOUT_MS}ms - the jump arc keeps its share`)
+  assert.equal(RISE_ASSIST_TIMEOUT_MS, 5000, 'the envelope grew +500ms WITH the think raise (4500 -> 5000, v0.976.135)')
 })
 
 test('THE ASSIST BURST CAP: the restore survives the rejection (a dead walk never cripples the bot)', async () => {

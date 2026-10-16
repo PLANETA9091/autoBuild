@@ -678,7 +678,15 @@ export function climbSurfaceShort ({ targetY = null, feetY = null, gained = 0 } 
   return t - f > 1 // the demanded altitude still stands above the bot - rise or no rise
 }
 
-export const RISE_ASSIST_TIMEOUT_MS = 4500
+// (v0.976.135) 4500 -> 5000: the envelope grows +500ms WITH the assist think
+// raise (ASSIST_BURST_THINK_TIMEOUT_MS 500 -> 1000, the field's own re-pricing
+// - the decide class 'Took to long to decide path to goal!' rode 5+1 lines
+// faces 395/394, the A* thinkTimeout is the TOTAL wall-clock compute budget
+// and the 19-bot pump gaps eat it). The think must never cannibalize the jump
+// arc's budget: the envelope grows with the think, the walk keeps its share.
+// The surface test's own fences hold: >= 3000 (headroom) and <= 6000 (a
+// failed assist must not eat the fail budget - 4 fails own the climb).
+export const RISE_ASSIST_TIMEOUT_MS = 5000
 export const RISE_LONGHOLD_TICKS = 32
 
 // (v0.27.0) RISE RECOVERY - the decision after two failed raw stepUps on

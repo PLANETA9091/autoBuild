@@ -659,11 +659,27 @@ export const FAR_GOAL_THINK_TIMEOUT_MS = 500
 // class - run 36292057377's probe spent 2271M the same way). The assist's
 // legitimate geometry is a 1-2 block jump with a 2-3 block run-up - radius
 // 24 is an order of magnitude past any legal plan, so the cap only kills the
-// pathological flood-fill. The values ride the far-cap's PROVEN pair (the
-// v0.144.0 math: ~4x fewer nodes, 4x sooner yield) instead of inventing a
-// new envelope - one burst shape, one law.
+// pathological flood-fill. The radius rides the far-cap's PROVEN half (the
+// v0.144.0 math: ~4x fewer nodes, 4x sooner yield) - the RSS law's frontier
+// bound, UNTOUCHED since v0.358.0: the explosion was the frontier's and the
+// radius keys it.
+// (v0.976.135) THE THINK HALF RE-PRICED BY THE FIELD: the climb rise assist's
+// DECIDE class ('goto: Took to long to decide path to goal!') rode 5 lines in
+// face 395 (run 38852505572) + 1 in face 394 - the A* semantics own the
+// anatomy (mineflayer-pathfinder lib/astar.js: thinkTimeout is the TOTAL
+// WALL-CLOCK compute budget; 'timeout' status = the decision is dead, the bot
+// never moved) and the total counts the pump GAPS where the other 18 bots'
+// work runs - under 19-bot contention (the crowded sky's own read: 'the A*
+// starved 12 time(s) at ents median 2344') 500ms of wall buys far less A*
+// than the solo sizing assumed. Each absorbed decide ride burns the staged
+// ladder's fail budget on legal geometry (the assist fails -> the gallery ->
+// falls through -> fails++ + rotate - F16's own trace: decide-timeout ->
+// gallery opened -> 'did not rise' -> the fail burned). 1000ms doubles the
+// think window inside the assist's own envelope (RISE_ASSIST_TIMEOUT_MS grew
+// +500ms with it - the walk keeps its share), the radius stays 24, the
+// memory law holds.
 export const ASSIST_BURST_SEARCH_RADIUS = 24
-export const ASSIST_BURST_THINK_TIMEOUT_MS = 500
+export const ASSIST_BURST_THINK_TIMEOUT_MS = 1000
 let duckUntilMs = 0
 let duckArms = 0
 let duckSeqApplied = -1 // the cell seq that armed the current duck (one verdict, one arm)
