@@ -71,6 +71,49 @@ test('sweepGridItems: no window open at all returns 0', async () => {
   assert.equal(await sweepGridItems(bot), 0)
 })
 
+// (v0.976.150, gate 38905056852) THE DEAD-CLIENT LAW at the recovery lane's own door:
+// a socket that died mid-craft leaves the window state unresolvable and mineflayer's
+// putSelectedItemRange spins `while (window.selectedItem)` on microtasks - every timer
+// starves, including the sweep's own fences, and the heap burns to the OOM ceiling in
+// silence. The sweep and the window-close refuse BEFORE any state touch, the same law
+// craft() already holds (the 0.539.0 byte).
+test('sweepGridItems: a dead client (._client.ended) refuses the sweep - zero putAways', async () => {
+  const { bot, putAwayCalls } = fakeBotWithWindow({
+    type: 'minecraft:inventory',
+    slots: [null, fakeItem('ghost'), fakeItem('ghost')]
+  })
+  bot._client = { ended: true }
+  const lines = []
+  const swept = await sweepGridItems(bot, m => lines.push(m))
+  assert.equal(swept, 0)
+  assert.deepEqual(putAwayCalls, []) // the silent write dance never starts
+  assert.ok(lines.some(l => /dead client/.test(l)), `the refusal is named: ${lines.join(' | ')}`)
+})
+
+test('recoverCraftWindow: a dead client refuses the close - the window stays untouched', () => {
+  const { bot } = fakeBotWithWindow({ type: 'minecraft:crafting' })
+  bot._client = { ended: true }
+  const lines = []
+  assert.equal(recoverCraftWindow(bot, m => lines.push(m)), false)
+  assert.equal(bot.closed, undefined) // closeWindow never ran
+  assert.ok(lines.some(l => /dead client/.test(l)), `the refusal is named: ${lines.join(' | ')}`)
+})
+
+test('JUNK-SAFE PIN: bots without _client (the mock fleet) still walk both lanes', async () => {
+  const { bot, putAwayCalls } = fakeBotWithWindow({
+    type: 'minecraft:inventory',
+    slots: [null, fakeItem('oak_planks')]
+  })
+  assert.equal(await sweepGridItems(bot), 1)
+  assert.deepEqual(putAwayCalls, [1])
+  const bot2 = fakeBotWithWindow({ type: 'minecraft:crafting' }).bot
+  assert.equal(recoverCraftWindow(bot2), true)
+  // a live _client (ended=false) walks too - the law prices DEATH, not presence
+  const bot3 = fakeBotWithWindow({ type: 'minecraft:crafting' }).bot
+  bot3._client = { ended: false }
+  assert.equal(recoverCraftWindow(bot3), true)
+})
+
 test('recoverCraftWindow: closes the current window once', () => {
   const { bot } = fakeBotWithWindow({ type: 'minecraft:crafting' })
   assert.equal(recoverCraftWindow(bot), true)

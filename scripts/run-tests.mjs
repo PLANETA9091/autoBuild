@@ -17,8 +17,16 @@
 // HEAD, in-suite red) and the whole job dies on a file that is green on a quiet box.
 // One honest retry per unit file: a retry that passes is reported as FLAKE-RETRY in
 // the run's own output (the flake is named, never hidden), a file that fails twice
-// still fails the suite. Integration stays single-shot: its files run minutes, a
-// retry there could double the job's wall.
+// still fails the suite.
+//
+// INTEGRATION FLAKE-RETRY (v0.976.150, gate 38905056852): integration rode single-shot
+// because "a retry could double the job's wall" - but the retry fires ONLY on a failure,
+// so healthy runs pay zero. The seat: the productivity file died on the dead-socket
+// microtask spin (mineflayer's putSelectedItemRange `while (window.selectedItem)` spins
+// on microtasks when the server vanished mid-craft - every timer starves, including the
+// fences, and the heap burns to the OOM ceiling in silence). The same tree passed green
+// fourteen minutes later: a CI runner's local-socket stall, not a fleet regression -
+// exactly the contention-flake shape the unit law already prices. One honest retry.
 //
 //   node scripts/run-tests.mjs unit         # pure unit tests
 //   node scripts/run-tests.mjs integration  # needs a running vanilla server
@@ -77,7 +85,11 @@ try {
 } catch { /* keep forceExit = false */ }
 if (!forceExit) console.log('[run-tests] --test-force-exit not supported here, relying on the per-file timeout')
 
-const MAX_ATTEMPTS = suites.includes('integration') ? 1 : 2
+// (v0.976.150) BOTH suites get the one honest retry now - see the header note: the
+// integration dead-socket spin (gate 38905056852) is the contention flake's own shape
+// (rare, environment-born, green on the retry), and a healthy integration run never
+// pays for it because the retry fires only on a failure.
+const MAX_ATTEMPTS = 2
 let failed = 0
 let flakeRetries = 0
 for (const f of files) {

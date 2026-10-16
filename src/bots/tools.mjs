@@ -44,6 +44,14 @@ function recipeFor (bot, itemName, table) {
 // poisons EXACTLY the same way, so it is included - closing it is harmless and vanilla
 // empties the 2x2 grid back into the inventory. Exported for tests.
 export function recoverCraftWindow (bot, log = null) {
+  // (v0.976.150) THE DEAD-CLIENT LAW extends to the recovery lane (gate 38905056852):
+  // craft() already refuses the silent write dance on a dead client (the 0.539.0
+  // byte) - the recovery path must hold the same law, or it closes windows and
+  // sweeps ghosts on the corpse of the connection.
+  if (bot._client?.ended) {
+    ;(log ?? (() => {}))?.('[tools] recoverCraftWindow: dead client (the ended flag) - refusing the window close')
+    return false
+  }
   try {
     const w = bot.currentWindow ?? bot.inventory
     if (w) {
@@ -80,7 +88,20 @@ export const tickWait = (bot, n, label = 'ticks') => bot.waitForTicks
 // (the 26.2 stack silently drops window clicks, and an unverified sweep reported success
 // while the grid stayed poisoned, so every later craft kept failing "missing ingredient"
 // and the retries ate the plank stacks).
-export async function sweepGridItems (bot) {
+export async function sweepGridItems (bot, log = null) {
+  // (v0.976.150) THE DEAD-CLIENT LAW at the sweep's own door (gate 38905056852):
+  // on a socket that died mid-craft, putAway's client-side prediction can leave the
+  // window state unresolvable - mineflayer's putSelectedItemRange spins its
+  // `while (window.selectedItem)` on microtasks (clickWindow resolves without any
+  // macrotask wait on the dead wire), which starves EVERY timer including our own
+  // SWEEP_FENCE_MS fences, and the process burns its heap to the OOM ceiling with
+  // no log line, no 'end' event, no reconnect. The craft lane's own probe (the
+  // 0.539.0 byte) refuses BEFORE any state touch - the sweep holds the same law.
+  // Junk-safe: a mock bot has no _client - the optional chain reads undefined.
+  if (bot._client?.ended) {
+    ;(log ?? (() => {}))?.('[tools] sweepGridItems: dead client (the ended flag) - refusing the sweep')
+    return 0
+  }
   try {
     const w = bot.currentWindow ?? bot.inventory
     if (!w) return 0

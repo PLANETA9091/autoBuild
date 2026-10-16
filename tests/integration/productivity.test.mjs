@@ -62,6 +62,7 @@ test(`fleet productivity: ${BOT_COUNT} bots mine on the ground for ${WINDOW_SECO
   const { goals } = pathfinderPkg.default // dynamic import wraps the CJS default export
   const { WorldMap } = await import(path.join(root, 'src', 'fleet', 'worldmap.mjs'))
   const { Vec3 } = await import('vec3')
+  const { attachMemoryGuard } = await import(path.join(root, 'src', 'fleet', 'memory-guard.mjs'))
   const { isNight } = await import(path.join(root, 'src', 'lib', 'nightsafety.mjs'))
 
   // The shared scout -> miner resource map: while mining, every bot records what it sees;
@@ -95,6 +96,7 @@ test(`fleet productivity: ${BOT_COUNT} bots mine on the ground for ${WINDOW_SECO
     assert.ok(m.bot.entity, `${m.username} must be spawned`)
     log(`${m.username} spawned at ${m.bot.entity.position.floored()}`)
   }
+  const guards = miners.map(m => attachMemoryGuard(m.bot, { log }))
 
   // NIGHT GUARD (the smelting test's own law): the testbed world keeps the real
   // clock - a server up >10 min is IN-GAME NIGHT, and the night mobs own bare
@@ -218,7 +220,14 @@ test(`fleet productivity: ${BOT_COUNT} bots mine on the ground for ${WINDOW_SECO
     const now = fleetStats(minersAlive())
     const delta = now.mined - minedAtWindowStart
     samples.push(delta)
-    log(`window: +${delta} blocks (total ${now.mined})`)
+    // (v0.976.150) the memory line rides every window: heap MB per bot + the guard's
+    // eviction counter - the OOM class (gate 38905056852) dies in silence, this line
+    // is the curve the next autopsy reads.
+    const mem = guards.map(g => { try { return g.stats() } catch { return null } })
+    const heapLine = mem.map(s => s ? `${s.heapUsedMb}MB` : '?').join('/')
+    const colLine = mem.map(s => s ? String(s.columns) : '?').join('/')
+    const evicted = mem.reduce((a, s) => a + (s?.evicted ?? 0), 0)
+    log(`window: +${delta} blocks (total ${now.mined}) heap=${heapLine} cols=${colLine} evicted=${evicted}`)
     minedAtWindowStart = now.mined
   }, windowMs)
 
