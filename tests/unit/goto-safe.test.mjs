@@ -688,3 +688,17 @@ test("THE AQUIFER'S OWN ENVELOPE: the wiring pins (the setter law, the live judg
   assert.match(queue, /goalStrikeHot = fleetStrikeHot\(goalCellOf\(goal\)\) === true/, 'the funnel judges the goal cell LIVE at admission')
   assert.match(queue, /const capThink = \(Number\.isFinite\(farGoal\) && farGoal > ALLOC_VALVE_NEAR_BLOCKS_DEFAULT\) \|\| goalStrikeHot/, 'the cap condition composes the far leg and the aquifer leg')
 })
+
+test('THE NEXT-COLUMN BURST CAP: the wiring pins (the v0.358.0 precedent, the second sibling)', () => {
+  // FACE 396 (run 38856252000, exit 143) died the freeze storm through the
+  // next-column legs: NEAR goals (6-10b) kept the boot 32/2000 burst in fresh
+  // wet geometry - the v0.11.2 sealed-world class through the face-13
+  // envelope. The cure's own shape: the caller-explicit pair rides BOTH legs.
+  const fleet = fs.readFileSync(new URL('../../testbed/fleet19.mjs', import.meta.url), 'utf8')
+  assert.match(fleet, /label: 'next column', burstRadius: ASSIST_BURST_SEARCH_RADIUS, burstThinkMs: ASSIST_BURST_THINK_TIMEOUT_MS/, "the primary leg rides the caller-explicit pair")
+  assert.match(fleet, /label: 'next column alt', burstRadius: ASSIST_BURST_SEARCH_RADIUS, burstThinkMs: ASSIST_BURST_THINK_TIMEOUT_MS/, "the alt leg rides the caller-explicit pair")
+  assert.match(fleet, /import \{[^}]*ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS[^}]*\} from '\.\.\/src\/lib\/jobqueue\.mjs'/, 'the pair rides the jobqueue import line')
+  const queue = fs.readFileSync(new URL('../../src/lib/jobqueue.mjs', import.meta.url), 'utf8')
+  assert.match(queue, /export const ASSIST_BURST_SEARCH_RADIUS = 24/, 'the radius stays the far-cap PROVEN half (the RSS frontier bound)')
+  assert.match(queue, /export const ASSIST_BURST_THINK_TIMEOUT_MS = 1000/, 'the think rides the v0.976.135 re-priced half (the envelope law: 2 * 1000 <= 20000)')
+})

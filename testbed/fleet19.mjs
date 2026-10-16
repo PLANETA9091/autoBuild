@@ -32,7 +32,7 @@ import { mapTripTargets, oreSteerOrder, tierDeferOrder, planHave, planItemsOf } 
 import { pickOreTarget, rememberSkip } from '../src/fleet/oresteer.mjs'
 import { ensureTools, ensureCampFurnace, campBuildTier, CAMP_BUILD_PUT_SECS, countItem, consolidateSurplus, craftPlanksFromLogs } from '../src/bots/tools.mjs'
 import { sparePickCheck, craftSparePickaxe, bestPickTier, ORE_TIER_TABLE } from '../src/lib/toolupgrade.mjs'
-import { standGoalNear, gotoSafe, pathThrottleStats, gotoSafeStats, walkRetryPlan, waitForWaterRescueClear, doomedGoalStats, walkGovernorStatsFor, goalBrakeStatsFor, setFleetGoalSweeper, withTimeout } from '../src/lib/jobqueue.mjs'
+import { standGoalNear, gotoSafe, pathThrottleStats, gotoSafeStats, walkRetryPlan, waitForWaterRescueClear, doomedGoalStats, walkGovernorStatsFor, goalBrakeStatsFor, setFleetGoalSweeper, withTimeout, ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS } from '../src/lib/jobqueue.mjs'
 import { PATH_PRIO_BANK } from '../src/lib/pathsemaphore.mjs'
 import { PILLAR_MAX_MS, verticalDoomPlan, quarryAscentPlan, steerFluidLock, sealCensus, sealPlan, sealCrossTarget, sealLanded, SEAL_PLACE_TIMEOUT_MS, SEAL_DIG_TIMEOUT_MS, walledCure, tunnelFluidName, routeRefusalLatch, wetShiftPlan, wetColumnMemoBlocked, WET_SHIFT_BLOCKS, WET_SHIFT_MIN_SLICE_MS, WET_SHIFT_TUNNEL_MAX_MS, wetShiftCrossPlan, wetShiftCrossLanded, SEAL_CROSS_ROUNDS, SEAL_CROSS_SETTLE_TICKS, anchorDrop, ANCHOR_DROP_TIMEOUT_MS, refusalMemo } from '../src/lib/surface.mjs'
 import { heapSpaceUsedMb } from '../src/lib/heapspace.mjs'
@@ -3358,11 +3358,26 @@ async function runBot (name, target, index) {
         if (emptyShafts === 0) {
           const here = miner.bot.entity.position
           const side = new Vec3(here.x + direction.x * 8, here.y, here.z + direction.z * 8)
+          // (v0.976.136) THE NEXT-COLUMN BURST CAP - the v0.358.0 assist cap's
+          // own second sibling. MEASURED (fleet 38856252000, FACE 396, exit 143):
+          // the stormguard FATAL'd the freeze storm - rss 385M -> 1048M -> 2095M
+          // past the 1200M floor in ~10s while the blackbox ring marched
+          // 'pf:goal next column alt' at 0.5s cadence. The seats: BOTH next-column
+          // legs are NEAR goals (6-10b lateral), the v0.144.0 far cap is
+          // distance-keyed (>24b) and never applied, so the boot 32/2000 burst
+          // ran on whatever the fresh wet geometry held - the v0.11.2 sealed-world
+          // expansion class (3.4GB in ~30s, the guard's own ancestor) through the
+          // face-13 envelope (rss 425M -> 1753M in one burst window, the run53
+          // OOM class). The v0.358.0 cure's own shape: the caller-explicit burst
+          // knobs bound THIS walk's frontier - radius 24 is an order of magnitude
+          // past any legal 6-10 block lateral plan, the think rides the assist's
+          // own re-priced pair (24/1000, the v0.976.135 envelope law holds:
+          // 2 * 1000 <= 20000). One burst shape, one pair, two near-walk seats.
           try {
-            await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, side.x, side.y, side.z, { range: 2 }), { timeoutMs: 20000, label: 'next column' })
+            await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, side.x, side.y, side.z, { range: 2 }), { timeoutMs: 20000, label: 'next column', burstRadius: ASSIST_BURST_SEARCH_RADIUS, burstThinkMs: ASSIST_BURST_THINK_TIMEOUT_MS })
           } catch {
             try {
-              await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, here.x + (shaft % 2 ? 6 : -6), here.y, here.z + (shaft % 3 ? 6 : -6), { range: 2 }), { timeoutMs: 20000, label: 'next column alt' })
+              await gotoSafe(miner.bot, standGoalNear(miner.bot, goals, here.x + (shaft % 2 ? 6 : -6), here.y, here.z + (shaft % 3 ? 6 : -6), { range: 2 }), { timeoutMs: 20000, label: 'next column alt', burstRadius: ASSIST_BURST_SEARCH_RADIUS, burstThinkMs: ASSIST_BURST_THINK_TIMEOUT_MS })
             } catch { /* next shaft from here */ }
           }
         }
