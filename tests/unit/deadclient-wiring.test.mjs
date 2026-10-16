@@ -56,15 +56,24 @@ test('REGRESSION PIN: the scout keeps its own probe (the two laws share the clas
   assert.equal(scoutProbes.length, 1, 'the scout loop-top probe stands (the 0.539.0 byte)')
 })
 
-test('REGRESSION PIN: the craft gate carries ONE probe site (the 0.542.0 byte, junk-safe form)', () => {
+test('REGRESSION PIN: the craft chain carries THREE probe sites (the 0.542.0 craft gate + the 0.976.151 recovery lane)', () => {
+  // (v0.976.151, gate 38905056852) the ONE-site law grew a lane: the dead-socket
+  // microtask spin class died INSIDE the recovery path (sweepGridItems's putAway
+  // dance + recoverCraftWindow's close on the corpse) - the recovery lane holds
+  // the same verdict byte now. Three sites, three lanes, ONE law: craft's entry,
+  // the sweep's door, the window-close's door. A FOURTH would be a copy.
   const gates = toolsSrc.match(/if \(bot\._client\?\.ended\) \{/g) || []
-  assert.equal(gates.length, 1, `ONE gate site - a second would be a copy, not a wire (got ${gates.length})`)
+  assert.equal(gates.length, 3, `THREE gate sites - craft + sweep + recover (got ${gates.length})`)
   assert.ok(toolsSrc.includes('if (bot._client?.ended) {'), 'the junk-safe optional chain - a mock bot has no _client and the craft walks (the 0.539.0 precedent)')
 })
 
 test('REGRESSION PIN: the craft gate reads BEFORE the storm state write (the side-effect-free refusal)', () => {
-  const gateAt = toolsSrc.indexOf('if (bot._client?.ended) {')
+  // (v0.976.151) the craft gate is now the THIRD site in the file - anchor on the
+  // craft gate's own doc marker (THE SILENT-CRAFT GATE), never on the first probe.
+  const markerAt = toolsSrc.indexOf('THE SILENT-CRAFT GATE')
+  const gateAt = toolsSrc.indexOf('if (bot._client?.ended) {', markerAt)
   const stormAt = toolsSrc.indexOf('const storm = stormOf(bot)')
+  assert.ok(markerAt > 0, 'the silent-craft seam doc block stands')
   assert.ok(stormAt > 0, 'the lazy storm state write stands')
   assert.ok(gateAt > 0 && gateAt < stormAt, 'the refusal precedes stormOf - no _craftStorm is written on a dead client, the storm counter records craft weather, never socket weather')
 })
