@@ -39,7 +39,9 @@ test('v0.256.0 wiring: the doom branch consults the OPTIONAL hook BEFORE the leg
   // (v0.974.0) the call grew walkIntents - the walk-intent board threads the
   // shared array into the hop; the gate-before-walk ORDER is untouched, the
   // cleared doom still falls through to the legacy hop.
-  const walkIdx = depositSrc.indexOf('res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, yardGraceHolder: yardGrace })')
+  // (v0.976.131) the call grew deadLidLedger - the dead-lid ledger threads
+  // the shared array into the hop; the gate-before-walk ORDER is untouched.
+  const walkIdx = depositSrc.indexOf('res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, deadLidLedger, yardGraceHolder: yardGrace })')
   assert.ok(walkIdx > skipIdx, 'a cleared doom falls through to the legacy hop - the climb buys the ladder its route')
   assert.match(depositSrc, /onVerticalDoom = null/, 'the hook defaults to null - no caller change reads the legacy shape')
 })

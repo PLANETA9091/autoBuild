@@ -27,7 +27,9 @@ test('v0.188.0 wiring: the hop loop consults chestVerticalDoom BEFORE the deposi
   // skip shape are unchanged.
   // (v0.416.0) the call rides the chain net now (res = await inside try) -
   // the mid-visit guard's arm 2; the gate-before-walk order is untouched.
-  const walkIdx = depositSrc.indexOf('res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, yardGraceHolder: yardGrace })')
+  // (v0.976.131) the call grew deadLidLedger - the dead-lid ledger threads
+  // the shared array into the hop; the gate-before-walk ORDER is untouched.
+  const walkIdx = depositSrc.indexOf('res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, deadLidLedger, yardGraceHolder: yardGrace })')
   assert.ok(walkIdx > -1, 'the hop loop walk anchor exists')
   // (v0.256.0) the consult reads `let doom` now - the chest ascent hook
   // rebinds the verdict after a climb and the gate re-evaluates; the

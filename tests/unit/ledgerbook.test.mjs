@@ -396,3 +396,57 @@ assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { parentCell: { 
 assert.equal(ledgerRecordBookConsistent(famClone('walk-intent', { parentBot: { same: 2, cross: 0 } })), false, 'the walk-intent parent bot split break')
 
 console.log('ledgerbook.test.mjs: all green')
+
+// ---- (v0.976.131) THE DEAD-LID FAMILY - the open-lost verdict's own book ----
+// The write 'dead-lid ledger: chest at [...] cached for the fleet (N live, ttl
+// 15s|90s (the repeat's own half-life))' and the save 'chest skip (dead lid
+// cached Xs ago at [...])' - the v0.65.0 shape's third sibling, the same
+// half-life law the no-path family holds, no timeout suffix (the open timeout
+// IS the death), the tight reach (1 XZ / 2 Y).
+
+const LID = [
+  'F8 [F8] dead-lid ledger: chest at [-147,81,411] cached for the fleet (1 live, ttl 15s)',
+  'F17 [F17] dead-lid ledger: chest at [-122,81,413] cached for the fleet (1 live, ttl 15s)',
+  "F8 [F8] dead-lid ledger: chest at [-147,81,411] cached for the fleet (2 live, ttl 90s (the repeat's own half-life))",
+  'F4 [F4] chest skip (dead lid cached 3s ago at [-147,81,411])',
+  'F9 [F9] chest skip (dead lid cached 0s ago at [-147,81,411])'
+]
+const lidBook = ledgerRecordBook(LID)
+assert.ok(lidBook, 'the dead-lid book folds')
+assert.equal(lidBook.records, 3, 'the dead-lid records fold (2 fresh + 1 escalated)')
+assert.equal(lidBook.saves, 2, 'the dead-lid saves fold')
+const lf = lidBook.families['dead-lid']
+assert.equal(lf.records, 3, 'the family records')
+assert.equal(lf.distinctChests, 2, 'two dead lids paid the writes')
+assert.deepEqual(lf.chests['-147,81,411'], { n: 2, bots: { F8: 2 } }, 'the twice-dead lid folds per bot')
+assert.deepEqual(lf.repeatChests, [{ pos: '-147,81,411', n: 2, bots: { F8: 2 } }], 'the repeat rides')
+assert.equal(lf.fresh, 2, 'the fresh 15s writes')
+assert.equal(lf.escalated, 1, "the escalated write (the repeat's own half-life)")
+assert.equal(lf.timeout, 0, 'the dead-lid write carries no timeout suffix - the timeout IS the death')
+assert.equal(lf.saves, 2, 'the family saves')
+assert.deepEqual(lf.saveAge, { n: 2, min: 0, max: 3, avg: 1.5 }, 'the save ages ride honestly')
+assert.deepEqual(lf.parentCell, { sameCell: 2, neighbor: 0, orphan: 0 }, 'both saves ride the same dead cell - the tight reach holds them')
+assert.deepEqual(lf.parentBot, { same: 0, cross: 2 }, 'both saves cross the bot: F4 and F9 spared the walk F8 paid for')
+assert.ok(lidBook.families['no-path'].records === 0 && lidBook.families['full-chest'].records === 0, 'the cells never merge: the dead-lid line rides its own family alone')
+assert.match(
+  ledgerRecordBookRow(lidBook),
+  /dead-lid 3 record\(s\) on 2 chest\(s\) \(repeats 1\) \(live 1..2 avg 1\.3 - fresh 2 \/ escalated 1 \/ timeout 0\) bought 2 skip\(s\) \(bots 2 \(F4=1 F9=1\), age 0\.\.3s avg 1\.5; parents same-cell 2 \/ neighbor 0 \/ orphan 0, same-bot 0 \/ cross-bot 2, pass gap \d+\.\.\d+ lines avg [\d.]+\) - leverage 0\.7 skips\/record/,
+  'the dead-lid cell rides the row'
+)
+
+// The dead-lid fence: the same laws the no-path family holds.
+assert.equal(ledgerRecordBookConsistent(lidBook), true, 'the dead-lid book is consistent')
+assert.equal(ledgerRecordBookConsistent(famClone('dead-lid', { timeout: 1 })), false, 'the dead-lid timeout can never ride')
+assert.equal(ledgerRecordBookConsistent(famClone('dead-lid', { escalated: 3, fresh: 0 })), false, 'the dead-lid ttl split break')
+assert.equal(ledgerRecordBookConsistent(famClone('dead-lid', { records: 2 })), false, 'the dead-lid records break')
+
+// The junk battery: the near-miss shapes judge nothing.
+assert.equal(ledgerRecordBook(['dead-lid ledger: 1 live verdict(s) at end phase']), null, 'the end-phase census names no chest - not a write')
+assert.equal(ledgerRecordBook(['F4 [F4] dead-lid ledger: chest at [x,y,z] cached for the fleet (1 live, ttl 15s)']), null, 'a junk position is not a write')
+assert.equal(ledgerRecordBook(['F4 [F4] dead-lid ledger: chest at [-1,72,-1] cached for the fleet (1 live, ttl 45s)']), null, 'a 45s ttl never prints (the machine rides 15s|90s)')
+assert.equal(ledgerRecordBook(['F4 [F4] dead-lid ledger: chest at [-1,72,-1] cached for the fleet (1 live, ttl 15s, timeout verdict)']), null, 'the dead-lid write carries no timeout suffix')
+assert.equal(ledgerRecordBook(['F4 [F4] chest skip (dead lid at [-1,72,-1])']), null, 'a skip without the age byte is not a save (the emitter always names it)')
+assert.equal(ledgerRecordBook(['F4 [F4] chest skip (dead lid cached 3s ago at [-147,81,411])']).records, 0, 'a save without a write folds honestly (the write rode blind)')
+assert.equal(ledgerRecordBookRow(ledgerRecordBook(['F4 [F4] chest skip (dead lid cached 3s ago at [-147,81,411])'])), 'the ledger families\' own book (v0.869.0): dead-lid 0 record(s) bought 1 skip(s) (bots 1 (F4=1), age 3..3s avg 3; parents same-cell 0 / neighbor 0 / orphan 1) - the writes rode blind - THE RECORDS RODE BLIND: the log carried the skips but never the writes - the v0.866.0 un-blinding reads them from the next face', 'the blind-write seat names the dead-lid family')
+
+console.log('ledgerbook.test.mjs: the dead-lid family all green')

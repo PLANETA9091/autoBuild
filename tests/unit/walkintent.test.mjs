@@ -169,7 +169,10 @@ test('the deposit chain wires the board: record+clear own the walk, the scan con
   const deposit = fs.readFileSync(new URL('../../src/lib/deposit.mjs', import.meta.url), 'utf8')
   assert.match(deposit, /import \{ recordWalkIntent, nearWalkIntent, clearWalkIntent, WALK_INTENT_TTL_MS \} from '\.\/walkintent\.mjs'/, 'the board rides the deposit import band')
   assert.match(deposit, /walkIntents = null, \/\/ \(v0\.974\.0\) a SHARED array across the fleet/, 'depositToChest takes the board')
-  assert.match(deposit, /walkIntents = null, onVerticalDoom = null/, 'depositToChests takes the board')
+  // (v0.976.131) the signature grew deadLidLedger beside the board - the
+  // dead-lid ledger threads the shared array into the hop loop; the board's
+  // own seat is untouched.
+  assert.match(deposit, /walkIntents = null, deadLidLedger = null, onVerticalDoom = null/, 'depositToChests takes the board')
   assert.match(deposit, /const walkOnceInner = async \(label, \{ rearm = false \} = \{\}\) => \{/, 'the inner walk keeps its name (the wrapper owns the lifecycle)')
   assert.match(deposit, /const freshIntents = recordWalkIntent\(walkIntents, intentCell, bot\.username, Date\.now\(\)\)/, 'the wrapper records the intent before the walk')
   assert.match(deposit, /return await walkOnceInner\(label, opts\)/, 'the wrapper calls the inner')
@@ -181,7 +184,7 @@ test('the deposit chain wires the board: record+clear own the walk, the scan con
 
   const miner = fs.readFileSync(new URL('../../src/bots/miner.mjs', import.meta.url), 'utf8')
   assert.match(miner, /walkIntents = null, \/\/ \(v0\.974\.0\) the fleet-wide walk-intent board/, 'createMiner takes the board')
-  assert.match(miner, /depositToChests\(bot, \{ log, noPathLedger, fullChestLedger, walkIntents, \.\.\.opts \}\)/, 'the bank chain threads the board')
+  assert.match(miner, /depositToChests\(bot, \{ log, noPathLedger, fullChestLedger, walkIntents, deadLidLedger, \.\.\.opts \}\)/, 'the bank chain threads the board')
 
   const fleet = fs.readFileSync(new URL('../../testbed/fleet19.mjs', import.meta.url), 'utf8')
   assert.match(fleet, /const walkIntents = \[\] \/\/ \(v0\.974\.0\) shared fleet-wide walk intents/, 'the fleet owns ONE shared array')

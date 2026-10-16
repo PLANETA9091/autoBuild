@@ -1573,6 +1573,7 @@ export async function depositToChest (bot, {
   noPathLedger = null, // (v0.62.0) a SHARED array across the fleet: 'No path' verdicts skip the A* for everyone
   fullChestLedger = null, // (v0.65.0) a SHARED array across the fleet: 'chest full' verdicts skip the paid walk
   walkIntents = null, // (v0.974.0) a SHARED array across the fleet: walks IN FLIGHT skip each other - the decision-concurrency cure the verdict ledgers cannot price
+  deadLidLedger = null, // (v0.976.131) a SHARED array across the fleet: open-lost ('dead lid') verdicts skip the paid walk for everyone - the v0.65.0 shape's third sibling
   yardGraceHolder = null, // (v0.303.0) the chain's one-shot yard-grace holder { used: boolean }; null = a per-call one
   depositClickTimeoutMs = 5000, // (v0.70.0) per-click wall; tests inject a small value instead of sleeping 5s
   netProgressMs // (v0.149.0) the raw hop's net-progress floor; undefined = RAW_HOP_NETPROGRESS_MS (walkRawToward's default)
@@ -1924,6 +1925,33 @@ export async function depositToChest (bot, {
       } catch { return 'unreadable' }
     })()
     log(`${tag} deposit: open lost autopsy: block at ${openAt} reads ${autopsyName} (a chest reads chest) - the attempts spent, the zero follows`)
+    // (v0.976.131) THE DEAD-LID LEDGER: the open-lost verdict joins the fleet.
+    // FLEET EVIDENCE (the lid's own book): face 389 (run 38825061412) priced the
+    // shared column [-151,72,385] x3 (F11+F5) - every bot re-paid the walk plus
+    // TWO 10s open attempts against the SAME dead lid while the yard held other
+    // chests. The v0.976.123 swap cures the WITHIN-CHAIN repeat (the next chest
+    // in the ring takes the walk); the CROSS-BOT repeat rode nowhere - the
+    // open-lost verdict was the only chest death that never joined a fleet
+    // ledger (the walk-fail joins the no-path ledger at the v0.62.0 site, the
+    // full window joins the full-chest ledger at the v0.65.0 site, the open
+    // that never opened joined NOTHING). The cure is the v0.65.0 shape's third
+    // sibling: record the dead cell for the fleet (the SAME half-life law -
+    // the 15s CHEST_DOOM_TTL_MS fresh, the v0.863.0 repeat's own 90s half-life
+    // when an expired cell refuses AGAIN), and the hop loop's own skip site
+    // (the v0.65.0 skip's own lane) lets the NEXT bot keep its walk. The
+    // lid-swap block below keeps its bytes whole: the record rides BEFORE the
+    // guard, the pinned and the swapped paths both pay their write.
+    if (Array.isArray(deadLidLedger) && chest.position) {
+      const deadCell = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
+      if (deadCell && Number.isFinite(deadCell.x)) {
+        const lidSink = { priorExpired: 0, absorbed: 0 }
+        const lidFresh = recordNoPath(deadLidLedger, deadCell, Date.now(), { ttl: CHEST_DOOM_TTL_MS, repeatTtl: NOPATH_REPEAT_TTL_MS, absorbStats: lidSink })
+        deadLidLedger.length = 0
+        for (const e of lidFresh) deadLidLedger.push(e)
+        const lidRepeat = lidSink.priorExpired >= 1
+        log(`${tag} dead-lid ledger: chest at [${deadCell.x ?? '?'},${deadCell.y ?? '?'},${deadCell.z ?? '?'}] cached for the fleet (${deadLidLedger.length} live, ttl ${lidRepeat ? "90s (the repeat's own half-life)" : '15s'})`)
+      }
+    }
     // (v0.976.123) THE LID'S OWN SWAP: one stuck lid must not strand the delivery.
     // FLEET EVIDENCE (the lid's own book, v0.859.0): face 389 (run 38825061412)
     // priced the lid's death x4 across 3 bots on 2 distinct chests - the shared
@@ -1942,7 +1970,7 @@ export async function depositToChest (bot, {
       const dead = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
       if (dead && Number.isFinite(dead.x)) {
         log(`${tag} deposit: the lid at [${dead.x},${dead.y},${dead.z}] died (${em}) - the next chest in the ring takes the walk (the lid's own swap voice)`)
-        const second = await depositToChest(bot, { keep, maxDistance, log, timeoutMs, budgetMs: remaining(), exclude: [dead], noPathLedger, fullChestLedger, walkIntents })
+        const second = await depositToChest(bot, { keep, maxDistance, log, timeoutMs, budgetMs: remaining(), exclude: [dead], noPathLedger, fullChestLedger, walkIntents, deadLidLedger })
         if (second.deposited > 0) return second
         return { deposited: 0, reason: `cannot open chest (${em})` }
       }
@@ -2171,7 +2199,7 @@ export async function depositToChest (bot, {
  * items remain. A single full chest then costs a walk, not the whole delivery.
  * Returns { deposited, chestsUsed, chestReport } - never throws.
  */
-export async function depositToChests (bot, { maxChests = 8, findRadius = 64, keep = KEEP, log = () => {}, budgetMs = null, yardCenter = null, yardRadius = YARD_CHEST_RADIUS, noPathLedger = null, fullChestLedger = null, walkIntents = null, onVerticalDoom = null, preAscent = null } = {}) {
+export async function depositToChests (bot, { maxChests = 8, findRadius = 64, keep = KEEP, log = () => {}, budgetMs = null, yardCenter = null, yardRadius = YARD_CHEST_RADIUS, noPathLedger = null, fullChestLedger = null, walkIntents = null, deadLidLedger = null, onVerticalDoom = null, preAscent = null } = {}) {
   let total = 0
   let chestsUsed = 0
   const reports = []
@@ -2307,6 +2335,25 @@ export async function depositToChests (bot, { maxChests = 8, findRadius = 64, ke
         continue
       }
     }
+    // (v0.976.131) THE DEAD-LID LEDGER SKIP - the fleet's write, the walk's
+    // own save: another bot's open died twice against THIS chest - the lid is
+    // dead for everyone while the entry lives (the 15s chest half-life, the
+    // v0.863.0 repeat's own 90s on a twice-dead lid). Skip BEFORE the walk:
+    // the whole point of a verdict paid for by someone else - TWO 10s open
+    // attempts and the walk that carried them (the F389 shared column's own
+    // price x3). The reach rides the full-chest skip's own TIGHT numbers
+    // (radius 1 XZ / dy 2, the v0.65.0 lesson: yard rows pack 1-2 blocks
+    // apart - a dead lid on chest A must never skip chest B; a chest's lid
+    // is a per-chest truth, not a walk truth).
+    if (Array.isArray(deadLidLedger) && chest.position) {
+      const skipCell = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
+      const dl = skipCell && Number.isFinite(skipCell.x) ? nearNoPath(deadLidLedger, skipCell, Date.now(), { ttl: CHEST_DOOM_TTL_MS, radius: FULL_CHEST_RADIUS, dy: FULL_CHEST_DY }) : null
+      if (dl?.hit) {
+        log(`[${bot.username ?? 'bot'}] chest skip (dead lid cached ${Math.round(dl.ageMs / 1000)}s ago at [${skipCell.x},${skipCell.y},${skipCell.z}])`)
+        tried.push(skipCell)
+        continue
+      }
+    }
     // (v0.72.0) THE DOOMED-GOAL SKIP: the walk goal toward THIS chest died in
     // the fleet's gotoSafe ledger (a 'No path' / 'Took to long' verdict from
     // ANY walk whose goal cell landed on this chest). Skip before the
@@ -2419,7 +2466,7 @@ export async function depositToChests (bot, { maxChests = 8, findRadius = 64, ke
     // Bounded by maxChests end to end.
     let res
     try {
-      res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, yardGraceHolder: yardGrace })
+      res = await depositToChest(bot, { chestBlock: chest, keep, log, budgetMs: remaining(), noPathLedger, fullChestLedger, walkIntents, deadLidLedger, yardGraceHolder: yardGrace })
     } catch (e) {
       const msg = e && e.message ? e.message : 'unknown'
       log(`[${bot.username ?? 'bot'}] hop: chest at [${chest.position?.x ?? '?'},${chest.position?.y ?? '?'},${chest.position?.z ?? '?'}]${hopDist != null ? ` d=${hopDist}` : ''} zero: visit died mid-visit (${msg}) - the chain excludes it, the pocket rides the next window`)

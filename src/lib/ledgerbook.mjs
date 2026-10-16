@@ -11,7 +11,7 @@
 // skips the cache bought back, and how often the repeat's own half-life
 // rides.
 //
-// The fold reads TWO families, each with its write (the record byte)
+// The fold reads FOUR families, each with its write (the record byte)
 // and its save (the skip byte the log always carried):
 //   - the no-path family: the v0.62.0 fleet no-path ledger - the write
 //     'no-path ledger: chest at [x,y,z] cached for the fleet (N live,
@@ -26,6 +26,17 @@
 //     live, ttl 180s)' (FULL_CHEST_TTL_MS, no escalation - chests do
 //     not empty mid-run), the save 'chest skip (full cached Xs ago at
 //     [x,y,z])'.
+//   - the walk-intent family: the v0.974.0 intent board - the write
+//     'walk-intent: chest at [x,y,z] held for the fleet (N live, ttl
+//     90s)', the save 'chest skip (walk in flight by FN cached Xs ago
+//     at [x,y,z])' (the holder rides the line - the join by
+//     construction).
+//   - the dead-lid family: the v0.976.131 dead-lid ledger (the
+//     v0.65.0 shape's third sibling) - the write 'dead-lid ledger:
+//     chest at [x,y,z] cached for the fleet (N live, ttl 15s|90s (the
+//     repeat's own half-life))', the save 'chest skip (dead lid cached
+//     Xs ago at [x,y,z])'; the same half-life law the no-path family
+//     holds, no timeout suffix (the open timeout IS the death).
 // The out-of-scope families stay out: the doomed-goal skip (the
 // jobqueue's own doomedGoals ledger - its write never printed) and the
 // vertical-doom skip (the v0.188.0 arithmetic gate - no ledger at all)
@@ -77,6 +88,11 @@ import { NOPATH_RADIUS, NOPATH_DY } from './nopath.mjs' // (v0.869.0) the no-pat
 // numbers (the v0.65.0 tight-radius lesson: 1 XZ / 2 Y).
 const FULL_CHEST_RADIUS_READ = 1
 const FULL_CHEST_DY_READ = 2
+// (v0.976.131) the dead-lid family's consult reach - the full-chest family's
+// own tight numbers (the per-chest truth's reach: a dead lid on chest A must
+// never skip chest B 2 blocks away - the v0.65.0 tight-radius lesson).
+const DEAD_LID_RADIUS_READ = 1
+const DEAD_LID_DY_READ = 2
 
 const NOPATH_RECORD_RE = /^(F\d+) \[F\d+\] no-path ledger: chest at \[(-?\d+),(-?\d+),(-?\d+)\] cached for the fleet \((\d+) live, ttl (15s|90s \(the repeat's own half-life\))(, timeout verdict)?\)$/
 const FULLCHEST_RECORD_RE = /^(F\d+) \[F\d+\] full-chest ledger: chest at \[(-?\d+),(-?\d+),(-?\d+)\] cached for the fleet \((\d+) live, ttl (\d+)s\)$/
@@ -89,6 +105,18 @@ const FULLCHEST_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(full cached (\d+)s ago 
 // construction: the skip's holder IS the record's writer).
 const WALKINTENT_RECORD_RE = /^(F\d+) \[F\d+\] walk-intent: chest at \[(-?\d+),(-?\d+),(-?\d+)\] held for the fleet \((\d+) live, ttl 90s\)$/
 const WALKINTENT_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(walk in flight by (F\d+) cached (\d+)s ago at \[(-?\d+),(-?\d+),(-?\d+)\]\)$/
+// (v0.976.131) THE DEAD-LID FAMILY - the open-lost verdict's own book (the
+// v0.65.0 shape's third sibling): the write 'dead-lid ledger: chest at [x,y,z]
+// cached for the fleet (N live, ttl 15s|90s (the repeat's own half-life))' and
+// the save 'chest skip (dead lid cached Xs ago at [x,y,z])'. The same
+// half-life law the no-path family holds: fresh (15s, the chest half-life),
+// escalated (90s, the v0.863.0 repeat's own half-life - a twice-dead lid); no
+// timeout suffix (the open timeout IS the death - the write carries no extra
+// leg). The consult reach rides the full-chest family's own TIGHT numbers
+// (1 XZ / 2 Y - the per-chest truth's reach; the literals pinned below like
+// the full-chest's own).
+const DEADLID_RECORD_RE = /^(F\d+) \[F\d+\] dead-lid ledger: chest at \[(-?\d+),(-?\d+),(-?\d+)\] cached for the fleet \((\d+) live, ttl (15s|90s \(the repeat's own half-life\))\)$/
+const DEADLID_SKIP_RE = /^(F\d+) \[F\d+\] chest skip \(dead lid cached (\d+)s ago at \[(-?\d+),(-?\d+),(-?\d+)\]\)$/
 
 const mkStats = (list) => list.length === 0
   ? null
@@ -225,11 +253,15 @@ export function ledgerRecordBook (lines) {
   // skip leg names the holder and the cell, the parent join is the
   // holder-by-construction (the skip's holder IS the record's writer).
   const walkIntent = foldWalkIntentFamily(rows)
-  if (noPath.records + noPath.saves + fullChest.records + fullChest.saves + walkIntent.records + walkIntent.saves === 0) return null
-  const records = noPath.records + fullChest.records + walkIntent.records
-  const saves = noPath.saves + fullChest.saves + walkIntent.saves
+  // (v0.976.131) the dead-lid family folds with the STANDARD shapes (the
+  // write's group layout matches the no-path family's minus the timeout
+  // suffix group; the save's layout matches the full-chest skip's).
+  const deadLid = foldFamily(rows, DEADLID_RECORD_RE, DEADLID_SKIP_RE, { escalatable: true, radius: DEAD_LID_RADIUS_READ, dy: DEAD_LID_DY_READ })
+  if (noPath.records + noPath.saves + fullChest.records + fullChest.saves + walkIntent.records + walkIntent.saves + deadLid.records + deadLid.saves === 0) return null
+  const records = noPath.records + fullChest.records + walkIntent.records + deadLid.records
+  const saves = noPath.saves + fullChest.saves + walkIntent.saves + deadLid.saves
   return {
-    families: { 'no-path': noPath, 'full-chest': fullChest, 'walk-intent': walkIntent },
+    families: { 'no-path': noPath, 'full-chest': fullChest, 'walk-intent': walkIntent, 'dead-lid': deadLid },
     records,
     saves,
     leverage: ratio(saves, records)
@@ -333,8 +365,8 @@ export function ledgerRecordBookConsistent (book) {
   if (!book || typeof book !== 'object') return false
   const fams = book.families
   if (!fams || typeof fams !== 'object') return false
-  if (Object.keys(fams).sort().join(',') !== 'full-chest,no-path,walk-intent') return false
-  if (!fams['no-path'] || !fams['full-chest'] || !fams['walk-intent']) return false
+  if (Object.keys(fams).sort().join(',') !== 'dead-lid,full-chest,no-path,walk-intent') return false
+  if (!fams['no-path'] || !fams['full-chest'] || !fams['walk-intent'] || !fams['dead-lid']) return false
   let records = 0
   let saves = 0
   for (const [name, fam] of Object.entries(fams)) {
@@ -370,6 +402,7 @@ export function ledgerRecordBookConsistent (book) {
     if (name === 'full-chest' && fam.escalated !== 0) return false
     if (name === 'walk-intent' && fam.escalated !== 0) return false
     if (name === 'walk-intent' && fam.timeout !== 0) return false
+    if (name === 'dead-lid' && fam.timeout !== 0) return false
     const botsSum = Object.values(fam.saveBots || {}).reduce((a, b) => a + b, 0)
     if (botsSum !== fam.saves) return false
     if ((fam.saveAge === null) !== (fam.saves === 0)) return false
@@ -423,7 +456,7 @@ export function ledgerRecordBookConsistent (book) {
 export function ledgerRecordBookRow (book) {
   if (!ledgerRecordBookConsistent(book)) return null
   const cells = []
-  for (const [name, label] of [['no-path', 'no-path'], ['full-chest', 'full-chest'], ['walk-intent', 'walk-intent']]) {
+  for (const [name, label] of [['no-path', 'no-path'], ['full-chest', 'full-chest'], ['walk-intent', 'walk-intent'], ['dead-lid', 'dead-lid']]) {
     const fam = book.families[name]
     if (fam.records === 0 && fam.saves === 0) continue
     const parented = fam.saves - fam.parentCell.orphan
