@@ -1924,6 +1924,29 @@ export async function depositToChest (bot, {
       } catch { return 'unreadable' }
     })()
     log(`${tag} deposit: open lost autopsy: block at ${openAt} reads ${autopsyName} (a chest reads chest) - the attempts spent, the zero follows`)
+    // (v0.976.123) THE LID'S OWN SWAP: one stuck lid must not strand the delivery.
+    // FLEET EVIDENCE (the lid's own book, v0.859.0): face 389 (run 38825061412)
+    // priced the lid's death x4 across 3 bots on 2 distinct chests - the shared
+    // column [-151,72,385] x3 (F11+F5) - every bot re-paid the walk plus TWO 10s
+    // open attempts against the same dead lid while the yard held other chests.
+    // The walk ARRIVED (the book's own law: the open call only fires AT the
+    // chest, the timeout rides the lid), so the failure is the lid, not the
+    // path: exclude exactly that chest and scan again - once (the exclude.length
+    // guard, the v0.23.1 shape): two dead lids mean the yard is the problem, not
+    // the slot. A caller who pinned chestBlock gets their failure back: their
+    // choice is final. The voices above keep their bytes (the opendeaf book
+    // parses them); this line rides the existing 'deposit' filter key and speaks
+    // once per fired swap (the cause leg - the second candidate's success prints
+    // the normal receipts, its failure prints the byte-identical primary zero).
+    if (!chestBlock && exclude.length === 0 && chest.position) {
+      const dead = typeof chest.position.floored === 'function' ? chest.position.floored() : chest.position
+      if (dead && Number.isFinite(dead.x)) {
+        log(`${tag} deposit: the lid at [${dead.x},${dead.y},${dead.z}] died (${em}) - the next chest in the ring takes the walk (the lid's own swap voice)`)
+        const second = await depositToChest(bot, { keep, maxDistance, log, timeoutMs, budgetMs: remaining(), exclude: [dead], noPathLedger, fullChestLedger, walkIntents })
+        if (second.deposited > 0) return second
+        return { deposited: 0, reason: `cannot open chest (${em})` }
+      }
+    }
     return { deposited: 0, reason: `cannot open chest (${em})` }
   }
   // (v0.65.0) THE FULL-CHEST VERDICT, read BEFORE the click loop: the window's
