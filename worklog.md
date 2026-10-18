@@ -34823,3 +34823,25 @@ Stage Summary:
 - THE FLEET OF RECORD：F475 = 39164157313 SUCCESS（alive 19/19 banked 228 storm CALM iron=1 THE WALL BROKE）；F474 SUCCESS（banked 1458）。
 - 下一轮：读 gate 终态；两 gate 绿 + 席位空闲时派发 F476；读 F476 全貌 → .252 席位定价。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0542, close-out 2026-10-19 ~06:35 +08:00)
+Agent: Z.ai Code (main, fire-0542)
+Task: F476 红因诊断与修复（THE DRAIN FENCE）+ worklog append
+
+Work Log:
+- 沙箱重启，仓库重克隆至 /home/z/privateB，身份 PLANETA9091 local+global 即设，git log 复核无 'Z User'。
+- CI 快照：my .251 gate 39166680434 SUCCESS（绿）、worklog gate 39166879687 SUCCESS（绿）、**F476 = 39166656131 FAILURE**（unit×2 + integration 绿，Big fleet run 红）—— 本轮最高优先级：红因诊断。
+- F476 全貌读全（artifact 12151702620 → faces/face476/，3678 行）：alive 19/19、banked 1382、mined 2383（**3.97 b/s 迄今最佳速率**）、smelted 33、storm CALM（0 air glitches）、server guard losses=0、pickaxe iron=0（铁墙回归）、deaths 5（Zombie x4/Skeleton x1）、exit watchdog 结束。**红因：F5 runner 停摆 414s+ 未排空**（settle 遥测 14 行亲证：18/19 settled, 1 parked (F5 414s) 末印，口袋 94u 自 23s 起冻结至 watchdog；其余 18 跑者陆续 settle——F4 夜间推迟、F19 +284、F10 +99），watchdog（.233 backstop）于 deadline+420s 触发 **process.exit(12)**，workflow pipefail 读 12 → job 红。面本身是舰队史上最佳形状——红纯因退出码。
+- 修复 THE DRAIN FENCE（.253）：每 runner 席位骑 fence race（deadline + 360s margin——最坏合法 270s 终局后 90s、watchdog 420s grace 内 60s 余量），停摆者界到即结算 → 自然终局 + 同一 printFinalReport + reason 单元 'deadline end - the drain fenced (F5 parked past the 360s margin)'（facefate 读 result）+ **exit 0 绿**；watchdog 保持未被满足席位（事件循环饿死类仍骑 12 真红）；fence timer 故意 ref'd（emptied-loop 律）；mark 前 rejection 照旧 unhandled fate（零行为变更），mark 后 rejection 为 fence 席位。干净排空零打印、'normal end' 字节不变。
+- 交付件：src/lib/drainfence.mjs（DRAIN_FENCE_MARGIN_MS 常量 + drainFenceVerdict 纯半 + drainFenceLine/drainFenceReason 双发射器 + 读者半 drainFenceCensus/Consistent/Row——列表必须恰好点名 fenced 计数的 forged-meter 律）+ testbed/fleet19.mjs wire（fence race 包裹 settleWatched 每席、timer 骑 verdict 绝不分叉、fenced 分支 + 绿退出、干净终局字节不变）+ decompose.mjs fold（import + fold 紧随 pte fold）+ tests/unit/drainfence.test.mjs 16 pins。
+- 本地验证（任务书法内轻量类）：node --check 4 文件全过；SMOKE 17/17（promise 力学三例：never-settling 者被 fence 界住 → Promise.all 解析、mark 前 rejection 照旧、mark 后 rejection 吸收）；FIELDPROOF 2/2 census==raw 零失配（face475/face476 均先于发射器——lawful zeros；face476 的 14 条真实 settle 打印 + 1 条 watchdog 行 + reason 单元全部被拒——邻道不合并）；PINCHECK 11/11（exitwatchdog 电池 pins、settlecensus 发射器 pin、报告块顺序全站立）。
+- THE DOUBLE-VERSION RACE：their fire-0542 落地 **v0.976.252 THE KNOWLEDGE MAP'S OWN END MASS**（b40380c4，worldmaptailtrend）mid-build——rebase 冲突同锚 keep-both 双立（their wmt import+fold + my df import+fold，冲突标记清零，node --check 干净），**MY 词重版本化 .252 → .253**（.238/.244/.248/.251 前例），their fieldproof 在合并树上重验 3/3 全绿（face467 1220/20、face474 1476/25、face475 1328/27，W467-474-475 swing 1220 → 1476 (+256) → 1328 (-148)）。push b40380c4..2fe16056 干净，零 force-push。
+- 派发：**F477 = 39170522050**（workflow_dispatch run_fleet=true fleet_seconds=600，.253 树 2fe16056）—— fence 的首实战面（首个可能发声 '[fleet] drain fence:' 的 face）；workflow needs: [unit, integration] 保证 gate 红则 fleet 不启动，派发安全。in flight at close-out。
+- 全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.253 THE DRAIN FENCE 已交付（2fe16056）：F476 红因（F5 never-settling await → watchdog exit 12）修因——停摆 runner 界到即结算，自然终局 exit 0 绿，watchdog 真红类保留。
+- THE FLEET OF RECORD：**F477 = 39170522050**（.253 树，in flight）——下一轮读全（fence 是否首发声、F5 类是否重现、3.97 b/s 速率是否复现）；F476 FAILURE（面最佳、码红——fence 未及之面）。
+- 下一轮：读 F477 全貌 → my .253 push gate 39170499761 终态 → their .252 gate 39169774722 终态 → .254 席位定价（unaccounted mass decode 席已勘察确认 FREE：生产者在 pocketline.mjs、读者不存在、近两面 lawful silence——F475 share 14.0%、F476 share 0% 均低于 25% watch floor）→ 两 gate 绿 + 席位空闲时派发 F478。
+- the identity law held: PLANETA9091
