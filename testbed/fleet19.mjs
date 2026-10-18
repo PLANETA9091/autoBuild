@@ -28,6 +28,7 @@ import { APPROACH_THRESHOLD, approachWalk, yardApproachPlan } from '../src/lib/a
 import { KEEP as DEPOSIT_KEEP, needsBanking, bankFallback, effectiveWalkBudget, inventoryLoad, bankTripDue, bankRefusalDue, fuelTripWanted, needsBankingTripViable, duskBankDue, midBankBudgetMs, finalBankBudgetMs, yardWalkBudgetMs, smeltClampSeconds, smeltChainReserve, MID_BANK_RETURN_MARGIN_MS, bankRescueGate, YARD_CHEST_RADIUS, CHEST_DOOM_TTL_MS, walkRawToward, NEEDS_BANKING_MIN_REMAINING_MS } from '../src/lib/deposit.mjs'
 import { finalBankDelayMs, hardKillDelayMs, endBankBudgetMs, prePositionDue, finalBankSchedule, finalClimbNeedMs, climbRetryPlan, bankClimbRetry, finalBankDoomLatch, FINAL_BANK_DOOM_REARM_MS, CLIMB_MIN_SLICE_MS, END_BANK_BUDGET_CAP_MS, FINAL_CLIMB_RESCUE_WAIT_MS, flowPriceClock } from '../src/lib/endphase.mjs'
 import { exitWatchdogVerdict, EXIT_WATCHDOG_GRACE_MS } from '../src/lib/exitwatchdog.mjs'
+import { drainFenceVerdict, DRAIN_FENCE_MARGIN_MS, drainFenceLine, drainFenceReason } from '../src/lib/drainfence.mjs' // (v0.976.253) THE DRAIN FENCE - the parked runner's own bound, the green exit the F476 face priced
 import { deliverableNow } from '../src/lib/deliverability.mjs' // (v0.385.0) THE DELIVERABILITY ARM - the gate compares, flowPriceClock prices (the sibling law)
 import { mapTripTargets, oreSteerOrder, tierDeferOrder, planHave, planItemsOf } from '../src/fleet/materialplan.mjs'
 import { pickOreTarget, rememberSkip } from '../src/fleet/oresteer.mjs'
@@ -4617,12 +4618,56 @@ const settleTelemetry = setInterval(() => {
   const detail = parked.map(i => `${settleLabels[i]} ${Math.round((Date.now() - deadline) / 1000)}s`).join(', ')
   console.log(`[fleet] runner settle: ${settleWatched.length - parked.length}/${settleWatched.length} settled, ${parked.length} parked (${detail}) - the drain's own per-runner read`)
 }, 30000)
-await Promise.all(settleWatched)
+// (v0.976.253) THE DRAIN FENCE - the parked runner's own bound, the green
+// exit the F476 face priced (run 39166656131: alive 19/19, banked 1382,
+// 3.97 b/s - the fleet's own best shape - and the job rode RED because F5's
+// runner parked past the deadline forever, the watchdog's 12 read the
+// pipefail). One never-settling await parks its runner past
+// `await Promise.all(runners)` forever - the class the .233 doctrine named
+// - and the watchdog was the hang's honest ACCOUNT, never its cure. THE
+// CURE: each runner's seat rides a fence race at the deadline plus the
+// 360s margin (drainfence.mjs's DRAIN_FENCE_MARGIN_MS - 90s past the
+// end-phase's worst legitimate 270s end, 60s inside the watchdog's own
+// 420s grace): a runner the drain never sees still leaves the drain
+// BOUNDED, the natural end proceeds with the SAME printFinalReport the
+// clean end rides, the reason cell names the fenced runners, and the
+// process exits 0 - the face's evidence lands green. The watchdog keeps
+// its seat unmet: the fence is a promise-side bound (it fires where the
+// loop still serves timers), the watchdog owns the class where the EVENT
+// LOOP itself starves - a run the fence cannot settle still rides the 12
+// and the honest red. NOT unref'd - the same law the heap cliff's exit
+// timer and the watchdog ride: a quit()-emptied loop must not swallow the
+// fence (the silent-exit class the ref'd timer cures - the report prints,
+// exit 0 owns the end). A rejection BEFORE the mark rides the same error
+// to the same unhandled fate the .246 contract holds (the race passes it
+// through - zero behavior change); a rejection AFTER the mark is the
+// fence's own seat (the report and the green exit own the end).
+const settleFenced = settleWatched.map((p) => Promise.race([
+  p,
+  new Promise((resolve) => {
+    const v = drainFenceVerdict({ nowMs: Date.now(), deadlineMs: deadline })
+    // ref'd ON PURPOSE - the emptied-loop law the fence shares with the
+    // watchdog: a quit()-emptied loop must not swallow the fence
+    setTimeout(resolve, v.fire ? 1000 : Math.max(1000, v.remainingMs))
+  })
+]))
+await Promise.all(settleFenced)
 clearInterval(reporter)
 clearInterval(heapWatchdog)
 clearTimeout(exitWatchdogTimer)
 clearInterval(settleTelemetry)
-printFinalReport(`normal end - deadline ${SECONDS}s reached`)
+// (v0.976.253) the fence's own verdict: the fenced runners named on the
+// console (one print per face - the clean drain's silence the clean read
+// keeps), the report's own reason cell naming the fenced class, the green
+// exit the fence bought. A clean drain keeps the byte-identical
+// 'normal end' the family knows - the fence is invisible on the healthy
+// shape.
+const fencedLabels = []
+for (let i = 0; i < settleWatched.length; i++) if (!runnerSettleAt.has(i)) fencedLabels.push(settleLabels[i])
+if (fencedLabels.length > 0) console.log(drainFenceLine({ labels: fencedLabels }))
+printFinalReport(fencedLabels.length > 0
+  ? drainFenceReason({ labels: fencedLabels })
+  : `normal end - deadline ${SECONDS}s reached`)
 process.exit(0)
 
 // ---- the final report, shared by the normal end and the watchdog cliff ----
