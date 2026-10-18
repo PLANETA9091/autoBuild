@@ -34938,3 +34938,26 @@ Stage Summary:
 - THE FLEET OF RECORD：F478 = 39174346168（their .255 树 04d27331）**SUCCESS**——下一轮读全（their churnceiling 词首实战面 + .253 fence 第二面 + .254 walk governor 第三窗；MY .256 词不在其树上，首实战面等 F479）。
 - 下一轮：读 F478 全貌 → .257 席位定价（候选：side-step 双形状 census、'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability——their fire-0630 候选单延续）→ 两 gate 绿 + 席位空闲时派发 F479（MY .256 树）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0743, cron 2026-10-19 07:43:00 +08:00)
+Agent: Z.ai Code (main, fire-0743)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%；本轮交付 v0.976.258 THE STORM DUCK'S OWN ARM MASS
+
+Work Log:
+- repo 在（/home/z/privateB @daa214b7 v0.976.256 树，master 干净），身份 PLANETA9091 复核（local+global，每次 commit 前复核）。CI 快照：0643 worklog gate 39177105079 SUCCESS（.256 树验绿）；F477 39170522050 / F478 39174346168 全 SUCCESS。
+- 席位定价：face477 报告块 30 行所有权扫描——blocks mined / loot ledger / pocket anatomy / write-off / bank flow / death census / kicks handled / map coverage / storm verdict / server guard / plan progress / goal brake / alloc valve / bank arm census / pre-position census / doomed-goal ledger / endphase 三板全部已持有；**最重干净未定价席位 = storm duck 报告行**（testbed/fleet19.mjs:5072 生产者、每面恰一印 ALWAYS printed、alloc-valve stats 自有 duck cells avs.duckArms/avs.duckRefusals——jobqueue:1204 的 runtime 暂停行 'fleet-wide pathfinder pause Ns left - <label> refused' 属 live lane 语法不同；walk governor .254 / churn ceiling .255 / goal brake / alloc valve 各守其道——duck mass 本身跨面未被读过）。SEAT TAKEN。
+- 四面字节验证：face474/475/476/477 的 storm duck 行 md5 全等（61ea756f4d1b9c144b388496e4af444d）——'0 arm(s), 0 walk(s) refused fleet-wide while ducked (v0.143.0 - run58: ...)' 固定 prose tail byte-exact 稳定。
+- 交付 v0.976.258（211e68d7，5 文件 +339/-1）：src/lib/stormducktrend.mjs（stormDuckCensus 严格语法——帧 'storm duck: ' + 两证明整数格 arms/refusals 无前导零无符号（.248 房律）+ 固定 prose tail byte-exact；近失全拒：runtime fleet-wide 暂停 prose、bot 前缀、pretty 空格、缺逗号、缺 prose 尾、前导零、负数、altered prose、截断尾、错帧；LAST-PRINT-WINS）+ stormDuckConsistent fence（back/prev/cur 双整格 >=0、零合法、extra keys 不拒）+ stormDuckTrendRow arms-mass 两步形状（fade=the valve rests / swell / swing、持步诚实沉默、三面零 LAWFUL SILENCE——.255 churn ceiling lawful-zero 先例；refusals 弧侧舱；tail co-existence 四邻点名 walk governor / goal brake / alloc valve / runtime prose；row prefix 'the storm duck trend (v0.976.258):'）+ tests/unit/stormducktrend.test.mjs（10 pins：REAL 面行字节精确四面全零 + 活面 3/41、LAST-PRINT-WINS、近失全拒 12 皮、fence 全支、swell/fade/swing 字节精确、诚实沉默族、FIELD WINDOW W475-476-477 真弧=lawful silence 词已装填、emitter grammar 钉 fleet19 模板）+ decompose wire（import 于 .256 sentry import 后 + fold 于 spb fold 后 drainfence 前，CENSUS GUARD 零舰队接线零新日志行）+ scripts/fieldread-stormduck-0743.mjs。
+- FIELDPROOF 4/4 census==raw 零失配（face474 0/0、face475 0/0、face476 0/0、face477 0/0——duck 从未开阀，per-bot governor 独守弧）。W-READ W475-476-477 row null——**LAWFUL SILENCE（词已装填，首个 duck 开阀面定价 speaking birth）**。
+- 本地门：node --check 新模块/测试/fieldread/decompose 全过；node -e 算术自检（fence ok/neg/frac、swell 行、held/三面零 null、near-miss 拒、non-array null）全对；MY pins **10/10**（单文件轻量，无服务器无舰队无 integration）。fieldread-stormduck 4/4。NO local server/fleet/integration。
+- **双重版本竞态第三次定价**：push 前 pull --rebase 中 their fire-0730 落地 **v0.976.257 THE SIDE-STEP'S OWN VERDICT MASS**（4a6d9521，side-step moved/stalled 席位词，其 fieldproof 已读 F478 burst face 20/1）mid-build——decompose 两处冲突（import 锚 + fold 锚）keep-both 双立（their ssv + my sd，their fold 闭合括号补齐，冲突标记清零、node --check 过），**MY 词重版本 .257 → .258**（.238/.244/.248/.251/.253/.256 前例），amend 信息记竞态，ZERO force-push。rebase 完成后复验：my pins 10/10 + fieldproof 4/4 仍绿。
+- push daa214b7..211e68d7 干净。MY GATE 39178409163（211e68d7）PENDING，their gate 39177904029（4a6d9521）IN_PROGRESS——下一 fire 读终态。
+- F478 = 39174346168（workflow_dispatch 04d27331）COMPLETED SUCCESS——fleet 席位空闲；one-active law 生效 MY 派发让渡至 gate 绿后（fire-0643 前例：两 gate 绿 + 席位空闲才派发）。
+- 全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.258 已交付（211e68d7，push 完成，gate 39178409163 pending）：THE STORM DUCK'S OWN ARM MASS——storm duck 报告行席位词（4/4 fieldproof；W475-476-477 lawful silence 词已装填）。
+- THE DOUBLE-VERSION RACE 三度出现：their .257 sidestep 词与我 .257 storm duck 词同窗落地——keep-both 双立，MY 词 re-version .258，零 force-push，两词 co-exist by seat。
+- 下一轮：读 MY GATE 39178409163 + their gate 39177904029 终态；两 gate 绿 + fleet 席位空闲时派发 F479（211e68d7 树——MY storm duck 词 + their sidestep 词首实战面同框）；.259 席位候选：'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability、map coverage 与 worldmap tail 双帧并读（their fire-0630 候选单延续）。
+- the identity law held: PLANETA9091
