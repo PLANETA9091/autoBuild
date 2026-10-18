@@ -49,7 +49,7 @@ import { relootPlan, relootPileVerdict, relootRetry, relootSurfaceY, relootSurfa
 import { wetChurnPlan, churnSwap, WET_CHURN_WINDOW_MS, WET_CHURN_COOLDOWN_MS } from '../src/lib/wetchurn.mjs' // (v0.223.0) the after-storm evacuation: the plan reads the bot's OWN rescue log, the swap prices the dry pass
 import { dragonZoneAnchor, inDragonZone, dragonZoneExit, DRAGON_ZONE_EXIT_MS } from '../src/lib/dragonzone.mjs' // (v0.225.0) the kill zone: the anchor clusters the magic kills, the exit prices the walk out
 import { duskBankPlan } from '../src/lib/duskbank.mjs' // (v0.229.0) the heavy pocket's priced dusk delivery: the plan landed v0.226.0, the wiring rides this lane
-import { shedTripDue } from '../src/lib/bankshed.mjs' // (v0.566.0) THE SHED CONSULT SEAT - the whale cure's fourth leg joins the arming ladder's last rung: the plan (v0.558.0), the pricer (v0.561.0), the gate (v0.564.0), the wiring (this lane)
+import { shedTripDue, shedConsultLine, SHED_RETRY_MS } from '../src/lib/bankshed.mjs' // (v0.566.0) THE SHED CONSULT SEAT - the whale cure's fourth leg joins the arming ladder's last rung: the plan (v0.558.0), the pricer (v0.561.0), the gate (v0.564.0), the wiring (this lane); (v0.976.236) the consult's own verdict line - the silence the F466/F467 faces priced unread now names its own why
 import { reconnectDelayMs, LOGIN_SPAWN_TIMEOUT_MS } from '../src/lib/backoff.mjs'
 import { kickWitnessFill } from '../src/lib/kickwitness.mjs' // (v0.908.0) THE SILENT DEATH'S OWN WITNESS - the kicked event's byte fills the seats the catch never hears
 import { relogHandshakeWanted } from '../src/lib/reloghandshake.mjs' // (v0.972.0) THE RELOG'S OWN HANDSHAKE - a session that returns whole ends its own seat, the old session never feeds the next login a duplicate
@@ -1862,6 +1862,7 @@ async function runBot (name, target, index) {
       let duskTripUntil = 0 // (v0.229.0) the dusk-bank plan's exit clock - the plan owns it, the wiring only carries it (the churn clock's shape)
       let lastBankTripMs = NaN // (v0.229.0) the wiring's MEASURED bank trip (the last DELIVERED chain's wall time) - the dusk plan prices with it; NaN = unmeasured, the plan reads no-time (it never prices a guess)
       let shedTripUntil = 0 // (v0.566.0) the shed plan's exit clock - the plan owns it, the wiring only carries it (duskTripUntil's twin: a failed arm waits it out, no re-arm storm)
+      let shedConsultAt = 0 // (v0.976.236) the consult line's own refractory clock - the verdict prints ONCE per SHED_RETRY_MS window per bot (the arm's own cadence law, the line never floods per pass)
       let bankRescueAnnounced = false // (v0.295.0) the rescue-clock gate's announce edge - one deferral line per rescue window, the hold passes stay silent (the churn hold's shape)
       let churnHoldAnnounced = false // (v0.223.0) the arm/release story: one line each, the hold passes stay silent
       // (v0.293.0) THE CHURN INTRA-GOAL READ - the boundary consult's blind
@@ -2978,6 +2979,22 @@ async function runBot (name, target, index) {
             })
           } catch { return { due: false, why: 'unknown' } }
         })()
+        // (v0.976.236) THE SHED CONSULT'S OWN VERDICT LINE - the whale cure's
+        // own silence named (the F466/F467 faces priced the crater 23.5% ->
+        // 25.4% and the pocket 459u -> 1580u while the arm printed NOTHING
+        // across both faces whole - the gate's decline is lawful but UNREAD:
+        // the face cannot tell light (the leanness law, healthy) from late
+        // (the clock starved the trip, the crater's own cause) from unknown
+        // (the junk gate)). The refusal's why rides ONCE per refractory
+        // window per bot (the arm's own cadence law - the line never floods
+        // per pass); the due verdicts the trip line speaks (never a second
+        // voice the same truth); the line rides the 'bank ' filter key the
+        // family owns. The holding's clock and the late's clock share the
+        // plan's remainingMs ride - each term reads its own meaning.
+        if (!shedArm.due && shedArm.why !== 'refractory' && Date.now() - shedConsultAt >= SHED_RETRY_MS) {
+          const consult = shedConsultLine({ why: shedArm.why, needS: shedArm.needS, budgetS: null, remainingMs: shedArm.remainingMs, holdMs: shedArm.remainingMs })
+          if (consult) { console.log(`${name} ${consult}`); shedConsultAt = Date.now() } // the 'bank shed consult' line rides the 'bank ' filter key
+        }
         const bankWanted = !!((needsBanking(miner.bot) && bankRefusalOpen) || tripPlanned || bankDusk || duskPlan.go || deliverableArm.go || shedArm.due)
         // (v0.185.0) THE NIGHT LANE GATE: the mid-run bank trip joins the
         // v0.140.1 night hold. run182 (36167325733) measured 11 of 17 deaths in

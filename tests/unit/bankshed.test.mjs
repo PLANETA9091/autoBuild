@@ -225,7 +225,11 @@ import { readFileSync } from 'node:fs'
 const FLEET_SRC = readFileSync(new URL('../../testbed/fleet19.mjs', import.meta.url), 'utf8')
 
 test('THE CONSULT SEAT PIN - the shed joins the arming ladder as the last rung', () => {
-  assert.match(FLEET_SRC, /import \{ shedTripDue \} from '\.\.\/src\/lib\/bankshed\.mjs'/,
+  // (v0.976.236) the anchor grew - the consult line's own import joins the
+  // seat (the anchor-growth law the v0.974.0 precedent holds: the pin
+  // restates honest, the law it prices stands - the gate rides from
+  // bankshed.mjs whole, no re-export, no wrapper)
+  assert.match(FLEET_SRC, /import \{ shedTripDue, shedConsultLine, SHED_RETRY_MS \} from '\.\.\/src\/lib\/bankshed\.mjs'/,
     'the fleet imports the gate from bankshed.mjs (no re-export, no wrapper)')
   // the carry-clock twin: the plan owns the exit clock, the wiring carries it
   assert.match(FLEET_SRC, /let shedTripUntil = 0/,

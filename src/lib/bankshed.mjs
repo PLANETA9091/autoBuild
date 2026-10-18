@@ -302,3 +302,68 @@ export function shedTripDue ({
   // measured face still reads 'shed' byte for byte (shedPlan's why there)
   return { due: true, why: plan.why, tripMs, needS: plan.needS, gapS: plan.gapS, untilMs: plan.untilMs }
 }
+
+// (v0.976.236) THE SHED CONSULT'S OWN VERDICT LINE - the whale cure's own
+// silence named. THE EVIDENCE (the F466 and the F467 faces, runs
+// 39126831061 and 39131684179): the crater row priced 23.5% then 25.4%
+// (the endgame loot reaching chests), the pocket row priced 459u then
+// 1580u stranded across 15 holders - and the shed arm (the wiring's own
+// consult, EVERY pass the ladder runs) printed NOTHING across both faces
+// whole (zero 'shed' rides in either log - the 17 'bank trip:' lines the
+// F467 face holds are the cadence family's own, none the shed's). The
+// arm's silence is a lawful shape (the gate declined) but an UNREAD one:
+// the face cannot tell light (the leanness law - healthy) from late (the
+// clock starved the trip - the crater's own cause) from unknown (the junk
+// gate). The wiring logs the arm's verdict ONCE per refractory window per
+// bot and this formatter prices the byte - the 4 canonical forms the
+// family speaks (refused / deferred / the armed trip's own line stays the
+// verdict of record for go and seed - never a second voice the same truth).
+// Pure, no bot, no server: the wiring passes the consult's own read.
+/**
+ * (v0.976.236) Format one shed-consult refusal into the canonical line -
+ * pure, no bot, no server. The due verdicts (go, seed) NEVER ride here:
+ * the armed trip's own 'bank trip: shed ...' line is the verdict of
+ * record (one voice per truth, the family's own law). The refractory
+ * never rides: the wiring's own refractory clock keeps the log silent
+ * between windows (the arm's own cadence law - the consult line prints
+ * at most once per window, never per pass). junk-safe: a term the gate
+ * never returns prices null; numbers ride only when finite (the honest
+ * generic without them), floors ride whole.
+ * @param {object} [p]
+ * @param {string} [p.why] the consult's own why (unknown|holding|light|
+ *        late the refusals the line prices; go|seed|refractory the
+ *        silences the other voices own)
+ * @param {number|null} [p.needS] the projected end need (seconds) - the
+ *        light verdict's own numerator
+ * @param {number|null} [p.budgetS] the end bank's granted budget
+ *        (seconds) - the light verdict's own denominator
+ * @param {number|null} [p.remainingMs] the run clock left (ms) - the
+ *        late verdict's own read
+ * @param {number|null} [p.holdMs] the active trip's own clock left (ms)
+ *        - the holding verdict's own read
+ * @returns {string|null} the line byte (the '${name} ' prefix the wiring
+ *        owns), or null - nothing this formatter may say
+ */
+export function shedConsultLine (p = {}) {
+  const { why = '', needS = null, budgetS = null, remainingMs = null, holdMs = null } = (p && typeof p === 'object') ? p : {}
+  const finN = v => Number.isFinite(v) && v >= 0
+  if (why === 'light') {
+    return (finN(needS) && finN(budgetS))
+      ? `bank shed consult: refused - light (the need ${Math.floor(needS)}s rides inside the budget ${Math.floor(budgetS)}s - the leanness law holds)`
+      : 'bank shed consult: refused - light (the end bank covers the pocket - the leanness law holds)'
+  }
+  if (why === 'late') {
+    return finN(remainingMs)
+      ? `bank shed consult: deferred - late (the trip cannot land, ${Math.floor(remainingMs / 1000)}s of run clock left - the endphase owns the goal)`
+      : 'bank shed consult: deferred - late (the trip cannot land - the endphase owns the goal)'
+  }
+  if (why === 'holding') {
+    return finN(holdMs)
+      ? `bank shed consult: deferred - holding (the active shed trip owns the clock, ${Math.floor(holdMs / 1000)}s left)`
+      : 'bank shed consult: deferred - holding (the active shed trip owns the clock)'
+  }
+  if (why === 'unknown') {
+    return 'bank shed consult: refused - unknown (the junk inputs price no shed - the guess-free zero)'
+  }
+  return null // go and seed the trip line speaks, the refractory the cadence keeps silent, an alien term prices nothing
+}
