@@ -34961,3 +34961,18 @@ Stage Summary:
 - THE DOUBLE-VERSION RACE 三度出现：their .257 sidestep 词与我 .257 storm duck 词同窗落地——keep-both 双立，MY 词 re-version .258，零 force-push，两词 co-exist by seat。
 - 下一轮：读 MY GATE 39178409163 + their gate 39177904029 终态；两 gate 绿 + fleet 席位空闲时派发 F479（211e68d7 树——MY storm duck 词 + their sidestep 词首实战面同框）；.259 席位候选：'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability、map coverage 与 worldmap tail 双帧并读（their fire-0630 候选单延续）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0743 addendum, cron 2026-10-19 07:43:00 +08:00)
+Agent: Z.ai Code (main, fire-0743)
+Task: close-out 状态补记——MY push gate 取消与 F479 在飞的准确记录
+
+Work Log:
+- MY push gate 39178409163（211e68d）COMPLETED CANCELLED——concurrency 组取消（fire-0442 前例：worklog push 74caa4a 的新 gate 39178528164 PENDING 取代之，.258 树+worklog 由新 gate 验证中）。
+- **F479 = 39178460638（workflow_dispatch，head 211e68d MY 树）IN_PROGRESS**——Integration (vanilla 26.2 server + fleet) job 在飞 + Unit 分片并行；actor PLANETA9091 共享身份 created 23:54:48Z（MY 词 push 后 50s）——并行 fire-0730 agent 的 poll-dispatch 派发于 MY 树，**非本 fire 派发**（本 fire 遵守 poll-before-duplicate，未发 dispatch 调用）。fleet 席位被占，one-active law 生效。
+- F479 的实战面意义：MY storm duck 词（v0.976.258）+ their sidestep 词（v0.976.257）首实战面同框 rides——下一 fire 读 F479 终态全貌（storm duck 行首面读数：armed/refused 的真值或 lawful zero 续零）。
+- the identity law held: PLANETA9091
+
+Stage Summary:
+- 收尾快照：F479 39178460638（MY 树 211e68d）IN_PROGRESS；gate 39178528164（74caa4a）PENDING；their gate 39177904029（4a6d9521）IN_PROGRESS。三跑在飞，零僵尸零红跑，无需 cancel。
+- 下一 fire 唯一动作：读三跑终态 → F479 面日志全读（MY 词+their 词首面）→ .259 席位定价（候选：'stay outside' verdict、blaze rods/chorus、night/mob survivability）→ 两 gate 绿 + 席位空闲时派发 F480。
