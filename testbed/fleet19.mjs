@@ -4584,10 +4584,44 @@ const exitWatchdogTimer = setTimeout(() => {
   process.exit(12)
 }, Math.max(1000, deadline + EXIT_WATCHDOG_GRACE_MS - Date.now()))
 
-await Promise.all(runners)
+// (v0.976.246) THE RUNNER SETTLE TELEMETRY - the never-drain class's own
+// per-runner witness, the fleet-wiring word the OPEN FRONT named (the F469
+// face's watchdog report held the parked anatomy only as a fleet sum - the
+// 'runners never drained' verdict never said WHICH runner parked, the cure
+// the per-runner read names). The settle book rides the SAME promises the
+// await below holds - the wrapper marks the settle instant on BOTH paths
+// and rethrows the rejection untouched, so Promise.all(settleWatched)
+// settles exactly when Promise.all(runners) settles (the reject path rides
+// the same error to the same unhandled fate - zero behavior change). The
+// telemetry speaks past the deadline only, every 30s, and ONLY while the
+// drain holds parked runners: each line names the settled fraction and the
+// parked runners by name with their parked seconds - the F469-class face
+// now prints '18/19 settled, 1 parked (F7 390s)' every 30s until the
+// watchdog lands, the parked runner the log itself names. A clean drain
+// prints nothing (the silence the clean read keeps); the final report and
+// the watchdog both kill the interval (the process exit owns the watchdog
+// path, the clearInterval owns the natural end).
+const runnerSettleAt = new Map()
+const settleWatched = runners.map((p, i) => Promise.resolve(p).then(
+  (v) => { runnerSettleAt.set(i, Date.now()); return v },
+  (e) => { runnerSettleAt.set(i, Date.now()); throw e }
+))
+const settleLabels = runners.map((_, i) => (SCOUT
+  ? (i === 0 ? 'scout' : (names[i - 1] || `runner #${i}`))
+  : (names[i] || `runner #${i}`)))
+const settleTelemetry = setInterval(() => {
+  if (Date.now() < deadline) return // the drain reads past the deadline only
+  const parked = []
+  for (let i = 0; i < settleWatched.length; i++) if (!runnerSettleAt.has(i)) parked.push(i)
+  if (!parked.length) return // all settled - the drain's own silence is the clean read
+  const detail = parked.map(i => `${settleLabels[i]} ${Math.round((Date.now() - deadline) / 1000)}s`).join(', ')
+  console.log(`[fleet] runner settle: ${settleWatched.length - parked.length}/${settleWatched.length} settled, ${parked.length} parked (${detail}) - the drain's own per-runner read`)
+}, 30000)
+await Promise.all(settleWatched)
 clearInterval(reporter)
 clearInterval(heapWatchdog)
 clearTimeout(exitWatchdogTimer)
+clearInterval(settleTelemetry)
 printFinalReport(`normal end - deadline ${SECONDS}s reached`)
 process.exit(0)
 
