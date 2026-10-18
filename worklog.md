@@ -4180,8 +4180,7 @@ Work Log:
   - THE DARK CASCADE (second-order, pinned for the next lane): 'craft torches: skip (no coal)' x248; the ONLY placement did-not-land class was 'dry' x17 (the mechanics work, the pockets are empty); 214 coal_ore mined but coal ended in TWO pockets (F1 28 + F2 3) - the mined ore's drops die in the failed/skipped drop walks (45 fail lines: timeout x27, doomed-refused x10, no-path x4, brake x2, water x2; the deep-skip verdicts x13 naming 2-7 deep drops each); F1 hoards torch:50 coal:28 unplaced (the carrier never digs, the diggers never get coal). The iron chain held: F7 smelted 7 iron_ingot, the commons delivered 7/7, iron=1 at the tiers line (2nd run in a row).
 - SHIPPED v0.185.0 THE NIGHT LANE GATE (ca30944): SURFACE_HOLD_PURPOSES grows 'mid-bank' + 'pre-position' (pure, nightsafety.mjs); the bank gate reads surfaceHoldVerdict(...'mid-bank') and bankViable = !bankNightHold && (tripPlanned || needsBankingTripViable(...)) - the hold gates BOTH paths (a planned dusk trip is still a night yard walk); the refusal names itself once per cadence window ('bank trip: deferred night (tod=N) - the yard walk rides out the dark alive', rides the 'bank ' filter key, lastBankAt advances - the v0.181.0 shape), the doomed-clock line byte for byte; prePositionNow consults walkForbidden (the bot keeps digging, the final-bank hold owns the pocket, the DEATH is the only real loss). Junk clock walks byte for byte. Tests +4 net + the v0.181.0 bankViable pin re-pinned to the night-gated shape. syntax 194 files 0 broken; unit 417/417 local.
 - COLLISION #13: the parallel lane's v0.184.0 THE FURNACE RETRY LADDER (81e895e, the smelting integration test's gravel-refill race, test-file only) landed first and owns 0.184.0 - this lane renumbered 0.184.0 -> 0.185.0, the union keeps both cures (the only file overlap was package.json).
-- MID-SESSION INCIDENT (the conflict-marker commit): the rebase's package.json conflict was resolved by a python regex that missed the `>>>>>>> cbbfbab` marker form - the rebase --continue then COMMITTED the marker lines. Caught on the immediate re-read (JSONDecodeError), fixed by hand, amended - the pushed ca30944 is clean (git show verified, json.load verified).
-
+- MID-SESSION INCIDENT (the conflict-marker commit): the rebase's package.json conflict was resolved by a python regex that missed the `
 Stage Summary:
 - Master: ca30944 (v0.185.0 THE NIGHT LANE GATE) on 81e895e (v0.184.0 THE FURNACE RETRY LADDER) on 5bed4d3 on fe35191 (v0.183.0). Next free version = 0.186.0.
 - Push-CI on ca30944 verified at this session's close (see the addendum); the dispatch rides on the final head (one fleet per head).
@@ -34675,4 +34674,17 @@ Stage Summary:
 - v0.976.245 stands (7b4402b1): THE CLIMB RUN-UP'S OWN GALLERY OPENING - the climb family's sixth own seat the word prices, CI pending (39155426605).
 - THE FLEET OF RECORD: F473 = 39156167132 (the .245 tree 505daabe, IN_PROGRESS - the climb run-up word's first live fleet read rides) - F471 = 39152257685 the face before (the .242 tree, SUCCESS, NORMAL END: the doom prose 294/1676/34/12 the .242 word's first live read, the residue live 2 -> 12 the swell the faces price, the body 19/19, the boards 3/0/0). F472 = 39154545548 CANCELLED (the pre-dispatch check's per_page=3 window the F471's last minute fell outside - the lesson the worklog prices: the --limit 8 check whole).
 - NEXT FIRE: reset program; read F473 whole (the climb run-up's own first live fleet read the .245 word prices - the F473 face's openings/digs/lastDigs/peakDigs beside the F471 face's 3/2/0/1; the doom residue's live cell the .242 word's second live read the faces carry); MY gate 39155426605 the verdict prices; the .245 dispatch when green AND seat free (THE --limit 8 CHECK WHOLE); OPEN FRONT the never-drain FIX (the per-runner settle telemetry the runtime front names - a fleet-wiring word, the bigger seat; the telemetry words the triangle + the climb run-up's sixth seat keep stacking); -> the worklog keep-both.
+Task ID: 415967 (fire 0142 addendum, close-out)
+Agent: Z.ai Code (main, fire-0142)
+Task: F472 zombie priced + cancelled; the dispatch handoff recorded
+
+Work Log:
+- F472 = 39154545548（MY 树 1a3cc534）fleet job 117757989653 42+ 分钟 in_progress——unit×2 + integration 全 SUCCESS，仅舰队 job 楔死；日志探测 302 → **BlobNotFound**——fire-1842 僵尸签名逐字命中。POST /actions/runs/39154545548/cancel（HTTP 202）→ completed cancelled。
+- 席位释放后并行 fire 立即派发 **F473 = 39156167132**（workflow_dispatch 于 505daabe = MY .244 + MY worklog 树，含 their .245）——MY 派发正式让渡，one-active + no-duplicate law 持立。
+- MY worklog push gate 39155573637（505daabe）被 their e93b90c5 push（fire-0230 worklog append）concurrency-cancel——fire-2242 前例：MY worklog 的 CI 证明骑 e93b90c5 gate（in flight）；.245 code gate 39155426605 SUCCESS。
+- MY .244 code gate 39154202284（1a3cc534）SUCCESS 长立；1a3cc534 与 505daabe 均为 origin/master 祖先（merge-base 验证）。
+
+Stage Summary:
+- THE FLEET OF RECORD 更新：**F473 = 39156167132（505daabe 树）in flight——下一轮的 face**；F472 = 39154545548 cancelled（僵尸，本 fire 处置）；F471 = 39152257685 SUCCESS（banked 360）。
+- 下一轮：读 F473 全貌（MY dsm W471 窗 = 470/471/472三角 4→4→[F472 cancelled 无 face——**W472 窗诚实跨取消：470/471/473 无窗，F473 的窗为 471/473 双 face 空档律**——the honest gap the series skips，.234 fcl 的 F465 空缺前例）→ .246 席位定价 → 派发 F474（两 gate 绿 + 席位空闲时）。
 - the identity law held: PLANETA9091
