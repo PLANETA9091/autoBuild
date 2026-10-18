@@ -27,6 +27,7 @@ import { attachMemoryGuard } from '../src/fleet/memory-guard.mjs'
 import { APPROACH_THRESHOLD, approachWalk, yardApproachPlan } from '../src/lib/approach.mjs'
 import { KEEP as DEPOSIT_KEEP, needsBanking, bankFallback, effectiveWalkBudget, inventoryLoad, bankTripDue, bankRefusalDue, fuelTripWanted, needsBankingTripViable, duskBankDue, midBankBudgetMs, finalBankBudgetMs, yardWalkBudgetMs, smeltClampSeconds, smeltChainReserve, MID_BANK_RETURN_MARGIN_MS, bankRescueGate, YARD_CHEST_RADIUS, CHEST_DOOM_TTL_MS, walkRawToward, NEEDS_BANKING_MIN_REMAINING_MS } from '../src/lib/deposit.mjs'
 import { finalBankDelayMs, hardKillDelayMs, endBankBudgetMs, prePositionDue, finalBankSchedule, finalClimbNeedMs, climbRetryPlan, bankClimbRetry, finalBankDoomLatch, FINAL_BANK_DOOM_REARM_MS, CLIMB_MIN_SLICE_MS, END_BANK_BUDGET_CAP_MS, FINAL_CLIMB_RESCUE_WAIT_MS, flowPriceClock } from '../src/lib/endphase.mjs'
+import { exitWatchdogVerdict, EXIT_WATCHDOG_GRACE_MS } from '../src/lib/exitwatchdog.mjs'
 import { deliverableNow } from '../src/lib/deliverability.mjs' // (v0.385.0) THE DELIVERABILITY ARM - the gate compares, flowPriceClock prices (the sibling law)
 import { mapTripTargets, oreSteerOrder, tierDeferOrder, planHave, planItemsOf } from '../src/fleet/materialplan.mjs'
 import { pickOreTarget, rememberSkip } from '../src/fleet/oresteer.mjs'
@@ -4542,9 +4543,34 @@ const heapWatchdog = setInterval(() => {
   }
 }, WATCHDOG_MS)
 
+// (v0.976.233) THE EXIT WATCHDOG - the hard-exit backstop the F465 face
+// priced (run 39122045949: the Big fleet job died at its own 40-minute
+// timeout, the fleet process outlived the 600s deadline by 25+ minutes, the
+// v0.246.0 class resurfacing whole - the event loop alive, the exit path
+// starved, ONE never-settling await parking its runner past
+// `await Promise.all(runners)` forever, the report the run dug for never
+// printed). The timer rides the deadline plus the 420s margin the end-phase's
+// own arithmetic names ('deadline + stagger 120s + 150s = 270s < the 420s
+// margin' - 150s of headroom between the worst natural end and this mark);
+// on fire it prints the canonical line, runs the SAME printFinalReport the
+// normal end rides (synchronous - the hang class cannot starve it) and
+// hard-exits 12 (0 = the deadline end, 13 = the heap cliff, 14 = the login
+// lane - the deaths stay tellable). NOT unref'd - the same law the heap
+// watchdog's exit timer rides: a quit()-emptied loop must not swallow the
+// backstop. A natural end's process.exit(0) kills this timer mid-flight -
+// the race the design prices the watchdog never runs.
+const exitWatchdogTimer = setTimeout(() => {
+  const v = exitWatchdogVerdict({ nowMs: Date.now(), deadlineMs: deadline })
+  if (!v.exit) return
+  console.log(`exit watchdog: the margin spent (${Math.round(v.overdueMs / 1000)}s past the deadline+${Math.round(EXIT_WATCHDOG_GRACE_MS / 1000)}s grace, the runners never drained) - the hard exit owns the process`)
+  try { printFinalReport('exit watchdog - the margin spent, the runners never drained') } catch { /* the report never holds the exit */ }
+  process.exit(12)
+}, Math.max(1000, deadline + EXIT_WATCHDOG_GRACE_MS - Date.now()))
+
 await Promise.all(runners)
 clearInterval(reporter)
 clearInterval(heapWatchdog)
+clearTimeout(exitWatchdogTimer)
 printFinalReport(`normal end - deadline ${SECONDS}s reached`)
 process.exit(0)
 
