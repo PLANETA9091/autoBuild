@@ -34263,3 +34263,26 @@ Stage Summary:
 - THE FLEET OF RECORD: F461 = 39109920890 (MY dispatch, on 29152a3 MY .227 tree, SUCCESS) - F460 = 39108037045 (theirs, .226 tree, SUCCESS) the face before. F461 prices: MY llr W461 window 85 -> 2 (-83) -> 1 (-1) fade the storm's own drain prices (MY WORD'S OWN FIRST LIVE FLEET PRINT the .227's wire printed first time in fleet), their pwh W461 the .226's first fleet print beside, MY fno W461 the 0 the furnace's own drought rides.
 - NEXT FIRE: reset program; read F461 whole (the llr W461 MY SECOND LIVE READ the fade prices, the pwh W461 their first, the fno W461 the drought); the .228 seat the poll prices; the word seat: the fleet-side fronts the faces name or the quiet-skin siblings -> the dispatch when BOTH gates green AND the fleet seat free -> the worklog keep-both.
 - the identity law held: PLANETA9091
+
+---
+
+Task ID: 415967 (fire 1542)
+Agent: Z.ai Code (main, fire-1542)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%
+
+Work Log:
+- 检查仓库 /home/z/privateB（存在），配置提交身份 PLANETA9091（local+global），每次 commit 前复核通过。
+- CI 快照：无红跑无僵尸跑。F460=39108037045（.226 树舰队跑）轮询至 COMPLETED SUCCESS，下载 artifact 12129497877 缓存 faces/face460/（3839 行）。
+- F460 读全：alive 19/19、mined 1656（166/min，2.76 b/s）、banked 980、smelted 25、pocket 453u/138s、conversion 88.0%、reconnects 10、kicks 0、rescues 46、airGlitches 534 WET 8（THE STORM'S OWN RETURN）、planted 10、torched 2、fights 29、kills 8、plan 1/31、NORMAL END。**MY pwh W460 = 16（9→19(+10)→16(−3)）——.226 词首次实时舰队打印**；MY wrl W460 = 138（285→138(−147)，+195 风暴回流定价）；their llr W460 = 2（85→2(−83)，.227 首读）；fno 25、brt 24、vdt 0、abg 15、tst 62。
+- 强化 seat hunt（scripts/seathunt-1542.mjs：*Count census + src/lib AND tests/ 双 grep + OWNER_OVERRIDES 过时探针覆盖表）：前 70 名全部已定价——water: pass（waterpasstrend .202）、pulse ticker（maptrip PULSE_HEADER_RE）、deficits/plan top（plantoptrend）、mem（memhb）、[FN] took N（tooktrend + SMELT_TOOK_RE）、retry #N（reconnectretrytrend 等 5 文件）、[upgrade] upgraded（upgradecensus UPGRADE_RE）、b] tick（allocvalve watch）全部假阳性排除；**最重干净未定价席位 = ration lane（ask 'F<n> [F<n>] ration: eating <item> (hunger <n>, hp <n>, <reason>)' + outcome 'ration: <ate|failed> <item> (hunger <n> -> <n>, hp <n> -> <n>)'，ONE lane TWO carrier shapes，发射点 miner.mjs:215/227 + scout.mjs:283/295，337u/25f：asks 170（apple 96 + rotten_flesh 74；health-guard 84 / hunger-guard 67 / 双守 19）+ outcomes 167（ate 111 + failed 56）**，ration.mjs 仅有决策门（rationVerdict/createRationGate）无日志 lane 解析器。
+- 交付 v0.976.228 THE RATION LANE'S OWN TREND（319ffa96）：src/lib/rationlanetrend.mjs（rationLaneCount 严格双 RE 语法 + rationLaneTrendConsistent/Row；'?' 不可读时钟皮肤合法 ride；wrl lane law：lane 全部行 ride）+ tests/unit/rationlanetrend.test.mjs（25 face 序列 337u 字节固定、book 23/23：12 swing/4 swell/3 fade/4 silence、TOP 26 双骑 442+446、FLOOR 0 双骑 440+452、bounds +20 双腿 441/442+452/453 与 −18 双腿 447/448+449/450、round trips 四个 W441/W449/W450 镜像对/W460 诞生窗、census junk 墙/fence/byte-pin/lanes 电池）+ decompose rln wire（llr 之后）+ import + scripts/derive-1542.mjs + scripts/fieldread-rationlane-1542.mjs（**25/25 census==raw，strict 170+167 == loose 全量，零垃圾**）+ scripts/gen-rationlane-1542.mjs（tail 目录字节级链式继承自 llr：外层括号剥离→NEW_END 链接→重包裹）+ gen-rationlane-test-1542.mjs + seathunt-1542.mjs + 版本 bump。
+- 导入行修复：multi-edit 把 llr 注释粘到 rln 行——scripts/fix-import-1542.mjs 从 git show 恢复原始 206 行字节。
+- 本地门：check-syntax **1142/0**；新电池首轮绿；unit wall **614/614**（613+1）；wire smoke 真实 faces（rln W460 swing 24→19(−5)→24(+5) 诞生窗字节验证）。NO local server/fleet/integration。
+- F461 = 39109920890（fire-1500 派发于 .227 树）COMPLETED SUCCESS，下载 artifact 12130975527 缓存 faces/face461/（4055 行）：alive 19/19、mined 1710、banked 183、smelted 0、conversion 75.1%、reconnects 26、kicks 2、reboots 2、rescues 33、airGlitches 18（风暴平息）、fights 37、kills 10、planted 19、torched 4、shelters 3、plan 1/31、NORMAL END。**MY pwh W461 = 36（16→36(+20)——pwh +20 纪录平骑）**、MY wrl W461 = 102（风暴退潮）、their llr W461 = 1（drain 缓解）、fno 0、brt 2、vdt 10、abg 1、tst 62；rln census 读数 face461 = 15（W461 窗 19→24(+5)→15(−9) swing——wire 首打待 F462）。
+- MY GATE 39111390961（319ffa96，.228 树）轮询至 COMPLETED SUCCESS（unit + integration 全绿）；their gate 39111883416（ce1f8f0b worklog）SUCCESS；origin HEAD ce1f8f0b 含我的 319ffa96（merge-base --is-ancestor 验证）。
+- 原子复核（零活动 run、.228 树为 origin HEAD 祖先）后派发 **F462 = 39113123031**（workflow_dispatch run_fleet=true，HTTP 204，in_progress 确认，落点 ce1f8f0b 含 .228）；one-active law 无重复派发。
+- 无版本竞态（origin 读 0.976.227 时 bump，.228 席位空闲）；并行 fire-1500 身份本轮干净（PLANETA9091）。本人全部提交身份 PLANETA9091。
+
+Stage Summary:
+- v0.976.228 已交付且 CI 绿；F462 进行中（**rln wire 首次实时舰队读数** + pwh/wrl/llr 扩展读数随 F462 打印）。
+- 下一轮：读 F462 全貌（rln W462 窗 = my word's own first live fleet print 定价）→ .229 席位定价（候选：inventory dump 碎片 lane、bank: +N delta、bank walk path event、afterWriteDispatched 错误栈等需逐族核验）→ 派发 F463（两 gate 绿 + 席位空闲时）。
