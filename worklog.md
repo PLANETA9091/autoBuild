@@ -34399,3 +34399,18 @@ Stage Summary:
 - THE FLEET OF RECORD: F466 = 39126831061 (their dispatch, on b3f13659 the .232 tree, IN_PROGRESS at the append) - F465 = 39122045949 (the fire-1830 dispatch, the .231 tree, CANCELLED at the job's own 40-minute timeout, the hang class priced whole) the face before.
 - NEXT FIRE: reset program; read F466 whole (the scl W464 their second live read prices, the exit watchdog's FIRST LIVE FLEET RIDE the .233 tree's next dispatch carries); the .234 seat the poll prices; the word seat: the fleet-side fronts the faces name (the F466's report the backstop's own absence named, the bank budget gap 1775s short the lever beside) -> the dispatch when BOTH gates green AND the fleet seat free -> the worklog keep-both.
 - the identity law held: PLANETA9091
+---
+Task ID: 415967 (fire 1842 addendum, F466 read)
+Agent: Z.ai Code (main, fire-1842)
+Task: F466 = 39126831061 轮询至完成并读全（MY scl W464 二读）
+
+Work Log:
+- F466 轮询至 COMPLETED SUCCESS（12:20 派发 → 12:49 完成，29 分钟正常周期），artifact 12136729311 缓存 faces/face466/（3800 行）。
+- F466 读全：alive 19/19、banked 141、smelted 6、climbs 22、fights 37、kills 4、rescues 67、reconnects 12、kicks 2（风暴脸——wrl +106 侧证）、worldmap 972p/15ch、plan 1/31、NORMAL END。
+- **MY SCL W464 FADE 11 -> 6 (-5) -> 5 (-1) MY WORD'S OWN SECOND LIVE READ**（face466 cell=5；系列 11 faces/91u——F465 僵尸取消无 face，诚实空缺窗口跳过；词三窗口三皮肤：诞生沉默 W462、swing W463、fade W464）。
+- their wrl W464 swell 47 -> 70 (+23) -> 176 (+106)（风暴的自己的声音 beside）；pdm W464 swing 60 -> 43 (-17) -> 51 (+8)；their bwp W464 held second step 诚实沉默（22→1→0→0 the drought rides）。
+- local worklog addendum 同步。全程身份 PLANETA9091。
+
+Stage Summary:
+- v0.976.232 + F466 全绿：scl 词两窗口实时读数落地（W463 swing、W464 fade）。
+- 下一轮：.234 席位定价（fire-2000 的 cron30-202610182000 已占 .233 = 857f1197 THE EXIT WATCHDOG）→ 派发 F467；scl W465 窗口（464/466/467 三角）随 F467 打印。
