@@ -34915,3 +34915,26 @@ Stage Summary:
 - THE FLEET OF RECORD：F478 = 39174346168（.255 树 04d27331，IN_PROGRESS——MY 词 + .253/.254 词首实战面同框待读）。
 - 下一轮：读 F478 终态全貌；读 MY GATE 39173721983 终态；.256 席位（候选：side-step 双形状 census、'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0643, cron 2026-10-19 06:43:00 +08:00)
+Agent: Z.ai Code (main, fire-0643)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%；本轮交付 v0.976.256 THE SENTRY ATTRIBUTION'S OWN ROW MASS
+
+Work Log:
+- sandbox 重置（/home/z/privateB 缺失）——重新克隆 @94e1e472（v0.976.254 + fire-0600 worklog），身份 PLANETA9091（local+global）第一时间配置并每次 commit 复核；npm install（98 包）。CI 快照：F477 = 39170522050（.253 树）COMPLETED SUCCESS——**drain fence 首实战面绿：零 fenced 行 = 干净排空类定价成立**（17/19 settled、F10/F18 parked 至 232s 后自然排空，fence 沉默即正确行为）；94e1e472 worklog gate 39172307428 SUCCESS（.254 树 CI 验绿——bceb93c8 原 gate 39171640269 被 concurrency-cancel，fire-2242 前例）。
+- F477 读全（artifact 12152762633 → faces/face477/，3184 行）：alive 19/19、NORMAL END（deadline 600s）、banked 965、mined 2180（3.63 b/s）、smelted 10、planted 13、worldmap 1038p/16ch、plan 1/31、deaths 3（drown x2/Skeleton x1）、reconnects 8、kicks 1、storm CALM、pickaxe iron=0（铁墙回归）、loot ledger unaccounted=148（6.8%，低于 25% watch floor）、walk governor 13/170（.254 词的有效读面）。
+- 席位定价：seathunt-0643.mjs（face477 432 家族聚类）+ 精确对照 316 fold 所有权地图——top 家族全被持有（craft torches 四席位/fuel commons DOCKET 整前缀/climb bridge 整族/water pass/climb wet escape/climb diag/pounce probe/shore pin/heartbeat b] n= 行 shootercensus+stormcensus HB_RE/loot ledger bankcensus LOOT_RE/food commons docket 等）；pocketline 席（t-Ns alive 53u/面）维持 fire-0542 让位（share 6.8% 低于 25% watch floor）；**最重干净未定价席位 = sentry per-bot 报告行**（statcarry.mjs sentryAttributionRow v0.195.0 生产者、fleet19.mjs:4708 每面恰一印、ALWAYS printed——all-zero 皮 'all N g0/r0'；0 census 持有：sentryCensus v0.422.0 只读水道 sight 席、rescue-economy decode 只审单面风暴份额、drowned-kill/transit/breath-mirror per-bot 各守其道——run190 三解码道烧穿才落进日志的 WHO 轴自身跨面未被读过）。SEAT TAKEN。
+- 交付 v0.976.256（29939002）：src/lib/sentryperbottrend.mjs（sentryPerBotCensus 严格语法——命名项 'F<n> g<g>/r<r>' PAIRS 律（token 内含空格，奇数段数=发射器 never-shape 语法拒绝——首版单 token RE 一轮修复）、每命名项非零计数律（g0/r0 命名项 never-shape）、管道尾 '| <silent> g0/r0'、all-skin 'all <silent> g0/r0'、无前导零无符号（.248 房律）；近失全拒：drowned-kill/transit/breath-mirror per-bot、rescue-economy decode、bot 前缀、pretty 空格、缺尾、空体、命名零项、前导零、负数、截断尾、错帧；LAST-PRINT-WINS）+ fence（named/silent/g/r 四整 >=0）+ sentryPerBotTrendRow r-mass 两步形状（fade/swell/swing/持步沉默/三面零 + g 风暴见证弧与 named 宽度弧双侧舱 + g-only 面不定价律 + tail co-existence 五邻点名）+ tests/unit 10 pins（F474/475/476/477 行字节精确——F474 g236 风暴指纹；FIELD WINDOW 真弧 102→18(−84)→36(+18)；emitter grammar 钉 statcarry 模板）+ decompose wire（import 于 .254 后 + fold 于 wgs fold 后，CENSUS GUARD 零舰队接线）+ fieldread-sentry-0643.mjs。
+- FIELDPROOF 4/4 census==raw 零失配 + **FLEET RESULT 交叉验证全 EQUAL**（face474 r44/g236==rescues 44/airGlitches 236、face475 102/0、face476 18/0、face477 36/0——r 和恰为 FLEET RESULT rescues、g 和恰为 airGlitches 的字面等式）。WIRE SMOKE 真实窗 W475-476-477：**MY WORD'S FIRST LIVE READ 诞生即发声**——the rescue mass's own swing 102 → 18 (−84) → 36 (+18)，风暴见证 0→0→0，named 宽度 16→8→10；their .254 词同窗 swing 17→6(−11)→13(+7) 并立。
+- 本地门：check-syntax **1212/0**；my pins **10/10**；their 邻词 pins 38/38（.254/.253/.252）；unit wall **641 文件 6420 asserts**（3 块前台；四个已知 25s-cap 挂起 deposit-walk 23/fuelbank 122/scout 34/smelting 163 独立 90s 复验全绿——fire-0842/0142/0342/0442 数字逐字重现）。NO local server/fleet/integration。
+- **双重版本竞态再定价**：push 前 pull --rebase 中 their fire-0630 落地 **v0.976.255 THE FLEET CHURN CEILING'S OWN BURST MASS**（04d27331，fleet churn ceiling 席位词——fire-0600 候选#1）mid-build——decompose 两处冲突（import 锚 + fold 锚）keep-both 双立（their ccc + my spb，冲突标记清零、node --check 过、双方 pins 合并树复验全绿 their 10/10 + my 10/10），**MY 词重版本 .255 → .256**（.238/.244/.248/.251/.253 前例），amend 信息记竞态，ZERO force-push。their churnceiling 词合并树冒烟 lawful silence（F475-476-477 ceiling 三面零）。
+- push 1cd5ee90..29939002 干净。MY GATE 39175086550（29939002）轮询至 **COMPLETED SUCCESS**（unit + integration 全绿）。
+- F478 = 39174346168（their fire-0630 派发于 04d27331 树 22:55:53Z）in flight 中轮询至 **COMPLETED SUCCESS**——one-active law 生效，MY 派发让渡（fire-0142/0342/0442 前例），no-duplicate law 无重复派发。
+- 全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.256 已交付且 CI 绿（gate 39175086550 SUCCESS）：THE SENTRY ATTRIBUTION'S OWN ROW MASS——sentry per-bot 报告行席位词（4/4 fieldproof + FLEET RESULT 字面等式交叉验证；W475-476-477 首读 swing 102→18→36 诞生即发声）。
+- THE FLEET OF RECORD：F478 = 39174346168（their .255 树 04d27331）**SUCCESS**——下一轮读全（their churnceiling 词首实战面 + .253 fence 第二面 + .254 walk governor 第三窗；MY .256 词不在其树上，首实战面等 F479）。
+- 下一轮：读 F478 全貌 → .257 席位定价（候选：side-step 双形状 census、'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability——their fire-0630 候选单延续）→ 两 gate 绿 + 席位空闲时派发 F479（MY .256 树）。
+- the identity law held: PLANETA9091
