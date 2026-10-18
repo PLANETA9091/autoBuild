@@ -262,7 +262,8 @@ export function rawHopEligible ({ dist, waterRescue = false } = {}) {
 export async function walkRawToward (bot, targetPos, {
   reach = RAW_HOP_REACH, timeoutMs = RAW_HOP_TIMEOUT_MS,
   tickMs = RAW_HOP_TICK_MS, stallMs = RAW_HOP_STALL_MS, log = () => {},
-  netProgressMs = RAW_HOP_NETPROGRESS_MS
+  netProgressMs = RAW_HOP_NETPROGRESS_MS,
+  approachGuardMs = 0, approachFloorBlocks = 1
 } = {}) {
   if (!bot?.entity?.position?.distanceTo || !targetPos) throw new Error('raw walk: no position')
   const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -272,12 +273,40 @@ export async function walkRawToward (bot, targetPos, {
   let jumpUntil = 0
   let bestD = null // (v0.149.0) the closest the walk has EVER been to the target
   let lastBestAt = started // when bestD last improved - the floor's clock
+  let d0 = null // (v0.976.231) the start distance - the approach guard's own zero
+  let approachChecked = false // (v0.976.231) the guard evaluates ONCE - a passing walker is the net-progress floor's own client
   try {
     while (true) { // eslint-disable-line no-constant-condition
       const now = Date.now()
       const d = bot.entity.position.distanceTo(targetPos)
       if (Number.isFinite(d) && d <= reach) return { walked: true, ms: now - started, d }
       if (now - started > timeoutMs) throw new Error(`raw walk timeout after ${now - started}ms (d=${Number(d).toFixed(1)})`)
+      // (v0.976.231) THE APPROACH GUARD - the short-horizon circling breaker
+      // the last mile priced (face 463 = 39115203963: F10's hop burned 3538ms
+      // CIRCLING at d=7.1 - movement every tick, bestD frozen at the start
+      // distance, the net-progress floor's 8000ms horizon never reached before
+      // the seat's own clock died, the re-segment's 2000ms floor starved with
+      // it, the ask went dry). The seat leases this guard to the walker: at
+      // approachGuardMs past the start, a hop that bought fewer than
+      // approachFloorBlocks blocks of TRUE approach aborts NOW with its own
+      // honest message - the seconds the circling class would have burned ride
+      // home to the ladder (the re-segment's floor, the next chest's walk).
+      // The slow-but-approaching walker is NEVER punished: the guard evaluates
+      // once, a gained bar at or above the floor hands the walk to the
+      // net-progress floor and the timeout untouched. The message matches
+      // NEITHER walkRetryPlan's /timeout after/i class NOR the stall skin -
+      // the same deliberate-miss law RAW_HOP_NETPROGRESS_MS rides (a re-issue
+      // of the identical hop from the identical stance is the deterministic
+      // re-failure the doctrine forbids; the classification rides the seat's
+      // own read of the message). 0/negative disables (the legacy shape, byte
+      // for byte - the same law netProgressMs and the .825 gate ride).
+      if (d0 === null && Number.isFinite(d)) d0 = d
+      if (approachGuardMs > 0 && !approachChecked && now - started >= approachGuardMs) {
+        approachChecked = true
+        if (Number.isFinite(d) && d0 !== null && (d0 - d) < approachFloorBlocks) {
+          throw new Error(`raw walk: no approach for ${now - started}ms (d=${Number(d).toFixed(1)}, gained ${(d0 - d).toFixed(1)})`)
+        }
+      }
       // (v0.149.0) THE NET-PROGRESS FLOOR: movement is not approach. The
       // improvement bar is 0.05b so sub-decimeter breathing cannot refresh the
       // clock; a slow-but-approaching walker improves bestD steadily and is

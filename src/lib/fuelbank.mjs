@@ -140,6 +140,50 @@ export function lastMileGateEligible (opts = {}) {
   return d <= g
 }
 
+// (v0.976.231) THE LAST MILE'S OWN APPROACH GUARD - the circling breaker's
+// pure half. THE EVIDENCE (face 463 = 39115203963, the F463 read whole):
+// F10's ask walked the nudge (8.0s, one segment, inside the envelope at
+// d=7.0), died the re-goto decide, and the last-mile hop burned 3538ms
+// CIRCLING - movement every tick (no stall), bestD frozen at the start
+// distance (the net-progress floor's 8000ms horizon outlived the seat's own
+// clock), the timeout read d=7.1 - ZERO approach bought. The re-segment's
+// 2000ms floor starved with the hop ("no re-segment clock - the exclude owns
+// the chest"), the ask went dry ("budget spent (0/2 units)"), and the grain
+// read asked 8, delivered 0, dry 8. F3's hop bought 2074ms of the same
+// circling, F6's the decide-fail skin beside. THE CURE: the seat leases the
+// walker a short-horizon guard (approachGuardMs = 2000, the seat's own
+// clock's honest fraction) - a hop that bought fewer than 1.0 block of TRUE
+// approach by the guard mark aborts NOW, the seconds the circling class
+// would have burned ride home to the ladder (the re-segment's floor gets its
+// shot, the next chest's walk keeps its slice). The classification is pure
+// here: the same arithmetic the walker runs, priced from (d0, d, elapsed)
+// without a bot - the unit battery pins every branch byte-exact and the
+// walker's own guard block rides the same numbers.
+export const LAST_MILE_APPROACH_GUARD_MS = 2000
+export const LAST_MILE_APPROACH_FLOOR_BLOCKS = 1
+
+/** Pure: did this hop buy its floor of approach by the guard mark? Junk-safe
+ * - a disabled guard (0/negative ms) never fires, an unknown distance never
+ * fires (the walker's own live positions decide), a hop younger than the
+ * guard mark never fires, and a hop that bought its floor rides (the
+ * net-progress floor and the timeout own the rest of its life). */
+export function lastMileApproachVerdict (opts = {}) {
+  const { d0, d, elapsedMs, guardMs = LAST_MILE_APPROACH_GUARD_MS, floorBlocks = LAST_MILE_APPROACH_FLOOR_BLOCKS } = opts || {}
+  const g = Number(guardMs)
+  if (!Number.isFinite(g) || g <= 0) return { guarded: false } // the guard disabled - the legacy shape
+  const f = Number(floorBlocks)
+  if (!Number.isFinite(f)) return { guarded: false }
+  const e = Number(elapsedMs)
+  if (!Number.isFinite(e) || e < g) return { guarded: false } // the mark not reached yet
+  if (d0 === null || d0 === undefined || d === null || d === undefined) return { guarded: false } // the unknown stance never fires (Number(null) is 0 - the junk lane prices itself honest)
+  const a = Number(d0)
+  const b = Number(d)
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return { guarded: false } // the walk's own live positions decide
+  const gained = a - b
+  if (gained >= f) return { guarded: false, gained } // the floor bought - the walk rides
+  return { guarded: true, gained, why: 'no approach' } // the wall owns the line
+}
+
 /** (v0.128.0) THE ANCHOR FRESH WINDOW. The 90s empty memory exists so a
  * repeat ask walks ONWARD instead of re-walking known-empty chests - but the
  * anchor is THE tithe's dedicated target, the one yard chest that REFILLS
@@ -1286,7 +1330,7 @@ export async function withdrawFuelCommons (bot, {
       return false
     }
     try {
-      const r = await walkRawToward(bot, chestPos, { timeoutMs: remainingMs() })
+      const r = await walkRawToward(bot, chestPos, { timeoutMs: remainingMs(), approachGuardMs: LAST_MILE_APPROACH_GUARD_MS })
       log(`fuel commons: the last mile landed (raw, d=${Number.isFinite(r?.d) ? r.d.toFixed(1) : '?'})`)
       return true
     } catch (eRaw) {
