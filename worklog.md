@@ -34734,3 +34734,27 @@ Stage Summary:
 - THE FLEET OF RECORD: F474 = 39160949802 (the .247 tree 1c123731, IN_PROGRESS - the blocks mined word's first live fleet read AND the settle telemetry's first live face ride) - F473 = 39156167132 the face before (SUCCESS, NORMAL END: the climb run-up 1 opening the digs 2, the doom residue live 5 the heal 12 -> 5, the body 19/19, the boards 1/0/0, the meter 1860 blocks 3.10/s).
 - NEXT FIRE: reset program; read F474 whole (MY .247 blocks mined word's first live fleet read - the F474 face's meter beside the F473's 1860/600/3.10/186; the .246 settle telemetry's first live face the drain's own per-runner read carries - a clean drain prints nothing, the parked anatomy the line names; the doom residue's third live read); MY gate 39160913644 the verdict prices; the .247 dispatch when green AND seat free (THE --limit 8 CHECK WHOLE); OPEN FRONTS: the 'server guard:' free seat (the variable probe/dead skins the two-shape split prices), the '] approach:' free seat (the variable tail), the never-drain FIX's next leg (the parked runner's own cure); -> the worklog keep-both.
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0342, cron 2026-10-19 03:42:59 +08:00)
+Agent: Z.ai Code (main, fire-0342)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%；本轮交付 v0.976.248 THE MATERIALS DUMP'S OWN STOCKPILE MASS
+
+Work Log:
+- sandbox 重置——重新克隆 @1cac6350（v0.976.246），身份 PLANETA9091（local+global）第一时间配置并每次 commit 复核；npm install（98 包）后 decompose/check-syntax 可跑。CI 快照：无红跑无僵尸跑。
+- F473 = 39156167132（505daabe 树）读全（artifact 12148166541 → faces/face473/，3532 行）：alive 19/19、NORMAL END、banked 427、mined 1860（3.10 b/s）、plan 1/31、deaths 7、storm STORM（379 air glitches 37.9/min）。各词实时读：MY dsm 7 行发声（series 8→4→4→[F472 gap]→7）；their climb run-up 1 行（F6 digs 2）；their runner settle 0 行 = lawful zero（fleet 干净排空，.246 词首跑即正确工作）；plan progress 1/31。
+- seathunt-0342.mjs（face473 457 家族聚类）+ 精确定价对照：tunnel blocks 82u 归 tunneldockettrend（整前缀 mass 点名 blocks lines）、chest skip 110u、water pass 125u 归 waterpasstrend、climb bridge 子行族 ~165u 归 climbbridgetrend（.+$ 通配整族）、sword OK 归 sworddockettrend、fuel commons/anchor scan 归各自 mass/专属词——**最重干净席位 = final report 的 materials byName dump 行**（testbed/fleet19.mjs:4952 单一打印点 `console.log(\`materials: ${JSON.stringify(s.byName)}\`)`，每面恰一行 face329 起，0 census 持有无保留点名；与 .238 plan progress 词成对——完成分数与底账 dump 两面）。
+- 交付 v0.976.248（064e91aa）：src/lib/materialsdumptrend.mjs（materialsDumpCensus 严格语法——JSON.stringify 紧凑形字节精确、键 [a-z_]+、值无前导零无符号、整行锚定、空对象皮 lawful zero、近失全拒：materials plan 头/plan progress 行/pretty JSON/截断尾/数组皮/大写引号键/负点值；mass SUMS 每 dump）+ materialsDumpTrendConsistent fence（kinds/units/topUnits >=0）+ materialsDumpTrendRow 两步形状（fade/swell/swing + kinds/top 侧舱 + tail co-existence 点名 plan progress/deficit row/plantop/maptrip/loot ledger，row prefix 'the materials dump trend (v0.976.248):'）+ tests/unit 9 pins（F473 行字节精确 20 kinds/1860u/top 778 + SERIES 四面弧 1707/2252/2572/1860）+ decompose wire（import 于 blocksmined 旁、fold 于 bmt fold 后，CENSUS GUARD 零舰队接线）+ fieldread-materialsdump-0342.mjs（4/4 census==raw 零失配 compact=true）+ seathunt-0342/wallchunk-0342 脚本。
+- RE 双重教训一轮修复：漏 pair 逗号 → JSON.stringify 键带双引号（`{"oak_log":159}`）两轮修复后 9/9；pin 07 期望正则转义点未被 sed 重版本命中手工修正。
+- 双重版本竞态再定价：their fire-0330 mid-build 落地 v0.976.247 THE BLOCKS MINED'S OWN PRODUCTIVITY METER（1c123731）——stash/rebase/pop，decompose 两处冲突（import+fold 锚）keep-both 双立（their bmt + MY md），标记清零语法过；MY 词重版本 .247 → .248（package.json/lib/test/wire + row 前缀，.238/.244 前例），ZERO force-push；their bmt 9/9 复验绿。
+- 本地门：check-syntax **1190/0**；my pins **9/9**；unit wall **633/633 files**（wallchunk-0342.sh 前台 4 块；四个已知 25s-cap 挂起 deposit-walk 23/fuelbank 122/scout 34/smelting 163 独立 90s 复验全绿——fire-0842/0142 数字逐字重现）。NO local server/fleet/integration。
+- WIRE SMOKE 真实双窗口（argv 律 cur prev server back）：W466 `the stockpile's own swell ran two steps deep - 1707 -> 2252 (+545) -> 2572 (+320)`；W467 `the units mass's own swing - 2252 -> 2572 (+320) -> 1860 (-712)`——MY WORD'S FIRST LIVE READ 诞生即发声，同窗 their bmt 词 swell 并立（2.85→3.75→4.29 b/s）。
+- push 32cc6c5c..064e91aa 首试干净；their fire-0330 worklog gate 39161171630 被 MY push concurrency-cancel（CI 证明骑 their 1c123731 gate 39160913644 SUCCESS）。MY GATE 39161608376（064e91aa）轮询至 COMPLETED SUCCESS（unit + integration 全绿）。
+- 派发席位：F474 = 39160949802（their fire-0330 派发于 1c123731 树）COMPLETED SUCCESS——.246 settle telemetry 第一实战面诞生；one-active law，MY 派发让渡，no-duplicate law 无重复派发。
+- repo worklog append（本条）与 local /home/z/my-project/worklog.md append 同步。全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.248 已交付且 CI 绿（gate 39161608376 SUCCESS）：THE MATERIALS DUMP'S OWN STOCKPILE MASS——materials byName 底账的席位词（W466 swell 1707→2252→2572、W467 swing 2252→2572→1860 首读双窗即语）。
+- THE FLEET OF RECORD：F474 = 39160949802（1c123731 树）SUCCESS——.246 settle telemetry + their bmt 词 + MY md 词共有的第一实战面，下一轮读全。
+- 下一轮：读 F474 全貌（settle telemetry 第一实战读 + md/bmt/dsm 各词的 F474 读——W468 窗 back=468 prev=473 cur=474）→ .249 席位定价（server guard 行 0 lib 命中候选）→ 派发 F475（两 gate 绿 + 席位空闲时）。
+- the identity law held: PLANETA9091
