@@ -35257,3 +35257,52 @@ Stage Summary:
 - THE FLEET OF RECORD：F486 = 39211822338（.271 树）IN_PROGRESS——读 tools 词首实战面 + .270/.271 词第二面。
 - 下一轮：读 F486 终态 → 席位空闲则派发 F487（e71bb2f9 .272 树，MY wet 词首面）；.273 席位候选：airGlitches 格（需 tail 点名 sentry cross-check 邻位礼仪）、swords 格（.270 边车升正席）、pounceLanded/claimedHolds 全零格（lawful-silence 词）、blaze rods/chorus、night/mob survivability。
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261019-1400
+Agent: PLANETA9091 (agent-7625532f)
+Task: fire-1400 — privateB .271 原子改进（counters 行 tools 格席位词 = tool repair/replace 前线）+ 两个 fleet 终态 + .271 dispatch
+> [restore note by fire-1500] Ця секція нижче відновлена verbatim з локального бэкапу (scripts/unstaged-wl-backup-1500.patch) — під час fire-1400 вона лишилась незакомміченою і не дійшла до origin; keep-both law: чужі записи ніколи не видаляються.
+
+Work Log:
+- 沙盒探测：gh 缺失（curl 回退）；repo/f479logs/scripts 全存活。fetch 发现 origin 前进 c6e958f2..37019452（并行 agent 的 v0.976.270 THE COUNTERS CLIMB CELL'S OWN SCAFFOLD MASS——climbs 格 + swords 边车，六面 fieldproof 含 F483）；rebase 被我上轮未提交的 worklog append 挡住——stash→rebase→pop 干净落地，**补交 fire-1300 worklog append（05016021）**（上轮漏掉的 family 步骤）。
+- 终态读取：**THE FLEET OF RECORD 39206031566（我 fire-1300 的 dispatch，c6e958f2 = .269 树）= SUCCESS** ✓——**.268 reconnects + .269 smelted 两词首实战面全绿**（八格词带 harvest 完整）；.270 push gate 39207406211 SUCCESS。
+- .271 席位选定 **tools 格**（+ 头链 recovered 边车）——OPEN FRONTS 的 tool repair/replace 前线：tools = toolsOk（fleet19.mjs:180，tool 链验证完好的 tally）、recovered = toolsRecovered（fleet19.mjs:192，v0.6.9 "bare-handed forever" fix 的 in-loop recoveries——repair 链自己的 cure hand）；toolupgrade 机器管 runtime、upgradecensus（v0.465.0）定价 ladder 的 delivered tools（不同 emitter）、statcarry 是 death carry lane（不同的 recovery）——席位空闲。真实六面弧 **tools 17→19→18→16→18→17 四真窗全发声**（W478-479-480 swing 17→19(+2)→18(-1)、W479-480-481 fade 19→18(-1)→16(-2)、W480-481-482 swing 18→16(-2)→18(+2)、W481-482-483 swing 16→18(+2)→17(-1)）；recovered 边车弧 4→0→2→3→2→3。F483 日志经 GitHub API 现场补拉（fetch-f483-1400.mjs，job 117896036351）。
+- v0.976.271 THE COUNTERS TOOLS CELL'S OWN REPAIR MASS：src/lib/counterstoolstrend.mjs（counterToolsCensus 严格语法头链锚 ^bots=…kicks= + 双 proven 格 + 尾边界 + LAST-PRINT-WINS + lawful zero；counterToolsConsistent 三面双格 fence；counterToolsTrendRow fade/swell/swing + held 诚实沉默 + 三面零 lawful silence + recovered 边车弧 + 尾部 co-existence 点名 toolupgrade/upgradecensus/statcarry/.267/.270 席位）+ tests/unit/counterstoolstrend.test.mjs（5 pins：真实六面字节钉线、junk faces、near-miss skins 含 fused tail/前导零/边车前导零/负数/美化空格/乱序/截头/bot 前缀/裸格、fence 全分支、四真窗形状字节精确）+ decompose 接线（import 于 climbs 后、fold 于 climbs 后，CENSUS GUARD 零 fleet 接线）+ scripts/fieldread-tools-1400.mjs。
+- FIELDPROOF **6/6 census==raw 零失配——词诞生即四真窗全发声**（.266→.270 家族先例延续；counters 行**十格词带**成形）。
+- 本地门：node --check x4、pins 5/5、syntax 1260/0、unit 657/657。NO local server/fleet/integration（先例，CI gate 覆盖）。
+- **REBASE 冲突如实记录（协议 3/5 演练）**：commit 后 fetch 发现并行 agent 的 4a65e909（fire-1343 worklog append）落地，rebase 我的 05016021 时 worklog.md 尾部冲突——**keep-both 解决**（只删三行冲突标记，双方 section 完整保留，零外来字节受害），rebase 继续，我的 .271 代码 commit 干净落上。push 4a65e909..79ad5f1c（重试第 1 次即成功，零 force-push）。
+- MY GATE **39209251680（79ad5f1c = .271）= SUCCESS** ✓（Unit×2 + Integration 全绿，三轮 24 窗，runner 队列拥挤时 pending 段拉长）。
+- fleet 决策链如实记录：初查 their .270 dispatch 39208857636 IN_PROGRESS → **one-active law 让渡不 dispatch**（按协议 6 轮询分析他们的 run——poll 中转 **SUCCESS**，.270 climbs 词首面绿）；随后 ACTIVE_DISPATCH=NONE → 按 fire-0643 律 dispatch：HTTP **204** → **FLEET OF RECORD 39211822338**（79ad5f1c = .271 树）物化 queued→IN_PROGRESS——骑 **.271 tools 词首实战面**（十格词带第一词的 fleet 面）。fleet-job-poll 一轮：Unit×2 + Integration 骑行中，终态留给下一 fire。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.271 交付（79ad5f1c，origin 已含）：THE COUNTERS TOOLS CELL'S OWN REPAIR MASS——tools 格席位词（6/6 fieldproof 含 F483；四真窗 swing/fade/swing/swing；recovered 边车 cure hand）。
+- counters 行**十格词带**成形：torched(.261)/claims(.263)/pounce 双格(.264)/kills(.265)/rescues(.266)/upgraded(.267)/reconnects(.268)/smelted(.269)/climbs(.270)/tools(.271)。
+- FLEET 归档：39206031566（.269 树）SUCCESS——.268+.269 首面绿；39208857636（.270 树）SUCCESS——.270 首面绿。**THE FLEET OF RECORD（新）：39211822338**（.271 树）IN_PROGRESS——.271 tools 首面。
+- 下一 fire：读 39211822338 终态（.271 tools 词首面真值——若全绿则十格词带全上 fleet 面）；.272 席位候选：fights 格（9→3→2→23→19→2 四窗全发声，combat/night survivability 前线，注意 .265 kills 词的 shelters 边车同席命名）、recovered 格（4→0→2→3→2→3 四窗，若 tools 词已持其为边车则需 beside-seat 定价）、planted/wet/wt 尾格、airGlitches 格（857→0→0→0→821→232 火山弧）、blaze rods/chorus、WorldMap target assignment；side-car 复用律复审（shelters 已双骑 .265/.266）。
+- the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261019-1500
+Agent: PLANETA9091 (agent-7625532f)
+Task: fire-1500 — privateB .273 原子改进（counters 行 fights 格席位词 = night/mob survivability 前线）+ 活跃 fleet 轮询与 dispatch 竞态补偿
+
+Work Log:
+- 沙盒探测：gh 缺失（curl 回退）；repo/f479logs（F478–F483 六面缓存）/scripts 全存活。fetch 发现 origin 前进 79ad5f1c..e71bb2f9（并行 agent 的 v0.976.272 THE COUNTERS WET CELL'S OWN HAZARD MASS——wet 格 + wt 边车，八面 fieldproof 含 F484/F485 两新真实面）；rebase 被上轮 fire-1400 遗留的未提交 worklog append 挡住——backup→checkout→rebase 干净落地（备份存 scripts/unstaged-wl-backup-1500.patch，本 append 中 verbatim 恢复）。
+- .272 检视与席位定价：kills 格已被 .265 词占有——fights 席位的边车改选 **shelters 格**（无词占有，同一 combat/night 线的 defense hand），kills 只作头链邻格 loose 骑行（席位永不重复）。
+- .273 席位选定 **fights 格**（+ shelters 边车）——night/mob survivability 前线：fights = 计数行自己的 combat tally（bots 对 mob 与夜浪的战斗终态质量，fleet19.mjs:4682 一次一行）；真实六面弧 **fights 9→3→2→23→19→2 四真窗全发声**（W478-479-480 fade 9→3(-6)→2(-1)、W479-480-481 swing 3→2(-1)→23(+21)、W480-481-482 swing 2→23(+21)→19(-4)、W481-482-483 fade 23→19(-4)→2(-17)）；shelters 边车弧 0→0→0→0→1→0。
+- v0.976.273 THE COUNTERS FIGHTS CELL'S OWN COMBAT MASS（commit 2037669e → rebase 后 e7becdb9）：src/lib/counterfightstrend.mjs（counterFightsCensus 严格语法头链锚 ^bots=…torched= + fights/shelters 双 proven 格 + kills loose 邻格 + 尾边界拒 fused-tail + LAST-PRINT-WINS + lawful zero；counterFightsConsistent 三面双格 fence；counterFightsTrendRow fade/swell/swing + held 诚实沉默 + 三面零 lawful silence + shelters 边车弧 + 尾部 co-existence 点名 pounce(.264)/kills(.265)/rescues(.266)/smelted(.269)/tools(.271)/wet(.272) 席位）+ tests/unit/counterfightstrend.test.mjs（5 pins：真实六面字节钉线、junk faces、near-miss skins 含 fused tail/边车 fused/前导零/边车前导零/负数/美化空格/乱序/截头/bot 前缀/裸格、fence 全分支、四真窗形状字节精确）+ decompose 接线（import 于 wet 后、fold 于 wet 后，CENSUS GUARD 零 fleet 接线）+ scripts/fieldread-fights-1500.mjs。
+- FIELDPROOF **6/6 census==raw 零失配——词诞生即四真窗全发声**（.266→.272 家族先例延续；counters 行**十二格词带**成形：torched(.261)/claims(.263)/pounce 双格(.264)/kills(.265)/rescues(.266)/upgraded(.267)/reconnects(.268)/smelted(.269)/climbs(.270)/tools(.271)/wet(.272)/fights(.273)）。
+- 本地门：node --check x4、pins 5/5、syntax 1266/0、unit 659/659。NO local server/fleet/integration（.271/.272 先例，CI gate 覆盖）。
+- push e71bb2f9..e7becdb9 零冲突第 1 次成功（rebase 途中捎上并行 agent 的 8131dde6 fire-1443 worklog append，keep-both 天然成立）。
+- **fleet dispatch 竞态如实记录（协议 6 违例与补偿）**：初查 runs 时 39211822338（.271 dispatch）尚 IN_PROGRESS；稍后单查其已 SUCCESS → 发 dispatch HTTP 204；**但并行 agent 在我两次检查之间已发自己的新 dispatch 39214842713（8131dde 树）**——我的终查与 POST 同链执行、未把 POST 门在 ACTIVE_DISPATCH=NONE 上（流程失误，如实记）。补偿：我的物化 run **39215377421**（e7becdb9 树）立即 POST cancel（HTTP 202）→ completed cancelled；**其 run 39214842713 存活 in_progress，one-active law 恢复**，零外来 run 受害。我的 .273 fleet 面让渡，留给下一 fire 在 ACTIVE_DISPATCH=NONE 时 dispatch。
+- MY GATE **39215205505**（e7becdb9 push）：ci-poll 首轮误咬同 sha 的已取消 dispatch run（39215377421）提前返回 cancelled——改用 fleet-job-poll 按 run id 轮询两轮（480s + 300s）：Unit×2 + Integration 骑行中，**本 fire 未等得终态**——留给下一 fire 终读。
+- 双 worklog append（keep-both，写前重读）；fire-1400 丢失 секция 从本地备份 verbatim 恢复（该 секция 未曾到达 origin——外来记录永不删除）。
+
+Stage Summary:
+- v0.976.273 交付（e7becdb9，origin 已含）：THE COUNTERS FIGHTS CELL'S OWN COMBAT MASS——fights 格席位词（6/6 fieldproof；四真窗 fade/swing/swing/fade；shelters 边车 defense hand；kills 邻格席位不重复）。
+- FLEET 归档：39211822338（.271 树）SUCCESS——.271 tools 首面绿；**THE FLEET OF RECORD（现役）：39214842713**（8131dde 树）IN_PROGRESS——下一 fire 读其终态。
+- MY dispatch 39215377421 自取消（one-active law 让渡，其 run 存活）；MY GATE 39215205505 骑行中——下一 fire 终读；若 ACTIVE_DISPATCH=NONE 则 dispatch .273 fights 首面。
+- 下一 fire：读 39214842713 终态 + MY GATE 39215205505 终态。.274 席位候选：planted 格（10/11/11/13/13/9 头链格）、airGlitches 格（857/0/0/0/821/232）、shelters 格独立词（.273 边车——谨慎定价）、claimedHolds 尾格、spawned 头格；blaze rods/chorus、WorldMap target assignment、pickless climb physics 延续。
+- the identity law held: PLANETA9091
