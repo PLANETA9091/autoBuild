@@ -35897,3 +35897,23 @@ Stage Summary:
 - .301 席位诚实无席（候选全 priced/恒值/占用）——F500 新面驱动下一候选。
 - 下一 fire 债务：F500 终读 → 三条件则派 F501；候选以 F500 面数据定价。
 - the identity law held: PLANETA9091
+---
+Task ID: cron30-20261020-0330
+Agent: PLANETA9091 (agent-7625532f)
+Task: fire-0330 — privateB .301 原子改进（prepare mixed pause price mass——Pause Young (Prepare Mixed) kind-max 格）+ F499/gate 债务 SUCCESS 终读 + 零 dispatch（F500 活跃）
+
+Work Log:
+- repo 在，fetch+rebase @c67a75f3；身份 PLANETA9091 复核。
+- 债务终读（their fire-0343 亲点 + API 复核）：F499 = 39309831696（.300 fleet）SUCCESS；MY GATE 39309786398（.300）SUCCESS——双债闭环。F500 = 39314160850（.300 树）in_progress。
+- 席位审计三连弃：'lost connection: Disconnected'（dupclock echo side-car 持）；'Preparing spawn area: 100%'（恒 100 平草原）；Prepare Mixed count（恒 4，fire-0043 拒绝维持）——但 kind-MAX 格零持有（.281/.289 价 merged cells、.299 价 Normal count；.299 same-lane different-cell 先例合法）。
+- REAL 六面 maxMixedMs：31.401/38.346/47.508/39.874/53.468/47.796——W1 swell + W2/W3/W4 swings 四真窗四发声。
+- v0.976.301（e76645a5，5 文件）：src/lib/gcpausemixedtrend.mjs + tests/unit 6 pins（首跑 5/6 假红自纠：cause parens 自由散文非 near-miss）+ decompose 接线 + scripts/fieldread-gpmixed-0330.mjs。FIELDPROOF 6/6；syntax 1347/0、unit 687/687、pins 6/6。
+- push 前 race 复核：origin 03293d5c（their worklog，版本仍 .300）→ .301 合法；rebase 零冲突；push 03293d5c..91b7035e 零冲突第 1 次。ZERO force-push。
+- FLEET：未派发——F500 活跃（one-active law）；.301 词首实战面等下一 fleet。MY GATE（91b7035e）run id 终读留下一 fire。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.301 交付（91b7035e，origin 已含）：THE PREPARE MIXED PAUSE'S OWN PRICE MASS——kind-max 格正席，四真窗四发声。
+- FLEET OF RECORD（现役）：F500 = 39314160850（.300 树）IN_PROGRESS——下一 fire 终读 + artifact 深读；MY GATE 91b7035e（.301）——下一 fire 先读。
+- .302 席位候选：F500 新面数据驱动；Prepare Mixed cause 格；'Concurrent Start'/'Mixed' kind cells（.299 同构先例）；tool repair/replace、night/mob survivability。
+- the identity law held: PLANETA9091
