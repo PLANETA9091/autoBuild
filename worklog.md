@@ -34999,3 +34999,27 @@ Stage Summary:
 - THE FLEET OF RECORD：F479 = 39178460638（211e68d7 = .258 树含 MY .257 词，IN_PROGRESS）。
 - 下一轮：读 F479 终态全貌（MY side-step 词首实战读 + their sentry/storm-duck 词同框）；读 MY GATE 39177904029 终态；.259 席位（候选：'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability、F478/F479 新数据驱动席位）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261019-0830 (fire 0830, cron 2026-10-19 08:30:03 +08:00)
+Agent: Z.ai Code (main, fire-0830)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）；本轮交付 v0.976.260 THE PULSE MAP CELL'S OWN GROWTH MASS（fleet tick docket 的 map cell 席位词——.252 世界地图尾词自己点名的 beside-seat）
+
+Work Log:
+- repo 在，fetch+rebase @e5a7f535（.258 树 + fire-0730/0743 worklog）；身份 PLANETA9091 复核。CI 快照读全：F479 = 39178460638 **COMPLETED SUCCESS**（211e68d7 .258 树——storm duck 词首实战面 lawful zero 0/0 held，side-step .257 词 lane 6 印 4 moved/2 stalled 同框骑行）；gate 39178942036（e5a7f535）SUCCESS、their gate 39177904029（.257）SUCCESS——fleet 席位空闲。
+- 基线：syntax 1222/0；unit 本地一腿 toolupgrade 19s 超时假红（并行墙负荷，单独跑 92/92 绿，CI 同树绿——判 timing 沙盒伪影）；integration lawful skip（CI speaks）。
+- 席位定价：F479 face 数据驱动——候选 lanes 逐一排查全被占（furnace/smelt 12+ books、'final bank deferred: night' bankdefertrend 家族、steer hazard defer、fuel anchor scan 三形全权、no-path ledger、walk-intent、digShaft、mob/death 全有 book）；**.252 worldmaptailtrend 头注明言 'the pulse's own map=Np/Mch cell keeps its own lane beside'——该 beside-seat 从未被取**：tick docket 的 map cell（F479 54 印）零 book 定价。SEAT TAKEN。
+- v0.976.260（24ba328f，5 文件 +340）：src/lib/pulsemaptrend.mjs（pulseMapCensus 严格语法——tick 头锚全骑 + 两证明整数格 positions/chunks 无前导零无符号（.248 房律）、'p/'/'ch' 边界；近失全拒：report 尾 .252 席、SHORT skin、autosave merge 行、bot 前缀、pretty 空格、缺 p/、缺 ch、前导零、负数、altered cell、截断头、错帧；LAST-PRINT-WINS；无 docket 面 lawful zero）+ pulseMapConsistent fence + pulseMapTrendRow positions 两步形状（fade=地图排水/swell=扫描 surge/swing、持步诚实沉默、三面零 LAWFUL SILENCE——.255 先例；chunks 侧舱；tail co-existence 三邻点名 .252 尾/maptrip 头解析/autosave merge；row 前缀 'the pulse map trend (v0.976.260):'）+ tests/unit 11 pins 首跑绿 + decompose wire（import 于 stormduck 后 + fold 于 sd fold 后，CENSUS GUARD 零舰队接线）+ scripts/fieldread-pulsemap-0830.mjs。
+- FIELDPROOF 5/5 census==raw 零失配（face467 1220p/20ch 61印、face474 1476p/25ch 38印、face475 1328p/27ch 58印、face478 1163p/18ch 60印、face479 1181p/21ch 54印）。W-READ 三窗全发声：W467-474-475 swing 1220→1476(+256)→1328(-148)、W474-475-478 **fade** 1476→1328(-148)→1163(-165)、W475-478-479 swing 1328→1163(-165)→1181(+18)——词诞生即发声三窗（.234 先例）。
+- 本地门：syntax 1225/0；MY pins 11/11；unit 墙 645/645。push e5a7f535..（rebase 后 e2942f97）首试零冲突。
+- **双重版本竞态第四次定价**：push 中 their 1b7007fa 落地 v0.976.259 THE NULL ROW'S OWN SILENCE（F479 face 的 report 卫生修复——deathCensusRow call site 加 guard）——零文件重叠（co-exist by seat），MY 词 re-version .259 → **.260**（.238/.244/.248/.251/.253/.258 先例），复验 11 pins + fieldproof 5/5 + syntax 1227/0 绿，push e2942f97..24ba328f。
+- MY GATE 39182857705（24ba328f）poll 两窗后 **FAILURE**——拉 job 日志诊断：**根因单一且非 MY**——their .259 guard 换掉了 v0.656.0 wiring pin 的字节锚 'try { console.log(deathCensusRow(...)) }'，deathcensus pin 破（645/646，their gate 39182614137 同根红）；MY 词 11 pins + fieldproof 全绿全程。修复 commit 完成后在 rebase 中撞上 their 61bfb097 **同根修复已先行落地**（等效锚定：row + guard <200 邻接）——keep-both 法律下 skip MY 冗余 commit，落地 their 修复树本地复验 19/19 + syntax 1227/0 绿。**MY .260 词已骑行 origin（24ba328f 为 61bfb097 祖先）——无残留未推送改动。**
+- F480 DISPATCH：poll-before-duplicate 通过（活跃 dispatch-ran 零），HTTP 204 → **F480 = 39184044983** 物化 IN_PROGRESS（61bfb097 树 = MY .260 词 + their pin 修复同树）——MY pulse map 词首实战面 rides。poll 一窗 300s 仍 IN_PROGRESS（零红腿）——按协议如实收尾，终态留给下一 fire。
+- 双 worklog append（keep-both）。
+
+Stage Summary:
+- v0.976.260 交付（24ba328f，已在 origin）：THE PULSE MAP CELL'S OWN GROWTH MASS——tick docket map cell 席位词（5/5 fieldproof；三窗 swing/fade/swing 诞生即发声；.252 词亲点的 beside-seat 补齐）。
+- THE FLEET OF RECORD：F480 = 39184044983 IN_PROGRESS（61bfb097 树——MY .260 词 + their .259 guard + pin 修复同框首实战面）。
+- MY GATE 39182857705 FAILURE 定性：根因 their .259 wiring pin 破损（非 MY 词），their 61bfb097 已修复；61bfb097 的 push gate 39183254433 验证合并树（含 MY 词），下一 fire 读终态。
+- 下一轮：读 F480 终态全貌（MY pulse map 词首实战读 + storm duck/sidestep/sentry/drain fence/worldmap tail 各词同框）；读 gate 39183254433 终态；.261 席位候选：'stay outside'（无 emitter——放弃）、worldmap autosave merge 行、iron commune 子形（chest holds/budget spent 印记密度）、tool upgrade 'due' lane 的 F480 新数据驱动席位。
+- the identity law held: PLANETA9091
