@@ -7,6 +7,7 @@ import { readFileSync, existsSync } from 'node:fs'
 import { torchedCensus, torchedTrendRow } from '../src/lib/torchedtrend.mjs'
 
 const faces = [
+  ['faceF478', '/home/z/f479logs/f478-bigfleet.log'],
   ['faceF479', '/home/z/f479logs/bigfleet.log'],
   ['faceF480', '/home/z/f479logs/f480-bigfleet.log']
 ]
@@ -45,15 +46,20 @@ for (const [name, path] of faces) {
   console.log(`${name}: raw ${raw.length} print(s), census ${JSON.stringify(c)}, raw ${JSON.stringify(rawCells)} - ${ok ? 'MATCH' : 'MISMATCH'}`)
 }
 
-// the pair's own real read (the two-face arc the sandbox holds): the
-// swell the pair prices (F479's 1 -> F480's 19), the three-face W-window
-// waits for the next fire's cached two-back face (the carrier's own null
-// pass - no synthetic back ever rides the field read)
-if (censusCells.length === 2) {
-  const [f479, f480] = censusCells
+// the W-window's own live read (the field's own arc) - the nearest-
+// completed law: cur=faceF480, prev=faceF479, back=faceF478 (the F478
+// log the artifact fetch re-spoke - the two-back face the sandbox
+// cache gained this fire)
+if (censusCells.length === 3) {
+  const row = torchedTrendRow({
+    back: censusCells[0].c,
+    prev: censusCells[1].c,
+    cur: censusCells[2].c
+  })
+  console.log(`W478-479-480 (2 -> 1 -> 19): ${row ?? 'the honest silence'}`)
+  const [f478, f479, f480] = censusCells
   const up = f480.c.torched - f479.c.torched
   console.log(`the pair's own arc: torched ${f479.c.torched} -> ${f480.c.torched} (${up >= 0 ? '+' : ''}${up}) - ${up > 0 ? 'the night light armed' : up < 0 ? 'the night light rested' : 'the light held'}`)
-  console.log(`W-window: the two-back face (F478) has no cached log in this sandbox - the row read rides the next fire's cached faces (the carrier's own null pass)`)
 }
 
 console.log(`FIELDPROOF: ${censusCells.length} face(s) with the print, ${mismatches} mismatch(es) - ${mismatches === 0 ? 'ZERO mismatches, the word rides' : 'THE WORD LIES - fix before push'}`)
