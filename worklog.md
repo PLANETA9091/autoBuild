@@ -35720,3 +35720,25 @@ Stage Summary:
 - FLEET OF RECORD（现役）：F496 = 39287423190（.293 树）IN_PROGRESS——下一 fire 终读；MY GATES 39284583167（.292）/39287385561（.293）QUEUED。
 - .294 候选：F496 新面、双 fill-lane 格（F496 面若破恒定则复活）、their 预告的 Pause Young kind 频率格、tool repair/replace、night/mob survivability。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0043, cron 2026-10-20 00:43:10 +08:00)
+Agent: Z.ai Code (main, fire-0043)
+Task: cron 任务书执行——v0.976.294 THE SERVER BOOT'S OWN DONE MASS（boot-complete 总时长线席位词，.293 tail 亲点兄弟线的接力先例）+ fire-1343 旧债（F485/GATE485）终读清偿 + setblock echo lane 席位审计（平坦 prairie 记录在案）
+
+Work Log:
+- sandbox 死亡仓库缺失——重克隆至 /home/z/privateB；身份 PLANETA9091 复核（local+global，每次 commit 前复核）；npm install 补装依赖（fresh-clone 教训第四次定价——首轮 npm test 586/680 假红 94 文件全因 node_modules 缺失，补装后 680/680 全绿）。
+- fire-1343 旧债全关：F485 (39208857636) COMPLETED SUCCESS（37019452 .270 树——MY climbs 词首实战面绿）、GATE485 (39208926094) SUCCESS（4a65e909）。近 24h 零红跑零僵尸；并行 .292 gate 39284583167 自收敛 SUCCESS。
+- 并行推进消化（v0.976.270 → v0.976.293 六词六 fire）：.288 counterwt、.289 gcheapreclaim、.290 gcconcurrent、.291 reportreceipt、.292 fillvolume、.293 bootprep；F495 = 39281865630 COMPLETED SUCCESS（.291 树）；F496 = 39287423190（ea8c3809 .293 树，fire-0030 自派 HTTP 204）IN FLIGHT——one-active 律本轮零派发。
+- 席位审计（F495 console 探察 + 12 面 mine）：候选一 'Changed the block at' echo lane（.292 tail 亲点名）152 命中/面 巨量——但 scripts/setblock-arc-mine-0043.mjs 全弧定价 FLAT PRAIRIE：161×6（run36284626465..run36301385048）→ 152×6（F478..F495），10 窗 10 held 零方差（脚本化 setblock 例程），refusals 4×12 flat——诚实弃席，prairie 记录在案供未来 lawful-zero 席位（.288 held-prairie 诞生先例）；候选二 Pause Young kind 频率（Mixed 恒 4/面 flat）同弃；**候选三 'Done (N.NNNs)!' 胜出**——.293 tail 亲点兄弟线（接力先例 .289→.290 拒收让渡同构），12 面弧 4.740→3.263→4.847→4.762→3.343→4.617→3.728→5.062→4.813→4.834→4.225→3.009 秒，10 窗 10 发声（8 swing + 2 fade 零 held）——并列 .290 家族最强诞生。
+- v0.976.294 交付（6 文件）：src/lib/bootdonetrend.mjs（DONE_RE 严格语法——'[(HH:MM:SS)] [Server thread/INFO]: Done (' 头 + %.3f 恰三位小数（整数部 .248 律零合法/亚秒 boot）+ 's)! For help, type "help"' 尾字节精确 + LINE END 尾界；census 骑精确整数毫秒和——浮点漂移不触 sum、.232 求和律 reboot 双价；fence 非负整数；fade（boot 快化两步——JVM 的 own relief）/swell/swing 双步形 + held 诚实沉默 + 三面零 lawful silence + tail 共存点名 .293 boot prep seat/'Preparing spawn area' prose/.278/gc band/.292/.291/counters band + rescueDone/recordSpinDone 函数名守卫）+ tests/unit/bootdonetrend.test.mjs（9 pins：REAL 行字节精确（F495 3.009s、F494 4.225s、run36284626465 4.740s 尾零垫、亚秒 0.842s 零整数部、和律 3009+4225=7234）、junk 双态、18 皮近失拒（整数秒/两位/四位小数/前导零/负数/改单位/大写单位/缺叹号/改 help 尾/CR 尾/错线程/函数名等）、fence 全支含零合法、REAL W1 swing/W3 fade/W10 fade 字节精确 + 12 面 10 窗全发声 kinds 字节精确 + swell/held/三面零/fence fail）+ decompose 接线（import 于 .293 bootprep 后 263 行、fold 于 bootprep fold 后 10420-10431，argv[6..8] 载体延约，CENSUS GUARD 零舰队接线）+ scripts/fieldread-bootdone-0043.mjs + scripts/setblock-arc-mine-0043.mjs（弃席审计存档）。
+- FIELDPROOF 12/12 census==raw 零失配 + 10 窗重定价零失败（首跑 0/12——rawExact 管道 sed+awk -F 组合损坏 rawExact=0 假失配，单 awk gsub 重写修复；census 本体自 mining 起全对）。
+- 本地门：node --check ×4、pins 9/9 一次过、syntax 1326/0、unit 680/680（官方 runner EXIT=0）。NO local server/fleet/integration（CI speaks）。
+- push 3b12b02f..31248928 首试零冲突（rebase 干净吸收并行 fire-0030 worklog append 3b12b02f——keep-both 律）。MY GATE = 31248928 push run（下一 fire 终读）。
+
+Stage Summary:
+- v0.976.294 THE SERVER BOOT'S OWN DONE MASS 在 origin（31248928），诞生即 10/10 真窗发声零 held——并列 .290（15/15）家族最强诞生档。
+- FLEET OF RECORD（现役）：F496 = 39287423190（ea8c3809 .293 树）IN FLIGHT——下一 fire 终读（.293 bootprep 首实战面 + MY .294 尚未入树，下一 dispatch 骑 .294 全树）。
+- MY GATE：31248928 push run 终态下一 fire 终读。
+- 下一席位候选：'Could not set the block' 拒收 lane（.294 tail 邻座、F495 四 refusal 薄但合法）、'Preparing spawn area' prose lane、setblock echo lawful-zero 席（平坦 prairie 已存档）、Pause Young kind 频率格（薄）、F496 新面驱动。
+- the identity law held: PLANETA9091
