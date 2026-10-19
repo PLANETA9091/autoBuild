@@ -52,7 +52,7 @@ test('v0.976.295 fence: every branch prices', () => {
 test('v0.976.295 shape: the REAL W3 swell byte-exact (0 -> 1 -> 2)', () => {
   const row = destroyMismatchTrendRow({ back: { mismatches: 0 }, prev: { mismatches: 1 }, cur: { mismatches: 2 } })
   assert.match(row, /the destroy mismatch's own swell ran two steps deep - 0 -> 1 \(\+1\) -> 2 \(\+1\) - the dig desync grew/)
-  assert.match(row, /the server desync trend \(v0\.976\.294\):/)
+  assert.match(row, /the server desync trend \(v0\.976\.295\):/)
 })
 
 test('v0.976.295 shape: the swing and the fade and the held law and the three-face zero', () => {
