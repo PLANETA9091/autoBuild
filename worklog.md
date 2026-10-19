@@ -35068,3 +35068,25 @@ Stage Summary:
 - MY GATE 39189157912（8a29da12）PENDING——下一 fire 先读终态；F480 = 39184044983 **SUCCESS** 终态已读（.260 词首面绿；深日志全读留给下一 fire）。
 - .263 席位候选：F481 新面数据驱动（torched 词首面真值、若 F481 后的 fleet-ran 含 .262 则 autosave merge 词首面真值）；iron commune chest-holds 数值格 beside-seat 需谨慎定价（其 mass 已被 .163 持有）；blaze rods/chorus、night/mob survivability（fire-0630 候选单延续）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire 0943, cron 2026-10-19 09:43:02 +08:00)
+Agent: Z.ai Code (main, fire-0943)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%；本轮交付 v0.976.261 THE TORCHED CELL'S OWN NIGHT-LIGHT MASS（counters 行 torched 格席位词，双窗诞生即发声）+ F481 自派发全绿
+
+Work Log:
+- repo 在（@68012760，master 干净），身份 PLANETA9091 复核。CI 快照：上轮收尾 gate 39186448380（6801276）COMPLETED SUCCESS；F480 = 39184044983 全 SUCCESS；零红零僵尸开局。
+- F480 全貌细读：**mining rate 5.25 blocks/s（F479 3.30 ↑59%）**、banked 1588（crater 42.7% vs 13.6%）、kicks=1（F479 12 ↓92%）、storm duck 0/0 续零、death census 行真值 2 deaths（上轮修复的首实战面持续有效）。
+- 席位定价：fire-0943 扫描——'stay outside' 候选降权（全库仅测试散文 incidental 匹配，非 live lane）；fuel lane 高度定价（graindrytrend 等七模块）；**counters 行单元格扫描发现 torched/claims/shelters/planted/pounces 五格无 trend 词（reboots/upgraded 有 finalbodycensus 先例）**——SEAT TAKEN：THE TORCHED CELL（F479 torched=1 → F480 torched=19 十九倍摆动无行读；side-car 选 planted 格——另一只手种树 vs 火把，无占用；fights 格由 fight ledger episode lane 持有，席位不合并）。
+- v0.976.261 交付（60f6c9d1，5 文件 +322/-1）：src/lib/torchedtrend.mjs（torchedCensus 严格语法——counters 行 'bots=' 头链全帧锚 byte-exact 至 planted -> torched -> fights 三格带，三 priced 格无前导零无符号（.248 房律），锚格 \d+ 骑行；近失全拒：裸格缺帧、漂移模板、pretty spacing、变序、前导零、负数、截断、bot 前缀；LAST-PRINT-WINS）+ torchedConsistent fence（三面 planted/torched 双整格 >= 0、零合法、extra keys 不拒）+ torchedTrendRow 两步形状（night light fade/swell/swing、持步诚实沉默、三面零 LAWFUL SILENCE——.255 先例；planted 弧侧舱；tail co-existence 点名 fights 格 fight ledger episode lane / pounce book probe lane / finalbody census；row prefix 'the torched trend (v0.976.261):'）+ tests/unit/torchedtrend.test.mjs（6 pins：真实两面字节精确 F479 planted=11/torched=1 + F480 planted=11/torched=19、LAST-PRINT-WINS、junk 面 lawful zeros + null pass、近失 9 皮、fence 全支、形状字节精确 + 双 held + 三面零、双面真弧 +18）+ decompose wire（import 于 pulse map import 后 + fold 于 pulse map fold 后 drain fence fold 前，CENSUS GUARD 零舰队接线零新日志行）+ scripts/fieldread-torched-0943.mjs（时间戳信封剥离）。本地门：node --check x4、pins 6/6、NO local server/fleet/integration。开发中自纠：census 捕获组索引 m[1]/m[2]→m[14]/m[15]（全链锚 16 组序）。
+- push 68012760..60f6c9d1 零竞态；MY gate 39187448201（60f6c9d1）poll 三窗 **COMPLETED SUCCESS**（Unit×2 + Integration 全绿）。
+- **F481 = 39188700500 本 fire 自派发**（HTTP 204，workflow_dispatch run_fleet=true，head 60f6c9d1，两 gate 绿 + 席位空闲——fire-0643 律）——Unit×2 + Integration + **Big fleet run 全 SUCCESS**（bigfleet 02:25:12Z→02:53，~28 分钟）。torched 词首实战面骑行词自己的树。
+- fieldproof 两度补全（afb3adf2 + eed327ab 原子提交）：F478 bigfleet 日志经 artifact fetch 重获（counters planted=10 torched=2 fights=9）+ F481 面（planted=13 torched=8 fights=23）——**FIELDPROOF 4/4 census==raw 零失配；词诞生即发声于双窗**：W478-479-480 swing 2 -> 1 (-1) -> 19 (+18)、W479-480-481 swing 1 -> 19 (+18) -> 8 (-11)（.257 sidestep 双窗先例），planted 弧 10 -> 11 -> 11 -> 13，F480 armed crest +18、F481 payback -11、F481 busy night fights=23。
+- 并行 fire-0930 agent 落地 v0.976.262 THE AUTOSAVE MERGE'S OWN DISK PULSE（8a29da12）+ worklog append（3ba651c8）——顺序版本无竞态，keep-both rebase 干净。
+- 全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.261 THE TORCHED CELL'S OWN NIGHT-LIGHT MASS 交付且**双窗诞生即发声**（4/4 fieldproof；W478-479-480 与 W479-480-481 双 swing 行字节精确）。
+- THE FLEET OF RECORD：F481 = 39188700500（60f6c9d1 MY 树）全 SUCCESS——mining 2406 @ 4.01 blocks/s、banked 1511、storm duck 0/0 续零。
+- 下一轮：读 MY 后续 gate 终态（eed327ab/b1cf8ba8 树）；.263 席位候选：claims=23 claimedHolds=0 格、shelters=0 格、'stay outside' 邻位复审、F481 fights=23 突发（fight ledger 邻位席位）、F478 缓存补齐后 W480-481-482 三面弧延续读。
+- the identity law held: PLANETA9091
