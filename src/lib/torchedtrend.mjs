@@ -48,7 +48,7 @@
 // .247 word's own law; the analysis side - scripts/fleet-mining/
 // decompose.mjs - owns the fold, the fleet's own console never changes).
 
-const TORCHED_RE = /^bots=(\d+) spawned=(\d+) reconnects=(\d+) kicks=(\d+) tools=(\d+) recovered=(\d+) reboots=(\d+) upgraded=(\d+) swords=(\d+) alive=(\d+) climbs=(\d+) banked=(\d+) smelted=(\d+) planted=(0|[1-9]\d*) torched=(0|[1-9]\d*) fights=(0|[1-9]\d*)/
+const TORCHED_RE = /^bots=(\d+) spawned=(\d+) reconnects=(\d+) kicks=(\d+) tools=(\d+) recovered=(\d+) reboots=(\d+) upgraded=(\d+) swords=(\d+) alive=(\d+) climbs=(\d+) banked=(\d+) smelted=(\d+) planted=(0|[1-9]\d*) torched=(0|[1-9]\d*) fights=(0|[1-9]\d*)(?=$| )/
 
 /**
  * The census - the family's own strict grammar, the face's own end

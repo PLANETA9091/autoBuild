@@ -51,6 +51,7 @@ test('the near-miss lanes never ride - the grammar refuses the skins', () => {
   assert.deepEqual(torchedCensus([F480.replace('torched=19', 'torched=-3')]), { planted: 0, torched: 0 }) // the negative count
   assert.deepEqual(torchedCensus([F480.replace('torched=19', 'torched=')]), { planted: 0, torched: 0 }) // the truncated cell
   assert.deepEqual(torchedCensus([F480.slice(0, F480.indexOf(' fights=2'))]), { planted: 0, torched: 0 }) // the truncated tail - the fights cell missing, the window never closes
+  assert.deepEqual(torchedCensus([F480.replace('fights=2 kills', 'fights=02 kills')]), { planted: 0, torched: 0 }) // the leading zero on the tail cell - the boundary the .263 claims seat ships the torched grammar adopts
 })
 
 test('the fence - every branch', () => {
