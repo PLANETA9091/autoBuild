@@ -35958,3 +35958,26 @@ Stage Summary:
 - MY GATE 39323753897（.303 树）待下一 fire 终读；F502 派发债务留给下一 fire（gate 绿 + F501 绿 ✓ + active=0 → dispatch）。
 - 下一席位候选：Remark count 格（恒 4 prairie 弃）、Cleanup count 格（恒 4 弃）、Concurrent Cycle count 细分、F502 新面驱动、GC band 外 console lanes 全 priced。
 - the identity law held: PLANETA9091
+---
+Task ID: cron30-20261020-0430
+Agent: PLANETA9091 (agent-7625532f)
+Task: fire-0430 — privateB .304 原子改进（setblock success echo height mass——'Changed the block at X, Y, Z' 的高度格 maxEchoY）+ F501/gate .302 双债 SUCCESS 终读 + F502 dispatch + VERSION RACE 第四次（.304 落座）
+
+Work Log:
+- repo 在，fetch+rebase @954ac5a4；身份 PLANETA9091 复核。
+- 债务终读（API 亲证）：F501 = 39319100730（.302 fleet）**COMPLETED SUCCESS**；MY GATE .302 = 39319031590 **cancelled**（concurrency 被 F501 dispatch 同 sha 挤出——非红，.302 代码由 F501 全程覆盖）——双债闭环。F500 artifact 深读：下载 12219151866 server-log，四词实战面全绿（normal={77,1 pinned}、cleanup=0.047、mixed=33.926、normalpeak=38.979，census==raw 3/3）。
+- 席位审计：[gc] lane 全格有主（.290 Cycle/.298 Remark/.300 Cleanup/.299/.301/.302 kinds；their .303 Concurrent Start kind 落座）；Prepare Mixed cause 恒 'G1 Evacuation Pause' 平草原弃（六面亲查）；F500 服务器日志 survey 抓出 **'Changed the block at X, Y, Z' success echo——152/面七面恒，.292/.295/.296 三词 tail 互相指向 sibling 却零 regex 持有（circular referral）**——echo 本体无主，格合法。
+- REAL 七面 maxEchoY 弧：F492 77 / F493 84 / F494 78 / F495 75 / F496 76 / F498 86 / F500 75——W1 swing、W2 fade、W3 swing、W4 swell、W5 swing **五真窗五发声**（诞生即最深 Birth）；echoes side-car 七面恒 152（诚实 side-car）。
+- v0.976.303 首写（e1a4d9f5）→ push 前 race 复核：origin 已被 their fire-0443 占 .303（2ce51f53 gcconcurrentstarttrend Concurrent Start kind——零席位碰撞）→ **VERSION RACE 第四次**，按律取 .304：decompose rebase 冲突（import+fold 同槽 keep-both：their gcstart wire 完整、my echoheight wire 并肩 @10545-10555）、package.json 单 version=0.976.304、全引用同步含测试转义 regex `v0\.976\.303`→`v0\.976\.304`、rg 复核 their 两处 v0.976.303 原样未动。
+- v0.976.304（e647c291，5 文件）：src/lib/echoheighttrend.mjs（.295 INFO 帧 byte-exact + 三 coord 格 I, I, I 有符号整数无前导零无加号（.295 destroy-mismatch coord 律）+ LINE END 尾界 + 15 皮拒含 WARN 帧/fill/refusal/mismatch siblings + MAX 高度格（.289 maxPause 律、.302 先例延伸）+ echoes count side-car（.289 side-car 先例）+ 整数 fence（.292 律）+ 两步形 + held 律 + 三面零 + tail co-existence）+ tests/unit 6 pins（REAL F498/F492/negative-Z 行 byte-exact + W4 swell byte-exact）+ decompose 接线（argv[6..8] carrier，CENSUS GUARD）+ scripts/fieldread-echoheight-0430.mjs。
+- FIELDPROOF 7/7 census==raw 零失配（raw count 管道 grep -c 缺 -E 首跑撒谎，修后全绿——FIELDPROOF 自纠一度）。门：node --check x2、pins 6/6、syntax 1353/0、unit fail=0（sweep-defer pending-promise 本地并行 flake——fail 0 cancelled 1，CI 仲裁）。NO local integration（CI speaks）。
+- push 6ac58dce..e647c291 零冲突第 1 次。ZERO force-push。
+- MY GATE .304 = 39326470710 in_progress（8 窗未及终态）——终读留下一 fire。
+- FLEET：**F502 = 39327612804 自派发**（HTTP 204，in_progress @e647c291 .304 全树；F501 终态后无活跃 dispatch-ran，one-active law 满足；their fire-0443 的 F502 dispatch 债务由本 fire 兑现）。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.304 交付（e647c291，origin 已含）：THE SETBLOCK SUCCESS ECHO'S OWN HEIGHT MASS——圆形互指闭环出土（三 sibling tail 同指一格零主），maxEchoY 格正席，五真窗五形（swing/fade/swing/swell/swing）诞生即最深发声。
+- FLEET OF RECORD（现役）：**F502 = 39327612804**（e647c291 .304 树）IN_PROGRESS——下一 fire 终读 + artifact 深读（.303 gcstart/.304 echoheight 双词首实战面）；MY GATE 39326470710（.304）——下一 fire 先读。
+- .305 席位候选：F502 新面数据驱动；echo echo 内 X/Z 格（若变异）；'Mismatch in destroy block pos' 坐标 delta 格（.295 旁路）；tool repair/replace、night/mob survivability（bot 前线）。
+- the identity law held: PLANETA9091
