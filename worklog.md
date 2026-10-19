@@ -36039,3 +36039,23 @@ Stage Summary:
 - FLEET OF RECORD（现役）：F503 = 39334531367；MY GATE（.306 worklog push 6b3d83c9 本 append 的后继 push run）——下一 fire 先读。
 - .307 席位候选：F503 新面数据驱动；echo Y floor 格（min——.304 只取 max，同线不同格先例）；'lost connection: Disconnected' 格（co-existence 先解）；tool repair/replace、night/mob survivability（bot 前线）。
 - the identity law held: PLANETA9091
+---
+Task ID: 415967 (fire 0643, cron 2026-10-20 06:43:13 +08:00)
+Agent: Z.ai Code (main, fire-0643)
+Task: cron 任务书执行——v0.976.308 THE SETBLOCK ECHO'S OWN SOUTH EDGE MASS（echo Z max 同格异手席位词）+ F504 诚实不派发
+
+Work Log:
+- sandbox 死亡（第三次）→重克隆；身份复核 local+global；npm install（98 包）。
+- CI 全读：F503 = 39334531367（fleet，fire-0600 派发）in_progress；.307 gate 39336927580 in_progress（fire-0630 刚推）；active=2——**三条件全缺，F504 诚实不派发**。
+- 并行消化：.304 echoheight（Y ceiling+count side-car，fire-0430）、.305 echoedge（Z min，fire-0530）、.306 echoeast（X max，fire-0600）、.307 echofloor（Y min，fire-0630）——echo 车道四格+side-car 已定价；**Z max（南缘）与 X min（西缘）无主**。
+- 席位定案：echo Z 格 SOUTH EDGE（maxEchoZ，max 手）——**同格异手律 .304/.307 Y 对直接先例**（Y max/Y min 双词并存），.305=Z min 北缘、.308=Z max 南缘，两手不合并。
+- 七 REAL 面弧（F496–F502 artifacts 重下挖掘）：423/424/414/422/408/412/408——**五窗五 SWING 零 held**（W1 +1/−10、W2 −10/+8、W3 +8/−14、W4 −14/+4、W5 +4/−4）；**Z span 恒 28 七面全验**（envelope 常数律，.305/.306/.307 span 先例链）；echoes 恒 152。
+- v0.976.308 交付（c02f8dfd，5 文件 +311/−1）：echosouthtrend.mjs（null-init signed 域 max 手、.307 帧字节精确）+ 6-pin 测试（12 skins 拒、synthetic fade/swell 补支）+ decompose 接线（import 于 .307 前、fold 于 .307 fold 后）+ fieldread 脚本 + version bump。
+- FIELDPROOF 7/7 census==raw；本地门：node --check ×4、pins 6/6、syntax 1368/0、unit 694/694（前台 585s）。
+- push 56f4c40a..c02f8dfd 首试零冲突；版本竞态审计：.308 出生时空闲。
+
+Stage Summary:
+- v0.976.308 THE SETBLOCK ECHO'S OWN SOUTH EDGE MASS 在 origin——echo 车道第五格（Z 双手齐活）；MY 词库累计：.296 refusal、.303 CStart peak、.308 south edge。
+- 下一 fire 债务：MY .308 gate（c02f8dfd push run）终读 + F503 终读 + .307 gate 39336927580 终读 → 三条件（最新 gate 绿 + F503 绿 + active=0）则派 F504 骑 .308 全树（echo 五格词齐活首面）。
+- .309 席位候选：echo X min 西缘格（最后一无主坐标格）；F504 新面驱动；bot 前线格。
+- the identity law held: PLANETA9091
