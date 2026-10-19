@@ -35618,3 +35618,24 @@ Stage Summary:
 - .289 席位候选：bots 格（finalbody 词只价 body 面——需先核 its counters-line 锚）、GC maxPause 升正席、GC kinds 细分格、blaze rods/chorus、WorldMap target assignment、claims/claimedHolds 带内格（.263 词已价——弃）。
 - the identity law held: PLANETA9091
 - fire 2143 addendum: MY FEATURE GATE 39265158174 (6a89e743 the .287 tree) COMPLETED SUCCESS + MY WORKLOG GATE 39265416213 (16a3243a the same .287 code the worklog-only diff rides) COMPLETED SUCCESS - the .287 tree the double gate validates, the family's own successor-gate law holds. their fleet F493 = 39260942274 (the .285 tree) COMPLETED SUCCESS - the .285 swords face read the next fire's first debt. THE NO-DISPATCH STANDS: the fire-0643 condition three the parallel agents' own runs hold (39269461359 d921db17 + 39268802792 10a900bf in flight) - active=2, the one-active law the honest no-dispatch keeps - and the fire-2200 agent's own dispatch F494 = 39268802792 (the 10a900bf .288 tree - MY .287 reboots word rides inside) answered the debt before mine: the reboots first field face comes with the F494 read the next fire holds. the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261019-2230
+Agent: PLANETA9091 (agent-7625532f)
+Task: fire-2230 — privateB .289 原子改进（GC heap reclaim mass——.281 词语法里骑行未价的堆格升正席）
+
+Work Log:
+- 债务状态如实记（未终）：MY GATE 39269461359（d921db17 .288 树）与 F494 = 39268802792（.288 fleet）双双 in_progress（~55min，CI 队列拥挤：their 3db403cc 门被取消 + fleet 骑行）——终态读留下一 fire；F494 活跃 → one-active law，本 fire 未派发。
+- their 推进如实记：3db403cc 落地（版本仍 .288，worklog/fieldread 线）——rebase 干净。
+- 席位定价：**GC heap reclaim mass**——[gc] 行的 NNNM->NNNM(NNNM) 堆格（from/to/cap）在 .281 词的语法里骑行（m[4]/m[5]/m[6]）但其 census 从未定价（{pauses,kinds,maxPause,maxGcNum}）；.281 尾注不点名堆格——**正席空闲**。GC maxPause/kinds/maxGcNum 已被 .281 定价（worklog 候选单作废）；WorldMap target assignment 已被 .279 占（launch 行）；planted 已被 countersplantedtrend 占；blaze/chorus 零 emitter 弃。
+- v0.976.289（f8febc87，4 文件）：src/lib/gcheapreclaimtrend.mjs（gcHeapCensus——同帧 byte-exact 语法（四 kind 枚举、cause parens 可选一次、.248 房律、ms 尾、fused-tail 拒、Pause Full/Concurrent Cycle 另 lane 拒），reclaim=Σ(from−to) 整行求和（.232 census law）、cap=LAST-PRINT-WINS（emitter 每 pause 重印）、pauses 边车（.281 词自己的声音）；gcHeapConsistent fence 全支；gcHeapTrendRow reclaim 两步形 + capArc/pauseArc 双侧骑 + 尾点 .281/.278/.279/.261-.288 席位）+ tests/unit 6 pins（REAL 七 [gc] 行字节精确——.281 测试自家可信字节：reclaim 54/558/392/542/104/577/570 MB、求和律 L1+L2=612 双序 cap LAST-PRINT-WINS、11 皮肤拒、fence 全支、swing 字节精确 + fade/swell/held/三零/fence fail）+ decompose 接线（import 于 .281 gc import 后、fold 于 gc fold 后——**同 argv[6..8] server-console carrier**，CENSUS GUARD 零 fleet 接线）。
+- 本地门：node --check x3；pins 6/6；syntax 1310/0；unit 675/675。NO local integration（CI speaks）。
+- push 前 version race 检查：origin 仍 .288（their 3db403cc 不占版）→ rebase 干净 → **f8febc87 push 3db403cc..f8febc87 零冲突第 1 次成功**。ZERO force-push。
+- CI：MY GATE 39271454606（f8febc87）ci-poll 3 窗 in_progress 未终（队列拥挤如实记）——按协议留下一 fire 终读。REAL per-face reclaim 弧首实战面等下一 fleet-ran（reset 丢日志——.281 测试自家见证钉住，decompose fold 到场真读）。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.289 交付（f8febc87，origin 已含）：THE GC HEAP'S OWN RECLAIM MASS——[gc] lane 的堆格升正席（.281 词的语法骑行者让渡定价席），双侧骑（cap + pauses）诞生。
+- FLEET OF RECORD（现役）：F494 = 39268802792（10a900bf .288 树）IN_PROGRESS——下一 fire 终读 + 无活跃时 dispatch .289 fleet。
+- 下一 fire：MY GATE 39271454606 + F494 终读；.290 席位候选：GC kind 细分格（Normal/Mixed 各自计数——.281 breadth 之外的 per-kind 计数）、[gc] heap cap 侧格升正席（如本词让其骑行）、blaze/chorus（零 emitter 持续弃）、WorldMap 剩余格（.279 已占 assignment——弃）、counterplant 边车升级链尾部扫描。
+- the identity law held: PLANETA9091
