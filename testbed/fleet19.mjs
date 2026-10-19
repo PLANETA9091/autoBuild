@@ -4806,7 +4806,18 @@ if (mass) console.log(`unaccounted mass decode: ${mass}`)
 // after the decode it completes, before the drop census (the item-entity
 // leak's own read). ALWAYS printed on a live mass - the none-form is the
 // healthy silence (a deathless face reads no row).
-try { console.log(deathCensusRow(deathCensusRecords)) } catch { /* the census never holds the teardown */ }
+// (v0.976.259) THE NULL ROW'S OWN SILENCE - the guard the F479 face priced:
+// run58 (fleet 39178460638, the v0.976.258 tree) printed the literal `null`
+// row between the crater decode and the drop census - a deathless face (zero
+// 'died - respawning' announces across the whole bigfleet log) walked into
+// deathCensusRow's healthy-silence none-form and the bare console.log printed
+// the null itself onto the report. The row's own law reads 'a deathless face
+// reads no row' - the guard is the law's hand: the none-form holds the seat
+// silently, the null never reaches the face again.
+try {
+  const deathRow = deathCensusRow(deathCensusRecords)
+  if (deathRow != null) console.log(deathRow)
+} catch { /* the census never holds the teardown */ }
 // (v0.576.0) THE DROP CENSUS - the decode above names the gap; the census
 // prices its first suspect: the item-entity lifecycle counted live across the
 // whole fleet (every bot instance, reconnects included). Sits right after the
