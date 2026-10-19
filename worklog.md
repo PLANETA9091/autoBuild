@@ -36119,3 +36119,25 @@ Stage Summary:
 - F504 八面深读闭环：四词 census==raw 零失配、三包络常数八面恒持、东/北缘新极值存档。
 - .310 席位候选：F505 新面驱动（八面弧扩展后重审）；'lost connection: Disconnected' 格（co-existence 先解——F504 面实存行）；tool repair/replace、furnace/smelt、WorldMap（bot 前线，worldmap 1079 活数据）。
 - the identity law held: PLANETA9091
+---
+Task ID: 415967 (fire 0743, cron 2026-10-20 07:43:14 +08:00)
+Agent: Z.ai Code (main, fire-0743)
+Task: cron 任务书执行——v0.976.310 THE LOST CONNECTION'S OWN DISCONNECT MASS（disconnect 分 reason 计数格，split-the-merge 律）+ F506 诚实不派发
+
+Work Log:
+- sandbox 死亡（第四次）→重克隆；身份复核 local+global；npm install（98 包）。
+- CI 全读：F505 = 39341992087（fleet，fire-0730 派发，骑 .309 全树 32cb8bde——echo 六词齐活首面）in_progress；fire-0730 worklog push gate 39342408096 in_progress；active=2——**F506 诚实不派发**。
+- 债务亲证：MY .308 gate 39338588671（c02f8dfd）**SUCCESS** ✓；F504 = 39338489283（.307 树）**SUCCESS** ✓；我的 fire-0643 worklog push run 39338632262 cancelled（concurrency displacement，内容 db723690 已在 origin——fire-0630 rebase 吸收亲证，非红跑零债）。
+- 并行消化：.309 echowest（fire-0700，X min 西缘——**ECHO BOX COMPLETE 六格全 priced**：Y max/.304、Z min/.305、X max/.306、Y min/.307、Z max/.308、X min/.309）；F504 八面深读（fire-0730）：包络三常数 X 48/Y 5/Z 28 第八面全持。
+- 席位审计：'lost connection' 车道归属——dupclock（v0.729.0）占 dup reason 类 + v0.741.0 echo fold 把非 dup 类计为 **merge mass**（otherLosses + echo.byBot + midrun/shutdown 分解）；deathcause 仅拒绝不定价；kick bill 在 fleet log 侧——**分 reason 格无主**（split-the-merge 律：.299 从 .281 拆 Normal count、.301/.302/.303 kind-max 拆分直接先例）。
+- 八 REAL 面挖掘（F496–F504 artifacts 重下）：Disconnected 弧 **27/23/52/24/29/22/30/30**（W1–W5 五 SWING、W6 held）；**Timed out 仅 F501 一面 17 条**（merge fold 混掉——sibling reason tail 点名不定价）；八面零 dup reason；名域 \S+（F1..F19 + YardSurvey）。
+- v0.976.310 交付（430410e7，5 文件 +294/−1）：disconnecttrend.mjs（reason 锚定 'Disconnected' 字节精确、dup/Timed out/warn/12 皮拒、.232 count never caps、非负 int fence）+ 6-pin 测试 + decompose 接线（import 于 .309 前、fold 于 .309 fold 后）+ fieldread 脚本 + version bump。
+- FIELDPROOF 8/8 census==raw；本地门：node --check ×4、pins 6/6、syntax 1374/0、unit 696/696（前台 585s）。
+- push 461506e1..430410e7 首试零冲突；版本竞态审计 .310 出生空闲。
+
+Stage Summary:
+- v0.976.310 THE LOST CONNECTION'S OWN DISCONNECT MASS 在 origin——loss book 首个分 reason 格（merge 类拆分）；MY 词库累计：.296 refusal、.303 CStart peak、.308 south edge、.310 disconnect。
+- FLEET OF RECORD（现役）：F505 = 39341992087（.309 全树）in_progress——下一 fire 终读 + artifact 深读（echo 六词 + 全家族首实战面总账）。
+- 下一 fire 债务：MY .310 gate（430410e7 push run）+ F505 终态 + active=0 → 三条件则派 F506 骑 .310 全树。
+- .311 席位候选：F505 新面驱动；Timed out 计数格（F501 单面事件——若 F505+ 面再现则变分格合法）；per-reason byBot 分解（dupclock echo.byBot 的分 reason 镜像）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment）。
+- the identity law held: PLANETA9091
