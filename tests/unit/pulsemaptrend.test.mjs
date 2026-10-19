@@ -1,4 +1,4 @@
-// (v0.976.259) THE PULSE MAP CELL'S OWN GROWTH MASS - the word's own pins.
+// (v0.976.260) THE PULSE MAP CELL'S OWN GROWTH MASS - the word's own pins.
 // The real lines ride byte-exact (the field's own faces: F467 run
 // 39131684179, F474 run 39160949802, F475 run 39164157313, F478 run
 // 39174346168, F479 run 39178460638 - the storm duck word's own first
@@ -96,20 +96,20 @@ test('the fence every branch - the fold proves itself or prices nothing', () => 
 
 test('the fade byte-exact - the knowledge weather ran two steps down (W474-475-478)', () => {
   const row = pulseMapTrendRow({ back: { positions: 1476, chunks: 25 }, prev: { positions: 1328, chunks: 27 }, cur: { positions: 1163, chunks: 18 } })
-  assert.equal(row, 'the pulse map trend (v0.976.259): the knowledge weather\'s own fade ran two steps deep - 1476 -> 1328 (-148) -> 1163 (-165) - the positions mass\'s own fade, the chunks rode 25 -> 27 -> 18 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
+  assert.equal(row, 'the pulse map trend (v0.976.260): the knowledge weather\'s own fade ran two steps deep - 1476 -> 1328 (-148) -> 1163 (-165) - the positions mass\'s own fade, the chunks rode 25 -> 27 -> 18 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
 })
 
 test('the swell byte-exact - the scan surge priced', () => {
   const row = pulseMapTrendRow({ back: { positions: 319, chunks: 9 }, prev: { positions: 900, chunks: 15 }, cur: { positions: 1181, chunks: 21 } })
-  assert.equal(row, 'the pulse map trend (v0.976.259): the knowledge weather\'s own swell ran two steps deep - 319 -> 900 (+581) -> 1181 (+281) - the positions mass\'s own swell, the chunks rode 9 -> 15 -> 21 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
+  assert.equal(row, 'the pulse map trend (v0.976.260): the knowledge weather\'s own swell ran two steps deep - 319 -> 900 (+581) -> 1181 (+281) - the positions mass\'s own swell, the chunks rode 9 -> 15 -> 21 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
 })
 
 test('the swing byte-exact - the fade and the swell traded seats (W467-474-475)', () => {
   const row = pulseMapTrendRow({ back: { positions: 1220, chunks: 20 }, prev: { positions: 1476, chunks: 25 }, cur: { positions: 1328, chunks: 27 } })
-  assert.equal(row, 'the pulse map trend (v0.976.259): the knowledge weather\'s own swing - 1220 -> 1476 (+256) -> 1328 (-148) - the fade and the swell traded seats between the faces, the chunks rode 20 -> 25 -> 27 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
+  assert.equal(row, 'the pulse map trend (v0.976.260): the knowledge weather\'s own swing - 1220 -> 1476 (+256) -> 1328 (-148) - the fade and the swell traded seats between the faces, the chunks rode 20 -> 25 -> 27 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
   // the second real swing (W475-478-479)
   const row2 = pulseMapTrendRow({ back: { positions: 1328, chunks: 27 }, prev: { positions: 1163, chunks: 18 }, cur: { positions: 1181, chunks: 21 } })
-  assert.equal(row2, 'the pulse map trend (v0.976.259): the knowledge weather\'s own swing - 1328 -> 1163 (-165) -> 1181 (+18) - the fade and the swell traded seats between the faces, the chunks rode 27 -> 18 -> 21 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
+  assert.equal(row2, 'the pulse map trend (v0.976.260): the knowledge weather\'s own swing - 1328 -> 1163 (-165) -> 1181 (+18) - the fade and the swell traded seats between the faces, the chunks rode 27 -> 18 -> 21 (the worldmap tail\'s own end mass keeps the report seat (the .252 word), the maptrip\'s own header parse keeps the trip gap\'s input, the autosave\'s own merge line keeps its own lane - the pulse map\'s row alone, co-existence by seat never by duplication)')
 })
 
 test('the honest nulls - the held step and the three-face zero and the fence fail', () => {

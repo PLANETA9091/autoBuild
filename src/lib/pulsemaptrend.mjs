@@ -1,4 +1,4 @@
-// (v0.976.259) THE PULSE MAP CELL'S OWN GROWTH MASS - the fleet tick
+// (v0.976.260) THE PULSE MAP CELL'S OWN GROWTH MASS - the fleet tick
 // docket's own map cell the word prices across the faces.
 // THE EVIDENCE (the seat the fleet faces' own tick dockets carry): the
 // fleet ticker prints 't-536s alive=19/19 mined=92 map=319p/9ch banked=0
@@ -121,10 +121,10 @@ export function pulseMapTrendRow (e) {
   const chunkArc = `the chunks rode ${back.chunks} -> ${prev.chunks} -> ${cur.chunks}`
   const tail = "(the worldmap tail's own end mass keeps the report seat (the .252 word), the maptrip's own header parse keeps the trip gap's input, the autosave's own merge line keeps its own lane - the pulse map's row alone, co-existence by seat never by duplication)"
   if (first < 0 && second < 0) {
-    return `the pulse map trend (v0.976.259): the knowledge weather's own fade ran two steps deep - ${arc} - the positions mass's own fade, ${chunkArc} ${tail}`
+    return `the pulse map trend (v0.976.260): the knowledge weather's own fade ran two steps deep - ${arc} - the positions mass's own fade, ${chunkArc} ${tail}`
   }
   if (first > 0 && second > 0) {
-    return `the pulse map trend (v0.976.259): the knowledge weather's own swell ran two steps deep - ${arc} - the positions mass's own swell, ${chunkArc} ${tail}`
+    return `the pulse map trend (v0.976.260): the knowledge weather's own swell ran two steps deep - ${arc} - the positions mass's own swell, ${chunkArc} ${tail}`
   }
-  return `the pulse map trend (v0.976.259): the knowledge weather's own swing - ${arc} - the fade and the swell traded seats between the faces, ${chunkArc} ${tail}`
+  return `the pulse map trend (v0.976.260): the knowledge weather's own swing - ${arc} - the fade and the swell traded seats between the faces, ${chunkArc} ${tail}`
 }
