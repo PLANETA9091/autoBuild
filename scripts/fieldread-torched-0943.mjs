@@ -9,7 +9,8 @@ import { torchedCensus, torchedTrendRow } from '../src/lib/torchedtrend.mjs'
 const faces = [
   ['faceF478', '/home/z/f479logs/f478-bigfleet.log'],
   ['faceF479', '/home/z/f479logs/bigfleet.log'],
-  ['faceF480', '/home/z/f479logs/f480-bigfleet.log']
+  ['faceF480', '/home/z/f479logs/f480-bigfleet.log'],
+  ['faceF481', '/home/z/f479logs/f481-bigfleet.log']
 ]
 
 // the CI job log's own envelope: every line rides a '2026-10-19T00:23:54.7165420Z '
@@ -50,16 +51,13 @@ for (const [name, path] of faces) {
 // completed law: cur=faceF480, prev=faceF479, back=faceF478 (the F478
 // log the artifact fetch re-spoke - the two-back face the sandbox
 // cache gained this fire)
-if (censusCells.length === 3) {
-  const row = torchedTrendRow({
-    back: censusCells[0].c,
-    prev: censusCells[1].c,
-    cur: censusCells[2].c
-  })
-  console.log(`W478-479-480 (2 -> 1 -> 19): ${row ?? 'the honest silence'}`)
-  const [f478, f479, f480] = censusCells
-  const up = f480.c.torched - f479.c.torched
-  console.log(`the pair's own arc: torched ${f479.c.torched} -> ${f480.c.torched} (${up >= 0 ? '+' : ''}${up}) - ${up > 0 ? 'the night light armed' : up < 0 ? 'the night light rested' : 'the light held'}`)
+if (censusCells.length >= 3) {
+  // the nearest-completed window rides every face triple the cache holds
+  for (let i = 0; i + 2 < censusCells.length; i++) {
+    const [a, b, c] = [censusCells[i], censusCells[i + 1], censusCells[i + 2]]
+    const row = torchedTrendRow({ back: a.c, prev: b.c, cur: c.c })
+    console.log(`W${a.name.slice(4)}-${b.name.slice(4)}-${c.name.slice(4)} (${a.c.torched} -> ${b.c.torched} -> ${c.c.torched}): ${row ?? 'the honest silence'}`)
+  }
 }
 
 console.log(`FIELDPROOF: ${censusCells.length} face(s) with the print, ${mismatches} mismatch(es) - ${mismatches === 0 ? 'ZERO mismatches, the word rides' : 'THE WORD LIES - fix before push'}`)
