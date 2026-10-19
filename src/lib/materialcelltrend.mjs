@@ -1,4 +1,4 @@
-// (v0.976.281) THE MATERIAL CELL'S OWN GATHERED MASS - the final
+// (v0.976.282) THE MATERIAL CELL'S OWN GATHERED MASS - the final
 // report's own per-material collected line the word prices ONE
 // material at a time across the faces (the narrow lane the same-name
 // cell rides - the .281 front the worklog priced).
@@ -130,10 +130,10 @@ export function materialCellTrendRow (name, e) {
   const arc = `${back} -> ${prev} (${first >= 0 ? '+' : ''}${first}) -> ${cur} (${second >= 0 ? '+' : ''}${second})`
   const tail = "(the final collected trend's row keeps the report's own gathered-mass seat (the .280 word - the lines' own sum the MULTI-PRINT law rides, the whole report's own mass never the single cell), the materials dump word keeps the byName JSON's own stockpile seat (the .248 word - the demand side's own bottom ledger), the sweep collected lane keeps the smelt sweep's own verdict seat (the .232 word - a different collected), the counters banked/smelted rows keep the counters line's own cells (the .276/.269 words) - the material's own cell row alone, co-existence by seat never by duplication)"
   if (first < 0 && second < 0) {
-    return `the ${name} collected cell trend (v0.976.281): the ${name} dig weather's own fade ran two steps deep - ${arc} - the ${name} cell's own gather thinned two faces deep, the last strict print the face's own tally rode ${tail}`
+    return `the ${name} collected cell trend (v0.976.282): the ${name} dig weather's own fade ran two steps deep - ${arc} - the ${name} cell's own gather thinned two faces deep, the last strict print the face's own tally rode ${tail}`
   }
   if (first > 0 && second > 0) {
-    return `the ${name} collected cell trend (v0.976.281): the ${name} dig weather's own swell ran two steps deep - ${arc} - the ${name} cell's own gather surged two faces deep, the last strict print the face's own tally rode ${tail}`
+    return `the ${name} collected cell trend (v0.976.282): the ${name} dig weather's own swell ran two steps deep - ${arc} - the ${name} cell's own gather surged two faces deep, the last strict print the face's own tally rode ${tail}`
   }
-  return `the ${name} collected cell trend (v0.976.281): the ${name} dig weather's own swing - ${arc} - the fade and the swell traded seats between the faces, the last strict print the face's own tally rode ${tail}`
+  return `the ${name} collected cell trend (v0.976.282): the ${name} dig weather's own swing - ${arc} - the fade and the swell traded seats between the faces, the last strict print the face's own tally rode ${tail}`
 }

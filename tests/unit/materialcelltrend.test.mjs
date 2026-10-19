@@ -1,5 +1,5 @@
 /**
- * materialcelltrend.test.mjs - (v0.976.281) THE MATERIAL CELL'S OWN
+ * materialcelltrend.test.mjs - (v0.976.282) THE MATERIAL CELL'S OWN
  * GATHERED MASS - the final report's own per-material collected line
  * ONE material at a time the word prices, pure.
  *
@@ -171,15 +171,15 @@ test('the fence - every branch the fold proves', () => {
 })
 
 test('the shapes byte-exact - the REAL sand arc speaks SIX of the six windows', () => {
-  const HEAD = /^the ([a-z_]+) collected cell trend \(v0\.976\.281\): the \1 dig weather's own/
+  const HEAD = /^the ([a-z_]+) collected cell trend \(v0\.976\.282\): the \1 dig weather's own/
   // the REAL six sand windows byte-exact - the strongest birth (every
   // weather shape the same hand rode: swing/swell/swell/swing/fade/fade)
-  assert.match(materialCellTrendRow('sand', { back: 75, prev: 38, cur: 60 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own swing - 75 -> 38 \(-37\) -> 60 \(\+22\)/)
-  assert.match(materialCellTrendRow('sand', { back: 38, prev: 60, cur: 90 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own swell ran two steps deep - 38 -> 60 \(\+22\) -> 90 \(\+30\)/)
-  assert.match(materialCellTrendRow('sand', { back: 60, prev: 90, cur: 102 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own swell ran two steps deep - 60 -> 90 \(\+30\) -> 102 \(\+12\)/)
-  assert.match(materialCellTrendRow('sand', { back: 90, prev: 102, cur: 61 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own swing - 90 -> 102 \(\+12\) -> 61 \(-41\)/)
-  assert.match(materialCellTrendRow('sand', { back: 102, prev: 61, cur: 48 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own fade ran two steps deep - 102 -> 61 \(-41\) -> 48 \(-13\)/)
-  assert.match(materialCellTrendRow('sand', { back: 61, prev: 48, cur: 11 }), /^the sand collected cell trend \(v0\.976\.281\): the sand dig weather's own fade ran two steps deep - 61 -> 48 \(-13\) -> 11 \(-37\)/)
+  assert.match(materialCellTrendRow('sand', { back: 75, prev: 38, cur: 60 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own swing - 75 -> 38 \(-37\) -> 60 \(\+22\)/)
+  assert.match(materialCellTrendRow('sand', { back: 38, prev: 60, cur: 90 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own swell ran two steps deep - 38 -> 60 \(\+22\) -> 90 \(\+30\)/)
+  assert.match(materialCellTrendRow('sand', { back: 60, prev: 90, cur: 102 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own swell ran two steps deep - 60 -> 90 \(\+30\) -> 102 \(\+12\)/)
+  assert.match(materialCellTrendRow('sand', { back: 90, prev: 102, cur: 61 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own swing - 90 -> 102 \(\+12\) -> 61 \(-41\)/)
+  assert.match(materialCellTrendRow('sand', { back: 102, prev: 61, cur: 48 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own fade ran two steps deep - 102 -> 61 \(-41\) -> 48 \(-13\)/)
+  assert.match(materialCellTrendRow('sand', { back: 61, prev: 48, cur: 11 }), /^the sand collected cell trend \(v0\.976\.282\): the sand dig weather's own fade ran two steps deep - 61 -> 48 \(-13\) -> 11 \(-37\)/)
   // every row opens the same head the family holds
   for (const w of [[75, 38, 60], [38, 60, 90], [60, 90, 102], [90, 102, 61], [102, 61, 48], [61, 48, 11]]) {
     assert.match(materialCellTrendRow('sand', { back: w[0], prev: w[1], cur: w[2] }), HEAD)
@@ -214,7 +214,7 @@ test('the REAL gravel arc - the held law\'s own honest silence twice, the zero g
   assert.equal(materialCellTrendRow('sand', null), null)
   assert.equal(materialCellTrendRow('sand', { back: -1, prev: 2, cur: 3 }), null)
   // the synthetic swell byte-exact - the dirt hand's own surge
-  assert.match(materialCellTrendRow('dirt', { back: 100, prev: 200, cur: 300 }), /^the dirt collected cell trend \(v0\.976\.281\): the dirt dig weather's own swell ran two steps deep - 100 -> 200 \(\+100\) -> 300 \(\+100\)/)
+  assert.match(materialCellTrendRow('dirt', { back: 100, prev: 200, cur: 300 }), /^the dirt collected cell trend \(v0\.976\.282\): the dirt dig weather's own swell ran two steps deep - 100 -> 200 \(\+100\) -> 300 \(\+100\)/)
 })
 // the seats never merge - the .280 word keeps the lines' own sum (the
 // report's whole gathered mass), the materials dump row and the plan

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// (v0.976.281) THE MATERIAL CELL'S OWN GATHERED MASS - the fieldproof:
+// (v0.976.282) THE MATERIAL CELL'S OWN GATHERED MASS - the fieldproof:
 // the eight REAL fleet faces' own logs the cell census re-reads, the
 // raw cells a second regex lane independently re-prices per material,
 // the two reads must agree cell by cell (census == raw, zero
