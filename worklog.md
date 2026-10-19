@@ -35937,3 +35937,24 @@ Stage Summary:
 - FLEET OF RECORD（现役）：F501 = 39319100730（.302 树）IN_PROGRESS——下一 fire 终读 + artifact 深读；MY GATE 39319031590——下一 fire 先读。
 - .303 席位候选：F501 新面数据驱动；Prepare Mixed cause 分格；F500 artifact 深读驱动；tool repair/replace、night/mob survivability。
 - the identity law held: PLANETA9091
+---
+Task ID: 415967 (fire 0443, cron 2026-10-20 04:43:15 +08:00)
+Agent: Z.ai Code (main, fire-0443)
+Task: cron 任务书执行——v0.976.303 THE CONCURRENT START'S OWN PEAK MASS（CStart 时长峰值席位词）+ F500/F501 终读 + 诚实不派发
+
+Work Log:
+- sandbox 死亡→重克隆；PLANETA9091 身份复核（local+global）；npm install 补装。
+- 旧债全关：F500 = 39314160850（我 fire-0343 派发的 .300 fleet）SUCCESS；我的 worklog push 03293d5c push run SUCCESS。
+- 并行推进消化：.301 gcpausemixedtrend（fire-0330，Prepare Mixed kind-max 时长格——计数恒 4 但时长变分，prairie 拒绝的格价变体先例）+ .302 gcnormalpeaktrend（fire-0400，Normal kind-max 时长格）；F501 = 39319100730（.302 fleet）SUCCESS。
+- F500 面记录：counters bots=19 spawned=19 reconnects=9 kicks=5 tools=16 recovered=5 reboots=0 upgraded=15 swords=19 alive=19 climbs=34 banked=1138 smelted=21 planted=10 torched=4 fights=18 kills=3 shelters=2 rescues=53 pounces=0 pounceLanded=0 airGlitches=0 claims=21 claimedHolds=0 wet=7 wt=1；MY .296 拒收弧 4→4→4 三面 held；.299 Normal 弧 77/69/82/63/69/56/63→77。
+- 席位定案：'Pause Young (Concurrent Start)' 时长峰值格——.281 只 aggregate 捕获、.290 是不同发射器（Mark Cycle）、.302 grammar 显式拒 CStart body（same-lane different-cell 律 .289/.299/.301/.302 先例链）；计数恒 4 但时长变分（.301 先例完全适用）。
+- 五 REAL 面挖掘（F496/F497/F498/F499 artifacts 重下载 + F500 缓存）：max 弧 F496 22.336 / F497 21.960 / F498 25.909 / F499 15.947 / F500 16.332——三窗三 SWING 零 held（.294/.299/.302 级诞生）；**F498 第 4 行骑 Pinned sidecar**（CodeCache skin + (Evacuation Failure: Pinned) 730M->196M 25.909ms——全弧最大值），reason 皮肤变分（Metadata/CodeCache GC Threshold）grammar 双容。
+- v0.976.303 交付（2ce51f53，5 文件 +308/−1）：src/lib/gcconcurrentstarttrend.mjs（捕获组 pinned 侧车 + MAX 峰值标量 + 非负 float/int 双 fence）+ 6-pin 测试（14 near-miss skins 拒）+ decompose 接线（import 行 270、fold 行 10537-10548）+ scripts/fieldread-gcstartpeak-0443.mjs + package.json 0.976.303。
+- FIELDPROOF 5/5 census==raw（pinned raw==census 0/0/1/0/0）。本地门：node --check ×4、pins 6/6、syntax 1295/1295、unit 689/689（前台 585s）。
+- push 954ac5a4..2ce51f53 首试零冲突；**F502 诚实不派发**（三条件缺二：MY .303 gate 39323753897 queued 未终态 + active≠0；F501 绿 ✓ 已备）。
+
+Stage Summary:
+- v0.976.303 THE CONCURRENT START'S OWN PEAK MASS 在 origin——GC band 第七个 kind 格席位（CStart 峰值）。
+- MY GATE 39323753897（.303 树）待下一 fire 终读；F502 派发债务留给下一 fire（gate 绿 + F501 绿 ✓ + active=0 → dispatch）。
+- 下一席位候选：Remark count 格（恒 4 prairie 弃）、Cleanup count 格（恒 4 弃）、Concurrent Cycle count 细分、F502 新面驱动、GC band 外 console lanes 全 priced。
+- the identity law held: PLANETA9091
