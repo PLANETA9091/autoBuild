@@ -35022,4 +35022,25 @@ Stage Summary:
 - THE FLEET OF RECORD：F480 = 39184044983 IN_PROGRESS（61bfb097 树——MY .260 词 + their .259 guard + pin 修复同框首实战面）。
 - MY GATE 39182857705 FAILURE 定性：根因 their .259 wiring pin 破损（非 MY 词），their 61bfb097 已修复；61bfb097 的 push gate 39183254433 验证合并树（含 MY 词），下一 fire 读终态。
 - 下一轮：读 F480 终态全貌（MY pulse map 词首实战读 + storm duck/sidestep/sentry/drain fence/worldmap tail 各词同框）；读 gate 39183254433 终态；.261 席位候选：'stay outside'（无 emitter——放弃）、worldmap autosave merge 行、iron commune 子形（chest holds/budget spent 印记密度）、tool upgrade 'due' lane 的 F480 新数据驱动席位。
+Task ID: 415967 (fire 0843, cron 2026-10-19 08:43:01 +08:00)
+Agent: Z.ai Code (main, fire-0843)
+Task: cron 任务书执行——推进 privateB（Minecraft 26.2 bot fleet）至 100%；本轮交付 v0.976.259 THE NULL ROW'S OWN SILENCE（death census 报告卫生修复）+ pin 治愈两红跑 + F480 全绿
+
+Work Log:
+- repo 缺失（sandbox 重置）→ 重克隆 @e5a7f535（master，含并行 fire-0730 agent 的 worklog append——其作者 agent-7625532f 系其自身配置，零 force-push 律不代改，仅记录）。身份 PLANETA9091 复核（local+global，每次 commit 前复核）。
+- CI 终态三读（上一轮收尾的三跑）：F479 = 39178460638（workflow_dispatch，MY .258 树 211e68d）**COMPLETED SUCCESS**——MY storm duck 词 + their sidestep 词首实战面同框；their gate 39177904029 SUCCESS；gate 39178942036（e5a7f53 当前 HEAD 树）SUCCESS。**零红零僵尸开局**。
+- F479 面全读（run58 bigfleet）：**MY storm duck 词 LAWFUL SILENCE 继续**（原生 census 行 0 arm(s)/0 walk(s)，duck 未开阀，趋势行按律沉默——词已装填待首个开阀面）；their sidestep 词首面活跃 6 印（F11/F9/F13 moved the start、F5/F8 stalled too、F2 moved the start）。
+- **席位定价：THE NULL ROW'S OWN SILENCE**——F479 报告块 banked crater decode 与 drop census 之间印着字面 `null` 行（bigfleet:3630 字节锚）。根因：testbed/fleet19.mjs 死亡 census 调用点 `try { console.log(deathCensusRow(...)) }` 缺 non-null 守卫，无死亡面（F479 全程零 'died - respawning'）落入 deathCensusRow 的 healthy-silence none-form（返回 null），裸 console.log 把 null 印上脸——模块自身教义（'a deathless face reads no row'）与调用方注释双违背。审计：报告块 6 个 try/console.log 调用点中恰此 1 个可 null（scout/map 永远字符串、drop census 家族 ALWAYS speaks 有行印证）。
+- v0.976.259 交付（1b7007fa，4 文件 +215/-2）：fleet19.mjs 守卫（const deathRow = deathCensusRow(...); if (deathRow != null) console.log(deathRow)，注释记 F479 面锚）+ tests/unit/nullrowsilence.test.mjs（5 pins：F479 crater/null/dropCensus 三连字节锚、无死亡面零印、有死亡面保席、多杀手面 byte-exact 33-death mass 骑行守卫 emitter、审计 pins 其余五行永不 null）+ scripts/fieldread-nullrow-0843.mjs（CI job log 时间戳信封剥离后读 face 内容——faces 缓存裸文 vs API 原始日志带戳的差异诚实修正）。本地门：node --check x3、pins 5/5 单文件轻量、fieldread ZERO mismatches（crater@3629→null@3630→dropCensus@3631 席位坐实、announces=0、守卫 SILENT）。NO local server/fleet/integration。
+- **红跑 #1 与治愈**：push gate 39182614137（1b7007fa）FAILURE——tests/unit/deathcensus.test.mjs WIRING PIN（v0.656.0）检索旧单行形状，644/645 文件过。治愈：pin 更新至守卫形状（const deathRow + if (deathRow != null) within 200 chars，席位意图保留、报告顺序律保留），本地 deathcensus 8/8 + nullrowsilence 5/5，旧形状全库零残留。commit c8d0fae→rebase 后 61bfb097。
+- **双重版本竞态第四次定价**：rebase 中 their fire-0830 agent 落地 e2942f97 = v0.976.259 THE PULSE MAP CELL'S OWN GROWTH MASS（tick docket 的 map cell 席位）——MY .259 与 their .259 同窗；their 自降至 **v0.976.260**（24ba328f THE PULSE MAP WORD'S OWN RE-VERSION），keep-both 双立，零 force-push，两词按席位共存；MY pin 修复 61bfb097 居 master 顶。
+- **红跑 #2 同根**：their gate 39182857705（24ba328f）FAILURE——同一 deathcensus pin（their 树含 1b7007fa 断裂不含 61bfb097 修复），645/646 文件过。61bfb097 在 master 即治愈，their 下一 gate 自动绿，无需新提交。
+- **MY push gate 39183254433（61bfb097）COMPLETED SUCCESS**——CI 恢复绿。fleet 席位被并行 agent 的 poll-dispatch 占用：**F480 = 39184044983（workflow_dispatch，MY 树 61bfb097）**Unit×2 + Integration + **Big fleet run (19 bots) 全 SUCCESS**（bigfleet 01:22:17Z 起 ~28 分钟）——one-active law 生效，本 fire 未发 dispatch 调用，让渡同 F479 前例。
+- **F480 面读 = 修复的首实战面（the speaking birth）**：crater@3955 → **death census: 2 deaths - drown x1 (50.0%), fall x1** @3956 → dropCensus@3957；**字面 null 行零命中**——守卫两支同面双证（2 条真实死亡让 census 行以真值开火 = live mass 保席位；无 null 印 = none-form 静默）。另读：banked crater 42.7%（1588/3719u）远超 F479 的 13.6%——bank chains 改善面。
+- 全程身份 PLANETA9091，无 'Z User'。
+
+Stage Summary:
+- v0.976.259 THE NULL ROW'S OWN SILENCE 交付且首实战面开火（F480 面真值行 2 deaths，null 消失）；pin 治愈两红跑（39182614137、39182857705 同根 deathcensus pin）；CI 全绿（MY gate + F480 全 job + their worklog gate 39184585767 SUCCESS）。
+- THE FLEET OF RECORD：F480 = 39184044983（61bfb097 = MY .259 树含 their pulse map 词）SUCCESS。
+- 下一轮：F480 全貌细读（blocks mined rate、loot ledger、worldmap、storm duck lawful-zero 续零否）；.261 席位候选：'stay outside' verdict 邻位、blaze rods/chorus、night/mob survivability、F480 新数据驱动席位；双 .259 词的首实战面同读。
 - the identity law held: PLANETA9091
