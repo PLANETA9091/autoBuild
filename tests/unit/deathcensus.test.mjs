@@ -109,9 +109,15 @@ test('deathCensus: THE WIRING PIN - the observe rides the log filter, the row ri
   assert.ok(observe > 0, 'the observe parses the composed line at the filter pass')
   const filter = src.indexOf('console.log(`${name} ${m}`)')
   assert.ok(filter > 0 && observe < filter && filter - observe < 1800, 'the observe rides its own filter site (the window search - the census comment rides between, and the receipt-key comment block joined the window at v0.839.0 - the filter\'s own annotation)')
-  // the report row sits after the unaccounted decode it completes, before the drop census
-  const row = src.indexOf('try { console.log(deathCensusRow(deathCensusRecords)) }')
-  assert.ok(row > 0, 'the report row prints the census')
+  // the report row sits after the unaccounted decode it completes, before the drop
+  // census; (v0.976.259) the emitter carries the guard the F479 face priced: the
+  // deathless face reads no row - the none-form holds the seat silently, the null
+  // never reaches the face (the bare console.log printed the literal null row on
+  // run58's bigfleet report, between the crater decode and the drop census)
+  const row = src.indexOf('const deathRow = deathCensusRow(deathCensusRecords)')
+  assert.ok(row > 0, 'the report row prints the census (the guarded emitter)')
+  const guard = src.indexOf('if (deathRow != null) console.log(deathRow)')
+  assert.ok(guard > row && guard - row < 200, 'the guard rides the print (the v0.976.259 null-row silence)')
   const decode = src.indexOf('unaccounted mass decode')
   const dropRow = src.indexOf('try { console.log(dropCensusRow(dropCensusRecords)) }')
   assert.ok(row > decode && row < dropRow, 'the row sits between the decode it completes and the drop census (the report order law)')
