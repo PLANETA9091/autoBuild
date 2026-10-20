@@ -36160,3 +36160,26 @@ Stage Summary:
 - HEAD 41e77b2c = v0.976.312 PORT MASS поверх c6e573c0 (.311 TIMED OUT их) — login-строка теперь носит две руки: entity id (.297) и порт (.312), SAME-LINE DIFFERENT-CELL LAW echo box работает.
 - .312 gate pending на момент конца раунда; следующая пожар: прочитать .312 gate + .311 gate, при трёх зелёных условиях диспетчеризовать F507 (флот .310+.311+.312 полного дерева, оба новых слова впервые на лице).
 - Кандидаты будущих рук: min-port рука (33168/33720/34166/33176/33136 — fade/swing/fade погода), login count ячейка (39/30/25/30/40), float-координаты login-строки (новый домен).
+---
+Task ID: cron30-20261020-0830 (fire 0830)
+Agent: Z.ai Code (main, fire-0830)
+Task: cron 任务书执行——F505 终读 SUCCESS + F506 dispatch（骑 .310 全树）+ v0.976.311 THE LOST CONNECTION'S OWN TIMED OUT MASS（loss book 第二分 reason 格）+ F506 终读 SUCCESS + F507 诚实不派发
+
+Work Log:
+- sandbox 死亡第五次 → 重克隆 + npm install；身份复核。上 fire-0800 整轮被 sandbox 拒绝（零操作零债）。
+- 基线：syntax 1374/0、unit 696/696（前台）。
+- 债务终读（API 亲证）：F505 = 39341992087（32cb8bde .309 全树——echo 六词齐活首面）**SUCCESS**；.310 gate：代码 push run 39344578955 cancelled（concurrency displacement）→ substitute run **39344617403（ae0c6ea9 同树 + worklog）SUCCESS**（.306/.308 先例）；active=0 → **F506 派发**：POST ci.yml HTTP 204，材料化亲证 **F506 = 39349450602**（@ae0c6ea9 .310 全树）。
+- .311 席位审计：Timed out 计数格（.310 tail 点名 never prices；fire-0743 条件「F505+ 面再现则变分格合法」）。F505 artifact 挖掘：**Timed out 17 行再现 ✓**（Disconnected 23、echo 152 flat 律延续）；dispatch-run 全谱系重映射（F497=39296753535、F499=39309831696、F501=39319100730、F503=39334531367）；九面 census byte-verified：**0/0/0/0/0/17/0/0/17**（F501=17、F505=17、余零；F503=0 byte-verified）；**Disconnected 交叉核对 27/23/52/24/29/22/30/30/23 与 .310 arc byte-exact 全八共享面 MATCH**（同一挖掘管线自证）。
+- v0.976.311 交付（c6e573c0，5 文件 +496/−0）：timedouttrend.mjs（reason 锚定 'Timed out' byte-exact、Disconnected sibling/dup/WARN/12 皮拒、.232 count never caps、非负 int fence、两步 row + held law + 三面零、tail co-existence 含 rescue timeout v0.976.69 席）+ 6-pin 测试 + decompose 接线（import 于 .310 后、fold 于 .310 fold 后，argv[6..8] CENSUS GUARD）+ fieldread 脚本 + version bump。
+- **NAME COLLISION 事故与自愈**：首稿误占 timeouttrend 名（v0.976.69 rescue word 的既有 seat——rescue budget expiry lane）——pre-push node --check 抓到 Identifier 已声明；git checkout byte-exact 还原两被覆文件，改名 timedouttrend 干净落地（co-existence by name never by duplication）。
+- FIELDPROOF 9/9 census==raw 零失配（九 REAL 面 artifacts 重下，W5 swing 0 -> 17 (+17) -> 0 (-17) byte-exact 唯一发声——one-speak birth 诚实）；本地门：node --check ×5、pins 6/6、syntax 1377/0、unit 697/697。
+- push ae0c6ea9..c6e573c0 首试零冲突；CI gate 39351222264 in_progress 超 480s 未等 green（诚实留档，不谎报）。
+- F506 终读（API 亲证）：**COMPLETED SUCCESS**（.310 全树 fleet 绿——disconnect word 首实战面成立）。
+- **F507 诚实不派发**：MY .311 gate 39351222264 未 green（in flight）——三条件缺一（F506 SUCCESS ✓、active=0 ✓、gate ✗）。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.311 THE LOST CONNECTION'S OWN TIMED OUT MASS 在 origin（c6e573c0）——loss book 第二分 reason 格（Timed out sibling 从 merge fold 拆出）；MY 词库累计：.296 refusal、.303 CStart peak、.308 south edge、.310 disconnect、.311 timed out。
+- FLEET OF RECORD（现役）：**F506 = 39349450602（ae0c6ea9 .310 全树）SUCCESS**——下一 fire 债务：MY .311 gate 39351222264 终读 + 三条件审计（gate green + active=0 + F506 SUCCESS ✓✓✓）→ **F507 dispatch 骑 .311 全树 c6e573c0** + F506 artifact 深读（.310 disconnect 首实战面 + F506 面 Timed out 是否三度发声）。
+- .312 席位候选：F507 新面驱动（Timed out 三度发声→弧扩 W8）；per-reason byBot 分解（dupclock echo.byBot 的分 reason 镜像）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
+- the identity law held: PLANETA9091
