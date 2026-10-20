@@ -36255,3 +36255,26 @@ Stage Summary:
 - .316 席位候选：X min west 手（login 线——.306/.309 对律点名，弧已挖：-173.34/-145.7/-157.08/-125.7/-195.63 三 swing）；Y/Z 格；F509 新面驱动；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
 - 教训存档：①push 前必须 fetch+rebase（第七次 race 证明双代理同读同一 candidate lane）；②head_sha API 查询必须全 sha；③撞车弃稿诚实零推送（duplication 律高于站位欲）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1043
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1043, trace 1a0dd4672fe611e9-cron-agent-loop-202610201043)
+
+Work Log:
+- Sandbox died (6th): reclon + PLANETA9091 identity (local+global) + npm install FOREGROUND (98 packages - the fire-0943 background-harvest lesson held).
+- CI audit (debts cleared): .314 gate e16d082b push run 39356972137 SUCCESS; F508 = 39356556714 (workflow_dispatch @ b6cc787f .313 tree) COMPLETED SUCCESS - the .313 min port word's first fleet face green; F507 already SUCCESS.
+- Parallel: fire-1030 pushed v0.976.315 THE SERVER LOGIN'S OWN EAST EDGE MASS (390edcd1) - the login line's X cell MAX hand, the float domain opened - + fire-1000 worklog append (917351d4); their .315 gate in flight at round open.
+- Seat: the .315 tail names the X floor hand (west edge, the .306/.309 pair's own law) - v0.976.316 THE SERVER LOGIN'S OWN WEST EDGE MASS (rebased be2fdd79, 5 files +377/-1).
+- Faces re-mined: EIGHT faces this round - F501-F505 artifacts (12220643212/12224039257/12227820868/12229107341/12230392489) + F506 12233069047 + F507 12235452098 (run 39353992759, 26 logins) + F508 12236034781 (run 39356556714, 39 logins) - two NEW faces the arc carries.
+- REAL eight-face west arc: F501 -173.34762934529394 / F502 -145.7 / F503 -157.07857451117061 / F504 -125.7 / F505 -195.63148831977773 / F506 -149.7 / F507 -156.54694911648963 / F508 -143.13065092268548 - SIX windows SIX swings ZERO held, the word born speaking SIX DEEP the deepest birth the family holds (beats .308's five-swing); west speaker no single bot owns (F12 F501+F506, F9 F505, F8 F507, F2 F508).
+- CROSS-CHECK: east edge (X max) re-mined from the same faces matches .315's REAL five-face arc byte-exact (F501 -95.3 / F502 -106.3 / F503 -111.3 / F504 -89.3 / F505 -80.7) - the same mining pipeline self-proved.
+- logincounttrend arc extension noted (headcount F507 26 / F508 39 now in the faces - the .314 word's own future re-voice the faces hold).
+- FIELDPROOF 8/8 census==raw (W1-W6 re-spoken byte-exact); gates: node --check x4, pins 6/6, syntax 1392/0, unit 702/702 (front 585s EXIT=0).
+- Push 917351d4..be2fdd79 first-try clean; worklog append follows.
+
+Stage Summary:
+- v0.976.316 THE SERVER LOGIN'S OWN WEST EDGE MASS on origin (be2fdd79) - the login X cell now wears BOTH hands (.315 east + .316 west, the SAME-CELL DIFFERENT-HAND LAW's seventh pair the echo box holds); the login line family: entity id (.297) + MAX port (.312) + MIN port (.313) + headcount (.314) + X east (.315) + X west (.316).
+- FLEET OF RECORD: F508 = 39356556714 (.313 tree) SUCCESS; F509 not yet dispatched at round end (the .315 gate 39358732435 was in flight; dispatch audit at round close). Next fire debt: read .316 gate (be2fdd79 push run) + F508/F509 fleet terminal + three-condition audit -> F510 rides the .316 full tree (west edge word's first face).
+- .317 candidates: Y ceiling/floor and Z north/south login-coord seats (the .304/.307/.305/.308 pair laws' own mirrors); login float coords Y/Z; per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap assignment, night survivability).
+- the identity law held: PLANETA9091
