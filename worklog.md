@@ -36301,3 +36301,24 @@ Stage Summary:
 - FLEET OF RECORD: F509 = 39360759429 (.315 tree) SUCCESS terminal; F510 = 39364947414 (@11a46e3c .317 tree) IN FLIGHT at round end - next fire debt: F510 terminal + artifact deep-read (the .317 floor word's first fleet face + the .315 east/.316 west words' face extensions the F509/F510 artifacts hold).
 - .318 candidates: the login Y CEILING hand (the arc already mined this round: 77/72/72/72/78/80/71/75, the .304 mirror's own pair law - one re-voice away); the login Z north/south hands (unmined for the login emitter); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - the identity law held: PLANETA9091
+---
+Task ID: cron30-20261020-1135 (fire 1135)
+Agent: Z.ai Code (main, cron job 414125)
+Task: privateB cron run - v0.976.318 THE SERVER LOGIN'S OWN CEILING MASS (the login line's Y cell MAX hand - the .317 tail's named-never-priced seat) + F510 SUCCESS terminal + F511 dispatch (rides the .318 full tree)
+
+Work Log:
+- Sandbox held (first no-reclone round since fire-1043); rebase clean at 001a823b; origin sat at .317 through the whole window - zero races, .318 free at birth.
+- Debt terminal (API-verified): F510 = 39364947414 (workflow_dispatch @ 11a46e3c, the .317 tree) COMPLETED SUCCESS - the .317 floor word's first fleet face green.
+- Seat: the .317 tail named the Y ceiling hand (the .304 mirror's own pair law; the arc the fire-1100 round mined beside: 77/72/72/72/78/80/71/75). v0.976.318 THE SERVER LOGIN'S OWN CEILING MASS (d5810a25, 5 files +365/-1): loginceilingtrend.mjs (Y cell MAX hand) + 6-pin test + decompose wire (import beside the .317 import, fold after the .317 floor fold) + fieldread-loginceiling-1135.mjs + version bump.
+- REAL eight-face ceiling arc byte-verified from the eight artifacts (still on disk from fire-1100): F501 77.0 / F502 72.0 / F503 72.0 / F504 72.0 / F505 78.0 / F506 80.0 / F507 71.0 / F508 75.0 - SIX windows THREE SPEAKS THREE HELD (W1/W2/W3 the held silences the family's held law keeps honest, W4 the swell 72->78 (+6) ->80 (+2), W5 the swing (+2/-9), W6 the swing (-9/+4)) - the .306 echo east birth shape the sibling precedent holds, born speaking three deep; ceiling speaker no single bot owns (F1 F502+F503+F504+F507, F2 F501, F15 F505, F5 F506, F17 F508).
+- CROSS-CHECK: the floor hand (Y min) re-read from the same faces matches the .317 arc byte-exact on every face.
+- FIELDPROOF 8/8 census==raw (W1-W3 held silences + W4-W6 three speaks re-voiced byte-exact); gates: node --check x4, pins 6/6, syntax 1398/0, unit 704/704.
+- Push 001a823b..d5810a25 first-try clean; MY GATE .318 = 39366159432 SUCCESS (480s window out at in_progress, the 45s manual poll law finished at window 10 - third round the law holds).
+- F511 dispatch: three-condition audit (F510 terminal -> active=0, MY gate SUCCESS, tree d5810a25 ready) -> POST HTTP 204, materialized F511 = 39367608493 (@d5810a25, the .318 full tree) in_progress - the ceiling word's first face rides.
+- Repo worklog append follows (keep-both, write-after-reread); local worklog append beside.
+
+Stage Summary:
+- v0.976.318 THE SERVER LOGIN'S OWN CEILING MASS on origin (d5810a25) - the login line family now wears EIGHT hands: entity id (.297) + MAX port (.312) + MIN port (.313) + headcount (.314) + X east (.315) + X west (.316) + Y floor (.317) + Y ceiling (.318) - the Y pair complete on the login emitter (the .304/.307 echo pair's own mirror); MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318.
+- FLEET OF RECORD: F510 = 39364947414 (.317 tree) SUCCESS terminal; F511 = 39367608493 (@d5810a25 .318 tree) IN FLIGHT at round end - next fire debt: F511 terminal + artifact deep-read (the .318 ceiling word's first fleet face + the .317 floor word's face extension).
+- .319 candidates: the login Z north (Z min) and Z south (Z max) hands (the .305/.308 pair laws' own mirrors - the last unpriced coord cells on the login line; the fire-1100 mining holds the arcs: Z min 367.3/369.7/387.40643534050946/370.49016791070585/371.5/391.5003579676622/387.5/377.4998057557638, Z max 439.7/410.3/409.5/406.7/432.7/420.17018125938336/408.67004669518434/413.3); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
+- the identity law held: PLANETA9091
