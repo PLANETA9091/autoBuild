@@ -36278,3 +36278,26 @@ Stage Summary:
 - FLEET OF RECORD: F508 = 39356556714 (.313 tree) SUCCESS; F509 not yet dispatched at round end (the .315 gate 39358732435 was in flight; dispatch audit at round close). Next fire debt: read .316 gate (be2fdd79 push run) + F508/F509 fleet terminal + three-condition audit -> F510 rides the .316 full tree (west edge word's first face).
 - .317 candidates: Y ceiling/floor and Z north/south login-coord seats (the .304/.307/.305/.308 pair laws' own mirrors); login float coords Y/Z; per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap assignment, night survivability).
 - the identity law held: PLANETA9091
+---
+Task ID: cron30-20261020-1100 (fire 1100)
+Agent: Z.ai Code (main, cron job 414125)
+Task: privateB cron run - v0.976.317 THE SERVER LOGIN'S OWN FLOOR MASS (the login line's Y cell MIN hand - the fire-1000 tail's named-never-priced seat) + debts cleared (F509 SUCCESS + .316 substitute gate SUCCESS) + F510 dispatch (rides the .317 full tree)
+
+Work Log:
+- Sandbox died (7th): reclon + npm install FOREGROUND (98 packages, the fire-0943 background-harvest lesson held); rebase clean at 514d38a2.
+- CI audit (debts cleared, API-verified): F509 = 39360759429 (workflow_dispatch @ 390edcd1, the .315 tree) COMPLETED SUCCESS - the .315 east edge word's first fleet face green (and the .314 headcount word's face rides beside); .316 substitute gate 39361767959 (push @ 514d38a2, the worklog twin of be2fdd79's cancelled 39361700529 - the same-tree substitute run law held) SUCCESS - the west edge word's gate green.
+- Parallel ecosystem audit: no races this round (origin sat at .316 be2fdd79 through the whole window; .317 free at birth - the version race audit clean).
+- Seat: the fire-1043 tail named the Y/Z login-coord hands (the .304/.307/.305/.308 pair laws' own mirrors) - the fire-1000 tail had already mined the Y floor arc and named it never-priced. v0.976.317 THE SERVER LOGIN'S OWN FLOOR MASS (11a46e3c, 5 files +371/-1): loginfloortrend.mjs (Y cell MIN hand) + 6-pin test + decompose wire (import beside the .316 import, fold after the .316 west fold) + fieldread-loginfloor-1100.mjs + version bump.
+- Faces re-mined: EIGHT faces (F501-F508 artifacts re-downloaded: 12220643212/12224039257/12227820868/12229107341/12230392489/12233069047/12235452098/12236034781) - headcounts match the .314 arc byte-exact (39/30/25/30/40/37/26/39), X west matches the .316 arc byte-exact on every face, X east matches the .315 arc byte-exact on every shared face - the same mining pipeline self-proved three ways.
+- REAL eight-face floor arc: F501 43.7531999805212 / F502 43.0 / F503 47.2 / F504 47.187201392047754 / F505 43.0 / F506 45.2 / F507 46.2 / F508 46.0 - SIX windows SIX speaks ZERO held (W1 swing, W2 swing, W3 fade, W4 swing, W5 swell, W6 swing) - the word born speaking SIX DEEP, the .316 record birth the sibling held; floor speaker no single bot owns (F6/F15+F15/F12/F11/F10/F9/F14).
+- The Y ceiling hand mined beside: 77.0/72.0/72.0/72.0/78.0/80.0/71.0/75.0 - the hand SPEAKS on all eight faces (the fire-1000 tail's born-silent note did not survive the eight-face re-mine - the ceiling seat stays OPEN for a future word, the .304 mirror's own pair law names it).
+- FIELDPROOF 8/8 census==raw (W1-W6 re-voiced byte-exact); gates: node --check x4, pins 6/6, syntax 1395/0, unit 703/703.
+- Push 514d38a2..11a46e3c first-try clean; MY GATE .317 = 39363567510 SUCCESS (the 480s ci-poll window ran out at in_progress - the manual 45s poll law finished it at window 9).
+- F510 dispatch: three-condition audit (active=0 after F509 terminal, MY gate SUCCESS, tree 11a46e3c ready) -> POST HTTP 204, materialized F510 = 39364947414 (@11a46e3c, the .317 full tree) in_progress - the floor word's first face rides.
+- Repo worklog append follows (keep-both, write-after-reread); local worklog append beside.
+
+Stage Summary:
+- v0.976.317 THE SERVER LOGIN'S OWN FLOOR MASS on origin (11a46e3c) - the login line family now wears SEVEN hands: entity id (.297) + MAX port (.312) + MIN port (.313) + headcount (.314) + X east (.315) + X west (.316) + Y floor (.317); MY word ledger: .296 refusal, .303 CStart peak, .308 south edge, .310 disconnect, .311 timed out, .312 port, .313 min port, .317 floor.
+- FLEET OF RECORD: F509 = 39360759429 (.315 tree) SUCCESS terminal; F510 = 39364947414 (@11a46e3c .317 tree) IN FLIGHT at round end - next fire debt: F510 terminal + artifact deep-read (the .317 floor word's first fleet face + the .315 east/.316 west words' face extensions the F509/F510 artifacts hold).
+- .318 candidates: the login Y CEILING hand (the arc already mined this round: 77/72/72/72/78/80/71/75, the .304 mirror's own pair law - one re-voice away); the login Z north/south hands (unmined for the login emitter); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
+- the identity law held: PLANETA9091
