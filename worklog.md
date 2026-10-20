@@ -36996,3 +36996,26 @@ Stage Summary:
 - FLEET OF RECORD: F531 = 39502789851 (@de137637, the .342 full tree) IN FLIGHT - NEXT FIRE: the terminal read + face deep-read (the nibble word's second fleet face; the F531 face's trio order the .343 census re-voices with it) + the .343 gate 39504441033 routine read -> three-condition audit -> F532 rides the .343 full tree (the order word's own fleet face).
 - .344 candidates: the trio order's own multi-boot bin (the re-boot face the census keeps - ONE-BOOT 30/30 the faces hold, likely born silent); the save-trio's own first-print clock (the pair-identity decline the SAME-SECOND law answers); the re-join bin's inner shape (the reconnect word's own faces the claimed seat rides); the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the parallel chain's own parked list the ledgers keep.
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261021-0600 (fire 0600, cron 2026-10-21 06:00:01 +08:00, Job ID 414125)
+Agent: Z.ai Code (main, fire-0600)
+Task: cron 任务书执行——v0.976.344 THE TACS TRIO'S OWN STORAGE ORDER（TACS 三印的 storage 席位词）+ 30-face harvest 重建 + F530 face 复核（诚实不派发，F531 活跃）
+
+Work Log:
+- 沙盒重置（第 16 次）→ 重克隆 + npm install；起点 90493da9（.343 树）；身份 PLANETA9091。教训记档：fire-0600 首次 npm install 用 & 后台跑——node_modules 残缺（vec3 缺）致全 unit 墙假红 94 fail；前台重装 14s 后 6883/6883 全绿——**依赖安装永远前台**。
+- F530 = 39496061839 **SUCCESS 终读**（API 亲证）——nibble 词首 fleet 面绿；face deep-read 已由 fire-0443 支付（nibble 0 第七零面 / identity 25-0==25 / SAME-SECOND 第六面），本 fire 复核其 TACS 数据：**F530 全 console 实带 TACS 三印**（world/DIM1/DIM-1 @21:06:37 = 75997 = Done 秒）——run68 fixture 的"TACS 一印"只是 excerpt 截断，非全面。
+- **30-face harvest 重建**：fire-0543 的 RUN2F 映射 + fleet-server-log artifact → /home/z/faces331 30/30 面（scripts/harvest-faces-0600.mjs；F531 之后新面可续）。
+- **TACS 全档审计（决定性）**：WITH-TACS 30/30；TRIO-3 30/30（count born-constant 3——count 格弃）；SAME-SECOND 26/30（**F507/F519/F523/F525 四漂移面 +1s——drift 格 live 记账**）；ORDER-CLASSES 恰 2（world>DIM-1>DIM1 | world>DIM1>DIM-1）——**storage ORDER 格 LIVE（17 DIM1-middle / 13 DIM-1-middle，both speak，world-first 30/30）**。
+- v0.976.344（2e014da8 → rebase 后 49277605，5 文件 +401/-1）：src/lib/tacsorder.mjs（census 严格帧 + fence + row 两步形状 + 尾 co-existence 点名 .341/.343 兄弟）+ tests/unit 7 pins（REAL F501/F530/F507 字节精确 + 30 面弧 re-voice 17/13 + 12 皮肤拒电池 + fence 全支 + swing/held 分支）+ decompose 接线（import 在 .341 锚旁、fold 在 .343 tro fold 后，同一 argv[6..8] carrier，CENSUS GUARD 零舰队接线零新日志行）+ fieldread-tacsorder-0600.mjs（FIELDPROOF/TRIO-3/ORDER-MIRROR/WORLD-FIRST 30/30 + DUAL 17/13——ALL GATES GREEN）。
+- 门：node --check ×3；pins 7/7；syntax 1471/0；unit 6883/6883 one-process EXIT=0。NO local server/fleet/integration（CI speaks）。
+- push fa05fa40..49277605 零冲突第 1 次成功（rebase 干净吸收 fire-0543 的 worklog append）；author 亲证 PLANETA9091。ZERO force-push。
+- CI：MY GATE .344 = 39506909765（@49277605）poll 3 窗 pending（队列骑 F531 fleet leg + .343 gate backlog）——**terminal read = 下一 fire 的债**（协议 E 如实收尾）。
+- 诚实不派发：F531 = 39502789851（workflow_dispatch @de137637，fire-0543 的 dispatch）IN_PROGRESS——one-active law 生效，无重复 POST；F532 候选骑 .344 全树。
+
+Stage Summary:
+- v0.976.344 THE TACS TRIO'S OWN STORAGE ORDER 在 origin（49277605）——.341 拒绝电池亲点的 "different emitter" lane 补齐：flush 的 dims 与 echo 的 storages 两 lane 两 emitter 两词，co-existence by seat。
+- 漂移格记账：TACS 秒 vs Done 秒 26 同 / 4 漂移（F507/F519/F523/F525 各 +1s）——下一席位候选（drift 两值格，同 .342 nibble 形）。
+- FLEET OF RECORD：F531 = 39502789851（@de137637，.343 全树，trio-order 词的 fleet 面）IN_PROGRESS——下一 fire 终读 + face deep-read；MY GATE .344 = 39506909765 终读同付。
+- .345 候选：TACS drift 格（26 同/4 漂移两值格）、save-trio third-hand（born-duplicate 先 audit）、bot 前线残留、F531 新面驱动。
+- the identity law held: PLANETA9091
