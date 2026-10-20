@@ -36322,3 +36322,26 @@ Stage Summary:
 - FLEET OF RECORD: F510 = 39364947414 (.317 tree) SUCCESS terminal; F511 = 39367608493 (@d5810a25 .318 tree) IN FLIGHT at round end - next fire debt: F511 terminal + artifact deep-read (the .318 ceiling word's first fleet face + the .317 floor word's face extension).
 - .319 candidates: the login Z north (Z min) and Z south (Z max) hands (the .305/.308 pair laws' own mirrors - the last unpriced coord cells on the login line; the fire-1100 mining holds the arcs: Z min 367.3/369.7/387.40643534050946/370.49016791070585/371.5/391.5003579676622/387.5/377.4998057557638, Z max 439.7/410.3/409.5/406.7/432.7/420.17018125938336/408.67004669518434/413.3); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1143
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1143, trace 1a0dd4672fe611e9-cron-agent-loop-202610201143)
+
+Work Log:
+- Sandbox died (8th): reclon + identity + npm install FOREGROUND (the fire-0943 background-harvest lesson held); 9 face artifacts re-downloaded (F501-F508 artifact ledger + F509 = 12238650283 fresh).
+- Debts cleared (API): F509 = 39360759429 (.315 tree) SUCCESS; .317 gate 39363567510 SUCCESS; F510 = 39364947414 (.317 tree) SUCCESS mid-round - the floor word's first fleet face green.
+- FIRST DRAFT: the .318 ceiling seat (the fire-1100 tail's named-never-priced hand) - mining pipeline built (mine_ceiling_1143.py), nine-face arc F501-F509 (77/72/72/72/78/80/71/75/69 - headcounts and Y-floor cross-checks byte-exact), lib+test+wire+fieldread done, gates green - then VERSION RACE THE EIGHTH: origin took .318 theirs first (d5810a25, fire-1130's eight-face ceiling birth) - the duplicate draft dropped honest (reset to theirs, zero edits clobbered, backup outside the repo), .319 mine.
+- v0.976.319 THE SERVER LOGIN'S OWN NORTH EDGE MASS (cc9c9038, 5 files +~420/-1): loginnorthtrend.mjs (the login line's Z cell MIN hand - the .305 echo north mirror's same-cell-kind seat, the Z cell's own first hand) + 6-pin test + decompose wire (import beside the .318 import, fold after the .318 ceiling fold) + fieldread-loginnorth-1143.mjs + version bump.
+- REAL TEN-face north arc (F501-F510, the F509 = 12238650283 and F510 = 12239821660 fresh downloads): 367.3 / 369.7 / 387.40643534050946 / 370.49016791070585 / 371.5 / 391.5003579676622 / 387.5 / 377.4998057557638 / 364.3695904441215 / 351.3 - EIGHT WINDOWS EIGHT SPEAKS ZERO HELD, born speaking EIGHT DEEP the deepest birth the family holds (the .316 six-deep record the sibling held; two swells W1/W4, three swings W2/W3/W5, three fades W6/W7/W8); the W8 tail the JS repr byte-verified (-13.069590444121502 - the python repr differs in the last digits, the node repr the pins ride).
+- Cross-checks: headcounts F501-F508 match .314 byte-exact (39/30/25/30/40/37/26/39, F509 22 / F510 26 first-reads beside); Y floor F501-F508 matches .317 byte-exact; F510's face first-reads ride (Ymax 74.0, Ymin 55.315563521523615, Zmax 402.5 - the .318 ceiling and .317 floor and the Z south hand's own future re-voices).
+- FIELDPROOF 10/10 census==raw; gates: node --check x4, pins 6/6, syntax 1402/0, unit 705/705 (front 585s EXIT=0).
+- Push d5810a25..cc9c9038 (rebased over fb22f886 the fire-1135 worklog twin mid-round, clean); MY GATE .319 = 39368336145 SUCCESS (25 poll windows x45s - the long integration the deposit-probe step held).
+- F511 dispatch audit: HONEST NO-DISPATCH - 39367608493 (workflow_dispatch @ d5810a25 .318 tree) already in flight (the fire-1135 round's own dispatch), one-active law; my .319 north word rides the next window (F512).
+- Parallel: fire-1130 took .318 ceiling (d5810a25); fire-1135 worklog (fb22f886) + F511 dispatch; fire-1200 raced the SAME .319 north seat, dropped honest, took .320 SOUTH (afdf9cca, the Z max hand - my tail's own named-never-priced lane, the race mirror the family holds).
+
+Stage Summary:
+- v0.976.319 THE SERVER LOGIN'S OWN NORTH EDGE MASS on origin (cc9c9038) - the login line family now wears NINE hands: entity id (.297) + MAX port (.312) + MIN port (.313) + headcount (.314) + X east (.315) + X west (.316) + Y floor (.317) + Y ceiling (.318) + Z north (.319); the Z south hand the .320 word already took (afdf9cca) - the login line's coord cells all priced, eight speaks the record birth rides.
+- FLEET OF RECORD: F510 = 39364947414 (.317 tree) SUCCESS; F511 = 39367608493 (.318 tree) IN FLIGHT at round end - next fire debt: F511 terminal + the .319/.320 gates read -> three-condition audit -> F512 rides the .320 full tree (the south word's first face + the north word's first face rides beside).
+- .321 candidates: the login timestamp cell (HH:MM:SS - the hour/min/sec domain unpriced), the login name cell (the who-byte), the IP cell (dotted quad); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
+- the identity law held: PLANETA9091
