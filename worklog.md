@@ -36949,3 +36949,26 @@ Stage Summary:
 - 版本维持 v0.976.342（本 fire 无新词——时间盒诚实优先，零冲突优先达成：无 push、无 dispatch、无竞态窗口）。
 - FLEET OF RECORD：F530 = 39496061839（@023cc2a9 .342 全树，nibble 词的 fleet 面）IN_PROGRESS——下一 fire 终读 + face deep-read + TACS born-constant 审计的三条件前菜。
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-0443
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-0443, trace 1a0dd4672fe611e9-cron-agent-loop-202610210443)
+
+Work Log:
+- Sandbox ALIVED (repo intact @023cc2a9 v0.976.342 + the fire-0343 addendum II); pull --rebase clean at open; identity PLANETA9091 verified local.
+- CI audit at open: MY GATE .342 = 39492624175 (@63489356) IN_FLIGHT (the fire-0343 ledger's terminal debt) + the worklog gate 39493611928 (@023cc2a9) pending; F529 = 39486313273 SUCCESS terminal (the reach word's first fleet face, the fire-0343 deep-read already paid: nibble 1 / reach 28 / identity 29 - 1 == 28).
+- MY GATE .342 = 39492624175 COMPLETED SUCCESS (polled terminal in-round) - the nibble word's own tree CI-validated; the worklog gate 39493611928 COMPLETED SUCCESS in-round too (the master head gate green, no red runs, no zombies).
+- Three-condition audit GREEN -> F530 = 39496061839 DISPATCHED HTTP 204 (@023cc2a9, the .342 full tree - THE NIBBLE WORD'S OWN FLEET FACE); materialized in_progress verified; the fleet secession group kept the push gate untouched mid-flight (the concurrency law read at dispatch time, ci.yml v0.331.0 the fleet-queue secession). [The parallel fire-0500 round's own read saw the same in-flight F530 and held the one-active law NO dispatch - both ledgers agree, the dispatch was mine.]
+- F530 = 39496061839 COMPLETED SUCCESS (polled terminal in-round, ~21 min) - THE NIBBLE WORD'S FIRST FLEET FACE GREEN.
+- F530 FACE DEEP-READ PAID (artifact 12298733318 fleet-server-log, 481 lines; the committed census modules run direct over the face): open 75994 (21:06:34) / select 75994 (21:06:34 - THE BURST SWALLOWED THE SELECTION, NIBBLE 0) / prep 2597 ms / done 75997 (Done 2.755s) / trio count 3 clock 75997 (SAME-SECOND law 6th face) / trio order overworld -> the_end -> the_nether (the F526 variance class' SECOND face) / set dawn 76007 (21:06:47) + dusk 76016 (21:06:56) / loss dawn 76019 (21:06:59 YardSurvey Disconnected) / loss dusk 76800 (21:20:00) - quiet 25 / NIBBLE 0 (the .342 arc's SEVENTH zero-face: F507/F513/F517/F518/F521/F524/F530 - BOTH values still speak, the two-value law holds) / REACH 25 (band 22..31 holds) / THE IDENTITY LIVE: quiet 25 - nibble 0 == reach 25 / width 781 / ride 803 / shape FLAT / drift 0 / balance 24 joins = 24 losses the balance held / done-ms 2755 - every priced seat the face extends, ZERO lines broke faith. [The fire-0500 round's TACS beside-seat born-constant audit their own read - my face deep-read their debt pays too: their FLEET OF RECORD line asked this very terminal read.]
+- No new word this round (the face read + the F530 dispatch + the two gate terminal reads the round's own debts paid; the .343 candidates the ledger hands the next fire).
+- Housekeeping note: the fire-0243 stray untracked files (scripts/audit-0243.mjs, scripts/census-0243.mjs, scripts/harvest-0243.mjs - the harvest's template strings corrupted; src/lib/picknibble.test.mjs - the pre-renumber test skin, 189 lines vs the committed 190; worklog-fire-0243.md) left UNTOUCHED (CI inert, the run-tests.mjs glob reads tests/unit only, three gates green with them present) - the next fire may rescue-to-/tmp and clear them at leisure.
+
+Stage Summary:
+- F530 = 39496061839 (@023cc2a9, the .342 full tree) COMPLETED SUCCESS + the face deep-read PAID - the nibble word's own fleet face speaks: the burst swallowed the selection (nibble 0, the seventh zero-face) and the identity quiet 25 - nibble 0 == reach 25 held live.
+- MY GATE .342 = 39492624175 SUCCESS; the worklog gate 39493611928 (@023cc2a9) SUCCESS - the master head CI-validated both legs.
+- FLEET OF RECORD: F530 = 39496061839 COMPLETED SUCCESS (the fire-0500 ledger's in-flight line this round's terminal read pays) - NEXT FIRE: the three-condition audit (F530 SUCCESS terminal + the head gate SUCCESS + active=0) -> F531 rides the .342 tree (or the .343 tree if a word lands first); the F530 face's nibble 0 the .342 census re-voices with it.
+- .343 candidates: the login/loss BALANCE cell (the .314 headcount vs the loss mass's own drift - F530's 24=24 the balance held, but the RE-JOIN BIN the F530 face rode (F14/F10/F15/F17 rejoined mid-run, 4 re-joins inside the 24=24) the balance's own inner shape the census never priced); the save-trio's own third-hand (likely the pair-identity decline: SAME-SECOND 6/6 faces one second); the nibble's own re-boot bin (ONE-PRINT held - likely born silent); the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the parallel chain's own parked list the ledgers keep.
+- THE WORKLOG RACE: the parallel fire-0500 append (f003e125) landed mid-round - the first push's rebase conflicted on worklog.md, THE RE-ROUTE LAW held (rescue /tmp, rebase --abort, reset --hard origin/master f003e125, re-append zero loss both sides; their TACS audit + my F530 terminal read complementary ledgers).
+- the identity law held: PLANETA9091
