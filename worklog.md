@@ -36490,3 +36490,25 @@ Stage Summary:
 - .326 candidates: the boot count lane (the SAME emitter's own count seat - one boot per face everywhere so far, a born-silent word until the mid-face reboot rides); the 'Starting minecraft server version' cell (constant 26.2 - born silent); the .325 anchor tail's own named lanes (read the fire-1443 append first); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - Lessons: ①the ninth sandbox death - the reclone + foreground npm install law is permanent; ②the dispatch rides master HEAD at materialization time, not the sha the auditor held - verify ancestry (merge-base --is-ancestor) before claiming whose tree the run wears; ③the arc builder prints + on non-negative deltas - the pins must carry the plus-prefix (the float repr law's own sibling).
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261020-1530 (fire 1530)
+Agent: Z.ai Code (main, cron job 414125)
+Task: privateB cron run - v0.976.326 THE WORLD SPAWN'S OWN SOUTH MASS + F515 SUCCESS terminal + F516 dispatch
+
+Work Log:
+- Sync clean: origin f4ecdd0a (.324+.325 tree, v0.976.325); no fire-1500 round landed - .326 free, no race.
+- F515 = 39385906686 TERMINAL SUCCESS (the .324 boot word's AND the .325 anchor word's first fleet faces both green: unit legs 07:26Z, integration 07:37Z, big fleet leg 07:54Z all success).
+- Took the spawn-set line's Z cell - the SOUTH hand (MAX) fire-1443's own tail named - SAME-LINE DIFFERENT-CELL LAW; the Y cell declined this fire (its REAL arc 4 speaks 7 held - the quiet birth the coordinates did not earn; the Z spoke where the Y held, the mirror lesson of the .325 count-decline holds).
+- The Z arc re-mined THIRTEEN faces deep - F501's own face the .325 arc rode without (X -130, Y 71, Z 398 the cache re-voiced): F501..F513 Z = 398/394/400/390/396/404/397/396/405/392/395/402/407 - ELEVEN windows ELEVEN SPEAKS ZERO HELD, born ELEVEN DEEP (the .324 record tied); pair-agree 13/13; the MIN bed 390 (F504) the north seat named-never-priced beside.
+- v0.976.326 (7e1747f1, 5 files +~414): spawnsouthtrend.mjs (the .325 frame byte-exact, the Z cell the .248 law prices, the MAX hand the .320 login south word's own precedent, the integer fence the .325 law keeps, the 19 skins refused incl. the float/leading-zero/plus Z skins) + 5-pin test + decompose wire (import above the .325 import, fold after the anchor fold) + fieldread-spawnsouth-1530.mjs + bump.
+- FIELDPROOF 13/13 census==raw + PAIR-AGREE 13/13 + RE-VOICE 11/11; gates: node --check x5, syntax 1422/0, unit 712/712.
+- Push f4ecdd0a..7e1747f1 first-try clean; MY GATE .326 = 39389388152 SUCCESS (the 45s manual poll law, the ci-poll window + four manual polls).
+- Dispatch audit: zero active dispatch runs -> POST HTTP 204, F516 = 39391362502 materialized @7e1747f1 (the .326 full tree, the south word's first fleet face).
+
+Stage Summary:
+- v0.976.326 THE WORLD SPAWN'S OWN SOUTH MASS on origin (7e1747f1) - the spawn-set line now two hands priced (X anchor .325, Z south .326); MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .322, .324, .326.
+- FLEET OF RECORD: F515 = 39385906686 (@f62018d3, the .324+.325 tree) SUCCESS terminal; F516 = 39391362502 (@7e1747f1, the .326 tree) IN FLIGHT at round end - next fire debt: F516 terminal + artifact deep-read (the south word's first fleet face) + F517 dispatch.
+- .327 candidates: the spawn-set line's Y cell (MIN hand - the north seat, the 4-speaks quiet birth the honest pricing can still ride) and the Y MAX hand (the summit seat) and the Z MIN hand (the north reach .326's tail named) and the spawn-set clock/angle/dimension shape-only seats and the 'Starting minecraft server version' cell (constant 26.2 born silent) and per-reason byBot and bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
+- Lessons: ④the declined-lane audit must count the WHOLE arc before taking the seat (the Y's 4/7 the Z's 11/0 the same line held side by side); ⑤the run-level status can lag the jobs table - read the JOBS (all four success = terminal success) when the run rides in_progress past its legs; ⑥the .325 arc's F501 gap the cache re-mined - the prior fire's thirteen-face claim was twelve; the word evidence the fresh cache holds deeper.
+- the identity law held: PLANETA9091
