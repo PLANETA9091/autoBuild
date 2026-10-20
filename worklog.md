@@ -36560,3 +36560,27 @@ Stage Summary:
 - .329 candidates: the spawn-set clock's MAX hand (the SET DUSK seat - the later print, the .322 dusk mirror) and the angle pair and dimension cell (audit the whole arc first - the constant-shape lesson holds) and per-reason byBot and bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - Lessons: ⑦the MultiEdit prefix-anchor can double-insert when a prior atomic call half-lands - grep-count the import lines before node --check (the duplicate the syntax check would have caught at the wire, the sweep cheap); ⑧the sandbox death wipes /home/z/my-project caches but the scripts/ and worklog.md survive - the artifact-ID ledger in the conversation history is the mining insurance; ⑨the test-pin arithmetic the module's own mirror law catches (the census right the pin wrong - read the diff before touching the module).
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1743
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1743, trace 1a0dd4672fe611e9-cron-agent-loop-202610201743)
+
+Work Log:
+- Sandbox DIED (8th) -> fresh clone + identity PLANETA9091 local+global + FOREGROUND npm install (98 pkgs, the background-reaping law held).
+- Three-condition audit GREEN at open (F517 = 39397311636 SUCCESS terminal, the .328 gates 45c53995/40bf719c SUCCESS, active=0) -> F518 = 39402993976 DISPATCHED HTTP 204 @45c53995 (the .328 full tree); round: F518 COMPLETED SUCCESS - the set dawn word's first fleet face green.
+- Harvested SEVENTEEN faces (F501-F517) fresh from the artifacts API (F501-F515 = srv_39319100730..srv_39385906686, F516 = artifact 12250952414, F517 = artifact 12254267491); artifact IDs byte-agree the fire-1043/fire-1243 ledger records; the spawn-set line re-mined 17 faces deep (X/Y/Z trio + clock pair per face).
+- v0.976.329 THE WORLD SPAWN'S OWN SET DUSK (758708a1, 5 files): spawnsetdusk.mjs (the spawn-set line's clock cell the word prices the LATER edge - the MAX hand, the later bed-set print's clock, the .328 set dawn word's own tail's named-never-priced seat; the .321/.322 login clock pair's own cross-emitter mirror completes - the bed-set emitter's clock wears BOTH edges now: the .328 word the MIN/earlier edge, this word the MAX/later edge; the pair-identity law the coordinate cells keep the clock cell does NOT keep - the two prints 9-10 seconds apart every face the two hands genuinely distinct) + 5-pin test + decompose wire (import beside the .328 import, fold after the set dawn fold - the SAME argv[6..8] server-console carrier the .278 contract extends) + fieldread-spawnsetdusk-1743.mjs + version bump.
+- REAL seventeen-face set dusk arc: 74431/78053/81347/83713/85457/3462/6274/8081/10949/13659/15533/18061/21771/25286/27494/30183/33118 - FIFTEEN REAL WINDOWS FIFTEEN SPEAKS ZERO HELD, born speaking FIFTEEN DEEP - the family record (beats the .328 set dawn's thirteen; the F516/F517 fresh faces the W14/W15 windows deepen; the W4/W5 deltas the midnight wrap rides exact).
+- THE CROSS-CHECKS: DAWN-MIRROR 17/17 (the .328 arc byte-exact every shared face, F516/F517 the fresh extensions 30173/33118 ride beside) + BED-MIRROR 17/17 (the .327 arc, fresh 71/72) + SOUTH-MIRROR 17/17 (the .326 arc, fresh 406/398) + ANCHOR-MIRROR 12/12+F501 (the .325 arc's off-by-one label shift the .326 worklog's own F501 note re-voiced - their published twelve = true F502-F513, F501 X -130 re-voiced beside, fresh F514-F517 x -120/-123/-130/-127) + PAIR-GAP 17/17 + PAIR-AGREE the coordinate trio within-face byte-identical.
+- One pin bug caught pre-push (the fieldread RAW_DUSK tail 33118 - the dawn value ghosted the dusk seat - module right, pin fixed; the test's raw array the same typo the beside-value pin caught, the twice-held lesson).
+- Gates: node --check x4, pins 5/5, syntax 1431/0, unit 715/715 EXIT=0; MY GATE .329 = 39405423156 (758708a1) SUCCESS - the unit shards and integration both green on CI.
+- Push 45c53995..758708a1 first-try clean (fetch-before-push held, zero races this round).
+
+Stage Summary:
+- v0.976.329 SET DUSK on origin - THE SPAWN-SET LINE'S CLOCK PAIR COMPLETE (dawn .328 theirs / dusk .329 mine); the line now wears SIX hands: X anchor .325, Z south .326, Y bed .327, clock dawn .328, clock dusk .329, count declined honest; the angle pair and dimension cell remain shape-only lanes.
+- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327, .329 (.324/.326 lost to races, .328 theirs - the words ride).
+- FLEET OF RECORD: F519 = 39407353321 (@758708a1, the .329 full tree) DISPATCHED in flight - the set dusk word's first fleet face; next fire: F519 terminal + face deep-read + the .329 gate confirmed -> .330 rides.
+- .330 candidates: the spawn-set angle pair (yaw/pitch - audit the whole arc first, likely constant 0.0/0.0 = born silent); the dimension cell (likely constant overworld = born silent); fleet-19 log lanes (per-reason byBot, kick bill); bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability); the login line's IP cell (constant 127.0.0.1, born silent) and name vocabulary.
+- Lessons: the beside-value pin catches its own typos (the .321 dawn 7201 and this round's 33118 - the module right both times, the pin fixed); the harvest label shift re-voiced through the .326 worklog's F501 note - cross-round artifact IDs byte-agree the ledger.
+- the identity law held: PLANETA9091
