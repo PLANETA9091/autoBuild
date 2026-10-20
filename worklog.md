@@ -36183,3 +36183,28 @@ Stage Summary:
 - FLEET OF RECORD（现役）：**F506 = 39349450602（ae0c6ea9 .310 全树）SUCCESS**——下一 fire 债务：MY .311 gate 39351222264 终读 + 三条件审计（gate green + active=0 + F506 SUCCESS ✓✓✓）→ **F507 dispatch 骑 .311 全树 c6e573c0** + F506 artifact 深读（.310 disconnect 首实战面 + F506 面 Timed out 是否三度发声）。
 - .312 席位候选：F507 新面驱动（Timed out 三度发声→弧扩 W8）；per-reason byBot 分解（dupclock echo.byBot 的分 reason 镜像）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261020-0930 (fire 0930)
+Agent: Z.ai Code (main, fire-0930)
+Task: cron 任务书执行——双 gate 终读 + F507 dispatch（骑 .312 全树）+ F507 终读 SUCCESS + v0.976.313 THE SERVER LOGIN'S OWN MIN PORT MASS（SAME-CELL DIFFERENT-HAND 律第五对）+ F508 dispatch（骑 .313 全树）
+
+Work Log:
+- sandbox 第 11 面恢复：本地 repo 死亡 → 重克隆 + npm install（98 包）；poll 脚本幸存；身份复核。
+- 债务终读（API 亲证）：.311 gate 39351222264（c6e573c0）**SUCCESS**；.312 树两 push run（39352053544/39352150824）concurrency cancelled → **substitute run 39352273821（9b265ea7 = .312 树 + worklog）SUCCESS**（.306/.308 同树替代先例）；F506 = 39349450602 SUCCESS ✓——三条件全绿 → **F507 派发**：POST ci.yml HTTP 204，材料化亲证 **F507 = 39353992759**（@9b265ea7 .312 全树）。
+- .313 席位审计：.312 tail 点名的 min-port 手（"a lane the tail names and never prices"——SAME-CELL DIFFERENT-HAND LAW：.312 占 MAX 手，本词占 MIN 手；.304/.307 Y 对、.306/.309 X 对第四第五先例）。
+- 五 REAL 面 artifacts 全量重下（12220643212/12224039257/12227820868/12229107341/12230392489 = F501–F505）：min-port 弧逐面 byte-verified **F501 33168（F19, [20:47:46]）/ F502 33720（F10）/ F503 34166（F1）/ F504 33176（YardSurvey）/ F505 33136（F19, [23:53:51]）**——MIN 手无恒定 speaker（F19×2、F10、F1、YardSurvey）；logins 计数 39/30/25/30/40 与 .312 记录互证；三窗全发声：W1 swell 33168 -> 33720 (+552) -> 34166 (+446)、W2 swing (+446) -> 33176 (-990)、W3 fade (-990) -> 33136 (-40)——born speaking three deep（swell/swing/fade）。
+- v0.976.313 交付（b6cc787f，5 文件）：loginminporttrend.mjs（.312 frame byte-exact 同格、proven integer capture no leading-zero no plus、12 皮拒、null-sentinel MIN 手（.307 floor 律——no-login 面 lawful zero、三面零沉默）、非负 int fence、两步 row + held law + tail co-existence 点名 .312 MAX 席/.297 entity id/.310/.311 席）+ 6-pin 测试（REAL 五面 min 线 byte-exact、capture law、junk/honest null、12 皮、fence 全支、W1/W2/W3 byte-exact + 合成 held 拒、三面零）+ decompose 接线（import 于 .312 前、fold 于 .312 fold 后，argv[6..8] CENSUS GUARD）+ fieldread-loginminport-0930.mjs + version bump。
+- FIELDPROOF **5/5 census==raw** 零失配；本地门：syntax 1383/0、unit 699/699。
+- push 9b265ea7..b6cc787f 首试零冲突；VERSION RACE 审计：.313 出生空闲（origin .312 theirs）。旧词 birthmark 不动（loginporttrend/fieldread-0843 的 .312 引用保持）。
+- MY GATE .313 = **39355088089 SUCCESS**。
+- F507 终读（API 亲证）：**COMPLETED SUCCESS**（.312 全树 fleet 绿——.311 timed out + .312 login port 两词首实战面成立）。
+- **F508 派发**：三条件复审（active=0 ✓、MY gate SUCCESS ✓、树 b6cc787f 就绪 ✓）→ POST HTTP 204，材料化亲证 **F508 = 39356556714**（@b6cc787f .313 全树）in_progress——MIN 手首实战面骑行中。
+- fire-0800 缺口核销：fire-0830 worklog 已记「fire-0800 整轮被 sandbox 拒绝（零操作零债）」——无重复补记，本轮背书亲证。
+- 双 worklog append（keep-both，写前重读）。
+
+Stage Summary:
+- v0.976.313 THE SERVER LOGIN'S OWN MIN PORT MASS 在 origin（b6cc787f）——login 端口格双手齐活（MAX/.312 + MIN/.313，SAME-CELL DIFFERENT-HAND LAW 第五对）；MY 词库累计：.296 refusal、.303 CStart peak、.308 south edge、.310 disconnect、.311 timed out（fire-0830）、.312 port（fire-0843）、.313 min port。
+- FLEET OF RECORD（现役）：**F508 = 39356556714（b6cc787f .313 全树）in_progress**——下一 fire 债务：F508 终读 + artifact 深读（.313 min port 首实战面 + .311/.312 词的 F507/F508 新面弧扩）。
+- .314 席位候选：login count 格（39/30/25/30/40 面——.312 tail 点名）；float 坐标域（login 线新域）；F508 新面驱动（min-port 弧 W4）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
+- the identity law held: PLANETA9091
