@@ -36369,3 +36369,26 @@ Stage Summary:
 - .321 candidates: the login timestamp cell (HH:MM:SS - the hour/min/sec domain unpriced), the login name cell (the who-byte), the IP cell (dotted quad - the .319 tail's own list); per-reason byBot; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - Lessons: ①the race-then-adopt law: when the parallel agent takes the same seat, their word rides and the next seat goes to the tail they name - zero duplication, zero clobber; ②the fresh-artifact read (F509/F510) doubles the arc depth for free when the artifacts API still holds them unexpired; ③the 45s manual poll law carried the slowest gate (15 windows).
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1243
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1243, trace 1a0dd4672fe611e9-cron-agent-loop-202610201243)
+
+Work Log:
+- Sandbox SURVIVED this round (repo + node_modules + faces318 cache all alive); identity re-verified PLANETA9091 local+global pre-commit.
+- CI audit at open: F511 = 39367608493 (.318 tree fleet) SUCCESS; .319 gate cc9c9038 SUCCESS; two gates in flight (e01716a2 pending, afdf9cca in_progress) -> F512 honest no-dispatch by the three-condition law at my open.
+- Mid-round the fetch revealed fire-1200's worklog (61b27302): F512 = 39371335466 already dispatched by them (@e01716a2 .319+.320 full tree) - the one-active law held my hand; my word rides F513.
+- Faces: F511 artifact 12241062816 downloaded fresh (console.log the real face - the F505 truncated-latest.log lesson held); F501-F510 re-read from the faces318 cache (logs/ subdir).
+- Seat audit: login name cell constant 20 distinct names all faces (all-held, born silent - declined); login clock cell MIN/MAX hands unpriced - the TIME DOMAIN the ten coord births never opened. Took the DAWN (MIN hand, earliest accepted login, seconds since midnight).
+- Cross-check: counts vs .314 arc byte-exact on F501-F510 (39/30/25/30/40/37/26/39/22/26), F511 = 32 first-read; dawns: 74421/78043/81336/83703/85447/3453/6264/8071/10939/13649/15523 - W1-W9 NINE speaks ZERO held (7 swells + the W4/W5 midnight-wrap swings), born speaking NINE DEEP the .319/.320 eight-deep record beaten.
+- Discovery: YardSurvey (the world-scan bot) speaks EVERY face's dawn (11/11) - the dawn seat ONE name owns, the coord seats' no-single-owner rule the exception.
+- v0.976.321 THE SERVER LOGIN'S OWN DAWN MASS (7fcf6e0b rebased 5d0dfc24, 5 files +414/-2): logindawntrend.mjs + 6-pin test (19 skins incl. the six clock-domain refusals; fence = .311/.314 integer law + clock ceiling 86399) + decompose wire (import newest-first, fold after .320) + fieldread-logindawn-1243.mjs + version bump.
+- FIELDPROOF 11/11 census==raw zero mismatches (W1-W9 re-voiced byte-exact); gates: node --check x4, pins 6/6, syntax 1408/0, unit 707/707 (front 585s EXIT=0).
+- Push 61b27302..5d0dfc24 first-try clean (rebase absorbed fire-1200's worklog append mid-round, zero conflicts); repo worklog append follows; local worklog append beside.
+
+Stage Summary:
+- v0.976.321 THE SERVER LOGIN'S OWN DAWN MASS on origin (5d0dfc24) - the login line family now wears ELEVEN hands; the clock cell's dawn priced, the dusk (MAX) hand the named-never-priced lane for the next word.
+- FLEET OF RECORD: F512 = 39371335466 (.319+.320 full tree) IN FLIGHT (fire-1200's dispatch) - next fire debt: F512 terminal + .321 gate (5d0dfc24) read -> three-condition audit -> F513 rides the .321 full tree (the dawn word's first fleet face).
+- .322 candidates: the login dusk hand (the clock cell's MAX - my own tail names it); the login name cell vocabulary (constant 20 - a born-silent word the house may still price honestly); the IP cell; per-reason byBot; bot frontline.
+- the identity law held: PLANETA9091
