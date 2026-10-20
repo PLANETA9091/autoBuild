@@ -36208,3 +36208,26 @@ Stage Summary:
 - FLEET OF RECORD（现役）：**F508 = 39356556714（b6cc787f .313 全树）in_progress**——下一 fire 债务：F508 终读 + artifact 深读（.313 min port 首实战面 + .311/.312 词的 F507/F508 新面弧扩）。
 - .314 席位候选：login count 格（39/30/25/30/40 面——.312 tail 点名）；float 坐标域（login 线新域）；F508 新面驱动（min-port 弧 W4）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-0943
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-0943, trace 1a0dd4672fe611e9-cron-agent-loop-202610200943)
+
+Work Log:
+- Sandbox died (5th): reclon + PLANETA9091 identity (local+global) + npm install (98 packages).
+- CI audit: .311 gate 39351222264 SUCCESS (the in-flight debt fire-0830 left, terminal green); 9b265ea7 worklog push gate SUCCESS; F506 = 39349450602 SUCCESS (.310 tree fleet green); F507 = 39353992759 found workflow_dispatch @ 9b265ea7 (.312 tree) IN FLIGHT (parallel agent dispatch 09:32 +08, one-active law) -> F508 honest no-dispatch (active != 0).
+- Parallel ecosystem mid-round: fire-0930 pushed v0.976.313 MIN PORT (b6cc787f) at 09:44 +08 (the .312 tail's named-never-priced min hand - the SAME-CELL DIFFERENT-HAND LAW's newest sibling) + worklog append 92df8fad; rebased clean twice, zero conflicts.
+- Seat audit: kick bill (kickbill/kickkinds/kickwitness/counterkickstrend/kindlesskicks) TAKEN, gc band TAKEN (8+ words) -> login count cell (the fire-0843 stage summary's named-never-priced hand: 39/30/25/30/40) FREE.
+- Faces re-mined: F501-F505 artifacts (12220643212/12224039257/12227820868/12229107341/12230392489) + F506 artifact 12233069047 (new face, run 39349450602) - console.log is the real face (F505's logs/latest.log is a stub, console.log carries the 40).
+- v0.976.314 THE SERVER LOGIN'S OWN HEADCOUNT MASS (81715e5e rebased 88897ada, 5 files +326/-1): logincounttrend.mjs + 6-pin test + decompose wire (import beside .313 import, fold after .313 fold) + fieldread-logincount-0943.mjs + version bump. REAL six-face arc: F501 39 / F502 30 / F503 25 / F504 30 / F505 40 / F506 37 - four windows four speaks (W1 fade 39->30->25, W2 swing 30->25->30, W3 swell 25->30->40, W4 swing 30->40->37) - the word born speaking FOUR deep (deeper than .312/.313's three).
+- FIELDPROOF 6/6 census==raw zero mismatches (W1-W4 re-spoken byte-exact).
+- Sandbox harvest lesson refreshed: the round-opening npm install ran BACKGROUND and was reaped - 94 unit files died on mineflayer-pathfinder import; FOREGROUND reinstall (98 packages) healed -> unit 700/700. (The background-reaping law now covers npm install too, not just long test walls.)
+- Local gates: node --check x4, pins 6/6, syntax 1386/0, unit 700/700 (front 585s, EXIT=0).
+- Push 92df8fad..88897ada first-try clean; worklog append follows (keep-both, write-after-reread).
+
+Stage Summary:
+- v0.976.314 THE SERVER LOGIN'S OWN HEADCOUNT MASS on origin (88897ada) - the login line family now wears FOUR hands: entity id (.297) + MAX port (.312) + MIN port (.313) + headcount (.314) - the SAME-LINE DIFFERENT-CELL LAW's richest line.
+- FLEET OF RECORD: F507 = 39353992759 (.312 tree @ 9b265ea7) IN FLIGHT at round end - next fire debt: read F507 terminal + .314 gate (88897ada push run) + three-condition audit -> F508 dispatch rides the .314 full tree (headcount + min port words' first faces).
+- .315 seat candidates: F507's new face (headcount five-face arc extension if F507 speaks); login float coords (the new domain the fire-0843 tail named); per-reason byBot split; bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
+- the identity law held: PLANETA9091
