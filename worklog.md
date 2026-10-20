@@ -36442,3 +36442,27 @@ Stage Summary:
 - .324 candidates: the login name cell vocabulary (constant 20 names all faces - born silent, declined twice); the IP cell (dotted quad - all 127.0.0.1 the localhost constant, born silent); the fleet-19 log's own lanes (per-reason byBot, the kick bill cells); bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the login line's own seats ALL priced, the next words ride other emitters.
 - Lessons: the race-then-adopt law ran LIVE (my .322 born into fire-1300's .322 push - the reset --hard adoption zero-clobber; the fetch-before-push check now MANDATORY: git fetch origin && origin/master unchanged before push, else re-audit the seat); the npm-install-foreground law re-proved (614/708 -> 709/709); the worklog Task ID formats differ across agents (cron30-20261020-1300 vs fire-1343) - grep by the seat, never by the ID shape.
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1443
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1443, trace 1a0dd4672fe611e9-cron-agent-loop-202610201443)
+
+Work Log:
+- Sandbox DIED (6th) -> fresh clone + identity PLANETA9091 local+global; FOREGROUND npm install (98 pkgs, the harvest law re-proved at open).
+- CI audit at open: .323 gate 39379638507 (@b4438c8e) SUCCESS; F513 = 39376695495 (.321 tree) SUCCESS terminal; active=0 - THREE CONDITIONS MET -> F514 = 39382361698 DISPATCHED HTTP 204 (@b4438c8e, the .323 full tree) in flight this round.
+- F513 artifacts deep-read (fleet-server-log 12244832379 + fleet19-log 12244907076): shape-bucketed both logs; the login line's thirteen hands confirmed complete; NEW LINE FAMILY found unpriced - the server's own 'Set the world spawn point to x, y, z [yaw, pitch] in minecraft:overworld' boot print (F513 holds TWO prints, ONE Done line - the spawn-set count NOT a boot count, the prints re-set the same anchor mid-conversation).
+- The count hand DECLINED honestly: spawn-sets per face CONSTANT 2 across all twelve faces harvested (F502-F513, the count arc all-held) - the constant-cell law the name/IP precedents hold (born silent, declined); the COORDINATES spoke instead: the X cell TWELVE DISTINCT values one per face - the world's own anchor the faces never hold still.
+- Faces harvested fresh from the artifacts API (11 downloads, the artifact IDs cross-checked against the faces314 cache's own records - f502 12224039257 ... f506 12233069047 byte-agree) into /home/z/faces323/faces/; console.log the real face everywhere (the F505 truncated-latest.log lesson holds).
+- VERSION RACE THE NINTH RAN LIVE: my .324 born into fire-1430's own .324 BOOT MASS push (083de37f - the Done duration cell, a DIFFERENT word a different seat, no duplicate to drop) mid-round - their number rode first, my word renumbered .325 atop theirs; keep-both held in the decompose wire (their import + fold kept, mine above/after theirs, the closing brace their conflict side dropped patched, node --check caught it); both pins green (6/6 + 6/6), merged wall 711/711.
+- v0.976.325 THE WORLD SPAWN'S OWN ANCHOR MASS (30279237, 5 files): spawnanchortrend.mjs (the spawn-set line's X cell, LAST-PRINT-WINS the .279 precedent) + 6-pin test (19 skins) + decompose wire (import above the .323 import, fold after the firstborn fold) + fieldread-spawnanchor-1443.mjs + version bump.
+- The REAL twelve-face anchor arc (LAST print's X): F502 -127, F503 -133, F504 -118, F505 -124, F506 -130, F507 -136, F508 -123, F509 -122, F510 -119, F511 -133, F512 -135, F513 -132 - W1-W10 TEN windows TEN SPEAKS ZERO HELD (5 swings + 3 fades + 2 swells) - BORN SPEAKING TEN DEEP the family's deepest birth (the .321/.322 nine-deep record beaten).
+- FIELDPROOF 12/12 census==raw + PAIR-AGREE 12/12 (the within-face pair's X byte-identical - the anchor never moves mid-face) + DONE-FOLLOWS 12/12 (the last spawn clock after the boot's Done line) + RE-VOICE 10/10; one fieldproof script bug caught (the hour group read where the full clock wanted - the m[0].slice fix), zero word bugs.
+- Gates: node --check x4, pins 6/6, syntax 1416/0, unit 710/710 (front 585s EXIT=0).
+
+Stage Summary:
+- v0.976.325 THE WORLD SPAWN'S OWN ANCHOR MASS on master (this push) - a NEW line family opens (the spawn-set line the fourteenth hand's own emitter); the anchor's neighbours the evidence holds for the next fires: the Y cell 72/72/72/67/71/71/69/69/74/70/72/68 and the Z cell 394/400/390/396/404/397/396/405/392/395/402/407 - BOTH ARCS ALL-DISTINCT TWELVE FACES (the Y and Z hands the named-never-priced lanes ride, the .325/.326 candidates); the clock cell and the angle pair and the dimension cell the further shape-only seats.
+- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325 (the .324 number lost to fire-1430's BOOT MASS race - the word itself rides).
+- FLEET OF RECORD: F514 = 39382361698 (@b4438c8e, the .323 tree) IN FLIGHT (MY dispatch) - next fire: F514 terminal + artifact deep-read + three-condition audit -> F515 rides the .324 full tree (the anchor word's first fleet face).
+- Lessons: the count hand can be born ALL-HELD (constant 2 twelve faces) - the seat audit MUST re-count the whole arc before pricing (the coordinates spoke where the count declined); the artifact-ID cross-check against prior caches catches harvest mixups; the spawn-set conversation re-sets the anchor twice per boot (one Done line, two prints, the same X) - count the prints, never interpret the mechanism.
+- the identity law held: PLANETA9091
