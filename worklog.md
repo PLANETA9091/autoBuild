@@ -36141,3 +36141,22 @@ Stage Summary:
 - 下一 fire 债务：MY .310 gate（430410e7 push run）+ F505 终态 + active=0 → 三条件则派 F506 骑 .310 全树。
 - .311 席位候选：F505 新面驱动；Timed out 计数格（F501 单面事件——若 F505+ 面再现则变分格合法）；per-reason byBot 分解（dupclock echo.byBot 的分 reason 镜像）；bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment）。
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-0843
+Agent: Z.ai Code (main, cron job 415967)
+Task: Продолжить privateB до 100% (v0.3.0 статическая строка; фактический курс слов v0.976.x)
+
+Work Log:
+- Сендбокс умер (четвёртая смерть): репозиторий исчез, reclon + PLANETA9091 identity (local+global) + npm install (98 пакетов).
+- CI-аудит: .310 gate (ae0c6ea9 push 39344617403) SUCCESS; F505 = 39341992087 SUCCESS (все 4 legs, флот .309 дерева зелёный); F506 = 39349450602 (workflow_dispatch, ae0c6ea9, PLANETA9091-параллельным агентом) найден queued при старте — one-active law, честный no-dispatch; к концу раунда F506 completed SUCCESS (.310 дерево флот зелёный).
+- Скачаны лица F501-F505 (fleet-server-log артефакты 12220643212/12224039257/12227820868/12229107341/12230392489), mining: login-строки '<name>[/IP:port] logged in with entity id N at (x, y, z)' — порт-ячейка не принадлежит ни одной книге (.297 entityidtrend берёт entity id max, порт ride shape only, never captured).
+- v0.976.312 THE SERVER LOGIN'S OWN PORT MASS (41e77b2c, 5 файлов +309/−1): src/lib/loginporttrend.mjs (строгая грамматика кадр .297 byte-exact, порт-ячейка upgrade до proven integer capture — no leading zero no plus, .248 house law; 12 near-miss skins; MAX port scalar; non-negative fence; two-step row; held law; three-face zero; tail co-existence), tests/unit/loginporttrend.test.mjs (6 пинов, REAL F501/F503/F504/F505 строки byte-exact, capture law entity id никогда не едет в порт-ячейке), scripts/fieldread-loginport-0843.mjs, decompose wire (import рядом .310/.311, fold после .311 timedout fold).
+- REAL пяти-лицевая дуга порта: F501 58954, F502 58868, F503 59334, F504 56186, F505 59934 — W1 swing (-86/+466), W2 swing (+466/-3148), W3 swing (-3148/+3748) — ТРИ ОКНА ТРИ SWING, слово рождено говорящим на три. Min-порт рука (33168/33720/34166/33176/33136) едет unread в хвосте — будущая рука.
+- FIELDPROOF 5/5 census==raw (grep|sed|sort|tail raw max порт, нулевые расхождения). Локальные ворота: node --check x4, пины 6/6, syntax 1380/0, unit 698/698 (front timeout 585).
+- VERSION RACE ШЕСТОЙ: параллельный fire-0830 агент вытолкнул c6e573c0 v0.976.311 THE LOST CONNECTION'S OWN TIMED OUT MASS (Timed out sibling — lane, которую хвост .310 назвал и не брал) пока я копал порт. .311 их (первое рождение), мой - .312. Rebase конфликт в decompose.mjs fold-зоне решён keep-both: их timedout fold + мой port fold в одной несущей, ни одна правка не затёрта; версия перештампована .311 -> .312 во всех ссылках. Их коммит - Z User identity (история не меняется, нулевой force-push; мои коммиты PLANETA9091 проверены перед каждым).
+
+Stage Summary:
+- HEAD 41e77b2c = v0.976.312 PORT MASS поверх c6e573c0 (.311 TIMED OUT их) — login-строка теперь носит две руки: entity id (.297) и порт (.312), SAME-LINE DIFFERENT-CELL LAW echo box работает.
+- .312 gate pending на момент конца раунда; следующая пожар: прочитать .312 gate + .311 gate, при трёх зелёных условиях диспетчеризовать F507 (флот .310+.311+.312 полного дерева, оба новых слова впервые на лице).
+- Кандидаты будущих рук: min-port рука (33168/33720/34166/33176/33136 — fade/swing/fade погода), login count ячейка (39/30/25/30/40), float-координаты login-строки (новый домен).
