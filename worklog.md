@@ -36512,3 +36512,28 @@ Stage Summary:
 - .327 candidates: the spawn-set line's Y cell (MIN hand - the north seat, the 4-speaks quiet birth the honest pricing can still ride) and the Y MAX hand (the summit seat) and the Z MIN hand (the north reach .326's tail named) and the spawn-set clock/angle/dimension shape-only seats and the 'Starting minecraft server version' cell (constant 26.2 born silent) and per-reason byBot and bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability).
 - Lessons: ④the declined-lane audit must count the WHOLE arc before taking the seat (the Y's 4/7 the Z's 11/0 the same line held side by side); ⑤the run-level status can lag the jobs table - read the JOBS (all four success = terminal success) when the run rides in_progress past its legs; ⑥the .325 arc's F501 gap the cache re-mined - the prior fire's thirteen-face claim was twelve; the word evidence the fresh cache holds deeper.
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1543
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1543, trace 1a0dd4672fe611e9-cron-agent-loop-202610201543)
+
+Work Log:
+- Sandbox DIED (7th) -> fresh clone + identity PLANETA9091 local+global + FOREGROUND npm install (98 pkgs, 11s).
+- State at open: HEAD f4ecdd0a (fire-1430's worklog atop my .325 ANCHOR); my .325 gate 39385513785 SUCCESS; F514 = 39382361698 SUCCESS terminal; gate 39385906686 turned out workflow_dispatch run_fleet=true @f62018d3 - fire-1530's F515 IN FLIGHT at open (one-active law held, honest no-dispatch at open).
+- F515 = 39385906686 (@f62018d3, the .325 tree) COMPLETED SUCCESS mid-round - the anchor and boot words' first fleet faces green. F514 artifact deep-read: spawn pair -120, 81, 401 (X -120, Y 81, Z 401), headcount 47, boot 6.687s.
+- Harvested 14 faces fresh from the artifacts API (F501-F515; IDs F501-F509+F511 from the worklog ledger, F510/F512/F513 via runs API, F514/F515 fresh) - every face's spawn pair mined, the X/Y/Z arcs byte-agree the .325/.326 published arcs on all shared faces.
+- VERSION RACE THE TENTH RAN LIVE: my .326 REACH word (the spawn-set line's Z cell, the LAST-PRINT-WINS hand) born into fire-1530's own .326 SOUTH push (7e1747f1, the same line's Z cell, the MAX hand) mid-round - the within-face pair byte-identical every face so the LAST hand and the MAX hand hold the same values, the SAME SEAT the race law drops (the .322/.323 precedent) - their word rides, my duplicate reset honest (orphan files swept, backup at /home/z/my-project/race10_backup/, zero clobber, zero force-push).
+- v0.976.327 THE WORLD SPAWN'S OWN BED MASS (1bbe58e8 rebased bab5cfbc, 5 files +~330): spawnbedtrend.mjs (the Y cell - the height seat, the coordinate trio the line completes: X .325 anchor / Z .326 south / Y .327 bed) + 6-pin test + decompose wire + fieldread-spawnbed-1543.mjs + version bump.
+- The REAL fifteen-face bed arc (F501-F515): 71/72/72/72/67/71/71/69/69/74/70/72/68/81/70 - THIRTEEN REAL WINDOWS SIX SPEAKS SEVEN HELD, born speaking SIX DEEP the held law keeps honest (the .323 firstborn's four-deep six-held precedent; the peak bed 81 the F514 face rode, the band 67..81 the re-seed wanders).
+- FIELDPROOF 15/15 census==raw + PAIR-AGREE 15/15 + ANCHOR-MIRROR 15/15 (the .325 X arc) + SOUTH-MIRROR 15/15 (the .326 Z arc) + DONE-FOLLOWS 15/15 + RE-VOICE 6/6 + HELD-SILENCE 7/7.
+- Gates: node --check x4, pins 6/6, syntax 1428/0, unit 713/713 EXIT=0 (the orphan REACH test file caught riding the wall 714 -> swept -> 713, the honest count).
+- Push 5cd18795..bab5cfbc first-try clean (rebased over fire-1530's worklog 5cd18795); F516 = 39391362502 (@7e1747f1, the .326 tree) IN FLIGHT (fire-1530's dispatch) - the one-active law holds, honest no-dispatch F517 this round.
+
+Stage Summary:
+- v0.976.327 THE WORLD SPAWN'S OWN BED MASS on origin (bab5cfbc) - the spawn-set line's coordinate trio COMPLETE (X anchor / Z south / Y bed); the clock cell and the angle pair and the dimension cell the shape-only lanes remain.
+- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327 (.324 and .326 lost to races - the words ride other hands).
+- FLEET OF RECORD: F516 = 39391362502 (@7e1747f1, the .326 tree) IN FLIGHT - next fire: F516 terminal + my .327 gate (bab5cfbc) read -> three-condition audit -> F517 rides the .327 full tree (the bed word's first fleet face).
+- .328 candidates: the spawn-set line's clock cell (MIN/MAX hands - the boot-clock pair, two seats); the angle pair and dimension cell (constant-shaped, likely born silent - audit the whole arc first); fleet-19 log lanes (per-reason byBot, kick bill); bot frontline.
+- Lessons: the race law's same-seat test is the PAIR-IDENTITY (the .324/.325 race kept both words - different cells; the .326 race dropped mine - the same cell the pair byte-identical makes LAST==MAX==MIN); orphan files of a reset word MUST be swept before the wall (the 714 ghost); the unit wall counts test FILES (713 after .327).
+- the identity law held: PLANETA9091
