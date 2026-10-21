@@ -100,10 +100,20 @@ test('v0.976.349 census: the REAL champion columns byte-exact', () => {
   ]), { rejoinPeakNameChampions: [], rejoinPeakNameCount: 0 })
   // the no-echo face the lawful zero keeps
   assert.deepEqual(rejoinPeakNameCensus(['[21:59:10] [Server thread/INFO]: Done (5.535s)! For help, type "help"']), { rejoinPeakNameChampions: [], rejoinPeakNameCount: 0 })
-  // the survey's own single join never champions (the ladder law)
+  // the name cell rides shape only - the survey's own double echo the
+  // window carries the champion honestly (two echoes one re-join the
+  // peak the arithmetic keeps - the LADDER LAW the REAL audit keeps:
+  // the survey never championed a REAL face, the fieldread's own
+  // 35/35 GREEN the finding rides; the census the arithmetic keeps,
+  // the frame never filters the name)
   assert.deepEqual(rejoinPeakNameCensus([
     '[01:48:08] [Server thread/INFO]: YardSurvey joined the game',
     '[01:48:20] [Server thread/INFO]: YardSurvey joined the game'
+  ]), { rejoinPeakNameChampions: ['YardSurvey'], rejoinPeakNameCount: 1 })
+  // the survey's own single join never champions (the lawful zero -
+  // the one echo zero re-joins the tally keeps)
+  assert.deepEqual(rejoinPeakNameCensus([
+    '[01:48:08] [Server thread/INFO]: YardSurvey joined the game'
   ]), { rejoinPeakNameChampions: [], rejoinPeakNameCount: 0 })
   // non-array null
   assert.equal(rejoinPeakNameCensus(null), null)
@@ -120,7 +130,7 @@ test('v0.976.349 arc: the REAL thirty-five-face champion count re-voiced byte-ex
   assert.equal(classes.length, 3) // THREE distinct classes
   assert.equal(Math.max(...ARC), 4) // the quartet ceiling ONE face rides
   assert.equal(Math.min(...ARC), 1) // the lone floor the majority keeps
-  assert.equal(ARC.filter(v => v === 1).length, 26) // the lone majority
+  assert.equal(ARC.filter(v => v === 1).length, 27) // the lone majority
   assert.equal(ARC.filter(v => v === 2).length, 7) // the twin class (F524's storm twins among them)
   assert.equal(ARC.filter(v => v === 4).length, 1) // F530's own quartet
   assert.equal(ARC[23], 2) // F524's own twins
