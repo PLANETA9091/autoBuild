@@ -347,10 +347,10 @@ test('the BOUND + DIALOG + CEILING laws - the edges the runner-up bounds keep', 
     '[04:01:00] [Server thread/INFO]: F3 joined the game',
     '[04:02:00] [Server thread/INFO]: F3 joined the game',
     '[04:02:30] [Server thread/INFO]: F3 joined the game',
-    '[04:03:00] [Server thread/INFO]: F3 joined the game'
+    '[04:05:00] [Server thread/INFO]: F3 joined the game'
   ]
   // F3's own first join 04:01 the tally's n=1 the re-join list keeps
-  // out - the re-join events 04:02 / 04:02:30 / 04:03 the gaps [30,
+  // out - the re-join events 04:02 / 04:02:30 / 04:05 the gaps [30,
   // 150] the second pair 150 the list voices
   assert.deepEqual(rejoinStormSecondBreathCensus(twoGaps), { rejoinStormSecondBreath: 150 })
 })
