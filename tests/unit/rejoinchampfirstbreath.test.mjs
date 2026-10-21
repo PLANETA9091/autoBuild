@@ -262,7 +262,7 @@ const REAL_F559 = [
 // five-face gravity keeps, the 310 the ceiling face F549 keeps, the
 // 125 the F527 above-dialog face keeps, the 0 the F545 real zero and
 // the F559 constructive tail the pair keeps, MANY values speak
-const REAL_ARC = [193,21,6,23,36,9,134,35,28,26,86,8,19,15,28,176,42,11,104,39,35,28,8,19,238,5,125,35,40,34,20,87,25,8,8,18,251,105,11,23,13,130,111,43,0,17,10,8,310,5,6,68,12,23,6,10,0,0]
+const REAL_ARC = [193,21,6,23,36,9,134,35,28,26,86,8,19,15,28,176,42,11,104,39,35,28,8,19,238,5,125,35,40,34,20,87,25,8,8,18,251,105,11,23,13,130,111,43,0,17,10,8,310,5,6,68,12,23,6,10,0]
 
 test('REAL faces byte-exact - the champion opening the first pair prices', () => {
   // the single-gap level face: the F16 double re-join the ONE champ
