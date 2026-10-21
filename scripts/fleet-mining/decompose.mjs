@@ -280,6 +280,7 @@ import { rejoinChampGapCensus, rejoinChampGapTrendRow } from '../../src/lib/rejo
 import { rejoinMeanBreathCensus, rejoinMeanBreathTrendRow } from '../../src/lib/rejoinmeanbreath.mjs' // (v0.976.354) THE STORM'S OWN MEAN BREATH - the join lane's own MEAN BREATH cell (the WHOLE cadence list one integer the sum law's own division prices - the storm's own typical breath the eight cells underprice) the .352 gap word beside holds
 import { rejoinChampMeanBreathCensus, rejoinChampMeanBreathTrendRow } from '../../src/lib/rejoinchampmeanbreath.mjs' // (v0.976.355) THE CHAMPION'S OWN MEAN BREATH - the join lane's own CHAMPION MEAN BREATH cell (the WHOLE champion cadence list one integer the sum law's own division prices - the champion's own typical breath the nine cells underprice) the .353 champion gap word beside holds
 import { rejoinStormMedianBreathCensus, rejoinStormMedianBreathTrendRow } from '../../src/lib/rejoinstormmedianbreath.mjs' // (v0.976.356) THE STORM'S OWN MEDIAN BREATH - the join lane's own MEDIAN BREATH cell (the cadence list's own CENTRE the sort law prices - the two middle gaps' floored half-sum the even count keeps - the .354 mean word's own sum-blind sibling the dialog keeps) the .354 mean breath word beside holds
+import { rejoinChampMedianBreathCensus, rejoinChampMedianBreathTrendRow } from '../../src/lib/rejoinchampmedianbreath.mjs' // (v0.976.357) THE CHAMPION'S OWN MEDIAN BREATH - the join lane's own CHAMPION MEDIAN BREATH cell (the champion cadence list's own CENTRE the sort law prices - the .355 champ mean word's own sum-blind sibling the .356 storm median word's own champion-set mirror the dialog keeps) the .355 champ mean breath word beside holds
 import { rejoinPeakCensus, rejoinPeakTrendRow } from '../../src/lib/rejoinpeak.mjs' // (v0.976.348) THE FLEET'S OWN PEAK CHURNER - the join lane's own CONCENTRATION cell (the tallest single-name column the tally keeps) the .346 mass and .347 breadth beside hold
 import { rejoinBotsCensus, rejoinBotsTrendRow } from '../../src/lib/rejoinbots.mjs' // (v0.976.347) THE FLEET'S OWN RE-JOIN BOTS - the join lane's own BREADTH cell (the DISTINCT names the churn rode) the .346 depth word beside holds
 import { rejoinBinCensus, rejoinBinTrendRow } from '../../src/lib/rejoinbin.mjs' // (v0.976.346) THE FLEET'S OWN RE-JOIN - the server console's own '<name> joined the game' lane the word prices across the faces - the RE-JOIN BIN (the count of mid-run re-join echoes the face voiced: a name's SECOND-and-later join the same face keeps - the balance's own inner shape the census never priced); the .314 join mass word prices the lane's own TOTAL (every echo the face holds) and the .336 join echo drift word prices the echo's own clock cell (the pair drift the login's own second keeps) - the bin the balance's own INNER shape never rode (joins equal losses every face the balance law keeps - 24=24, 28=28 - yet the first logins and the re-connections the total never splits, co-existence by seat never by duplication: the mass the total's own cell, the drift the echo's own clock cell, the bin the SECOND+ join's own count this word prices beside theirs); THE MULTI-CLASS LAW: the REAL THIRTY-ONE-face arc F501-F531 keeps SEVENTEEN distinct classes (2,4,5,6,7,8,9,10,12,13,16,17,18,19,20,27,50) no face born-constant - the F524 face the churn monster's own 50 re-joins the ceiling rides (the seventy logins the .336 word's own tail names), F514's and F522's own 27 the storm class, F530's own 4 and F531's own 8 the fresh faces the bin re-voices - MANY values speak, the seat LIVE, the born-constant decline never rides; the hand: every join echo the face voices in file order the name's own tally keeps, the events beyond each name's FIRST the count sums (joins minus distinct names), the re-join never precedes its own first join (the bin never negative the tally guarantees); the no-echo face the lawful zero (the .304/.306 convention the count words keep); the grammar the strict frame the .336 word holds byte-exact (the name cell rides shape only, the 'joined the game' tail byte-locked, LINE END the .288 precedent); the fence the count words' own integer law plus the day ceiling 0..86399 (the bin never exceeding the join mass it rides the .336 fence law keeps). CENSUS GUARD: zero fleet wiring, zero new fleet log lines - the word rides the reader's fold through the SECOND carrier lane (the argv[6..8] tail the .278 contract extends, the .281 through .345 folds the neighbours hold), the fleet's own console never changes.
@@ -10759,6 +10760,27 @@ if (process.argv[6] && process.argv[7] && process.argv[8]) {
   const rsmbOf = (p) => rejoinStormMedianBreathCensus(readFileSync(p, 'utf8').split('\n'))
   const rsmbTrend = rejoinStormMedianBreathTrendRow({ back: rsmbOf(process.argv[8]), prev: rsmbOf(process.argv[7]), cur: rsmbOf(process.argv[6]) })
   if (rsmbTrend) console.log(`  ${rsmbTrend}`)
+}
+// (v0.976.357) THE CHAMPION'S OWN MEDIAN BREATH - the join lane's own
+// CHAMPION MEDIAN BREATH cell the sort law prices (the champion
+// cadence list's own CENTRE - the .355 champ mean word's own
+// sum-blind sibling: the champion's own tallest lone silence the
+// mean's sum carries and the centre drops - the .356 storm median
+// word's own champion-set mirror the dialog keeps: the REAL
+// FORTY-SEVEN-face audit the dialog keeps - the champion median
+// UNDER the champ mean TWENTY faces, level TWENTY-TWO, above FIVE -
+// F537's own 8 the centre prices while the mean rides the 251 giant
+// to 40, F532's own 67 above the 62, F543's own 172 the ceiling the
+// two-gap even-count prices, F547's own 23 the three-reign fresh
+// face keeps, F545's own 0 the ALL-ZERO face keeps - no constant
+// order the honest seat keeps).
+// CENSUS GUARD: zero fleet wiring, zero new fleet log lines - the
+// word rides the reader's fold over the lines the server already
+// emits.
+if (process.argv[6] && process.argv[7] && process.argv[8]) {
+  const rcmbOf = (p) => rejoinChampMedianBreathCensus(readFileSync(p, 'utf8').split('\n'))
+  const rcmbTrend = rejoinChampMedianBreathTrendRow({ back: rcmbOf(process.argv[8]), prev: rcmbOf(process.argv[7]), cur: rcmbOf(process.argv[6]) })
+  if (rcmbTrend) console.log(`  ${rcmbTrend}`)
 }
 // (v0.976.337) THE FRESH BOOT'S OWN QUIET - the boot conversation's
 // own opening second to the loss lane's own opening breath the word
