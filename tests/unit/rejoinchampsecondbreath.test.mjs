@@ -492,9 +492,13 @@ test('the BOUND + DIALOG + CEILING laws - the edges the champion runner-up bound
     '[00:01:30] [Server thread/INFO]: F3 joined the game'
   ]
   // the day-cyclic wrap the .350 precedent keeps - the second pair
-  // crosses the midnight cell (5490 + 86400 - 86370 = 5520) the list
-  // voices
-  assert.deepEqual(rejoinChampSecondBreathCensus(wrap), { rejoinChampSecondBreath: 5520 })
+  // crosses the midnight cell (the champ events 08:02 / 23:59:30 /
+  // 00:01:30 the gaps [57450, 120] - 90 + 86400 - 86370 = 120) the
+  // list voices (the 5520 the prior assert rode was the 01:31:30
+  // misread the 00:01:30 the 90-second cell the honest arithmetic
+  // prices - the module the FIELDPROOF 59/59 the archive proved, the
+  // assert the wrong minute rode - the .366 precedent the same shape)
+  assert.deepEqual(rejoinChampSecondBreathCensus(wrap), { rejoinChampSecondBreath: 120 })
 })
 
 test('REAL 59-face window arc byte-exact - 34 classes the seat LIVE', () => {
