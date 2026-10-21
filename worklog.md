@@ -37300,3 +37300,22 @@ Stage Summary:
 - Next fire: MY GATE .356 terminal + F547 (39583929309, the .355 tree) terminal -> the 47th face harvest -> the 47-face arc re-voice -> the three-condition audit -> F548 rides the .356 full tree @3d911a68.
 - .357 candidates: champ median breath (the .356 word's own symmetric seat - the family rhythm .357 champ), the gap variance/quartiles, the .345 drift arc, save-trio third-hand, the bot front (tool repair/furnace/WorldMap/night).
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1843
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1843) - v0.976.357 THE CHAMPION'S OWN MEDIAN BREATH
+
+Work Log:
+- CI audit first: MY GATE .356 = the f8c03a9d push CI 39584176896 SUCCESS + the .356 code tree 39584026759 @3d911a68 SUCCESS - the .356 word fully green; F547 = 39583929309 @89650ebf (the .355 tree) SUCCESS terminal - the parallel's fire-1743 worklog append (f8c03a9d) already paid, zero backlog this fire.
+- The sandbox died again (faces331 empty, /home/z/privateB gone) -> re-clone + the identity law + the archive rebuild reharvest-1843.mjs (the parallel's reharvest-1743.mjs the slice 46 keeps) 46/46 byte-faithful.
+- F547 harvested in-round: artifact 12340111957 -> face39583929309.log 477 lines - the THREE-REIGN face (F1+F6+F4 the tied one-reign trio the co-reign prices): champ events 3 gaps 2 (10, 37), the median IS the mean 23 = floor(47/2) the even-count two-gap law, gapMax 37 span 47 - the 47th face the arc keeps.
+- .357 seat priced: THE CHAMPION'S OWN MEDIAN BREATH = the champion gap list's ascending MIDDLE - the .355 champ mean word's own sum-blind sibling, the .356 storm median word's own CHAMPION-SET mirror (the family rhythm: .356 storm -> .357 champ); the 47-face arc 34 classes floor 0 (F545's ALL-ZERO) ceiling 172 (F543's two-gap (111+233)/2 - the .355 word's own NEW CEILING face re-priced); the DIALOG law: champMedian<champMean TWENTY faces (F537's 8 vs the 251-giant mean 40) / level TWENTY-TWO (F524's co-reign 7=7, F547's three-reign 23=23) / ABOVE FIVE (F514 12>11, F521 27>25, F530 59>53, F532 67>62, F538 105>72) - the champion dialog BALANCEDER than the storm's own 41-under (the champion lists shorter the tail gravity lighter); the EQUALITY law NINE faces (the .355's eight + the F545 ALL-ZERO ninth); the HELD PAIR the F539/F540 sevens the champion arc keeps (the storm median's own NO-HELD-PAIR does NOT inherit).
+- v0.976.357 (c527fd80): rejoinchampmedianbreath.mjs + 5 pins (six REAL fixtures byte-exact F509/F543/F532/F537/F524/F545) + the decompose wire (the .356 import beside, the fold after, the SAME argv[6..8] carrier, CENSUS GUARD) + the bump. Gates: check x3, pins 5/5 FIRST-TRY, the neighbour suites .353/.354/.355/.356 GREEN, the FULL suite 743/743 files (the npm install the re-clone needed), fieldread ALL GREEN (47/47, ARC byte-exact, 34 classes, LAWS champGap/champSpan bounds, ZERO-LAW, DIALOG 20/22/5, FOLD-SMOKE + the REAL held window 105->7->7 the silence keeps), the pin-check six gates GREEN (version/wire/wire-order/fresh-faces/fold-row/no-fleet-wiring).
+- Three-condition audit GREEN (F547 SUCCESS + the head gate SUCCESS + the lane empty) -> F548 = 39588975768 DISPATCH HTTP 204 @f8c03a9d BEFORE the push (the ref=master route - the .356 full tree the face rides, the one-active law held).
+
+Stage Summary:
+- v0.976.357 landed FIRST-TRY - the single lane TWELVE cells TWELVE words (+ .357 champ median breath). MY ledger adds .357.
+- The push c527fd80 rides the worklog append; MY GATE .357 = the push CI @c527fd80 (the next fire's terminal read); F548 = 39588975768 (the .356 tree) in flight - the 48th face the next fire harvests.
+- .358 candidates: the family rhythm says STORM - the gap variance/quartiles (the dispersion the centre ignores), the .345 drift arc extension, save-trio third-hand, bot front (tool repair/furnace/WorldMap/night survivability).
+- the identity law held: PLANETA9091
