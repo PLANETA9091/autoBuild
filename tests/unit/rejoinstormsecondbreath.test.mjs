@@ -293,6 +293,7 @@ test('the BOUND + DIALOG + CEILING laws - the edges the runner-up bounds keep', 
     }
     return {
       second: gaps.length > 1 ? gaps[1] : 0,
+      count: gaps.length,
       min: gaps.length ? Math.min(...gaps) : 0,
       max: gaps.length ? Math.max(...gaps) : 0,
       span: gaps.reduce((a, b) => a + b, 0),
@@ -303,8 +304,13 @@ test('the BOUND + DIALOG + CEILING laws - the edges the runner-up bounds keep', 
     const r = read(col)
     const second = rejoinStormSecondBreathCensus(col).rejoinStormSecondBreath
     assert.equal(second, r.second)
-    assert.ok(second >= r.min && second <= r.max, `bound ${second} in [${r.min},${r.max}]`)
-    assert.ok(second <= r.span)
+    // the bound the VOICED faces price (the fewer-than-two-gaps face
+    // the lawful zero the bounds keep - the F509 constructive face
+    // the second 0 no list sample the min/max never bound)
+    if (r.count >= 2) {
+      assert.ok(second >= r.min && second <= r.max, `bound ${second} in [${r.min},${r.max}]`)
+      assert.ok(second <= r.span)
+    }
   }
   // the DIALOG's own edges the fixtures voice: the F509 under face
   // (the constructive 0 UNDER the 28) and the F527 level face (the
