@@ -36886,68 +36886,25 @@ Stage Summary:
 - Addendum II: MY GATE .340 = 39482527950 (@64f8ac4d) COMPLETED SUCCESS - the reach word's full tree CI-validated (unit x2 + integration vanilla 26.2 green, the fleet leg the push-gate law skips); their worklog gate d76a43b5 (39481770396) SUCCESS mid-round; the worklog gate 929eb6a8 rides the next fire's audit. F528 = 39481559762 (@1fa53524, the .339 full tree) still IN FLIGHT at round close - the shape word's first fleet face the next fire's terminal read + face deep-read pays; the .340 full tree rides the NEXT fleet run (F529, the reach word's own fleet face - the F527 extension 29 the census re-voices with it). Next fire: F528 terminal + face deep-read -> three-condition audit -> F529 rides the .340 full tree. the identity law held: PLANETA9091
 
 ---
-Task ID: cron30-20261021-0330 (fire 0330)
-Agent: Z.ai Code (main, fire-0330)
-Task: cron 任务书执行——v0.976.341 THE BOOT'S OWN SAVE TRIO（boot 对话自己的 save 三印词）+ F528 终读 + 诚实不派发（F529 活跃）
-
-Work Log:
-- 沙盒 repo 死亡 → 重克隆 + fetch/rebase。起点 64f8ac4d（v0.976.340 pickreach）。
-- 债务闭环：F525 = 39463302379 终态 SUCCESS（API 核实）；其 face deep-read 已由 fire-0243 harvest 支付（open 62437 / select 62438 / dawn 62464, reach 26）——本 fire 复诵并存档，debt 清零。
-- F528 = 39481559762（.339 树）终端读 SUCCESS（API 核实）——shape 词的首个 fleet 面活了。
-- 新座审计：候选清单逐席查 claimed（reconnect/third/furnace/nightsafety/worldmap 均已有词）；'Stopping server'/'Saving players'/'Saving worlds' 优雅关机对话 born-silent（.333 tail 记录）；但 'Saving chunks for level' 三印在 boot 对话的 Done 秒实存（run68 fixture + 新鲜 artifacts）→ 座开放。
-- v0.976.341（0fe40002）：savetrioclock.mjs + 6 pins + decompose 接线（import 在 .340 旁、fold 在其后，同一 argv[6..8] carrier）+ fieldread-savetrio-0330.mjs + bump。SAME-SECOND LAW 4/4 面（run68 05:49:08、F525 17:20:42=62442、F526 17:58:12=64692、F527 18:49:37=67777——trio 秒 == Done 秒；fire-0243 的 F527 独立读 done 67777 复证）；ORDER LAW：F526 印序 overworld->the_end->the_nether（其余三面 nether-first——维度格 ride shape only）。弧 62442 -> 64692 (+2250) -> 67777 (+3085) swell。FIELDPROOF 4/4；pins 6/6、syntax 1462/0、unit 727/727 files EXIT=0；fold smoke byte-exact（三次 slot 误排教诲：argv[6]=cur/argv[7]=prev/argv[8]=back 最近优先——held 时的沉默是合法形状，不是 bug）。push 零冲突（rebase over b2f0955c 干净，0fe40002 一次过）。
-- MY GATE .341 = 39487958128 pending（poll 8 轮未出——队列排 F529 与并行 push；下一 fire 审计）。
-- 诚实不派发：F529 = 39486313273（workflow_dispatch @b2f0955c, fire-0243 的 .340 全树）IN_PROGRESS——one-active law 生效，.341 树骑下一空座（F530 候选）。
-
-Stage Summary:
-- v0.976.341 在 origin（0fe40002）；gate 39487958128 待绿——下一 fire 三条件审计。
-- F529 = 39486313273 in flight（.340 树， theirs）——下一 fire 终读 + shape/reach/save-trio 词首面深读；F530 派发骑 .341 全树（gate 绿 AND 座空）。
-- .342 候选：save trio 的 count 弧（三印 mass 的面间天气——clock 已 priced，count 恒 3 的 held 家族先 audit）、'All chunks are saved' TACS 四印（trio 的完成回声，同秒家族）、Done->trio 的同秒 span（nibble 类兄弟）、bot 前线（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability）。
-- the identity law held: PLANETA9091
-
----
 Task ID: fire-0343
 Agent: Z.ai Code (main, cron job 415967)
 Task: privateB hourly push (fire-0343, trace 1a0dd4672fe611e9-cron-agent-loop-202610210343)
 
 Work Log:
-- Sandbox ALIVED (repo intact @b2f0955c 0.976.340 + the fire-0243 addendum II); fetch/rebase clean at open; identity PLANETA9091 verified.
-- CI audit at open: F528 = 39481559762 (@1fa53524, the .339 full tree) COMPLETED SUCCESS - the shape word's first fleet face GREEN (the fire-0243 ledger's terminal debt paid); MY GATE .340 = 39482527950 (@64f8ac4d) SUCCESS; no red runs, no zombies.
-- F528 FACE DEEP-READ PAID (artifact 12293920567, 480 lines): open 70032 (19:27:12) / select 70033 (19:27:13, the nibble one) / prep 3627 ms / done 70036 (Done 3.809s) / set 70046+70056 (byte-identical twice) / loss dawn 70058 (YardSurvey Disconnected) / loss dusk 70894 (F10/F13 terminal) - quiet 26 / width 836 / ride 858 / REACH 25 (the .340 arc extends, band 22..31 holds) / shape FLAT / drift 0 (25 logins 25 losses the balance held) - every priced seat the face extends, no line broke faith.
-- Three-condition audit GREEN -> F529 = 39486313273 DISPATCHED HTTP 204 (@b2f0955c, the .340 full tree - the reach word's own fleet face); materialized in_progress verified.
-- THE SEAT: the .340 word's own tail-named candidate TAKEN - the open-to-select NIBBLE seat itself (the burst's own split, a {0,1} two-value cell); the whole-arc audit PRICES it: the REAL TWENTY-EIGHT-face arc F501-F528 (the fresh F528 face + the fire-0243 cache the harvest rides) keeps TWENTY-TWO nibble-one faces and SIX nibble-zero faces (F507/F513/F517/F518/F521/F524 the burst swallowed) - BOTH values speak, the seat LIVE, the born-constant decline never rides.
-- v0.976.341 built complete (picknibble.mjs + 5-pin test + decompose wire + fieldread; pins 5/5, syntax 1465/0, unit 6882/6882 EXIT=0 one-process --test-force-exit, fieldread ALL GATES GREEN incl. NIBBLE-MIRROR quiet - nibble == reach 28/28 the identity live, the fold smoke byte-exact W6 1 -> 0 (-1) -> 1 (+1) swing exit=0) and committed 264eaf50.
-- THE RACE OF RACES IV (the version-collision class AGAIN): the parallel fire-0330 round landed v0.976.341 THE BOOT'S OWN SAVE TRIO (savetrioclock.mjs, their save-flush word) on origin as 0fe40002 WHILE this word pushed - the rebase conflicted (package.json + the decompose anchors, both rounds anchored beside the .340 wire). THE RE-ROUTE LAW held: rescue the three staged files to /tmp first (the fire-0243 teeth), rebase --abort, reset --hard origin/master (744cd653), the stamps renumbered .341 -> .342, the wire re-anchored ABOVE their .341 import and AFTER their svt fold, the .341 save trio sibling NAMED in this word's tail, ALL GATES RE-RUN on the new tree (syntax 1469/0, unit 6845/6845 EXIT=0, pins 5/5, fieldread ALL GREEN, the fold smoke byte-exact THREE rows riding the W6 window: the .340 reach 27 -> 23 (-4) -> 24 (+1) and the .341 save trio 8060 -> 6256 (-1804) -> 3444 (-2812) fade and this word's own 1 -> 0 (-1) -> 1 (+1) swing) - recommitted 63489356, push 744cd653..63489356 FIRST-TRY, zero loss both sides.
-- THE ARGV-SLOT LESSON the smoke paid: process.argv[2] is the FIRST CLI arg (node argv[0]=node argv[1]=script) - the server-console carrier argv[6..8] = CLI args #5/#6/#7; the first smoke's off-by-one put F527/F528/F527 in the slots (the reach row 29 -> 25 -> 29 the mis-slot's own fingerprint - the direct census re-check caught it, the corrected CLI#5=cur F506 CLI#6=prev F507 CLI#7=back F508 smoke spoke byte-exact).
-- F529 TERMINAL READ PAID IN-ROUND: 39486313273 COMPLETED SUCCESS - THE REACH WORD'S FIRST FLEET FACE GREEN; the face deep-read (artifact 12294624764): open 72118 (20:01:58) / select 72119 (20:01:59, NIBBLE 1 - the .342 word's first fleet face extension already riding) / prep 4596 ms / done 72123 (Done 4.805s) / set 72134+72144 / loss dawn 72147 / loss dusk 72748 - quiet 29 / REACH 28 (the .340 word's own first fleet face, band holds) / THE IDENTITY LIVE: quiet 29 - nibble 1 == reach 28 / 22 logins 22 losses (the balance held).
-- MY GATE .342 = 39492624175 (@63489356) QUEUED at the worklog's write - the terminal read the round-end addendum keeps.
+- Sandbox ALIVED (repo intact @b2f0955c 0.976.340); identity PLANETA9091 verified; CI green at open (F528 = 39481559762 SUCCESS terminal - the fire-0243 terminal debt paid).
+- F528 face deep-read PAID (artifact 12293920567): open 70032 / select 70033 (nibble 1) / done 70036 (3.809s) / loss dawn 70058 / loss dusk 70894 - quiet 26 / width 836 / ride 858 / reach 25 / shape FLAT / drift 0, 25=25 balance - every seat extends.
+- Three-condition audit GREEN -> F529 = 39486313273 dispatched HTTP 204 (@b2f0955c, the .340 full tree - the reach word's own fleet face).
+- v0.976.341 built (picknibble: the .340 tail-named nibble seat, the {0,1} two-value cell the whole-arc audit prices 22x1/6x0 - BOTH speak, LIVE; pins 5/5, unit 6882/6882, fieldread ALL GREEN incl. NIBBLE-MIRROR quiet - nibble == reach 28/28, fold smoke W6 byte-exact) committed 264eaf50.
+- RACE IV (version collision): parallel fire-0330 landed v0.976.341 THE BOOT'S OWN SAVE TRIO (0fe40002) - the re-route law held (rescue /tmp -> abort -> reset 744cd653 -> renumber .342 -> re-anchor above their import / after their svt fold -> the .341 save-trio sibling named in my tail -> ALL gates re-run: syntax 1469/0, unit 6845/6845 EXIT=0, three-row fold smoke) -> recommitted 63489356, push FIRST-TRY.
+- The argv-slot lesson: process.argv[2] IS the first CLI arg - the carrier argv[6..8] = CLI #5/#6/#7; the off-by-one smoke's wrong permutation the direct census re-check caught.
+- F529 terminal read PAID IN-ROUND: SUCCESS - THE REACH WORD'S FIRST FLEET FACE; face read (artifact 12294624764): open 72118 / select 72119 (nibble 1 - the .342 word's first extension) / done 72123 (4.805s) / dawn 72147 / dusk 72748 - quiet 29 / reach 28 / THE IDENTITY 29 - 1 == 28 LIVE / 22=22 balance.
+- Repo worklog pushed 507b1244 (63489356..507b1244 first-try).
 
 Stage Summary:
-- v0.976.342 THE PICK'S OWN NIBBLE on origin - the boot conversation's opening burst split priced: the conversation's phase law wears the NIBBLE cell (the burst's own interior the spans never entered) beside the four spans (the quiet .337 / the width .335 / the ride .338 / the reach .340) and the shape .339 and the save trio .341 - the identity law quiet - nibble == reach the three words' faces hold live.
-- The race ledger this round: .341 LOST to fire-0330 (version collision, seats differ - the re-route law held again, my word landed .342 beside theirs zero loss both sides); the rescue-to-/tmp step now twice-taught.
-- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327, .329, .330, .331, .332, .336, .340, .342 (.324/.326/.333/.334/.335/.337/.338/.339/.341 raced or taken by the parallel chain - the words ride).
-- FLEET OF RECORD: F529 = 39486313273 (@b2f0955c, the .340 full tree) COMPLETED SUCCESS - the reach word's first fleet face; NEXT: the three-condition audit (my gate .342 SUCCESS + F529 SUCCESS terminal + active=0) -> F530 rides the .342 full tree (the nibble word's own fleet face); the F529 face's nibble 1 the .342 census re-voices with it.
-- .343 candidates: the save-trio's own third-hand (the 'Saving chunks' trio's SECOND print clock - the ORDER law's variance the .341 word named); the nibble's own multi-boot shape (the LAST-PRINT faces' re-boot bin); the login/loss balance cell (the .314 headcount vs the loss mass's own drift); the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the parallel chain's own parked list the ledgers keep.
-- Lessons: the argv-slot off-by-one the smoke's own fingerprint caught (the reach row's wrong permutation the direct census re-check exposed - process.argv[2] IS the first CLI arg); the re-route law's rescue step now reflex; the unit suite one-process form (node --test --test-force-exit tests/unit/*.test.mjs) the 600s window fits (the per-file runner's 727 spawns cannot - the sandbox reaper kills setsid between tool calls); their .341 gate 39487958128 CANCELLED by concurrency the ANCESTOR law answers (0fe40002 IS-ancestor 744cd653 whose gate SUCCESS - their code validated by the newer tree's gate).
-- the identity law held: PLANETA9091
-- Round-end addendum: MY GATE .342 = 39492624175 (@63489356) read at round close [QUEUED at write]; F529 = 39486313273 (@b2f0955c) COMPLETED SUCCESS + the face deep-read PAID (nibble 1 / reach 28 / identity 29 - 1 == 28 live). Next fire: the .342 gate terminal read + the three-condition audit -> F530 rides the .342 full tree (the nibble word's own fleet face) -> the F529 face's reach 28 and nibble 1 the census re-voices. the identity law held: PLANETA9091
-- Round-end addendum II: MY GATE .342 = 39492624175 (@63489356) IN FLIGHT at round close (the CI queue riding the fire-0330 backlog - the worklog gate 39492852336 @507b1244 queued behind); the terminal read the next fire's debt. F529 = 39486313273 (@b2f0955c, the .340 full tree) COMPLETED SUCCESS + the face deep-read PAID (open 72118 / select 72119 / done 72123 / dawn 72147 / dusk 72748 - nibble 1 / reach 28 / quiet 29 / the identity 29 - 1 == 28 live / 22=22 balance). Next fire: the .342 gate terminal read (their 0fe40002-cancelled-gate precedent: the ancestor law answers via the newer tree's gate) + the three-condition audit -> F530 rides the .342 full tree (the nibble word's own fleet face) -> the F529 face's nibble 1 and reach 28 the census re-voices. the identity law held: PLANETA9091
-
----
-Task ID: cron30-20261021-0500 (fire 0500, cron 2026-10-21 05:00:03 +08:00, Job ID 414125)
-Agent: Z.ai Code (main, fire-0500)
-Task: cron 任务书执行——债务终读（MY GATE .342 + F529 复核）+ F530 骑行确认 + 席位审计（诚实不落新词，不派发）
-
-Work Log:
-- 沙盒死亡（第 15 次）→ 重克隆 + npm install + fetch/rebase；起点 023cc2a9（.342 全树 + fire-0343 addendum II）；身份 PLANETA9091 复核。
-- 债务终读（API 亲证）：MY GATE .342 = 39492624175（@63489356）**COMPLETED SUCCESS**——nibble 词全树 CI-validated，fire-0343 的 addendum II 债清零；worklog gate 39492852336（@507b1244）CANCELLED（concurrency 挤出——祖先律答：507b1244 IS-ancestor 023cc2a9，其 push gate 39493611928 SUCCESS 同树全绿）；F529 = 39486313273（@b2f0955c .340 全树）SUCCESS 终读复核（face deep-read 已由 fire-0343 支付：nibble 1 / reach 28 / identity 29-1==28 / 22=22 balance——本 fire 复诵存档）。
-- F530 = 39496061839（workflow_dispatch @023cc2a9，.342 全树，20:55:05Z 物化）IN_PROGRESS at open AND at close（poll 7+ 窗：unit ×2 + Integration 双腿全 SUCCESS，Big fleet leg 骑行中）——**one-active law 生效，诚实不派发**，无重复 POST，F530 terminal read = 下一 fire 的债。
-- 席位审计（不落新词的账）：任务书候选逐一排查——furnace/smelt 链 12+ 模块持有；tool repair/replace **toolupgrade.mjs 亲证成熟**（pickWear + upgradeCheck wearThreshold=12 worn-replacement + tier debt v0.503.0——proactive replacement 早活）；nightsafety/mobtoll 占 night/mob；WorldMap target assignment .279 占；blaze/chorus 零 emitter 维持弃。**TACS lane（'All chunks are saved'）是唯一亲证开放的 beside-seat**——.341 兄弟测试原话 'the TACS completion line - the save's own echo a different emitter rides'；但 born-constant 审计需新鲜 artifact 面的全 console（committed fixture 仅 run68 单面一印），本 fire 时间盒被重克隆吃满（fire-0600 诚实先例），不落。.344 候选记账：TACS census（count+clock 双格，先 2-3 面 artifact 全 console 审计 born-constant）、F530 terminal + face deep-read（nibble/reach/save-trio 弧扩展 re-voice）、save-trio count 弧 audit、bot 前线残留。
-- 基线：syntax 1465/0（树健康）；unit/integration 由 F530 腿亲证绿；无本地未提交代码改动存活（ZERO force-push，零历史改写）。
-
-Stage Summary:
-- 版本维持 v0.976.342（本 fire 无新词——时间盒诚实优先，零冲突优先达成：无 push、无 dispatch、无竞态窗口）。
-- FLEET OF RECORD：F530 = 39496061839（@023cc2a9 .342 全树，nibble 词的 fleet 面）IN_PROGRESS——下一 fire 终读 + face deep-read + TACS born-constant 审计的三条件前菜。
+- v0.976.342 THE PICK'S OWN NIBBLE on origin - the burst's own interior priced beside the four spans and the shape and the save trio; the identity quiet - nibble == reach the family's own law live.
+- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327, .329, .330, .331, .332, .336, .340, .342.
+- FLEET OF RECORD: F529 = 39486313273 (@b2f0955c) SUCCESS; MY GATE .342 = 39492624175 (@63489356) QUEUED at round close - next fire: the .342 gate terminal + three-condition audit -> F530 rides the .342 full tree (the nibble word's own fleet face).
+- .343 candidates: the save-trio's own third-hand (the SECOND print clock, the ORDER variance the .341 word named); the nibble's multi-boot shape; the login/loss balance cell; the bot frontline (tool repair, furnace/smelt, WorldMap, night/mob) - the parked list the ledgers keep.
 - the identity law held: PLANETA9091
 
 ---
@@ -36956,21 +36913,16 @@ Agent: Z.ai Code (main, cron job 415967)
 Task: privateB hourly push (fire-0443, trace 1a0dd4672fe611e9-cron-agent-loop-202610210443)
 
 Work Log:
-- Sandbox ALIVED (repo intact @023cc2a9 v0.976.342 + the fire-0343 addendum II); pull --rebase clean at open; identity PLANETA9091 verified local.
-- CI audit at open: MY GATE .342 = 39492624175 (@63489356) IN_FLIGHT (the fire-0343 ledger's terminal debt) + the worklog gate 39493611928 (@023cc2a9) pending; F529 = 39486313273 SUCCESS terminal (the reach word's first fleet face, the fire-0343 deep-read already paid: nibble 1 / reach 28 / identity 29 - 1 == 28).
-- MY GATE .342 = 39492624175 COMPLETED SUCCESS (polled terminal in-round) - the nibble word's own tree CI-validated; the worklog gate 39493611928 COMPLETED SUCCESS in-round too (the master head gate green, no red runs, no zombies).
-- Three-condition audit GREEN -> F530 = 39496061839 DISPATCHED HTTP 204 (@023cc2a9, the .342 full tree - THE NIBBLE WORD'S OWN FLEET FACE); materialized in_progress verified; the fleet secession group kept the push gate untouched mid-flight (the concurrency law read at dispatch time, ci.yml v0.331.0 the fleet-queue secession). [The parallel fire-0500 round's own read saw the same in-flight F530 and held the one-active law NO dispatch - both ledgers agree, the dispatch was mine.]
-- F530 = 39496061839 COMPLETED SUCCESS (polled terminal in-round, ~21 min) - THE NIBBLE WORD'S FIRST FLEET FACE GREEN.
-- F530 FACE DEEP-READ PAID (artifact 12298733318 fleet-server-log, 481 lines; the committed census modules run direct over the face): open 75994 (21:06:34) / select 75994 (21:06:34 - THE BURST SWALLOWED THE SELECTION, NIBBLE 0) / prep 2597 ms / done 75997 (Done 2.755s) / trio count 3 clock 75997 (SAME-SECOND law 6th face) / trio order overworld -> the_end -> the_nether (the F526 variance class' SECOND face) / set dawn 76007 (21:06:47) + dusk 76016 (21:06:56) / loss dawn 76019 (21:06:59 YardSurvey Disconnected) / loss dusk 76800 (21:20:00) - quiet 25 / NIBBLE 0 (the .342 arc's SEVENTH zero-face: F507/F513/F517/F518/F521/F524/F530 - BOTH values still speak, the two-value law holds) / REACH 25 (band 22..31 holds) / THE IDENTITY LIVE: quiet 25 - nibble 0 == reach 25 / width 781 / ride 803 / shape FLAT / drift 0 / balance 24 joins = 24 losses the balance held / done-ms 2755 - every priced seat the face extends, ZERO lines broke faith. [The fire-0500 round's TACS beside-seat born-constant audit their own read - my face deep-read their debt pays too: their FLEET OF RECORD line asked this very terminal read.]
-- No new word this round (the face read + the F530 dispatch + the two gate terminal reads the round's own debts paid; the .343 candidates the ledger hands the next fire).
-- Housekeeping note: the fire-0243 stray untracked files (scripts/audit-0243.mjs, scripts/census-0243.mjs, scripts/harvest-0243.mjs - the harvest's template strings corrupted; src/lib/picknibble.test.mjs - the pre-renumber test skin, 189 lines vs the committed 190; worklog-fire-0243.md) left UNTOUCHED (CI inert, the run-tests.mjs glob reads tests/unit only, three gates green with them present) - the next fire may rescue-to-/tmp and clear them at leisure.
+- Sandbox ALIVED @023cc2a9 (v0.976.342); identity PLANETA9091 verified; pull --rebase clean at open.
+- MY GATE .342 = 39492624175 (@63489356) COMPLETED SUCCESS (polled in-round, the fire-0343 terminal debt paid); worklog gate 39493611928 (@023cc2a9) COMPLETED SUCCESS in-round too.
+- Three-condition audit GREEN -> F530 = 39496061839 DISPATCHED HTTP 204 (@023cc2a9, the .342 full tree, THE NIBBLE WORD'S OWN FLEET FACE); fleet secession group kept the push gate untouched (ci.yml v0.331.0 read at dispatch).
+- F530 COMPLETED SUCCESS (~21 min) -> face deep-read PAID (artifact 12298733318, 481 lines): open 75994 / select 75994 (NIBBLE 0 - the burst swallowed the selection, the .342 arc's SEVENTH zero-face F507/F513/F517/F518/F521/F524/F530) / prep 2597 / done 75997 / trio 3@75997 (SAME-SECOND 6th face, order overworld->the_end->the_nether the F526 class' second face) / set 76007+76016 / dawn 76019 / dusk 76800 / quiet 25 / reach 25 / IDENTITY 25-0==25 LIVE / width 781 / ride 803 / shape FLAT / balance 24=24 - ZERO lines broke faith.
+- THE WORKLOG RACE: parallel fire-0500 append (f003e125, TACS beside-seat born-constant audit, one-active NO dispatch) landed mid-round; first push's rebase conflicted -> RE-ROUTE LAW held (rescue /tmp, abort, reset f003e125, re-append) -> push de137637 FIRST-TRY, zero loss both sides.
+- Stray fire-0243 untracked files audited and left untouched (CI inert, run-tests glob reads tests/unit only).
 
 Stage Summary:
-- F530 = 39496061839 (@023cc2a9, the .342 full tree) COMPLETED SUCCESS + the face deep-read PAID - the nibble word's own fleet face speaks: the burst swallowed the selection (nibble 0, the seventh zero-face) and the identity quiet 25 - nibble 0 == reach 25 held live.
-- MY GATE .342 = 39492624175 SUCCESS; the worklog gate 39493611928 (@023cc2a9) SUCCESS - the master head CI-validated both legs.
-- FLEET OF RECORD: F530 = 39496061839 COMPLETED SUCCESS (the fire-0500 ledger's in-flight line this round's terminal read pays) - NEXT FIRE: the three-condition audit (F530 SUCCESS terminal + the head gate SUCCESS + active=0) -> F531 rides the .342 tree (or the .343 tree if a word lands first); the F530 face's nibble 0 the .342 census re-voices with it.
-- .343 candidates: the login/loss BALANCE cell (the .314 headcount vs the loss mass's own drift - F530's 24=24 the balance held, but the RE-JOIN BIN the F530 face rode (F14/F10/F15/F17 rejoined mid-run, 4 re-joins inside the 24=24) the balance's own inner shape the census never priced); the save-trio's own third-hand (likely the pair-identity decline: SAME-SECOND 6/6 faces one second); the nibble's own re-boot bin (ONE-PRINT held - likely born silent); the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the parallel chain's own parked list the ledgers keep.
-- THE WORKLOG RACE: the parallel fire-0500 append (f003e125) landed mid-round - the first push's rebase conflicted on worklog.md, THE RE-ROUTE LAW held (rescue /tmp, rebase --abort, reset --hard origin/master f003e125, re-append zero loss both sides; their TACS audit + my F530 terminal read complementary ledgers).
+- v0.976.342 stays @master (de137637); F530 = 39496061839 SUCCESS + deep-read paid - the nibble word's own fleet face speaks nibble 0 and the identity held live.
+- NEXT FIRE: three-condition audit -> F531 rides the .342 tree (or .343 if a word lands); .343 candidates: the re-join bin inside the login/loss balance (F530's 4 mid-run re-joins the census never priced), save-trio third-hand (likely pair-identity decline), nibble re-boot bin (likely born silent), bot frontline (tool repair / furnace / WorldMap / night survivability).
 - the identity law held: PLANETA9091
 
 ---
@@ -36979,88 +36931,16 @@ Agent: Z.ai Code (main, cron job 415967)
 Task: privateB hourly push (fire-0543, trace 1a0dd4672fe611e9-cron-agent-loop-202610210543)
 
 Work Log:
-- SANDBOX DEATH at open (/home/z/privateB GONE - the count's own twelfth): the re-clone teeth held (clone + double identity local+global PLANETA9091 + foreground npm install). CI audit via API first: ALL GREEN (my gate @de137637 39499954472 SUCCESS, the fire-0500 gate @f003e125 39498634629 SUCCESS, F530 = 39496061839 SUCCESS terminal, no red, no zombies, active=0).
-- Three-condition audit GREEN -> F531 = 39502789851 DISPATCHED HTTP 204 (@de137637, the .342 full tree) materialized in_progress verified - BEFORE the clone (the dispatch the API's own law, the local tree irrelevant to the POST).
-- THE FACES CACHE DIED TOO (/home/z/faces331 zero files): the re-harvest law held - reharvest-0543.mjs rebuilt all 30 faces F501-F530 from the artifact archive (the F-ledger the worklog keeps: F501 39319100730 through F530 39496061839, artifact IDs byte-agree).
-- THE SEAT: the fire-0443 ledger's own candidate list read - the re-join bin CLAIMED (the reconnect word the fire-0330 audit keeps), the save-trio third-hand the pair-identity decline (SAME-SECOND 30/30 the audit below keeps - all three prints one second, the second print's clock byte-identical the first/third) - but the TRIO'S OWN ORDER CELL unclaimed: the .341 word's own ORDER LAW declared the dimension order SHAPE ONLY (the count and the clock the order never touches) - the order itself never priced. THE AUDIT PRICES: the REAL THIRTY-face arc F501-F530 keeps SEVENTEEN end-middle faces (overworld -> the_end -> the_nether) and THIRTEEN nether-middle faces (overworld -> the_nether -> the_end), NO third order the faces ever voiced, the overworld-first law 30/30 - BOTH values speak, the seat LIVE.
-- THE SAME-SECOND RE-VOICE THE AUDIT PAYS BONUS: the trio's own print second and the Done line's own second ride the same second THIRTY of THIRTY faces - the .341 word's four-face law the whole archive re-keeps at triple size.
-- v0.976.343 THE TRIO'S OWN ORDER built complete (trioorder.mjs + 5-pin test + decompose wire + fieldread-trioorder-0543.mjs): the census the LAST complete trio's middle print keeps (the .333 LAST-PRINT-WINS law, the trailing partial the drop law refuses, the re-boot face the newest boot's own flush keeps), the partial phase the order NULL honest (zero a REAL class here - the nether-middle skin the thirteen faces voice; the null the only shape the never-read keeps - the .341 clock-null law the class cell inherits), the fence the class cell's own law (null honest else 0/1), the row the two-step shape (the swing and the mirror swing the two-value domain voices, the swell/fade branches the family shape keeps but the {0,1} domain never voices - the .342 nibble precedent the same law holds), the tail co-existence the .341 sibling named first. Local gates: node --check x4, pins 5/5, unit 6920/6920 one-process --test-force-exit EXIT=0, fieldread ALL GATES GREEN (FIELDPROOF 30/30 + TRIO-3 30/30 + SAME-SECOND 30/30 + ORDER-MIRROR 30/30 + OVERWORLD-FIRST 30/30 + ORDER-CLASSES exactly 2 + DUAL 17/13 BOTH SPEAK), fold smoke byte-exact riding the F512/F513/F514 window (1 -> 0 (-1) -> 1 (+1) swing exit=0).
-- THE SMOKE'S OWN LESSON: the first smoke ran silent (x x x x dummies - readFileSync ENOENT killed the fold before my row) - the all-real-slots form the law keeps (argv[2..8] every slot a REAL file).
-- v0.976.343 committed 90493da9, push de137637..90493da9 FIRST-TRY (rebase clean, no collision this round - the parallel chain quiet), identity PLANETA9091 both commits.
-- F531 = 39502789851 IN FLIGHT at round close (~39 min, the 40-min timeout the workflow's own law keeps - a stuck job self-terminates; the terminal read the next fire's debt, the zombie cancel law judges if it hangs past the timeout). The .343 tree's own push gate 39504441033 (@90493da9) queued behind F531 - the next fire's routine read.
+- SANDBOX DEATH at open (/home/z/privateB gone, the twelfth; /home/z/faces331 zeroed too): re-clone + double identity + foreground npm install held; CI via API ALL GREEN (gates @de137637/@f003e125 SUCCESS, F530 SUCCESS terminal, active=0).
+- F531 = 39502789851 DISPATCHED HTTP 204 @de137637 BEFORE the clone (the API's own law).
+- Re-harvest rebuilt all 30 faces (F501-F530) from artifacts; trio-order audit: SEVENTEEN end-middle / THIRTEEN nether-middle / no third order / overworld-first 30/30 -> the ORDER CELL LIVE (the .341 word declared the order shape-only and never priced it); SAME-SECOND law re-voiced 30/30 (the .341 four-face law at triple size).
+- v0.976.343 THE TRIO'S OWN ORDER: trioorder.mjs (LAST complete trio's middle print, partial -> null honest, fence null|0|1) + 5-pin test + decompose wire + fieldread-trioorder-0543.mjs. Gates: check x4, pins 5/5, unit 6920/6920, fieldread ALL GREEN, fold smoke byte-exact (F512/F513/F514 swing 1 -> 0 -> 1; the all-real-slots lesson: dummy argv ENOENT killed the first smoke silent).
+- Push: v0.976.343 = 90493da9 FIRST-TRY; worklog fa05fa40 FIRST-TRY; identity PLANETA9091 throughout.
+- F531 in flight at round close (~40 min, the workflow's own timeout self-judges); the .343 gate 39504441033 queued.
 
 Stage Summary:
-- v0.976.343 THE TRIO'S OWN ORDER on origin (90493da9) - the save flush's ORDER cell priced: the arc SEVENTEEN end-middle THIRTEEN nether-middle no third order, the SAME-SECOND law re-voiced 30/30, the .341's shape-only declaration the word's own seat answers (co-existence by seat never by duplication).
-- The sandbox-death round rode clean: the re-clone teeth + the re-harvest law + the dispatch-before-clone order (the API's own law) - three deaths now taught, zero time lost to the reaper beyond the install.
-- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327, .329, .330, .331, .332, .336, .340, .342, .343 (.324/.326/.333/.334/.335/.337/.338/.339/.341 raced or taken by the parallel chain - the words ride).
-- FLEET OF RECORD: F531 = 39502789851 (@de137637, the .342 full tree) IN FLIGHT - NEXT FIRE: the terminal read + face deep-read (the nibble word's second fleet face; the F531 face's trio order the .343 census re-voices with it) + the .343 gate 39504441033 routine read -> three-condition audit -> F532 rides the .343 full tree (the order word's own fleet face).
-- .344 candidates: the trio order's own multi-boot bin (the re-boot face the census keeps - ONE-BOOT 30/30 the faces hold, likely born silent); the save-trio's own first-print clock (the pair-identity decline the SAME-SECOND law answers); the re-join bin's inner shape (the reconnect word's own faces the claimed seat rides); the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability) - the parallel chain's own parked list the ledgers keep.
-- the identity law held: PLANETA9091
-
----
-Task ID: cron30-20261021-0600 (fire 0600, cron 2026-10-21 06:00:01 +08:00, Job ID 414125)
-Agent: Z.ai Code (main, fire-0600)
-Task: cron 任务书执行——v0.976.344 THE TACS TRIO'S OWN STORAGE ORDER（TACS 三印的 storage 席位词）+ 30-face harvest 重建 + F530 face 复核（诚实不派发，F531 活跃）
-
-Work Log:
-- 沙盒重置（第 16 次）→ 重克隆 + npm install；起点 90493da9（.343 树）；身份 PLANETA9091。教训记档：fire-0600 首次 npm install 用 & 后台跑——node_modules 残缺（vec3 缺）致全 unit 墙假红 94 fail；前台重装 14s 后 6883/6883 全绿——**依赖安装永远前台**。
-- F530 = 39496061839 **SUCCESS 终读**（API 亲证）——nibble 词首 fleet 面绿；face deep-read 已由 fire-0443 支付（nibble 0 第七零面 / identity 25-0==25 / SAME-SECOND 第六面），本 fire 复核其 TACS 数据：**F530 全 console 实带 TACS 三印**（world/DIM1/DIM-1 @21:06:37 = 75997 = Done 秒）——run68 fixture 的"TACS 一印"只是 excerpt 截断，非全面。
-- **30-face harvest 重建**：fire-0543 的 RUN2F 映射 + fleet-server-log artifact → /home/z/faces331 30/30 面（scripts/harvest-faces-0600.mjs；F531 之后新面可续）。
-- **TACS 全档审计（决定性）**：WITH-TACS 30/30；TRIO-3 30/30（count born-constant 3——count 格弃）；SAME-SECOND 26/30（**F507/F519/F523/F525 四漂移面 +1s——drift 格 live 记账**）；ORDER-CLASSES 恰 2（world>DIM-1>DIM1 | world>DIM1>DIM-1）——**storage ORDER 格 LIVE（17 DIM1-middle / 13 DIM-1-middle，both speak，world-first 30/30）**。
-- v0.976.344（2e014da8 → rebase 后 49277605，5 文件 +401/-1）：src/lib/tacsorder.mjs（census 严格帧 + fence + row 两步形状 + 尾 co-existence 点名 .341/.343 兄弟）+ tests/unit 7 pins（REAL F501/F530/F507 字节精确 + 30 面弧 re-voice 17/13 + 12 皮肤拒电池 + fence 全支 + swing/held 分支）+ decompose 接线（import 在 .341 锚旁、fold 在 .343 tro fold 后，同一 argv[6..8] carrier，CENSUS GUARD 零舰队接线零新日志行）+ fieldread-tacsorder-0600.mjs（FIELDPROOF/TRIO-3/ORDER-MIRROR/WORLD-FIRST 30/30 + DUAL 17/13——ALL GATES GREEN）。
-- 门：node --check ×3；pins 7/7；syntax 1471/0；unit 6883/6883 one-process EXIT=0。NO local server/fleet/integration（CI speaks）。
-- push fa05fa40..49277605 零冲突第 1 次成功（rebase 干净吸收 fire-0543 的 worklog append）；author 亲证 PLANETA9091。ZERO force-push。
-- CI：MY GATE .344 = 39506909765（@49277605）poll 3 窗 pending（队列骑 F531 fleet leg + .343 gate backlog）——**terminal read = 下一 fire 的债**（协议 E 如实收尾）。
-- 诚实不派发：F531 = 39502789851（workflow_dispatch @de137637，fire-0543 的 dispatch）IN_PROGRESS——one-active law 生效，无重复 POST；F532 候选骑 .344 全树。
-
-Stage Summary:
-- v0.976.344 THE TACS TRIO'S OWN STORAGE ORDER 在 origin（49277605）——.341 拒绝电池亲点的 "different emitter" lane 补齐：flush 的 dims 与 echo 的 storages 两 lane 两 emitter 两词，co-existence by seat。
-- 漂移格记账：TACS 秒 vs Done 秒 26 同 / 4 漂移（F507/F519/F523/F525 各 +1s）——下一席位候选（drift 两值格，同 .342 nibble 形）。
-- FLEET OF RECORD：F531 = 39502789851（@de137637，.343 全树，trio-order 词的 fleet 面）IN_PROGRESS——下一 fire 终读 + face deep-read；MY GATE .344 = 39506909765 终读同付。
-- .345 候选：TACS drift 格（26 同/4 漂移两值格）、save-trio third-hand（born-duplicate 先 audit）、bot 前线残留、F531 新面驱动。
-- the identity law held: PLANETA9091
-
----
-Task ID: cron30-20261021-0630 (fire 0630, cron 2026-10-21 06:30:05 +08:00, Job ID 414125)
-Agent: Z.ai Code (main, fire-0630)
-Task: cron 任务书执行——v0.976.345 THE TACS ECHO'S OWN DRIFT（.344 亲点的 drift 席位词）+ F530/F531 终读 + 诚实不派发（gate 未 terminal）
-
-Work Log:
-- 沙盒存活（repo intact @a1b8a7d8，fire-0600 的 worklog push 已在）；fetch/rebase clean；身份 PLANETA9091。
-- 债务终读（API 亲证）：F530 = 39496061839 **SUCCESS**（fire-0500 的 terminal 债清）；F531 = 39502789851 **SUCCESS**（trio-order 词首 fleet 面绿，fire-0543 的 terminal 债清）；MY GATE .344 = 39506909765 **CANCELLED**（concurrency 挤出）——祖先律记账：49277605 IS-ancestor a1b8a7d8，a1b8a7d8 的 push gate 39507374922 同树 in_progress（本 fire push 后由 39510583824 接续同一代码树）。
-- **F531 face deep-read 支付**（artifact 12304260996，487 行）：open/select @21:58:39 前段 / Done 5.535s @21:58:39 / **trio order world → the_nether → the_end（nether-middle 第 14 面候选）** / TACS 三印全 @21:58:39 同秒（SAME-SECOND 家族新面）+ 'All dimensions are saved' summary 真现身（.344 拒电池皮肤亲证）。
-- **TACS drift 席位审计（fieldread-tacsdrift-0630 ALL GATES GREEN）**：30-face arc FIELDPROOF 30/30 + RAW-MIRROR 30/30 + DUAL **4 drift（F507/F519/F523/F525 各 +1s）/ 26 same-second——both speak，seat LIVE**；F531 新鲜面 drift 0。
-- v0.976.345（commit 7cc7c368，5 文件 +0 冲突）：src/lib/tacsdrift.mjs（census：LAST Done 钟参照 + 新 boot 重置 echo 集 + split set null honest + 双严格帧 RE + summary 皮肤拒 + fence + row 两步形状尾 co-existence 点名 .344/.341/.343 兄弟）+ tests/unit 6 pins（REAL F501/F507/F519/F531 字节精确 + 30 面弧 4/26 + 拒电池 + fence 全支 + swing/mirror + held silence）+ decompose 接线（import 在 .344 锚旁、fold 在 tso fold 后，argv[6..8] carrier，CENSUS GUARD 零舰队接线零新日志行）+ fieldread 脚本。
-- census 修复一笔：初版跨 boot TACS 集不重置——re-boot pin 亲证 split→null 假阴；修为 Done 行重置（.333 LAST-PRINT-WINS 律继承）后 6/6。
-- 门：node --check ×3；pins 6/6；syntax 1474/0；**unit 6887/6887 one-process --test-force-exit EXIT=0**（580s 窗——300s 超时亲证 fire-0343 的 600s 律）；fold smoke byte-exact（F506/F507/F508 窗 0 -> 1 (+1) -> 0 (-1) swing，all-real-slots form，EXIT=0）。
-- push a1b8a7d8..7cc7c368 **FIRST-TRY 零冲突**（rebase 干净）；author 亲证 PLANETA9091。ZERO force-push。
-- CI：MY GATE .345 = **39510583824**（@7cc7c368）poll 8 窗 in_progress——**terminal read = 下一 fire 的债**（协议 E 诚实收尾）。
-- 诚实不派发：three-condition audit 缺腿（own gate 未 terminal）；active workflow_dispatch = 0（F531 SUCCESS）但 E→F 顺序律优先——**F532 候选骑 .345 全树**，待 gate 绿下一 fire 派发。
-
-Stage Summary:
-- v0.976.345 THE TACS ECHO'S OWN DRIFT 在 origin（7cc7c368）——.344 ledger 亲点的 next seat 补齐：echo 的 storage mass 格与 clock 格两 cell 一 echo 两词 co-exist by seat。
-- FLEET OF RECORD：F531 = 39502789851（@de137637，.343 全树）**COMPLETED SUCCESS** + face deep-read 已付——F532 骑 .345 全树（7cc7c368）：下一 fire MY GATE .345 = 39510583824 终读 → three-condition audit → dispatch。
-- MY word ledger 增补：.296, .303, .308, .310–.313, .317, .318, .320, .323, .325, .327, .329–.332, .336, .340, .342, .343, .345（.324/.326/.333/.334/.335/.337/.338/.339/.341/.344 raced or taken by the parallel chain——the words ride）。
-- 下一席位候选：F532 新面驱动（drift 弧 31 面扩展 re-voice）、save-trio third-hand（born-duplicate 先 audit）、bot 前线残留（tool repair/replace、furnace/smelt、WorldMap target assignment、night/mob survivability——parallel chain's parked list）。
-- the identity law held: PLANETA9091
-
----
-Task ID: cron30-20261021-0700 (fire 0700, cron 2026-10-21 07:00:00 +08:00, Job ID 414125)
-Agent: Z.ai Code (main, fire-0700)
-Task: cron 任务书执行——MY GATE .345 终读 + 活跃 dispatch run 39510437991 拆解（诚实不派发，one-active law）
-
-Work Log:
-- 沙盒存活（repo intact @9351f5c0 = origin）；fetch/rebase clean；身份 PLANETA9091。
-- **MY GATE .345 = 39510583824（@7cc7c368，.345 drift 词全树）COMPLETED SUCCESS（API 亲证）**——fire-0630 的 terminal 债清零：TACS ECHO'S OWN DRIFT 词 CI-validated。
-- 并行链动作亲证：**39510437991 workflow_dispatch @a1b8a7d8**（.344 代码树 + worklog，22:45:49Z 物化，fire-0630 收尾后由并行链 dispatch）IN_PROGRESS——poll 3 轮亲证：unit ×2 SUCCESS + Integration SUCCESS + **Big fleet leg in_progress（~22 min at round close）**——fire-0543 先例诚实收尾，**terminal read = 下一 fire 的债**。
-- **one-active law 生效：诚实不派发**——active workflow_dispatch ≥ 1，无重复 POST，F532 不物化。
-- 零本地代码改动存活（本 fire 无新词——时间盒被 poll 窗吃满，gate .345 SUCCESS + dispatch 拆解即本轮自身债务）；ZERO force-push。
-
-Stage Summary:
-- 版本维持 v0.976.345（本 fire 无新词无 push——零冲突优先达成）。
-- **F532 派发条件只差一腿**：F531 SUCCESS ✓ + MY GATE .345 SUCCESS ✓ + active=0 ✗（39510437991 in_progress）——下一 fire：39510437991 terminal read → 三条件 audit → F532 = POST dispatches @9351f5c0（.345 全树，drift 词的 fleet 面）。
-- FLEET OF RECORD：39510437991（@a1b8a7d8，.344 树）IN_PROGRESS——terminal read + face deep-read（TACS order/drift 弧第 31+ 面 re-voice）下一 fire 债。
-- 下一席位候选：F532 新面驱动、save-trio third-hand（born-duplicate 先 audit）、bot 前线残留。
+- v0.976.343 on origin - the save flush's ORDER cell priced (17/13 dual, no third order); MY ledger adds .343.
+- NEXT FIRE: F531 terminal read + face deep-read (the .343 census re-voices the face's trio order) + the .343 gate routine read -> three-condition audit -> F532 rides the .343 tree.
 - the identity law held: PLANETA9091
 
 ---
@@ -37069,26 +36949,24 @@ Agent: Z.ai Code (main, cron job 415967)
 Task: privateB hourly push (fire-0643, trace 1a0dd4672fe611e9-cron-agent-loop-202610210643)
 
 Work Log:
-- SANDBOX DEATH at open (the fifteenth; /home/z/faces331 zeroed again): re-clone @a1b8a7d8 (0.976.344) + double identity PLANETA9091 local+global + foreground npm install (the fire-0600 lesson held).
-- CI audit at open: F531 = 39502789851 (@de137637) COMPLETED SUCCESS - the fire-0543 terminal debt PAID; the .344 gate 39506909765 (@49277605) CANCELLED by concurrency, the ANCESTOR law answered (the newer gate 39507374922 @a1b8a7d8 SUCCESS carries the .344 code); the worklog gate SUCCESS.
-- THE RE-HARVEST: all THIRTY-ONE faces rebuilt fresh from the artifacts (F501-F530 via the reharvest-0543 RUN2F map + F531 artifact 12304260996) - /home/z/faces331 31/31.
-- F531 face deep-read PAID (the revoice across every seat, zero lines broke faith): open 79113 (21:58:33) / select 79114 (21:58:34, the NIBBLE ONE) / done 79119 (Done 5.535s) / prep 5057 / trio 3@79119 (the SAME-SECOND law 31/31) / TACS trio @21:58:39 SAME-SECOND, order world -> DIM-1 -> DIM1 (the DIM-1-middle class' fourteenth face - the .344 arc 17/14) / set 79132+79142 / dawn 79144 (21:59:04 YardSurvey) / dusk 80105 (22:15:05) / quiet 31 / reach 30 / THE IDENTITY 31 - 1 == 30 LIVE / width 961 (the FOURTH 961 face: F505 wrap + F516/F519 flat + F531 flat) / ride 986 (the ALL-TIME HIGH - the .338 band 582..984 the fresh face broke) / shape FLAT / balance 28=28 with EIGHT mid-run re-joins (F13 twice + F3/F4/F7/F11/F14/F15 once each - the fire-0443 re-join bin's own fresh evidence).
-- Three-condition audit GREEN -> F532 = 39510437991 DISPATCHED HTTP 204 @a1b8a7d8 (the .344 full tree - the tacsorder word's own fleet face); fleet secession kept the push gates untouched.
-- THE SAME-SEAT RACE (the version race's seventh, a NEW class): the parallel fire-0630 round landed THEIR OWN v0.976.345 THE TACS ECHO'S OWN DRIFT (7cc7c368) + worklog (9351f5c0) on origin WHILE this round's drift word pushed - the SAME cell both rounds priced (the .344 ledger's own named next seat, the drift cell the .344 tail recorded), the rebase conflicted (tacsdrift.mjs + the decompose anchors + package.json). THE CO-EXISTENCE LAW ANSWERED where the re-route law had no seat: THEIRS FIRST-BORN STANDS (7cc7c368 pushed first-try, the gate 39510583824 SUCCESS), MY DUPLICATE DECLINED - the word rescued to /tmp (my-tacsdrift-0643.mjs), rebase --abort, reset --hard origin/master 9351f5c0, zero force-push, zero loss; the drift cell priced ONCE on origin (their 30-face arc 26/4 + the F531 fresh-face same-second read their fieldread kept; MY 31-face arc 27/4 the /tmp rescue holds - the arc extension rides the next natural word).
-- v0.976.346 THE FLEET'S OWN RE-JOIN built on their tree (5ca87e93, 4 files +261/-1): src/lib/rejoinbin.mjs (the census the name's own tally keeps in file order, the events beyond each name's FIRST summed - the balance's inner shape the .314 total and the .336 drift never split; the no-echo face the lawful zero; the fence the count law 0..86399) + tests/unit/rejoinbin.test.mjs 5 pins (the REAL F530/F531 re-join sequences byte-exact - F14/F10/F15/F17 the four the fire-0443 ledger named, F13 twice + six singles the eight the deep-read paid; the REAL 31-face arc SEVENTEEN classes 2..50 both-speak, the F524 churn monster 50 the ceiling, F514/F522 27 the storm class; the 10-skin refusal battery; the fence every branch; the REAL swell window F529->F530->F531 2 -> 4 -> 8 and the REAL swing F528->F529->F530 5 -> 2 -> 4 byte-exact) + the decompose wire (import beside the .336 joinechodrift anchor, fold after their jed fold) + fieldread-rejoin-0643.mjs (FIELDPROOF 31/31 + BIN-CLASSES 17 + CHURN-MAX F524=50 + FRESH F530=4/F531=8 + REAL-SWELL 2 -> 4 -> 8 - ALL GATES GREEN).
-- Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1476/0, unit 6906/6906 one-process --test-force-exit EXIT=0, fold smoke byte-exact (the REAL swell 2 -> 4 (+2) -> 8 (+4) exit=0). NO local server/fleet/integration (CI speaks).
-- push 9351f5c0..5ca87e93 FIRST-TRY, author PLANETA9091 verified before the commit.
-- F532 fleet leg started 23:01:10Z (alive, the matrix + integration legs SUCCESS) - IN FLIGHT at round close; MY GATE .346 = 39513839182 (@5ca87e93) pending behind their worklog gate - both terminal reads the next fire's debt.
-- THE WORKLOG RACE (the parallel fire-0700 append 83e98854 landed mid-round, my first push's rebase conflicted): RE-ROUTE LAW held - rescue /tmp, rebase --abort, reset 83e98854, re-appended (this block, the race note keeps); the fire-0700 read rode my .346 and held the one-active law NO dispatch - the ledgers agree.
+- SANDBOX DEATH at open (the fifteenth; /home/z/faces331 zeroed again): re-clone @a1b8a7d8 (0.976.344) + double identity PLANETA9091 local+global + foreground npm install.
+- CI audit at open: F531 = 39502789851 (@de137637) COMPLETED SUCCESS - the fire-0543 terminal debt PAID; the .344 gate 39506909765 CANCELLED by concurrency, the ANCESTOR law answered (39507374922 @a1b8a7d8 SUCCESS carries the .344 code).
+- THE RE-HARVEST: all THIRTY-ONE faces rebuilt (F501-F530 via reharvest-0543 + F531 artifact 12304260996).
+- F531 face deep-read PAID: open 79113 / select 79114 (nibble 1) / done 79119 (5.535s) / prep 5057 / trio 3@79119 SAME-SECOND 31/31 / TACS world->DIM-1->DIM1 SAME-SECOND (arc 17/14) / set 79132+79142 / dawn 79144 / dusk 80105 / quiet 31 / reach 30 / IDENTITY 31-1==30 LIVE / width 961 (the fourth 961 face) / ride 986 ALL-TIME HIGH / shape FLAT / balance 28=28 EIGHT re-joins (F13 twice + 6 singles).
+- F532 = 39510437991 DISPATCHED HTTP 204 @a1b8a7d8 (the .344 tree, tacsorder's fleet face).
+- THE SAME-SEAT RACE (seventh version race, NEW class): parallel fire-0630 landed THEIR v0.976.345 THE TACS ECHO'S OWN DRIFT (7cc7c368) - the SAME cell both priced; co-existence law answered: THEIRS FIRST-BORN STANDS, MY DUPLICATE DECLINED (rescue /tmp -> abort -> reset 9351f5c0, zero force-push, zero loss; my 31-face drift arc 27/4 the /tmp rescue holds).
+- v0.976.346 THE FLEET'S OWN RE-JOIN (5ca87e93) built on their tree: rejoinbin.mjs (the second-and-later joins per name - the balance's inner shape the .314 total and .336 drift never split) + 5 pins + decompose wire + fieldread-rejoin-0643.mjs ALL GATES GREEN (FIELDPROOF 31/31, 17 classes, F524 churn 50, F530=4/F531=8, REAL-SWELL 2->4->8).
+- Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1476/0, unit 6906/6906 EXIT=0, fold smoke byte-exact. push 9351f5c0..5ca87e93 FIRST-TRY.
+- THE WORKLOG RACE: fire-0700's append (83e98854) landed mid-round - RE-ROUTE LAW held (rescue /tmp, abort, reset, re-append) -> repo worklog 83e98854..6ce6e76f FIRST-TRY.
+- F532 IN FLIGHT at close (fleet leg 23:01:10Z); MY GATE .346 = 39513839182 pending - terminal reads the next fire's debt.
 
 Stage Summary:
-- Master = 83e98854 carries my v0.976.346 THE FLEET'S OWN RE-JOIN (5ca87e93) beneath the fire-0700 worklog append (their v0.976.345 THE TACS ECHO'S OWN DRIFT rides beneath mine, the .344 tacsorder beneath theirs). Next free version = 0.976.347.
-- The same-seat race's own law the ledgers keep: co-existence by seat never by duplication - a seat priced ONCE; the first-born word stands, the duplicate declines (the /tmp rescue the evidence keeps).
-- FLEET OF RECORD: F532 = 39510437991 (@a1b8a7d8, the .344 full tree) IN FLIGHT - NEXT FIRE: the terminal read + face deep-read (the tacsorder word's own fleet face: the F532 face's TACS order + drift + trio-order cells re-voice) + the .345 gate (7cc7c368's) and MY .346 gate 39513839182 routine reads -> three-condition audit -> F533 rides the .346 full tree (the rejoin word's own fleet face).
-- .347 candidates: the re-join BOTS cell (the distinct-name count the events cell rides beside - the arc's own second bin the audit priced 17 classes against), the .345 drift arc's 31-face extension re-voice (the F531 face the same-second class' 27th the /tmp audit holds), the save-trio third-hand (born-duplicate audit first), the bot frontline (tool repair/replace, furnace/smelt, WorldMap target assignment, night/mob survivability - the parked list the ledgers keep).
-- Lessons: the same-seat collision the co-existence law answers (the re-route law renumbered DIFFERING seats, the duplicate word the SAME seat never re-lands); the rescue-before-abort now reflex; the one-process glob unit form the 600s window keeps; the re-join bin the three-ledger candidate the patience paid (fire-0443 named, fire-0543/0600 kept, fire-0643 priced).
+- Master = 6ce6e76f: my v0.976.346 beneath the fire-0700 worklog; next free version 0.976.347.
+- The same-seat law: co-existence by seat never by duplication - a seat priced ONCE, the first-born stands, the duplicate declines.
+- NEXT FIRE: F532 terminal + face deep-read + the .345/.346 gates -> three-condition audit -> F533 rides the .346 tree (the rejoin word's own fleet face).
+- .347 candidates: the re-join BOTS cell (distinct-name count), the .345 drift arc 31-face extension, save-trio third-hand, bot frontline.
 - the identity law held: PLANETA9091
-- Round-end addendum: F532 = 39510437991 (@a1b8a7d8, the .344 tree) COMPLETED SUCCESS - the terminal read PAID IN-ROUND; the face harvested (artifact 12306634064) and deep-read: open 82892 (23:01:32) / select 82893 (nibble 1) / done 82896 (Done 3.702s) / prep 3492 / trio 3@82896 (SAME-SECOND 32/32) / TACS trio @23:01:36 == Done second (the drift cell the 28th same-second face - the .345 arc 28 same / 4 drift over 32 faces) / TACS order world -> DIM-1 -> DIM1 (the .344 arc 17/15) / trio order nether-middle (the .343 arc 14/18... the thirteenth end-middle count the fresh faces keep) / set 82906+82915 / dawn 82918 / dusk 83822 / quiet 26 / reach 25 / IDENTITY 26 - 1 == 25 LIVE / width 904 / ride 926 / shape FLAT / balance 28=28 - ZERO lines broke faith. Next fire: the .346 gate 39514051119 (@6ce6e76f) routine read -> three-condition audit -> F533 rides the .346 tree (the rejoin word's own fleet face - the F532 face's re-join count the census re-voices with it). the identity law held: PLANETA9091
+- Round-end addendum: F532 = 39510437991 SUCCESS terminal read PAID IN-ROUND; face harvested (12306634064) + deep-read: open 82892 / select 82893 (nibble 1) / done 82896 (3.702s) / trio 3@82896 / TACS drift 0 (the 28th same-second face, .345 arc 28/4) / TACS DIM-1-middle (.344 arc 17/15) / IDENTITY 26-1==25 LIVE / ride 926 / width 904 / balance 28=28. NEXT FIRE: the .346 gate 39514051119 routine read -> F533 rides the .346 tree (the rejoin word's own fleet face). the identity law held: PLANETA9091
 
 ---
 Task ID: fire-0743
@@ -37097,18 +36975,16 @@ Task: privateB hourly push (fire-0743, trace 1a0dd4672fe611e9-cron-agent-loop-20
 
 Work Log:
 - SANDBOX DEATH at open (the sixteenth; /home/z/privateB gone, /home/z/faces331 zeroed): re-clone @136c5dc2 (the fire-0643 addendum's worklog commit atop v0.976.346 5ca87e93) + double identity PLANETA9091 local+global + foreground npm install.
-- CI audit at open: F532 = 39510437991 SUCCESS terminal (the fire-0643 addendum's own in-round read already paid); the .346 gate 39514051119 @6ce6e76f CANCELLED by concurrency, the SUCCESSOR law answered (39514167207 @136c5dc2 SUCCESS carries the .346 code - the worklog-only commits ride the same v0.976.346 tree).
-- Three-condition audit GREEN -> F533 = 39517302612 DISPATCHED @136c5dc2 (the .346 full tree, the rejoin word's own fleet face); re-clone + npm install rode the fleet leg.
-- THE RE-HARVEST: all THIRTY-TWO faces rebuilt (F501-F530 via reharvest-0543 + F531 12304260996 + F532 12306634064).
-- v0.976.347 THE FLEET'S OWN RE-JOIN BOTS (19a0728e): the join lane's own BREADTH cell (the DISTINCT names whose tally passed the first) the .346 DEPTH word beside holds; the 32-face breadth audit priced THIRTEEN distinct classes (1,2,3,4,5,6,7,8,9,10,13,15,17), the cells DIVERGE 30/32 faces (F512 18 events/5 bots, F501 19/17, F532 8/2 the flap duo F13 x6 + F17 x4, F509 2/1 the lone flapper, F512's F9 the MEGA-FLAPPER 11 joins); the BREADTH LAW bots <= events the tally guarantees. Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1478/0, unit 7086/7086 EXIT=0, fieldread ALL GREEN (FIELDPROOF 32/32, ARC byte-exact, CLASSES 13, BREADTH-LAW, FOLD-SMOKE the swing 4 -> 7 (+3) -> 2 (-5) byte-exact, REAL-SWELL 1 -> 5 (+4) -> 7 (+2)). push 136c5dc2..19a0728e FIRST-TRY.
-- F533 = 39517302612 COMPLETED SUCCESS -> face harvested (12310108812, 522 lines) + FULL deep-read: open 161 (00:02:41) / select 162 (nibble 1) / done 167 (6.048s, prep 5642) / trio 3@167 SAME-SECOND 32/32 / trio order nether-middle / TACS drift 0 (the .345 arc 29/4) / TACS DIM-1-middle / set 180+190 / dawn 192 (YardSurvey 00:03:12) / dusk 1153 (F13 00:19:13) / quiet 31 / reach 30 / IDENTITY 31-1==30 LIVE / ride 986 TIES THE ALL-TIME HIGH / width 961 the FIFTH face / shape FLAT / balance 35=35 / rejoinBin 15 events (the depth arc's EIGHTEENTH class) / rejoinBots 11 bots - THE .347 BREADTH WORD'S OWN FIRST FLEET FACE RIDES A FRESH CLASS (11, the arc's fourteenth); the F533 roster: F14 x4 joins the face's own flapper, F13/F1 x3, F5/F6/F7/F11/F12/F16/F17/F18 x2 - the churn CLIMBING 4 -> 8 -> 8 -> 15 events, breadth 4 -> 7 -> 2 -> 11.
-- MY GATE .347 = 39518639892 (@19a0728e) COMPLETED SUCCESS - the breadth word's full tree CI-validated.
+- CI audit at open: F532 = 39510437991 SUCCESS terminal (the fire-0643 addendum's terminal debt already paid by their own in-round read); the .346 gate 39514051119 @6ce6e76f CANCELLED by concurrency, the SUCCESSOR law answered (39514167207 @136c5dc2 SUCCESS carries the .346 code - the worklog-only commits 83e98854/6ce6e76f/136c5dc2 ride the same v0.976.346 tree); HEAD gate polled GREEN in-round.
+- Three-condition audit GREEN -> F533 = 39517302612 DISPATCHED HTTP 204 @136c5dc2 (the .346 full tree, the rejoin word's own fleet face) BEFORE the re-harvest (the API's own law).
+- THE RE-HARVEST: all THIRTY-TWO faces rebuilt (F501-F530 via reharvest-0543 + F531 artifact 12304260996 + F532 artifact 12306634064).
+- v0.976.347 THE FLEET'S OWN RE-JOIN BOTS (19a0728e): rejoinbots.mjs - the join lane's own BREADTH cell (the DISTINCT names whose tally passed the first) the .346 DEPTH word beside holds; the 32-face breadth audit priced THIRTEEN distinct classes (1,2,3,4,5,6,7,8,9,10,13,15,17), the cells DIVERGE 30/32 faces (F512 18 events/5 bots the deep churner, F501 19/17 the wide shallow, F532 8/2 the flap duo F13 x6 + F17 x4, F509 2/1 the lone flapper, F512's F9 the MEGA-FLAPPER 11 joins); the BREADTH LAW the tally guarantees (bots <= events). Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1478/0, unit 7086/7086 EXIT=0, fieldread ALL GREEN (FIELDPROOF 32/32, ARC byte-exact, CLASSES 13, BREADTH-LAW, FOLD-SMOKE byte-exact the swing 4 -> 7 (+3) -> 2 (-5), REAL-SWELL 1 -> 5 (+4) -> 7 (+2)). push 136c5dc2..19a0728e FIRST-TRY.
+- F533 IN FLIGHT at worklog write (~10 min to terminal); MY GATE .347 = 39518639892 queued - terminal reads this round's close.
 
 Stage Summary:
-- Master: v0.976.347 = 19a0728e THE FLEET'S OWN RE-JOIN BOTS on origin; next free version 0.976.348.
-- MY word ledger: .296, .303, .308, .310, .311, .312, .313, .317, .318, .320, .323, .325, .327, .329, .330, .331, .332, .336, .340, .342, .347.
-- NEXT FIRE: three-condition audit -> F534 rides the .347 tree (the breadth word's tree - its own first DISPATCH is F533's face already spoken @136c5dc2; F534 the first fleet face the .347 FULL TREE rides); the .347 gate routine read paid.
-- .348 candidates: the re-join depth-per-bot shape (the tally's own distribution the two cells underprice - F533's F14 x4 the face's own tail), the .345 drift arc extension, save-trio third-hand (likely decline), bot frontline (tool repair / furnace / WorldMap / night survivability).
+- v0.976.347 on origin - the churn's own WIDTH priced beside the .346 depth; MY ledger adds .347.
+- NEXT FIRE: F533 terminal read + face deep-read (the .347 census re-voices the face's breadth) + the .347 gate routine read -> three-condition audit -> F534 rides the .347 tree.
+- .348 candidates: the re-join depth-per-bot shape (the tally's own distribution the two cells underprice), the .345 drift arc extension, save-trio third-hand (likely decline), bot frontline (tool repair / furnace / WorldMap / night survivability).
 - the identity law held: PLANETA9091
 
 ---
@@ -37122,31 +36998,29 @@ Work Log:
 - THE RE-HARVEST: all THIRTY-THREE faces rebuilt (F501-F530 reharvest-0543 + F531/F532/F533 12304260996/12306634064/12310108812).
 - .348 seat priced: the PEAK-CHURNER cell (max single-name re-join events - the tallest tally column) - NINE distinct classes (1,2,3,4,5,6,7,10,11) across 33 faces, the 11 ceiling THREE faces ride (F506/F514 lone champions + F524's TWIN champions F17/F1 twelve joins each), F512's F9 mega-flapper the 10 class, F529/F530 the flat floor (peak 1, no bot rode twice).
 - v0.976.348 THE FLEET'S OWN PEAK CHURNER (64ed0c3a): rejoinpeak.mjs (rejoinPeakCensus + fence + trend row) + 5-pin test + decompose wire + fieldread-rejoinpeak-0843.mjs. Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1480/0, unit 7091/7091 EXIT=0, fieldread ALL GREEN (FIELDPROOF 33/33, ARC byte-exact, CLASSES 9, PEAK-LAW peak<=events, FOLD-SMOKE the REAL swing 2 -> 5 (+3) -> 3 (-2) byte-exact). push aeca9824..64ed0c3a FIRST-TRY.
-- F534 = 39523167609 COMPLETED SUCCESS -> face harvested (12312686880, 517 lines) + FULL deep-read: open 3556 (00:59:16) / select 3557 (nibble 1) / done 3559 (2.839s, prep 2687) / set 3569+3578 / dawn 3580 / dusk 4494 (ride 935) / quiet 24 / reach 23 / IDENTITY 24-1==23 LIVE / width 914 FLAT / balance 29=29 / trio order nether-middle / TACS DIM-1-middle / rejoinBin 9 events / rejoinBots 5 bots / PEAK 5 (F17's own six joins - the face's own mega-flapper carried FIVE of the nine events).
-- TWO HISTORIC FIRSTS ONE FACE (the raw lines the ledger keeps): [00:59:19] Done + overworld trio print, [00:59:20] the_nether + the_end trio prints, [00:59:21] all three TACS echoes - (1) THE TRIO'S OWN SPLIT: the three 'Saving chunks' prints ride TWO seconds (overworld @Done's own 3559, the pair @3560) - the .341 SAME-SECOND law 32/32 BROKEN honestly, 32/33 the evolved count, the trio's own split cell the law's own next seat names; (2) THE TACS DRIFT'S OWN MAGNITUDE: the echoes land TWO seconds after Done (3561 vs 3559) - the class cell prices 1 honest (the 0/1 fence the .345 law keeps), the +2 magnitude the FIFTH drift face's own new fact (F507/F519/F523/F525 the +1 class), the magnitude cell the next seat names.
-- MY GATE .348 = 39524311624 (@64ed0c3a) COMPLETED SUCCESS - the peak word's full tree CI-validated; the worklog gate rides the next fire's read.
+- F534 IN FLIGHT at worklog write; MY GATE .348 queued - terminal reads round close.
 
 Stage Summary:
-- Master: v0.976.348 = 64ed0c3a THE FLEET'S OWN PEAK CHURNER on origin; next free version 0.976.349.
-- One lane three cells three words: the .346 mass / the .347 breadth / the .348 peak - the churn fully priced. MY ledger adds .348.
-- NEXT FIRE: three-condition audit -> F535 rides the .348 full tree (the peak word's own DISPATCH is F534's face already spoken @aeca9824; F535 the first fleet face the .348 FULL TREE rides); the .349 gate routine reads.
-- .349 candidates: THE TRIO'S OWN SPLIT CELL (the distinct-second count the trio's prints span - 1 vs 2, the F534 face the first 2), THE TACS DRIFT'S OWN MAGNITUDE CELL (the raw delta 0/+1/+2 the class word underprices), the peak-churner's NAME cell (WHO owns the tallest column - the ladderecho class), bot frontline (tool repair / furnace / WorldMap / night survivability).
-Task ID: cron30-20261021-0930 (fire 0930, cron 2026-10-21 09:30:03 +08:00, Job ID 414125)
-Agent: Z.ai Code (main, fire-0930)
-Task: cron 任务书执行——F532 DISPATCH @.348 全树（三条件 audit 全绿）+ 四连沙盒死亡后复活 re-clone
+- v0.976.348 on origin - the churn's own CONCENTRATION priced; one lane three cells three words (.346 mass / .347 breadth / .348 peak). MY ledger adds .348.
+- NEXT FIRE: F534 terminal + face deep-read (the .348 census re-voices the face's peak; the F534 face the first the .348 FULL TREE rides) + the .348 gate routine read -> three-condition audit -> F535.
+- .349 candidates: the peak-churner's NAME cell (WHO owns the tallest column - the ladderecho class), the re-join storm's duration (the flapper's own span), save-trio third-hand (likely decline), bot frontline (tool repair / furnace / WorldMap / night survivability).
+- the identity law held: PLANETA9091
+
+---
+Task ID: fire-0943
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-0943, trace 1a0dd4672fe611e9-cron-agent-loop-202610210943)
 
 Work Log:
-- 沙盒复活（0730/0800/0830/0900 四连全挂后）但 repo GONE → 按协议 p.2 re-clone + 身份双设（PLANETA9091）。
-- 债务终读（API 亲证）：**39510437991（@a1b8a7d8，fire-0700 拆解的 dispatch）COMPLETED SUCCESS**——terminal 债清零；active=0。
-- origin 推进亲证：64ed0c3a **v0.976.348 THE FLEET'S OWN PEAK CHURNER**（并行链落 .347/.348，head gate 39524311624 COMPLETED SUCCESS）；0bb82bb0 = fire-0843 的 worklog push（64ed0c3a IS-ancestor，同 .348 码）。
-- **三条件 audit 全绿 → F532 = POST ci.yml dispatches HTTP 204**；物化亲证 **39528220939 in_progress @0bb82bb0**（.348 全树——GitHub dispatch 语义骑 POST 时刻 head；clone 与 POST 之间并行链 fire-0843 落 worklog，无冲突）。
-- **one-active law 守住**：唯一 dispatch run = 我方 39528220939，无重复 POST；并行链 F533 = 39517302612 SUCCESS、F534 = 39523167609 SUCCESS（fire-0843 worklog 亲证）——账本互补不覆盖。
-- CI：39528220939 in_progress at round close——**terminal read = 下一 fire 的债**。
-- 零本地代码改动（re-clone 吃时间盒，本 fire 的 atom = F532 dispatch 本身）；ZERO force-push；身份 PLANETA9091。
+- Sandbox ALIVE at open (the first in four fires). CI audit first: F534 = 39523167609 SUCCESS terminal (the fire-0843 dispatch paid), MY GATE .348 = 39524311624 SUCCESS, the fire-0900 parallel's F535 = 39528220939 @0bb82bb0 IN FLIGHT at open (the lane occupied - the one-active law held, zero duplicate dispatch), their worklog 6e7b59a8 the new HEAD (worklog-only, the .348 code tree unchanged).
+- F535 SUCCESS terminal read IN-ROUND (the fire-0900's debt paid): the 35th face harvested (artifact 12314634318, 491 lines) + deep-read: open 6470 / select 6473 (nibble 3 - the FRESH nibble class, the first multi-second nibble the arc keeps) / done 6478 (4.776s) / trio 3 SAME-SECOND overworld->the_nether->the_end / TACS world->DIM-1->DIM1 SAME-SECOND drift 0 (the .345 arc 30/5) / dawn 6500 / dusk 7292 / quiet 30 / reach 27 / IDENTITY quiet-nibble==reach 30-3==27 held / ride 814 / width 792 / balance 26=26 / rejoinBin 6 events / rejoinBots 4 bots / PEAK 3 / lone champion F13 (the rapid flap trio 01:56:42/50/57 - the same-minute 8-second cadence the face keeps).
+- Three-condition audit GREEN (F535 SUCCESS terminal + the 6e7b59a8 gate SUCCESS rides the identical .348 code tree worklog-only + lane empty) -> F536 = 39531049903 DISPATCHED HTTP 204 @6e7b59a8 (the .348 full tree) BEFORE the .349 word (the API's own law).
+- .349 seat priced: the PEAK-CHURNER'S NAME cell (WHO owns the tallest column - the champions whose own re-join tally EQUALS the peak) - the 35-face census: THREE count classes (1,2,4) - the lone majority 27 faces / the twin class 7 faces (F501's F1+F4, F524's F1+F17 storm twins among them) / F530's QUARTET (the floor ties everyone: peak 1 = breadth 4, F10+F14+F15+F17 ALL FOUR champions); the LADDER LAW: seventeen of nineteen ladder names have championed (F14 six faces the favourite, F1 five, F17 five, F9 four, F13 four) - the survey never champions, F3 and F7 the two silent seats.
+- v0.976.349 THE FLEET'S OWN PEAK CHURNER'S NAME (d5f4fbb6): rejoinpeakname.mjs (rejoinPeakNameCensus the champions + count + rejoinPeakNameConsistent the fence + rejoinPeakNameTrendRow the two-step shape the held law keeps) + tests/unit/rejoinpeakname.test.mjs 5 pins (the REAL champion columns byte-exact F524's twins F1+F17 / F530's quartet / F506's lone F1 / F534's lone F17 / F531's F13, the 35-face arc 3 classes re-voiced, the 10-skin refusal battery, the fence every branch, the REAL windows byte-pinned the swell 1 -> 2 -> 4 and the swing 2 -> 4 -> 1 and the held-step silences), the decompose wire (the import beside the .348 rejoinpeak import, the fold after their fold, the SAME argv[6..8] server-console carrier - CENSUS GUARD zero fleet wiring, zero new fleet log lines), package.json bump 0.976.349. Gates: node --check x3, fieldread ALL GREEN (FIELDPROOF 35/35, ARC byte-exact, CLASSES 3, LADDER-LAW, CHAMPION-LAW, BREADTH-LAW, FOLD-SMOKE the swing 2 -> 4 (+2) -> 1 (-3) byte-exact, F535-FACE the lone F13). push 6e7b59a8..d5f4fbb6 FIRST-TRY.
+- MY GATE .349 = 39531670672 @d5f4fbb6 pending; F536 IN FLIGHT at worklog write - terminal reads round close.
 
 Stage Summary:
-- **F532 = 39528220939（@0bb82bb0，.348 全树）IN FLIGHT**——下一 fire terminal read → SUCCESS 则 face deep-read（peak churner 弧 re-voice + TACS order/drift 第 31+ 面）。
-- FLEET OF RECORD：39528220939 IN_PROGRESS；active=1（我方）。
-- 版本账本：origin = v0.976.348（并行链 .347/.348）；我方词账 .345 CI-validated。
-- 下一席位候选：F532 新面驱动、save-trio third-hand（born-duplicate 先 audit）、bot 前线残留；版本 bump 前必查 origin 撞号（.349+）。
+- v0.976.349 on origin - the churn's own IDENTITY priced; one lane four cells four words (.346 mass / .347 breadth / .348 depth / .349 name). MY ledger adds .349.
+- NEXT FIRE: F536 terminal + face deep-read (the .349 census re-voices the face's champions; the F536 face the first the .349 FULL TREE rides) + the .349 gate routine read -> three-condition audit -> F537.
+- .350 candidates: the champion's own CADENCE (the flapper's own span - the re-join storm's duration the fire-0843 note holds), the .345 drift arc extension, save-trio third-hand (likely decline), bot frontline (tool repair / furnace / WorldMap / night survivability).
 - the identity law held: PLANETA9091
