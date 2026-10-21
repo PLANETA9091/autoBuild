@@ -61,7 +61,6 @@ const REAL_F506 = [
   '[01:05:34] [Server thread/INFO]: F1 joined the game',
   '[01:05:43] [Server thread/INFO]: F1 joined the game',
   '[01:05:50] [Server thread/INFO]: F1 joined the game',
-  '[01:05:55] [Server thread/INFO]: F1 joined the game',
   '[01:05:55] [Server thread/INFO]: F19 joined the game',
   '[01:05:56] [Server thread/INFO]: F1 joined the game',
   '[01:05:59] [Server thread/INFO]: F10 joined the game',
