@@ -37110,3 +37110,25 @@ Stage Summary:
 - NEXT FIRE: three-condition audit -> F534 rides the .347 tree (the breadth word's tree - its own first DISPATCH is F533's face already spoken @136c5dc2; F534 the first fleet face the .347 FULL TREE rides); the .347 gate routine read paid.
 - .348 candidates: the re-join depth-per-bot shape (the tally's own distribution the two cells underprice - F533's F14 x4 the face's own tail), the .345 drift arc extension, save-trio third-hand (likely decline), bot frontline (tool repair / furnace / WorldMap / night survivability).
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-0843
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-0843, trace 1a0dd4672fe611e9-cron-agent-loop-202610210843)
+
+Work Log:
+- SANDBOX DEATH at open (the seventeenth; repo + faces zeroed, scripts survived): CI audit FIRST via API - worklog gate 39520844991 @aeca9824 SUCCESS (the fire-0743 debt paid), F533 SUCCESS terminal, fleet lane empty, HEAD unchanged aeca9824.
+- Three-condition audit GREEN -> F534 = 39523167609 DISPATCHED HTTP 204 @aeca9824 (the .347 full tree, the breadth word's own tree's first fleet face) BEFORE the re-clone (the API's own law); re-clone + double identity PLANETA9091 + foreground npm install rode the fleet leg.
+- THE RE-HARVEST: all THIRTY-THREE faces rebuilt (F501-F530 reharvest-0543 + F531/F532/F533 12304260996/12306634064/12310108812).
+- .348 seat priced: the PEAK-CHURNER cell (max single-name re-join events - the tallest tally column) - NINE distinct classes (1,2,3,4,5,6,7,10,11) across 33 faces, the 11 ceiling THREE faces ride (F506/F514 lone champions + F524's TWIN champions F17/F1 twelve joins each), F512's F9 mega-flapper the 10 class, F529/F530 the flat floor (peak 1, no bot rode twice).
+- v0.976.348 THE FLEET'S OWN PEAK CHURNER (64ed0c3a): rejoinpeak.mjs (rejoinPeakCensus + fence + trend row) + 5-pin test + decompose wire + fieldread-rejoinpeak-0843.mjs. Gates: node --check x3, pins 5/5 FIRST TRY, syntax 1480/0, unit 7091/7091 EXIT=0, fieldread ALL GREEN (FIELDPROOF 33/33, ARC byte-exact, CLASSES 9, PEAK-LAW peak<=events, FOLD-SMOKE the REAL swing 2 -> 5 (+3) -> 3 (-2) byte-exact). push aeca9824..64ed0c3a FIRST-TRY.
+- F534 = 39523167609 COMPLETED SUCCESS -> face harvested (12312686880, 517 lines) + FULL deep-read: open 3556 (00:59:16) / select 3557 (nibble 1) / done 3559 (2.839s, prep 2687) / set 3569+3578 / dawn 3580 / dusk 4494 (ride 935) / quiet 24 / reach 23 / IDENTITY 24-1==23 LIVE / width 914 FLAT / balance 29=29 / trio order nether-middle / TACS DIM-1-middle / rejoinBin 9 events / rejoinBots 5 bots / PEAK 5 (F17's own six joins - the face's own mega-flapper carried FIVE of the nine events).
+- TWO HISTORIC FIRSTS ONE FACE (the raw lines the ledger keeps): [00:59:19] Done + overworld trio print, [00:59:20] the_nether + the_end trio prints, [00:59:21] all three TACS echoes - (1) THE TRIO'S OWN SPLIT: the three 'Saving chunks' prints ride TWO seconds (overworld @Done's own 3559, the pair @3560) - the .341 SAME-SECOND law 32/32 BROKEN honestly, 32/33 the evolved count, the trio's own split cell the law's own next seat names; (2) THE TACS DRIFT'S OWN MAGNITUDE: the echoes land TWO seconds after Done (3561 vs 3559) - the class cell prices 1 honest (the 0/1 fence the .345 law keeps), the +2 magnitude the FIFTH drift face's own new fact (F507/F519/F523/F525 the +1 class), the magnitude cell the next seat names.
+- MY GATE .348 = 39524311624 (@64ed0c3a) COMPLETED SUCCESS - the peak word's full tree CI-validated; the worklog gate rides the next fire's read.
+
+Stage Summary:
+- Master: v0.976.348 = 64ed0c3a THE FLEET'S OWN PEAK CHURNER on origin; next free version 0.976.349.
+- One lane three cells three words: the .346 mass / the .347 breadth / the .348 peak - the churn fully priced. MY ledger adds .348.
+- NEXT FIRE: three-condition audit -> F535 rides the .348 full tree (the peak word's own DISPATCH is F534's face already spoken @aeca9824; F535 the first fleet face the .348 FULL TREE rides); the .349 gate routine reads.
+- .349 candidates: THE TRIO'S OWN SPLIT CELL (the distinct-second count the trio's prints span - 1 vs 2, the F534 face the first 2), THE TACS DRIFT'S OWN MAGNITUDE CELL (the raw delta 0/+1/+2 the class word underprices), the peak-churner's NAME cell (WHO owns the tallest column - the ladderecho class), bot frontline (tool repair / furnace / WorldMap / night survivability).
+- the identity law held: PLANETA9091
