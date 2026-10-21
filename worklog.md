@@ -37277,3 +37277,26 @@ Stage Summary:
 - 下一 fire 首债：① 39574159296 terminal read → ② head gate 39574578031 @fe9e2a0d terminal read → ③ 双绿则 audit → **F546 dispatch @origin head**；F543/F544 双 SUCCESS 后 .355 树已两连绿面。
 - .356 候选不变：champion cadence table、storm event density、.345 drift 弧扩展、save-trio third-hand、bot 前线；bump 前必查 origin。
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-1743
+Agent: Z.ai Code (main, cron job 415967)
+Task: privateB hourly push (fire-1743) - v0.976.356 THE STORM'S OWN MEDIAN BREATH
+
+Work Log:
+- CI audit: the head the parallel worklog-only commits carried (fb1e17e3 2a67c959 fe9e2a0d 89650ebf - the version stayed 0.976.355); F543 = 39570206052 SUCCESS, MY GATE .355 = 39566273266 SUCCESS; the fire-1543/1643 worklog debt the parallel's fe9e2a0d append paid - the race-round record the archive keeps (39574007473 + 39574159296 both flew, the same .355 tree, zero conflict zero cancel).
+- The sandbox died (/home/z/privateB gone) -> re-clone + the identity law + npm install (the vec3 lesson: the re-clone's full suite needs the install first).
+- F545 = 39574159296 SUCCESS terminal; the 45th face (39574007473, the race's first-rider) harvested artifact 12334169614 -> face39574007473.log 458 lines.
+- The archive rebuilt: reharvest-1743.mjs 46 faces (the artifact created_at ascending; three quirks the ledger keeps: no run_id field the workflow_run.id rides, the zip's own console.log name, the 889 historical artifacts the newest the arc keeps).
+- .356 seat priced: THE STORM'S OWN MEDIAN BREATH = the gap list's ascending MIDDLE (the odd count the middle member, the even count the two middles' floored half-sum) - the .354 mean's own sum-blind sibling; the 46-face arc 23 classes floor 0 (F545's ALL-ZERO face: 2 events the same second, 1 gap 0, the median IS the mean IS the span IS zero the four-zero face) ceiling 59 (F530's 34/59/67); the DIALOG law: median<mean FORTY-ONE faces / level THREE (the single-gap rides) / ABOVE TWO (F530's 59>53, F521's 28>27) - no constant order, the robust seat the dialog itself prices (F531's kidnapping face: the centre 2 while the mean rides the 133 giant to 25); the BOUND law min<=median<=gapMax<=span all 46 GREEN; the EQUALITY law 28/40/0.
+- v0.976.356 (3d911a68): rejoinstormmedianbreath.mjs + 5 pins + the decompose wire (the .355 import beside, the fold after, the SAME argv[6..8] carrier, CENSUS GUARD) + the bump. Gates: check x3, pins 5/5 (one honest re-pin: the 7 the QUINT five faces not four), the FULL suite 7131/7131, fieldread ALL GREEN (46/46, ARC, 23 classes, LAWS, DIALOG 41/3/2, FOLD-SMOKE), the pin-check four gates GREEN.
+- Three-condition audit GREEN -> F547 = 39583929309 DISPATCH HTTP 204 @89650ebf BEFORE the push (the ref=master route, the lane freshly read the race lesson keeps).
+- Push 89650ebf..3d911a68 FIRST-TRY.
+- MY GATE .356 = the push CI @3d911a68 (in-round in_progress, the terminal read the next fire's debt).
+
+Stage Summary:
+- v0.976.356 landed - the single lane ELEVEN cells ELEVEN words (+ .356 storm median breath). MY ledger adds .356.
+- origin = 3d911a68; the 46th face (39574159296 @2a67c959) harvested deep-read: events 28 gaps 27 / median 6 mean 10 span 291 / Done 09:43:56 - the 6 the arc rides (the kidnapping face 6<10).
+- Next fire: MY GATE .356 terminal + F547 (39583929309, the .355 tree) terminal -> the 47th face harvest -> the 47-face arc re-voice -> the three-condition audit -> F548 rides the .356 full tree @3d911a68.
+- .357 candidates: champ median breath (the .356 word's own symmetric seat - the family rhythm .357 champ), the gap variance/quartiles, the .345 drift arc, save-trio third-hand, the bot front (tool repair/furnace/WorldMap/night).
+- the identity law held: PLANETA9091
