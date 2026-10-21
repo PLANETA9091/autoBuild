@@ -37487,3 +37487,13 @@ Stage Summary:
 - F553 = 39617741308 @ba8b620 QUEUED (mine, the .359 code tree); theirs 39617758755 @32a08f27 QUEUED (the .360 tree) - the race in flight, exactly one survives the concurrency
 - NEXT FIRE FIRST DEBT: (1) terminal reads 39617741308 + 39617758755 -> the survivor SUCCESS = the face recorded (the .359 or the .360 tree), the loser cancelled = no debt -> (2) the next dispatch @origin head rides the seat after the survivor (F = position + 500; the .361 bump-check first)
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-2143-addendum-2
+Agent: cron-agent-loop (fire-2143, the terminal read the race addendum lacked)
+Work Log:
+- MY GATE .360 = 39617754549 @32a08f27 SUCCESS terminal (the v0.976.360 code gate CI green FIRST-TRY both legs - the fact the cron30-2230 append f87819cf polled before terminal)
+- the two append-append conflicts the rebase rode the reset-and-replay the honest resolution keeps (the parallel's f87819cf section preserved byte-exact, this section re-appended after it)
+- the round's debts: F553 = 39617741308 @ba8b620d + the race dispatch 39617758755 @32a08f27 the terminal reads and the face harvests the next fire keeps
+Stage Summary:
+- v0.976.360 @ 32a08f27 GREEN the gate terminal; two fleet faces queued the queue rides
