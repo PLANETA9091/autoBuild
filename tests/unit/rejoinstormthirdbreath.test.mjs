@@ -644,7 +644,8 @@ test('fence - every branch the gap words own integer law keeps', () => {
   assert.equal(rejoinStormThirdBreathConsistent({}), false)
   assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(0) }), false) // the cur missing
   assert.equal(rejoinStormThirdBreathConsistent({ back: c(-1), prev: c(0), cur: c(0) }), false) // the negative the fence never rides
-  assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(86400), cur: c(0) }), true) // the day ceiling the fence keeps
+  assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(86399), cur: c(0) }), true) // the day ceiling 86399 the fence keeps (the .366/.367 convention the same boundary voices)
+  assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(86400), cur: c(0) }), false) // past the day the fence declines (the fence 0..86399 the module voices - the .366 line 445 / the .367 line 593 the same shape)
   assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(86401), cur: c(0) }), false) // past the day the fence declines
   assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(1.5), cur: c(0) }), false) // the fraction the integer law never rides
   assert.equal(rejoinStormThirdBreathConsistent({ back: c(0), prev: c(0), cur: c(0) }), true)
