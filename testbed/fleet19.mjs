@@ -21,7 +21,7 @@ import { createScout } from '../src/bots/scout.mjs'
 import { WorldMap } from '../src/fleet/worldmap.mjs'
 import { attachChatSync } from '../src/fleet/chatsync.mjs'
 import { ClaimBoard, attachClaimSync, attachHazardSync } from '../src/fleet/claims.mjs'
-import { HazardLedger } from '../src/lib/drowning.mjs'
+import { HazardLedger, airBarTrust } from '../src/lib/drowning.mjs'
 import { WaterTableBoard } from '../src/lib/watertable.mjs'
 import { attachMemoryGuard } from '../src/fleet/memory-guard.mjs'
 import { APPROACH_THRESHOLD, approachWalk, yardApproachPlan } from '../src/lib/approach.mjs'
@@ -48,6 +48,7 @@ import { decideToolAction, pickStateFromInventory } from '../src/lib/toolcare.mj
 import { decideArmorAction, decideArmorCraft, pickArmorStateFromInventory, ARMORCARE_MAXES } from '../src/lib/armorcare.mjs'
 import { decideFoodAction, pickFoodStateFromInventory } from '../src/lib/foodcare.mjs'
 import { decideHealthAction } from '../src/lib/healthcare.mjs'
+import { decideBreathAction } from '../src/lib/breathcare.mjs'
 import { swordCheck, craftSword } from '../src/lib/arms.mjs'
 import { walkForbidden, surfaceHoldVerdict } from '../src/lib/nightsafety.mjs'
 import { relootPlan, relootPileVerdict, relootRetry, relootSurfaceY, relootSurfaceWhy, relootSurfaceRetry, relootRimDig, relootUnarmedVerdict, relootWriteoffLine, relootCarry, RELOOT_SURFACE_RISE_MAX, RELOOT_RETRY_RANGE, RELOOT_DESPAWN_MS, RELOOT_SPOT_FLUID_RE } from '../src/lib/reloot.mjs'
@@ -1332,7 +1333,7 @@ async function runBot (name, target, index) {
             const drec = deathCensusRecord(`${name} ${m}`)
             if (drec) deathCensusRecords.push(drec)
           } catch { /* the census never holds the death strip */ }
-          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare|armorcraft|foodcare|healthcare/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps) ; (v0.976.387) 'armorcraft' joins - the armor economy's demand word rides its own key (the bare bot the iron count prices, the craft seat the gap names) ; (v0.976.391) 'foodcare' joins - the hunger bar's word rides its own key (the care lane's third sibling, the satisfied bot the honest silence keeps) ; (v0.976.393) 'healthcare' joins - the health bar's word rides its own key (the care lane's fourth sibling, the full bar the honest silence keeps)
+          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare|armorcraft|foodcare|healthcare|breathcare/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps) ; (v0.976.387) 'armorcraft' joins - the armor economy's demand word rides its own key (the bare bot the iron count prices, the craft seat the gap names) ; (v0.976.391) 'foodcare' joins - the hunger bar's word rides its own key (the care lane's third sibling, the satisfied bot the honest silence keeps) ; (v0.976.393) 'healthcare' joins - the health bar's word rides its own key (the care lane's fourth sibling, the full bar the honest silence keeps)
           // (v0.839.0) THE RECEIPT'S OWN FILTER KEY - 'banked' joins: the
           // per-chest deposit receipt ('F3 [F3] banked 113 items at (...) (direct=6
           // ...)') matched NO key and never reached the artifact - the v0.837.0
@@ -2698,6 +2699,35 @@ async function runBot (name, target, index) {
           } catch { return } // the consult never kills the caller's loop
         }
         healthConsult()
+        // (v0.976.394) THE BREATHCARE CONSULT - the care lane's fifth word.
+        // toolcare prices the worn hands, armorcare the worn arms, foodcare
+        // the hunger bar, healthcare the health bar, this word prices the
+        // OXYGEN bar the same one-line way (the surface/watch/refusal forms
+        // the 'breathcare' filter key carries). Consult only - the word
+        // never swims and never surfaces, the rescue stays the drowning
+        // lane's own, the edge-refractory speaks once per state change, and
+        // a breathing bot stays silent. The dry-trust liar bar stays silent
+        // too - the glitch seat the water guard owns, the word never
+        // double-speaks it (co-existence by seat never by duplication).
+        let lastBreathWord = ''
+        const breathConsult = () => {
+          try {
+            let trust = null
+            try {
+              const here = miner.bot.entity.position.floored()
+              const feetB = miner.bot.blockAt(here)
+              const headB = miner.bot.blockAt(here.offset(0, 1, 0))
+              trust = airBarTrust({ feet: feetB?.name ?? null, head: headB?.name ?? null })
+            } catch { trust = null } // the unloaded chunk judges nothing
+            const care = decideBreathAction({ oxygen: miner.bot.oxygenLevel, trust })
+            if (care.action === 'keep') { lastBreathWord = ''; return }
+            const word = `${care.action} ${care.reason}`
+            if (word === lastBreathWord) return
+            lastBreathWord = word
+            console.log(`${name} breathcare: ${care.action} - ${care.reason} (oxygen ${care.oxygen}, bubbles ${care.bubbles})`)
+          } catch { return } // the consult never kills the caller's loop
+        }
+        breathConsult()
         const up = upgradeDueNow()
         if (up) {
           lastUpgradeAttempt = Date.now()
