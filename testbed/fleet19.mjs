@@ -45,7 +45,7 @@ import { withdrawFuelCommons, newCommonsMemory, deliverFuelTithe, fuelPocketOver
 import { withdrawFoodCommons, pocketFood, riderFoodAsk, MIDFIELD_HUNGRY_BAND, RIDER_FOOD_BUDGET_MS, foodFamineDue } from '../src/lib/foodbank.mjs'
 import { upgradeCheck, upgradeTools, keepForIron, PICK_TIERS, withdrawIronCommune, seedIronPool } from '../src/lib/toolupgrade.mjs'
 import { decideToolAction, pickStateFromInventory } from '../src/lib/toolcare.mjs'
-import { decideArmorAction, pickArmorStateFromInventory } from '../src/lib/armorcare.mjs'
+import { decideArmorAction, decideArmorCraft, pickArmorStateFromInventory, ARMORCARE_MAXES } from '../src/lib/armorcare.mjs'
 import { swordCheck, craftSword } from '../src/lib/arms.mjs'
 import { walkForbidden, surfaceHoldVerdict } from '../src/lib/nightsafety.mjs'
 import { relootPlan, relootPileVerdict, relootRetry, relootSurfaceY, relootSurfaceWhy, relootSurfaceRetry, relootRimDig, relootUnarmedVerdict, relootWriteoffLine, relootCarry, RELOOT_SURFACE_RISE_MAX, RELOOT_RETRY_RANGE, RELOOT_DESPAWN_MS, RELOOT_SPOT_FLUID_RE } from '../src/lib/reloot.mjs'
@@ -1330,7 +1330,7 @@ async function runBot (name, target, index) {
             const drec = deathCensusRecord(`${name} ${m}`)
             if (drec) deathCensusRecords.push(drec)
           } catch { /* the census never holds the death strip */ }
-          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps)
+          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare|armorcraft/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps) ; (v0.976.387) 'armorcraft' joins - the armor economy's demand word rides its own key (the bare bot the iron count prices, the craft seat the gap names)
           // (v0.839.0) THE RECEIPT'S OWN FILTER KEY - 'banked' joins: the
           // per-chest deposit receipt ('F3 [F3] banked 113 items at (...) (direct=6
           // ...)') matched NO key and never reached the artifact - the v0.837.0
@@ -2623,10 +2623,28 @@ async function runBot (name, target, index) {
         // lane never spams the face with junk-refuse noise the pockets cannot
         // pay for. The pocket-only story belongs to the equipping lane.
         let lastArmorWord = ''
+        let lastCraftWord = ''
         const armorConsult = () => {
           try {
-            const st = pickArmorStateFromInventory(miner.bot.inventory?.items?.() ?? [])
-            if (st.bare) { lastArmorWord = ''; return }
+            const inv = miner.bot.inventory?.items?.() ?? []
+            const st = pickArmorStateFromInventory(inv)
+            if (st.bare) {
+              lastArmorWord = ''
+              // (v0.976.387) the armorcraft word - the bare bot's iron economy
+              // prices the craft seat's demand (consult only, the word never
+              // crafts; the pieces-held bot the care lane owns, the word stays
+              // silent). The iron count the pockets already carry makes the
+              // line LIVE on every face - the armor-economy gap priced.
+              const ingots = inv.reduce((a, it) => a + (it && it.name === 'iron_ingot' && Number.isFinite(it.count) ? it.count : 0), 0)
+              const piecesHeld = inv.reduce((a, it) => a + (it && typeof it.name === 'string' && ARMORCARE_MAXES[it.name] ? 1 : 0), 0)
+              const craft = decideArmorCraft({ ironIngotCount: ingots, armorPiecesHeld: piecesHeld })
+              if (craft.action === 'keep') { lastCraftWord = ''; return }
+              const cword = `craft ${craft.action} ${craft.reason}`
+              if (cword === lastCraftWord) return
+              lastCraftWord = cword
+              console.log(`${name} armorcraft: ${craft.action} - ${craft.reason} (${craft.piece ?? 'no-piece'}, iron ${ingots}, pieces ${piecesHeld})`)
+              return
+            }
             const care = decideArmorAction(st)
             if (care.action === 'keep') { lastArmorWord = ''; return }
             const word = `${care.action} ${care.reason}`

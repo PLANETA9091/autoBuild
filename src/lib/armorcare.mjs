@@ -102,6 +102,53 @@ const ARMORCARE_MATERIALS = {
   netherite: ['netherite_ingot']
 }
 
+// (v0.976.387) THE ARMORCRAFT WORD - the armor economy's own consult.
+// THE PROBLEM: the armorcare word prices WORN pieces, but the fleet holds
+// NONE - no arm crafts armor, the pockets stay bare, the word never speaks
+// and the lane reads dead. THE FIX: decideArmorCraft() prices the ARMOR
+// POVERTY itself - one bot's iron ingots and held pieces map to ONE craft
+// word (the vanilla costs, the armor-point order chest/legs/feet/head), so
+// every face shows the armor-economy gap the craft seat will one day pay:
+//   'craft'  - the next piece in the order is affordable (piece named)
+//   'defer'  - ingots short of the cheapest piece (the honest shortage)
+//   'keep'   - pieces already held (the care lane owns the worn story)
+//   'refuse' - junk input (never throws into the fleet loop)
+// Consult only - the word never crafts; the craft seat owns the hands later.
+
+/**
+ * Decide whether one bot's iron economy earns a craft word.
+ *
+ * @param {object} [opts]
+ * @param {number} [opts.ironIngotCount=0] iron ingots on hand
+ * @param {number} [opts.armorPiecesHeld=0] armor pieces already held (any slot)
+ * @param {number} [opts.craftAt=4] minimum ingots the word prices at all
+ * @returns {{action: 'craft'|'defer'|'refuse'|'keep', reason: string, piece: string|null, cost: number}}
+ */
+export function decideArmorCraft (opts = {}) {
+  const ingots = Number.isFinite(opts.ironIngotCount) ? Math.max(0, opts.ironIngotCount) : 0
+  const pieces = Number.isFinite(opts.armorPiecesHeld) ? Math.max(0, opts.armorPiecesHeld) : 0
+  const craftAt = Number.isFinite(opts.craftAt) && opts.craftAt >= 0 ? opts.craftAt : 4
+  if (!Number.isFinite(opts.ironIngotCount) || !Number.isFinite(opts.armorPiecesHeld)) {
+    return { action: 'refuse', reason: 'junk-input', piece: null, cost: 0 }
+  }
+  if (pieces >= 1) {
+    return { action: 'keep', reason: 'pieces-held', piece: null, cost: 0 }
+  }
+  // the vanilla iron costs, the armor-point order the chest opens
+  const ORDER = [
+    { piece: 'iron_chestplate', cost: 8 },
+    { piece: 'iron_leggings', cost: 7 },
+    { piece: 'iron_boots', cost: 4 },
+    { piece: 'iron_helmet', cost: 5 }
+  ]
+  for (const step of ORDER) {
+    if (ingots >= step.cost) {
+      return { action: 'craft', reason: 'ingots-affordable', piece: step.piece, cost: step.cost }
+    }
+  }
+  return { action: 'defer', reason: 'ingots-short', piece: null, cost: craftAt }
+}
+
 /**
  * Reduce a mineflayer inventory items() array to a decideArmorAction() input.
  *

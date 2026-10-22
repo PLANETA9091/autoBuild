@@ -113,3 +113,46 @@ test('the armor table is honest: every slot class holds all six materials', () =
     }
   }
 })
+
+// (v0.976.387) the armorcraft word - the armor economy's demand priced
+import { decideArmorCraft } from '../../src/lib/armorcare.mjs'
+
+test('craft: ten ingots earn the chestplate (the order the chest opens)', () => {
+  const r = decideArmorCraft({ ironIngotCount: 10, armorPiecesHeld: 0 })
+  assert.equal(r.action, 'craft')
+  assert.equal(r.piece, 'iron_chestplate')
+  assert.equal(r.cost, 8)
+})
+
+test('craft: seven ingots earn the leggings (the second seat)', () => {
+  const r = decideArmorCraft({ ironIngotCount: 7, armorPiecesHeld: 0 })
+  assert.equal(r.piece, 'iron_leggings')
+})
+
+test('craft: five ingots earn the boots (the tie the cheaper piece prices)', () => {
+  const r = decideArmorCraft({ ironIngotCount: 5, armorPiecesHeld: 0 })
+  assert.equal(r.piece, 'iron_boots')
+  assert.equal(r.cost, 4)
+})
+
+test('defer: three ingots short of every piece', () => {
+  const r = decideArmorCraft({ ironIngotCount: 3, armorPiecesHeld: 0 })
+  assert.equal(r.action, 'defer')
+  assert.equal(r.reason, 'ingots-short')
+})
+
+test('keep: pieces already held - the care lane owns the story', () => {
+  const r = decideArmorCraft({ ironIngotCount: 99, armorPiecesHeld: 1 })
+  assert.equal(r.action, 'keep')
+  assert.equal(r.reason, 'pieces-held')
+})
+
+test('refuse: junk input never throws', () => {
+  assert.equal(decideArmorCraft({ ironIngotCount: NaN, armorPiecesHeld: 0 }).action, 'refuse')
+  assert.equal(decideArmorCraft({}).action, 'refuse')
+})
+
+test('clamp: negative ingots price as zero (defer, not crash)', () => {
+  const r = decideArmorCraft({ ironIngotCount: -5, armorPiecesHeld: 0 })
+  assert.equal(r.action, 'defer')
+})
