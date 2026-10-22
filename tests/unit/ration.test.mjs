@@ -122,7 +122,11 @@ test('ration: the boot wire - the plugin touches ride inject_allowed (v0.548.0, 
 test('ration: the fleet tail filter carries the ration lines', () => {
   const src = fs.readFileSync(path.join(root, 'testbed', 'fleet19.mjs'), 'utf8')
   // the console filter gates what the run log prints - the ration lines must ride it
-  assert.ok(/\|ration\/\.test\(m\)/.test(src), "the tail filter must include 'ration' at the tail")
+  // (v0.976.381) THE POSITION LAW: the new keys join at the tail (v0.976.380 the 'toolcare'
+  // join the elder 'ration' one seat inward shifts) - the pin the INCLUSION prices, not the
+  // literal tail seat: |ration followed by | (the mid-list form) or by /.test(m) (the
+  // historical tail form) both lawful - the elder key never loses its voice to a newer join
+  assert.ok(/\|ration(?=\||\/\.test\(m\))/.test(src), "the tail filter must include 'ration' (the position the newer joins shift, the inclusion the law keeps)")
   // the policy lib is where the wire's numbers live - the miner must not fork its own
   assert.ok(!/bot\.autoEat\.setOpts\(\{/.test(src), 'the wire must hand over RATION_OPTS, not an inline fork')
 })
