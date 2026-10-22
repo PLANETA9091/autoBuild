@@ -297,46 +297,46 @@ const REAL_F549 = [
   "[12:00:17] [Server thread/INFO]: F4 joined the game",
 ]
 
+// REAL_F558 (face39652892020.log) - 38 join echoes
 const REAL_F558 = [
-  "[20:07:56] [Server thread/INFO]: YardSurvey joined the game",
-  "[20:08:11] [Server thread/INFO]: F1 joined the game",
-  "[20:08:13] [Server thread/INFO]: F2 joined the game",
-  "[20:08:15] [Server thread/INFO]: F3 joined the game",
-  "[20:08:18] [Server thread/INFO]: F4 joined the game",
-  "[20:08:20] [Server thread/INFO]: F5 joined the game",
-  "[20:08:24] [Server thread/INFO]: F6 joined the game",
-  "[20:08:26] [Server thread/INFO]: F7 joined the game",
-  "[20:08:28] [Server thread/INFO]: F8 joined the game",
-  "[20:08:31] [Server thread/INFO]: F9 joined the game",
-  "[20:08:33] [Server thread/INFO]: F10 joined the game",
-  "[20:08:36] [Server thread/INFO]: F11 joined the game",
-  "[20:08:39] [Server thread/INFO]: F12 joined the game",
-  "[20:08:42] [Server thread/INFO]: F13 joined the game",
-  "[20:08:44] [Server thread/INFO]: F14 joined the game",
-  "[20:08:46] [Server thread/INFO]: F15 joined the game",
-  "[20:08:49] [Server thread/INFO]: F16 joined the game",
-  "[20:08:52] [Server thread/INFO]: F17 joined the game",
-  "[20:08:54] [Server thread/INFO]: F18 joined the game",
-  "[20:08:58] [Server thread/INFO]: F19 joined the game",
-  "[20:12:50] [Server thread/INFO]: F3 joined the game",
-  "[20:15:30] [Server thread/INFO]: F14 joined the game",
-  "[20:15:37] [Server thread/INFO]: F14 joined the game",
-  "[20:15:47] [Server thread/INFO]: F14 joined the game",
-  "[20:16:00] [Server thread/INFO]: F14 joined the game",
-  "[20:16:06] [Server thread/INFO]: F14 joined the game",
-  "[20:16:13] [Server thread/INFO]: F14 joined the game",
-  "[20:16:19] [Server thread/INFO]: F14 joined the game",
-  "[20:16:29] [Server thread/INFO]: F14 joined the game",
-  "[20:16:35] [Server thread/INFO]: F14 joined the game",
-  "[20:16:40] [Server thread/INFO]: F14 joined the game",
-  "[20:16:42] [Server thread/INFO]: F13 joined the game",
-  "[20:16:48] [Server thread/INFO]: F13 joined the game",
-  "[20:16:52] [Server thread/INFO]: F14 joined the game",
-  "[20:16:54] [Server thread/INFO]: F13 joined the game",
-  "[20:17:00] [Server thread/INFO]: F13 joined the game",
-  "[20:17:37] [Server thread/INFO]: F16 joined the game",
-  "[20:18:09] [Server thread/INFO]: F5 joined the game",
-  "[20:18:10] [Server thread/INFO]: F1 joined the game",
+  "[18:40:50] [Server thread/INFO]: YardSurvey joined the game",
+  "[18:41:04] [Server thread/INFO]: F1 joined the game",
+  "[18:41:06] [Server thread/INFO]: F2 joined the game",
+  "[18:41:08] [Server thread/INFO]: F3 joined the game",
+  "[18:41:11] [Server thread/INFO]: F4 joined the game",
+  "[18:41:13] [Server thread/INFO]: F5 joined the game",
+  "[18:41:16] [Server thread/INFO]: F6 joined the game",
+  "[18:41:18] [Server thread/INFO]: F7 joined the game",
+  "[18:41:21] [Server thread/INFO]: F8 joined the game",
+  "[18:41:24] [Server thread/INFO]: F9 joined the game",
+  "[18:41:26] [Server thread/INFO]: F10 joined the game",
+  "[18:41:29] [Server thread/INFO]: F11 joined the game",
+  "[18:41:32] [Server thread/INFO]: F12 joined the game",
+  "[18:41:35] [Server thread/INFO]: F13 joined the game",
+  "[18:41:38] [Server thread/INFO]: F14 joined the game",
+  "[18:41:40] [Server thread/INFO]: F15 joined the game",
+  "[18:41:43] [Server thread/INFO]: F16 joined the game",
+  "[18:41:45] [Server thread/INFO]: F17 joined the game",
+  "[18:41:48] [Server thread/INFO]: F18 joined the game",
+  "[18:41:51] [Server thread/INFO]: F19 joined the game",
+  "[18:47:15] [Server thread/INFO]: F6 joined the game",
+  "[18:47:32] [Server thread/INFO]: F14 joined the game",
+  "[18:48:31] [Server thread/INFO]: F1 joined the game",
+  "[18:48:41] [Server thread/INFO]: F11 joined the game",
+  "[18:48:49] [Server thread/INFO]: F8 joined the game",
+  "[18:48:58] [Server thread/INFO]: F10 joined the game",
+  "[18:49:09] [Server thread/INFO]: F10 joined the game",
+  "[18:49:21] [Server thread/INFO]: F19 joined the game",
+  "[18:49:23] [Server thread/INFO]: F1 joined the game",
+  "[18:49:24] [Server thread/INFO]: F14 joined the game",
+  "[18:49:31] [Server thread/INFO]: F18 joined the game",
+  "[18:50:14] [Server thread/INFO]: F13 joined the game",
+  "[18:50:20] [Server thread/INFO]: F9 joined the game",
+  "[18:50:22] [Server thread/INFO]: F16 joined the game",
+  "[18:50:35] [Server thread/INFO]: F1 joined the game",
+  "[18:50:39] [Server thread/INFO]: F11 joined the game",
+  "[18:50:54] [Server thread/INFO]: F11 joined the game",
+  "[18:50:57] [Server thread/INFO]: F7 joined the game",
 ]
 
 const REAL_F562 = [
@@ -591,7 +591,7 @@ test('REAL 61-face window arc byte-exact - 23 classes the seat LIVE', () => {
   const arc = REAL_ARC
   // the classes: the 0 the twenty-two-face gravity, the 6 the
   // five-face class, the 8 the four-face class, the 12 and the 13
-  // the three-face classes, the 72 the ceiling face F558 keeps
+  // the three-face classes, the 93 the F501 opener the window's own tallest keeps, the 72 the F558 ceiling-face keeps
   const classes = {}
   for (const v of arc) classes[v] = (classes[v] || 0) + 1
   assert.equal(Object.keys(classes).length, 23)
@@ -601,7 +601,7 @@ test('REAL 61-face window arc byte-exact - 23 classes the seat LIVE', () => {
   assert.equal(classes[12], 3)
   assert.equal(classes[13], 3)
   assert.equal(Math.min(...arc), 0)
-  assert.equal(Math.max(...arc), 72)
+  assert.equal(Math.max(...arc), 93) // the F501's own 93 the window's own TALLEST the opener prices (the 72 the F558 ceiling-face the per-face law prices)
   assert.equal(arc.length, 61)
   // the held-pair scan: the SEVEN zero pairs the constructive gravity
   // keeps - the F539/F540 sevens the .367 arc keeps the third arc

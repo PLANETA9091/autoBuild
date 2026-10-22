@@ -62,7 +62,7 @@
 // F558's own 72 above the 42, F563's own 13 above the 10 the fresh
 // tail) - no constant order the honest seat prices.
 // THE CEILING LAW: the third breath IS the champion cadence's own
-// TALLEST silence on FIVE faces (F558's own 72 the arc ceiling the
+// TALLEST silence on FIVE faces (F558's own 72 the ceiling-face the
 // same face prices, F530's own 67, F536's own 61, F512's own 29,
 // F560's own 13) - the third the order statistic the extremes the
 // cadence keeps.
@@ -78,8 +78,8 @@
 // whole zero class prices, the 6 the five-face class, the 8 the
 // four-face class, the 12 and the 13 the three-face classes, the 4
 // and the 5 and the 7 and the 11 and the 25 and the 61 the pairs,
-// FOURTEEN singletons, the 72 the ceiling face F558 keeps, the 93
-// the F501 opener keeps, the 13 the fresh tail F563 keeps) - MANY
+// FOURTEEN singletons, the 93 the F501 opener the window's own
+// TALLEST keeps, the 72 the F558 ceiling-face keeps, the 13 the fresh tail F563 keeps) - MANY
 // values speak, the seat LIVE (the mode candidate the honest probe
 // DECLINED again: the twenty-two-face zero the tie-degenerate
 // gravity the same decline the family prices).
