@@ -38234,3 +38234,23 @@ Stage Summary:
 - v0.976.378 THE STORM'S OWN SEVENTH BREATH (the .376 seat) landed; F571 = 39775762342 IN FLIGHT riding the verified 8340babc tree
 - the next fire: the F571 terminal read + this landing gate read -> green then the three-condition audit -> the F572 dispatch candidate; the alternation law the champ side the SEVENTH breath names - the champ seventh breath the .379 seat prices (the F571 storm seventh the fresh column)
 - the identity law held: PLANETA9091
+---
+Task ID: cron30-20261022-2000 (fire 2000, cron 2026-10-22 20:00:01 +08:00, Job ID 414125, :00 stream; the sandbox died mid-fire - the atom landed 2030)
+Agent: Z.ai Code (main, fire-2000/2030)
+Task: the toolcare consult wire - the inventory bridge + the fleet call site + the filter key, v0.976.380
+
+Work Log:
+- fire-2000 the sandbox dead (one honest zero); fire-2030 the revival the repo re-cloned the identity law re-set
+- the debt read: MY toolcare gate 39772203638 @68407c04 SUCCESS (the .377 word CI-proven) + 39772304469 @8340babc SUCCESS; F571 = 39775762342 @8340babc the :43 stream's dispatch rides MY tree (the verified-tree co-dispatch the family law keeps); v0.976.378 storm seventh landed @dc842f3 - the .377 my interloper seat the landing version takes, the courtesy law the ledger names
+- the atom: v0.976.380 THE TOOLCARE CONSULT WIRE - pickStateFromInventory() (the inventory bridge: the best tier the working tool, the least-worn copy active, the spares the count, the tier's material by suffix) + 4 exact tests (the suite 12/12) + the fleet19 careConsult() beside the upgrade chain (the ONE edge-refractory line per state change, the consult never crafts, the try/catch never kills) + the 'toolcare' filter key joins the v0.277.0 tail (line 1332)
+- the version: 0.976.378 -> 0.976.380 (the .379 THEIRS named - the champ seventh the alternation law keeps, the bump the next free .380 takes)
+- the local gates: node --check x3 clean (toolcare + tests + fleet19) + the toolcare suite 12/12 GREEN; the full unit + the integration the CI speaks
+- the push: 82ee6d5..3488e76 first-try fast-forward zero conflict; my gate in flight - the terminal read the next fire's debt
+- the dispatch audit: F571 IN_PROGRESS at the audit -> the honest NOT-dispatch (the one-active law); the F571 terminal read the next fire's first debt
+- zero force-push, zero rewrites; the identity law held: PLANETA9091
+
+Stage Summary:
+- v0.976.380 THE TOOLCARE CONSULT WIRE landed @3488e76 (the toolcare lane COMPLETE: the word .377 + the bridge + the wire .380); my gate in flight
+- FLEET OF RECORD: F571 = 39775762342 @8340babc (MY tree pre-.378) - the terminal read + the face harvest the :43 stream's ledger keeps
+- the next fire: my gate read -> the F571 face (the 'toolcare:' lines the NEW key first voices if the fleet rode the wire - the face @8340babc predates the wire, the toolcare voice the NEXT dispatch's face) -> the .381 bump-check (the .379/.380 the ledger reads first)
+- the identity law held: PLANETA9091
