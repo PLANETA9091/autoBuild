@@ -37990,3 +37990,19 @@ Stage Summary:
 - v0.976.371 THE CHAMPION'S OWN FOURTH BREATH landed 9d83ed0a, the push gate 39725784512 @9d83ed0a in flight
 - F566 = 39724272075 @22a53694 IN FLIGHT (MY dispatch the ninth) - the next fire reads the face and prices .372 (the alternation law THE STORM'S OWN FIFTH BREATH names - the F565 storm fifth 30 the fresh column)
 - the identity law held: PLANETA9091
+---
+Task ID: fire-1243-terminal
+Agent: Z.ai Code (main, cron 415967 :43 stream)
+Task: the round's terminal law - the heal gate GREEN, the F566 face harvested, the .372 columns priced
+
+Work Log:
+- the .371 push gate 39725784512 @9d83ed0a FAILURE - the jobs logs pulled, the REAL arc's own window indices the off-by-one hand rode (the c3 crash c3(30/31/32) the F531->F532->F533, the TRUE crash the c3(31/32/33) the F532->F533->F534 the 108->0(-108)->14(+14) prices; the fade the c3(19/20/21) -> the c3(20/21/22) the F521->F522->F523; the swell and the fresh-tail windows the honest indices the first gate rode) - the .369 repair ledger's dense-index hand the same shape, the honest repair 964e46b5 committed
+- the heal gate 39726889437 @964e46b5 SUCCESS terminal BOTH unit legs + the integration - the .371 tree GREEN; the worklog gate 39725933232 @89f850c7 the honest failure the same off-by-one tree rides (the heal supersedes, no zombie)
+- F566 = 39724272075 @22a53694 SUCCESS terminal (MY dispatch the ninth) - the face harvested face39724272075.log 47599 bytes, the columns priced: the storm cadence TWENTY-FIVE gaps [15, 124, 15, 4, 0, 2, 6, 5, 2, 5, 0, 2, 4, 2, 1, 2, 9, 9, 9, 8, 10, 9, 10, 43, 4] the storm FIFTH 0 the REAL ZERO the fresh tail keeps (the F566's own fifth pair the same second); the champ the single champion F13 the tally 12, ELEVEN events TEN gaps [13, 7, 9, 9, 9, 9, 8, 10, 9, 10] the champ FOURTH 9 (the LEVEL the F565's own 9 the F-order held step)
+- the .372 seat the alternation law names: THE STORM'S OWN FIFTH BREATH - the F566 storm fifth 0 the fresh column (the .364/.366/.368/.370 storm seats the first through fourth breaths keep, the FIFTH the storm's own next arrival tempo prices, the REAL zero the honest naming the fresh face rides)
+- the archive 64 faces (the F566 fresh tail included); zero zombies; the identity law held
+
+Stage Summary:
+- v0.976.371 THE CHAMPION'S OWN FOURTH BREATH GREEN terminal @964e46b5 (the heal gate speaks) + F566 SUCCESS the face in the archive
+- the next fire: price .372 the storm fifth breath (the F566 storm fifth 0 the fresh tail), dispatch F567 when the three conditions speak
+- the identity law held: PLANETA9091
