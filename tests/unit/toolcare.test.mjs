@@ -2,7 +2,7 @@
 // All pure arithmetic: no clock, no RNG, every assertion exact.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { decideToolAction } from '../../src/lib/toolcare.mjs'
+import { decideToolAction, pickStateFromInventory } from '../../src/lib/toolcare.mjs'
 
 test('a healthy tool above the threshold keeps working', () => {
   assert.deepEqual(
@@ -97,4 +97,49 @@ test('threshold options are honoured and sanitised', () => {
     decideToolAction({ durability: 5, maxDurability: 100, materialCount: 1, repairUnitCost: -2 }).action,
     'repair'
   )
+})
+
+test('the inventory bridge reads the best tier and its least-worn copy', () => {
+  
+  const items = [
+    { name: 'stone_pickaxe', count: 1, durabilityUsed: 40 }, // 91 of 131 left
+    { name: 'stone_pickaxe', count: 1, durabilityUsed: 10 }, // the least-worn copy
+    { name: 'wooden_pickaxe', count: 1, durabilityUsed: 0 },
+    { name: 'cobblestone', count: 12 }
+  ]
+  const s = pickStateFromInventory(items)
+  assert.equal(s.maxDurability, 131)
+  assert.equal(s.durability, 121) // 131 - 10, the least-worn copy is active
+  assert.equal(s.spareCount, 1) // the second stone pick is the spare
+  assert.equal(s.materialCount, 12) // the stone tier's repair material
+})
+
+test('the bridge maps each tier to its own repair material', () => {
+  
+  assert.equal(
+    pickStateFromInventory([{ name: 'iron_pickaxe', durabilityUsed: 100 }, { name: 'iron_ingot', count: 3 }]).materialCount,
+    3
+  )
+  assert.equal(
+    pickStateFromInventory([{ name: 'wooden_pickaxe', durabilityUsed: 5 }, { name: 'oak_planks', count: 4 }]).materialCount,
+    4
+  )
+})
+
+test('a pickless or junk inventory returns the junk shape - the loop never dies', () => {
+  
+  for (const bad of [null, undefined, 'many', [], [{ name: 'cobblestone', count: 9 }]]) {
+    const s = pickStateFromInventory(bad)
+    assert.equal(Number.isFinite(s.durability), false, JSON.stringify(bad))
+    assert.equal(s.maxDurability, 0)
+    assert.equal(s.spareCount, 0)
+  }
+})
+
+test('the bridge word pairs with the decision - worn stone + cobble repairs', () => {
+  
+  const s = pickStateFromInventory([{ name: 'stone_pickaxe', durabilityUsed: 125 }, { name: 'cobblestone', count: 2 }])
+  assert.deepEqual(decideToolAction(s), { action: 'repair', reason: 'worn-repairable', fraction: 6 / 131 })
+  const noMat = pickStateFromInventory([{ name: 'stone_pickaxe', durabilityUsed: 125 }])
+  assert.equal(decideToolAction(noMat).action, 'defer')
 })
