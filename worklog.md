@@ -38147,4 +38147,23 @@ Stage Summary:
 - FLEET OF RECORD: 39765657422 @1a64f5e1 IN_PROGRESS (theirs, F570 candidate) - active=1; the next fire reads its terminal FIRST
 - version ledger: origin = v0.976.374 THE STORM'S OWN SIXTH BREATH @04b98e86 (gate 39760866497 SUCCESS); the .375 champ sixth their named seat - my bump-check (if any) targets .376+ ONLY after their landing, the origin check before any bump the law keeps
 - the outage ledger: 1500/1530/1600/1630/1700/1730/1800/1830 + 1430 the honest zero-fires; the catch-up complete, the :00 stream back on the shared ledger
+
+---
+Task ID: fire-1843
+Agent: Z.ai Code (main, cron 415967 :43 stream)
+Task: the .375 round - the champ sixth breath priced and landed, the F570 dispatched in flight
+
+Work Log:
+- the tenth sandbox life: repo re-cloned (1a64f5e1 the fire-1743 terminal append the head), the identity PLANETA9091 local+global BEFORE any commit
+- the runs list ALL GREEN on arrival (the head gate 39762712384 @1a64f5e1 SUCCESS terminal, F569 = 39758247041 @776fd7f3 SUCCESS terminal the twelfth dispatch, zero zombies the lane empty)
+- THE F570 DISPATCH (my thirteenth): the three-condition audit ALL GREEN -> HTTP 204 FIRST-TRY, F570 = 39765657422 @1a64f5e1 IN FLIGHT (pins the .374 tree face BEFORE the .375 push rides)
+- the archive REBUILT THE TENTH LIFE: 67 faces harvested (the F552 cancelled + the F557 artifact hole + the F570 in_progress the holes the F-order keeps, the terminal phase the fresh hole re-rides)
+- the .375 pricing over the 67-face window F501-F569: the champ SIXTH arc - REAL 19 faces, CONSTRUCTIVE 48 (the fewer-than-six-gaps convention the .372/.374 words extend: the F511/F516/F521/F539/F558/F562/F564 five-gap faces the branch extends), REAL zeros NONE (the honest absence the window keeps - the .373 arc's own ONE the F549 the sixth does NOT inherit: the F549's own 2 the fifth's own zero the inversion prices), CEILING NO face (every voiced face the sixth BELOW the cadence's own max prices - the .373 arc's own ONE the F554 the sixth never inherits), the TALLEST voiced 52 the F536 keeps the second-tallest 26 the F565, NO REAL held pair (the .373 arc's own ONE the F536/F537 sevens the sixth does NOT inherit - the 52/8 the honest break), the constructive-zero pairs THIRTY-TWO, BOUND GREEN all 19, DIALOG vs the .373 champ fifth under 19 level 42 above 6 (the F566's own 9 LEVEL the 9 the REAL same-tempo face), FOURTEEN classes
+- v0.976.375 THE CHAMPION'S OWN SIXTH BREATH landed: rejoinchampsixthbreath.mjs census+fence+trendRow + 6 tests (REAL 10-column byte-exact over F501/F506/F508/F512/F514/F536/F549/F563/F565/F569, the 67-face REAL_ARC 14 classes, the refusal battery, the fence 86399-true 86400-false, the REAL windows swing F513->F515 0->12(+12)->0(-12) fade F536->F538 52->8(-44)->0(-8) swing F564->F566 0->26(+26)->9(-17) - the swell the REAL arc NEVER keeps the synthetic voices + the synthetics oneEcho 0 singleGap 0 twoGaps 0 threeGaps 0 fourGaps 0 fiveGaps 0 sixGaps 120 coReign 240 coReignSub 0 wrap 120) + the decompose wire (the import beside the .373 import, the fold after their fold, the SAME argv[6..8] carrier - CENSUS GUARD zero fleet wiring) + the fire1843-price/fire1843-fieldproof procedures + the harvest-faces-1843/gen-test-1843 procedures + package.json bump 0.976.375
+- the gates: node --check x8 clean; FIELDPROOF 67/67 byte-exact; PINCHECK 10/10; SYNTHETICS 14/14; the fold-smoke skipped (the fresh sandbox no node_modules - the mineflayer-pathfinder import the pre-existing tree shape, the fold block --check clean, the module-level FIELDPROOF the wire's census covers, the unit suite CI SPEAKS); NO local server/fleet/test run
+- the F569 fresh tail cross-validated the fire-1743 terminal ledger BYTE-EXACT (the 9-gap champion cadence [25, 10, 9, 9, 169, 11, 9, 11, 11] the SIXTH 11 the same list voices, the single champion F17 the tally 10)
+
+Stage Summary:
+- v0.976.375 THE CHAMPION'S OWN SIXTH BREATH landed, the push gate in flight
+- F570 = 39765657422 IN FLIGHT - the next fire reads the face and prices .376 (the alternation law the storm side the SEVENTH breath names - the family rhythm the storm/champ alternation keeps)
 - the identity law held: PLANETA9091
