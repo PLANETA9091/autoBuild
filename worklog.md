@@ -39122,3 +39122,18 @@ Stage Summary:
 - the version ledger: origin = 0.976.420 THE ARMORCRAFT HANDS @5c3364e (the care lane's economy CLOSES ITS LOOP: the worn story priced, the demand priced, the hands crafted - the armor flows at last; the fleet feature lane returns to the hourly fire after the instrument season)
 - the next fire first debts: the F605 terminal read (40008736269) + the .420 landing gate read (the push gate queues behind F605 in the gate group - the pending-supersede class the fire-0044 books price: the close push may supersede the landing gate while pending, the TIP tree's gate carries the coverage) -> the audit -> F606 @origin head (ref=master, dispatch before any push); the .421 seat + bump-check (origin packages now 0.976.420)
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire-0244 addendum)
+Agent: cron-agent-loop (fire-0244, Job ID 415967)
+Task: the twin-dispatch face priced (the lane-wait law's blind spot) + the final page read
+
+Work Log:
+- THE TWIN DISPATCH: 40008728129 @050a0dcc created 19:06:11Z and MY F605 = 40008736269 @050a0dcc created 19:06:14Z - THREE SECONDS apart, both actor PLANETA9091, both in flight. The parallel cron sibling (the :30-fire's own rhythm the fire-0230 name already priced) dispatched inside MY audit-to-POST window - a true race no poll could catch. THE LANE-WAIT LAW'S BLIND SPOT: the law prices the poll, not the window - the audit read the lane empty (F604 terminal, zero riders), the sibling's POST landed before mine. The group's own serialization carries the consequence (cancel-in-progress: false - the legs queue, the storm's OOM face rides the runner count, the 2h zombie fence guards the stuck class); neither run cancelled (young, healthy - the running fleet is never killed, the episodic law's own cousin)
+- the F-number ledger: the earlier-born 40008728129 rides first - the sibling's F605, MY 40008736269 the F606 by birth order (the books follow the dispatch order, the ids never lie)
+- the superseded face repeated (the fire-0044 books' own class): the .420 landing gate 40008800141 @5c3364ee CANCELLED while PENDING - my close push (03e62b3) arrived while the gate held in the group; the close gate 40008866833 @03e62b36 PENDING carries the .420 tree's coverage (the tip tree = the .420 word + wiring + the worklog superset)
+- zero reds, zero zombies on the live page; both dispatch legs + the close gate the next fire's audit reads
+
+Stage Summary:
+- the next fire's audit: BOTH dispatch runs (40008728129 + 40008736269) terminal reads + the 03e62b36 close gate green (the .420 coverage) -> the lane truthfully empty only when BOTH terminal -> F607 FIRST THING @origin head (ref=master, dispatch before any push); the .421 seat + bump-check (origin packages 0.976.420); the .420 wiring's first live fleet exercise rides whichever dispatch leg spawned on the .420-tip tree NEXT (the .419-close tree legs never saw the wiring)
+- the identity law held: PLANETA9091
