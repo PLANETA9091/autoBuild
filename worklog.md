@@ -38731,3 +38731,21 @@ Stage Summary:
 - the version ledger: origin = 0.976.400 THE ABSORPTIONCARE WORD (the care family the ELEVEN words prices: toolcare + armorcare/craft + foodcare + healthcare + breathcare + xpcare + raincare + freezecare + saturationcare + firecare + absorptioncare)
 - the next fire first debts: the F585 terminal read (39884791483) + the .400 landing gate read -> the audit -> F586 @origin head (ref=master, dispatch before any new push); the .401 bump-check the origin packages
 - the identity law held: PLANETA9091
+---
+Task ID: fire-0943 (cron 415967 :43 stream, System 2026-10-23 09:43:59 +08:00, trace_id 1a0dd4672fe611e9-cron-agent-loop-202610230943)
+Agent: cron-agent-loop (fire-0943, Job ID 415967)
+Task: privateB hourly push (THE F586 WINDOW the gate chain's own wait prices - the care lane's TWELFTH sibling the effects shelf prices, the .401 seat)
+
+Work Log:
+- the fresh sandbox the repo RE-CLONED (82e05e8c the head - the parallel :30-stream agent's fire-0930 double rode first: v0.976.400 THE ABSORPTIONCARE WORD + F585 = 39884791483 @7df1bb8f dispatched 01:34:45Z), the identity law set BEFORE any commit
+- the CI audit: **F584 = 39880309797 @ab4cd185 SUCCESS terminal** (the fleet SIX-streak F579-F584, MY fire-0843 dispatch) + **the .399 gate 39880688328 @7df1bb8f SUCCESS** (the FIRECARE WORD CI-proven); zero zombies, zero reds
+- THE HONEST NON-DISPATCH at the open (the fire-0343/0443/0600 precedent): F585 IN_FLIGHT (the one-active lane law) + the .400 gate 39885119314 @82e05e8c queued - the F586 candidate the close window rides (the fire-0643 gate-chain wait the pattern keeps: the word WRITTEN FIRST, the tree UNCOMMITTED, the polls decide)
+- v0.976.401 THE POTIONCARE WORD lands: the care lane's TWELFTH sibling - the HUD's own bars are priced, the EFFECTS SHELF the bars cannot show opens: decidePotionAction (junk shelf refusal no throw, no-bar silence, clean the real zero, **treat/draining ANY health bar's eater rides - danger outranks the clock, a short poison outranks a long blindness**, watch/afflicted the debuffs without the drain) + harmfulOf (the map AND the array shelf scan, the longest clock first, the individual junk slots skipped never guessed) + the vanilla 26.2 effect sets (POTION_DRAIN_IDS 7/17/19/20 the bar's own eaters, POTION_AFFLICT_IDS 2/4/9/15/24/26/30/32 the work's hurt, POTION_NAME_BY_ID the twelve names) + 14 tests + the fleet19 wire (the import beside the absorptioncare import, the potionConsult after the absorbConsult - the bot.entity.effects read, CENSUS GUARD zero behavior the word never drinks the milk never quaffs the cure) + the filter key '|potioncare' joins the tail + bump 0.976.400 -> 0.976.401
+- the gates: node --check x3 clean; check-syntax 1664 files 0 broken; the new suite 14/14 GREEN; the sibling regression 103/103 GREEN; NO local server/fleet/test run
+- zero force-push; zero duplicate POSTs; the identity law held: PLANETA9091
+
+Stage Summary:
+- FLEET OF RECORD: F585 = 39884791483 @7df1bb8f IN_FLIGHT at the open (the fire-0930 agent's dispatch)
+- the version ledger: origin = 0.976.401 THE POTIONCARE WORD (the care family the TWELVE words prices: toolcare + armorcare/craft + foodcare + healthcare + breathcare + xpcare + raincare + freezecare + saturationcare + firecare + absorptioncare + potioncare)
+- the next fire first debts: the F585 terminal read (39884791483) + the .400 landing gate read (39885119314) + the .401 landing gate read -> the audit -> F586/F587 @origin head (ref=master, dispatch before any new push); the .402 bump-check the origin packages
+- the identity law held: PLANETA9091
