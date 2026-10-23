@@ -38764,3 +38764,21 @@ Stage Summary:
 - FLEET OF RECORD: F586 = 39887306300 @82e05e8c IN_FLIGHT (MY dispatch, the .400 tree)
 - the version ledger: origin = 0.976.401 THE POTIONCARE WORD @35be1941
 - the next fire first debts: the F586 terminal read (39887306300) + the .401 landing gate read (the CI run of 35be1941) -> the audit -> F587 @origin head (ref=master, dispatch before any new push); the .402 bump-check the origin packages
+---
+Task ID: cron30-20261023-1030 (fire 1030, cron 2026-10-23 10:30:02 +08:00, Job ID 414125)
+Agent: Z.ai Code (main, fire-1030)
+Task: cron task letter - the F587 dispatch + v0.976.402 THE EXHAUSTIONCARE WORD lands (the care lane's thirteenth sibling)
+
+Work Log:
+- the fresh sandbox the repo RE-CLONED (the head 409e2d93 - the parallel chain rode the hour: F586 = 39887306300 @82e05e8c dispatched (MY .400 tree, the SEVEN-streak), v0.976.401 THE POTIONCARE WORD landed (the twelfth sibling, the effects shelf)); the identity law set BEFORE any commit
+- the CI audit (API-verified, ALL debts closed): **F586 = 39887306300 SUCCESS terminal** + **the .401 landing gate 39887351209 @35be1941 SUCCESS** + **the .401 worklog gate 39887392420 @409e2d93 SUCCESS** (the head gate); my fire-0930 debts re-verified closed (F585 39884791483 SUCCESS, the .400 gate 39885119314 SUCCESS); zero zombies, zero reds, the lane EMPTY
+- THE THREE-CONDITION AUDIT ALL GREEN -> **THE F587 DISPATCH HTTP 204 FIRST-TRY: F587 = 39890138751 @409e2d93 in_progress** (the twelve-word tree rides, the dispatch-before-push pattern keeps)
+- v0.976.402 THE EXHAUSTIONCARE WORD lands: the care lane's THIRTEENTH sibling - the DRAIN METER the hunger bar hides behind them all: decideExhaustionAction (junk refusal no throw - the boolean too; the no-bar silence the saturationcare twin keeps - the protocol carries the field, the reader may not yet, never trust a missing bar with a 0; the floor clamp ONLY - a negative read is the liar read, the over-full read an honest longer accumulation no cap; the bands: lean the real zero's silence, watch/pre-toll at the meter's own half 2.0 inclusive, watch/toll-bites at the 4.0 line the drain law fires - danger outranks) + tollProgressFromExhaustion (the honest fraction, junk null, the over-full an honest over-1) + the vanilla constants (EXHAUSTION_TOLL_AT 4 the drain law's own trigger, EXHAUSTION_WATCH_AT 2 the meter's own half) + 14 tests (the junk battery the boolean junk the no-bar silence the empty read the liar floor the real zero the sprint-jump dozen the 2-line inclusive the toll boundary 3.9/4.0 the no cap the progress translation the verdict-carried progress the constants) + the fleet19 wire (the import beside the potioncare import, the exhaustConsult after the potionConsult - the bot.foodExhaustion read, CENSUS GUARD zero behavior the word never eats never rests) + the filter key '|exhaustioncare' joins the tail + bump 0.976.401 -> 0.976.402
+- the gates: node --check x3 clean; check-syntax 1666 files 0 broken; the new suite 14/14 GREEN; the sibling regression 68/68 GREEN (exhaustioncare+potioncare+absorptioncare+firecare+saturationcare); NO local server/fleet/test run (CI speaks)
+- zero force-push; zero duplicate POSTs; the identity law held: PLANETA9091
+
+Stage Summary:
+- FLEET OF RECORD: F587 = 39890138751 @409e2d93 IN_FLIGHT (MY dispatch, the twelve-word .401 tree)
+- the version ledger: origin = 0.976.402 THE EXHAUSTIONCARE WORD (the care family the THIRTEEN words prices: toolcare + armorcare/craft + foodcare + healthcare + breathcare + xpcare + raincare + freezecare + saturationcare + firecare + absorptioncare + potioncare + exhaustioncare)
+- the next fire first debts: the F587 terminal read (39890138751) + the .402 landing gate read -> the audit -> F588 @origin head (ref=master, dispatch before any new push); the .403 bump-check the origin packages
+- the identity law held: PLANETA9091
