@@ -54,6 +54,7 @@ import { decideRainAction } from '../src/lib/raincare.mjs'
 import { decideFreezeAction } from '../src/lib/freezecare.mjs'
 import { decideSaturationAction } from '../src/lib/saturationcare.mjs'
 import { decideFireAction } from '../src/lib/firecare.mjs'
+import { decideAbsorptionAction } from '../src/lib/absorptioncare.mjs'
 import { swordCheck, craftSword } from '../src/lib/arms.mjs'
 import { walkForbidden, surfaceHoldVerdict } from '../src/lib/nightsafety.mjs'
 import { relootPlan, relootPileVerdict, relootRetry, relootSurfaceY, relootSurfaceWhy, relootSurfaceRetry, relootRimDig, relootUnarmedVerdict, relootWriteoffLine, relootCarry, RELOOT_SURFACE_RISE_MAX, RELOOT_RETRY_RANGE, RELOOT_DESPAWN_MS, RELOOT_SPOT_FLUID_RE } from '../src/lib/reloot.mjs'
@@ -1338,7 +1339,7 @@ async function runBot (name, target, index) {
             const drec = deathCensusRecord(`${name} ${m}`)
             if (drec) deathCensusRecords.push(drec)
           } catch { /* the census never holds the death strip */ }
-          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare|armorcraft|foodcare|healthcare|breathcare|xpcare|raincare|freezecare|saturationcare|firecare/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps) ; (v0.976.387) 'armorcraft' joins - the armor economy's demand word rides its own key (the bare bot the iron count prices, the craft seat the gap names) ; (v0.976.391) 'foodcare' joins - the hunger bar's word rides its own key (the care lane's third sibling, the satisfied bot the honest silence keeps) ; (v0.976.393) 'healthcare' joins - the health bar's word rides its own key (the care lane's fourth sibling, the full bar the honest silence keeps) ; (v0.976.395) 'xpcare' joins - the experience bar's word rides its own key (the care lane's sixth sibling, the lean bot the honest silence keeps) ; (v0.976.396) 'raincare' joins - the sky's word rides its own key (the care lane's seventh sibling, the clear sky the honest silence keeps) ; (v0.976.397) 'freezecare' joins - the frost's word rides its own key (the care lane's eighth sibling, the unfrozen bot the honest silence keeps) ; (v0.976.398) 'saturationcare' joins - the hidden half-bar's word rides its own key (the care lane's ninth sibling, the reserved bot the honest silence keeps)
+          if (/combat|died|death drop|reloot|KICKED|error|climb|water|scan:|hop|chest skip|approach|swallowed|bank |banked|deposit|no-path ledger|full-chest ledger|dead-lid ledger|walk-intent|torch|craft|smelt|fuel|vein sweep|wood trip|drown context|suffocate context|drowned-kill context|void context|steer tier defer|steer hazard|cobble tithe|quarry ascent|chest ascent|smelt tithe|ration|toolcare|armorcare|armorcraft|foodcare|healthcare|breathcare|xpcare|raincare|freezecare|saturationcare|firecare|absorptioncare/.test(m)) console.log(`${name} ${m}`) // (v0.277.0) 'void context' joins the tail - the out-of-world class's first voice (two mute deaths: [117,-90,0], [118,-148,2]); (v0.511.0) 'ration' joins - the flesh ration's attempts and verdicts are survivability law, not noise; (v0.839.0) 'banked' joins - the per-chest receipt's own verb (the 44-opens/2-receipts blindness was the filter's, not the emitter's); (v0.866.0) the LEDGER FAMILIES join - the no-path ledger's record byte ('cached for the fleet (N live, ttl 15s|90s...)') has been filter-invisible since v0.62.0 (face 138: 18 'No path' hop refusals priced 44% of walks rented on repeats while the record byte rode NOWHERE - the half-life's own escalation byte unverifiable); the families are bounded by their caps (the no-path/full-chest ledgers cap at 24 entries - the filter cannot flood); (v0.974.2) 'walk-intent' joins - the intent board's own record byte ('walk-intent: chest at [...] held for the fleet (N live, ttl 90s)') has been filter-invisible since v0.974.0 (FACE 265 = 38273430594: the skip side SPOKE - 3 'walk in flight by F11' chest skips rode the registered 'chest skip' key - while the record byte rode NOWHERE: 11 no-path ledger records proved the walkOnce loop ran, zero intent lines printed, the filter was the mechanism, the v0.866.0 blindness struck the same string-form class) ; (v0.976.386) 'armorcare' joins the tail - the armor word's four honest forms ride their own key (the toolcare sibling, the bare bot the honest silence keeps) ; (v0.976.387) 'armorcraft' joins - the armor economy's demand word rides its own key (the bare bot the iron count prices, the craft seat the gap names) ; (v0.976.391) 'foodcare' joins - the hunger bar's word rides its own key (the care lane's third sibling, the satisfied bot the honest silence keeps) ; (v0.976.393) 'healthcare' joins - the health bar's word rides its own key (the care lane's fourth sibling, the full bar the honest silence keeps) ; (v0.976.395) 'xpcare' joins - the experience bar's word rides its own key (the care lane's sixth sibling, the lean bot the honest silence keeps) ; (v0.976.396) 'raincare' joins - the sky's word rides its own key (the care lane's seventh sibling, the clear sky the honest silence keeps) ; (v0.976.397) 'freezecare' joins - the frost's word rides its own key (the care lane's eighth sibling, the unfrozen bot the honest silence keeps) ; (v0.976.398) 'saturationcare' joins - the hidden half-bar's word rides its own key (the care lane's ninth sibling, the reserved bot the honest silence keeps) ; (v0.976.400) 'absorptioncare' joins - the golden shield's word rides its own key (the care lane's eleventh sibling, the unshielded bot the honest silence keeps)
           // (v0.839.0) THE RECEIPT'S OWN FILTER KEY - 'banked' joins: the
           // per-chest deposit receipt ('F3 [F3] banked 113 items at (...) (direct=6
           // ...)') matched NO key and never reached the artifact - the v0.837.0
@@ -2844,6 +2845,30 @@ async function runBot (name, target, index) {
           } catch { return } // the consult never kills the caller's loop
         }
         fireConsult()
+        // (v0.976.400) THE ABSORPTIONCARE CONSULT - the care lane's
+        // eleventh word. the ten seats priced, this word prices the
+        // GOLDEN SHIELD the HUD paints above the health bar (the
+        // thin-shield/unshielded forms the 'absorptioncare' filter key
+        // carries). Consult only - the word never eats and never
+        // golden-apples, the apple stays the inventory's own, the
+        // edge-refractory speaks once per state change, and the
+        // unshielded bot stays silent. The missing read stays silent
+        // too - the no-bar law the breathcare sibling keeps (never
+        // trust a missing bar with a 0); the thin shield (under the
+        // 2-golden-heart line, the next bite breaks it) is the ONLY
+        // voice the word carries.
+        let lastAbsorbWord = ''
+        const absorbConsult = () => {
+          try {
+            const care = decideAbsorptionAction({ absorption: miner.bot.entity?.absorptionAmount })
+            if (care.action === 'keep') { lastAbsorbWord = ''; return }
+            const word = `${care.action} ${care.reason}`
+            if (word === lastAbsorbWord) return
+            lastAbsorbWord = word
+            console.log(`${name} absorptioncare: ${care.action} - ${care.reason} (absorption ${care.absorption ?? '-'}, hearts ${care.hearts})`)
+          } catch { return } // the consult never kills the caller's loop
+        }
+        absorbConsult()
         const up = upgradeDueNow()
         if (up) {
           lastUpgradeAttempt = Date.now()
