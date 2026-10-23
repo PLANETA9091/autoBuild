@@ -34,6 +34,7 @@ import { mapTripTargets, oreSteerOrder, tierDeferOrder, planHave, planItemsOf } 
 import { pickOreTarget, rememberSkip } from '../src/fleet/oresteer.mjs'
 import { ensureTools, ensureCampFurnace, campBuildTier, CAMP_BUILD_PUT_SECS, countItem, consolidateSurplus, craftPlanksFromLogs } from '../src/bots/tools.mjs'
 import { sparePickCheck, craftSparePickaxe, bestPickTier, ORE_TIER_TABLE } from '../src/lib/toolupgrade.mjs'
+import { armorCraftCheck, craftArmorPiece } from '../src/lib/armorcraft.mjs' // (v0.976.420) the armorcraft hands - the .387 word's craft seat
 import { standGoalNear, gotoSafe, pathThrottleStats, gotoSafeStats, walkRetryPlan, waitForWaterRescueClear, doomedGoalStats, walkGovernorStatsFor, goalBrakeStatsFor, setFleetGoalSweeper, withTimeout, ASSIST_BURST_SEARCH_RADIUS, ASSIST_BURST_THINK_TIMEOUT_MS } from '../src/lib/jobqueue.mjs'
 import { PATH_PRIO_BANK } from '../src/lib/pathsemaphore.mjs'
 import { PILLAR_MAX_MS, verticalDoomPlan, quarryAscentPlan, steerFluidLock, sealCensus, sealPlan, sealCrossTarget, sealLanded, SEAL_PLACE_TIMEOUT_MS, SEAL_DIG_TIMEOUT_MS, walledCure, tunnelFluidName, routeRefusalLatch, wetShiftPlan, wetColumnMemoBlocked, WET_SHIFT_BLOCKS, WET_SHIFT_MIN_SLICE_MS, WET_SHIFT_TUNNEL_MAX_MS, wetShiftCrossPlan, wetShiftCrossLanded, SEAL_CROSS_ROUNDS, SEAL_CROSS_SETTLE_TICKS, anchorDrop, ANCHOR_DROP_TIMEOUT_MS, refusalMemo } from '../src/lib/surface.mjs'
@@ -1879,6 +1880,7 @@ async function runBot (name, target, index) {
       let zeroTunnels = 0 // (v0.18.1) consecutive zero-progress tunnels - the freeze budget
       let lastSpareAttempt = 0 // (v0.10.2) spare-pickaxe cooldown
       let lastSwordAttempt = 0 // (v0.67.0) sword-craft cooldown
+      let lastArmorCraftAttempt = 0 // (v0.976.420) armorcraft hands cooldown - the .387 word's craft seat
       let lastBankAt = Date.now() // (v0.33.0) mining-trip cadence: bank EARLY while the walk back is affordable
       let wetEvacUntil = 0 // (v0.223.0) the churn evacuation's exit clock - the plan owns it, the wiring only carries it (it survives relogs: the stance rides the runner, the cadence rides the client)
       let duskTripUntil = 0 // (v0.229.0) the dusk-bank plan's exit clock - the plan owns it, the wiring only carries it (the churn clock's shape)
@@ -3170,6 +3172,24 @@ async function runBot (name, target, index) {
             lastSpareAttempt = Date.now()
             console.log(`${name} spare pick due: ${sp.reason}`)
             await craftSparePickaxe(miner.bot, { log: m => console.log(`${name} ${m}`) })
+          }
+        }
+        // ARMORCRAFT HANDS (v0.976.420, armorcraft.mjs): the .387 armorcraft word
+        // named the demand every face while no arm crafted a piece - the seat the
+        // gap named owns the hands now. The check prices the RESERVE LAW first
+        // (the tool lane owns the ingots until the bot's own pick is iron - the
+        // fleet19 iron-reserve law's own seat), then the .387 word's own verdict
+        // prices the poverty (craft chest/legs/boots/head, the pieces-held keep);
+        // the hands never fire blind and never throw. The 'armorcraft' filter key
+        // already rides (v0.976.387). Cooldown mirrors the spare-pick rhythm so a
+        // stuck table cannot burn budget; a non-craft check stays silent (the care
+        // lane's honest silence, no spam every loop).
+        if (Date.now() - lastArmorCraftAttempt > 90000) {
+          const ac = armorCraftCheck(miner.bot)
+          if (ac && ac.action === 'craft') {
+            lastArmorCraftAttempt = Date.now()
+            console.log(`${name} armorcraft due: ${ac.piece} (${ac.ingots} ingots, pick tier ${ac.pickTier})`)
+            await craftArmorPiece(miner.bot, { log: m => console.log(`${name} ${m}`) })
           }
         }
         // SWORD (v0.67.0, arms.mjs): the v0.66.0 fleet fist-fighted its way to 15
