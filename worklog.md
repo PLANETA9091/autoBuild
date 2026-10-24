@@ -39437,7 +39437,7 @@ Task: the F618 run id recorded (the next fire's terminal read seat)
 
 Work Log:
 - F618 = 40071486807 @dc4b9aab workflow_dispatch in_progress (the dish faces ride live; the .435 landing gate 40071648826 @6dfc42f1 in_progress; the close gate 40071674991 @04a7b7c1 pending)
-- the addendum commit 2b4d6547 pushed clean (repo worklog)
+- the addendum commit 4096142a pushed clean (repo worklog)
 
 Stage Summary:
 - the next fire's audit: F618 = 40071486807 terminal + the .435 landing gate (40071648826 @6dfc42f1) + the close gate (40071674991 @04a7b7c1) -> the audit -> F619 FIRST THING @origin head (ref=master, dispatch before any push, STRING inputs); the .436 seat + bump-check (origin 0.976.435)
