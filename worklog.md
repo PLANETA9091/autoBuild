@@ -39746,3 +39746,17 @@ Stage Summary:
 - the next fire first debts: the F629 terminal read (40125613226 @6851eca3 - the SIBLING's run, poll and dispatch no duplicate) + the .449 landing gate read (the push gate @c876d3c9) + the .448 close gate read (40125966626 @237d9601 - the repaircraft tree's proof) -> the audit -> F630 @origin head (ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600'); the .450 seat + bump-check (origin packages now 0.976.449 - check immediately before commit)
 - the OPEN FRONTS still price: the compass (the navigation lane's own future - this word named it), the water bottle (the brewing front's own leg), smelt raw->ingot, WorldMap targets, blaze rods/chorus, slab/stair
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron44-20261025-0344 addendum (fire-0344)
+Agent: cron-agent-loop (fire-0344)
+Task: the gate run-IDs priced (the next fire's audit rides them)
+
+Work Log:
+- the .448 landing gate 40125909835 @f5569897 SUCCESS (the repaircraft tree CI-proven); the .448 close gate 40125966626 @237d9601 in_progress (young, healthy - the next fire reads it terminal)
+- the .449 landing gate 40127418723 @c876d3c9 CANCELLED (superseded by the close push while pending - the concurrency group's own custom, the fire-0044 class); the .449-close proof rides the close gate 40127484363 @7f01af37 PENDING
+- F629 = 40125613226 @6851eca3 still IN_FLIGHT (~30 min, the healthy tail - the fleet runs price 40-50 min)
+
+Stage Summary:
+- the next fire's audit exact addresses: F629 terminal (40125613226) + the .448 close gate terminal (40125966626 @237d9601) + the .449 close gate (40127484363 @7f01af37 - the CLOCKCRAFT tree's proof) -> all green = the audit all green -> F630 @origin head (dispatch before any push, STRING inputs); the .450 seat + bump-check (origin 0.976.449)
+- the identity law held: PLANETA9091
