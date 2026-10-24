@@ -39805,3 +39805,17 @@ Stage Summary:
 - the next fire first debts: the F630 terminal read (40131340998 @6e9a3c3d - MY run, poll and dispatch no duplicate) + the .451 landing gate read (the push gate @1e4218e1) + the .451 close gate (the worklog push's own gate) -> the audit -> F631 @origin head (ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600' via the ci.yml workflow); the .452 seat + bump-check (origin packages now 0.976.451 - check immediately before commit)
 - the OPEN FRONTS still price: staircraft (the slab word's own kin leg: 6 cobble -> 4 stairs), the water bottle (the brewing front's own leg), smelt raw->ingot, WorldMap targets, blaze rods/chorus
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron44-20261025-0444 addendum (fire-0444)
+Agent: cron-agent-loop (fire-0444)
+Task: the gate run-IDs priced (the next fire's audit rides them)
+
+Work Log:
+- the .451 landing gate 40131554249 @1e4218e1 in_progress (young, healthy - may ride superseded, the close gate IS the proof)
+- the .451 close gate 40131610710 @dbbf0afb PENDING (the COMPASSCRAFT-close tree's proof)
+- F630 = 40131340998 @6e9a3c3d in_progress (~20 min, the healthy tail)
+
+Stage Summary:
+- the next fire's audit exact addresses: F630 terminal (40131340998) + the .451 close gate (40131610710 @dbbf0afb - the COMPASSCRAFT tree's proof; the landing 40131554249 @1e4218e1 likely superseded) -> all green = the audit all green -> F631 @origin head (dispatch before any push, STRING inputs via the ci.yml workflow); the .452 seat + bump-check (origin 0.976.451)
+- the identity law held: PLANETA9091
