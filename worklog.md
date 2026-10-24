@@ -39368,3 +39368,24 @@ Stage Summary:
 - the version ledger: origin = 0.976.432 THE BEDCRAFT WORD @19d6698a (the craft family FOURTEEN words: armorcraft, toolcraft, stickcraft, plankcraft, furnacecraft, chestcraft, torchcraft, tablecraft, laddercraft, shieldcraft, doorcraft, boatcraft, fencecraft, bedcraft - the tool chain, the storage consumer, the smelt leg, the light economy, the seat itself, the shaft return, the mob-defense block, the shelter leg, the water leg, the pen leg, the night skip)
 - the next fire first debts: the F615 terminal read (40058699230 @f15e2a62) + the .432 landing gate read (40058885907 @19d6698a) -> the audit -> F616 @origin head (ref=master, dispatch before any push, STRING inputs); the .433 bump-check (origin packages now 0.976.432)
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire-1144)
+Agent: cron-agent-loop (fire-1144, Job ID 415967)
+Task: privateB hourly push (THE SIGNCRAFT WORD - the marker lane's own word lands, the .433 seat)
+
+Work Log:
+- the fresh sandbox the repo RE-CLONED (a53f0e89 the head - the fire-1130 sibling's close), the identity law set BEFORE any commit (PLANETA9091 local + global)
+- the books caught up: the fire-1130 sibling (the :30 stream, Job ID 414125) landed .432 BEDCRAFT @19d6698a + dispatched F615 - my carried debts both PAID, no duplicate POSTs, the bump-check read origin packages 0.976.432
+- the F615 wait-poll: in_progress ~29 min the honest tail -> SUCCESS (the fencecraft faces ride CI-proven); the .432 landing gate 40058885907 @19d6698 SUCCESS (the bedcraft word CI-proven); the close gate 40058937008 @a53f0e8 poll-waited to SUCCESS (the three-condition audit: the latest dispatch SUCCESS + the head gate SUCCESS + the dispatch lane empty)
+- THE F616 DISPATCH HTTP 204 FIRST-TRY: F616 = 40061070380 @a53f0e8 in_progress (dispatch BEFORE any push of mine kept - the run rides the .432-close tree, the bedcraft filter key IS in that tree, the night faces ride F616 live; the STRING inputs run_fleet:'true', fleet_seconds:'600' - the 422 lesson priced)
+- THE .433 SEAT: THE MARKER LANE'S OWN WORD - the worldmap lane (the task's own named scout->miner integration) prices where the bots have been, while 6 planks + 1 stick -> 3 signs (vanilla) ARE the marker the pocket already affords, the worldmap's first word the pocket itself prices: v0.976.433 THE SIGNCRAFT WORD lands 9a2304b1 - decideSignCraft ('keep' sign-held, 'craft' stick-planks-affordable the SHORTER leg prices the yield the leftover of BOTH legs named never rounded never capped, 'defer' one leg short the missing leg NAMED - sticks-short the stickcraft chain's own leg v0.976.421 named first, planks-short the plankcraft chain's own leg v0.976.422, 'refuse' junk-input never throws - the boolean law the floor law; THE CONSUMER LAW the plank and stick consumers are separate lanes - chest v0.976.424, table v0.976.426, shield v0.976.428, door v0.976.429, boat v0.976.430, fence v0.976.431, bed v0.976.432, this word's marker leg) + SIGNCRAFT_PLANKS_PER_CRAFT=6/SIGNCRAFT_STICKS_PER_CRAFT=1/SIGNCRAFT_SIGNS_PER_CRAFT=3 exported + 15 tests + fleet19 wiring (the signcraft consult beside the bedcraft consult, the sign census rides endsWith('_sign'), the filter tail '|signcraft' joins last)
+- the push: a53f0e89..9a2304b1 FIRST-TRY FAST-FORWARD (the first pull --rebase refused the dirty tree the honest way, the clean-tree rebase a no-op)
+- the gates: node --check x3 clean; check-syntax 1728 files 0 broken; the craft family 203/203 GREEN (fourteen craft suites + signcraft); NO local server/fleet/test run (CI speaks)
+- zero force-push; one legal dispatch POST; the identity law held: PLANETA9091
+
+Stage Summary:
+- FLEET OF RECORD: F616 = 40061070380 @a53f0e8 IN_FLIGHT (the .432-close tree; the night faces ride live)
+- the version ledger: origin = 0.976.433 THE SIGNCRAFT WORD @9a2304b1 head (the craft family FIFTEEN words: armorcraft, toolcraft, stickcraft, plankcraft, furnacecraft, chestcraft, torchcraft, tablecraft, laddercraft, shieldcraft, doorcraft, boatcraft, fencecraft, bedcraft, signcraft - the tool chain, the storage consumer, the smelt leg, the light economy, the seat itself, the shaft return, the mob-defense block, the shelter leg, the water leg, the pen leg, the night skip, the marker leg the worldmap lane's first voice)
+- the next fire first debts: the F616 terminal read (40061070380 @a53f0e8) + the .433 landing gate read (the push gate @9a2304b1) -> the audit -> F617 @origin head (ref=master, dispatch before any push, STRING inputs); the .434 bump-check (origin packages now 0.976.433)
+- the identity law held: PLANETA9091
