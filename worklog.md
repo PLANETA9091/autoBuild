@@ -39483,3 +39483,23 @@ Stage Summary:
 - the version ledger: origin = 0.976.437 THE RAILCRAFT WORD @80ee83a0 (the craft family NINETEEN words: armorcraft, toolcraft, stickcraft, plankcraft, furnacecraft, chestcraft, torchcraft, tablecraft, laddercraft, shieldcraft, doorcraft, boatcraft, fencecraft, bedcraft, signcraft, bowlcraft, shearscraft, bucketcraft, railcraft - the transport leg joins: the iron's own track priced, the minecart/rails front's first word)
 - the next fire first debts: the F620 terminal read (40078462805 @b92500d2) + the .437 landing gate read (the push gate @80ee83a0) -> the audit -> F621 @origin head (ref=master, dispatch before any push, STRING inputs); the .438 bump-check (origin packages now 0.976.437)
 - the identity law held: PLANETA9091
+
+---
+Task ID: 415967 (fire-1644)
+Agent: cron-agent-loop (fire-1644, Job ID 415967)
+Task: privateB hourly push (THE MINECARTCRAFT WORD - the carrier lane's own rider lands, the .438 seat)
+
+Work Log:
+- the sandbox ALIVE but the repo GONE (the 16th re-clone the books price) - re-cloned @d369cf08, the identity law set BEFORE any commit; the books caught up: the fire-1630 sibling (the :30 stream) paid the double-outage hour's debts BOTH - F619 = 40074497517 SUCCESS + .436 BUCKETCRAFT @fa27aec9 CI-proven + .437 RAILCRAFT @80ee83a0 landed (origin 0.976.437), its F620 = 40078462805 @b92500d2 in flight - no duplicate POSTs
+- the wait-poll (the lane-wait law): F620 + the .437 landing gate 40078804060 + the close gate 40078843675 all rode ~25 min - jobs read priced F620 healthy (Integration + Unit x2 SUCCESS, the fleet job the live tail), the .437 landing gate SUCCESS mid-poll; ALL THREE terminal SUCCESS (the three-condition audit green; the fire-1444 close-gate 40071738349 the legal cancelled-superseded class, not a red, not a zombie)
+- THE F621 DISPATCH HTTP 204 FIRST-TRY: F621 = (run @d369cf08) in_progress (dispatch BEFORE any push of mine kept - the run rides the .437-close tree, the railcraft filter key IS in that tree, the track faces ride F621 live; the STRING inputs run_fleet:'true', fleet_seconds:'600' - the 422 lesson priced)
+- THE .438 SEAT: THE CARRIER LANE'S OWN RIDER - the railcraft word prices the iron's own track (v0.976.437) but the track's own CARRIER never priced, while 5 iron ingots -> 1 minecart (vanilla) ARE the cart the pocket already affords: v0.976.438 THE MINECARTCRAFT WORD lands 4f6e6c4f - decideMinecartCraft ('keep' minecart-held, 'craft' iron-affordable, 'defer' iron-short, 'refuse' junk-input never throws - the boolean law the floor law; THE CONSUMER LAW the iron consumers are separate lanes - toolcraft, armorcraft, shield, shears, bucket, rail, this word's carrier leg; THE MINECART FAMILY LAW the plain minecart and every variant chest/furnace/hopper/tnt ARE the carrier lane's own story the census rides exact 'minecart' + every *_minecart the census never splits) + MINECARTCRAFT_IRON_PER_CRAFT=5/MINECARTCRAFT_MINECARTS_PER_CRAFT=1 exported + 15 tests + fleet19 wiring (the minecartcraft consult beside the railcraft consult, the filter tail '|minecartcraft' joins last)
+- the push: d369cf08..4f6e6c4f FIRST-TRY FAST-FORWARD (rebase a no-op, the tree clean)
+- the gates: node --check x3 clean; check-syntax 1738 files 0 broken; the craft family 275/275 GREEN (nineteen pure suites toolcraft..minecartcraft; armorcraft the vec3-import class - CI speaks); NO local server/fleet/test run (CI speaks)
+- zero force-push; one legal dispatch POST; the identity law held: PLANETA9091
+
+Stage Summary:
+- FLEET OF RECORD: F621 = (run @d369cf08) IN_FLIGHT (the .437-close tree; the track faces ride live)
+- the version ledger: origin = 0.976.438 THE MINECARTCRAFT WORD @4f6e6c4f head (the craft family TWENTY words: armorcraft, toolcraft, stickcraft, plankcraft, furnacecraft, chestcraft, torchcraft, tablecraft, laddercraft, shieldcraft, doorcraft, boatcraft, fencecraft, bedcraft, signcraft, bowlcraft, shearscraft, bucketcraft, railcraft, minecartcraft - the transport leg rides: the track AND its carrier priced)
+- the next fire first debts: the F621 terminal read (run id from the runs page's workflow_dispatch face @d369cf08) + the .438 landing gate read (the push gate @4f6e6c4f) -> the audit -> F622 @origin head (ref=master, dispatch before any push, STRING inputs); the .439 bump-check (origin packages now 0.976.438)
+- the identity law held: PLANETA9091
