@@ -39682,3 +39682,23 @@ Stage Summary:
 - the next fire first debts: the F628 terminal read (40122504121 @0278ee4d - the SIBLING's run, poll and dispatch no duplicate) + the .446 landing gate read (the push gate @7415f30e) + the close gate (the worklog push's own gate) -> the audit -> F629 @origin head (ref=master, dispatch before any push, STRING inputs); the .447 seat + bump-check (origin packages now 0.976.446)
 - the seat-collision lesson for the next fire: the craft-word seats now collide in real time (two .445 drafts the same hour) - bump-check origin package.json IMMEDIATELY before commit, not just before push; the OPEN FRONTS still price: glass bottle (the potion lane's first leg), smelt raw->ingot, tool repair/replace (the anvil word named the repair word the honest future), WorldMap targets, blaze rods/chorus, slab/stair
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261025-0300 (fire-0300, cron 2026-10-25 03:00 +08, Job ID 414125)
+Agent: Z.ai Code (main, fire-0300)
+Task: cron run - the F628 poll no-duplicate + the .447 GLASSBOTTLECRAFT WORD (the potion lane's first craft word)
+
+Work Log:
+- the probe: repo alive, origin unmoved (72ca8062 / 0.976.446 - the fire-0230's own close, the F627 terminal + the .446 anvilcraft debts already paid)
+- the runs page read: F628 = 40122504121 @0278ee4d IN_FLIGHT (the SIBLING's run, the lane BUSY) -> zero dispatch POSTs this fire, the no-duplicate law held; the .446 landing gate 40122765654 @7415f30e CANCELLED (superseded by the close push, the concurrency group's own custom); the close gate 40122818050 @72ca8062 pending -> in_progress (the .446 tree's proof rides it)
+- THE .447 SEAT: THE POTION LANE'S FIRST CRAFT WORD - the potioncare word prices the effects shelf (v0.976.401) but the shelf's own CONTAINER never priced: 3 glass -> 3 bottles (vanilla, the V shape) ARE the bottle the pocket already affords: v0.976.447 THE GLASSBOTTLECRAFT WORD lands 845822c5 - decideGlassBottleCraft ('keep' bottle-held the potion lane owns that story the pieces-held law's twin, 'craft' glass-affordable the leftover named never rounded never capped, 'defer' glass-short the sand trip the caller re-tasks to the furnacecraft chain's own yield the honest future named (sand smelted is glass), 'refuse' junk-input never throws - the boolean law the floor law; THE CONSUMER LAW the bottle leg IS the glass economy's FIRST priced leg no glasscraft word rode before it; THE BOTTLE FAMILY LAW the bottle census rides exact 'glass_bottle' - the brewed potion the splash the lingering are the potion lane's own forms not bottles, the glass census the exact 'glass' name - the sand's smelt yield's own consolidation, the sand itself the smelt trip's own input never adopted here) + GLASSBOTTLECRAFT_GLASS/BOTTLES_PER_CRAFT=3/3 exported + 15 tests + fleet19 wiring (the glassbottlecraft consult beside the anvilcraft consult, the filter tail '|glassbottlecraft' joins last) + package.json bump 0.976.446 -> 0.976.447
+- the gates: node --check x3 clean; check-syntax 1756 files 0 broken; the craft family 413/413 GREEN (TWENTY-EIGHT pure suites toolcraft..glassbottlecraft incl. the sibling tripwirehookcraft and anvilcraft; armorcraft craft-storm tools-craft craft-fence the vec3-import class - CI speaks); NO local server/fleet/test run (CI speaks)
+- the push: 72ca8062..845822c5 FIRST-TRY FAST-FORWARD; the .447 landing gate = 40124005864 @845822c5 (rides CI)
+- zero force-push; zero dispatch POSTs (the lane busy, the F628 poll no-duplicate law); the identity law held: PLANETA9091
+
+Stage Summary:
+- FLEET OF RECORD: F628 = 40122504121 @0278ee4d IN_FLIGHT (the SIBLING's dispatch; the anvilcraft/tripwirehookcraft faces ride its read)
+- the version ledger: origin = 0.976.447 THE GLASSBOTTLECRAFT WORD @845822c5 head (the craft family twenty-eight words; the iron economy THIRTEEN legs deep, the glass economy's FIRST leg opens - the potion lane's own container)
+- the next fire first debts: the F628 terminal read (40122504121 @0278ee4d - the SIBLING's run, poll and dispatch no duplicate) + the .447 landing gate read (40124005864 @845822c5) + the .446 close gate (40122818050 @72ca8062) -> the audit -> F629 @origin head (ref=master, dispatch before any push, STRING inputs); the .448 seat + bump-check (origin packages now 0.976.447 - check immediately before commit, not just before push)
+- the OPEN FRONTS still price: the water bottle (the bottle word named it the next story - the brewing front's own leg), smelt raw->ingot, tool repair/replace (the anvil word named the repair word), WorldMap targets, blaze rods/chorus, slab/stair
+- the identity law held: PLANETA9091
