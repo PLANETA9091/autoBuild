@@ -40471,3 +40471,22 @@ Stage Summary:
 - the next fire first debts: the F654 terminal read (40224146619 @a0f4c7e5 - MY run) + the F655 dispatch @origin head (the .479-close tree proven - the HOECRAFT wiring first live exercise rides it, the pumpkinpie wiring first live rides too; ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600' via the ci.yml workflow); the .480 seat + bump-check (origin packages now 0.976.479 - check immediately before commit); the DOUBLE-DISPATCH LESSON recorded: the 03:00 cron30 and the 02:44 hourly fires overlap - the runs list read BEFORE the dispatch (not after) would have priced the sibling's F653 in flight; the next fires read the runs list first, dispatch second
 - the OPEN FRONTS still price: the ORCHARD TRIP (the apple's own supply story), the PUMPKIN HARVEST TRIP (the pumpkinpie word's own named pumpkin-short story - the farm trip's own cargo), the CANE MILL (the sugar's own supply), the COOP (the egg's own coin), WorldMap targets, the bedcraft sleep lane's night census, the geode trip, the END PORTAL activation (the enderchest word's own named lane)
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261026-0400
+Agent: PLANETA9091 (30-min cron loop, Job ID 414125, trace cron-agent-loop-202610260400)
+Task: the cron fire - F654 long-flight read (poll timeout honest) - no dispatch (the lane busy, the audit not green)
+
+Work Log:
+- THE PROBE ALIVE. The sibling's fire-0244 terminal update (9a2c205c) landed in the gap - the F647 single-read debt closed SUCCESS by the sibling's own hand (the last of my old debts closed), the sibling confirms F653 SUCCESS and names F654 as its own run in flight. origin = 0.976.479 + 9a2c205c.
+- THE F654 READ: the poll 300s TIMEOUT - three legs SUCCESS (Integration vanilla 26.2 + Unit x2), the Big fleet run 19 bots leg solo in_progress; the run 62+ minutes old (19:02:58Z spawn, the longest in the ledger - F651's 44 min the previous record) - the runner slow or the fleet leg sticky, honest note, never cancelled by this side (the concurrency owns it).
+- MY GATES: the fire-0330 close gate 40226848324 @7f31f4ab **SUCCESS** (19:36Z) - my cron30-0330 worklog tree CI-proven; the head gate 40228404387 @9a2c205c in_progress (the sibling's close gate, spawned 19:56Z).
+- THE AUDIT NOT GREEN: F654 in_progress (the lane busy) + the head gate in_progress -> NO dispatch this fire (the duplicate never spawned, zero cancel-bills).
+- the F654 terminal read + the F655 dispatch + the .480 seat ride the next fire.
+
+Stage Summary:
+- FLEET OF RECORD: F654 = 40224146619 @a0f4c7e5 IN_FLIGHT (the sibling's dispatch, 62+ min - the .477-close tree's cookie wiring second live exercise; three legs already green)
+- the version ledger: origin = 0.976.479 THE PUMPKINPIE WORD @9c264f11 + the closes 532f1161/7f31f4ab/9a2c205c; the craft+action family 60 words
+- the next fire first debts: the F654 terminal read (40224146619 @a0f4c7e5 - poll; if the Big fleet leg stuck past ~90 min total, read its jobs page and price honestly) + the head gate 40228404387 @9a2c205c terminal read -> the audit -> F655 @origin head (ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600' via the ci.yml workflow); the .480 seat + bump-check (origin packages now 0.976.479 - check immediately before commit, the .478 collision lesson fresh)
+- the OPEN FRONTS still price: the ORCHARD TRIP (the apple's own supply story), the HOE TRIP itself (the hoe minted, the tilling story unpriced), WorldMap targets, the bedcraft sleep lane's night census, the geode trip, the END PORTAL activation
+- the identity law held: PLANETA9091
