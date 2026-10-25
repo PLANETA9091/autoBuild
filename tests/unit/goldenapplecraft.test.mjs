@@ -110,10 +110,10 @@ test('defer: apple-short names the orchard trip (the oak leaves own that story)'
   assert.equal(v.crafts, 0)
 })
 
-test('empty pocket: golden-empty and legs empty keeps with zero leftovers', () => {
+test('empty pocket: golden-empty and legs empty defers the honest gold-short, zero leftovers', () => {
   const v = decideGoldenAppleCraft({})
-  assert.equal(v.action, 'keep')
-  assert.equal(v.reason, 'golden-held')
+  assert.equal(v.action, 'defer')
+  assert.equal(v.reason, 'gold-short')
   assert.equal(v.goldLeft, 0)
   assert.equal(v.appleLeft, 0)
   assert.equal(v.golden, 0)
