@@ -40904,3 +40904,19 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.497 THE COALBLOCK WORD @1bffbdc2 (word family 77); F668 = 40373894784 IN FLIGHT @c96a653f (.496 tree) = the fleet of record; the .497 gate 40375153978 pending = the NEXT fire's first read, then the F669 dispatch rides the .497 tree; the pack family COMPLETE (four nine->one words).
+
+---
+Task ID: cron30-20261027-0230
+Agent: Z.ai Code (main)
+Task: fire-0230 — the F669 dispatch, the .498 word (the unpack mirror), the repo rename discovery
+
+Work Log:
+- LIVE fire. Sync clean: origin = db5a1a42. REPO RENAMED: PLANETA9091/privateB -> PLANETA9091/autoBuild (API 301; git redirect fine; remote URL updated to the canonical name; API calls must use autoBuild or -L).
+- Lane audit: F668 = 40373894784 @c96a653f SUCCESS (the .497 ride terminal green); the head gate 40375242532 @db5a1a42 SUCCESS (the .497 gate 40375153978 CANCELLED — superseded by its child's green, the known concurrency pattern); lane empty. All three conditions green.
+- F669 DISPATCHED first-try HTTP 204 -> materialized 40378662669 (workflow_dispatch @db5a1a42, the .497 tree). Dispatch-before-push held.
+- v0.976.498 THE UNPACK WORD lands d02f06f2: THE STORAGE LANE'S OWN MIRROR priced at last (the pack family prices the COMPRESSION nine units -> one block — the goldblock and ironblock and copperblock and coalblock words' own even hand — but the DECOMPRESSION the four never told: one block -> nine units, vanilla, the unpack the coalblock word's own prose named 'the unpack never burns' — a pocket packed full but bare in loose units starves the fire beside its own packed fuel). decideUnpackBlock() four-state: the BLOCK-EMPTY gate reads first (the unpack's own silence), the NEED-EMPTY keep the hunger un-named (the blocks ride packed), the block-short defer the honest shortage (the ceil crafts the need prices, the partial unpack never spends — the smeltchorus word's own fuel-short honesty), the UNPACK LAW one block mints nine. THE CEIL LAW: a four-unit hunger unpacks ONE block the surplus named whole, a nineteen-unit hunger on two blocks defers. THE MIRROR LAW: the pack prices what the UNITS become, this word prices what the BLOCK becomes — the round-trip the test pins (pack nine -> one, unpack one -> nine). THE FIVE-SAME-NINE pin gold/iron/copper/coal/unpack all read nine. Junk battery, floor law, fractional need floors whole, no cap, no mutation. + UNPACK_UNITS_PER_BLOCK=9 + UNPACK_BLOCKS_PER_CRAFT=1 exported + 15 tests + fleet19 wiring (the unpack consult beside the coalblock consult — the coal_block census, the fire's one-coal hunger, the filter tail '|unpack' joins last; wiring rode a persisted node script, grep-verified 2+1+1) + package.json bump 0.976.497 -> 0.976.498.
+- Gates: node --check x2 clean; check-syntax 1855 files 0 broken; unpack 15/15 GREEN; family spot 53/53 (unpack/coalblock/copperblock/ironblock); full unit — the smelting contention flake twice in-suite red (isolated green 163/163 both times) then 877/877 GREEN on the third run exit 0 (the toolupgrade-class flake the runner's own header prices, FLAKE-RETRY honest x2 in the green run). Push first-try db5a1a42..d02f06f2, no conflict, no force.
+- The .498 gate = 40382177600 @d02f06f2 in_progress at fire close. F669 short-poll: Integration SUCCESS + Unit x2 SUCCESS, the Big fleet (19 bots) still in_progress — the terminal read the NEXT fire's first debt. NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.498 THE UNPACK WORD @d02f06f2 (word family 78; repo now autoBuild); F669 = 40378662669 IN FLIGHT @db5a1a42 (.497 tree) = the fleet of record (Integration+Unit green, big fleet pending); the .498 gate 40382177600 pending = the NEXT fire's first read, then the F670 dispatch rides the .498 tree; the storage lane CLOSED (five nine-words: four packs + the unpack mirror).
