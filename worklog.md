@@ -40857,3 +40857,19 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.494 THE SMELTCHORUS WORD @4da43277 (word family 74); F666 = 40340687261 SUCCESS (fleet of record); the .494 gate 40347012175 pending = the NEXT fire's first read, then the F667 dispatch rides the .494 tree.
+
+---
+Task ID: cron30-20261027-0100
+Agent: Z.ai Code (main)
+Task: fire-0100 — the re-clone, the F667 dispatch, the .495 word
+
+Work Log:
+- LIVE fire after three dead (2330/0000/0030 — chat-only reports each). Repo GONE -> the re-clone + the identity dual-set + npm install (the fire-1700/2230 lessons held). Fresh local curl: origin = 0.976.494 @68ce35bb (the .494 landing; the sibling silent since 15:12Z).
+- Lane audit: F666 = 40340687261 SUCCESS; the .494 gate 40347012175 CANCELLED — superseded by its child's green: the worklog push gate 40347232201 @68ce35bb SUCCESS and CONTAINS the .494 code, the tree CI-proven; lane empty. All three conditions green after the 2.5-hour drought.
+- F667 DISPATCHED first-try HTTP 204 -> materialized 40364741245 (workflow_dispatch @68ce35bb, in_progress, fleet_seconds 600). Dispatch-before-push held.
+- v0.976.495 THE IRONBLOCK WORD lands ee220dea: the IRON PACK priced at last (the smeltraw word's own mint the fire performs, the goldblock word's own nine->one the sister metal's even hand — but the IRON ingot's own pack the two never told: nine iron ingots -> one iron block, vanilla, the storage lane's own compression). decideIronBlock() four-state: the INGOT-EMPTY gate reads first, the ingot-short defer names the honest shortage (one to eight ride ingotLeft), the PACK LAW the floor prices the count the remainder named, the held blocks ride untouched. THE CHAIN LAW raw -> ingot -> block the test pins; the sister-metals-same-nine pin rides too. Exports IRONBLOCK_INGOT_PER_BLOCK=9, IRONBLOCK_BLOCKS_PER_CRAFT=1. 14 tests + fleet19 wiring (the consult beside the smeltchorus consult, the filter tail '|ironblock' joins last) + package.json bump 0.976.494 -> 0.976.495.
+- Gates: node --check x2 clean; check-syntax 1849 files 0 broken; ironblock 14/14; family spot 61/61 (ironblock/smeltraw/goldblock/smeltchorus); full unit 874/874 files (the fresh re-clone's node_modules validated in-window). Push first-try 68ce35bb..ee220dea, no conflict, no force.
+- The .495 gate = 40366332957 in_progress at fire close. NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.495 THE IRONBLOCK WORD @ee220dea (word family 75); F667 = 40364741245 IN FLIGHT @68ce35bb (.494 tree) = the fleet of record; the .495 gate 40366332957 pending = the NEXT fire's first read, then the F668 dispatch rides the .495 tree.
