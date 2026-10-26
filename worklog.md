@@ -40949,3 +40949,21 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.499 THE CHARCOAL WORD @d880f191 + worklog @b0dce9d7 (word family 79); F670 = 40400865853 IN FLIGHT @b0dce9d7 (.499 tree) = the fleet of record; the F670 terminal read = the NEXT fire's first debt, then the F671 dispatch rides the .500 tree; the environment fragile after the reset — re-verify the repo + node_modules first.
+
+---
+Task ID: cron30-20261027-0530
+Agent: Z.ai Code (main)
+Task: fire-0530 — the F670 terminal read + the F671 dispatch + the .500 seat: THE MAPROTATE WORD
+
+Work Log:
+- Sync: head had moved to d01e4013 (the sibling fire-0500's worklog — the re-clone backfill, the F670 dispatch, the .500 honestly closed EMPTY with every vein priced). Rebase clean, origin pkg 0.976.499 re-verified pre-bump — the .500 seat free despite the sibling's EMPTY close (their gap-hunt priced different veins: repaircraft/arrows/bonemeal/smeltstone; the ASSIGNMENT ROTATION never named).
+- F670 TERMINAL READ: 40400865853 @b0dce9d7 completed SUCCESS — the big fleet 19 bots green on the .499 tree. The three conditions for the F671 dispatch all green at decision time: F670 SUCCESS + the head gate 40401400480 @d01e4013 SUCCESS + lane empty (0 active dispatch runs).
+- F671 DISPATCHED first-try HTTP 204 -> materialized 40406896182 (workflow_dispatch @d01e4013, in_progress, rides the .499-worklog tree) — dispatch-before-push held, the fleet runs the pre-push tree while the rotation word lands.
+- v0.976.500 THE MAPROTATE WORD lands aa94ef8e — THE ASSIGNMENT'S OWN ROTATION the maptarget word .488 never priced: the maptarget prices the COUNT (min(bots, free), the zero-clash ceiling), this word prices the SLOT the ask takes ACROSS time (the map's own nearest answer re-hands the head every ask — the finished walk re-takes the walked slot, the free tail starves). decideMapRotate() four-state: the free-dry defer reads first (the maptarget ALL-CLAIMED story owns the dryness), the HEAD LAW cursor mod free === 0 the map's own nearest answer already names (the keep, the honest silence), the ROTATION LAW slot = cursor mod free the ring past the head, the FAIRNESS PIN free consecutive asks touch every slot exactly once (the ringPeriod rides the read). THE CENSUS LAW the caller's own reads: the cursor the bot's own index the runBot signature carries (the line LIVE on every face — bot seven of a free five ring takes slot two), the free the map's own total + the zero-read claims default. Junk battery, floor law (negatives floor — the dry stock defers, the clamp's own honest order), fractional cursor floors whole. MAPROTATE_HEAD_SLOT=0 exported. 13 tests. fleet19 wiring: the maprotate consult beside the maptarget consult (the rotation the assignment's own neighbor), filter tail '|maprotate' joins last (wired via the persisted script scripts/fire0530-wire-fleet19.mjs — anchor count assertions + idempotent guard, the big-file Edit lesson held; note: the erased /home/z/my-project/scripts/ poll scripts NOT re-created — the runs read via curl API, the gh CLI absent from the reset sandbox).
+- package.json bump 0.976.499 -> 0.976.500.
+- Gates: node --check x3 clean; check-syntax 1859 files 0 broken; maprotate 13/13 GREEN (one test honest-fix pre-green: the negative-floor test expected keep but the law's own order reads the free-dry gate first — the test corrected, never the code); family spot 32/32 (maptarget/claims); full unit 879/879 files passed exit 0. NO local server/fleet/test-fleet run.
+- Push: rebase clean (origin unchanged mid-flight), push first-try d01e4013..aa94ef8e, zero conflicts. The .500 head gate = the push's own CI run @aa94ef8e (read rides the report / the next fire if not terminal in-box).
+
+Stage Summary:
+- origin = 0.976.500 THE MAPROTATE WORD @aa94ef8e (word family 80); F671 = 40406896182 IN FLIGHT @d01e4013 (.499 tree) = the fleet of record; the F671 terminal read + the .500 gate read ride the next fire; the F672 dispatch then rides the .500 tree's own three conditions.
+- The maprotate seat was real: the sibling's EMPTY close priced different veins (tool repair/arrows/bonemeal/smeltstone) — the across-time assignment spread walked unpriced until this fire. Lesson: an honest EMPTY close prices the named veins, never the whole mine.
