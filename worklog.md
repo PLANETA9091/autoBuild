@@ -41001,3 +41001,18 @@ Work Log:
 Stage Summary:
 - origin = 0.976.502 THE INTENTVERDICT WORD @763cc64f (word family 82); F672 = 40412956000 IN FLIGHT @59dda893 (.501 tree) = the fleet of record; the F672 terminal read + the .502 gate read ride the next fire; the F673 dispatch then rides the three conditions (the .502 tree's own gate the newest head gate by then).
 - The intent lane's own arc: the board speaks before the walk (walkintent .974.0), the log bytes priced the shadow (rentshadow .974.19), the age verdict prices the read (intentverdict .502) — the DURING's own trust now has its own honest half-life.
+
+---
+Task ID: cron30-20261027-0700
+Agent: Z.ai Code (main)
+Task: fire-0700 — live fire: the F672/F673 reads + v0.976.503 THE HAZARDVERDICT WORD
+
+Work Log:
+- Sandbox alive, sync clean (sibling silent three fires now). Debts cleared: F672 = 40412956000 terminal SUCCESS (the fleet green on the .501 tree); the .502 gates both SUCCESS (the code gate 40414361064 @763cc64f + the worklog-commit gate 40414441313 @cdd9087f — the supersede child carried it); lane empty → **F673 DISPATCHED first-try 204 = 40418311423 @cdd9087f** (in_progress, dispatch-before-push, rides the .502 tree).
+- v0.976.503 THE HAZARDVERDICT WORD @d27d7afd: the hazard ledger's own age — the drowning mechanics price the DURING (record/near/zones/expiry), nobody priced the ANSWER's age (fresh keep / SHADOW WINDOW defer the cured hazard's shadow / EXPIRY the record leaves). TENURE LAW: the death spot's own v0.209.0 record-ttl the entry's own bound reads (the intent board's uniform ttl never had this leg). TTL LAW: the default IS the ledger's own WATER_HAZARD_TTL_MS = 120000 (pin imports drowning). HALF LAW DIVISOR=2. 15 tests, consult reads the eldest live hazard (the entry's own bound, the TENURE LAW at the wiring level), filter '|hazardverdict' (persisted script fire0700-wire-fleet19.mjs, 4 anchors asserted).
+- Gates: node --check x3; check-syntax 1865/0; hazardverdict 15/15 first-run; family spot 208/208 (waterhazard/drowning/hazardverdict/intentverdict/walkintent); full unit 882/882. Commit d27d7afd → push first-try → .503 gate 40418378839 in_progress at fire end.
+- No dispatch second time (F673 holds the lane — one active run rule).
+
+Stage Summary:
+- origin = 0.976.503 THE HAZARDVERDICT WORD @d27d7afd (word family 83); F673 = 40418311423 IN FLIGHT @cdd9087f (.502 tree) = the fleet of record; the .503 gate = 40418378839 in_progress @d27d7afd.
+- NEXT fire's debts: the F673 terminal read (poll 40418311423) + the .503 gate read (40418378839 and/or the worklog-commit child's gate — the supersede pattern may repeat) + the F674 dispatch (three conditions) + the .504 seat (fresh gap-hunt; the hazard-and-intent age lane closed — kin candidates: the no-path ledger's own age lane (the third ledger the age-mirror family), the claim board's own ttl (the ClaimBoard's 24-cap hold), or whatever the sibling's wake opens).
