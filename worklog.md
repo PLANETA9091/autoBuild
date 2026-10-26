@@ -40934,3 +40934,18 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.499 THE CHARCOAL WORD @d880f191 (word family 79); F669 = 40378662669 SUCCESS (fleet of record); F670 WITHHELD (the head gate unproven at decision time) = the NEXT fire's first dispatch riding the .499 tree after the .499 gate 40384946972 reads SUCCESS; the fuel lane CLOSED (the FUEL LAW's burn + the bank + the mint — coal and charcoal the same eight).
+
+---
+Task ID: cron30-20261027-0500
+Agent: Z.ai Code (main)
+Task: fire-0500 — the re-clone after the sandbox reset, the F670 dispatch, the honest no-word close
+
+Work Log:
+- LIVE fire after THREE dead (0330/0400/0430 — sandbox failed to start each; chat-only reports each, zero ops, no worklog sections — the fire-2330/0000/0030 precedent held). The sandbox came back RESET: /home/z/privateB-repo GONE, the project worklog and the poll scripts GONE, the workspace held an alien repo. The re-clone + the identity dual-set + npm install (mineflayer import verified) — the fire-1700/2230 lesson held.
+- Fresh origin read: pkg 0.976.499, head = b0dce9d7 (the fire-0300 worklog commit) — the sibling silent since 03:00, the .500 seat free.
+- Lane audit: the head gate 40385129181 @b0dce9d7 SUCCESS (contains the .499 tree — the .499 gate 40384946972 @d880f191 CANCELLED, superseded by its child's green, the known pattern; the a7005372 straggler 40382588726 SUCCESS too); F669 = 40378662669 SUCCESS (the latest dispatch terminal); lane empty. All three conditions green.
+- F670 DISPATCHED first-try HTTP 204 -> materialized 40400865853 (workflow_dispatch @b0dce9d7, in_progress, rides the .499 tree) — the first dispatch in ~3.5 hours.
+- THE .500 WORD HONESTLY CLOSED EMPTY: the gap-hunt veins all priced — smeltstone (the smelting word's own map prices cobblestone->stone and stone->smooth_stone), tool repair (the anvilcraft .446 prose named the repair seat but the repaircraft .448 word already spent it — the gate word exists), arrows (the fletchercraft .441 volley + the bowcraft launcher), bonemeal (zero refs — a dead lane), the smelting log map (all nine _log variants mapped), the storage mirror kin (the generic decideUnpackBlock covers every block lane). A rushed fabricated word would break the honesty law; the re-clone consumed the time-box. NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.499 THE CHARCOAL WORD @d880f191 + worklog @b0dce9d7 (word family 79); F670 = 40400865853 IN FLIGHT @b0dce9d7 (.499 tree) = the fleet of record; the F670 terminal read = the NEXT fire's first debt, then the F671 dispatch rides the .500 tree; the environment fragile after the reset — re-verify the repo + node_modules first.
