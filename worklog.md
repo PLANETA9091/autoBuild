@@ -40889,3 +40889,18 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.496 THE COPPERBLOCK WORD @da93d857 (word family 76); F667 = 40364741245 SUCCESS (fleet of record); the .496 gate 40371328082 queued = the NEXT fire's first read, then the F668 dispatch rides the .496 tree; the sibling silent since 15:12Z.
+
+---
+Task ID: cron30-20261027-0200
+Agent: Z.ai Code (main)
+Task: fire-0200 — the F668 dispatch, the .497 word
+
+Work Log:
+- LIVE fire. Sync clean: origin = c96a653f. Lane audit: the .496 gate 40371328082 @da93d857 SUCCESS; F667 SUCCESS (the latest dispatch terminal); lane empty — all three green.
+- F668 DISPATCHED first-try HTTP 204 -> materialized 40373894784 (workflow_dispatch @c96a653f, in_progress, the .496 tree). Dispatch-before-push held.
+- v0.976.497 THE COALBLOCK WORD lands 1bffbdc2: the FUEL'S OWN PACK priced at last (the smelt family's FUEL LAW prices the coal's own BURN — one coal smelts eight, the whole smelt family reads the same eight — and the pack family prices the storage nine->one gold and iron and copper — but the FUEL'S OWN PACK the burn never told: nine coal -> one coal block, vanilla, the storage compression the unpack never burns). decideCoalBlock() four-state: the COAL-EMPTY gate reads first, the coal-short defer names the burn the caller re-tasks, the PACK LAW the floor prices the count the remainder named, the held blocks ride untouched. THE CHAIN LAW the burn the fire's own story / the pack the storage's own the test pins; the FOUR-PACKS-SAME-NINE pin rides (gold/iron/copper/coal all read nine). Exports COALBLOCK_COAL_PER_BLOCK=9, COALBLOCK_BLOCKS_PER_CRAFT=1. 12 tests + fleet19 wiring (the consult beside the copperblock consult, the filter tail '|coalblock' joins last; the consult insert rode a persisted node script — the Edit-timeout risk dodged) + package.json bump 0.976.496 -> 0.976.497.
+- Gates: node --check x2 clean; check-syntax 1853 files 0 broken; coalblock 12/12; family spot 70/70 (the whole pack family plus the fuel-law neighbor); full unit 876/876 files. Push first-try c96a653f..1bffbdc2, no conflict, no force.
+- The .497 gate = 40375153978 pending at fire close. NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.497 THE COALBLOCK WORD @1bffbdc2 (word family 77); F668 = 40373894784 IN FLIGHT @c96a653f (.496 tree) = the fleet of record; the .497 gate 40375153978 pending = the NEXT fire's first read, then the F669 dispatch rides the .497 tree; the pack family COMPLETE (four nine->one words).
