@@ -40841,3 +40841,19 @@ Stage Summary:
 - the NEXT fire's first debts: F666 terminal read (poll 40340687261) + the .493 landing gate read (the push run @88d1f017) + the .494 seat bump-check (origin packages now 0.976.493 — check immediately before commit)
 - the OPEN FRONTS still price: the furnace/smelt consult-side read, tool repair/replace, the end rod PLACE word (the rods the endrod word mints need the placement story), the purpur slab PLACE word (the slabs this word mints need the same placement story the torch lane owns)
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261026-2300
+Agent: Z.ai Code (main)
+Task: fire-2300 — the F666/.493-gate audit, the .494 word, the push, the honest F667 withhold
+
+Work Log:
+- LIVE fire. Repo present, sync clean: origin = 0.976.493 @b723dbfb (over 88d1f017). Lane audit at fire open: F666 = 40340687261 (workflow_dispatch @1e403eff) IN_PROGRESS -> the one-active-run law held, NO duplicate dispatch; the .493 gate 40343084005 and the worklog push gate 40343208084 queued behind it.
+- Mid-fire reads: F666 completed SUCCESS; the .493 gate @88d1f017 completed SUCCESS — the sibling's own ride the CI proves end to end.
+- v0.976.494 THE SMELTCHORUS WORD lands 4da43277: the end chain's own FIRE priced at last (the chorus .490 harvest, the purpur .492 square, the purpurslab .493 masonry — but the FRUIT->POPPED leg the three never told: the popped the stock law counts only the FURNACE mints, vanilla 1:1). decideSmeltChorus() four-state: the CHORUS-EMPTY gate reads first (the smeltglass word's own sand-empty gate's twin), the FUEL LAW one coal smelts eight (the coalLeft the ceiling burns — the partial last burn still spends the slot), the fuel-short defer names the coal trip, junk battery + floor law + the fractional remainder named + no cap + no mutation. THE CHAIN LAW COMPLETED: fruit -> popped -> block -> slab the four legs the test pins end to end. Exports SMELTCHORUS_COAL_SMELTS=8, SMELTCHORUS_FRUIT_PER_POPPED=1. 17 tests + fleet19 wiring (the consult beside the purpurslab consult, the filter tail '|smeltchorus' joins last) + package.json bump 0.976.493 -> 0.976.494.
+- Gates: node --check x2 clean; check-syntax 1847 files 0 broken; smeltchorus 17/17; family spot 95/95 (smeltchorus/smeltglass/purpurslab/purpur/endrod/chorus); full unit 873/873 files. Push first-try b723dbfb..4da43277, no conflict, no force.
+- F667 honestly withheld at fire close: the head gate @4da43277 = 40347012175 PENDING (queued behind the b723dbfb worklog gate) — two of three green (latest dispatch SUCCESS + lane empty), the head gate unproven. The next fire rides the full triple.
+- NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.494 THE SMELTCHORUS WORD @4da43277 (word family 74); F666 = 40340687261 SUCCESS (fleet of record); the .494 gate 40347012175 pending = the NEXT fire's first read, then the F667 dispatch rides the .494 tree.
