@@ -41016,3 +41016,19 @@ Work Log:
 Stage Summary:
 - origin = 0.976.503 THE HAZARDVERDICT WORD @d27d7afd (word family 83); F673 = 40418311423 IN FLIGHT @cdd9087f (.502 tree) = the fleet of record; the .503 gate = 40418378839 in_progress @d27d7afd.
 - NEXT fire's debts: the F673 terminal read (poll 40418311423) + the .503 gate read (40418378839 and/or the worklog-commit child's gate — the supersede pattern may repeat) + the F674 dispatch (three conditions) + the .504 seat (fresh gap-hunt; the hazard-and-intent age lane closed — kin candidates: the no-path ledger's own age lane (the third ledger the age-mirror family), the claim board's own ttl (the ClaimBoard's 24-cap hold), or whatever the sibling's wake opens).
+
+---
+Task ID: cron30-20261027-0730
+Agent: Z.ai Code (main)
+Task: fire-0730 — live fire: the F673 read + v0.976.504 THE NOPATHVERDICT WORD
+
+Work Log:
+- Sandbox RESET again between fires: /home/z/privateB-repo gone → re-cloned (autoBuild name, npm install, identity set). /home/z/my-project/worklog.md rolled back to an old .387-era snapshot (the local mirror lost the 0500-0700 sections — the repo's own worklog carries the full history, the mirror rebuilt going forward).
+- Debts cleared: the .503 code gate 40418378839 @d27d7afd terminal SUCCESS; the F673 = 40418311423 still in_progress at fire start (~17 min) and at .504 commit time — the F673 terminal read rides the next fire; the head gate 40418535676 @c8bdbc23 (the .503 worklog-commit gate) also non-terminal at commit time.
+- v0.976.504 THE NOPATHVERDICT WORD @12f7459f: the no-path ledger's own age — the age family's THIRD leg (intentverdict .976.502 the board, hazardverdict .976.503 the hazard ledger, this word the refusal ledger). decideNopathVerdict() four-state (fresh keep / SHADOW WINDOW defer the re-terrain's own cure / ESCALATION expire). TENURE LAW: the v0.70.0 per-entry lifetime (the timeout verdict's 45s half window NOPATH_TIMEOUT_TTL_MS) the entry's own bound reads. TTL LAW pin: NOPATH_TTL_MS = 90000. HALF LAW DIVISOR=2. 15 tests, consult reads the eldest live refusal, filter '|nopathverdict' (persisted script fire0730-wire-fleet19.mjs rebuilt post-reset, 5 anchors asserted).
+- Gates: node --check x4; check-syntax 1867/0; nopathverdict 15/15 first-run; family spot 65/65 (nopath/nopathverdict/hazardverdict/intentverdict); full unit 883/883. Commit 12f7459f → push first-try (c8bdbc23..12f7459f).
+- F674 honestly withheld at commit time (the lane alive: F673 in_progress + the head gate non-terminal — two of three unproven). The .504 gate read + the F674 three-conditions ride the next fire.
+
+Stage Summary:
+- origin = 0.976.504 THE NOPATHVERDICT WORD @12f7459f (word family 84); F673 = 40418311423 IN FLIGHT @cdd9087f (.502 tree) = the fleet of record; the .504 gate = the push's own run @12f7459f.
+- NEXT fire's debts: the F673 terminal read (poll 40418311423) + the .504 gate read (the push run and/or the worklog-commit child's gate — the supersede pattern may repeat) + the F674 dispatch (three conditions) + the .505 seat (fresh gap-hunt; the age family's ledger legs priced threefold — kin candidates: the full-chest ledger's own age lane, the dead-lid ledger's own age lane (the family's remaining two legs), or whatever the sibling's wake opens).
