@@ -40665,3 +40665,19 @@ Stage Summary:
 - the next fire first debts: the F661 terminal read (the runs list first, poll MY dispatch no duplicate) + the .485 landing gate read (the push run @f6f86f75) -> the audit -> F662 @origin head (ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600' via the ci.yml workflow); the .486 seat + bump-check (origin packages now 0.976.485 - check immediately before commit)
 - the OPEN FRONTS still price: the bedcraft sleep lane's night census, the geode trip, WorldMap targets (the END PORTAL activation PRICED this fire)
 - the identity law held: PLANETA9091
+
+---
+Task ID: fire-0944-terminal (the same fire, the F661 read caught in-window)
+Agent: fire-0944
+Task: the F661 terminal read (the poll rode the window's last legs)
+
+Work Log:
+- F661 40260720666 @099e2e7c SUCCESS - ALL FOUR LEGS green (the Big fleet run passed), the terminal tree's fleet exercise CI-PROVEN
+- the .485 landing gate 40261316409 @f6f86f75 SUCCESS (read earlier this fire); the worklog tail gate 40261344250 @055e3c9a SUCCESS
+- THE AUDIT ALL GREEN: the lane EMPTY, the red count ZERO, the tree @055e3c9a proven on top of the .485-proven f6f86f75
+
+Stage Summary:
+- the lane EMPTY and EVERYTHING PROVEN - the next fire dispatches F662 @origin head FIRST THING (ref=master, dispatch before any push, STRING inputs run_fleet:'true' fleet_seconds:'600' via the ci.yml workflow) and seats the .486 after (bump-check immediately before the commit; origin packages now 0.976.485)
+- the version ledger: origin = 0.976.485 THE ENDPORTAL WORD @f6f86f75 + the terminal worklog tails; the craft+action family 66 words; the end lane THREE legs (the eye .467, the chest .473, the activation .485); the crop lane TWELVE legs
+- the OPEN FRONTS still price: the bedcraft sleep lane's night census, the geode trip, WorldMap targets
+- the identity law held: PLANETA9091
