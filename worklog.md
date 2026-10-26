@@ -40920,3 +40920,17 @@ Work Log:
 
 Stage Summary:
 - origin = 0.976.498 THE UNPACK WORD @d02f06f2 (word family 78; repo now autoBuild); F669 = 40378662669 IN FLIGHT @db5a1a42 (.497 tree) = the fleet of record (Integration+Unit green, big fleet pending); the .498 gate 40382177600 pending = the NEXT fire's first read, then the F670 dispatch rides the .498 tree; the storage lane CLOSED (five nine-words: four packs + the unpack mirror).
+
+---
+Task ID: cron30-20261027-0300
+Agent: Z.ai Code (main)
+Task: fire-0300 — the F669 terminal read, the .499 word (the charcoal mint), the honest F670 withhold
+
+Work Log:
+- LIVE fire. Sync clean: origin = a7005372 (the .498 head). Lane audit: F669 = 40378662669 @db5a1a42 read to terminal — **completed SUCCESS**, the whole CI green incl. the big fleet (19 bots, the .497 tree); the .498 gate 40382177600 @d02f06f2 = SUCCESS; the head gate 40382588726 @a7005372 in_progress at decision time — F670 honestly WITHHELD (two of three green, the head gate unproven — the fire-0130 law).
+- v0.976.499 THE CHARCOAL WORD lands d880f191: THE RENEWABLE FUEL'S OWN LEG priced at last (the smelt family's FUEL LAW prices what the COAL burns — one coal smelts eight — and the smelting word's own map mints the charcoal as a SIDE oak_log: 'charcoal', the fuelbank word banks the surplus 'both burn 8' — but the MINT decision the fire's own feed never priced: the fire eats its own coal while the pocket hauls logs it could burn into fuel; the fuelbank's own prose reserved the seat 'charcoal the renewable one (a future dedicated leg)' and never spent it — the code's own seat taken). decideCharcoal() four-state: the LOG-EMPTY gate reads first (the mint's own silence — the wood trip owns that story), the fuel-rich defer the SLOT LAW's own brake (one full burn slot of eight never mints — the mint never hoards), the MINT LAW one log mints one charcoal (vanilla's own 1:1), the SLOT LAW the deficit the ceiling names the mint fills never overshoots (the log-short pocket mints what it affords — every charcoal minted feeds the fire, the partial mint never zero so never deferred). THE RENEWABLE LAW: the charcoal the COAL's own twin — both burn eight, the FUEL_YIELD pin the test reads. Junk battery, floor law, fractional logs floor whole, no artificial clamp, no mutation. + CHARCOAL_LOG_PER_CHARCOAL=1 + CHARCOAL_FUEL_CEILING=8 exported + 14 tests + fleet19 wiring (the charcoal consult beside the unpack consult — the pocket's own *_log census, the coal + charcoal fuel pair, the filter tail '|charcoal' joins last; wiring rode a persisted node script, grep-verified 2+1+1) + package.json bump 0.976.498 -> 0.976.499.
+- Gates: node --check x2 clean; check-syntax 1857 files 0 broken; charcoal 14/14 GREEN; family spot 204/204 (charcoal/unpack/smelting/coalblock — the fuel-law's own neighborhood); full unit 878/878 files passed exit 0 (FLAKE-RETRY honest x2 both green). Push first-try a7005372..d880f191, no conflict, no force.
+- The .499 gate = 40384946972 @d880f191 pending at fire close. NO local server/fleet/test-fleet run.
+
+Stage Summary:
+- origin = 0.976.499 THE CHARCOAL WORD @d880f191 (word family 79); F669 = 40378662669 SUCCESS (fleet of record); F670 WITHHELD (the head gate unproven at decision time) = the NEXT fire's first dispatch riding the .499 tree after the .499 gate 40384946972 reads SUCCESS; the fuel lane CLOSED (the FUEL LAW's burn + the bank + the mint — coal and charcoal the same eight).
