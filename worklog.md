@@ -41167,3 +41167,26 @@ Stage Summary:
 - Next fire's debts, in order: (1) F679 = 40542910958 terminal read; (2) the .511 word = claim-take census (seat named, data cached, mono-shape proven); (3) the F680 three conditions; (4) bump check — origin pkg before any bump, the .511 number free as of this fire's read.
 - The claim board verdict wire is LIVE and lawfully silent — its first spoken line (defer/expire/refuse) is still unfired ammo for the census word's prose.
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261028-0130
+Agent: Z.ai Code (main)
+Task: fire-0130 — the F679 terminal read + the F680 dispatch + v0.976.511 THE CLAIM TAKE CENSUS (the .511 seat the last fire named, landed)
+
+Work Log:
+- Probe green; origin = local = 515e81a5, clean tree, no sibling wake. Origin pkg = 0.976.510 re-verified pre-bump — the .511 seat free.
+- THE DEBT READS (first-try): F679 = 40542910958 @88b66313 (the .510 tree's first fleet — the CLAIM TTL DRIFT FIX tree) terminal SUCCESS; the worklog gate 40543367651 @515e81a5 terminal SUCCESS; the lane empty. Three conditions 3/3 PROVEN.
+- F680 DISPATCHED first-try HTTP 204 -> materialized 40551342052 (workflow_dispatch @515e81a5) — in flight at fire end; the terminal read rides the next fire.
+- THE .511 WORD: v0.976.511 THE CLAIM TAKE CENSUS lands a797a958 — the claim board's own take lane priced from the F678 live face (the artifact the last fire fetched): censusClaimTakes (one-parser law, the five seats bot/reason/claims/cap/claimsLeft the single shape carries, the malformed seat the shape refuses) + claimTakeCensusRow (ONE emitter; the mono-shape face names the monopoly; the zero-take face the row NEVER prints — the honest silence). The real face the word prices: 301 takes ALL mono-shape target-free, the ledger never held a second claim at any take moment (claims 0 every line), the headroom floor 23 of cap 24, the release book ZERO in the whole stream (the log-silent end), F14 the crest bot 78 of 301 (25.9%).
+- Wiring: scripts/fleet-mining/decompose.mjs import + the closing-census block after the whys trend's own — CENSUS GUARD held: zero fleet wiring, zero new fleet log lines, the fuelbank PIN untouched (fleet19.mjs never read this fire).
+- THE LIVE PROOF: the decompose run over the real F678 log printed 'claim-takes: 301 take(s) across 19 bot(s) - target-free carries all 301 (the mono-shape lane) - headroom floor 23 of cap 24 (bot F13) - crest F14 rides 78 (25.9%)' — the word speaks the truth the face rode.
+- 9 unit tests pinned to the REAL F678 excerpt lines; the one mid-fire fix was the test's own crest fixture (the synthetic split made F9 the max — the module's crest law is correct, the fixture inverted the roles; re-split 78/77/77/69 keeps F14 the strict max).
+- Gates: node --check clean; check-syntax 1879 files 0 broken; full unit 889/889 PASSED (888 + the census suite; the smelting flake did not ride this run). NO local server/fleet/test-fleet run.
+- Push: rebase clean, push first-try 515e81a5..a797a958, zero conflicts, 4 files +223. The .511 head gate = the push run @a797a958 (in flight at fire end — the read rides the next fire).
+- Both worklogs appended (this section, witness script append-worklog-0130.py).
+
+Stage Summary:
+- origin = 0.976.511 THE CLAIM TAKE CENSUS @a797a958 (word family 88 + the census leg); FLEET OF RECORD: F680 = 40551342052 @515e81a5 (.510 tree) IN FLIGHT.
+- Next fire's debts, in order: (1) F680 = 40551342052 terminal read; (2) the .511 gates read (the head gate @a797a958 + the worklog child that follows); (3) the F681 three conditions; (4) bump check — origin pkg before any bump, the .512 seat free as of this fire's read.
+- Kin candidates for the .512 seat: the claim take lane's own TIME book (the takes' inter-arrival cadence the same lines carry — the ts the fleet log rides), or whatever the F680 fleet read opens (the .510 tree's CLAIM_TTL_MS seat — the consult's fallback now reads the constant the wiring mints), or the sibling's wake.
+- the identity law held: PLANETA9091
