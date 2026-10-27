@@ -1,6 +1,7 @@
 // Decompose a fleet19.log into the evidence classes the worklog tracks.
 // Usage: node scripts/fleet-mining/decompose.mjs <path-to-fleet19.log>
 import { readFileSync } from 'node:fs'
+import { censusClaimTakes, claimTakeCensusRow } from '../../src/lib/claimtakecensus.mjs' // (v0.976.511) THE CLAIM TAKE CENSUS - the claim board's own take lane the F678 live face priced first
 import { rescueLedger, rescueEndSeconds, RESCUE_END_CLASSES, rescueStartBill, rescueStartBillRow, rescueStartRiders, rescueStartRidersRow, rescueEndBill, rescueEndBillRow, rescueEndRiders, rescueEndRidersRow, rescueMidSeat, rescueMidSeatRow, rescueMidRiders, rescueMidRidersRow, rescueUnclosedOxygen, rescueUnclosedOxygenRow, rescueUnclosedRider, rescueUnclosedRiderRow, rescueUnclosedThinAir, rescueUnclosedThinAirRow } from '../../src/lib/rescue-ledger.mjs' // (v0.368.0) the pure pairing's field read; (v0.773.0) WHICH walker owns the starts; (v0.779.0) WHICH class owns the ends; (v0.790.0) WHICH mid-episode event owns the churn; (v0.976.14) the unclosed starts' own oxygen byte; (v0.976.15) the unclosed starts' own rider byte; (v0.976.18) the unclosed starts' own thin-air byte
 import { orphanOwnerCensus } from '../../src/lib/orphanowner.mjs' // (v0.679.0) the orphan end's per-bot owner (the dead-client class names its bot)
 import { orphanBookSeat, orphanBookSeatRow, orphanBookRiders, orphanBookRidersRow } from '../../src/lib/orphanowner.mjs' // (v0.802.0) the orphan book's own seat (the byClass cell's own majority)
@@ -8806,6 +8807,19 @@ if (process.argv[5] && prevLines) {
 if (process.argv[5] && prevLines) {
   const wow = writeOffWhysTrendRow({ back: { writeOffWhys: writeOffWhys(readFileSync(process.argv[5], 'utf8').split('\n')) }, prev: { writeOffWhys: writeOffWhys(prevLines) }, cur: { writeOffWhys: writeOffWhys(lines) } })
   if (wow) console.log(`  ${wow}`)
+}
+// (v0.976.511) THE CLAIM TAKE CENSUS - the claim board's own take lane the
+// F678 live face priced first (301 takes ALL mono-shape target-free, the
+// crest bot F14's own 78 of 301 25.9%, the headroom floor 23 of cap 24 the
+// whole run rode - the ledger never held a second claim at any take moment,
+// the release book ZERO the log-silent end the honest zero keeps, the
+// |claimboardverdict consult the keep=fresh silence rode the whole 600s) -
+// the decompose's own first claim-take read, the lane the reader never
+// priced before this word; CENSUS GUARD: zero fleet wiring, zero new fleet
+// log lines
+{
+  const claimTakeRow = claimTakeCensusRow(censusClaimTakes(lines))
+  if (claimTakeRow) console.log(`  ${claimTakeRow}`)
 }
 // (v0.976.190) THE SWEEP LANE'S OWN DEFER TREND - the sweep lane's
 // own defer mass across the faces (the '[F<n>] sweep deferred (the
