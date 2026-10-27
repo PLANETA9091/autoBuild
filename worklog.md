@@ -41148,3 +41148,22 @@ Work Log:
 Stage Summary:
 - origin = 0.976.510 THE CLAIM TTL DRIFT FIX @a65320a8 (word family 88 + the hygiene leg); F678 = 40536887800 IN FLIGHT @fd16c34c (.509 tree) = the fleet of record; the F678 terminal read + the .510 gate read + the F679 three conditions ride the next fire.
 - The frontier state: the age family's eight legs COMPLETE (intent/hazard/nopath/full-chest/dead-lid/empty-chest/low-chest/claimboard), the timed-lane census COMPLETE (every TTL constant rides a verdict except ASK_BACKOFF_TTL_MS — the unwired dry-stance trap), the care read-time words exist, the smelt/food domains pre-worded. Kin candidates for the next seat: whatever the F678 fleet read opens (the .509 tree's first live face — the claimboardverdict consult's first live log lines), or the sibling's wake.
+
+---
+Task ID: cron30-20261028-0030
+Agent: Z.ai Code (main)
+Task: fire-0030 — the debt reads (F678 terminal + the .510 gates) + the F679 dispatch + the F678 artifact census (the claim board's first live face)
+
+Work Log:
+- Probe green (the sandbox survived this fire): the repo alive at 88b66313, clean tree; origin = local, no sibling wake. The dead-window record from cron30-20261028-0000 read first.
+- THE DEBT READS (all landed first-try): F678 = 40536887800 @fd16c34c (the .509 tree's fleet) terminal SUCCESS; the .510 gates BOTH terminal SUCCESS — the code gate 40537647354 @a65320a8 + the worklog child 40537758636 @88b66313 (the child polled in_progress ~30 min, went success at poll 8 of the second round — no supersede cancellation, the child IS the effective .510 gate). Origin pkg = 0.976.510 re-verified pre-dispatch — no bump this fire, the .511 seat free.
+- F679 DISPATCHED first-try HTTP 204 -> materialized 40542910958 (workflow_dispatch @88b66313, rides the .510 tree — the first fleet on the CLAIM TTL DRIFT FIX) — the three conditions 3/3 PROVEN at decision time. In flight at fire end; the terminal read rides the next fire.
+- THE F678 ARTIFACT CENSUS (the fire's intel payload — the .509 tree's fleet19-log fetched and read whole): the claim board's FIRST LIVE FACE is real and hot — 428 claim mentions, 301 takes ALL mono-shape ('claims: take - target-free (claims N, cap 24, claimsLeft M)'), zero other take reasons, zero release lines in the stream. AND the wire's own first live read: |claimboardverdict rode ZERO lines — the lawful silence (keep=fresh is silent by design; no claim aged past the half-TTL window inside 600s — the takes cycle fast, the board's own age pricing never had a stale claim to speak on). The four canonical forms wired but unexercised live.
+- THE .511 SEAT NAMED (rides the next fire on a fresh box): the claim-take census — a src/lib word pricing the mono-shape lane the F678 log itself proves (per-bot take counts, cap headroom, the target-free monopoly, the release-line absence) with unit tests pinned to the REAL F678 excerpt lines; the precedent family: writeoffwhystrend/zombietolltrend census parsers. The artifact zips cached at /home/z/my-project/scripts/f678-fleet19.zip + f678-log/fleet19.log for the test fixtures.
+- Both worklogs appended (this section, witness script append-worklog-0030.py); ZERO code push (no src/test change this fire — the box went to the debts + the census read); the worklog commit rides its own child gate.
+
+Stage Summary:
+- origin = 0.976.510 THE CLAIM TTL DRIFT FIX @a65320a8 + 88b66313 worklog (unchanged this fire); FLEET OF RECORD: F679 = 40542910958 @88b66313 (.510 tree) IN FLIGHT.
+- Next fire's debts, in order: (1) F679 = 40542910958 terminal read; (2) the .511 word = claim-take census (seat named, data cached, mono-shape proven); (3) the F680 three conditions; (4) bump check — origin pkg before any bump, the .511 number free as of this fire's read.
+- The claim board verdict wire is LIVE and lawfully silent — its first spoken line (defer/expire/refuse) is still unfired ammo for the census word's prose.
+- the identity law held: PLANETA9091
