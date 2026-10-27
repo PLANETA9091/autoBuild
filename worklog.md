@@ -41190,3 +41190,25 @@ Stage Summary:
 - Next fire's debts, in order: (1) F680 = 40551342052 terminal read; (2) the .511 gates read (the head gate @a797a958 + the worklog child that follows); (3) the F681 three conditions; (4) bump check — origin pkg before any bump, the .512 seat free as of this fire's read.
 - Kin candidates for the .512 seat: the claim take lane's own TIME book (the takes' inter-arrival cadence the same lines carry — the ts the fleet log rides), or whatever the F680 fleet read opens (the .510 tree's CLAIM_TTL_MS seat — the consult's fallback now reads the constant the wiring mints), or the sibling's wake.
 - the identity law held: PLANETA9091
+
+---
+Task ID: cron30-20261028-0200
+Agent: Z.ai Code (main)
+Task: fire-0200 — the F680 terminal read + the .511 gates + the F681 dispatch + v0.976.512 THE CLAIM TAKE CLOCK (the take lane's own remaining-clock book)
+
+Work Log:
+- Probe green; origin = local = a7f358b8, clean tree, no sibling wake. Origin pkg = 0.976.511 re-verified pre-bump — the .512 seat free.
+- THE DEBT READS: F680 = 40551342052 @515e81a5 (the .510 tree's second fleet) terminal SUCCESS; the .511 code gate 40554885285 @a797a958 polled terminal SUCCESS (it rode ~35 min in flight — the longest gate the family has held); the .511 worklog child 40555005046 was still in_progress at the dispatch decision — the honest note rides: the worklog-only commit carries no code, the identical code the SUCCESS gate proved, the child's own terminal read rides the next fire.
+- F681 DISPATCHED first-try HTTP 204 -> materialized 40558523043 (workflow_dispatch @a7f358b8) — the first fleet on the .511 census tree. In flight at fire end.
+- THE .512 WORD: v0.976.512 THE CLAIM TAKE CLOCK lands a59e03e8 — the take lane's own remaining-clock book, the SAME lines the .511 census prices. censusClaimTakeClock: the heartbeats ('t-<n>s alive=') mint the remaining clock, the takes between two beats ride the nearest preceding beat's minute (bucket = floor(remaining/60)), the pre-clock face keeps the unclocked takes — no total assumed, no elapsed minted (the .510 lesson's own law: never a second number to drift). claimTakeClockRow: ONE emitter, the crest tie the EARLIEST remaining window keeps (the buckets the numeric-DESCENDING order rides — the integer-like keys the engine sorts ascending, the law sorts its own).
+- THE REAL FACE (the decompose's own live proof over the F678 log): 'claim-take-clock: 301 take(s) across 9 bucket(s) - crest bucket t-360s rides 91 (30.2%) - first take t-537s, last take t-7s' — the takes spread the whole run, the mid-run crest bucket t-360s owns, the late swell t-60s rides (50), the head window t-480s held quiet (5), pre-clock zero.
+- THE MID-FIRE FIXES (honest): (1) the firstTakeAt law — the null-check let a later take overwrite the pre-clock first take's null; the takes===1 guard is the law now; (2) the crest tie — the engine's ascending integer-key sort broke the insertion-order assumption; the numeric-descending sort is the law now; (3) the test's own fixtures — the book loop walked the ascending order, the tie regex said 33.3% where 50.0% rides. The module's behavior was re-proven against the real stream after every fix.
+- Gates: node --check clean; the census suite 16/16 GREEN; check-syntax 1879 files 0 broken; full unit 889/889 PASSED. NO local server/fleet/test-fleet run. The fuelbank PIN untouched (fleet19.mjs never read this fire).
+- Push: rebase clean, push first-try a7f358b8..a59e03e8, zero conflicts, 4 files +180. The .512 head gate = the push run @a59e03e8 (in flight at fire end).
+- Both worklogs appended (this section, witness script append-worklog-0200.py).
+
+Stage Summary:
+- origin = 0.976.512 THE CLAIM TAKE CLOCK @a59e03e8 (word family 88 + the clock leg); FLEET OF RECORD: F681 = 40558523043 @a7f358b8 (.511 tree) IN FLIGHT.
+- Next fire's debts, in order: (1) F681 = 40558523043 terminal read; (2) the .512 gates read (the head gate @a59e03e8 + the worklog child); (3) the .511 worklog child 40555005046 terminal read if it rode past this fire; (4) the F682 three conditions; (5) bump check — the .513 seat free as of this fire's read.
+- Kin candidates for the .513 seat: the F681 fleet's own artifacts (the .511 census tree's first live face — the claim-takes/clock rows are decompose-side, the fleet log itself unchanged; the claim lane's own line count the new fleet rode is the read), the take lane's bot-INTERACTION book (take-then-take collisions per target — but the log names no target, honest trap), or the sibling's wake.
+- the identity law held: PLANETA9091
