@@ -5,7 +5,7 @@
 // are the REAL lines the F678 fleet19-log rode.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { censusClaimTakes, claimTakeCensusRow } from '../../src/lib/claimtakecensus.mjs'
+import { censusClaimTakes, claimTakeCensusRow, censusClaimTakeClock, claimTakeClockRow } from '../../src/lib/claimtakecensus.mjs'
 
 // The REAL F678 excerpts (the artifact the F678 read fetched, verbatim).
 const REAL_F678_LINES = [
@@ -112,4 +112,98 @@ test('the crest concentration: the F678 whole-run arithmetic (78 of 301 = 25.9%)
   const row = claimTakeCensusRow(c)
   assert.match(row, /crest F14 rides 78 \(25\.9%\)/)
   assert.match(row, /headroom floor 23 of cap 24 \(bot F14\)/)
+})
+
+// --- (v0.976.512) THE CLAIM TAKE CLOCK - the take lane's own remaining-clock book ---
+
+test('the F678 real excerpt face without heartbeats: the pre-clock face carries all', () => {
+  const c = censusClaimTakeClock(REAL_F678_LINES)
+  assert.equal(c.takes, 8)
+  assert.equal(c.preClock, 8) // the fixture carries no heartbeat lines - the unclocked seat holds all
+  assert.deepEqual(c.byBucket, {}) // no heartbeat minted - no bucket rode
+  assert.equal(c.firstTakeAt, null)
+  assert.equal(c.lastTakeAt, null)
+  const row = claimTakeClockRow(c)
+  assert.ok(row !== null)
+  assert.match(row, /no bucket rode \(the pre-clock face carried the takes\)/)
+  assert.match(row, /first take pre-clock, last take pre-clock/)
+})
+
+test('the F678 whole-run clock arithmetic: the crest bucket t-360s rides 91 (30.2%)', () => {
+  // The REAL F678 stream's own clock book (computed over the artifact the
+  // F678 read fetched): 301 takes, 9 buckets, crest t-360s 91 takes 30.2%,
+  // first take t-537s, last take t-7s, pre-clock zero.
+  const lines = []
+  const book = { 8: 5, 7: 57, 6: 91, 5: 33, 4: 10, 3: 22, 2: 15, 1: 50, 0: 18 }
+  const order = ['8', '7', '6', '5', '4', '3', '2', '1', '0'] // the explicit descending walk - the engine sorts integer-like keys ascending, the run's own face rode the countdown
+  for (const b of order) {
+    for (let i = 0; i < book[b]; i++) {
+      lines.push(`t-${b * 60 + 30}s alive=19/19`)
+      lines.push('F14 claims: take - target-free (claims 0, cap 24, claimsLeft 23)')
+    }
+  }
+  const k = censusClaimTakeClock(lines)
+  assert.equal(k.takes, 301)
+  assert.equal(k.preClock, 0)
+  assert.deepEqual(k.byBucket, book)
+  assert.equal(k.firstTakeAt, 510)
+  const row = claimTakeClockRow(k)
+  assert.match(row, /^claim-take-clock: 301 take\(s\) across 9 bucket\(s\) - /)
+  assert.match(row, /crest bucket t-360s rides 91 \(30\.2%\)/)
+})
+
+test('the bucket assignment law: the nearest preceding beat\'s minute owns the take', () => {
+  const k = censusClaimTakeClock([
+    't-119s alive=19/19',
+    'F1 claims: take - target-free (claims 0, cap 24, claimsLeft 23)',
+    't-60s alive=19/19',
+    'F2 claims: take - target-free (claims 0, cap 24, claimsLeft 23)',
+    't-59s alive=19/19',
+    'F3 claims: take - target-free (claims 0, cap 24, claimsLeft 23)',
+    't-0s alive=19/19',
+    'F4 claims: take - target-free (claims 0, cap 24, claimsLeft 23)'
+  ])
+  assert.equal(k.takes, 4)
+  assert.deepEqual(k.byBucket, { 1: 2, 0: 2 })
+  assert.equal(k.lastTakeAt, 0)
+})
+
+test('the pre-clock face: the take before the first heartbeat the unclocked seat keeps', () => {
+  const k = censusClaimTakeClock([
+    'F1 claims: take - target-free (claims 0, cap 24, claimsLeft 23)',
+    't-537s alive=19/19',
+    'F2 claims: take - target-free (claims 0, cap 24, claimsLeft 23)'
+  ])
+  assert.equal(k.takes, 2)
+  assert.equal(k.preClock, 1)
+  assert.equal(k.firstTakeAt, null)
+  assert.equal(k.lastTakeAt, 537)
+  const row = claimTakeClockRow(k)
+  assert.match(row, /first take pre-clock/)
+  assert.match(row, /last take t-537s/)
+})
+
+test('the zero-take face: the clock row never prints (the honest silence)', () => {
+  assert.equal(claimTakeClockRow(censusClaimTakeClock(['t-537s alive=19/19', 'b] n=1 ts=20s'])), null)
+  assert.equal(claimTakeClockRow(null), null)
+  assert.equal(claimTakeClockRow(censusClaimTakeClock(null)), null)
+})
+
+test('junk battery: the clock gate refuses the non-array and the non-string', () => {
+  assert.equal(censusClaimTakeClock(null).takes, 0)
+  assert.equal(censusClaimTakeClock(42).takes, 0)
+  const k = censusClaimTakeClock([42, null, 't-100s alive=19/19', 'F1 claims: take - target-free (claims 0, cap 24, claimsLeft 23)'])
+  assert.equal(k.takes, 1)
+  assert.equal(k.byBucket[1], 1)
+})
+
+test('the crest tie: the earliest seat keeps (the first max the insertion order rides)', () => {
+  const k = censusClaimTakeClock([
+    't-300s alive=19/19',
+    'F1 claims: take - target-free (claims 0, cap 24, claimsLeft 23)',
+    't-100s alive=19/19',
+    'F2 claims: take - target-free (claims 0, cap 24, claimsLeft 23)'
+  ])
+  const row = claimTakeClockRow(k)
+  assert.match(row, /crest bucket t-300s rides 1 \(50\.0%\)/)
 })

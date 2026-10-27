@@ -91,3 +91,77 @@ export function claimTakeCensusRow (c) {
   const share = (crest / c.takes * 100).toFixed(1)
   return `claim-takes: ${c.takes} take(s) across ${Object.keys(c.byBot).length} bot(s) - ${reasonFace} - headroom floor ${c.claimsLeftMin} of cap ${c.capMax} (bot ${c.claimsLeftMinHolder}) - crest ${crestKey} rides ${crest} (${share}%)`
 }
+
+// (v0.976.512) THE CLAIM TAKE CLOCK - the take lane's own remaining-clock
+// book, the SAME lines the take census prices (the F678 live face's own
+// second book): the fleet log's own heartbeats ('t-<n>s alive=...' - the
+// F678 face rode 41 of them, t-537s the first, t-0s the last, ~13s the
+// cadence the run rode) mint the remaining clock, the takes between two
+// heartbeats ride the NEAREST PRECEDING beat's minute (bucket =
+// floor(remaining/60) - the bucket t-480s holds the remaining 480-539s
+// window); the takes BEFORE the first heartbeat the pre-clock face keeps
+// (the run's own first minute the heartbeat never rode - the honest
+// unclocked seat, no total assumed, no elapsed minted - the remaining
+// clock the log itself prints is the ONLY clock this word reads, never a
+// second number to drift). ONE-PARSER LAW: the same TAKE_RE reads every
+// take line (the census's own regex, the lane never forks), the heartbeat
+// its own shape. THE ROW LAW: ONE emitter ('claim-take-clock: <n> take(s)
+// across <b> bucket(s) - crest bucket t-<B>s rides <k> (<p>%) - first take
+// <at>, last take <at> (the remaining clock the heartbeat mints)'), the
+// crest tie the EARLIEST remaining window keeps (the buckets the
+// numeric-DESCENDING order rides - the highest remaining seat the run's
+// own first face - the first max that order holds; the integer-like keys
+// the engine sorts ascending, the law sorts its own); the zero-take face
+// the row NEVER prints (the honest silence).
+// CENSUS GUARD: zero fleet wiring, zero new fleet log lines - the
+// decompose's own first claim-take clock read.
+export function censusClaimTakeClock (lines) {
+  const clock = {
+    takes: 0,
+    preClock: 0,
+    byBucket: {},
+    firstTakeAt: null,
+    lastTakeAt: null,
+    lastRemaining: null
+  }
+  if (!Array.isArray(lines)) return clock
+  for (const raw of lines) {
+    if (typeof raw !== 'string') continue
+    const line = raw.trim()
+    const hb = /^t-(\d+)s\b/.exec(line)
+    if (hb) {
+      clock.lastRemaining = Number(hb[1])
+      continue
+    }
+    if (TAKE_RE.exec(line)) {
+      clock.takes += 1
+      if (clock.takes === 1) clock.firstTakeAt = clock.lastRemaining
+      clock.lastTakeAt = clock.lastRemaining
+      if (clock.lastRemaining === null) {
+        clock.preClock += 1
+        continue
+      }
+      const bucket = Math.floor(clock.lastRemaining / 60)
+      clock.byBucket[bucket] = (clock.byBucket[bucket] || 0) + 1
+    }
+  }
+  return clock
+}
+
+export function claimTakeClockRow (k) {
+  if (!k || k.takes === 0) return null
+  const buckets = Object.keys(k.byBucket).map(Number).sort((a, b) => b - a)
+  let crest = null
+  let crestKey = null
+  for (const b of buckets) {
+    if (crest === null || k.byBucket[b] > crest) {
+      crest = k.byBucket[b]
+      crestKey = b
+    }
+  }
+  const crestFace = crestKey === null
+    ? 'no bucket rode (the pre-clock face carried the takes)'
+    : `crest bucket t-${Number(crestKey) * 60}s rides ${crest} (${(crest / k.takes * 100).toFixed(1)}%)`
+  const at = (v) => (v === null ? 'pre-clock' : `t-${v}s`)
+  return `claim-take-clock: ${k.takes} take(s) across ${buckets.length} bucket(s) - ${crestFace} - first take ${at(k.firstTakeAt)}, last take ${at(k.lastTakeAt)} (the remaining clock the heartbeat mints)`
+}
