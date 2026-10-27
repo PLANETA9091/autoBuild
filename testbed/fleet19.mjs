@@ -20,7 +20,7 @@ import { deathCensusRecord, deathCensusRow } from '../src/lib/deathcensus.mjs' /
 import { createScout } from '../src/bots/scout.mjs'
 import { WorldMap } from '../src/fleet/worldmap.mjs'
 import { attachChatSync } from '../src/fleet/chatsync.mjs'
-import { ClaimBoard, attachClaimSync, attachHazardSync } from '../src/fleet/claims.mjs'
+import { ClaimBoard, attachClaimSync, attachHazardSync, CLAIM_TTL_MS } from '../src/fleet/claims.mjs'
 import { HazardLedger, airBarTrust, WATER_HAZARD_TTL_MS } from '../src/lib/drowning.mjs'
 import { NOPATH_TTL_MS } from '../src/lib/nopath.mjs' // (v0.976.504) the nopathverdict word's own default bound reads (the ledger's own 90s window, never a second number to drift)
 import { FULL_CHEST_TTL_MS } from '../src/lib/deposit.mjs' // (v0.976.506 note: CHEST_DOOM_TTL_MS rides the line-30 deposit import already) // (v0.976.505) the fullchestverdict word's own default bound reads (the ledger's own 180s window, never a second number to drift) // (v0.976.504) the nopathverdict word's own default bound reads (the ledger's own 90s window, never a second number to drift)
@@ -5618,7 +5618,7 @@ async function runBot (name, target, index) {
               }
             }
             if (!eldest) { lastClaimboardWord = ''; return } // the empty board's own silence
-            const ttl = Number.isFinite(board.ttlMs) && board.ttlMs > 0 ? board.ttlMs : 120000
+            const ttl = Number.isFinite(board.ttlMs) && board.ttlMs > 0 ? board.ttlMs : CLAIM_TTL_MS
             const age = Math.max(0, now - (eldest.expiresAt - ttl))
             const cv = decideClaimboardVerdict({ ageMs: age, ttlMs: ttl })
             if (cv.action === 'keep') { lastClaimboardWord = ''; return }
